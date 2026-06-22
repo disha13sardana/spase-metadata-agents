@@ -1,0 +1,274 @@
+{
+  "record": "spase://SMWG/Observatory/PROBA2",
+  "date": "2026-06-22",
+  "candidates": [
+    {
+      "name": "Joe Zender",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        { "source": "Observatory record Contacts (Principal Investigator)", "url": "https://spase-metadata.org/SMWG/Observatory/PROBA2.html", "strength": "Strong" },
+        { "source": "ESA PROBA2 mission team page (Science Coordinator/Operator, ESA ESTEC)", "url": "https://sci.esa.int/web/proba2/48482-mission-team", "strength": "Strong" },
+        { "source": "Co-author, mission overview paper 'PROBA2: Mission and Spacecraft Overview' (2013SoPh..286....5S)", "url": "https://doi.org/10.1007/s11207-013-0289-5", "strength": "Medium" }
+      ],
+      "person_record": { "id": "spase://SMWG/Person/Joe.Zender", "url": "https://spase-metadata.org/SMWG/Person/Joe.Zender.html" },
+      "orcid": null,
+      "affiliation": "European Space Agency",
+      "activity_dates": null
+    },
+    {
+      "name": "David Berghmans",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        { "source": "SWAP Instrument SPASE record Contacts (Principal Investigator)", "url": "https://spase-metadata.org/SMWG/Instrument/PROBA2/SWAP.html", "strength": "Strong" },
+        { "source": "ESA PROBA2 mission team page (SWAP Scientific Principal Investigator, Royal Observatory of Belgium)", "url": "https://sci.esa.int/web/proba2/48482-mission-team", "strength": "Strong" }
+      ],
+      "person_record": { "id": "spase://SMWG/Person/David.Berghmans", "url": "https://spase-metadata.org/SMWG/Person/David.Berghmans.html" },
+      "orcid": null,
+      "affiliation": "Royal Observatory of Belgium",
+      "activity_dates": null
+    },
+    {
+      "name": "Marie Dominique",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        { "source": "LYRA Instrument SPASE record Contacts (Principal Investigator)", "url": "https://spase-metadata.org/SMWG/Instrument/PROBA2/LYRA.html", "strength": "Strong" },
+        { "source": "ESA PROBA2 mission team page (LYRA Principal Investigator, Royal Observatory of Belgium)", "url": "https://sci.esa.int/web/proba2/48482-mission-team", "strength": "Strong" }
+      ],
+      "person_record": { "id": "spase://SMWG/Person/Marie.Dominique", "url": "https://spase-metadata.org/SMWG/Person/Marie.Dominique.html" },
+      "orcid": null,
+      "affiliation": "Royal Observatory of Belgium",
+      "activity_dates": null
+    },
+    {
+      "name": "Jean-Marc Defise",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        { "source": "ESA PROBA2 mission team page (SWAP Technical Principal Investigator, CSL Liege)", "url": "https://sci.esa.int/web/proba2/48482-mission-team", "strength": "Strong" }
+      ],
+      "person_record": { "id": null, "url": null },
+      "orcid": null,
+      "affiliation": "Centre Spatial de Liège (CSL), Belgium",
+      "activity_dates": null
+    },
+    {
+      "name": "Werner Schmutz",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        { "source": "ESA PROBA2 mission team page (LYRA Technical Principal Investigator, PMOD Davos)", "url": "https://sci.esa.int/web/proba2/48482-mission-team", "strength": "Strong" }
+      ],
+      "person_record": { "id": null, "url": null },
+      "orcid": null,
+      "affiliation": "PMOD/WRC, Davos, Switzerland",
+      "activity_dates": null
+    },
+    {
+      "name": "Pavel Travnicek",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        { "source": "ESA PROBA2 mission team page (DSLP Principal Investigator, Academy of Sciences, Prague). Name listed as 'P. Travenicek' on team page — verify spelling/identity downstream", "url": "https://sci.esa.int/web/proba2/48482-mission-team", "strength": "Strong" }
+      ],
+      "person_record": { "id": null, "url": null },
+      "orcid": null,
+      "affiliation": "Academy of Sciences, Prague",
+      "activity_dates": null
+    },
+    {
+      "name": "F. Hruska",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        { "source": "ESA PROBA2 mission team page (TPMU Principal Investigator, Academy of Sciences, Prague)", "url": "https://sci.esa.int/web/proba2/48482-mission-team", "strength": "Strong" }
+      ],
+      "person_record": { "id": null, "url": null },
+      "orcid": null,
+      "affiliation": "Academy of Sciences, Prague",
+      "activity_dates": null
+    },
+    {
+      "name": "Stefano Santandrea",
+      "status": "included",
+      "confidence": "Medium",
+      "exclusion_reason": null,
+      "evidence": [
+        { "source": "Lead author, mission overview paper 'PROBA2: Mission and Spacecraft Overview' (2013SoPh..286....5S)", "url": "https://doi.org/10.1007/s11207-013-0289-5", "strength": "Medium" },
+        { "source": "ESA PROBA2 mission team page (Systems Engineer, ESA ESTEC)", "url": "https://sci.esa.int/web/proba2/48482-mission-team", "strength": "Medium" }
+      ],
+      "person_record": { "id": null, "url": null },
+      "orcid": null,
+      "affiliation": "ESA ESTEC, Netherlands",
+      "activity_dates": null
+    },
+    {
+      "name": "Gerhard Schwehm",
+      "status": "included",
+      "confidence": "Medium",
+      "exclusion_reason": null,
+      "evidence": [
+        { "source": "ESA PROBA2 mission team page (Mission Manager, ESA ESAC)", "url": "https://sci.esa.int/web/proba2/48482-mission-team", "strength": "Medium" },
+        { "source": "Co-author, mission overview paper (2013SoPh..286....5S)", "url": "https://doi.org/10.1007/s11207-013-0289-5", "strength": "Medium" }
+      ],
+      "person_record": { "id": null, "url": null },
+      "orcid": null,
+      "affiliation": "ESA ESAC, Spain",
+      "activity_dates": null
+    },
+    {
+      "name": "Anik De Groof",
+      "status": "included",
+      "confidence": "Medium",
+      "exclusion_reason": null,
+      "evidence": [
+        { "source": "ESA PROBA2 mission team page (ESA Liaison Scientist)", "url": "https://sci.esa.int/web/proba2/48482-mission-team", "strength": "Medium" },
+        { "source": "Co-author, mission overview paper (2013SoPh..286....5S)", "url": "https://doi.org/10.1007/s11207-013-0289-5", "strength": "Medium" }
+      ],
+      "person_record": { "id": "spase://SMWG/Person/Anik.De.Groof", "url": "https://spase-metadata.org/SMWG/Person/Anik.De.Groof.html" },
+      "orcid": null,
+      "affiliation": "European Space Agency",
+      "activity_dates": null
+    },
+    {
+      "name": "Karl Strauch",
+      "status": "included",
+      "confidence": "Medium",
+      "exclusion_reason": null,
+      "evidence": [
+        { "source": "ESA PROBA2 mission team page (Project Manager, ESA ESTEC)", "url": "https://sci.esa.int/web/proba2/48482-mission-team", "strength": "Medium" },
+        { "source": "Co-author, mission overview paper (2013SoPh..286....5S)", "url": "https://doi.org/10.1007/s11207-013-0289-5", "strength": "Medium" }
+      ],
+      "person_record": { "id": null, "url": null },
+      "orcid": null,
+      "affiliation": "ESA ESTEC, Netherlands",
+      "activity_dates": null
+    },
+    {
+      "name": "Kristof Gantois",
+      "status": "included",
+      "confidence": "Medium",
+      "exclusion_reason": null,
+      "evidence": [
+        { "source": "ESA PROBA2 mission team page (Systems Engineer, ESA ESTEC)", "url": "https://sci.esa.int/web/proba2/48482-mission-team", "strength": "Medium" },
+        { "source": "Co-author, mission overview paper (2013SoPh..286....5S)", "url": "https://doi.org/10.1007/s11207-013-0289-5", "strength": "Medium" }
+      ],
+      "person_record": { "id": null, "url": null },
+      "orcid": null,
+      "affiliation": "ESA ESTEC, Netherlands",
+      "activity_dates": null
+    },
+    {
+      "name": "Ingolf Dammasch",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "instrument-support role (LYRA Calibration Engineer) on the mission team page, not a mission-level PI or lead/co-author of the mission overview paper; belongs to LYRA instrument-level authorship, not the Observatory record",
+      "evidence": [
+        { "source": "ESA PROBA2 mission team page (LYRA Calibration Engineer)", "url": "https://sci.esa.int/web/proba2/48482-mission-team", "strength": "Low" }
+      ],
+      "person_record": { "id": null, "url": null },
+      "orcid": null,
+      "affiliation": "Royal Observatory of Belgium",
+      "activity_dates": null
+    },
+    {
+      "name": "Bogdan Nicula",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "support role only (Software Engineer) on mission team page; no PI/lead-author corroboration",
+      "evidence": [
+        { "source": "ESA PROBA2 mission team page (Software Engineer)", "url": "https://sci.esa.int/web/proba2/48482-mission-team", "strength": "Low" }
+      ],
+      "person_record": { "id": null, "url": null },
+      "orcid": null,
+      "affiliation": "Royal Observatory of Belgium",
+      "activity_dates": null
+    },
+    {
+      "name": "Daniel Seaton",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "instrument scientist support role (SWAP instrument scientist) on mission team page; instrument-level, not a mission-level PI or overview-paper lead/co-author",
+      "evidence": [
+        { "source": "ESA PROBA2 mission team page (SWAP instrument scientist)", "url": "https://sci.esa.int/web/proba2/48482-mission-team", "strength": "Low" }
+      ],
+      "person_record": { "id": null, "url": null },
+      "orcid": null,
+      "affiliation": "Royal Observatory of Belgium",
+      "activity_dates": null
+    },
+    {
+      "name": "F. Teston",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "non-lead co-author of mission overview paper with no other corroboration on the team page",
+      "evidence": [
+        { "source": "Co-author, mission overview paper (2013SoPh..286....5S)", "url": "https://doi.org/10.1007/s11207-013-0289-5", "strength": "Low" }
+      ],
+      "person_record": { "id": null, "url": null },
+      "orcid": null,
+      "affiliation": null,
+      "activity_dates": null
+    },
+    {
+      "name": "E. Tilmans",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "spacecraft-operations support role (Redu ground segment); non-lead co-author of overview paper — operations support, below the authorship bar for the Observatory record",
+      "evidence": [
+        { "source": "ESA PROBA2 mission team page (Spacecraft Operations, Redu)", "url": "https://sci.esa.int/web/proba2/48482-mission-team", "strength": "Low" },
+        { "source": "Co-author, mission overview paper (2013SoPh..286....5S)", "url": "https://doi.org/10.1007/s11207-013-0289-5", "strength": "Low" }
+      ],
+      "person_record": { "id": null, "url": null },
+      "orcid": null,
+      "affiliation": "Redu, Belgium",
+      "activity_dates": null
+    },
+    {
+      "name": "C. Baijot",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "spacecraft-operations support role (Redu ground segment); non-lead co-author of overview paper — below the authorship bar",
+      "evidence": [
+        { "source": "ESA PROBA2 mission team page (Spacecraft Operations, Redu)", "url": "https://sci.esa.int/web/proba2/48482-mission-team", "strength": "Low" },
+        { "source": "Co-author, mission overview paper (2013SoPh..286....5S)", "url": "https://doi.org/10.1007/s11207-013-0289-5", "strength": "Low" }
+      ],
+      "person_record": { "id": null, "url": null },
+      "orcid": null,
+      "affiliation": "Redu, Belgium",
+      "activity_dates": null
+    },
+    {
+      "name": "D. Gerrits",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "non-lead co-author of mission overview paper with no other corroboration",
+      "evidence": [
+        { "source": "Co-author, mission overview paper (2013SoPh..286....5S)", "url": "https://doi.org/10.1007/s11207-013-0289-5", "strength": "Low" }
+      ],
+      "person_record": { "id": null, "url": null },
+      "orcid": null,
+      "affiliation": null,
+      "activity_dates": null
+    }
+  ],
+  "notes": [
+    "This is the mission-level Observatory record. The record's own Contacts name only Joe Zender (PI). Strong candidates were drawn from the SWAP/LYRA Instrument SPASE records and the official ESA PROBA2 mission team page.",
+    "The Observatory XML did NOT contain InstrumentID references; SWAP and LYRA Instrument records were located directly at spase-metadata.org/SMWG/Instrument/PROBA2/. Instruments DSLP and TPMU are mentioned in the ResourceHeader but no SPASE Instrument records were confirmed; their PIs (Travnicek, Hruska) come from the ESA team page only.",
+    "Mission description paper selected per heuristic: 'PROBA2: Mission and Spacecraft Overview', Santandrea et al. 2013, Solar Physics 286:5-19 (2013SoPh..286....5S, DOI 10.1007/s11207-013-0289-5) — multi-author mission overview published at the start of operations (launch 2009-11-02). Crossref author order: S. Santandrea (lead), K. Gantois, K. Strauch, F. Teston, E. Tilmans, C. Baijot, D. Gerrits, A. De Groof, G. Schwehm, J. Zender (plus corporate authors 'PROBA2 Project Team' and 'PROBA2 Industry Team').",
+    "Instrument PIs (Berghmans, Dominique, Defise, Schmutz) and the other instrument PIs are listed here because they are named PIs on the official ESA mission team page (Strong). The role-assignment downstream agent should decide whether instrument-level PIs belong in the Observatory authorship or only in their respective Instrument records.",
+    "Crossref returned no ORCIDs or affiliations for the overview paper; affiliations shown come from the ESA team page. ORCIDs were not separately looked up (out of scope).",
+    "'P. Travenicek' on the ESA team page is almost certainly Pavel Travnicek (DSLP) — spelling differs; downstream should verify identity/spelling.",
+    "Person records confirmed: Joe.Zender, David.Berghmans, Marie.Dominique, Anik.De.Groof. No Person record found (HTTP 404) for Gerhard.Schwehm or Stefano.Santandrea; not checked for Defise, Schmutz, Travnicek, Hruska, Strauch, Gantois (downstream lookup).",
+    "Long-tail instrument-paper co-authors and support staff (Willems, D'Huys, Yalim, Reis, Hannoteau) noted but not listed individually — support/student roles alone are below the inclusion bar for the mission-level record."
+  ]
+}

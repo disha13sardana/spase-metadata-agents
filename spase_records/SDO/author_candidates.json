@@ -1,0 +1,136 @@
+{
+  "record": "spase://SMWG/Observatory/SDO",
+  "date": "2026-06-22",
+  "candidates": [
+    {
+      "name": "W. Dean Pesnell",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        { "source": "Record Contacts (ProjectScientist)", "url": "https://spase-metadata.org/SMWG/Observatory/SDO", "strength": "Strong" },
+        { "source": "Lead author, SDO mission description paper 'The Solar Dynamics Observatory (SDO)' (Pesnell, Thompson & Chamberlin, 2012, Solar Physics)", "url": "https://doi.org/10.1007/s11207-011-9841-3", "strength": "Medium" }
+      ],
+      "person_record": { "id": "spase://SMWG/Person/W.Dean.Pesnell", "url": "https://spase-metadata.org/SMWG/Person/W.Dean.Pesnell.html" },
+      "orcid": null,
+      "affiliation": "GSFC-Code 671 (NASA Goddard Space Flight Center)",
+      "activity_dates": null
+    },
+    {
+      "name": "Thomas N. Woods",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        { "source": "EVE Instrument SPASE record PI (PrincipalInvestigator)", "url": "https://spase-metadata.org/SMWG/Instrument/SDO/EVE.html", "strength": "Strong" },
+        { "source": "Named EVE PI on SDO mission/instruments provider page", "url": "https://sdo.gsfc.nasa.gov/mission/instruments.php", "strength": "Strong" }
+      ],
+      "person_record": { "id": "spase://SMWG/Person/Thomas.N.Woods", "url": "https://spase-metadata.org/SMWG/Person/Thomas.N.Woods.html" },
+      "orcid": null,
+      "affiliation": "Laboratory for Atmospheric and Space Physics, University of Colorado Boulder",
+      "activity_dates": null
+    },
+    {
+      "name": "Philip H. Scherrer",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        { "source": "HMI Instrument SPASE record PI (PrincipalInvestigator)", "url": "https://spase-metadata.org/SMWG/Instrument/SDO/HMI.html", "strength": "Strong" },
+        { "source": "Named HMI PI on SDO mission/instruments provider page", "url": "https://sdo.gsfc.nasa.gov/mission/instruments.php", "strength": "Strong" }
+      ],
+      "person_record": { "id": "spase://SMWG/Person/Philip.H.Scherrer", "url": "https://spase-metadata.org/SMWG/Person/Philip.H.Scherrer.html" },
+      "orcid": null,
+      "affiliation": "Stanford University",
+      "activity_dates": null
+    },
+    {
+      "name": "Alan M. Title",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        { "source": "Named AIA PI on SDO mission/instruments provider page", "url": "https://sdo.gsfc.nasa.gov/mission/instruments.php", "strength": "Strong" },
+        { "source": "AIA Instrument SPASE record (FormerPI)", "url": "https://spase-metadata.org/SMWG/Instrument/SDO/AIA.html", "strength": "Strong" }
+      ],
+      "person_record": { "id": "spase://SMWG/Person/Alan.M.Title", "url": "https://spase-metadata.org/SMWG/Person/Alan.M.Title.html" },
+      "orcid": null,
+      "affiliation": "Lockheed Palo Alto Research Laboratory / Lockheed Martin Solar Astrophysics Laboratory",
+      "activity_dates": null
+    },
+    {
+      "name": "Meng Jin",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        { "source": "AIA Instrument SPASE record current PI (PrincipalInvestigator)", "url": "https://spase-metadata.org/SMWG/Instrument/SDO/AIA.html", "strength": "Strong" }
+      ],
+      "person_record": { "id": "spase://SMWG/Person/Meng.Jin", "url": "https://spase-metadata.org/SMWG/Person/Meng.Jin.html" },
+      "orcid": "0000-0002-9672-3873",
+      "affiliation": "Lockheed Martin Solar and Astrophysics Laboratory",
+      "activity_dates": null
+    },
+    {
+      "name": "Mark C. M. Cheung",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        { "source": "AIA Instrument SPASE record (FormerPI)", "url": "https://spase-metadata.org/SMWG/Instrument/SDO/AIA.html", "strength": "Strong" }
+      ],
+      "person_record": { "id": "spase://SMWG/Person/Mark.C.M.Cheung", "url": "https://spase-metadata.org/SMWG/Person/Mark.C.M.Cheung.html" },
+      "orcid": "0000-0003-2110-9753",
+      "affiliation": "Stanford University",
+      "activity_dates": null
+    },
+    {
+      "name": "Karel Schrijver",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        { "source": "AIA Instrument SPASE record (FormerPI)", "url": "https://spase-metadata.org/SMWG/Instrument/SDO/AIA.html", "strength": "Strong" }
+      ],
+      "person_record": { "id": "spase://SMWG/Person/Karel.Schrijver", "url": "https://spase-metadata.org/SMWG/Person/Karel.Schrijver.html" },
+      "orcid": null,
+      "affiliation": "Lockheed Martin",
+      "activity_dates": null
+    },
+    {
+      "name": "Barbara J. Thompson",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "co-author (non-lead) of the SDO mission description paper with no other corroborating source; below inclusion bar",
+      "evidence": [
+        { "source": "Second author, SDO mission description paper (Pesnell, Thompson & Chamberlin, 2012)", "url": "https://doi.org/10.1007/s11207-011-9841-3", "strength": "Low" }
+      ],
+      "person_record": { "id": "spase://SMWG/Person/Barbara.J.Thompson", "url": "https://spase-metadata.org/SMWG/Person/Barbara.J.Thompson.html" },
+      "orcid": null,
+      "affiliation": "GSFC-Code 682.3 (NASA Goddard Space Flight Center)",
+      "activity_dates": null
+    },
+    {
+      "name": "Phillip C. Chamberlin",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "co-author (non-lead) of the SDO mission description paper with no other corroborating source; below inclusion bar",
+      "evidence": [
+        { "source": "Third author, SDO mission description paper (Pesnell, Thompson & Chamberlin, 2012)", "url": "https://doi.org/10.1007/s11207-011-9841-3", "strength": "Low" }
+      ],
+      "person_record": { "id": null, "url": null },
+      "orcid": null,
+      "affiliation": null,
+      "activity_dates": null
+    }
+  ],
+  "notes": [
+    "The SDO Observatory record itself lists only one Contact (W. Dean Pesnell, ProjectScientist) and contains NO InstrumentID links. The three instruments (AIA, EVE, HMI) were located by their conventional SPASE Instrument IDs (spase://SMWG/Instrument/SDO/{AIA,EVE,HMI}) and confirmed via the provider page; consider adding these InstrumentIDs to the Observatory record downstream.",
+    "Instrument PIs are included as candidates because they lead SDO's three science investigations; the downstream role-assignment agent should decide whether instrument-level PIs belong on the Observatory record vs. only on their respective Instrument records.",
+    "The AIA Instrument record distinguishes a current PI (Meng Jin) from three FormerPIs (Cheung, Schrijver, Title) — all carried forward as candidates; activity-window/role ordering is left to the downstream agent.",
+    "EVE and HMI Instrument records each list a single PI (Woods, Scherrer respectively); no FormerPI entries were present.",
+    "Mission description paper used: 'The Solar Dynamics Observatory (SDO)', Pesnell, Thompson & Chamberlin, Solar Physics 2012, DOI 10.1007/s11207-011-9841-3 — matches the operating-span start (launch 11 Feb 2010) within the expected 2–5 year window. Used only for lead-author/PI selection, not for dumping co-authors.",
+    "No RevisionHistory or PublicationInfo was present in the Observatory record to evaluate metadata submitters/curators.",
+    "Phillip C. Chamberlin has no SMWG Person record (404 at the expected First.Last URL); name spelling 'Phillip' vs 'Phillip C. Chamberlin' should be verified downstream if he is ever promoted."
+  ]
+}
