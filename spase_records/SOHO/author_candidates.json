@@ -1,6 +1,11 @@
 {
   "record": "spase://SMWG/Observatory/SOHO",
-  "date": "2026-06-22",
+  "date": "2026-06-30",
+  "cmad": {
+    "found": false,
+    "url": null,
+    "notes": "No SOHO-specific CMAD located. SOHO is a legacy mission (launched 1995-12-02) predating the CMAD requirement. A web search for 'SOHO Calibration and Measurement Algorithms Document' returned CMADs only for other missions (STEREO/SECCHI, STEREO/WAVES, MMS). A related radiometric-calibration reference exists (ISSI 'The Radiometric Calibration of SOHO', https://www.issibern.ch/PDF-Files/soho_cal.pdf) but it is not a CMAD front-page team document. Proceeded with record Contacts, instrument SPASE records, and the SOHO provider people page for current-team evidence."
+  },
   "candidates": [
     {
       "name": "Bernhard Fleck",
@@ -42,7 +47,7 @@
       "person_record": { "id": "spase://SMWG/Person/Russell.A.Howard", "url": "https://spase-metadata.org/SMWG/Person/Russell.A.Howard.html" },
       "orcid": "0000-0001-9027-8249",
       "affiliation": "US Naval Research Laboratory (Person record lists Johns Hopkins University Applied Physics Laboratory)",
-      "activity_dates": null
+      "activity_dates": "original LASCO PI"
     },
     {
       "name": "Karl Battams",
@@ -309,6 +314,32 @@
       "activity_dates": "current VIRGO PI"
     },
     {
+      "name": "Vicente Domingo",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "First SOHO Project Scientist and lead author of the mission overview paper, but not named in the record's own Contacts nor on the current provider people page; overview-paper lead authorship alone is below the inclusion bar for this record. Recorded for downstream awareness as a potential FormerProjectScientist.",
+      "evidence": [
+        { "source": "Lead author, SOHO mission overview paper (Domingo, Fleck & Poland 1995, Solar Physics 162, 1)", "url": "https://doi.org/10.1007/BF00733425", "strength": "Low" }
+      ],
+      "person_record": { "id": null, "url": null },
+      "orcid": null,
+      "affiliation": "European Space Agency (Space Science Department)",
+      "activity_dates": "first SOHO Project Scientist"
+    },
+    {
+      "name": "Arthur I. Poland",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "Co-author of the mission overview paper and early SOHO project scientist, but not in the record Contacts nor on the current provider people page; overview co-authorship alone is below the inclusion bar. Recorded for downstream awareness.",
+      "evidence": [
+        { "source": "Co-author, SOHO mission overview paper (Domingo, Fleck & Poland 1995)", "url": "https://doi.org/10.1007/BF00733425", "strength": "Low" }
+      ],
+      "person_record": { "id": null, "url": null },
+      "orcid": null,
+      "affiliation": "NASA Goddard Space Flight Center",
+      "activity_dates": null
+    },
+    {
       "name": "Kevin Schenk",
       "status": "excluded",
       "confidence": null,
@@ -336,12 +367,13 @@
     }
   ],
   "notes": [
-    "The Observatory record itself lists only two Contacts (both ProjectScientist: Jack Ireland and Bernhard Fleck). The Observatory XML carries no InstrumentIDs and no OperatingSpan; the 13 SOHO instrument records were found via the SMWG Instrument registry (https://spase-metadata.org/SMWG/Instrument/SOHO/).",
+    "The Observatory record itself lists only two Contacts (both ProjectScientist: Jack Ireland and Bernhard Fleck). The Observatory XML carries no InstrumentIDs and no OperatingSpan; the SOHO instrument records were found via the SMWG Instrument registry (https://spase-metadata.org/SMWG/Instrument/SOHO/) and corroborated by the SOHO provider people page.",
+    "No SOHO-specific CMAD exists — see the top-level cmad field. SOHO (launched 1995) predates the CMAD requirement; current-team evidence came instead from the provider people page and instrument SPASE records.",
     "SOHO has two distinct PI generations. The instrument SPASE records carry the ORIGINAL (launch-era, 1995) PIs, while the provider people page (https://soho.nascom.nasa.gov/about/people.html) lists the CURRENT PIs. Where they differ, BOTH are included as Strong (each is a named instrument PI from an authoritative source): EIT Delaboudiniere/Auchere, CDS Harrison/Fludra, GOLF Gabriel/Boumier, SUMER Wilhelm/Curdt, SWAN Bertaux/Quemerais, UVCS Kohl+Culhane/Strachan, LASCO Howard/Battams, VIRGO Frohlich/Finsterle. The downstream role agent should resolve original-vs-current (e.g. FormerPI vs PI) and activity dates.",
     "MDI, CELIAS, COSTEP, ERNE show the same person in both the SPASE record and the provider page (Scherrer, Wimmer-Schweingruber, Heber, Vainio).",
-    "Provider 'people' page reads role as: Fleck = Project Scientist, Ireland = Deputy Project Scientist, Schenk = Project Manager. The SPASE record currently labels both Fleck and Ireland as ProjectScientist; downstream may wish to reconcile Ireland to Deputy Project Scientist.",
-    "The SOHO mission overview paper (Domingo, Fleck & Poland 1995, Solar Physics 162, 1; doi:10.1007/BF00733425) corroborates Fleck and names Vicente Domingo and Arthur I. Poland as overview-paper authors/early project scientists. They were NOT added as candidates because co-authorship of the overview paper alone is below the inclusion bar and neither was found in the SPASE Contacts or current provider listings; downstream may consider Domingo (first SOHO Project Scientist) as a potential FormerProjectScientist if corroboration is desired.",
-    "Person record for Kevin Schenk does not exist (404); all 21 included instrument/project PIs have existing SMWG Person records.",
-    "Affiliations for Howard differ between sources (provider page: US Naval Research Laboratory for LASCO; SMWG Person record lists Johns Hopkins APL) - flagged for downstream verification."
+    "Provider people page reads roles as: Fleck = Project Scientist, Ireland = Deputy Project Scientist, Schenk = Project Manager. The SPASE record currently labels both Fleck and Ireland as ProjectScientist; downstream may wish to reconcile Ireland to Deputy Project Scientist.",
+    "The SOHO mission overview paper (Domingo, Fleck & Poland 1995, Solar Physics 162, 1; doi:10.1007/BF00733425) corroborates Fleck and names Vicente Domingo (first SOHO Project Scientist) and Arthur I. Poland as overview-paper authors/early project scientists. Both were excluded (overview co-authorship alone is below the inclusion bar and neither appears in the record Contacts nor the current provider listing) but recorded for downstream awareness as potential FormerProjectScientist candidates.",
+    "Person record for Kevin Schenk does not exist (404); the 21 included instrument/project PIs have existing SMWG Person records as cited.",
+    "Affiliation for Russell A. Howard differs between sources (provider page: US Naval Research Laboratory for LASCO; SMWG Person record lists Johns Hopkins APL) — flagged for downstream verification."
   ]
 }

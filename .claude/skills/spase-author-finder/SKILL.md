@@ -47,6 +47,13 @@ A single JSON file for human review and downstream consumption. JSON is chosen s
 
 One flat `candidates` array. Every person evaluated appears in it, distinguished by the `status` field. **Included candidates are Strong or Medium confidence only** — do not include Low-confidence people as candidates. People who were evaluated but did not clear the bar (acknowledgement-only, submitter-only, dedications, etc.) appear with `status: "excluded"` and a reason, so the reviewer still sees who was considered and rejected. Do not silently drop anyone you evaluated.
 
+Top-level fields:
+- `record` — the ResourceID of the SPASE record processed
+- `date` — date of the run
+- `cmad` — object recording the CMAD search outcome: `{ "found": true|false, "url": <link or null>, "notes": <e.g. how it was found, or why not> }`. Record this whether or not a CMAD was found, so reviewers know whether current-team evidence was available.
+- `candidates` — the array below
+- `notes` — array of free-text judgment calls, ambiguities, dead ends
+
 Each candidate object:
 - `name` — person's name as found
 - `status` — `"included"` (Strong/Medium evidence) or `"excluded"` (did not clear the bar)
@@ -64,6 +71,7 @@ Each candidate object:
 {
   "record": "spase://ESA/NumericalData/PROBA2/LYRA/Flarelist/PT24H",
   "date": "2026-06-18",
+  "cmad": { "found": false, "url": null, "notes": "No CMAD located for PROBA2/LYRA via designated repository, SDC site, or web search; proceeded with remaining sources." },
   "candidates": [
     {
       "name": "Marie Dominique",
@@ -163,31 +171,41 @@ Note: every `url` should be a real link encountered during the hunt, so it is cl
 Search these sources in order, following links outward from the record. Earlier sources are more authoritative for *this specific data product*; later sources establish the broader instrument/mission team.
 
 ### 1. The record itself
-- Read the existing `Contacts` table — anyone already listed is a strong candidate.
+- Read the existing `Contacts` table — anyone already listed is a strong candidate. (Note: existing Contacts can be stale; cross-check against a CMAD when one is available — see below.)
 - Read the `RevisionHistory` notes — they may name people, but distinguish carefully: a person named as the *metadata submitter* is NOT a data author (weak evidence at most).
 - Read `PublicationInfo` and `InformationURL` if partially filled.
 
-### 2. Sibling SPASE records (highest-yield single source)
+### 2. CMAD — Calibration and Measurement Algorithms Document (top-priority when available)
+A CMAD is a document that active missions are required to submit to NASA HQ for funding extensions. The people named on its **front page(s) are the current, correct team** — making a CMAD one of the most authoritative sources for *current* authorship. Front-page CMAD names are **Strong** evidence, ranked alongside the record's own Contacts. When a CMAD and the record's existing Contacts disagree, the CMAD reflects the *current* team.
+
+Find a CMAD in this order; stop at the first that works:
+- **(a) A designated CMAD repository, if one exists** (e.g. a Zenodo collection). Check this first when configured.
+- **(b) The mission's data center / Science Data Center (SDC) site** — many active missions post CMADs there (e.g. the MMS SDC at `https://lasp.colorado.edu/mms/sdc/public/`).
+- **(c) General web search** — `"<mission> CMAD"` or `"<mission> Calibration and Measurement Algorithms Document"`.
+
+**CMADs are not universally available** — older and legacy missions often have none, and many are scattered across the web or in personal folders. A CMAD is a strong-evidence *bonus when found*, never a requirement. **If no CMAD is found, proceed with the remaining sources and record its absence** (see the `cmad` field in the output schema). Do not fail or stall when a CMAD is missing.
+
+### 3. Sibling SPASE records
 - Follow `InstrumentIDs` to the **Instrument record**. Instrument records usually carry a full Contacts table (PI, CoIs). People there are strong candidates.
 - The Instrument record also validates candidates found elsewhere: a name appearing both here and in another source rises in confidence.
 
-### 3. The data provider's website
+### 4. The data provider's website
 - Follow `AccessURL` and `InformationURL` links to the provider's pages.
 - Look for an explicit team/PI listing.
 - **For derived products (event lists, catalogs):** check whether the product page names a *maintainer* or *compiler* distinct from the instrument PI — that person is a candidate too. Also note if the product derives from another source (e.g. cross-calibrated against external event reports), which may introduce additional contributors.
 - Note: provider links in older records may be stale and redirect. Follow redirects to the current site.
 
-### 4. The instrument description paper
+### 5. The instrument description paper
 - Find the instrument/mission description paper (see heuristic below) and use its PI identification and author list as *medium* evidence.
 
-### 5. The SMWG Person registry
+### 6. The SMWG Person registry
 - For each candidate, check `https://spase-metadata.org/SMWG/Person/<First.Last>.html` for an existing record. If present, capture both the `spase://SMWG/Person/...` id and the clickable `.html` url. If absent, set both to `null`.
 
 ---
 
 ## Paper-Selection Heuristic
 
-When searching the literature (step 4), target the **instrument/mission description paper**, not a science-results paper that merely *uses* the instrument.
+When searching the literature, target the **instrument/mission description paper**, not a science-results paper that merely *uses* the instrument.
 
 **Title keywords indicating a description paper:**
 - "Instrument", "Observatory", "Telescope", "Overview", "Mission overview", "Observatory overview", "Telescope overview", "Description and overview", "Design", "In-Flight Performance", "Calibration"
@@ -198,6 +216,10 @@ When searching the literature (step 4), target the **instrument/mission descript
 **Observatory/instrument name:**
 - The paper should name the observatory/instrument in its title or abstract.
 
+**Citation count:**
+- A heavily-cited mission/instrument paper is more likely the correct reference. Prefer high-citation papers.
+- If the paper you found seems wrong, check its reference list for the correct instrument paper.
+
 **Time period (use the operating span to pick the right paper):**
 - The description/overview paper usually appears close to the start of operations. Anchor on the operating span from the SPASE record:
   - For an Observatory: `Observatory/OperatingSpan/StartDate`.
@@ -205,9 +227,10 @@ When searching the literature (step 4), target the **instrument/mission descript
 - Expect the description paper within roughly a **2–5 year window** around the operating-span start, not ~10 years later. A paper appearing a decade after operations began is more likely a later science or review paper, not the instrument reference.
 - **Fuzzy lower boundary:** a *design* or pre-flight/calibration paper may appear *before* operations begin. Treat earlier design-phase papers as valid description-paper candidates; only the far-later papers should be discounted.
 
-**Keep two uses separate:**
-- Use the many-authors signal ONLY to *select the right paper*.
-- Do NOT dump the paper's full co-author list into the candidate list. Extract the PI / lead author and any explicitly named instrument leads. Co-authorship alone is below the inclusion bar; treat the long tail of co-authors as background (note them), not as included candidates, unless another source corroborates them.
+**Which authors to take from the paper:**
+- **If the author list is NOT alphabetized:** author order signals contribution — the first author did the most work and is the most important. Take the **first 3–5 authors**. Be aware that some instrument-paper authors may not appear on any other science paper, so they can be hard to corroborate elsewhere; that does not disqualify them when author order supports them.
+- **If the author list IS alphabetized:** order carries no information about contribution. Do not infer importance from position. Only include an author if corroborated by another source (CMAD, record Contacts, instrument record, provider site).
+- In both cases: do NOT dump the full co-author list into the candidate set. Extract the lead/first authors (per the rules above) and any explicitly named instrument leads.
 
 ---
 
@@ -216,19 +239,21 @@ When searching the literature (step 4), target the **instrument/mission descript
 Classify every candidate by the strongest evidence found. **Only Strong and Medium evidence qualify a person as an included candidate.** Low evidence and below do not — but record those people as `excluded` with a reason so the evaluation trail is visible.
 
 **Strong (include):**
+- Named on a CMAD front page (current team — see source 2)
 - Named in the record's own Contacts
 - Named as PI/CoI in the Instrument SPASE record
 - Named as instrument PI on the data provider's official pages
 
 **Medium (include):**
-- Lead or named author of the instrument description paper
+- A first 3–5 author of a non-alphabetized instrument description paper
+- An author of an alphabetized instrument paper who is corroborated by another source
 - Named on the data provider's team page
 
 **Low (exclude — record with reason, do not include):**
 - Mentioned only in a paper's acknowledgements
 - Named only in a funding statement
 - Named only as the metadata submitter or curator in revision history
-- Co-author (non-lead) of the instrument paper with no other corroboration
+- A non-lead / uncorroborated co-author (especially from an alphabetized author list)
 
 **Exclude (record with reason):**
 - Dedications and memorials
