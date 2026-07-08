@@ -1,15 +1,22 @@
 {
   "record": "spase://SMWG/Observatory/SDO",
-  "date": "2026-07-01",
-  "operating_span": {
-    "start": "2010-02-11",
-    "stop": null,
-    "notes": "SDO launched 11 Feb 2010 and is still operating; the Observatory SPASE record carries no explicit OperatingSpan, so the span is treated as open-ended (2010-02-11 to present) for era-matching."
-  },
+  "date": "2026-07-08",
+  "operating_span": { "start": "2010-02-11", "stop": null },
   "cmad": {
-    "found": false,
-    "url": null,
-    "notes": "No single observatory-level CMAD exists for SDO. CMADs are maintained per instrument (e.g. the SDO-EVE Calibration and Measurement Algorithms Document, led by T. N. Woods; https://soma.larc.nasa.gov/lws/pdf_files/4.2a%20CMAD%20SDO-EVE.pdf), which corroborate the instrument PIs found via the SPASE instrument records but provide no unified observatory team front page. The SDO Senior Review proposals (e.g. 2020; http://hmi.stanford.edu/papers/SDO_SR_2020_assembled_3.pdf) name the current project team led by W. Dean Pesnell."
+    "found": true,
+    "expected": true,
+    "url": "https://soma.larc.nasa.gov/lws/pdf_files/4.2a%20CMAD%20SDO-EVE.pdf",
+    "notes": "SDO is operational (launched 2010-02-11, no StopDate) and NASA-funded (first Living With a Star mission) -> a CMAD is expected. An EVE CMAD was located in the NASA LWS SOMA document repository (Document No. EVE-T-11003, Rev. A, 2005-01-31; a Rev B copy also exists at https://scholar.colorado.edu/concern/defaults/db78tf06d). Front page: 'Prepared By: Francis G. Eparvier, EVE Project Scientist'; revision-history approver initials 'TNW' = Thomas N. Woods (EVE PI). Both are Strong current-team evidence for the EVE instrument. No separate AIA or HMI CMAD was located (probed sibling filenames in the same SOMA path and general web search -- none surfaced); those instruments' current teams were drawn from SPASE Contacts + instrument papers instead. An SDO 2020 Senior Review Proposal (http://hmi.stanford.edu/papers/SDO_SR_2020_assembled_3.pdf) also names the current team but is not a CMAD."
+  },
+  "instrument_coverage": {
+    "spase_instruments": [
+      "spase://SMWG/Instrument/SDO/AIA",
+      "spase://SMWG/Instrument/SDO/EVE",
+      "spase://SMWG/Instrument/SDO/HMI"
+    ],
+    "external_roster": ["AIA", "EVE", "HMI"],
+    "missing_from_spase": [],
+    "notes": "Observatory record has no downward instrument links; reverse-lookup of https://spase-metadata.org/SMWG/Instrument/SDO/ returned AIA, EVE, HMI and each record's ObservatoryID confirms spase://SMWG/Observatory/SDO. External ground truth (SDO overview paper Pesnell et al. 2012 and the record's own Description) enumerates exactly three payload instruments: AIA, EVE, HMI. SPASE roster is complete -- no instruments missing. This is an Observatory record, so all three instruments' leads are legitimate candidates."
   },
   "candidates": [
     {
@@ -18,8 +25,8 @@
       "confidence": "Strong",
       "exclusion_reason": null,
       "evidence": [
-        { "source": "Record Contacts (ProjectScientist)", "url": "https://spase-metadata.org/SMWG/Observatory/SDO.html", "strength": "Strong" },
-        { "source": "Lead (1st) author of the SDO mission overview paper 'The Solar Dynamics Observatory (SDO)' (Pesnell, Thompson & Chamberlin, 2012, Solar Physics 275:3 — non-alphabetized)", "url": "https://doi.org/10.1007/s11207-011-9841-3", "strength": "Medium" }
+        { "source": "Lead author (position 1 of 3), SDO mission overview description paper 'The Solar Dynamics Observatory (SDO)', Pesnell et al. 2012 (non-alphabetized, confident selection)", "url": "https://doi.org/10.1007/s11207-011-9841-3", "strength": "Strong" },
+        { "source": "Observatory record Contacts (ProjectScientist -- qualifying role)", "url": "https://spase-metadata.org/SMWG/Observatory/SDO", "strength": "Medium" }
       ],
       "person_record": { "id": "spase://SMWG/Person/W.Dean.Pesnell", "url": "https://spase-metadata.org/SMWG/Person/W.Dean.Pesnell.html" },
       "orcid": "0000-0002-8306-2500",
@@ -31,52 +38,71 @@
         "affiliation_source": "finder (pre-existing, verified)",
         "affiliation_type": "current",
         "lookup_status": "complete",
-        "notes": "Crossref (mission paper DOI 10.1007/s11207-011-9841-3) lists 'W. Dean Pesnell' as lead author but deposited no ORCID or affiliation, so Route A yielded no iD. ORCID expanded-search 'Dean Pesnell' returned exactly one record (0000-0002-8306-2500); corroborated by heliophysics/solar-cycle works (e.g. sunspot peak-slope correlation, Heliophysics 2024 Decadal whitepapers) consistent with the SDO Project Scientist. Unique surname + single match + topical works => Confirmed. No employment entries in the ORCID record, so affiliation could not be era-matched; finder's 'NASA Goddard Space Flight Center' retained as current affiliation (SDO Project Scientist role is at GSFC)."
+        "notes": "Crossref DOI 10.1007/s11207-011-9841-3 deposited no ORCIDs/affiliations. ORCID name search returned a single match (Dean Pesnell, NASA); record corroborated by SDO works (e.g. 'Characterization of the Van Allen Radiation Belt Using SDO Spikes', coronal-hole studies). ORCID employment lists 'National Aeronautics and Space Administration' (role Retired, no dates), consistent at the parent-org level with the finder's more specific 'NASA Goddard Space Flight Center' (SDO Project Scientist at GSFC); finder value retained. No dated employment, so affiliation labeled current."
       }
     },
     {
-      "name": "Thomas N. Woods",
+      "name": "Barbara J. Thompson",
       "status": "included",
       "confidence": "Strong",
       "exclusion_reason": null,
       "evidence": [
-        { "source": "Principal Investigator in the SDO/EVE Instrument SPASE record", "url": "https://spase-metadata.org/SMWG/Instrument/SDO/EVE.html", "strength": "Strong" },
-        { "source": "Named EVE PI ('PI: Tom Woods') on the SDO mission/instruments provider page", "url": "https://sdo.gsfc.nasa.gov/mission/instruments.php", "strength": "Strong" },
-        { "source": "Lead of the SDO-EVE Calibration and Measurement Algorithms Document (CMAD)", "url": "https://soma.larc.nasa.gov/lws/pdf_files/4.2a%20CMAD%20SDO-EVE.pdf", "strength": "Medium" }
+        { "source": "2nd author of 3, SDO mission overview description paper (non-alphabetized, confident selection)", "url": "https://doi.org/10.1007/s11207-011-9841-3", "strength": "Strong" }
       ],
-      "person_record": { "id": "spase://SMWG/Person/Thomas.N.Woods", "url": "https://spase-metadata.org/SMWG/Person/Thomas.N.Woods.html" },
-      "orcid": "0000-0002-2308-6797",
-      "affiliation": "Laboratory for Atmospheric and Space Physics, University of Colorado Boulder",
+      "person_record": { "id": "spase://SMWG/Person/Barbara.J.Thompson", "url": "https://spase-metadata.org/SMWG/Person/Barbara.J.Thompson.html" },
+      "orcid": "0000-0001-6952-7343",
+      "affiliation": "NASA Goddard Space Flight Center",
       "activity_dates": null,
       "enrichment": {
         "orcid_source": "ORCID name-search (corroborated)",
         "orcid_confidence": "Confirmed",
-        "affiliation_source": "finder (pre-existing, verified)",
-        "affiliation_type": "current",
-        "lookup_status": "complete",
-        "notes": "ORCID expanded-search 'Thomas Woods' returned 8 same-name people; disambiguated to 0000-0002-2308-6797 (listed as University of Colorado Boulder) because it is corroborated by solar-EUV instrument works (SEUSHI Solar Extreme Ultraviolet Spectrograph, GOES-R XRS X-ray sensor, solar flare nowcasting) consistent with the EVE PI at LASP/CU Boulder. Other Thomas Woods records had no solar/CU-Boulder corroboration. ORCID employment lists University of Colorado Boulder but is undated, so affiliation could not be era-matched; finder's 'Laboratory for Atmospheric and Space Physics, University of Colorado Boulder' retained (consistent, more specific) as current."
-      }
-    },
-    {
-      "name": "Philip H. Scherrer",
-      "status": "included",
-      "confidence": "Strong",
-      "exclusion_reason": null,
-      "evidence": [
-        { "source": "Principal Investigator in the SDO/HMI Instrument SPASE record", "url": "https://spase-metadata.org/SMWG/Instrument/SDO/HMI.html", "strength": "Strong" },
-        { "source": "Named HMI PI ('PI: Phil Scherrer') on the SDO mission/instruments provider page", "url": "https://sdo.gsfc.nasa.gov/mission/instruments.php", "strength": "Strong" }
-      ],
-      "person_record": { "id": "spase://SMWG/Person/Philip.H.Scherrer", "url": "https://spase-metadata.org/SMWG/Person/Philip.H.Scherrer.html" },
-      "orcid": "0000-0002-6937-6968",
-      "affiliation": "Stanford University",
-      "activity_dates": null,
-      "enrichment": {
-        "orcid_source": "ORCID name-search (corroborated)",
-        "orcid_confidence": "Confirmed",
-        "affiliation_source": "finder (pre-existing, verified)",
+        "affiliation_source": "ORCID employment",
         "affiliation_type": "era-matched",
         "lookup_status": "complete",
-        "notes": "ORCID expanded-search 'Philip Scherrer' returned exactly one record (0000-0002-6937-6968, Stanford University / UC Berkeley); corroborated by works including 'Stanford SDO JSOC CC0 Notice' and solar magnetic-field studies consistent with the HMI PI. ORCID employment: Stanford University (Professor, 1986-present), which overlaps the SDO operating span (2010-present) => era-matched; agrees with finder's 'Stanford University'."
+        "notes": "Name 'Barbara Thompson' has 13 ORCID matches; disambiguated to 0000-0001-6952-7343 (Barbara J. Thompson, NASA Goddard Space Flight Center) via SDO/HMI/EVE works (e.g. 'Tracking supergranulation near the poles with SDO/HMI', 'The SDO/EVE Solar Irradiance Coronal Dimming Index Catalog'). ORCID employment NASA GSFC (Astrophysicist, 1996-present) overlaps the operating span -> era-matched. Agrees with finder value."
+      }
+    },
+    {
+      "name": "Phillip C. Chamberlin",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        { "source": "3rd author of 3, SDO mission overview description paper (non-alphabetized, confident selection)", "url": "https://doi.org/10.1007/s11207-011-9841-3", "strength": "Strong" },
+        { "source": "Co-author (position 12 of 18, alphabetized-tail region) of the EVE instrument paper -- participation-level corroboration only", "url": "https://doi.org/10.1007/s11207-009-9487-6", "strength": "Low" }
+      ],
+      "person_record": { "id": null, "url": null },
+      "orcid": "0000-0003-4372-7405",
+      "affiliation": "University of Colorado Boulder",
+      "activity_dates": null,
+      "enrichment": {
+        "orcid_source": "ORCID name-search (corroborated)",
+        "orcid_confidence": "Confirmed",
+        "affiliation_source": "ORCID employment",
+        "affiliation_type": "era-matched",
+        "lookup_status": "complete",
+        "notes": "Single ORCID match (Phillip Chamberlin, NASA GSFC + University of Colorado Boulder); corroborated by SDO/EVE solar-flare works. Mid-span affiliation change: NASA Goddard Space Flight Center (Research Scientist, 2009-2017) then University of Colorado Boulder (Research Scientist, 2017-present) -- both overlap the operating span. CU Boulder chosen as the current / longest-overlapping era-matched value; NASA GSFC (2009-2017) noted. Finder value was 'LASP, University of Colorado Boulder / NASA GSFC', consistent with both."
+      }
+    },
+    {
+      "name": "James R. Lemen",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        { "source": "Lead author (prefix position 1), AIA instrument paper 'The Atmospheric Imaging Assembly (AIA) on the SDO', Lemen et al. 2012 (partially alphabetized; backward scan -> long sorted tail from author 3, prefix = Lemen, Title; confident selection)", "url": "https://doi.org/10.1007/s11207-011-9776-8", "strength": "Strong" }
+      ],
+      "person_record": { "id": "spase://SMWG/Person/James.R.Lemen", "url": "https://spase-metadata.org/SMWG/Person/James.R.Lemen.html" },
+      "orcid": null,
+      "affiliation": "Lockheed Martin Solar and Astrophysics Laboratory (LMSAL)",
+      "activity_dates": null,
+      "enrichment": {
+        "orcid_source": null,
+        "orcid_confidence": null,
+        "affiliation_source": "finder (pre-existing)",
+        "affiliation_type": "current",
+        "lookup_status": "complete",
+        "notes": "Crossref DOI 10.1007/s11207-011-9776-8 deposited no ORCIDs/affiliations. ORCID name search 'Lemen' (16 results, none named James/J. and none in solar physics) yielded no corroborable match -> orcid left null. Finder's LMSAL affiliation retained but could not be independently verified by lookup (no ORCID record, no Crossref-deposited affiliation)."
       }
     },
     {
@@ -85,75 +111,206 @@
       "confidence": "Strong",
       "exclusion_reason": null,
       "evidence": [
-        { "source": "Former PI in the SDO/AIA Instrument SPASE record (original AIA Principal Investigator)", "url": "https://spase-metadata.org/SMWG/Instrument/SDO/AIA.html", "strength": "Strong" },
-        { "source": "Named AIA PI ('PI: Alan Title') on the SDO mission/instruments provider page", "url": "https://sdo.gsfc.nasa.gov/mission/instruments.php", "strength": "Strong" }
+        { "source": "2nd prefix author, AIA instrument paper (partially alphabetized, prefix = Lemen, Title; confident selection)", "url": "https://doi.org/10.1007/s11207-011-9776-8", "strength": "Strong" },
+        { "source": "AIA Instrument record Contacts (FormerPI -- qualifying role)", "url": "https://spase-metadata.org/SMWG/Instrument/SDO/AIA", "strength": "Medium" }
       ],
       "person_record": { "id": "spase://SMWG/Person/Alan.M.Title", "url": "https://spase-metadata.org/SMWG/Person/Alan.M.Title.html" },
       "orcid": null,
-      "affiliation": "Lockheed Martin Solar Astrophysics Laboratory",
+      "affiliation": "Lockheed Martin Solar and Astrophysics Laboratory (LMSAL)",
       "activity_dates": null,
       "enrichment": {
         "orcid_source": null,
         "orcid_confidence": null,
-        "affiliation_source": "finder (pre-existing, verified)",
+        "affiliation_source": "finder (pre-existing)",
         "affiliation_type": "current",
         "lookup_status": "complete",
-        "notes": "No ORCID found: the mission paper (Crossref) does not list Title, and ORCID search family-name:Title returned only 3 unrelated people (Ben, Pascal, Alexandra Title) with no Alan Title. Original AIA PI, now retired/emeritus at LMSAL; no ORCID iD could be confirmed, so orcid left null. No dated employment source available; finder's 'Lockheed Martin Solar Astrophysics Laboratory' (the AIA data-provider institution) retained as current affiliation, not era-verifiable."
+        "notes": "Crossref deposited no ORCIDs/affiliations for the AIA paper. ORCID name search 'Title' (given 'Alan', and unrestricted) returned no solar-physics / LMSAL match -> orcid left null (Alan M. Title likely predates broad ORCID adoption). Finder's LMSAL affiliation retained but not independently verified by lookup."
       }
     },
     {
       "name": "Meng Jin",
       "status": "included",
-      "confidence": "Strong",
+      "confidence": "Medium",
       "exclusion_reason": null,
       "evidence": [
-        { "source": "Current Principal Investigator in the SDO/AIA Instrument SPASE record", "url": "https://spase-metadata.org/SMWG/Instrument/SDO/AIA.html", "strength": "Strong" }
+        { "source": "AIA Instrument record Contacts (PrincipalInvestigator -- qualifying role; current AIA PI per SPASE metadata)", "url": "https://spase-metadata.org/SMWG/Instrument/SDO/AIA", "strength": "Medium" }
       ],
       "person_record": { "id": "spase://SMWG/Person/Meng.Jin", "url": "https://spase-metadata.org/SMWG/Person/Meng.Jin.html" },
       "orcid": "0000-0002-9672-3873",
-      "affiliation": "Lockheed Martin Solar and Astrophysics Laboratory",
+      "affiliation": "Lockheed Martin Solar and Astrophysics Laboratory (LMSAL)",
       "activity_dates": null,
       "enrichment": {
-        "orcid_source": "finder (pre-existing, verified)",
+        "orcid_source": "ORCID name-search (corroborated)",
         "orcid_confidence": "Confirmed",
-        "affiliation_source": "finder (pre-existing, verified)",
+        "affiliation_source": "ORCID employment",
         "affiliation_type": "era-matched",
         "lookup_status": "complete",
-        "notes": "Finder-supplied ORCID 0000-0002-9672-3873 passes the ISO 7064 mod 11-2 checksum and is corroborated by SDO/AIA works (e.g. 'Comparing Solar Structure Detection Methods in SDO/AIA Observations') and employment at Lockheed Martin Advanced Technology Center, matching the current AIA PI => verified/Confirmed. ORCID employment: Lockheed Martin Advanced Technology Center (2014-present) overlaps the SDO operating span => era-matched; finder's 'Lockheed Martin Solar and Astrophysics Laboratory' (LMSAL, within the ATC) is consistent and retained. Concurrent SETI Institute affiliation (2018-present) also present in ORCID; Lockheed Martin selected as it is the AIA data-provider institution."
+        "notes": "'Meng Jin' is highly ambiguous (39+ ORCID records, most with no institution). Disambiguated via affiliation-filtered search to 0000-0002-9672-3873 (Lockheed Martin Advanced Technology Center / SETI Institute / University of Michigan), then corroborated by SDO/AIA solar works (e.g. 'Comparing Solar Structure Detection Methods in SDO/AIA Observations') -- matches the AIA data provider (LMSAL). Concurrent era-matched employments: Lockheed Martin Advanced Technology Center (2014-present) and SETI Institute (2018-present); LMSAL chosen as it matches the AIA data provider, SETI Institute noted as concurrent. Finder value 'LMSAL / SETI Institute' consistent."
       }
     },
     {
       "name": "Mark C. M. Cheung",
       "status": "included",
-      "confidence": "Strong",
+      "confidence": "Medium",
       "exclusion_reason": null,
       "evidence": [
-        { "source": "Former PI in the SDO/AIA Instrument SPASE record", "url": "https://spase-metadata.org/SMWG/Instrument/SDO/AIA.html", "strength": "Strong" }
+        { "source": "AIA Instrument record Contacts (FormerPI -- qualifying role)", "url": "https://spase-metadata.org/SMWG/Instrument/SDO/AIA", "strength": "Medium" }
       ],
       "person_record": { "id": "spase://SMWG/Person/Mark.C.M.Cheung", "url": "https://spase-metadata.org/SMWG/Person/Mark.C.M.Cheung.html" },
       "orcid": "0000-0003-2110-9753",
-      "affiliation": "Lockheed Martin Advanced Technology Center",
+      "affiliation": "Lockheed Martin Advanced Technology Center (LMSAL)",
       "activity_dates": null,
       "enrichment": {
-        "orcid_source": "finder (pre-existing, verified)",
+        "orcid_source": "ORCID name-search (corroborated)",
         "orcid_confidence": "Confirmed",
         "affiliation_source": "ORCID employment",
         "affiliation_type": "era-matched",
         "lookup_status": "complete",
-        "notes": "Finder-supplied ORCID 0000-0003-2110-9753 passes the ISO 7064 mod 11-2 checksum and is corroborated by solar/space-weather works and employment as Physicist at Lockheed Martin Advanced Technology Center (2006-2022), matching the former AIA PI => verified/Confirmed. AFFILIATION DIFFERS FROM FINDER VALUE: finder recorded 'Stanford University (per SMWG Person record; formerly Lockheed Martin Solar and Astrophysics Laboratory)', but ORCID shows Stanford was only a concurrent Visiting Scholar post (2016-2019); the era-matched, data-provider institution during his AIA-PI tenure is Lockheed Martin Advanced Technology Center (2006-2022, overlapping the SDO span from 2010), placed in the affiliation field. He then moved to CSIRO (Marsfield, Deputy & Science Director, 2022-present) after his SDO/AIA period. Flag for reviewer: era-matched Lockheed Martin vs. finder's Stanford."
+        "notes": "Name 'Mark Cheung' has 3 ORCID matches; disambiguated to 0000-0003-2110-9753 (CSIRO / Goettingen) via solar-physics works ('Machine learning in Solar Physics', 'Surface Flux Transport on the Sun') and Lockheed Martin employment. Mid-span affiliation change: Lockheed Martin Advanced Technology Center (Physicist, 2006-2022, = LMSAL, matches AIA data provider) then CSIRO (2022-present); also Stanford visiting scholar 2016-2019. Era-matched value = Lockheed Martin ATC (2006-2022); current CSIRO noted. Agrees with finder's LMSAL."
       }
     },
     {
       "name": "Karel Schrijver",
       "status": "included",
-      "confidence": "Strong",
+      "confidence": "Medium",
       "exclusion_reason": null,
       "evidence": [
-        { "source": "Former PI in the SDO/AIA Instrument SPASE record", "url": "https://spase-metadata.org/SMWG/Instrument/SDO/AIA.html", "strength": "Strong" }
+        { "source": "AIA Instrument record Contacts (FormerPI -- qualifying role)", "url": "https://spase-metadata.org/SMWG/Instrument/SDO/AIA", "strength": "Medium" },
+        { "source": "Co-author 'Carolus J. Schrijver' (position 20 of 47, alphabetized tail) of the AIA instrument paper -- identity corroboration for the FormerPI role", "url": "https://doi.org/10.1007/s11207-011-9776-8", "strength": "Low" }
       ],
       "person_record": { "id": "spase://SMWG/Person/Karel.Schrijver", "url": "https://spase-metadata.org/SMWG/Person/Karel.Schrijver.html" },
       "orcid": "0000-0002-6010-8182",
-      "affiliation": "Lockheed Martin Solar and Astrophysics Laboratory",
+      "affiliation": "Lockheed Martin Solar and Astrophysics Laboratory (LMSAL)",
+      "activity_dates": null,
+      "enrichment": {
+        "orcid_source": "ORCID name-search (corroborated)",
+        "orcid_confidence": "Confirmed",
+        "affiliation_source": "finder (pre-existing)",
+        "affiliation_type": "current",
+        "lookup_status": "complete",
+        "notes": "'Karel Schrijver' is the familiar form of 'Carolus J. Schrijver' (the AIA-paper co-author). Single ORCID match under 'Carolus Schrijver' = 0000-0002-6010-8182, corroborated by SDO / solar-stellar coronal works (e.g. 'Coronal Mass Ejections and Dimmings ... SDO Observations', 'Self-organized Criticality ... Solar-Stellar Connection'). ORCID record lists no employment history, so no era-matched affiliation could be derived; finder's LMSAL value retained (Schrijver is a now-retired LMSAL/Lockheed Martin solar physicist) and labeled current."
+      }
+    },
+    {
+      "name": "Philip H. Scherrer",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        { "source": "Lead author (position 1), HMI instrument paper 'The Helioseismic and Magnetic Imager (HMI) Investigation for the SDO', Scherrer et al. 2012 (not alphabetized -- backward scan sorted suffix = 3 < 5; confident selection)", "url": "https://doi.org/10.1007/s11207-011-9834-2", "strength": "Strong" },
+        { "source": "HMI Instrument record Contacts (PrincipalInvestigator -- qualifying role)", "url": "https://spase-metadata.org/SMWG/Instrument/SDO/HMI", "strength": "Medium" }
+      ],
+      "person_record": { "id": "spase://SMWG/Person/Philip.H.Scherrer", "url": "https://spase-metadata.org/SMWG/Person/Philip.H.Scherrer.html" },
+      "orcid": "0000-0002-6937-6968",
+      "affiliation": "Stanford University",
+      "activity_dates": null,
+      "enrichment": {
+        "orcid_source": "ORCID name-search (corroborated)",
+        "orcid_confidence": "Confirmed",
+        "affiliation_source": "ORCID employment",
+        "affiliation_type": "era-matched",
+        "lookup_status": "complete",
+        "notes": "Single ORCID match (Philip Scherrer, Stanford University); corroborated by HMI / Stanford SDO JSOC works ('Stanford SDO JSOC CC0 Notice', solar-cycle magnetic-field studies). ORCID employment Stanford University (Professor, 1986-present) overlaps the operating span -> era-matched. Finder value 'Stanford University (W.W. Hansen Experimental Physics Laboratory)' -- WWHEPL is Scherrer's department within Stanford; kept the institution-level value."
+      }
+    },
+    {
+      "name": "Jesper Schou",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        { "source": "2nd author, HMI instrument paper (not alphabetized; confident selection)", "url": "https://doi.org/10.1007/s11207-011-9834-2", "strength": "Strong" }
+      ],
+      "person_record": { "id": null, "url": null },
+      "orcid": "0000-0002-2391-6156",
+      "affiliation": "Max Planck Institute for Solar System Research",
+      "activity_dates": null,
+      "enrichment": {
+        "orcid_source": "ORCID name-search (corroborated)",
+        "orcid_confidence": "Confirmed",
+        "affiliation_source": "ORCID employment",
+        "affiliation_type": "current",
+        "lookup_status": "complete",
+        "notes": "Name 'Jesper Schou' has 3 ORCID matches; disambiguated to 0000-0002-2391-6156 (Max Planck Institute for Solar System Research) via HMI works ('Stray Light Correction for the Helioseismic and Magnetic Imager', 'Modeling HMI observables'). ORCID employment lists MPS (undated, current) with no dated Stanford record, so an era-matched Stanford affiliation could not be confirmed even though the HMI paper places Schou at Stanford at operations start (2010). Affiliation labeled current (MPS); finder value 'Stanford University (later Max Planck Institute for Solar System Research)' captures the same trajectory."
+      }
+    },
+    {
+      "name": "Rock I. Bush",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        { "source": "3rd author, HMI instrument paper (not alphabetized; confident selection)", "url": "https://doi.org/10.1007/s11207-011-9834-2", "strength": "Strong" },
+        { "source": "Co-author 'Rock I. Bush' (position 35 of 47, alphabetized tail) of the AIA instrument paper -- participation-level corroboration", "url": "https://doi.org/10.1007/s11207-011-9776-8", "strength": "Low" }
+      ],
+      "person_record": { "id": null, "url": null },
+      "orcid": null,
+      "affiliation": "Stanford University",
+      "activity_dates": null,
+      "enrichment": {
+        "orcid_source": null,
+        "orcid_confidence": null,
+        "affiliation_source": "finder (pre-existing)",
+        "affiliation_type": "current",
+        "lookup_status": "complete",
+        "notes": "Crossref (HMI and AIA DOIs) deposited no ORCIDs/affiliations. ORCID name search 'Bush' (given 'Rock' -> 0 results; 'Bush' + affiliation Stanford -> only unrelated people) yielded no corroborable match -> orcid left null. Finder's Stanford University affiliation retained but not independently verified by lookup."
+      }
+    },
+    {
+      "name": "Alexander G. Kosovichev",
+      "status": "included",
+      "confidence": "Medium",
+      "exclusion_reason": null,
+      "evidence": [
+        { "source": "4th author, HMI instrument paper (not alphabetized -- position 4 is Medium-tier; confident selection)", "url": "https://doi.org/10.1007/s11207-011-9834-2", "strength": "Medium" }
+      ],
+      "person_record": { "id": null, "url": null },
+      "orcid": "0000-0003-0364-4883",
+      "affiliation": "New Jersey Institute of Technology",
+      "activity_dates": null,
+      "enrichment": {
+        "orcid_source": "ORCID name-search (corroborated)",
+        "orcid_confidence": "Confirmed",
+        "affiliation_source": "ORCID employment",
+        "affiliation_type": "current",
+        "lookup_status": "complete",
+        "notes": "Single ORCID match (Alexander Kosovichev, New Jersey Institute of Technology); corroborated by helioseismology works (time-distance, solar convection, active-region emergence). ORCID employment lists NJIT (undated, current) with no dated Stanford record, so an era-matched Stanford affiliation could not be confirmed although he was at Stanford (HMI) at operations start. Affiliation labeled current (NJIT); finder value 'Stanford University (later New Jersey Institute of Technology)' captures the same trajectory."
+      }
+    },
+    {
+      "name": "Richard S. Bogart",
+      "status": "included",
+      "confidence": "Medium",
+      "exclusion_reason": null,
+      "evidence": [
+        { "source": "5th author, HMI instrument paper (not alphabetized -- position 5 is Medium-tier; confident selection)", "url": "https://doi.org/10.1007/s11207-011-9834-2", "strength": "Medium" }
+      ],
+      "person_record": { "id": null, "url": null },
+      "orcid": "0000-0002-0910-459X",
+      "affiliation": "Stanford University",
+      "activity_dates": null,
+      "enrichment": {
+        "orcid_source": "ORCID name-search (corroborated)",
+        "orcid_confidence": "Confirmed",
+        "affiliation_source": "ORCID employment",
+        "affiliation_type": "era-matched",
+        "lookup_status": "complete",
+        "notes": "Single ORCID match (Richard Bogart, Cornell / Stanford); corroborated by HMI works ('Stray Light Correction for the Helioseismic and Magnetic Imager', 'HMI Ring-Diagram Analysis'). ORCID employment Stanford University (Senior Research Scientist, 1982-present) overlaps the operating span -> era-matched. Agrees with finder value."
+      }
+    },
+    {
+      "name": "Thomas N. Woods",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        { "source": "EVE CMAD front page -- revision-history approver 'TNW' (EVE PI); current-team Strong evidence", "url": "https://soma.larc.nasa.gov/lws/pdf_files/4.2a%20CMAD%20SDO-EVE.pdf", "strength": "Strong" },
+        { "source": "Lead author (prefix position 1), EVE instrument paper 'EVE on the SDO: Overview of Science Objectives, Instrument Design...', Woods et al. 2010 (partially alphabetized, sorted tail of 5 from author 14; confident selection)", "url": "https://doi.org/10.1007/s11207-009-9487-6", "strength": "Strong" },
+        { "source": "EVE Instrument record Contacts (PrincipalInvestigator -- qualifying role)", "url": "https://spase-metadata.org/SMWG/Instrument/SDO/EVE", "strength": "Medium" }
+      ],
+      "person_record": { "id": "spase://SMWG/Person/Thomas.N.Woods", "url": "https://spase-metadata.org/SMWG/Person/Thomas.N.Woods.html" },
+      "orcid": "0000-0002-2308-6797",
+      "affiliation": "LASP, University of Colorado Boulder",
       "activity_dates": null,
       "enrichment": {
         "orcid_source": "ORCID name-search (corroborated)",
@@ -161,73 +318,114 @@
         "affiliation_source": "finder (pre-existing, verified)",
         "affiliation_type": "current",
         "lookup_status": "complete",
-        "notes": "ORCID search given-names:Karel returned 0; found under his formal given name Carolus (Karel is the Dutch familiar form): expanded-search family-name:Schrijver+given-names:Carolus returned one record (0000-0002-6010-8182, 'Carolus Schrijver'). Corroborated by heliophysics/solar-stellar works including co-authorship of the 'Principles of Heliophysics' textbook and solar/CME studies, consistent with the former AIA PI (C.J. 'Karel' Schrijver) => Confirmed. No employment entries in the ORCID record, so affiliation not era-matchable; finder's 'Lockheed Martin Solar and Astrophysics Laboratory' (AIA data provider) retained as current/known affiliation (now retired/emeritus)."
+        "notes": "Name 'Thomas Woods' has 8 ORCID matches; disambiguated to 0000-0002-2308-6797 (University of Colorado Boulder) via solar EUV-irradiance / flare works (SEUSHI, MinXSS soft X-ray, solar-flare nowcasting), matching the EVE data provider (LASP). ORCID employment University of Colorado Boulder is undated -> current; corroborates the finder's 'LASP, University of Colorado Boulder' value, which is retained (LASP is his institute within CU Boulder)."
       }
     },
     {
-      "name": "Barbara J. Thompson",
+      "name": "Francis G. Eparvier",
       "status": "included",
-      "confidence": "Medium",
+      "confidence": "Strong",
       "exclusion_reason": null,
       "evidence": [
-        { "source": "2nd author of the SDO mission overview paper (Pesnell, Thompson & Chamberlin, 2012 — non-alphabetized, first 3 authors)", "url": "https://doi.org/10.1007/s11207-011-9841-3", "strength": "Medium" },
-        { "source": "Identified as SDO Deputy Project Scientist (and project scientist through development/early flight), GSFC", "url": "https://en.wikipedia.org/wiki/Barbara_J._Thompson", "strength": "Medium" }
-      ],
-      "person_record": { "id": "spase://SMWG/Person/Barbara.J.Thompson", "url": "https://spase-metadata.org/SMWG/Person/Barbara.J.Thompson.html" },
-      "orcid": "0000-0001-6952-7343",
-      "affiliation": "NASA Goddard Space Flight Center (Code 682.3)",
-      "activity_dates": null,
-      "enrichment": {
-        "orcid_source": "ORCID name-search (corroborated)",
-        "orcid_confidence": "Confirmed",
-        "affiliation_source": "finder (pre-existing, verified)",
-        "affiliation_type": "era-matched",
-        "lookup_status": "complete",
-        "notes": "Crossref lists 'B. J. Thompson' as 2nd author of the mission paper but deposited no ORCID (Route A gave no iD). ORCID name is highly common: generic 'Barbara Thompson' search returned 13 same-name people, none obviously heliophysics. A refined query (family-name:Thompson+given-names:Barbara AND NASA/solar) isolated 0000-0001-6952-7343 'Barbara J. Thompson' at NASA Goddard Space Flight Center; corroborated by ORCID employment (NASA GSFC, Astrophysicist, 1996-present) and solar/CME/coronal-dimming works consistent with the SDO Deputy Project Scientist => Confirmed. GSFC employment overlaps the SDO operating span => era-matched; agrees with finder's 'NASA Goddard Space Flight Center (Code 682.3)' (retained, more specific). Reviewer note: iD resolved via a corroborated name search on a very common name, not via paper-DOI authorship."
-      }
-    },
-    {
-      "name": "Phillip C. Chamberlin",
-      "status": "included",
-      "confidence": "Medium",
-      "exclusion_reason": null,
-      "evidence": [
-        { "source": "3rd author of the SDO mission overview paper (Pesnell, Thompson & Chamberlin, 2012 — non-alphabetized, first 3 authors)", "url": "https://doi.org/10.1007/s11207-011-9841-3", "strength": "Medium" },
-        { "source": "Identified as SDO Deputy Project Scientist (book/mission listings)", "url": "https://link.springer.com/book/10.1007/978-1-4614-3673-7", "strength": "Medium" }
+        { "source": "EVE CMAD front page -- 'Prepared By: Francis G. Eparvier, EVE Project Scientist'; current-team Strong evidence", "url": "https://soma.larc.nasa.gov/lws/pdf_files/4.2a%20CMAD%20SDO-EVE.pdf", "strength": "Strong" },
+        { "source": "2nd prefix author, EVE instrument paper (partially alphabetized; confident selection)", "url": "https://doi.org/10.1007/s11207-009-9487-6", "strength": "Strong" }
       ],
       "person_record": { "id": null, "url": null },
-      "orcid": "0000-0003-4372-7405",
-      "affiliation": "Laboratory for Atmospheric and Space Physics, University of Colorado Boulder (formerly NASA GSFC)",
+      "orcid": "0000-0001-7143-2730",
+      "affiliation": "LASP, University of Colorado Boulder",
       "activity_dates": null,
       "enrichment": {
         "orcid_source": "ORCID name-search (corroborated)",
         "orcid_confidence": "Confirmed",
         "affiliation_source": "finder (pre-existing, verified)",
-        "affiliation_type": "era-matched",
+        "affiliation_type": "current",
         "lookup_status": "complete",
-        "notes": "Crossref lists 'P. C. Chamberlin' as 3rd author of the mission paper but deposited no ORCID (Route A gave no iD). ORCID expanded-search 'Phillip Chamberlin' returned exactly one record (0000-0003-4372-7405, NASA GSFC / University of Colorado Boulder); corroborated by SDO/EVE works (e.g. 'Thermodynamic Spectrum of Solar Flares Based on SDO/EVE Observations', MinXSS) => Confirmed. MID-SPAN AFFILIATION CHANGE within the SDO operating span: ORCID employment NASA Goddard Space Flight Center (Research Scientist, 2009-2017) then University of Colorado Boulder (Research Scientist, 2017-present) — both overlap the span (2010-present). Both are era-matched; the longest-overlapping and current post (CU Boulder / LASP) is placed in the affiliation field, matching the finder value which already noted 'formerly NASA GSFC'. Reviewer note: his SDO Deputy Project Scientist role fell largely in the earlier GSFC period (2010-2017). Finder found no SMWG Person record for Chamberlin (person_record null) — verify spelling downstream."
+        "notes": "Name search 'Eparvier' returned 3; disambiguated to 0000-0001-7143-2730 (Francis Eparvier, University of Colorado Boulder) via solar / EUV works (MAVEN EUVM, Mg II solar-activity index, GOES-R EXIS EUVS). ORCID employment University of Colorado Boulder is undated -> current; corroborates and retains the finder's 'LASP, University of Colorado Boulder' value."
       }
     },
     {
-      "name": "Michael Kirk",
-      "status": "excluded",
-      "confidence": null,
-      "exclusion_reason": "Administrative role only — listed as 'NASA Official' on the SDO GSFC web page, not a data author or science lead",
+      "name": "Rachel Hock",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
       "evidence": [
-        { "source": "SDO web page at NASA/GSFC, page footer ('NASA Official')", "url": "https://sdo.gsfc.nasa.gov/", "strength": "Low" }
+        { "source": "3rd prefix author, EVE instrument paper (partially alphabetized, prefix positions 1-3 Strong-tier; confident selection)", "url": "https://doi.org/10.1007/s11207-009-9487-6", "strength": "Strong" }
       ],
       "person_record": { "id": null, "url": null },
       "orcid": null,
-      "affiliation": "NASA Goddard Space Flight Center",
+      "affiliation": "LASP, University of Colorado Boulder",
+      "activity_dates": null,
+      "enrichment": {
+        "orcid_source": null,
+        "orcid_confidence": null,
+        "affiliation_source": "finder (pre-existing)",
+        "affiliation_type": "current",
+        "lookup_status": "complete",
+        "notes": "Crossref EVE DOI deposited no ORCIDs/affiliations. ORCID name search 'Hock' (given 'Rachel' -> 0 results; 'Hock' + affiliation Colorado -> 0 results) yielded no corroborable match -> orcid left null. Possible name change may hinder lookup (this EVE-era author has published as 'Rachel Hock Berndt'); reviewer may wish to confirm. Finder's 'LASP, University of Colorado Boulder' affiliation retained but not independently verified."
+      }
+    },
+    {
+      "name": "Andrew R. Jones",
+      "status": "included",
+      "confidence": "Medium",
+      "exclusion_reason": null,
+      "evidence": [
+        { "source": "4th prefix author, EVE instrument paper (partially alphabetized -- prefix position 4 is Medium-tier; confident selection)", "url": "https://doi.org/10.1007/s11207-009-9487-6", "strength": "Medium" }
+      ],
+      "person_record": { "id": null, "url": null },
+      "orcid": "0000-0001-5533-5498",
+      "affiliation": "LASP, University of Colorado Boulder",
+      "activity_dates": null,
+      "enrichment": {
+        "orcid_source": "ORCID name-search (corroborated)",
+        "orcid_confidence": "Confirmed",
+        "affiliation_source": "finder (pre-existing, verified)",
+        "affiliation_type": "current",
+        "lookup_status": "complete",
+        "notes": "'Andrew Jones' is highly ambiguous (118+ ORCID records). Disambiguated via affiliation-filtered search to 0000-0001-5533-5498 (Andrew Jones, University of Colorado Boulder), then corroborated by SDO/EVE-specific works ('Oxidation Caused by Water Outgassed from the Thermal Blanket on the SDO Spacecraft', 'Evidence Against Carbonization of the Thin-Film Filters of the EVE', SunCET) -- squarely the EVE/LASP instrument scientist. ORCID employment CU Boulder undated -> current; corroborates and retains the finder's 'LASP, University of Colorado Boulder' value."
+      }
+    },
+    {
+      "name": "Donald Woodraska",
+      "status": "included",
+      "confidence": "Medium",
+      "exclusion_reason": null,
+      "evidence": [
+        { "source": "5th prefix author, EVE instrument paper (partially alphabetized -- prefix position 5 is Medium-tier; confident selection)", "url": "https://doi.org/10.1007/s11207-009-9487-6", "strength": "Medium" }
+      ],
+      "person_record": { "id": null, "url": null },
+      "orcid": "0000-0001-9351-733X",
+      "affiliation": "LASP, University of Colorado Boulder",
+      "activity_dates": null,
+      "enrichment": {
+        "orcid_source": "ORCID name-search (corroborated)",
+        "orcid_confidence": "Confirmed",
+        "affiliation_source": "finder (pre-existing, verified)",
+        "affiliation_type": "current",
+        "lookup_status": "complete",
+        "notes": "Single ORCID match (Donald Woodraska, NASA + University of Colorado Boulder); corroborated by EVE / solar-irradiance works ('Evidence Against Carbonization of the Thin-Film Filters of the EVE', FISM2, GOES-R EXIS). ORCID employment CU Boulder undated -> current; corroborates and retains the finder's 'LASP, University of Colorado Boulder' value."
+      }
+    },
+    {
+      "name": "Don McMullin",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "non-lead co-author of the EVE instrument paper (position 11 of 18, within the prefix but far beyond position 5); position does not support inclusion and no corroborating source found",
+      "evidence": [
+        { "source": "Co-author, EVE instrument paper", "url": "https://doi.org/10.1007/s11207-009-9487-6", "strength": "Low" }
+      ],
+      "person_record": { "id": "spase://SMWG/Person/Don.McMullin", "url": "https://spase-metadata.org/SMWG/Person/Don.McMullin.html" },
+      "orcid": null,
+      "affiliation": null,
       "activity_dates": null
     },
     {
-      "name": "Apexa Patel",
+      "name": "David J. Akin",
       "status": "excluded",
       "confidence": null,
-      "exclusion_reason": "Web-curation role only — listed as 'Webmaster' on the SDO GSFC web page",
+      "exclusion_reason": "alphabetized-tail co-author of the AIA instrument paper (position 3 -- first name of the sorted suffix, an alphabetical accident, not contribution order); uncorroborated elsewhere",
       "evidence": [
-        { "source": "SDO web page at NASA/GSFC, page footer ('Webmaster')", "url": "https://sdo.gsfc.nasa.gov/", "strength": "Low" }
+        { "source": "Co-author, AIA instrument paper (alphabetized tail)", "url": "https://doi.org/10.1007/s11207-011-9776-8", "strength": "Low" }
       ],
       "person_record": { "id": null, "url": null },
       "orcid": null,
@@ -236,13 +434,15 @@
     }
   ],
   "notes": [
-    "The SDO Observatory SPASE record is sparse: its only Contact is W. Dean Pesnell (ProjectScientist) and its only link is the NASA/GSFC SDO web page. It contains NO InstrumentID links, OperatingSpan, RevisionHistory, or PublicationInfo. The three instruments were reached via their conventional SPASE IDs spase://SMWG/Instrument/SDO/{AIA,EVE,HMI} and confirmed against the provider instruments page; consider adding these InstrumentIDs to the Observatory record downstream.",
-    "Instrument PIs (Woods/EVE, Scherrer/HMI, Title+Jin+Cheung+Schrijver/AIA) are carried forward as Strong because they are named PI/Former-PI in the instrument SPASE records and (for Woods, Scherrer, Title) on the provider instruments page. The downstream role-assignment agent should decide whether instrument PIs belong on the Observatory record or only on their respective instrument records.",
-    "AIA shows a PI succession in its SPASE record: Alan M. Title (original) -> Karel Schrijver -> Mark C. M. Cheung -> Meng Jin (current). All four are included; activity-window ordering is left to the downstream agent.",
-    "Barbara J. Thompson and Phillip C. Chamberlin are promoted to Medium/included: they are the 2nd and 3rd authors of the non-alphabetized mission overview paper (first 3 authors qualify per the paper-selection heuristic) AND are the two SDO Deputy Project Scientists. (A prior run had excluded them as non-lead co-authors; that was inconsistent with the non-alphabetized first-3-authors rule.) Their Deputy-PS role is arguably observatory-Contact-level (Strong) but is absent from the record's current Contacts, so kept at Medium.",
-    "Mission overview paper used: 'The Solar Dynamics Observatory (SDO)', Pesnell, Thompson & Chamberlin, Solar Physics 2012, DOI 10.1007/s11207-011-9841-3 — within the expected 2-5 year window of the launch (11 Feb 2010). Used only for lead/first-author selection, not for dumping co-authors.",
-    "No SMWG Person record was found for Phillip C. Chamberlin (404 at Phillip.C.Chamberlin, Philip.C.Chamberlin, and Phillip.Chamberlin); person_record left null. Verify spelling downstream if promoted.",
-    "No observatory-level CMAD exists; per-instrument CMADs (notably SDO-EVE, led by Woods) corroborate the EVE PI. Crossref returned no ORCIDs/affiliations for the mission paper, so author ORCIDs are null except Jin (0000-0002-9672-3873) and Cheung (0000-0003-2110-9753), which were captured from their SMWG Person records.",
-    "ENRICHMENT (2026-07-01, spase-affiliation-enricher): Operating span treated as open-ended 2010-02-11 to present. Crossref mission-paper DOI deposited no ORCIDs or affiliations for its 3 authors (Pesnell/Thompson/Chamberlin), so all ORCIDs were resolved via corroborated ORCID name-search (Route B), except Jin and Cheung whose finder-supplied iDs were checksum-validated and corroborated. 8 of 9 eligible candidates received a Confirmed ORCID; only Alan M. Title has none (no ORCID record exists). One discrepancy flagged: Mark C. M. Cheung's era-matched affiliation is Lockheed Martin Advanced Technology Center (2006-2022), differing from the finder's 'Stanford University' (which was only a concurrent Visiting Scholar post). One mid-span affiliation change noted for Phillip C. Chamberlin (NASA GSFC 2009-2017 -> CU Boulder 2017-present)."
+    "Operating span: the SDO Observatory record carries no explicit OperatingSpan/StartDate element. Start set to launch date 2010-02-11 (from the record Description); mission is still operational so stop = null. Downstream era-matching should use this launch-anchored span.",
+    "Observatory overview paper (Pesnell, Thompson, Chamberlin 2012, doi:10.1007/s11207-011-9841-3): only 3 authors, not alphabetized (Pesnell->Thompson->Chamberlin not sorted); all three taken as Strong (positions 1-3). Selection confident: exact title match 'The Solar Dynamics Observatory (SDO)', heavily cited, published 2012 near operations start.",
+    "AIA paper (Lemen et al. 2012, n=47): partially alphabetized. Backward scan finds a long sorted suffix beginning at author 3 (Akin, Boerner, Chou, Drake, Duncan, ...), so prefix = Lemen, Title (2 authors). Took ONLY Lemen and Title as Strong-tier; Akin and the rest of the sorted tail carry no position evidence (Akin recorded as excluded to show the tail was evaluated, not dropped). Selection confident: the AIA SPASE record itself links this DOI as 'The SDO/AIA Instrument paper'.",
+    "HMI paper (Scherrer et al. 2012, n=13): NOT alphabetized -- backward scan sorted suffix = {Schrijver, Tarbell, Tomczyk} = 3 (< 5 threshold). Position signals contribution: took first 5 weighted -- Scherrer/Schou/Bush Strong (1-3), Kosovichev/Bogart Medium (4-5). Selection confident: exact HMI-investigation title match, 2012, near operations start.",
+    "EVE paper (Woods et al. 2010, n=18): partially alphabetized. Backward scan sorted suffix = {Bailey, Fuller-Rowell, Sojka, Tobiska, Viereck} = 5 (exactly at threshold), prefix = positions 1-13. Applied prefix positional weighting only through position 5: Woods/Eparvier/Hock Strong (1-3), Jones/Woodraska Medium (4-5). Prefix members beyond position 5 (Judge, Didkovsky, Lean, Mariska, Warren, McMullin, Chamberlin, Berthiaume) not taken on position alone; McMullin recorded as excluded as a representative of that group. Note Chamberlin (prefix #12) is independently Strong via the mission overview paper.",
+    "CMAD: an EVE CMAD (EVE-T-11003 Rev A, 2005) was located in the NASA LWS SOMA repository and gives Strong current-team evidence for Eparvier (prepared) and Woods (approver 'TNW'). No AIA or HMI CMAD was located despite filename probing in the same SOMA path and web search -- current AIA/HMI teams rest on SPASE Contacts + instrument papers. Reviewer should note the AIA/HMI CMAD gap.",
+    "AIA current PI in SPASE Contacts is Meng Jin (Medium); FormerPIs Cheung, Schrijver, Title are qualifying-role Medium. This captures two PI generations for AIA (original team via the Lemen paper prefix + FormerPIs; current PI Meng Jin). Both generations are legitimate for an Observatory record.",
+    "SMWG Person registry: existing records found for Pesnell, Thompson, Meng Jin, Cheung, Karel Schrijver, Title, Woods, Scherrer, Lemen. No Person record for Chamberlin (both P.C./Phillip.C variants 404), Schou, Bush, Kosovichev, Bogart, Eparvier, Hock, Jones, Woodraska -- ids left null, not drafted.",
+    "Provider team page (https://sdo.gsfc.nasa.gov/mission/project.php) did not expose a structured, machine-readable team roster (org chart is an image); mission-level roles were therefore taken from the overview paper and the Observatory Contacts (Pesnell, ProjectScientist).",
+    "ENRICHMENT (spase-affiliation-enricher, 2026-07-08): all 18 included candidates passed the identity gate (full names from paper author lists, SPASE Person records, and/or the EVE CMAD). None of the four Crossref DOIs deposited any ORCIDs or author affiliations, so every ORCID was resolved via ORCID name search with mandatory corroboration (works/employment consistent with the instrument, mission, or data provider). 14 of 18 confirmed an ORCID; 4 left null (Lemen, Title, Bush, Hock -- no corroborable ORCID record found). Affiliations: era-matched from dated ORCID employment for Thompson, Chamberlin, Meng Jin, Cheung, Scherrer, Bogart; current from undated ORCID employment for Pesnell, Schou, Kosovichev, Woods, Eparvier, Jones, Woodraska; finder value retained (unverified) for Lemen, Title, Bush, Hock, and (ORCID confirmed but no employment history) Schrijver. Reviewer flags: (1) Chamberlin and Cheung each changed institutions mid-span -- see their notes; (2) Schou and Kosovichev show only their current (post-Stanford) affiliation because ORCID carries no dated Stanford employment, though both were at Stanford for HMI at operations start; (3) Rachel Hock may have published under a changed surname."
   ]
 }
