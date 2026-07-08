@@ -32,10 +32,12 @@ This skill takes the candidate list produced by the `spase-author-finder` agent 
 The JSON file produced by the `spase-author-finder` agent, typically at
 `spase_records/<record-name>/author_candidates.json`.
 
-Also obtain the record's **operating span** (start/stop dates of the resource),
-from the finder output if present or by re-reading the source SPASE record.
-It is required for era-matched affiliation. An open-ended span (no stop date,
-still operating) is normal — handle it per the overlap rules below.
+Read the record's **operating span** from the finder output's top-level
+`operating_span` field (preferred — it guarantees both agents era-match against
+the same dates the finder used). Only if that field is absent (output from an
+older finder version), fall back to re-reading the source SPASE record. The span
+is required for era-matched affiliation. An open-ended span (`stop: null`, still
+operating) is normal — handle it per the overlap rules below.
 
 ---
 
@@ -46,8 +48,11 @@ Process a candidate only if BOTH hold:
 1. **`status: "included"`.** Leave `excluded` candidates' objects entirely untouched.
 2. **Identity is confirmed.** The finder's evidence establishes the person's full
    name from at least one source — not a name reconstructed from initials, and not
-   an identity the finder itself flagged as inferred or uncertain. Check the
-   candidate's confidence level and evidence notes.
+   an identity the finder itself flagged as inferred or uncertain. Judge this from
+   the **evidence entries and notes** (source descriptions, "initials-inferred"
+   flags, ambiguity notes), NOT from the candidate's `confidence` field — the
+   finder's confidence measures evidence strength for authorship, not certainty
+   about who the person is, and the two can differ in either direction.
 
 For included candidates that FAIL the identity check (e.g. a record contact
 "I.E. Dammasch" whose full name was only inferred by matching initials against a
@@ -74,8 +79,12 @@ Write an enriched JSON file to
 Also return a brief inline summary: which fields were filled, which stayed null
 and why, and anything flagged for review.
 
-The enriched file preserves the finder's schema and adds, per included candidate,
-an `enrichment` object:
+**Preserve the finder's file in full.** Copy every top-level field the finder
+wrote — `record`, `date`, `cmad`, `instrument_coverage`, `notes`, and any field
+you do not recognize — through to the enriched file unchanged. The finder's
+schema evolves; never drop a field just because this skill predates it. The ONLY
+modifications this skill makes are: filling `orcid`/`affiliation` on processed
+candidates, and adding the per-candidate `enrichment` object:
 
 ```json
 "enrichment": {
@@ -121,7 +130,8 @@ lookup disagrees with a pre-filled value, record both and flag for review.
 1. Check format (`XXXX-XXXX-XXXX-XXX[0-9X]`) and the ISO 7064 mod 11-2 checksum
    of the final character.
 2. Fetch the ORCID record and corroborate: does it show a work or employment
-   consistent with the instrument, observatory, or data provider institution?
+   consistent with the instrument, observatory/mission, or data provider
+   institution?
 3. If valid and corroborated → keep it; `orcid_source: "finder (pre-existing, verified)"`,
    `orcid_confidence: "Confirmed"`.
 4. If the checksum fails or corroboration fails → set `orcid` to null in the
@@ -159,8 +169,8 @@ affiliation, and the whole point of era-matching is that those can differ
    (header `Accept: application/json`).
 2. A name search may return multiple people. NEVER accept a match on name alone.
 3. Accept an iD only if the record itself corroborates identity: a listed work
-   or dated employment consistent with the instrument, observatory, or data
-   provider institution.
+   or dated employment consistent with the instrument, observatory/mission, or
+   data provider institution.
 4. If multiple plausible matches remain, or the only match cannot be
    corroborated, leave `orcid` null and describe the ambiguity in `notes`
    (including candidate iDs, so the reviewer can resolve it in one click).
@@ -226,8 +236,8 @@ failure set `lookup_status: "partial-api-error"` and name the failed call in
 This skill is where same-name disambiguation comes due (the finder deferred it).
 - Never accept an identity on name match alone.
 - Corroborate against: the paper-DOI authorship, an ORCID work/employment
-  consistent with the instrument or provider institution, or an affiliation
-  matching the data provider.
+  consistent with the instrument, observatory/mission, or data provider
+  institution, or an affiliation matching the data provider.
 - When you cannot confirm, leave the field null and explain in `enrichment.notes`.
   Do not pick the "most likely" ORCID to avoid an empty field.
 

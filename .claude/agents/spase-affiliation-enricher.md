@@ -55,7 +55,10 @@ for era-matched affiliation.
 
 An enriched JSON file at
 `spase_records/<record-name>/author_candidates_enriched.json` (do NOT overwrite
-the finder's file). Preserve the finder's schema, resolve `orcid` and
-`affiliation` for eligible candidates, and add the per-candidate `enrichment`
-provenance object defined in the skill. Also return a brief inline summary of
-what was filled, what stayed null and why, and anything flagged for review.
+the finder's file). Copy every top-level field from the finder's file through
+unchanged — `record`, `date`, `cmad`, `instrument_coverage`, `notes`, and any
+field you do not recognize; the finder's schema evolves. Your only modifications:
+resolve `orcid` and `affiliation` for eligible candidates, and add the
+per-candidate `enrichment` provenance object defined in the skill. Also return
+a brief inline summary of what was filled, what stayed null and why, and
+anything flagged for review.
