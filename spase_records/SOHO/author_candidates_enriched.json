@@ -1,12 +1,77 @@
 {
   "record": "spase://SMWG/Observatory/SOHO",
-  "date": "2026-06-30",
+  "date": "2026-07-07",
+  "operating_span": {
+    "start": "1995-12-02",
+    "stop": null
+  },
   "cmad": {
     "found": false,
+    "expected": true,
     "url": null,
-    "notes": "No SOHO-specific CMAD located. SOHO is a legacy mission (launched 1995-12-02) predating the CMAD requirement. A web search for 'SOHO Calibration and Measurement Algorithms Document' returned CMADs only for other missions (STEREO/SECCHI, STEREO/WAVES, MMS). A related radiometric-calibration reference exists (ISSI 'The Radiometric Calibration of SOHO', https://www.issibern.ch/PDF-Files/soho_cal.pdf) but it is not a CMAD front-page team document. Proceeded with record Contacts, instrument SPASE records, and the SOHO provider people page for current-team evidence."
+    "notes": "SOHO is still operational (launched 1995-12-02, no StopDate) and participates in NASA's Heliophysics senior review of operating missions (referenced in the 2020 Senior Review, which assesses PDMP/CMAD status), so a CMAD is nominally expected. No consolidated SOHO mission-level CMAD was located via general web search, the SOHO/NASA-GSFC pages, or instrument-team sites. SOHO is a joint ESA/NASA mission with ESA-led operations, and calibration is documented per-instrument (e.g. LASCO C2/C3 photometric calibration papers) rather than in a single mission CMAD, which likely explains the absence. Recorded as an expected-but-not-located gap; proceeded with the remaining sources."
+  },
+  "instrument_coverage": {
+    "spase_instruments": [
+      "spase://SMWG/Instrument/SOHO/CDS",
+      "spase://SMWG/Instrument/SOHO/CELIAS",
+      "spase://SMWG/Instrument/SOHO/COSTEP",
+      "spase://SMWG/Instrument/SOHO/EIT",
+      "spase://SMWG/Instrument/SOHO/ERNE",
+      "spase://SMWG/Instrument/SOHO/GOLF",
+      "spase://SMWG/Instrument/SOHO/LASCO",
+      "spase://SMWG/Instrument/SOHO/MDI",
+      "spase://SMWG/Instrument/SOHO/SUMER",
+      "spase://SMWG/Instrument/SOHO/SWAN",
+      "spase://SMWG/Instrument/SOHO/UVCS",
+      "spase://SMWG/Instrument/SOHO/VIRGO"
+    ],
+    "external_roster": [
+      "CDS",
+      "CELIAS",
+      "COSTEP",
+      "EIT",
+      "ERNE",
+      "GOLF",
+      "LASCO",
+      "MDI",
+      "SUMER",
+      "SWAN",
+      "UVCS",
+      "VIRGO"
+    ],
+    "missing_from_spase": [],
+    "notes": "Observatory records carry no downward instrument links, so instruments were found by reverse-lookup of the SPASE registry path https://spase-metadata.org/SMWG/Instrument/SOHO/ ; each hit's ObservatoryID was confirmed to equal spase://SMWG/Observatory/SOHO. The registry also contains a SOHO/Ephemeris record, which is trajectory/orbit data, not a science instrument, and is excluded from the roster. External ground truth: the Observatory Description states 'Twelve instruments comprised the payload,' matching the canonical SOHO payload (CDS, CELIAS, COSTEP, EIT, ERNE, GOLF, LASCO, MDI, SUMER, SWAN, UVCS, VIRGO). All 12 have SPASE Instrument records, so coverage is complete and no instrument team is invisible to registry-based discovery. The mission instruments landing page (soho.nascom.nasa.gov) could not be fetched (tool permission denied), but the sibling instrument records supplied each instrument's lead directly."
   },
   "candidates": [
+    {
+      "name": "Vicente Domingo",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "First author of the SOHO mission overview paper, 'The SOHO mission: An overview', Solar Physics 162 (1995) — 3-author paper, position 1",
+          "url": "https://doi.org/10.1007/BF00733425",
+          "strength": "Strong"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Vicente.Domingo",
+        "url": "https://spase-metadata.org/SMWG/Person/Vicente.Domingo.html"
+      },
+      "orcid": null,
+      "affiliation": null,
+      "activity_dates": null,
+      "enrichment": {
+        "orcid_source": null,
+        "orcid_confidence": null,
+        "affiliation_source": null,
+        "affiliation_type": null,
+        "lookup_status": "complete",
+        "notes": "Overview-paper Crossref record (10.1007/BF00733425) deposited no ORCIDs or affiliations (1995 paper). ORCID name search 'Vicente Domingo' returned 4 people, none with a listed work/employment tying them to SOHO, ESA, or solar physics; the SOHO Project Scientist Vicente Domingo (ESA/Univ. Valencia, now retired/deceased) could not be corroborated. Left null."
+      }
+    },
     {
       "name": "Bernhard Fleck",
       "status": "included",
@@ -14,18 +79,13 @@
       "exclusion_reason": null,
       "evidence": [
         {
-          "source": "Record Contacts (ProjectScientist)",
-          "url": "https://spase-metadata.org/SMWG/Observatory/SOHO",
-          "strength": "Strong"
-        },
-        {
-          "source": "SOHO provider people page (Project Scientist)",
-          "url": "https://soho.nascom.nasa.gov/about/people.html",
-          "strength": "Strong"
-        },
-        {
-          "source": "SOHO mission overview paper co-author (Domingo, Fleck & Poland 1995)",
+          "source": "Second author of the SOHO mission overview paper, 'The SOHO mission: An overview', Solar Physics 162 (1995) — 3-author paper, position 2",
           "url": "https://doi.org/10.1007/BF00733425",
+          "strength": "Strong"
+        },
+        {
+          "source": "Observatory record Contacts (ProjectScientist — qualifying role)",
+          "url": "https://spase-metadata.org/SMWG/Observatory/SOHO",
           "strength": "Medium"
         }
       ],
@@ -34,32 +94,55 @@
         "url": "https://spase-metadata.org/SMWG/Person/Bernhard.Fleck.html"
       },
       "orcid": "0000-0001-5777-9121",
-      "affiliation": "European Space Agency",
+      "affiliation": "National Aeronautics and Space Administration",
       "activity_dates": null,
       "enrichment": {
         "orcid_source": "ORCID name-search (corroborated)",
         "orcid_confidence": "Confirmed",
-        "affiliation_source": "finder (pre-existing, verified)",
+        "affiliation_source": "ORCID employment",
         "affiliation_type": "current",
         "lookup_status": "complete",
-        "notes": "ORCID 0000-0001-5777-9121 confirmed via its works (e.g. 'SOHO's 30-year legacy of observing the Sun', helioseismology) consistent with the SOHO Project Scientist. AFFILIATION DISCREPANCY flagged for reviewer: ORCID employment lists 'National Aeronautics and Space Administration' (undated) while the finder value is 'European Space Agency'. Fleck is an ESA scientist resident at NASA GSFC, so both are defensible; retained the finder's ESA value."
+        "notes": "Crossref overview paper deposited no ORCID. ORCID expanded-search returned a single exact-name match (Bernhard Fleck) whose employment is NASA, corroborating the record's SOHO Project Scientist role at NASA-GSFC. ORCID employment carries no dates, so affiliation labeled current. Finder pre-value was 'ESA / NASA-GSFC (SOHO Project Scientist)'; ORCID lists 'National Aeronautics and Space Administration' — consistent (NASA-GSFC), no conflict."
       }
     },
     {
-      "name": "Jack Ireland",
+      "name": "Arthur I. Poland",
       "status": "included",
       "confidence": "Strong",
       "exclusion_reason": null,
       "evidence": [
         {
-          "source": "Record Contacts (ProjectScientist)",
-          "url": "https://spase-metadata.org/SMWG/Observatory/SOHO",
+          "source": "Third author of the SOHO mission overview paper, 'The SOHO mission: An overview', Solar Physics 162 (1995) — 3-author paper, position 3",
+          "url": "https://doi.org/10.1007/BF00733425",
           "strength": "Strong"
-        },
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Arthur.I.Poland",
+        "url": "https://spase-metadata.org/SMWG/Person/Arthur.I.Poland.html"
+      },
+      "orcid": null,
+      "affiliation": null,
+      "activity_dates": null,
+      "enrichment": {
+        "orcid_source": null,
+        "orcid_confidence": null,
+        "affiliation_source": null,
+        "affiliation_type": null,
+        "lookup_status": "complete",
+        "notes": "Crossref overview paper deposited no ORCID/affiliation. ORCID name search 'Arthur Poland' returned one iD 0009-0002-7946-5654 with no works and no institution — cannot corroborate against SOHO/NASA-GSFC. Possible match for reviewer to check, but left null (uncorroborated)."
+      }
+    },
+    {
+      "name": "Jack Ireland",
+      "status": "included",
+      "confidence": "Medium",
+      "exclusion_reason": null,
+      "evidence": [
         {
-          "source": "SOHO provider people page (Deputy Project Scientist)",
-          "url": "https://soho.nascom.nasa.gov/about/people.html",
-          "strength": "Strong"
+          "source": "Observatory record Contacts (ProjectScientist — qualifying role); current SOHO Project Scientist",
+          "url": "https://spase-metadata.org/SMWG/Observatory/SOHO",
+          "strength": "Medium"
         }
       ],
       "person_record": {
@@ -67,83 +150,111 @@
         "url": "https://spase-metadata.org/SMWG/Person/Jack.Ireland.html"
       },
       "orcid": "0000-0002-2019-8881",
-      "affiliation": "NASA Goddard Space Flight Center",
+      "affiliation": "Goddard Space Flight Center",
       "activity_dates": null,
       "enrichment": {
-        "orcid_source": "finder (pre-existing, verified)",
+        "orcid_source": "ORCID name-search (corroborated)",
         "orcid_confidence": "Confirmed",
-        "affiliation_source": "finder (pre-existing, verified)",
+        "affiliation_source": "ORCID employment",
         "affiliation_type": "current",
         "lookup_status": "complete",
-        "notes": "Pre-filled ORCID: ISO 7064 checksum valid; corroborated by ORCID employment 'Goddard Space Flight Center' (Greenbelt MD, ROR 0171mag52), consistent with the NASA GSFC Deputy Project Scientist. Employment undated -> labeled current; agrees with finder affiliation."
+        "notes": "ORCID expanded-search returned a single exact-name match (Jack Ireland) with employment at Goddard Space Flight Center, corroborating the record's current SOHO Project Scientist role (SOHO US operations at NASA-GSFC). Employment undated, so affiliation labeled current. No works listed on the public record, but the unique GSFC employment match plus the GSFC-anchored SOHO PS role corroborates identity."
       }
     },
     {
-      "name": "Russell A. Howard",
+      "name": "Richard A. Harrison",
       "status": "included",
-      "confidence": "Strong",
+      "confidence": "Medium",
       "exclusion_reason": null,
       "evidence": [
         {
-          "source": "LASCO Instrument record PI",
-          "url": "https://spase-metadata.org/SMWG/Instrument/SOHO/LASCO.html",
-          "strength": "Strong"
+          "source": "PrincipalInvestigator (qualifying role) in the SOHO/CDS sibling Instrument record Contacts",
+          "url": "https://spase-metadata.org/SMWG/Instrument/SOHO/CDS.html",
+          "strength": "Medium"
         }
       ],
       "person_record": {
-        "id": "spase://SMWG/Person/Russell.A.Howard",
-        "url": "https://spase-metadata.org/SMWG/Person/Russell.A.Howard.html"
+        "id": "spase://SMWG/Person/Richard.A.Harrison",
+        "url": "https://spase-metadata.org/SMWG/Person/Richard.A.Harrison.html"
       },
-      "orcid": "0000-0001-9027-8249",
-      "affiliation": "US Naval Research Laboratory",
-      "activity_dates": "original LASCO PI",
+      "orcid": null,
+      "affiliation": null,
+      "activity_dates": null,
       "enrichment": {
-        "orcid_source": "finder (pre-existing, verified)",
-        "orcid_confidence": "Confirmed",
-        "affiliation_source": "finder (pre-existing, verified)",
-        "affiliation_type": "current",
+        "orcid_source": null,
+        "orcid_confidence": null,
+        "affiliation_source": null,
+        "affiliation_type": null,
         "lookup_status": "complete",
-        "notes": "Pre-filled ORCID: checksum valid; corroborated by ORCID works (WISPR/PSP, SoloHI, coronagraph imaging) consistent with the NRL solar-coronagraph PI lineage (LASCO/SECCHI/WISPR). ORCID has no employment entries. AFFILIATION flagged: retained finder's 'US Naval Research Laboratory'; finder noted the SMWG Person record lists Johns Hopkins University Applied Physics Laboratory instead - discrepancy unresolved, for reviewer."
+        "notes": "ORCID name search 'Richard Harrison' returned 24 people, none with a listed institution in the search results; refined searches adding affiliation-org-name Rutherford / STFC returned 0. Could not corroborate any iD against RAL/STFC (the CDS data provider) or SOHO/CDS. Left null (ambiguous, uncorroborated)."
       }
     },
     {
-      "name": "Karl Battams",
+      "name": "Robert F. Wimmer-Schweingruber",
       "status": "included",
-      "confidence": "Strong",
+      "confidence": "Medium",
       "exclusion_reason": null,
       "evidence": [
         {
-          "source": "SOHO provider people page (current LASCO PI)",
-          "url": "https://soho.nascom.nasa.gov/about/people.html",
-          "strength": "Strong"
+          "source": "PrincipalInvestigator (qualifying role) in the SOHO/CELIAS sibling Instrument record Contacts",
+          "url": "https://spase-metadata.org/SMWG/Instrument/SOHO/CELIAS.html",
+          "strength": "Medium"
         }
       ],
       "person_record": {
-        "id": "spase://SMWG/Person/Karl.Battams",
-        "url": "https://spase-metadata.org/SMWG/Person/Karl.Battams.html"
+        "id": "spase://SMWG/Person/Robert.F.Wimmer-Schweingruber",
+        "url": "https://spase-metadata.org/SMWG/Person/Robert.F.Wimmer-Schweingruber.html"
       },
-      "orcid": "0000-0002-8692-6925",
-      "affiliation": "US Naval Research Laboratory",
-      "activity_dates": "current LASCO PI",
+      "orcid": "0000-0002-7388-173X",
+      "affiliation": "Christian-Albrechts-Universität zu Kiel",
+      "activity_dates": null,
       "enrichment": {
-        "orcid_source": "finder (pre-existing, verified)",
+        "orcid_source": "ORCID name-search (corroborated)",
         "orcid_confidence": "Confirmed",
-        "affiliation_source": "finder (pre-existing, verified)",
+        "affiliation_source": "ORCID employment",
+        "affiliation_type": "current",
+        "lookup_status": "complete",
+        "notes": "ORCID expanded-search returned exact-name match Robert Wimmer-Schweingruber with employment at Christian-Albrechts-Universitaet zu Kiel, corroborating the CELIAS PI role at University of Kiel. Employment undated -> current. Finder pre-value 'University of Kiel (SOHO-CELIAS team site)' agrees with ORCID employer (same institution); verified."
+      }
+    },
+    {
+      "name": "Bernd Heber",
+      "status": "included",
+      "confidence": "Medium",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "PrincipalInvestigator (qualifying role) in the SOHO/COSTEP sibling Instrument record Contacts",
+          "url": "https://spase-metadata.org/SMWG/Instrument/SOHO/COSTEP.html",
+          "strength": "Medium"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Bernd.Heber",
+        "url": "https://spase-metadata.org/SMWG/Person/Bernd.Heber.html"
+      },
+      "orcid": "0000-0003-0960-5658",
+      "affiliation": "Christian-Albrechts-Universität zu Kiel",
+      "activity_dates": null,
+      "enrichment": {
+        "orcid_source": "ORCID name-search (corroborated)",
+        "orcid_confidence": "Confirmed",
+        "affiliation_source": "ORCID employment",
         "affiliation_type": "era-matched",
         "lookup_status": "complete",
-        "notes": "Pre-filled ORCID: checksum valid; corroborated by ORCID employment 'US Naval Research Laboratory' (Space Science Division, Heliospheric Physics Branch), 2008-10 -> present, which overlaps the SOHO operating span (1995-present) -> era-matched. Agrees with finder affiliation; consistent with current LASCO PI."
+        "notes": "ORCID expanded-search returned a single exact-name match (Bernd Heber) with dated employment Professor at Christian-Albrechts-Universitaet zu Kiel, 2005-present, overlapping the operating span (1995-present) -> era-matched. Corroborates the COSTEP PI role at University of Kiel. Finder pre-value 'University of Kiel (SOHO-COSTEP team site)' agrees; verified."
       }
     },
     {
-      "name": "Jean-Pierre Delaboudiniere",
+      "name": "Jean-Pierre Delaboudinière",
       "status": "included",
-      "confidence": "Strong",
+      "confidence": "Medium",
       "exclusion_reason": null,
       "evidence": [
         {
-          "source": "EIT Instrument record PI",
+          "source": "PrincipalInvestigator (qualifying role) in the SOHO/EIT sibling Instrument record Contacts",
           "url": "https://spase-metadata.org/SMWG/Instrument/SOHO/EIT.html",
-          "strength": "Strong"
+          "strength": "Medium"
         }
       ],
       "person_record": {
@@ -151,60 +262,111 @@
         "url": "https://spase-metadata.org/SMWG/Person/Jean-Pierre.Delaboudiniere.html"
       },
       "orcid": null,
-      "affiliation": "Centre National de la Recherche (Institut d'Astrophysique Spatiale)",
-      "activity_dates": "original EIT PI",
+      "affiliation": null,
+      "activity_dates": null,
       "enrichment": {
         "orcid_source": null,
         "orcid_confidence": null,
-        "affiliation_source": "finder (pre-existing, unverified)",
-        "affiliation_type": "current",
+        "affiliation_source": null,
+        "affiliation_type": null,
         "lookup_status": "complete",
-        "notes": "No ORCID found: name search returned only 'Maxence Delaboudiniere' (a different person). Jean-Pierre Delaboudiniere (original EIT PI, deceased) predates ORCID -> left null. Affiliation retained from finder (SPASE Person record, IAS/CNRS); not independently era-verifiable (no ORCID, no paper DOI in evidence)."
+        "notes": "ORCID name search on family-name Delaboudiniere returned only 'Maxence Delaboudiniere' (a different, unrelated person). No iD found for the EIT PI Jean-Pierre Delaboudiniere (IAS Orsay; deceased 2010). Left null."
       }
     },
     {
-      "name": "Frédéric Auchère",
+      "name": "Rami Vainio",
       "status": "included",
-      "confidence": "Strong",
+      "confidence": "Medium",
       "exclusion_reason": null,
       "evidence": [
         {
-          "source": "SOHO provider people page (current EIT PI)",
-          "url": "https://soho.nascom.nasa.gov/about/people.html",
-          "strength": "Strong"
+          "source": "PrincipalInvestigator (qualifying role) in the SOHO/ERNE sibling Instrument record Contacts",
+          "url": "https://spase-metadata.org/SMWG/Instrument/SOHO/ERNE.html",
+          "strength": "Medium"
         }
       ],
       "person_record": {
-        "id": "spase://SMWG/Person/Frederic.Auchere",
-        "url": "https://spase-metadata.org/SMWG/Person/Frederic.Auchere.html"
+        "id": "spase://SMWG/Person/Rami.Vainio",
+        "url": "https://spase-metadata.org/SMWG/Person/Rami.Vainio.html"
       },
-      "orcid": "0000-0003-0972-7022",
-      "affiliation": "Institut d'Astrophysique Spatiale",
-      "activity_dates": "current EIT PI",
+      "orcid": "0000-0002-3298-2067",
+      "affiliation": "University of Turku",
+      "activity_dates": null,
       "enrichment": {
         "orcid_source": "ORCID name-search (corroborated)",
         "orcid_confidence": "Confirmed",
         "affiliation_source": "ORCID employment",
-        "affiliation_type": "current",
+        "affiliation_type": "era-matched",
         "lookup_status": "complete",
-        "notes": "Single ORCID name match; corroborated by ORCID employment 'Institut d'Astrophysique Spatiale' (IAS), matching the EIT current-PI institution. Employment undated -> current. Agrees with finder affiliation."
+        "notes": "ORCID expanded-search returned a single exact-name match (Rami Vainio) with dated employment Professor at University of Turku, 2014-present, overlapping the operating span -> era-matched. Corroborates the ERNE PI role at University of Turku. Finder pre-value 'University of Turku (SOHO-ERNE team site)' agrees; verified."
+      }
+    },
+    {
+      "name": "Alan-Henri Gabriel",
+      "status": "included",
+      "confidence": "Medium",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "PrincipalInvestigator (qualifying role) in the SOHO/GOLF sibling Instrument record Contacts",
+          "url": "https://spase-metadata.org/SMWG/Instrument/SOHO/GOLF.html",
+          "strength": "Medium"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Alan-Henri.Gabriel",
+        "url": "https://spase-metadata.org/SMWG/Person/Alan-Henri.Gabriel.html"
+      },
+      "orcid": null,
+      "affiliation": null,
+      "activity_dates": null,
+      "enrichment": {
+        "orcid_source": null,
+        "orcid_confidence": null,
+        "affiliation_source": null,
+        "affiliation_type": null,
+        "lookup_status": "complete",
+        "notes": "ORCID name search 'Alan Gabriel' returned 7 people, none with a work/employment tied to solar physics, GOLF, or IAS. The GOLF PI Alan-Henri Gabriel (IAS Orsay; deceased 2010) could not be corroborated. Left null."
+      }
+    },
+    {
+      "name": "Russell A. Howard",
+      "status": "included",
+      "confidence": "Medium",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "PrincipalInvestigator (qualifying role) in the SOHO/LASCO sibling Instrument record Contacts (current PI)",
+          "url": "https://spase-metadata.org/SMWG/Instrument/SOHO/LASCO.html",
+          "strength": "Medium"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Russell.A.Howard",
+        "url": "https://spase-metadata.org/SMWG/Person/Russell.A.Howard.html"
+      },
+      "orcid": "0000-0001-9027-8249",
+      "affiliation": null,
+      "activity_dates": null,
+      "enrichment": {
+        "orcid_source": "ORCID name-search (corroborated)",
+        "orcid_confidence": "Confirmed",
+        "affiliation_source": null,
+        "affiliation_type": null,
+        "lookup_status": "complete",
+        "notes": "ORCID name search returned iD 0000-0001-9027-8249 (Russell A. Howard, exact full-name match) with 289 works dominated by coronagraph/CME/heliophysics topics (LASCO, SoloHI, WISPR) - strongly corroborates the LASCO PI. ORCID confirmed. Affiliation left null: the public ORCID record lists no employment entry, and there is no paper DOI in the evidence for a Crossref as-deposited affiliation. (NRL is the likely institution but is not confirmed via a structured source.)"
       }
     },
     {
       "name": "Philip H. Scherrer",
       "status": "included",
-      "confidence": "Strong",
+      "confidence": "Medium",
       "exclusion_reason": null,
       "evidence": [
         {
-          "source": "MDI Instrument record PI",
+          "source": "PrincipalInvestigator (qualifying role) in the SOHO/MDI sibling Instrument record Contacts",
           "url": "https://spase-metadata.org/SMWG/Instrument/SOHO/MDI.html",
-          "strength": "Strong"
-        },
-        {
-          "source": "SOHO provider people page (MDI PI)",
-          "url": "https://soho.nascom.nasa.gov/about/people.html",
-          "strength": "Strong"
+          "strength": "Medium"
         }
       ],
       "person_record": {
@@ -220,230 +382,19 @@
         "affiliation_source": "ORCID employment",
         "affiliation_type": "era-matched",
         "lookup_status": "complete",
-        "notes": "ORCID employment 'Stanford University' (Professor), 1986 -> present, overlaps the operating span -> era-matched and matches the MDI PI institution. Confirms identity; agrees with finder affiliation."
-      }
-    },
-    {
-      "name": "Richard A. Harrison",
-      "status": "included",
-      "confidence": "Strong",
-      "exclusion_reason": null,
-      "evidence": [
-        {
-          "source": "CDS Instrument record PI",
-          "url": "https://spase-metadata.org/SMWG/Instrument/SOHO/CDS.html",
-          "strength": "Strong"
-        }
-      ],
-      "person_record": {
-        "id": "spase://SMWG/Person/Richard.A.Harrison",
-        "url": "https://spase-metadata.org/SMWG/Person/Richard.A.Harrison.html"
-      },
-      "orcid": "0000-0002-0843-8045",
-      "affiliation": "Rutherford Appleton Laboratory",
-      "activity_dates": "original CDS PI",
-      "enrichment": {
-        "orcid_source": "ORCID name-search (corroborated)",
-        "orcid_confidence": "Confirmed",
-        "affiliation_source": "ORCID employment",
-        "affiliation_type": "era-matched",
-        "lookup_status": "complete",
-        "notes": "'Richard Harrison' is highly common (24 ORCID hits); selected 0000-0002-0843-8045 by corroboration: ORCID employment 'RAL Space' (Rutherford Appleton Laboratory), Chief Scientist, 1986 -> present (era-matched), plus works on STEREO-HI/CME heliospheric imaging consistent with the CDS/RAL solar PI. Agrees with finder affiliation."
-      }
-    },
-    {
-      "name": "Andrzej Fludra",
-      "status": "included",
-      "confidence": "Strong",
-      "exclusion_reason": null,
-      "evidence": [
-        {
-          "source": "SOHO provider people page (current CDS PI)",
-          "url": "https://soho.nascom.nasa.gov/about/people.html",
-          "strength": "Strong"
-        }
-      ],
-      "person_record": {
-        "id": "spase://SMWG/Person/Andrzej.Fludra",
-        "url": "https://spase-metadata.org/SMWG/Person/Andrzej.Fludra.html"
-      },
-      "orcid": "0000-0002-6093-7861",
-      "affiliation": "Rutherford Appleton Laboratory",
-      "activity_dates": "current CDS PI",
-      "enrichment": {
-        "orcid_source": "ORCID name-search (corroborated)",
-        "orcid_confidence": "Confirmed",
-        "affiliation_source": "finder (pre-existing, verified)",
-        "affiliation_type": "current",
-        "lookup_status": "complete",
-        "notes": "Single 'Andrzej Fludra' match; corroborated by works on Solar Orbiter/SPICE and EUV solar physics (RAL-led), consistent with the CDS current PI at RAL. ORCID has no dated employment; affiliation retained from finder (RAL), consistent with his works, labeled current."
-      }
-    },
-    {
-      "name": "Robert F. Wimmer-Schweingruber",
-      "status": "included",
-      "confidence": "Strong",
-      "exclusion_reason": null,
-      "evidence": [
-        {
-          "source": "CELIAS Instrument record PI",
-          "url": "https://spase-metadata.org/SMWG/Instrument/SOHO/CELIAS.html",
-          "strength": "Strong"
-        },
-        {
-          "source": "SOHO provider people page (CELIAS PI)",
-          "url": "https://soho.nascom.nasa.gov/about/people.html",
-          "strength": "Strong"
-        }
-      ],
-      "person_record": {
-        "id": "spase://SMWG/Person/Robert.F.Wimmer-Schweingruber",
-        "url": "https://spase-metadata.org/SMWG/Person/Robert.F.Wimmer-Schweingruber.html"
-      },
-      "orcid": "0000-0002-7388-173X",
-      "affiliation": "Institute of Experimental and Applied Physics, Christian Albrechts Universität (Kiel)",
-      "activity_dates": null,
-      "enrichment": {
-        "orcid_source": "ORCID name-search (corroborated)",
-        "orcid_confidence": "Confirmed",
-        "affiliation_source": "ORCID employment",
-        "affiliation_type": "current",
-        "lookup_status": "complete",
-        "notes": "Single match 'Robert Wimmer-Schweingruber'; ORCID employment 'Christian-Albrechts-Universität zu Kiel' matches the CELIAS PI institution (Kiel). Employment undated -> current. Agrees with finder affiliation."
-      }
-    },
-    {
-      "name": "Bernd Heber",
-      "status": "included",
-      "confidence": "Strong",
-      "exclusion_reason": null,
-      "evidence": [
-        {
-          "source": "COSTEP Instrument record PI",
-          "url": "https://spase-metadata.org/SMWG/Instrument/SOHO/COSTEP.html",
-          "strength": "Strong"
-        },
-        {
-          "source": "SOHO provider people page (COSTEP PI)",
-          "url": "https://soho.nascom.nasa.gov/about/people.html",
-          "strength": "Strong"
-        }
-      ],
-      "person_record": {
-        "id": "spase://SMWG/Person/Bernd.Heber",
-        "url": "https://spase-metadata.org/SMWG/Person/Bernd.Heber.html"
-      },
-      "orcid": "0000-0003-0960-5658",
-      "affiliation": "Institute of Experimental and Applied Physics, Christian Albrechts Universität (Kiel)",
-      "activity_dates": null,
-      "enrichment": {
-        "orcid_source": "ORCID name-search (corroborated)",
-        "orcid_confidence": "Confirmed",
-        "affiliation_source": "ORCID employment",
-        "affiliation_type": "era-matched",
-        "lookup_status": "complete",
-        "notes": "Single 'Bernd Heber' match; ORCID employment 'Christian-Albrechts-Universität zu Kiel' (Professor), 2005 -> present (era-matched), matches the COSTEP PI institution. Agrees with finder affiliation."
-      }
-    },
-    {
-      "name": "Rami Vainio",
-      "status": "included",
-      "confidence": "Strong",
-      "exclusion_reason": null,
-      "evidence": [
-        {
-          "source": "ERNE Instrument record PI",
-          "url": "https://spase-metadata.org/SMWG/Instrument/SOHO/ERNE.html",
-          "strength": "Strong"
-        },
-        {
-          "source": "SOHO provider people page (ERNE PI)",
-          "url": "https://soho.nascom.nasa.gov/about/people.html",
-          "strength": "Strong"
-        }
-      ],
-      "person_record": {
-        "id": "spase://SMWG/Person/Rami.Vainio",
-        "url": "https://spase-metadata.org/SMWG/Person/Rami.Vainio.html"
-      },
-      "orcid": "0000-0002-3298-2067",
-      "affiliation": "Department of Physics and Astronomy, University of Turku",
-      "activity_dates": null,
-      "enrichment": {
-        "orcid_source": "ORCID name-search (corroborated)",
-        "orcid_confidence": "Confirmed",
-        "affiliation_source": "ORCID employment",
-        "affiliation_type": "era-matched",
-        "lookup_status": "complete",
-        "notes": "Single 'Rami Vainio' match; ORCID employment 'University of Turku' (Professor), 2014 -> present (era-matched), matches the ERNE PI institution. Agrees with finder affiliation."
-      }
-    },
-    {
-      "name": "Alan-Henri Gabriel",
-      "status": "included",
-      "confidence": "Strong",
-      "exclusion_reason": null,
-      "evidence": [
-        {
-          "source": "GOLF Instrument record PI",
-          "url": "https://spase-metadata.org/SMWG/Instrument/SOHO/GOLF.html",
-          "strength": "Strong"
-        }
-      ],
-      "person_record": {
-        "id": "spase://SMWG/Person/Alan-Henri.Gabriel",
-        "url": "https://spase-metadata.org/SMWG/Person/Alan-Henri.Gabriel.html"
-      },
-      "orcid": null,
-      "affiliation": "Université Paris Sud (Institut d'Astrophysique Spatiale)",
-      "activity_dates": "original GOLF PI",
-      "enrichment": {
-        "orcid_source": null,
-        "orcid_confidence": null,
-        "affiliation_source": "finder (pre-existing, unverified)",
-        "affiliation_type": "current",
-        "lookup_status": "complete",
-        "notes": "No matching ORCID for Alan-Henri Gabriel (original GOLF PI, deceased 2010); name search returned only unrelated 'Alan Gabriel' persons -> left null. Affiliation retained from finder (IAS / Universite Paris Sud); not independently verifiable."
-      }
-    },
-    {
-      "name": "Patrick Boumier",
-      "status": "included",
-      "confidence": "Strong",
-      "exclusion_reason": null,
-      "evidence": [
-        {
-          "source": "SOHO provider people page (current GOLF PI)",
-          "url": "https://soho.nascom.nasa.gov/about/people.html",
-          "strength": "Strong"
-        }
-      ],
-      "person_record": {
-        "id": "spase://SMWG/Person/Patrick.Boumier",
-        "url": "https://spase-metadata.org/SMWG/Person/Patrick.Boumier.html"
-      },
-      "orcid": null,
-      "affiliation": "Institut d'Astrophysique Spatiale",
-      "activity_dates": "current GOLF PI",
-      "enrichment": {
-        "orcid_source": null,
-        "orcid_confidence": null,
-        "affiliation_source": "finder (pre-existing, unverified)",
-        "affiliation_type": "current",
-        "lookup_status": "complete",
-        "notes": "A single exact ORCID name match exists (0000-0002-0168-987X 'Patrick Boumier') but that record has NO works and NO employment entries, so identity cannot be corroborated; per confirm-or-null policy the ORCID is left null. Reviewer: 0000-0002-0168-987X is a plausible but uncorroborated match for the current GOLF PI at IAS. Affiliation retained from finder (IAS)."
+        "notes": "ORCID expanded-search returned a single exact-name match (Philip Scherrer) with dated employment at Stanford University, 1986-present, overlapping the operating span -> era-matched. Stanford is the MDI data provider institution, corroborating the MDI PI role. Confirmed."
       }
     },
     {
       "name": "Klaus Wilhelm",
       "status": "included",
-      "confidence": "Strong",
+      "confidence": "Medium",
       "exclusion_reason": null,
       "evidence": [
         {
-          "source": "SUMER Instrument record PI",
+          "source": "PrincipalInvestigator (qualifying role) in the SOHO/SUMER sibling Instrument record Contacts",
           "url": "https://spase-metadata.org/SMWG/Instrument/SOHO/SUMER.html",
-          "strength": "Strong"
+          "strength": "Medium"
         }
       ],
       "person_record": {
@@ -451,55 +402,27 @@
         "url": "https://spase-metadata.org/SMWG/Person/Klaus.Wilhelm.html"
       },
       "orcid": "0000-0002-9825-4281",
-      "affiliation": "Max-Planck-Institut für Aeronomie",
-      "activity_dates": "original SUMER PI",
+      "affiliation": null,
+      "activity_dates": null,
       "enrichment": {
         "orcid_source": "ORCID name-search (corroborated)",
         "orcid_confidence": "Confirmed",
-        "affiliation_source": "finder (pre-existing, unverified)",
-        "affiliation_type": "current",
+        "affiliation_source": null,
+        "affiliation_type": null,
         "lookup_status": "complete",
-        "notes": "Two 'Klaus Wilhelm' candidates; selected 0000-0002-9825-4281 by decisive corroboration - its works include 'SUMER - Solar Ultraviolet Measurements of Emitted Radiation' and solar plume studies, matching the SUMER original PI. ORCID has no dated employment; affiliation retained from finder (MPI für Aeronomie / MPAe Lindau, launch-era institution; now MPS), labeled current/historical."
-      }
-    },
-    {
-      "name": "Werner Curdt",
-      "status": "included",
-      "confidence": "Strong",
-      "exclusion_reason": null,
-      "evidence": [
-        {
-          "source": "SOHO provider people page (current SUMER PI)",
-          "url": "https://soho.nascom.nasa.gov/about/people.html",
-          "strength": "Strong"
-        }
-      ],
-      "person_record": {
-        "id": "spase://SMWG/Person/Werner.Curdt",
-        "url": "https://spase-metadata.org/SMWG/Person/Werner.Curdt.html"
-      },
-      "orcid": "0000-0002-2860-9120",
-      "affiliation": "MPI für Solar System Research",
-      "activity_dates": "current SUMER PI",
-      "enrichment": {
-        "orcid_source": "ORCID name-search (corroborated)",
-        "orcid_confidence": "Confirmed",
-        "affiliation_source": "finder (pre-existing, verified)",
-        "affiliation_type": "current",
-        "lookup_status": "complete",
-        "notes": "Selected 0000-0002-2860-9120 'Werner Curdt' - ORCID record affiliation 'Max-Planck-Institut für Sonnensystemforschung' (MPS) matches the SUMER current-PI institution and the finder value. No dated employment entry -> current."
+        "notes": "ORCID name search returned iD 0000-0002-9825-4281 (Klaus Wilhelm) whose works include 'SUMER - Solar Ultraviolet Measurements of Emitted Radiation' and solar coronal-hole plume studies - directly corroborates the SUMER PI. ORCID confirmed. Affiliation left null: the public record lists no employment entry and no paper DOI is available for a Crossref fallback. (Max Planck Institute for Solar System Research / formerly MPAe Lindau is the likely institution but is not confirmed via a structured source.)"
       }
     },
     {
       "name": "Jean-Loup C. Bertaux",
       "status": "included",
-      "confidence": "Strong",
+      "confidence": "Medium",
       "exclusion_reason": null,
       "evidence": [
         {
-          "source": "SWAN Instrument record PI",
+          "source": "PrincipalInvestigator (qualifying role) in the SOHO/SWAN sibling Instrument record Contacts",
           "url": "https://spase-metadata.org/SMWG/Instrument/SOHO/SWAN.html",
-          "strength": "Strong"
+          "strength": "Medium"
         }
       ],
       "person_record": {
@@ -507,55 +430,27 @@
         "url": "https://spase-metadata.org/SMWG/Person/Jean-Loup.C.Bertaux.html"
       },
       "orcid": null,
-      "affiliation": "Centre National de la Recherche Scientifique (LATMOS)",
-      "activity_dates": "original SWAN PI",
+      "affiliation": null,
+      "activity_dates": null,
       "enrichment": {
         "orcid_source": null,
         "orcid_confidence": null,
-        "affiliation_source": "finder (pre-existing, unverified)",
-        "affiliation_type": "current",
+        "affiliation_source": null,
+        "affiliation_type": null,
         "lookup_status": "complete",
-        "notes": "No ORCID found for Jean-Loup Bertaux (family+given search returned 0; general 'Bertaux' hits are all different people). Original SWAN PI predates ORCID -> left null. Affiliation retained from finder (CNRS/LATMOS)."
-      }
-    },
-    {
-      "name": "Eric Quémerais",
-      "status": "included",
-      "confidence": "Strong",
-      "exclusion_reason": null,
-      "evidence": [
-        {
-          "source": "SOHO provider people page (current SWAN PI)",
-          "url": "https://soho.nascom.nasa.gov/about/people.html",
-          "strength": "Strong"
-        }
-      ],
-      "person_record": {
-        "id": "spase://SMWG/Person/Eric.Quemerais",
-        "url": "https://spase-metadata.org/SMWG/Person/Eric.Quemerais.html"
-      },
-      "orcid": "0000-0001-5376-2242",
-      "affiliation": "Laboratoire atmosphères, milieux, observations spatiales (LATMOS)",
-      "activity_dates": "current SWAN PI",
-      "enrichment": {
-        "orcid_source": "ORCID name-search (corroborated)",
-        "orcid_confidence": "Confirmed",
-        "affiliation_source": "ORCID employment",
-        "affiliation_type": "current",
-        "lookup_status": "complete",
-        "notes": "Two 'Eric Quémerais' iDs exist; selected 0000-0001-5376-2242 (LATMOS-CNRS) over 0009-0007-2018-6358 (ONERA, a different person) by corroboration - works on interplanetary/interstellar neutral hydrogen (Lyman-alpha) match SWAN science and the LATMOS current-PI institution. ORCID employment 'LATMOS-CNRS' undated -> current; agrees with finder affiliation."
+        "notes": "ORCID name search 'Jean-Loup Bertaux' returned 0 results. No iD found for the SWAN PI Jean-Loup Bertaux (LATMOS). Left null."
       }
     },
     {
       "name": "John L. Kohl",
       "status": "included",
-      "confidence": "Strong",
+      "confidence": "Medium",
       "exclusion_reason": null,
       "evidence": [
         {
-          "source": "UVCS Instrument record PI",
+          "source": "PrincipalInvestigator (qualifying role) in the SOHO/UVCS sibling Instrument record Contacts",
           "url": "https://spase-metadata.org/SMWG/Instrument/SOHO/UVCS.html",
-          "strength": "Strong"
+          "strength": "Medium"
         }
       ],
       "person_record": {
@@ -563,27 +458,27 @@
         "url": "https://spase-metadata.org/SMWG/Person/John.L.Kohl.html"
       },
       "orcid": null,
-      "affiliation": "Harvard-Smithsonian Center for Astrophysics",
-      "activity_dates": "original UVCS PI",
+      "affiliation": null,
+      "activity_dates": null,
       "enrichment": {
         "orcid_source": null,
         "orcid_confidence": null,
-        "affiliation_source": "finder (pre-existing, unverified)",
-        "affiliation_type": "current",
+        "affiliation_source": null,
+        "affiliation_type": null,
         "lookup_status": "complete",
-        "notes": "No ORCID found (search returned 0 for John Kohl). Original UVCS PI (deceased 2013), predates ORCID -> left null. Affiliation retained from finder (Harvard-Smithsonian CfA)."
+        "notes": "ORCID name search 'John Kohl' returned 0 results. No iD found for the UVCS PI John L. Kohl (SAO; deceased 2014). Left null."
       }
     },
     {
       "name": "J. Leonard Culhane",
       "status": "included",
-      "confidence": "Strong",
+      "confidence": "Medium",
       "exclusion_reason": null,
       "evidence": [
         {
-          "source": "UVCS Instrument record PI (second PI listed)",
+          "source": "Listed with PrincipalInvestigator (qualifying role) in the SOHO/UVCS sibling Instrument record Contacts (second PI on UVCS)",
           "url": "https://spase-metadata.org/SMWG/Instrument/SOHO/UVCS.html",
-          "strength": "Strong"
+          "strength": "Medium"
         }
       ],
       "person_record": {
@@ -591,55 +486,27 @@
         "url": "https://spase-metadata.org/SMWG/Person/J.Leonard.Culhane.html"
       },
       "orcid": null,
-      "affiliation": "Mullard Space Science Laboratory",
+      "affiliation": null,
       "activity_dates": null,
       "enrichment": {
         "orcid_source": null,
         "orcid_confidence": null,
-        "affiliation_source": "finder (pre-existing, unverified)",
-        "affiliation_type": "current",
+        "affiliation_source": null,
+        "affiliation_type": null,
         "lookup_status": "complete",
-        "notes": "No ORCID found for J. Leonard (Len) Culhane (given-name search returned 0; 52 unrelated 'Culhane' hits). Senior scientist, predates ORCID -> left null. Affiliation retained from finder (MSSL)."
+        "notes": "ORCID name search 'Culhane' returned 52 people. The nearest name candidate, John Culhane 0000-0001-6064-6266, has no works and no institution and cannot be corroborated against UVCS/MSSL-UCL. Possible match noted for reviewer, but left null (uncorroborated)."
       }
     },
     {
-      "name": "Leonard Strachan",
+      "name": "Claus Fröhlich",
       "status": "included",
-      "confidence": "Strong",
+      "confidence": "Medium",
       "exclusion_reason": null,
       "evidence": [
         {
-          "source": "SOHO provider people page (current UVCS PI)",
-          "url": "https://soho.nascom.nasa.gov/about/people.html",
-          "strength": "Strong"
-        }
-      ],
-      "person_record": {
-        "id": "spase://SMWG/Person/Leonard.Strachan",
-        "url": "https://spase-metadata.org/SMWG/Person/Leonard.Strachan.html"
-      },
-      "orcid": "0000-0002-5425-7122",
-      "affiliation": "Naval Research Laboratory",
-      "activity_dates": "current UVCS PI",
-      "enrichment": {
-        "orcid_source": "ORCID name-search (corroborated)",
-        "orcid_confidence": "Confirmed",
-        "affiliation_source": "finder (pre-existing, verified)",
-        "affiliation_type": "era-matched",
-        "lookup_status": "complete",
-        "notes": "Single 'Leonard Strachan' match; ORCID employment corroborates and matches finder - US Naval Research Laboratory 2014 -> present (era-matched, agrees with finder). MID-SPAN AFFILIATION CHANGE for reviewer: Smithsonian Astrophysical Observatory 1991-2014 (SAO is the UVCS home/data-provider institution) then NRL 2014-present; both periods overlap the operating span. As current UVCS PI his NRL affiliation is retained."
-      }
-    },
-    {
-      "name": "Claus Frohlich",
-      "status": "included",
-      "confidence": "Strong",
-      "exclusion_reason": null,
-      "evidence": [
-        {
-          "source": "VIRGO Instrument record PI",
+          "source": "PrincipalInvestigator (qualifying role) in the SOHO/VIRGO sibling Instrument record Contacts",
           "url": "https://spase-metadata.org/SMWG/Instrument/SOHO/VIRGO.html",
-          "strength": "Strong"
+          "strength": "Medium"
         }
       ],
       "person_record": {
@@ -647,139 +514,27 @@
         "url": "https://spase-metadata.org/SMWG/Person/Claus.Frohlich.html"
       },
       "orcid": "0000-0001-8932-9336",
-      "affiliation": "Physikalisch-Meteorologisches Observatorium Davos",
-      "activity_dates": "original VIRGO PI",
-      "enrichment": {
-        "orcid_source": "ORCID name-search (corroborated)",
-        "orcid_confidence": "Confirmed",
-        "affiliation_source": "finder (pre-existing, unverified)",
-        "affiliation_type": "current",
-        "lookup_status": "complete",
-        "notes": "Single 'Claus Fröhlich' match; corroborated by works on total-solar-irradiance (TSI) composite construction, matching the VIRGO original PI. ORCID employment reads 'Free lancing scientist, retired' (no institution); affiliation retained from finder (PMOD/WRC Davos, the VIRGO home institution), labeled current."
-      }
-    },
-    {
-      "name": "Wolfgang Finsterle",
-      "status": "included",
-      "confidence": "Strong",
-      "exclusion_reason": null,
-      "evidence": [
-        {
-          "source": "SOHO provider people page (current VIRGO PI)",
-          "url": "https://soho.nascom.nasa.gov/about/people.html",
-          "strength": "Strong"
-        }
-      ],
-      "person_record": {
-        "id": "spase://SMWG/Person/Wolfgang.Finsterle",
-        "url": "https://spase-metadata.org/SMWG/Person/Wolfgang.Finsterle.html"
-      },
-      "orcid": "0000-0002-6672-7523",
-      "affiliation": "Physikalisch-Meteorologisches Observatorium Davos",
-      "activity_dates": "current VIRGO PI",
-      "enrichment": {
-        "orcid_source": "ORCID name-search (corroborated)",
-        "orcid_confidence": "Confirmed",
-        "affiliation_source": "finder (pre-existing, unverified)",
-        "affiliation_type": "current",
-        "lookup_status": "complete",
-        "notes": "Single 'Wolfgang Finsterle' match; corroborated by works on TSI/DARA radiometry and PROBA-3, matching the VIRGO current PI at PMOD/WRC Davos. ORCID has no dated employment; affiliation retained from finder (PMOD Davos), labeled current."
-      }
-    },
-    {
-      "name": "Vicente Domingo",
-      "status": "excluded",
-      "confidence": null,
-      "exclusion_reason": "First SOHO Project Scientist and lead author of the mission overview paper, but not named in the record's own Contacts nor on the current provider people page; overview-paper lead authorship alone is below the inclusion bar for this record. Recorded for downstream awareness as a potential FormerProjectScientist.",
-      "evidence": [
-        {
-          "source": "Lead author, SOHO mission overview paper (Domingo, Fleck & Poland 1995, Solar Physics 162, 1)",
-          "url": "https://doi.org/10.1007/BF00733425",
-          "strength": "Low"
-        }
-      ],
-      "person_record": {
-        "id": null,
-        "url": null
-      },
-      "orcid": null,
-      "affiliation": "European Space Agency (Space Science Department)",
-      "activity_dates": "first SOHO Project Scientist"
-    },
-    {
-      "name": "Arthur I. Poland",
-      "status": "excluded",
-      "confidence": null,
-      "exclusion_reason": "Co-author of the mission overview paper and early SOHO project scientist, but not in the record Contacts nor on the current provider people page; overview co-authorship alone is below the inclusion bar. Recorded for downstream awareness.",
-      "evidence": [
-        {
-          "source": "Co-author, SOHO mission overview paper (Domingo, Fleck & Poland 1995)",
-          "url": "https://doi.org/10.1007/BF00733425",
-          "strength": "Low"
-        }
-      ],
-      "person_record": {
-        "id": null,
-        "url": null
-      },
-      "orcid": null,
-      "affiliation": "NASA Goddard Space Flight Center",
-      "activity_dates": null
-    },
-    {
-      "name": "Kevin Schenk",
-      "status": "excluded",
-      "confidence": null,
-      "exclusion_reason": "Project Manager (engineering/management role), not a data author; no Person record exists. Recorded for downstream awareness.",
-      "evidence": [
-        {
-          "source": "SOHO provider people page (Project Manager)",
-          "url": "https://soho.nascom.nasa.gov/about/people.html",
-          "strength": "Low"
-        }
-      ],
-      "person_record": {
-        "id": null,
-        "url": null
-      },
-      "orcid": null,
-      "affiliation": "NASA Goddard Space Flight Center",
-      "activity_dates": null
-    },
-    {
-      "name": "Jan Merka",
-      "status": "excluded",
-      "confidence": null,
-      "exclusion_reason": "metadata curation role (MetadataContact on SOHO Ephemeris/Positions instrument record), not a data author",
-      "evidence": [
-        {
-          "source": "SOHO Ephemeris instrument record (MetadataContact)",
-          "url": "https://spase-metadata.org/SMWG/Instrument/SOHO/Ephemeris.html",
-          "strength": "Low"
-        }
-      ],
-      "person_record": {
-        "id": "spase://SMWG/Person/Jan.Merka",
-        "url": "https://spase-metadata.org/SMWG/Person/Jan.Merka.html"
-      },
-      "orcid": null,
       "affiliation": null,
-      "activity_dates": null
+      "activity_dates": null,
+      "enrichment": {
+        "orcid_source": "ORCID name-search (corroborated)",
+        "orcid_confidence": "Confirmed",
+        "affiliation_source": null,
+        "affiliation_type": null,
+        "lookup_status": "complete",
+        "notes": "ORCID expanded-search returned a single exact-name match (Claus Froehlich, ETH Zuerich) whose sole listed work is 'Methodology to create a new total solar irradiance record' - total solar irradiance is precisely VIRGO's measurement domain, corroborating the VIRGO PI. ORCID confirmed. Affiliation left null: the only dated ORCID employment is the degenerate string 'Free lancing scientist, retired' (2009-present), not a usable institution; the VIRGO-era institution PMOD/WRC Davos is not confirmed via a structured source."
+      }
     }
   ],
   "notes": [
-    "The Observatory record itself lists only two Contacts (both ProjectScientist: Jack Ireland and Bernhard Fleck). The Observatory XML carries no InstrumentIDs and no OperatingSpan; the SOHO instrument records were found via the SMWG Instrument registry (https://spase-metadata.org/SMWG/Instrument/SOHO/) and corroborated by the SOHO provider people page.",
-    "No SOHO-specific CMAD exists — see the top-level cmad field. SOHO (launched 1995) predates the CMAD requirement; current-team evidence came instead from the provider people page and instrument SPASE records.",
-    "SOHO has two distinct PI generations. The instrument SPASE records carry the ORIGINAL (launch-era, 1995) PIs, while the provider people page (https://soho.nascom.nasa.gov/about/people.html) lists the CURRENT PIs. Where they differ, BOTH are included as Strong (each is a named instrument PI from an authoritative source): EIT Delaboudiniere/Auchere, CDS Harrison/Fludra, GOLF Gabriel/Boumier, SUMER Wilhelm/Curdt, SWAN Bertaux/Quemerais, UVCS Kohl+Culhane/Strachan, LASCO Howard/Battams, VIRGO Frohlich/Finsterle. The downstream role agent should resolve original-vs-current (e.g. FormerPI vs PI) and activity dates.",
-    "MDI, CELIAS, COSTEP, ERNE show the same person in both the SPASE record and the provider page (Scherrer, Wimmer-Schweingruber, Heber, Vainio).",
-    "Provider people page reads roles as: Fleck = Project Scientist, Ireland = Deputy Project Scientist, Schenk = Project Manager. The SPASE record currently labels both Fleck and Ireland as ProjectScientist; downstream may wish to reconcile Ireland to Deputy Project Scientist.",
-    "The SOHO mission overview paper (Domingo, Fleck & Poland 1995, Solar Physics 162, 1; doi:10.1007/BF00733425) corroborates Fleck and names Vicente Domingo (first SOHO Project Scientist) and Arthur I. Poland as overview-paper authors/early project scientists. Both were excluded (overview co-authorship alone is below the inclusion bar and neither appears in the record Contacts nor the current provider listing) but recorded for downstream awareness as potential FormerProjectScientist candidates.",
-    "Person record for Kevin Schenk does not exist (404); the 21 included instrument/project PIs have existing SMWG Person records as cited.",
-    "Affiliation for Russell A. Howard differs between sources (provider page: US Naval Research Laboratory for LASCO; SMWG Person record lists Johns Hopkins APL) — flagged for downstream verification."
-  ],
-  "operating_span": {
-    "start": "1995-12-02",
-    "stop": null,
-    "notes": "SOHO launched 1995-12-02 and is still operating; open-ended span used for era-matching. The Observatory SPASE record carries no explicit OperatingSpan (per finder notes)."
-  }
+    "Record type is Observatory, so the description paper is the mission/observatory OVERVIEW paper: Domingo, Fleck & Poland, 'The SOHO mission: An overview', Solar Physics 162 (1995), doi:10.1007/BF00733425. Paper selection is CONFIDENT: title contains 'mission'/'overview', it names the observatory, it appears at the start of operations (Dec 1995 = launch month), and it is the canonical, heavily-cited SOHO reference explicitly cited in the SPASE Description ('B. Fleck, V. Domingo, and A. I. Poland, eds., Solar Physics, V. 162, 1995'). SciX/Springer agree on the author list.",
+    "Overview-paper alphabetization check: only 3 authors (Domingo, Fleck, Poland), below the 5-name threshold, so treated as NOT alphabetized — author order signals contribution. All three are positions 1-3, hence Strong-tier.",
+    "Bernhard Fleck is corroborated at two levels: overview co-author (Strong) AND Observatory-record ProjectScientist (Medium). Vicente Domingo (first Project Scientist) and Arthur I. Poland (a later Project Scientist) are the other overview authors; both have SMWG Person records (Poland's is Arthur.I.Poland; the bare 'Arthur.Poland' slug returns 404).",
+    "The 12 instrument PIs are Medium via the qualifying PrincipalInvestigator role in their sibling SOHO Instrument records; per the skill, for an Observatory record all instrument leads are legitimate candidates. Every one has an existing SMWG Person record.",
+    "SPASE instrument records reflect CURRENT PIs for several instruments, which differ from the original description-paper-era PIs: CELIAS (Wimmer-Schweingruber now; originally D. Hovestadt / P. Bochsler), COSTEP (Heber now; originally H. Kunow), ERNE (Vainio now; originally J. Torsti), LASCO (Howard now; originally G. Brueckner). These original/founding instrument PIs were NOT asserted as candidates in this run because no source naming them was fetched here; a downstream instrument-level pass should recover them from each instrument's own description paper (several instrument records link one, e.g. CELIAS doi:10.1007/BF00733436, COSTEP doi:10.1007/BF00733437, ERNE doi:10.1007/BF00733438).",
+    "UVCS lists two PrincipalInvestigators in SPASE (John L. Kohl and J. Leonard Culhane); both retained as Medium candidates.",
+    "CMAD expected but not located — see the cmad object. SOHO participates in NASA senior review but calibration is documented per-instrument rather than in a consolidated mission CMAD.",
+    "The Observatory record carries no explicit OperatingSpan element; operating_span.start was taken from the launch date in the Description (1995-12-02) and stop set to null because SOHO remains operational. Downstream era-matching should use these values.",
+    "The SOHO/Ephemeris registry entry is orbit/trajectory data, not a science instrument; excluded from the instrument roster and generates no candidates."
+  ]
 }

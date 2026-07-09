@@ -1,379 +1,268 @@
 {
   "record": "spase://SMWG/Observatory/SOHO",
-  "date": "2026-06-30",
+  "date": "2026-07-07",
+  "operating_span": { "start": "1995-12-02", "stop": null },
   "cmad": {
     "found": false,
+    "expected": true,
     "url": null,
-    "notes": "No SOHO-specific CMAD located. SOHO is a legacy mission (launched 1995-12-02) predating the CMAD requirement. A web search for 'SOHO Calibration and Measurement Algorithms Document' returned CMADs only for other missions (STEREO/SECCHI, STEREO/WAVES, MMS). A related radiometric-calibration reference exists (ISSI 'The Radiometric Calibration of SOHO', https://www.issibern.ch/PDF-Files/soho_cal.pdf) but it is not a CMAD front-page team document. Proceeded with record Contacts, instrument SPASE records, and the SOHO provider people page for current-team evidence."
+    "notes": "SOHO is still operational (launched 1995-12-02, no StopDate) and participates in NASA's Heliophysics senior review of operating missions (referenced in the 2020 Senior Review, which assesses PDMP/CMAD status), so a CMAD is nominally expected. No consolidated SOHO mission-level CMAD was located via general web search, the SOHO/NASA-GSFC pages, or instrument-team sites. SOHO is a joint ESA/NASA mission with ESA-led operations, and calibration is documented per-instrument (e.g. LASCO C2/C3 photometric calibration papers) rather than in a single mission CMAD, which likely explains the absence. Recorded as an expected-but-not-located gap; proceeded with the remaining sources."
+  },
+  "instrument_coverage": {
+    "spase_instruments": [
+      "spase://SMWG/Instrument/SOHO/CDS",
+      "spase://SMWG/Instrument/SOHO/CELIAS",
+      "spase://SMWG/Instrument/SOHO/COSTEP",
+      "spase://SMWG/Instrument/SOHO/EIT",
+      "spase://SMWG/Instrument/SOHO/ERNE",
+      "spase://SMWG/Instrument/SOHO/GOLF",
+      "spase://SMWG/Instrument/SOHO/LASCO",
+      "spase://SMWG/Instrument/SOHO/MDI",
+      "spase://SMWG/Instrument/SOHO/SUMER",
+      "spase://SMWG/Instrument/SOHO/SWAN",
+      "spase://SMWG/Instrument/SOHO/UVCS",
+      "spase://SMWG/Instrument/SOHO/VIRGO"
+    ],
+    "external_roster": [
+      "CDS", "CELIAS", "COSTEP", "EIT", "ERNE", "GOLF",
+      "LASCO", "MDI", "SUMER", "SWAN", "UVCS", "VIRGO"
+    ],
+    "missing_from_spase": [],
+    "notes": "Observatory records carry no downward instrument links, so instruments were found by reverse-lookup of the SPASE registry path https://spase-metadata.org/SMWG/Instrument/SOHO/ ; each hit's ObservatoryID was confirmed to equal spase://SMWG/Observatory/SOHO. The registry also contains a SOHO/Ephemeris record, which is trajectory/orbit data, not a science instrument, and is excluded from the roster. External ground truth: the Observatory Description states 'Twelve instruments comprised the payload,' matching the canonical SOHO payload (CDS, CELIAS, COSTEP, EIT, ERNE, GOLF, LASCO, MDI, SUMER, SWAN, UVCS, VIRGO). All 12 have SPASE Instrument records, so coverage is complete and no instrument team is invisible to registry-based discovery. The mission instruments landing page (soho.nascom.nasa.gov) could not be fetched (tool permission denied), but the sibling instrument records supplied each instrument's lead directly."
   },
   "candidates": [
+    {
+      "name": "Vicente Domingo",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        { "source": "First author of the SOHO mission overview paper, 'The SOHO mission: An overview', Solar Physics 162 (1995) — 3-author paper, position 1", "url": "https://doi.org/10.1007/BF00733425", "strength": "Strong" }
+      ],
+      "person_record": { "id": "spase://SMWG/Person/Vicente.Domingo", "url": "https://spase-metadata.org/SMWG/Person/Vicente.Domingo.html" },
+      "orcid": null,
+      "affiliation": null,
+      "activity_dates": null
+    },
     {
       "name": "Bernhard Fleck",
       "status": "included",
       "confidence": "Strong",
       "exclusion_reason": null,
       "evidence": [
-        { "source": "Record Contacts (ProjectScientist)", "url": "https://spase-metadata.org/SMWG/Observatory/SOHO", "strength": "Strong" },
-        { "source": "SOHO provider people page (Project Scientist)", "url": "https://soho.nascom.nasa.gov/about/people.html", "strength": "Strong" },
-        { "source": "SOHO mission overview paper co-author (Domingo, Fleck & Poland 1995)", "url": "https://doi.org/10.1007/BF00733425", "strength": "Medium" }
+        { "source": "Second author of the SOHO mission overview paper, 'The SOHO mission: An overview', Solar Physics 162 (1995) — 3-author paper, position 2", "url": "https://doi.org/10.1007/BF00733425", "strength": "Strong" },
+        { "source": "Observatory record Contacts (ProjectScientist — qualifying role)", "url": "https://spase-metadata.org/SMWG/Observatory/SOHO", "strength": "Medium" }
       ],
       "person_record": { "id": "spase://SMWG/Person/Bernhard.Fleck", "url": "https://spase-metadata.org/SMWG/Person/Bernhard.Fleck.html" },
       "orcid": null,
-      "affiliation": "European Space Agency",
+      "affiliation": "ESA / NASA-GSFC (SOHO Project Scientist)",
+      "activity_dates": null
+    },
+    {
+      "name": "Arthur I. Poland",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        { "source": "Third author of the SOHO mission overview paper, 'The SOHO mission: An overview', Solar Physics 162 (1995) — 3-author paper, position 3", "url": "https://doi.org/10.1007/BF00733425", "strength": "Strong" }
+      ],
+      "person_record": { "id": "spase://SMWG/Person/Arthur.I.Poland", "url": "https://spase-metadata.org/SMWG/Person/Arthur.I.Poland.html" },
+      "orcid": null,
+      "affiliation": null,
       "activity_dates": null
     },
     {
       "name": "Jack Ireland",
       "status": "included",
-      "confidence": "Strong",
+      "confidence": "Medium",
       "exclusion_reason": null,
       "evidence": [
-        { "source": "Record Contacts (ProjectScientist)", "url": "https://spase-metadata.org/SMWG/Observatory/SOHO", "strength": "Strong" },
-        { "source": "SOHO provider people page (Deputy Project Scientist)", "url": "https://soho.nascom.nasa.gov/about/people.html", "strength": "Strong" }
+        { "source": "Observatory record Contacts (ProjectScientist — qualifying role); current SOHO Project Scientist", "url": "https://spase-metadata.org/SMWG/Observatory/SOHO", "strength": "Medium" }
       ],
       "person_record": { "id": "spase://SMWG/Person/Jack.Ireland", "url": "https://spase-metadata.org/SMWG/Person/Jack.Ireland.html" },
-      "orcid": "0000-0002-2019-8881",
-      "affiliation": "NASA Goddard Space Flight Center",
-      "activity_dates": null
-    },
-    {
-      "name": "Russell A. Howard",
-      "status": "included",
-      "confidence": "Strong",
-      "exclusion_reason": null,
-      "evidence": [
-        { "source": "LASCO Instrument record PI", "url": "https://spase-metadata.org/SMWG/Instrument/SOHO/LASCO.html", "strength": "Strong" }
-      ],
-      "person_record": { "id": "spase://SMWG/Person/Russell.A.Howard", "url": "https://spase-metadata.org/SMWG/Person/Russell.A.Howard.html" },
-      "orcid": "0000-0001-9027-8249",
-      "affiliation": "US Naval Research Laboratory (Person record lists Johns Hopkins University Applied Physics Laboratory)",
-      "activity_dates": "original LASCO PI"
-    },
-    {
-      "name": "Karl Battams",
-      "status": "included",
-      "confidence": "Strong",
-      "exclusion_reason": null,
-      "evidence": [
-        { "source": "SOHO provider people page (current LASCO PI)", "url": "https://soho.nascom.nasa.gov/about/people.html", "strength": "Strong" }
-      ],
-      "person_record": { "id": "spase://SMWG/Person/Karl.Battams", "url": "https://spase-metadata.org/SMWG/Person/Karl.Battams.html" },
-      "orcid": "0000-0002-8692-6925",
-      "affiliation": "US Naval Research Laboratory",
-      "activity_dates": "current LASCO PI"
-    },
-    {
-      "name": "Jean-Pierre Delaboudiniere",
-      "status": "included",
-      "confidence": "Strong",
-      "exclusion_reason": null,
-      "evidence": [
-        { "source": "EIT Instrument record PI", "url": "https://spase-metadata.org/SMWG/Instrument/SOHO/EIT.html", "strength": "Strong" }
-      ],
-      "person_record": { "id": "spase://SMWG/Person/Jean-Pierre.Delaboudiniere", "url": "https://spase-metadata.org/SMWG/Person/Jean-Pierre.Delaboudiniere.html" },
       "orcid": null,
-      "affiliation": "Centre National de la Recherche (Institut d'Astrophysique Spatiale)",
-      "activity_dates": "original EIT PI"
-    },
-    {
-      "name": "Frédéric Auchère",
-      "status": "included",
-      "confidence": "Strong",
-      "exclusion_reason": null,
-      "evidence": [
-        { "source": "SOHO provider people page (current EIT PI)", "url": "https://soho.nascom.nasa.gov/about/people.html", "strength": "Strong" }
-      ],
-      "person_record": { "id": "spase://SMWG/Person/Frederic.Auchere", "url": "https://spase-metadata.org/SMWG/Person/Frederic.Auchere.html" },
-      "orcid": null,
-      "affiliation": "Institut d'Astrophysique Spatiale",
-      "activity_dates": "current EIT PI"
-    },
-    {
-      "name": "Philip H. Scherrer",
-      "status": "included",
-      "confidence": "Strong",
-      "exclusion_reason": null,
-      "evidence": [
-        { "source": "MDI Instrument record PI", "url": "https://spase-metadata.org/SMWG/Instrument/SOHO/MDI.html", "strength": "Strong" },
-        { "source": "SOHO provider people page (MDI PI)", "url": "https://soho.nascom.nasa.gov/about/people.html", "strength": "Strong" }
-      ],
-      "person_record": { "id": "spase://SMWG/Person/Philip.H.Scherrer", "url": "https://spase-metadata.org/SMWG/Person/Philip.H.Scherrer.html" },
-      "orcid": null,
-      "affiliation": "Stanford University",
+      "affiliation": null,
       "activity_dates": null
     },
     {
       "name": "Richard A. Harrison",
       "status": "included",
-      "confidence": "Strong",
+      "confidence": "Medium",
       "exclusion_reason": null,
       "evidence": [
-        { "source": "CDS Instrument record PI", "url": "https://spase-metadata.org/SMWG/Instrument/SOHO/CDS.html", "strength": "Strong" }
+        { "source": "PrincipalInvestigator (qualifying role) in the SOHO/CDS sibling Instrument record Contacts", "url": "https://spase-metadata.org/SMWG/Instrument/SOHO/CDS.html", "strength": "Medium" }
       ],
       "person_record": { "id": "spase://SMWG/Person/Richard.A.Harrison", "url": "https://spase-metadata.org/SMWG/Person/Richard.A.Harrison.html" },
       "orcid": null,
-      "affiliation": "Rutherford Appleton Laboratory",
-      "activity_dates": "original CDS PI"
-    },
-    {
-      "name": "Andrzej Fludra",
-      "status": "included",
-      "confidence": "Strong",
-      "exclusion_reason": null,
-      "evidence": [
-        { "source": "SOHO provider people page (current CDS PI)", "url": "https://soho.nascom.nasa.gov/about/people.html", "strength": "Strong" }
-      ],
-      "person_record": { "id": "spase://SMWG/Person/Andrzej.Fludra", "url": "https://spase-metadata.org/SMWG/Person/Andrzej.Fludra.html" },
-      "orcid": null,
-      "affiliation": "Rutherford Appleton Laboratory",
-      "activity_dates": "current CDS PI"
+      "affiliation": null,
+      "activity_dates": null
     },
     {
       "name": "Robert F. Wimmer-Schweingruber",
       "status": "included",
-      "confidence": "Strong",
+      "confidence": "Medium",
       "exclusion_reason": null,
       "evidence": [
-        { "source": "CELIAS Instrument record PI", "url": "https://spase-metadata.org/SMWG/Instrument/SOHO/CELIAS.html", "strength": "Strong" },
-        { "source": "SOHO provider people page (CELIAS PI)", "url": "https://soho.nascom.nasa.gov/about/people.html", "strength": "Strong" }
+        { "source": "PrincipalInvestigator (qualifying role) in the SOHO/CELIAS sibling Instrument record Contacts", "url": "https://spase-metadata.org/SMWG/Instrument/SOHO/CELIAS.html", "strength": "Medium" }
       ],
       "person_record": { "id": "spase://SMWG/Person/Robert.F.Wimmer-Schweingruber", "url": "https://spase-metadata.org/SMWG/Person/Robert.F.Wimmer-Schweingruber.html" },
       "orcid": null,
-      "affiliation": "Institute of Experimental and Applied Physics, Christian Albrechts Universität (Kiel)",
+      "affiliation": "University of Kiel (SOHO-CELIAS team site)",
       "activity_dates": null
     },
     {
       "name": "Bernd Heber",
       "status": "included",
-      "confidence": "Strong",
+      "confidence": "Medium",
       "exclusion_reason": null,
       "evidence": [
-        { "source": "COSTEP Instrument record PI", "url": "https://spase-metadata.org/SMWG/Instrument/SOHO/COSTEP.html", "strength": "Strong" },
-        { "source": "SOHO provider people page (COSTEP PI)", "url": "https://soho.nascom.nasa.gov/about/people.html", "strength": "Strong" }
+        { "source": "PrincipalInvestigator (qualifying role) in the SOHO/COSTEP sibling Instrument record Contacts", "url": "https://spase-metadata.org/SMWG/Instrument/SOHO/COSTEP.html", "strength": "Medium" }
       ],
       "person_record": { "id": "spase://SMWG/Person/Bernd.Heber", "url": "https://spase-metadata.org/SMWG/Person/Bernd.Heber.html" },
       "orcid": null,
-      "affiliation": "Institute of Experimental and Applied Physics, Christian Albrechts Universität (Kiel)",
+      "affiliation": "University of Kiel (SOHO-COSTEP team site)",
+      "activity_dates": null
+    },
+    {
+      "name": "Jean-Pierre Delaboudinière",
+      "status": "included",
+      "confidence": "Medium",
+      "exclusion_reason": null,
+      "evidence": [
+        { "source": "PrincipalInvestigator (qualifying role) in the SOHO/EIT sibling Instrument record Contacts", "url": "https://spase-metadata.org/SMWG/Instrument/SOHO/EIT.html", "strength": "Medium" }
+      ],
+      "person_record": { "id": "spase://SMWG/Person/Jean-Pierre.Delaboudiniere", "url": "https://spase-metadata.org/SMWG/Person/Jean-Pierre.Delaboudiniere.html" },
+      "orcid": null,
+      "affiliation": null,
       "activity_dates": null
     },
     {
       "name": "Rami Vainio",
       "status": "included",
-      "confidence": "Strong",
+      "confidence": "Medium",
       "exclusion_reason": null,
       "evidence": [
-        { "source": "ERNE Instrument record PI", "url": "https://spase-metadata.org/SMWG/Instrument/SOHO/ERNE.html", "strength": "Strong" },
-        { "source": "SOHO provider people page (ERNE PI)", "url": "https://soho.nascom.nasa.gov/about/people.html", "strength": "Strong" }
+        { "source": "PrincipalInvestigator (qualifying role) in the SOHO/ERNE sibling Instrument record Contacts", "url": "https://spase-metadata.org/SMWG/Instrument/SOHO/ERNE.html", "strength": "Medium" }
       ],
       "person_record": { "id": "spase://SMWG/Person/Rami.Vainio", "url": "https://spase-metadata.org/SMWG/Person/Rami.Vainio.html" },
       "orcid": null,
-      "affiliation": "Department of Physics and Astronomy, University of Turku",
+      "affiliation": "University of Turku (SOHO-ERNE team site)",
       "activity_dates": null
     },
     {
       "name": "Alan-Henri Gabriel",
       "status": "included",
-      "confidence": "Strong",
+      "confidence": "Medium",
       "exclusion_reason": null,
       "evidence": [
-        { "source": "GOLF Instrument record PI", "url": "https://spase-metadata.org/SMWG/Instrument/SOHO/GOLF.html", "strength": "Strong" }
+        { "source": "PrincipalInvestigator (qualifying role) in the SOHO/GOLF sibling Instrument record Contacts", "url": "https://spase-metadata.org/SMWG/Instrument/SOHO/GOLF.html", "strength": "Medium" }
       ],
       "person_record": { "id": "spase://SMWG/Person/Alan-Henri.Gabriel", "url": "https://spase-metadata.org/SMWG/Person/Alan-Henri.Gabriel.html" },
       "orcid": null,
-      "affiliation": "Université Paris Sud (Institut d'Astrophysique Spatiale)",
-      "activity_dates": "original GOLF PI"
+      "affiliation": null,
+      "activity_dates": null
     },
     {
-      "name": "Patrick Boumier",
+      "name": "Russell A. Howard",
       "status": "included",
-      "confidence": "Strong",
+      "confidence": "Medium",
       "exclusion_reason": null,
       "evidence": [
-        { "source": "SOHO provider people page (current GOLF PI)", "url": "https://soho.nascom.nasa.gov/about/people.html", "strength": "Strong" }
+        { "source": "PrincipalInvestigator (qualifying role) in the SOHO/LASCO sibling Instrument record Contacts (current PI)", "url": "https://spase-metadata.org/SMWG/Instrument/SOHO/LASCO.html", "strength": "Medium" }
       ],
-      "person_record": { "id": "spase://SMWG/Person/Patrick.Boumier", "url": "https://spase-metadata.org/SMWG/Person/Patrick.Boumier.html" },
+      "person_record": { "id": "spase://SMWG/Person/Russell.A.Howard", "url": "https://spase-metadata.org/SMWG/Person/Russell.A.Howard.html" },
       "orcid": null,
-      "affiliation": "Institut d'Astrophysique Spatiale",
-      "activity_dates": "current GOLF PI"
+      "affiliation": null,
+      "activity_dates": null
+    },
+    {
+      "name": "Philip H. Scherrer",
+      "status": "included",
+      "confidence": "Medium",
+      "exclusion_reason": null,
+      "evidence": [
+        { "source": "PrincipalInvestigator (qualifying role) in the SOHO/MDI sibling Instrument record Contacts", "url": "https://spase-metadata.org/SMWG/Instrument/SOHO/MDI.html", "strength": "Medium" }
+      ],
+      "person_record": { "id": "spase://SMWG/Person/Philip.H.Scherrer", "url": "https://spase-metadata.org/SMWG/Person/Philip.H.Scherrer.html" },
+      "orcid": null,
+      "affiliation": null,
+      "activity_dates": null
     },
     {
       "name": "Klaus Wilhelm",
       "status": "included",
-      "confidence": "Strong",
+      "confidence": "Medium",
       "exclusion_reason": null,
       "evidence": [
-        { "source": "SUMER Instrument record PI", "url": "https://spase-metadata.org/SMWG/Instrument/SOHO/SUMER.html", "strength": "Strong" }
+        { "source": "PrincipalInvestigator (qualifying role) in the SOHO/SUMER sibling Instrument record Contacts", "url": "https://spase-metadata.org/SMWG/Instrument/SOHO/SUMER.html", "strength": "Medium" }
       ],
       "person_record": { "id": "spase://SMWG/Person/Klaus.Wilhelm", "url": "https://spase-metadata.org/SMWG/Person/Klaus.Wilhelm.html" },
       "orcid": null,
-      "affiliation": "Max-Planck-Institut für Aeronomie",
-      "activity_dates": "original SUMER PI"
-    },
-    {
-      "name": "Werner Curdt",
-      "status": "included",
-      "confidence": "Strong",
-      "exclusion_reason": null,
-      "evidence": [
-        { "source": "SOHO provider people page (current SUMER PI)", "url": "https://soho.nascom.nasa.gov/about/people.html", "strength": "Strong" }
-      ],
-      "person_record": { "id": "spase://SMWG/Person/Werner.Curdt", "url": "https://spase-metadata.org/SMWG/Person/Werner.Curdt.html" },
-      "orcid": null,
-      "affiliation": "MPI für Solar System Research",
-      "activity_dates": "current SUMER PI"
+      "affiliation": null,
+      "activity_dates": null
     },
     {
       "name": "Jean-Loup C. Bertaux",
       "status": "included",
-      "confidence": "Strong",
+      "confidence": "Medium",
       "exclusion_reason": null,
       "evidence": [
-        { "source": "SWAN Instrument record PI", "url": "https://spase-metadata.org/SMWG/Instrument/SOHO/SWAN.html", "strength": "Strong" }
+        { "source": "PrincipalInvestigator (qualifying role) in the SOHO/SWAN sibling Instrument record Contacts", "url": "https://spase-metadata.org/SMWG/Instrument/SOHO/SWAN.html", "strength": "Medium" }
       ],
       "person_record": { "id": "spase://SMWG/Person/Jean-Loup.C.Bertaux", "url": "https://spase-metadata.org/SMWG/Person/Jean-Loup.C.Bertaux.html" },
       "orcid": null,
-      "affiliation": "Centre National de la Recherche Scientifique (LATMOS)",
-      "activity_dates": "original SWAN PI"
-    },
-    {
-      "name": "Eric Quémerais",
-      "status": "included",
-      "confidence": "Strong",
-      "exclusion_reason": null,
-      "evidence": [
-        { "source": "SOHO provider people page (current SWAN PI)", "url": "https://soho.nascom.nasa.gov/about/people.html", "strength": "Strong" }
-      ],
-      "person_record": { "id": "spase://SMWG/Person/Eric.Quemerais", "url": "https://spase-metadata.org/SMWG/Person/Eric.Quemerais.html" },
-      "orcid": null,
-      "affiliation": "Laboratoire atmosphères, milieux, observations spatiales (LATMOS)",
-      "activity_dates": "current SWAN PI"
+      "affiliation": null,
+      "activity_dates": null
     },
     {
       "name": "John L. Kohl",
       "status": "included",
-      "confidence": "Strong",
+      "confidence": "Medium",
       "exclusion_reason": null,
       "evidence": [
-        { "source": "UVCS Instrument record PI", "url": "https://spase-metadata.org/SMWG/Instrument/SOHO/UVCS.html", "strength": "Strong" }
+        { "source": "PrincipalInvestigator (qualifying role) in the SOHO/UVCS sibling Instrument record Contacts", "url": "https://spase-metadata.org/SMWG/Instrument/SOHO/UVCS.html", "strength": "Medium" }
       ],
       "person_record": { "id": "spase://SMWG/Person/John.L.Kohl", "url": "https://spase-metadata.org/SMWG/Person/John.L.Kohl.html" },
       "orcid": null,
-      "affiliation": "Harvard-Smithsonian Center for Astrophysics",
-      "activity_dates": "original UVCS PI"
+      "affiliation": null,
+      "activity_dates": null
     },
     {
       "name": "J. Leonard Culhane",
       "status": "included",
-      "confidence": "Strong",
+      "confidence": "Medium",
       "exclusion_reason": null,
       "evidence": [
-        { "source": "UVCS Instrument record PI (second PI listed)", "url": "https://spase-metadata.org/SMWG/Instrument/SOHO/UVCS.html", "strength": "Strong" }
+        { "source": "Listed with PrincipalInvestigator (qualifying role) in the SOHO/UVCS sibling Instrument record Contacts (second PI on UVCS)", "url": "https://spase-metadata.org/SMWG/Instrument/SOHO/UVCS.html", "strength": "Medium" }
       ],
       "person_record": { "id": "spase://SMWG/Person/J.Leonard.Culhane", "url": "https://spase-metadata.org/SMWG/Person/J.Leonard.Culhane.html" },
       "orcid": null,
-      "affiliation": "Mullard Space Science Laboratory",
+      "affiliation": null,
       "activity_dates": null
     },
     {
-      "name": "Leonard Strachan",
+      "name": "Claus Fröhlich",
       "status": "included",
-      "confidence": "Strong",
+      "confidence": "Medium",
       "exclusion_reason": null,
       "evidence": [
-        { "source": "SOHO provider people page (current UVCS PI)", "url": "https://soho.nascom.nasa.gov/about/people.html", "strength": "Strong" }
-      ],
-      "person_record": { "id": "spase://SMWG/Person/Leonard.Strachan", "url": "https://spase-metadata.org/SMWG/Person/Leonard.Strachan.html" },
-      "orcid": null,
-      "affiliation": "Naval Research Laboratory",
-      "activity_dates": "current UVCS PI"
-    },
-    {
-      "name": "Claus Frohlich",
-      "status": "included",
-      "confidence": "Strong",
-      "exclusion_reason": null,
-      "evidence": [
-        { "source": "VIRGO Instrument record PI", "url": "https://spase-metadata.org/SMWG/Instrument/SOHO/VIRGO.html", "strength": "Strong" }
+        { "source": "PrincipalInvestigator (qualifying role) in the SOHO/VIRGO sibling Instrument record Contacts", "url": "https://spase-metadata.org/SMWG/Instrument/SOHO/VIRGO.html", "strength": "Medium" }
       ],
       "person_record": { "id": "spase://SMWG/Person/Claus.Frohlich", "url": "https://spase-metadata.org/SMWG/Person/Claus.Frohlich.html" },
-      "orcid": null,
-      "affiliation": "Physikalisch-Meteorologisches Observatorium Davos",
-      "activity_dates": "original VIRGO PI"
-    },
-    {
-      "name": "Wolfgang Finsterle",
-      "status": "included",
-      "confidence": "Strong",
-      "exclusion_reason": null,
-      "evidence": [
-        { "source": "SOHO provider people page (current VIRGO PI)", "url": "https://soho.nascom.nasa.gov/about/people.html", "strength": "Strong" }
-      ],
-      "person_record": { "id": "spase://SMWG/Person/Wolfgang.Finsterle", "url": "https://spase-metadata.org/SMWG/Person/Wolfgang.Finsterle.html" },
-      "orcid": null,
-      "affiliation": "Physikalisch-Meteorologisches Observatorium Davos",
-      "activity_dates": "current VIRGO PI"
-    },
-    {
-      "name": "Vicente Domingo",
-      "status": "excluded",
-      "confidence": null,
-      "exclusion_reason": "First SOHO Project Scientist and lead author of the mission overview paper, but not named in the record's own Contacts nor on the current provider people page; overview-paper lead authorship alone is below the inclusion bar for this record. Recorded for downstream awareness as a potential FormerProjectScientist.",
-      "evidence": [
-        { "source": "Lead author, SOHO mission overview paper (Domingo, Fleck & Poland 1995, Solar Physics 162, 1)", "url": "https://doi.org/10.1007/BF00733425", "strength": "Low" }
-      ],
-      "person_record": { "id": null, "url": null },
-      "orcid": null,
-      "affiliation": "European Space Agency (Space Science Department)",
-      "activity_dates": "first SOHO Project Scientist"
-    },
-    {
-      "name": "Arthur I. Poland",
-      "status": "excluded",
-      "confidence": null,
-      "exclusion_reason": "Co-author of the mission overview paper and early SOHO project scientist, but not in the record Contacts nor on the current provider people page; overview co-authorship alone is below the inclusion bar. Recorded for downstream awareness.",
-      "evidence": [
-        { "source": "Co-author, SOHO mission overview paper (Domingo, Fleck & Poland 1995)", "url": "https://doi.org/10.1007/BF00733425", "strength": "Low" }
-      ],
-      "person_record": { "id": null, "url": null },
-      "orcid": null,
-      "affiliation": "NASA Goddard Space Flight Center",
-      "activity_dates": null
-    },
-    {
-      "name": "Kevin Schenk",
-      "status": "excluded",
-      "confidence": null,
-      "exclusion_reason": "Project Manager (engineering/management role), not a data author; no Person record exists. Recorded for downstream awareness.",
-      "evidence": [
-        { "source": "SOHO provider people page (Project Manager)", "url": "https://soho.nascom.nasa.gov/about/people.html", "strength": "Low" }
-      ],
-      "person_record": { "id": null, "url": null },
-      "orcid": null,
-      "affiliation": "NASA Goddard Space Flight Center",
-      "activity_dates": null
-    },
-    {
-      "name": "Jan Merka",
-      "status": "excluded",
-      "confidence": null,
-      "exclusion_reason": "metadata curation role (MetadataContact on SOHO Ephemeris/Positions instrument record), not a data author",
-      "evidence": [
-        { "source": "SOHO Ephemeris instrument record (MetadataContact)", "url": "https://spase-metadata.org/SMWG/Instrument/SOHO/Ephemeris.html", "strength": "Low" }
-      ],
-      "person_record": { "id": "spase://SMWG/Person/Jan.Merka", "url": "https://spase-metadata.org/SMWG/Person/Jan.Merka.html" },
       "orcid": null,
       "affiliation": null,
       "activity_dates": null
     }
   ],
   "notes": [
-    "The Observatory record itself lists only two Contacts (both ProjectScientist: Jack Ireland and Bernhard Fleck). The Observatory XML carries no InstrumentIDs and no OperatingSpan; the SOHO instrument records were found via the SMWG Instrument registry (https://spase-metadata.org/SMWG/Instrument/SOHO/) and corroborated by the SOHO provider people page.",
-    "No SOHO-specific CMAD exists — see the top-level cmad field. SOHO (launched 1995) predates the CMAD requirement; current-team evidence came instead from the provider people page and instrument SPASE records.",
-    "SOHO has two distinct PI generations. The instrument SPASE records carry the ORIGINAL (launch-era, 1995) PIs, while the provider people page (https://soho.nascom.nasa.gov/about/people.html) lists the CURRENT PIs. Where they differ, BOTH are included as Strong (each is a named instrument PI from an authoritative source): EIT Delaboudiniere/Auchere, CDS Harrison/Fludra, GOLF Gabriel/Boumier, SUMER Wilhelm/Curdt, SWAN Bertaux/Quemerais, UVCS Kohl+Culhane/Strachan, LASCO Howard/Battams, VIRGO Frohlich/Finsterle. The downstream role agent should resolve original-vs-current (e.g. FormerPI vs PI) and activity dates.",
-    "MDI, CELIAS, COSTEP, ERNE show the same person in both the SPASE record and the provider page (Scherrer, Wimmer-Schweingruber, Heber, Vainio).",
-    "Provider people page reads roles as: Fleck = Project Scientist, Ireland = Deputy Project Scientist, Schenk = Project Manager. The SPASE record currently labels both Fleck and Ireland as ProjectScientist; downstream may wish to reconcile Ireland to Deputy Project Scientist.",
-    "The SOHO mission overview paper (Domingo, Fleck & Poland 1995, Solar Physics 162, 1; doi:10.1007/BF00733425) corroborates Fleck and names Vicente Domingo (first SOHO Project Scientist) and Arthur I. Poland as overview-paper authors/early project scientists. Both were excluded (overview co-authorship alone is below the inclusion bar and neither appears in the record Contacts nor the current provider listing) but recorded for downstream awareness as potential FormerProjectScientist candidates.",
-    "Person record for Kevin Schenk does not exist (404); the 21 included instrument/project PIs have existing SMWG Person records as cited.",
-    "Affiliation for Russell A. Howard differs between sources (provider page: US Naval Research Laboratory for LASCO; SMWG Person record lists Johns Hopkins APL) — flagged for downstream verification."
+    "Record type is Observatory, so the description paper is the mission/observatory OVERVIEW paper: Domingo, Fleck & Poland, 'The SOHO mission: An overview', Solar Physics 162 (1995), doi:10.1007/BF00733425. Paper selection is CONFIDENT: title contains 'mission'/'overview', it names the observatory, it appears at the start of operations (Dec 1995 = launch month), and it is the canonical, heavily-cited SOHO reference explicitly cited in the SPASE Description ('B. Fleck, V. Domingo, and A. I. Poland, eds., Solar Physics, V. 162, 1995'). SciX/Springer agree on the author list.",
+    "Overview-paper alphabetization check: only 3 authors (Domingo, Fleck, Poland), below the 5-name threshold, so treated as NOT alphabetized — author order signals contribution. All three are positions 1-3, hence Strong-tier.",
+    "Bernhard Fleck is corroborated at two levels: overview co-author (Strong) AND Observatory-record ProjectScientist (Medium). Vicente Domingo (first Project Scientist) and Arthur I. Poland (a later Project Scientist) are the other overview authors; both have SMWG Person records (Poland's is Arthur.I.Poland; the bare 'Arthur.Poland' slug returns 404).",
+    "The 12 instrument PIs are Medium via the qualifying PrincipalInvestigator role in their sibling SOHO Instrument records; per the skill, for an Observatory record all instrument leads are legitimate candidates. Every one has an existing SMWG Person record.",
+    "SPASE instrument records reflect CURRENT PIs for several instruments, which differ from the original description-paper-era PIs: CELIAS (Wimmer-Schweingruber now; originally D. Hovestadt / P. Bochsler), COSTEP (Heber now; originally H. Kunow), ERNE (Vainio now; originally J. Torsti), LASCO (Howard now; originally G. Brueckner). These original/founding instrument PIs were NOT asserted as candidates in this run because no source naming them was fetched here; a downstream instrument-level pass should recover them from each instrument's own description paper (several instrument records link one, e.g. CELIAS doi:10.1007/BF00733436, COSTEP doi:10.1007/BF00733437, ERNE doi:10.1007/BF00733438).",
+    "UVCS lists two PrincipalInvestigators in SPASE (John L. Kohl and J. Leonard Culhane); both retained as Medium candidates.",
+    "CMAD expected but not located — see the cmad object. SOHO participates in NASA senior review but calibration is documented per-instrument rather than in a consolidated mission CMAD.",
+    "The Observatory record carries no explicit OperatingSpan element; operating_span.start was taken from the launch date in the Description (1995-12-02) and stop set to null because SOHO remains operational. Downstream era-matching should use these values.",
+    "The SOHO/Ephemeris registry entry is orbit/trajectory data, not a science instrument; excluded from the instrument roster and generates no candidates."
   ]
 }
