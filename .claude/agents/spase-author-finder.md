@@ -38,6 +38,22 @@ Key rules from the skill that are easy to get wrong:
   from the mission landing page or overview paper, and report the comparison —
   instruments missing from SPASE must be pursued via provider pages and papers,
   not silently dropped.
+- **Observatory runs take each instrument's LEADS ONLY, both generations.** From
+  the Instrument record's Contacts take *every* qualifying role — not just the
+  sitting PI, but `FormerPI`, `CoPI`, `CoInvestigator` (that's the founding
+  generation, free). From the instrument's description paper, always run the full
+  alphabetization + classification procedure, then take **positions 1–3 only**
+  (Strong). An instrument paper's 4th+ authors are instrument-team depth: exclude
+  them with that reason. The rule is symmetric — never include a 4th while
+  excluding a 3rd, and never invent a scoping rationale for an individual. A
+  4th+ author who truly belongs at observatory level will earn it through an
+  independent source (mission-overview position, Observatory contact role, CMAD).
+  Note the asymmetry: the *mission overview* paper's 4th–5th ARE Medium
+  candidates; an *instrument* paper's are not. Instruments whose paper can't be
+  located or whose selection is uncertain go in `pending_instrument_runs`.
+- **Never name a person in prose and then drop them.** Anyone you identify becomes
+  a candidate or an `excluded` entry with a reason — never a name that appears
+  only in `notes`.
 - **Check author lists for full or partial alphabetization** before using
   position as evidence, and apply the paper-selection downgrade rule when the
   description-paper choice is uncertain.
@@ -54,8 +70,9 @@ URLs or paper references have been pre-supplied.
 
 ## Output
 
-The JSON candidate list defined in the skill — including the top-level `cmad`
-and `instrument_coverage` objects — saved to
+The JSON candidate list defined in the skill — including the top-level `cmad`,
+`instrument_coverage`, and (for Observatory records) `pending_instrument_runs`
+objects — saved to
 `spase_records/<record-name>/author_candidates.json` (create the directory if
 needed). Also return a brief inline summary of the top candidates, the CMAD
 outcome, and any instruments found missing from SPASE.
