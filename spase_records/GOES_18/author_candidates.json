@@ -1,0 +1,1122 @@
+{
+  "record": "spase://SMWG/Observatory/GOES/18",
+  "date": "2026-07-12",
+  "operating_span": {
+    "start": "2022-03-01T21:38:00Z",
+    "stop": null
+  },
+  "cmad": {
+    "found": false,
+    "expected": false,
+    "url": null,
+    "notes": "No NASA-HQ CMAD located. GOES-R is a NOAA-funded operational mission, not subject to the NASA senior-review CMAD requirement, so absence is unremarkable (expected=false). GOES-R instead uses a 'Product Definition and Users' Guide (PUG)' and per-instrument calibration reports hosted at NOAA NCEI; these name instrument teams but were not treated as CMAD front-page (Strong) evidence. Searched NCEI product pages, goes-r.gov, and general web ('GOES-R CMAD' / 'Calibration and Measurement Algorithms Document') with no hit."
+  },
+  "instrument_coverage": {
+    "spase_instruments": [],
+    "external_roster": [
+      "EXIS",
+      "SUVI",
+      "SEISS",
+      "MAG",
+      "ABI (Earth-pointing, out of heliophysics scope)",
+      "GLM (Earth-pointing, out of heliophysics scope)"
+    ],
+    "missing_from_spase": [
+      "EXIS",
+      "SUVI",
+      "SEISS",
+      "MAG"
+    ],
+    "notes": "GOES/18 has NO Instrument records in SPASE at all: the registry path https://spase-metadata.org/SMWG/Instrument/GOES/ contains subdirectories 1-17 only (no 18), and even GOES/16 and GOES/17 register only MAG + Ephemeris (not SEISS/EXIS/SUVI). Roster established from the goes-r.gov instruments page: space-weather payload = EXIS (EUVS+XRS), SUVI, SEISS, MAG; CCOR is GOES-U only. All four space-weather instruments are missing from SPASE for GOES-18, so their teams were pursued via provider pages (goes-r.gov, SWPC) and instrument description papers rather than registry Contacts. The GOES-16 MAG SPASE record (analogous same-series instrument) was used to recover the MAG PrincipalInvestigator (Howard J. Singer). ABI and GLM are Earth-pointing weather instruments outside heliophysics authorship scope; noted for curator completeness only."
+  },
+  "pending_instrument_runs": [
+    {
+      "instrument": "SUVI (Solar Ultraviolet Imager)",
+      "spase_record": null,
+      "description_paper": "https://doi.org/10.1029/2022SW003044",
+      "reason": "no SPASE record (GOES-18 has no Instrument records)",
+      "notes": "Description paper located and resolved: Darnel et al. 2022 (Space Weather), not alphabetized, leads 1-3 (Darnel, Seaton, Bethge) taken as Strong. A dedicated per-instrument run should also register the SUVI SPASE record and harvest instrument-team depth (positions 4+)."
+    },
+    {
+      "instrument": "SEISS (Space Environment In-Situ Suite)",
+      "spase_record": null,
+      "description_paper": "https://doi.org/10.1117/12.2228537",
+      "reason": "no SPASE record (GOES-18 has no Instrument records)",
+      "notes": "Description/overview paper located and resolved: Galica et al. 2016 (SPIE), not alphabetized, leads 1-3 (Galica, Dichter, Tsui) taken as Strong. SEISS is itself a suite (MPS-HI, MPS-LO, two SGPS, EHIS + DPU); a dedicated run should register SEISS and its sub-sensors."
+    },
+    {
+      "instrument": "MAG (Magnetometer)",
+      "spase_record": null,
+      "description_paper": "https://doi.org/10.1007/s11214-019-0600-3",
+      "reason": "no SPASE record for GOES-18 (analogous GOES-16 MAG record exists)",
+      "notes": "Series description paper located and resolved: Loto'aniu et al. 2019 'The GOES-16 Spacecraft Science Magnetometer' (describes the GOES-R series magnetometer), not alphabetized, leads 1-3 (Loto'aniu, Redmon, Califf) taken as Strong; PI Howard J. Singer recovered from the GOES-16 MAG SPASE record Contacts (Medium). GOES-18-specific paper Loto'aniu et al. 2023 (10.1007/s11214-023-01032-3) is an on-orbit-results/validation paper, not the description paper; its non-lead co-authors were excluded."
+    },
+    {
+      "instrument": "EXIS (Extreme Ultraviolet and X-ray Irradiance Sensors)",
+      "spase_record": null,
+      "description_paper": "https://doi.org/10.1117/12.826445",
+      "reason": "no SPASE record + paper-selection uncertain (EXIS is a two-instrument suite: EUVS + XRS, with separate component design papers from different eras and no single peer-reviewed EXIS overview paper)",
+      "notes": "Paper-position evidence downgraded one tier per the self-aware downgrade rule. EUVS design paper (Eparvier et al. 2009, 10.1117/12.826445) leads 1-3 = Eparvier, Crotser, Jones. XRS design/calibration paper (Woods et al. 2024, 10.1029/2024JA032925) leads 1-3 = Woods, Eden, Eparvier. Francis G. Eparvier is the documented EXIS PI (SWPC provider PDFs title him PI of both EUVS and XRS), so he is Strong via the independent provider-PI source; the other component leads are Medium. A dedicated per-instrument run should resolve EUVS and XRS separately."
+    }
+  ],
+  "candidates": [
+    {
+      "name": "Jonathan M. Darnel",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Lead author (position 1), non-alphabetized SUVI description paper 'The GOES-R Solar UltraViolet Imager' (Darnel et al. 2022, Space Weather)",
+          "url": "https://doi.org/10.1029/2022SW003044",
+          "strength": "Strong"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": "https://orcid.org/0000-0001-6601-9116",
+      "affiliation": "CIRES, University of Colorado Boulder / NOAA National Centers for Environmental Information",
+      "activity_dates": null
+    },
+    {
+      "name": "Daniel B. Seaton",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Author position 2, non-alphabetized SUVI description paper (Darnel et al. 2022)",
+          "url": "https://doi.org/10.1029/2022SW003044",
+          "strength": "Strong"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Daniel.B.Seaton",
+        "url": "https://spase-metadata.org/SMWG/Person/Daniel.B.Seaton.html"
+      },
+      "orcid": "https://orcid.org/0000-0002-0494-2025",
+      "affiliation": "CIRES, University of Colorado Boulder / NOAA NCEI / Southwest Research Institute",
+      "activity_dates": null
+    },
+    {
+      "name": "Christian Bethge",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Author position 3, non-alphabetized SUVI description paper (Darnel et al. 2022)",
+          "url": "https://doi.org/10.1029/2022SW003044",
+          "strength": "Strong"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Christian.Bethge",
+        "url": "https://spase-metadata.org/SMWG/Person/Christian.Bethge.html"
+      },
+      "orcid": null,
+      "affiliation": "CIRES, University of Colorado Boulder / NOAA NCEI",
+      "activity_dates": null
+    },
+    {
+      "name": "Paul T. M. Loto'aniu",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Lead author (position 1), non-alphabetized MAG description paper 'The GOES-16 Spacecraft Science Magnetometer' (Loto'aniu et al. 2019, describes the GOES-R series magnetometer)",
+          "url": "https://doi.org/10.1007/s11214-019-0600-3",
+          "strength": "Strong"
+        },
+        {
+          "source": "Lead author (position 1), GOES-18-specific magnetometer paper (Loto'aniu et al. 2023, on-orbit results)",
+          "url": "https://doi.org/10.1007/s11214-023-01032-3",
+          "strength": "Medium"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": "https://orcid.org/0000-0002-2140-2370",
+      "affiliation": "NOAA / CIRES, University of Colorado Boulder",
+      "activity_dates": null
+    },
+    {
+      "name": "Robert J. Redmon",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Author position 2, non-alphabetized MAG description paper (Loto'aniu et al. 2019)",
+          "url": "https://doi.org/10.1007/s11214-019-0600-3",
+          "strength": "Strong"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Robert.J.Redmon",
+        "url": "https://spase-metadata.org/SMWG/Person/Robert.J.Redmon.html"
+      },
+      "orcid": null,
+      "affiliation": "NOAA National Centers for Environmental Information",
+      "activity_dates": null
+    },
+    {
+      "name": "Samuel Califf",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Author position 3, non-alphabetized MAG description paper (Loto'aniu et al. 2019)",
+          "url": "https://doi.org/10.1007/s11214-019-0600-3",
+          "strength": "Strong"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": "NOAA / CIRES, University of Colorado Boulder",
+      "activity_dates": null
+    },
+    {
+      "name": "Howard J. Singer",
+      "status": "included",
+      "confidence": "Medium",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "PrincipalInvestigator (qualifying role) in the GOES-16 MAG SPASE Instrument record Contacts — same GOES-R series magnetometer flown on GOES-18",
+          "url": "https://spase-metadata.org/SMWG/Instrument/GOES/16/MAG.html",
+          "strength": "Medium"
+        },
+        {
+          "source": "Named in GOES-R MAG instrument Acknowledgement ('Please acknowledge Howard Singer')",
+          "url": "https://spase-metadata.org/SMWG/Instrument/GOES/16/MAG.html",
+          "strength": "Medium"
+        },
+        {
+          "source": "Co-author (position 4) of the MAG description paper (Loto'aniu et al. 2019) — corroborates but position 4 is not itself lead evidence",
+          "url": "https://doi.org/10.1007/s11214-019-0600-3",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Howard.J.Singer",
+        "url": "https://spase-metadata.org/SMWG/Person/Howard.J.Singer.html"
+      },
+      "orcid": null,
+      "affiliation": "NOAA Space Weather Prediction Center",
+      "activity_dates": null
+    },
+    {
+      "name": "G. E. Galica",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Lead author (position 1), non-alphabetized SEISS overview/description paper 'GOES-R Space Environment In-Situ Suite: instruments overview...' (Galica et al. 2016, SPIE)",
+          "url": "https://doi.org/10.1117/12.2228537",
+          "strength": "Strong"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": "Assurance Technology Corporation",
+      "activity_dates": null
+    },
+    {
+      "name": "B. K. Dichter",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Author position 2, non-alphabetized SEISS overview/description paper (Galica et al. 2016)",
+          "url": "https://doi.org/10.1117/12.2228537",
+          "strength": "Strong"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": "Assurance Technology Corporation",
+      "activity_dates": null
+    },
+    {
+      "name": "S. Tsui",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Author position 3, non-alphabetized SEISS overview/description paper (Galica et al. 2016)",
+          "url": "https://doi.org/10.1117/12.2228537",
+          "strength": "Strong"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": "Assurance Technology Corporation",
+      "activity_dates": null
+    },
+    {
+      "name": "Francis G. Eparvier",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Documented EXIS Principal Investigator — NOAA SWPC provider presentations title him PI of both the GOES-R EUVS and XRS (the two instruments comprising EXIS)",
+          "url": "https://www.swpc.noaa.gov/sites/default/files/images/u33/Eparvier_GOES_R_EUVS.pdf",
+          "strength": "Strong"
+        },
+        {
+          "source": "Lead author (position 1), EUVS design paper 'The Extreme Ultraviolet Sensor (EUVS) for GOES-R' (Eparvier et al. 2009, SPIE)",
+          "url": "https://doi.org/10.1117/12.826445",
+          "strength": "Medium"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": "Laboratory for Atmospheric and Space Physics, University of Colorado Boulder",
+      "activity_dates": null
+    },
+    {
+      "name": "Thomas N. Woods",
+      "status": "included",
+      "confidence": "Medium",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Lead author (position 1), XRS design/pre-flight-calibration paper 'GOES-R Series X-Ray Sensor (XRS): 1. Design and Pre-Flight Calibration' (Woods et al. 2024, JGR) — EXIS/XRS component lead; paper-position evidence downgraded because EXIS description-paper selection is uncertain (split component papers)",
+          "url": "https://doi.org/10.1029/2024JA032925",
+          "strength": "Medium"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Thomas.N.Woods",
+        "url": "https://spase-metadata.org/SMWG/Person/Thomas.N.Woods.html"
+      },
+      "orcid": null,
+      "affiliation": "Laboratory for Atmospheric and Space Physics, University of Colorado Boulder",
+      "activity_dates": null
+    },
+    {
+      "name": "David Crotser",
+      "status": "included",
+      "confidence": "Medium",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Author position 2, EUVS design paper (Eparvier et al. 2009) — EXIS leads; downgraded to Medium because EXIS description-paper selection is uncertain (suite of two component papers)",
+          "url": "https://doi.org/10.1117/12.826445",
+          "strength": "Medium"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": "Laboratory for Atmospheric and Space Physics, University of Colorado Boulder",
+      "activity_dates": null
+    },
+    {
+      "name": "Andrew R. Jones",
+      "status": "included",
+      "confidence": "Medium",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Author position 3, EUVS design paper (Eparvier et al. 2009); also position 4 of the XRS design paper (Woods et al. 2024) — EXIS leads; downgraded to Medium (uncertain EXIS description-paper selection)",
+          "url": "https://doi.org/10.1117/12.826445",
+          "strength": "Medium"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": "Laboratory for Atmospheric and Space Physics, University of Colorado Boulder",
+      "activity_dates": null
+    },
+    {
+      "name": "Thomas Eden",
+      "status": "included",
+      "confidence": "Medium",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Author position 2, XRS design/pre-flight-calibration paper (Woods et al. 2024) — EXIS/XRS lead; downgraded to Medium (uncertain EXIS description-paper selection)",
+          "url": "https://doi.org/10.1029/2024JA032925",
+          "strength": "Medium"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": "Laboratory for Atmospheric and Space Physics, University of Colorado Boulder",
+      "activity_dates": null
+    },
+    {
+      "name": "Laurel Rachmeler",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "instrument-team depth (SUVI paper position 4) — belongs to the SUVI Instrument-record run",
+      "evidence": [
+        {
+          "source": "Author position 4, SUVI description paper (Darnel et al. 2022)",
+          "url": "https://doi.org/10.1029/2022SW003044",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": "NOAA NCEI",
+      "activity_dates": null
+    },
+    {
+      "name": "Alison Jarvis",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "instrument-team depth (SUVI paper position 5; also position 3 of the GOES-18 MAG on-orbit-results paper, a validation paper) — belongs to the instrument-level runs",
+      "evidence": [
+        {
+          "source": "Author position 5, SUVI description paper (Darnel et al. 2022)",
+          "url": "https://doi.org/10.1029/2022SW003044",
+          "strength": "Low"
+        },
+        {
+          "source": "Author position 3, GOES-18 MAG on-orbit-results paper (Loto'aniu et al. 2023)",
+          "url": "https://doi.org/10.1007/s11214-023-01032-3",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": "CIRES / NOAA",
+      "activity_dates": null
+    },
+    {
+      "name": "Steven M. Hill",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "instrument-team depth (SUVI paper position 6) — belongs to the SUVI Instrument-record run",
+      "evidence": [
+        {
+          "source": "Author position 6, SUVI description paper (Darnel et al. 2022)",
+          "url": "https://doi.org/10.1029/2022SW003044",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": "NOAA SWPC",
+      "activity_dates": null
+    },
+    {
+      "name": "Courtney L. Peck",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "instrument-team depth (SUVI paper position 7) — belongs to the SUVI Instrument-record run",
+      "evidence": [
+        {
+          "source": "Author position 7, SUVI description paper (Darnel et al. 2022)",
+          "url": "https://doi.org/10.1029/2022SW003044",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": "CIRES / NOAA",
+      "activity_dates": null
+    },
+    {
+      "name": "J. Marcus Hughes",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "instrument-team depth (SUVI paper position 8) — belongs to the SUVI Instrument-record run",
+      "evidence": [
+        {
+          "source": "Author position 8, SUVI description paper (Darnel et al. 2022)",
+          "url": "https://doi.org/10.1029/2022SW003044",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": "Southwest Research Institute",
+      "activity_dates": null
+    },
+    {
+      "name": "Jason Shapiro",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "instrument-team depth (SUVI paper position 9) — belongs to the SUVI Instrument-record run",
+      "evidence": [
+        {
+          "source": "Author position 9, SUVI description paper (Darnel et al. 2022)",
+          "url": "https://doi.org/10.1029/2022SW003044",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": "CIRES / NOAA",
+      "activity_dates": null
+    },
+    {
+      "name": "Allyssa Riley",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "instrument-team depth (SUVI paper position 10) — belongs to the SUVI Instrument-record run",
+      "evidence": [
+        {
+          "source": "Author position 10, SUVI description paper (Darnel et al. 2022)",
+          "url": "https://doi.org/10.1029/2022SW003044",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": "CIRES / NOAA",
+      "activity_dates": null
+    },
+    {
+      "name": "Gopal Vasudevan",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "instrument-team depth (SUVI paper position 11, Lockheed Martin build team) — belongs to the SUVI Instrument-record run",
+      "evidence": [
+        {
+          "source": "Author position 11, SUVI description paper (Darnel et al. 2022); also SUVI design/calibration SPIE paper",
+          "url": "https://doi.org/10.1029/2022SW003044",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": "Lockheed Martin Advanced Technology Center",
+      "activity_dates": null
+    },
+    {
+      "name": "Lawrence Shing",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "instrument-team depth (SUVI paper position 12, Lockheed Martin build team) — belongs to the SUVI Instrument-record run",
+      "evidence": [
+        {
+          "source": "Author position 12, SUVI description paper (Darnel et al. 2022)",
+          "url": "https://doi.org/10.1029/2022SW003044",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": "Lockheed Martin Advanced Technology Center",
+      "activity_dates": null
+    },
+    {
+      "name": "George Koener",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "instrument-team depth (SUVI paper position 13, Lockheed Martin build team) — belongs to the SUVI Instrument-record run",
+      "evidence": [
+        {
+          "source": "Author position 13, SUVI description paper (Darnel et al. 2022)",
+          "url": "https://doi.org/10.1029/2022SW003044",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": "Lockheed Martin Advanced Technology Center",
+      "activity_dates": null
+    },
+    {
+      "name": "Chris Edwards",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "instrument-team depth (SUVI paper position 14, Lockheed Martin build team) — belongs to the SUVI Instrument-record run",
+      "evidence": [
+        {
+          "source": "Author position 14, SUVI description paper (Darnel et al. 2022)",
+          "url": "https://doi.org/10.1029/2022SW003044",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": "Lockheed Martin Advanced Technology Center",
+      "activity_dates": null
+    },
+    {
+      "name": "Dnyanesh Mathur",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "instrument-team depth (SUVI paper position 15, Lockheed Martin build team) — belongs to the SUVI Instrument-record run",
+      "evidence": [
+        {
+          "source": "Author position 15, SUVI description paper (Darnel et al. 2022)",
+          "url": "https://doi.org/10.1029/2022SW003044",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": "Lockheed Martin Advanced Technology Center",
+      "activity_dates": null
+    },
+    {
+      "name": "Shelbe Timothy",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "instrument-team depth (SUVI paper position 16, Lockheed Martin build team) — belongs to the SUVI Instrument-record run",
+      "evidence": [
+        {
+          "source": "Author position 16, SUVI description paper (Darnel et al. 2022)",
+          "url": "https://doi.org/10.1029/2022SW003044",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": "Lockheed Martin Advanced Technology Center",
+      "activity_dates": null
+    },
+    {
+      "name": "W. Rowland",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "instrument-team depth (MAG paper position 5) — belongs to the MAG Instrument-record run",
+      "evidence": [
+        {
+          "source": "Author position 5, MAG description paper (Loto'aniu et al. 2019)",
+          "url": "https://doi.org/10.1007/s11214-019-0600-3",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": null,
+      "activity_dates": null
+    },
+    {
+      "name": "S. Macintyre",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "instrument-team depth (MAG paper position 6) — belongs to the MAG Instrument-record run",
+      "evidence": [
+        {
+          "source": "Author position 6, MAG description paper (Loto'aniu et al. 2019)",
+          "url": "https://doi.org/10.1007/s11214-019-0600-3",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": null,
+      "activity_dates": null
+    },
+    {
+      "name": "C. Chastain",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "instrument-team depth (MAG paper position 7) — belongs to the MAG Instrument-record run",
+      "evidence": [
+        {
+          "source": "Author position 7, MAG description paper (Loto'aniu et al. 2019)",
+          "url": "https://doi.org/10.1007/s11214-019-0600-3",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": null,
+      "activity_dates": null
+    },
+    {
+      "name": "R. Dence",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "instrument-team depth (MAG paper position 8) — belongs to the MAG Instrument-record run",
+      "evidence": [
+        {
+          "source": "Author position 8, MAG description paper (Loto'aniu et al. 2019)",
+          "url": "https://doi.org/10.1007/s11214-019-0600-3",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": null,
+      "activity_dates": null
+    },
+    {
+      "name": "R. Bailey",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "instrument-team depth (MAG paper position 9) — belongs to the MAG Instrument-record run",
+      "evidence": [
+        {
+          "source": "Author position 9, MAG description paper (Loto'aniu et al. 2019)",
+          "url": "https://doi.org/10.1007/s11214-019-0600-3",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": null,
+      "activity_dates": null
+    },
+    {
+      "name": "E. Shoemaker",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "instrument-team depth (MAG paper position 10) — belongs to the MAG Instrument-record run",
+      "evidence": [
+        {
+          "source": "Author position 10, MAG description paper (Loto'aniu et al. 2019)",
+          "url": "https://doi.org/10.1007/s11214-019-0600-3",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": null,
+      "activity_dates": null
+    },
+    {
+      "name": "F. J. Rich",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "instrument-team depth (MAG paper position 11; also position 5 of the GOES-18 MAG results paper) — belongs to the MAG Instrument-record run",
+      "evidence": [
+        {
+          "source": "Author position 11, MAG description paper (Loto'aniu et al. 2019)",
+          "url": "https://doi.org/10.1007/s11214-019-0600-3",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": null,
+      "activity_dates": null
+    },
+    {
+      "name": "D. Chu",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "instrument-team depth (MAG paper position 12) — belongs to the MAG Instrument-record run",
+      "evidence": [
+        {
+          "source": "Author position 12, MAG description paper (Loto'aniu et al. 2019)",
+          "url": "https://doi.org/10.1007/s11214-019-0600-3",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": null,
+      "activity_dates": null
+    },
+    {
+      "name": "D. Early",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "instrument-team depth (MAG paper position 13) — belongs to the MAG Instrument-record run",
+      "evidence": [
+        {
+          "source": "Author position 13, MAG description paper (Loto'aniu et al. 2019)",
+          "url": "https://doi.org/10.1007/s11214-019-0600-3",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": null,
+      "activity_dates": null
+    },
+    {
+      "name": "J. Kronenwetter",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "instrument-team depth (MAG paper position 14) — belongs to the MAG Instrument-record run",
+      "evidence": [
+        {
+          "source": "Author position 14, MAG description paper (Loto'aniu et al. 2019)",
+          "url": "https://doi.org/10.1007/s11214-019-0600-3",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": null,
+      "activity_dates": null
+    },
+    {
+      "name": "M. Todirita",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "instrument-team depth (MAG paper position 15; also on EXIS/EUVS validation papers) — belongs to the MAG Instrument-record run",
+      "evidence": [
+        {
+          "source": "Author position 15, MAG description paper (Loto'aniu et al. 2019)",
+          "url": "https://doi.org/10.1007/s11214-019-0600-3",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": null,
+      "activity_dates": null
+    },
+    {
+      "name": "M. J. Golightly",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "instrument-team depth (SEISS paper position 4) — belongs to the SEISS Instrument-record run",
+      "evidence": [
+        {
+          "source": "Author position 4, SEISS overview paper (Galica et al. 2016)",
+          "url": "https://doi.org/10.1117/12.2228537",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": null,
+      "activity_dates": null
+    },
+    {
+      "name": "C. Lopate",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "instrument-team depth (SEISS paper position 5) — belongs to the SEISS Instrument-record run",
+      "evidence": [
+        {
+          "source": "Author position 5, SEISS overview paper (Galica et al. 2016)",
+          "url": "https://doi.org/10.1117/12.2228537",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": null,
+      "activity_dates": null
+    },
+    {
+      "name": "J. J. Connell",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "instrument-team depth (SEISS paper position 6) — belongs to the SEISS Instrument-record run",
+      "evidence": [
+        {
+          "source": "Author position 6, SEISS overview paper (Galica et al. 2016)",
+          "url": "https://doi.org/10.1117/12.2228537",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": "University of New Hampshire",
+      "activity_dates": null
+    },
+    {
+      "name": "William E. McClintock",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "instrument-team depth (EUVS design paper position 4; under EXIS uncertain-selection downgrade, positions 4+ drop to Low) — belongs to the EXIS/EUVS Instrument-record run",
+      "evidence": [
+        {
+          "source": "Author position 4, EUVS design paper (Eparvier et al. 2009)",
+          "url": "https://doi.org/10.1117/12.826445",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": "Laboratory for Atmospheric and Space Physics, University of Colorado Boulder",
+      "activity_dates": null
+    },
+    {
+      "name": "Martin Snow",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "instrument-team depth (EUVS design paper position 5; EXIS downgrade) — belongs to the EXIS/EUVS Instrument-record run",
+      "evidence": [
+        {
+          "source": "Author position 5, EUVS design paper (Eparvier et al. 2009)",
+          "url": "https://doi.org/10.1117/12.826445",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": "Laboratory for Atmospheric and Space Physics, University of Colorado Boulder",
+      "activity_dates": null
+    },
+    {
+      "name": "Donald L. Woodraska",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "instrument-team depth (XRS design paper position 5) — belongs to the EXIS/XRS Instrument-record run",
+      "evidence": [
+        {
+          "source": "Author position 5, XRS design paper (Woods et al. 2024)",
+          "url": "https://doi.org/10.1029/2024JA032925",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": "Laboratory for Atmospheric and Space Physics, University of Colorado Boulder",
+      "activity_dates": null
+    },
+    {
+      "name": "Phillip C. Chamberlin",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "instrument-team depth (XRS design paper position 6) — belongs to the EXIS/XRS Instrument-record run",
+      "evidence": [
+        {
+          "source": "Author position 6, XRS design paper (Woods et al. 2024)",
+          "url": "https://doi.org/10.1029/2024JA032925",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": "Laboratory for Atmospheric and Space Physics, University of Colorado Boulder",
+      "activity_dates": null
+    },
+    {
+      "name": "Janet L. Machol",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "instrument-team depth (XRS design paper position 7) — belongs to the EXIS/XRS Instrument-record run",
+      "evidence": [
+        {
+          "source": "Author position 7, XRS design paper (Woods et al. 2024)",
+          "url": "https://doi.org/10.1029/2024JA032925",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": "CIRES / NOAA NCEI",
+      "activity_dates": null
+    },
+    {
+      "name": "A. Davis",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "co-author (position 2) on the GOES-18 MAG on-orbit-results paper (validation/results, not the instrument description paper)",
+      "evidence": [
+        {
+          "source": "Author position 2, GOES-18 MAG on-orbit-results paper (Loto'aniu et al. 2023)",
+          "url": "https://doi.org/10.1007/s11214-023-01032-3",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": null,
+      "activity_dates": null
+    },
+    {
+      "name": "M. Grotenhuis",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "co-author on the GOES-18 MAG on-orbit-results paper (validation/results, not the instrument description paper)",
+      "evidence": [
+        {
+          "source": "Author position 4, GOES-18 MAG on-orbit-results paper (Loto'aniu et al. 2023)",
+          "url": "https://doi.org/10.1007/s11214-023-01032-3",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": null,
+      "activity_dates": null
+    },
+    {
+      "name": "F. Inceoglu",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "co-author on the GOES-18 MAG on-orbit-results paper (validation/results, not the instrument description paper)",
+      "evidence": [
+        {
+          "source": "Author position 7, GOES-18 MAG on-orbit-results paper (Loto'aniu et al. 2023)",
+          "url": "https://doi.org/10.1007/s11214-023-01032-3",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": null,
+      "activity_dates": null
+    },
+    {
+      "name": "A. Pacini",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "co-author on the GOES-18 MAG on-orbit-results paper (validation/results, not the instrument description paper)",
+      "evidence": [
+        {
+          "source": "Author position 8, GOES-18 MAG on-orbit-results paper (Loto'aniu et al. 2023)",
+          "url": "https://doi.org/10.1007/s11214-023-01032-3",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": null,
+      "activity_dates": null
+    }
+  ],
+  "notes": [
+    "Record's own Contacts: a single GeneralContact pointing to spase://SMWG/Person/UNKNOWN — non-qualifying and not a real person; yields no candidate.",
+    "GOES-18 has NO Instrument records in SPASE. The registry path /SMWG/Instrument/GOES/ lists subdirectories 1-17 only; GOES/16 and GOES/17 register only MAG + Ephemeris. All four space-weather instruments (EXIS, SUVI, SEISS, MAG) are therefore missing from SPASE and were pursued via provider pages and description papers. This is a significant metadata gap for curators (see instrument_coverage and pending_instrument_runs).",
+    "No NASA-HQ CMAD exists — GOES-R is NOAA-funded (expected=false). GOES-R analog documents are the Product Definition and Users' Guide (PUG) and NCEI instrument calibration reports; these were not treated as CMAD-strength evidence.",
+    "SUVI description paper (Darnel et al. 2022, 10.1029/2022SW003044): selection CONFIDENT — title names the instrument, 16 authors, Space Weather journal, timing (2022) aligns with the GOES-16/17/18 series operations. Backward alphabetization scan: no sorted suffix of >=5 (positions 11-16 are the unsorted Lockheed Martin build team). Not alphabetized; positions 1-3 (Darnel, Seaton, Bethge) taken Strong; 4-16 excluded as SUVI instrument-team depth.",
+    "MAG description paper (Loto'aniu et al. 2019, 10.1007/s11214-019-0600-3): selection CONFIDENT — 'The GOES-16 Spacecraft Science Magnetometer' describes the GOES-R series magnetometer flown identically on GOES-18, 15 authors, Space Science Reviews, 2019 (series operations era). Not alphabetized; positions 1-3 (Loto'aniu, Redmon, Califf) Strong; 4-15 excluded as depth. Position-4 author Howard J. Singer is independently included at Medium via the GOES-16 MAG SPASE record's PrincipalInvestigator role and the instrument Acknowledgement — the symmetric rule at work (independent source, not paper position 4, is what includes him).",
+    "SEISS overview paper (Galica et al. 2016, 10.1117/12.2228537): selection CONFIDENT — title 'GOES-R Space Environment In-Situ Suite: instruments overview...', SPIE, 6 authors, 2016 (pre-launch design/overview, valid per the fuzzy lower boundary). Not alphabetized; positions 1-3 (Galica, Dichter, Tsui, Assurance Technology Corporation) Strong; 4-6 excluded as depth.",
+    "EXIS description-paper selection UNCERTAIN and downgraded one tier: EXIS is a two-instrument suite (EUVS + XRS) with no single peer-reviewed overview paper. Used the EUVS design paper (Eparvier et al. 2009, 10.1117/12.826445) and the XRS design/calibration paper (Woods et al. 2024, 10.1029/2024JA032925) as component description papers; their positions 1-3 taken at Medium (would be Strong absent the uncertainty). Francis G. Eparvier is retained at Strong via an independent provider source: NOAA SWPC presentations name him PI of both EUVS and XRS. EXIS recorded in pending_instrument_runs for a dedicated per-component run.",
+    "GOES-18 is a NOAA weather platform; no space-weather-focused mission-overview *paper* was identified. The GOES-R Series book (Goodman, Schmit, Daniels, Redmon, eds.) is Earth-science program-level and was not used to mint mission-overview candidates; Redmon already enters via the MAG description paper. No observatory-level mission-overview positions 4-5 were harvested for this reason.",
+    "ABI and GLM (Earth-pointing weather instruments) are part of the physical observatory but outside heliophysics authorship scope; noted in instrument_coverage, not pursued.",
+    "Initials-only names (G. E. Galica, B. K. Dichter, S. Tsui, W. Rowland, etc.) are recorded as printed in the SPIE/SSR author lists; downstream should expand and disambiguate. Alison Jarvis and F. J. Rich each appear across two instrument contexts — flagged inline.",
+    "Person registry checks (HTTP 200 = record exists): Howard.J.Singer, Daniel.B.Seaton, Christian.Bethge, Robert.J.Redmon, Thomas.N.Woods exist. Darnel, Loto'aniu, Califf, Eparvier, Galica, Dichter, Tsui have no Person record (404) — downstream to create."
+  ]
+}
