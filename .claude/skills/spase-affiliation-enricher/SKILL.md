@@ -2,28 +2,31 @@
 name: spase-affiliation-enricher
 description: >
   Procedure for enriching the author candidates produced by the spase-author-finder
-  agent with ORCID identifiers and institutional affiliations. Takes the finder's
-  JSON output, fills the `orcid` and `affiliation` fields for INCLUDED candidates
-  with CONFIRMED identities using dedicated ORCID and Crossref lookups, validates
-  any values the finder pre-filled, and writes an enriched JSON file.
-  Confirm-or-leave-null: never guess an ORCID or affiliation. Does NOT find new
-  people, assign roles, or build the Contacts table.
+  agent with ORCID identifiers, institutional affiliations, and ROR identifiers for
+  those affiliations. Takes the finder's JSON output, fills the `orcid`,
+  `affiliation`, and `affiliation_ror` fields for INCLUDED candidates with CONFIRMED
+  identities using dedicated ORCID, Crossref, and ROR lookups, validates any values
+  the finder pre-filled, and writes an enriched JSON file.
+  Confirm-or-leave-null: never guess an ORCID, an affiliation, or a ROR ID. Does NOT
+  find new people, assign roles, or build the Contacts table.
 user-invocable: false
 ---
 
-# SPASE Affiliation & ORCID Enricher
+# SPASE Affiliation, ORCID & ROR Enricher
 
-This skill takes the candidate list produced by the `spase-author-finder` agent and fills in two fields the finder handled only opportunistically: `orcid` and `affiliation`. This skill does the dedicated lookups the finder deliberately avoided, and validates any values the finder happened to capture.
+This skill takes the candidate list produced by the `spase-author-finder` agent and fills in three fields the finder did not handle or handled only opportunistically: `orcid`, `affiliation`, and `affiliation_ror`. This skill does the dedicated lookups the finder deliberately avoided, and validates any values the finder happened to capture.
 
-**Scope — read this first.** This skill ONLY enriches ORCID and affiliation for people the finder already identified. It does NOT:
+**Scope — read this first.** This skill ONLY enriches ORCID, affiliation, and the affiliation's ROR ID for people the finder already identified. It does NOT:
 - find new candidate people (that is the finder's job)
 - assign SPASE roles (downstream agent)
 - build the Contacts table or format PublicationInfo
 - create or edit Person records
 
-**Critical principle — confirm or leave null.** Never guess an ORCID or an affiliation. A wrong ORCID misattributes a real person's identity; a wrong affiliation misrepresents their institution. Only fill a field when the value is confirmed by corroborating evidence (see below). When you cannot confirm, leave the field `null` and record why in the enrichment provenance. An honest `null` is correct; a confident wrong answer is a serious error.
+**Critical principle — confirm or leave null.** Never guess an ORCID, an affiliation, or a ROR ID. A wrong ORCID misattributes a real person's identity; a wrong affiliation misrepresents their institution; a wrong ROR ID misattributes their institution to a different organization in a public registry. Only fill a field when the value is confirmed by corroborating evidence (see below). When you cannot confirm, leave the field `null` and record why in the enrichment provenance. An honest `null` is correct; a confident wrong answer is a serious error.
 
 **Corollary — enrichment confidence is capped by identity confidence.** A Crossref-deposited ORCID proves "this ORCID belongs to the person who authored this paper." It does NOT prove "the paper's author is your candidate." If the finder's link between the candidate and the evidence is weak (e.g. a name inferred from initials only), no lookup can launder that into a confirmed identity. Such candidates are not enriched — see the Identity Gate below.
+
+**Corollary — ROR confidence is capped by affiliation confidence.** A ROR ID is the registry's identifier for the institution named in `affiliation`. It is a normalization of a field this skill already resolved, not independent evidence. No `affiliation` means no `affiliation_ror`; a shaky affiliation cannot be firmed up by finding a confident ROR match for the string.
 
 ---
 
@@ -57,13 +60,13 @@ Process a candidate only if BOTH hold:
 For included candidates that FAIL the identity check (e.g. a record contact
 "I.E. Dammasch" whose full name was only inferred by matching initials against a
 paper's author list):
-- Leave `orcid` and `affiliation` null.
+- Leave `orcid`, `affiliation`, and `affiliation_ror` null.
 - Set `enrichment.lookup_status: "skipped-unconfirmed-identity"`.
 - In `enrichment.notes`, state why the identity is unconfirmed. You MAY record a
   possible match there for the reviewer (e.g. "paper author 'Ingolf E. Dammasch',
   ORCID 0000-000X-…, is plausibly this contact, but the link rests on initials
-  only") — but never place an unconfirmed value in the `orcid` or `affiliation`
-  field itself. The field is either confirmed or empty.
+  only") — but never place an unconfirmed value in the `orcid`, `affiliation`, or
+  `affiliation_ror` field itself. The field is either confirmed or empty.
 
 Do not attempt to "upgrade" a weak identity through lookups. Identity confirmation
 is the finder's job; if it becomes clear the finder should have found stronger
@@ -83,8 +86,8 @@ and why, and anything flagged for review.
 wrote — `record`, `date`, `cmad`, `instrument_coverage`, `notes`, and any field
 you do not recognize — through to the enriched file unchanged. The finder's
 schema evolves; never drop a field just because this skill predates it. The ONLY
-modifications this skill makes are: filling `orcid`/`affiliation` on processed
-candidates, and adding the per-candidate `enrichment` object:
+modifications this skill makes are: filling `orcid`/`affiliation`/`affiliation_ror`
+on processed candidates, and adding the per-candidate `enrichment` object:
 
 ```json
 "enrichment": {
@@ -92,14 +95,20 @@ candidates, and adding the per-candidate `enrichment` object:
   "orcid_confidence": "Confirmed | null",
   "affiliation_source": "ORCID employment | Crossref (paper DOI) | finder (pre-existing, verified) | null",
   "affiliation_type": "era-matched | current | as-deposited | null",
+  "ror_source": "ORCID disambiguated-organization | ROR affiliation-match (chosen) | ROR query (corroborated) | finder (pre-existing, verified) | null",
+  "ror_confidence": "Confirmed | null",
   "lookup_status": "complete | partial-api-error | skipped-unconfirmed-identity",
   "notes": "free text — ambiguity, multiple matches, discrepancies, why a field is null"
 }
 ```
 
+The `affiliation_ror` field itself holds the full ROR URL form (e.g.
+`https://ror.org/02wcxbg22`), not the bare ID — that is the form ROR itself
+treats as canonical.
+
 Field semantics:
-- `orcid_confidence` is binary: `Confirmed` or `null`. There is no "probable" tier —
-  unconfirmed possibilities live in `notes` only.
+- `orcid_confidence` and `ror_confidence` are binary: `Confirmed` or `null`. There
+  is no "probable" tier — unconfirmed possibilities live in `notes` only.
 - `affiliation_type`:
   - `era-matched` — held during the record's operating span, from dated ORCID employment.
   - `current` — the person's current/most-recent affiliation (no era overlap found, or no dated history).
@@ -107,6 +116,12 @@ Field semantics:
     Crossref. This is affiliation-at-publication-date; it may or may not fall inside
     the operating span. Do not relabel it era-matched even if the publication date
     falls in the span — the label records the evidence type, not an inference.
+- **`affiliation_type` does not apply to `affiliation_ror`.** A ROR ID identifies an
+  organization, not a point in time. An era-matched affiliation and a current
+  affiliation that name the same institution resolve to the same ROR ID. Never read
+  a ROR ID as dated evidence, and never let a ROR match influence the
+  `affiliation_type` label — the ROR describes the institution the affiliation
+  already named, nothing more.
 - `lookup_status` separates the two very different kinds of "nothing found":
   - `complete` — all intended lookups ran; nulls mean "looked and could not confirm."
   - `partial-api-error` — one or more lookups failed (timeout, HTTP error, malformed
@@ -150,6 +165,22 @@ affiliation, and the whole point of era-matching is that those can differ
   "differs from finder value" flag for the reviewer.
 - yields nothing → keep the finder's value, `affiliation_type: "current"` or
   `"as-deposited"` per its origin if known, else note the type is unknown.
+
+**Pre-filled ROR:** validate the same way as an ORCID.
+1. Check the form (`https://ror.org/` + 9 characters: `0` + 6 alphanumerics +
+   2 check digits) and the ISO 7064 mod 97-10 checksum.
+2. `GET https://api.ror.org/v2/organizations/<id>` and confirm the returned
+   organization actually matches the resolved `affiliation` string (name, alias,
+   or label; plus country/location if known).
+3. If valid and matching → keep it; `ror_source: "finder (pre-existing, verified)"`,
+   `ror_confidence: "Confirmed"`.
+4. If the checksum fails, the ID does not resolve, or the organization does not
+   match the affiliation → set `affiliation_ror` to null, record the finder's value
+   and the failure in `notes`, and proceed to Step 4 as if the field were empty.
+5. Whatever the finder pre-filled, the ROR must match the affiliation **this skill
+   resolved**, not the one the finder had. If Step 3 replaced the affiliation with
+   an era-matched value, a finder ROR that pointed at the old institution is now
+   wrong — null it and re-resolve.
 
 ### Step 2 — Resolve ORCID
 
@@ -205,14 +236,99 @@ when identity was confirmed some other way):
   A mid-span institutional change is itself useful signal (original vs. current
   PI generation) — note it explicitly, e.g. "affiliation changed during operating
   span: Institution X (2010–2015), Institution Y (2015–present)."
+- When the affiliation you select comes from an employment entry, carry that
+  entry's ROR (if present) forward to Step 4 — you must not later resolve a ROR
+  for a *different* employment than the one you chose.
+
+### Step 4 — Resolve ROR for the affiliation
+
+Run this only when `affiliation` is non-null. The ROR identifies the institution
+named in `affiliation` — no affiliation, no ROR, no lookup attempted.
+
+**Route A — ORCID's own disambiguated organization (preferred; pre-corroborated):**
+1. Re-read the employment entry you selected in Step 3. ORCID stores a
+   `disambiguated-organization` object on employment entries:
+   ```
+   "disambiguated-organization": {
+     "disambiguated-organization-identifier": "https://ror.org/02wcxbg22",
+     "disambiguation-source": "ROR"
+   }
+   ```
+2. If `disambiguation-source` is `ROR`, take the identifier as **Confirmed**.
+   ORCID's registry integration already tied that employer to that ROR ID; this
+   is the strongest route and costs no extra call.
+   `ror_source: "ORCID disambiguated-organization"`.
+3. If `disambiguation-source` is something else (`GRID`, `RINGGOLD`, `LEI`,
+   `FUNDREF`), do NOT treat it as a ROR. GRID IDs in particular map to ROR
+   one-to-one for legacy records and are tempting to convert — do not convert them
+   by hand. Fall through to Route B and confirm against the registry.
+4. Only Route A applies when the affiliation came from ORCID employment. If the
+   affiliation is `as-deposited` (Crossref) or a finder value, skip to Route B.
+
+**Route B — ROR affiliation matching (for affiliation strings):**
+1. `GET https://api.ror.org/v2/organizations?affiliation=<url-encoded affiliation string>`
+   This is ROR's purpose-built endpoint for exactly this problem: resolving a raw
+   institutional affiliation string (the kind publishers deposit, often with
+   department prefixes and postal addresses) to a registry record. Prefer it over
+   the plain `query=` search for any string longer than a bare institution name.
+2. The response returns matches with a `score` (0–1), a `chosen` boolean, and a
+   `matching_type` (`PHRASE`, `COMMON TERMS`, `FUZZY`, `HEURISTICS`, `ACRONYM`,
+   `EXACT`), sorted by descending score.
+3. Accept the match **only** if ROR set `chosen: true`. At most one result carries
+   that flag and it is always listed first. `ror_source: "ROR affiliation-match (chosen)"`.
+4. If no match is `chosen`, do NOT take the top-scoring match. Leave
+   `affiliation_ror` null and list the top candidates with their scores and
+   matching types in `notes` for the reviewer.
+5. **Never select by `score`.** ROR explicitly advises against it, and `chosen`
+   already encodes the discipline this skill wants: ROR sets it true only when a
+   single result is a highly probable match, and sets it false on *every* result
+   when several score highly, because that pattern means ambiguity. A high score
+   with `chosen: false` is therefore evidence *against* the match, not weak
+   evidence for it. Do not second-guess the flag in either direction.
+6. `matching_type: "ACRONYM"` never yields `chosen: true` — ROR disabled that
+   after acronym matching produced too many false positives. Acronyms collide
+   badly in this domain ("MPS", "IAP", "NRL", "ROB"), so if an acronym-only
+   affiliation returns nothing chosen, that is the correct result: leave null and
+   note it. Do not hand-resolve the acronym yourself.
+
+**Route C — plain ROR query (bare institution names only, with corroboration):**
+1. `GET https://api.ror.org/v2/organizations?query=<url-encoded name>` when the
+   affiliation is already a clean institution name with no address.
+2. Accept a result only if it is unambiguous: exactly one plausible organization,
+   whose name/alias/label matches the affiliation and whose country matches what
+   you know from the ORCID employment, the Crossref affiliation string, or the
+   data provider.
+3. Multiple plausible organizations → leave null, list them in `notes`.
+
+**ROR-specific traps:**
+- **Department strings.** Affiliations frequently name a department or lab that has
+  no ROR record of its own ("Solar-Terrestrial Centre of Excellence, Royal
+  Observatory of Belgium"). Resolve to the ROR of the **parent organization that
+  the registry actually lists**, and note in `notes` that the affiliation named a
+  sub-unit. Never invent a ROR for an unlisted sub-unit; never silently drop the
+  sub-unit from the `affiliation` string itself — `affiliation` keeps what the
+  evidence said, `affiliation_ror` points at what ROR lists.
+- **Successor and renamed organizations.** ROR records carry status
+  (`active`, `inactive`, `withdrawn`) and successor relationships. An era-matched
+  affiliation from the 1990s may name an institution that has since merged or been
+  renamed. Record the ROR of the organization **as named in the affiliation** —
+  including an `inactive` record if that is what the affiliation names — and note
+  the successor in `notes`. Do not silently substitute the successor's ROR; that
+  would misrepresent where the person actually worked at the time.
+- **Multi-affiliation strings.** Crossref sometimes deposits several institutions
+  in one affiliation string. Resolve the ROR for the primary/first institution,
+  and note the others. If you cannot tell which is primary, leave null and note it.
+- Do not construct a ROR URL from a GRID ID, an ISNI, a Ringgold number, or an
+  organization name. A ROR ID comes from the registry or it does not exist.
 
 ---
 
 ## Tools / APIs
 
 Prefer raw API calls (curl via Bash, if available) over summarized web fetches
-for the two structured APIs — exact dates and author-array contents matter and
-must not be paraphrased away. Use WebFetch only for ordinary web pages.
+for the three structured APIs — exact dates, author-array contents, and ROR match
+scores/flags matter and must not be paraphrased away. Use WebFetch only for
+ordinary web pages.
 
 - **Crossref**: `https://api.crossref.org/works/<DOI>` — author lists with ORCIDs
   and affiliations as deposited by publishers. Include a `mailto:` contact in the
@@ -221,8 +337,22 @@ must not be paraphrased away. Use WebFetch only for ordinary web pages.
 - **ORCID public API** (`https://pub.orcid.org/v3.0/`, header
   `Accept: application/json`):
   - `/<orcid-id>/record` — full public record (works, employments) for corroboration.
-  - `/<orcid-id>/employments` — dated employment history for era-matching.
+  - `/<orcid-id>/employments` — dated employment history for era-matching, and the
+    `disambiguated-organization` block that often carries a ROR ID directly.
   - `/expanded-search/?q=...` — name search (Route B only, with corroboration).
+- **ROR API** (`https://api.ror.org/v2/`) — no key or registration required; be
+  polite (the public API is rate-limited, roughly 2000 requests per 5 minutes;
+  serialize calls rather than firing them in parallel).
+  - `?affiliation=<string>` — affiliation-string matching, purpose-built by ROR and
+    Crossref for exactly the messy strings publishers deposit. Returns `chosen`/
+    `score`/`matching_type`. Select on `chosen`, never on `score`. Preferred for
+    real-world affiliation strings.
+  - `?query=<name>` — general search. For bare institution names.
+  - `/organizations/<id>` — fetch a single record to validate a pre-filled ROR.
+  - Registry access options (data dumps via Zenodo, the REST API, the search UI)
+    are documented at `https://ror.org/registry/#accessing-the-registry`. This
+    skill uses the REST API — per-candidate lookups are few, and the API always
+    reflects the current registry, whereas a dump goes stale between releases.
 
 Unlike the finder, this skill IS permitted to make dedicated per-candidate
 lookups — that is its purpose. If an API call fails, retry once; on repeated
@@ -238,8 +368,13 @@ This skill is where same-name disambiguation comes due (the finder deferred it).
 - Corroborate against: the paper-DOI authorship, an ORCID work/employment
   consistent with the instrument, observatory/mission, or data provider
   institution, or an affiliation matching the data provider.
+- The same rule governs institutions. Institution names collide (multiple
+  "Institute of Atmospheric Physics"), abbreviate ambiguously, and change over
+  time. Never accept a ROR on a name match alone — require ROR's own `chosen`
+  flag, or corroboration by country/provider.
 - When you cannot confirm, leave the field null and explain in `enrichment.notes`.
-  Do not pick the "most likely" ORCID to avoid an empty field.
+  Do not pick the "most likely" ORCID or the top-scoring ROR to avoid an empty
+  field.
 
 ---
 
@@ -248,7 +383,8 @@ This skill is where same-name disambiguation comes due (the finder deferred it).
 This skill produces an enriched candidate list for human review. It does not
 write to any SPASE record, does not assign roles, and does not create Person
 records. A human reviews the enriched candidates — paying particular attention to
-`enrichment.notes` entries flagging ambiguity, finder/lookup discrepancies, or
-mid-span affiliation changes, and to any candidate with
+`enrichment.notes` entries flagging ambiguity, finder/lookup discrepancies,
+mid-span affiliation changes, sub-unit or successor ROR resolutions, and
+unresolved ROR matches — and to any candidate with
 `lookup_status: "skipped-unconfirmed-identity"` — before anything downstream
 acts on them.
