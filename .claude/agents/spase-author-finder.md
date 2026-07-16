@@ -35,7 +35,9 @@ Key rules from the skill that are easy to get wrong:
   (operational + NASA-funded, regardless of launch date) and proceed either way.
 - **Observatory records have no downward instrument links.** Reverse-lookup
   their Instrument records in the registry, establish the true payload roster
-  from the mission landing page or overview paper, and report the comparison —
+  from the mission landing page or overview paper, record every roster source as
+  a clickable link in `instrument_coverage.roster_sources`, and report the
+  comparison —
   instruments missing from SPASE must be pursued via provider pages and papers,
   not silently dropped.
 - **Observatory runs take each instrument's LEADS ONLY, both generations.** From

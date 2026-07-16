@@ -55,8 +55,9 @@ Top-level fields:
   `{ "found": true|false, "expected": true|false, "url": <link or null>, "notes": <free text> }`.
   `expected` records whether a CMAD *should* exist (see source 2: operational + NASA-funded ⇒ expected). Record this object whether or not a CMAD was found, so reviewers know whether current-team evidence was available — and whether its absence is remarkable.
 - `instrument_coverage` — object recording the instrument-discovery outcome (see source 3):
-  `{ "spase_instruments": [<ResourceIDs found in SPASE>], "external_roster": [<instrument names from landing page / mission paper, or empty>], "missing_from_spase": [<instruments on the external roster with no SPASE record>], "notes": <how the roster was established> }`.
+  `{ "spase_instruments": [<ResourceIDs found in SPASE>], "external_roster": [<instrument names from landing page / mission paper, or empty>], "roster_sources": [<clickable URL/DOI for each source the roster came from>], "missing_from_spase": [<instruments on the external roster with no SPASE record>], "notes": <how the roster was established> }`.
   This makes silent gaps visible: an instrument absent from SPASE is invisible to registry-based discovery, so the external roster is the ground truth and this object reports the difference.
+  **`roster_sources` is required whenever `external_roster` is non-empty** — one clickable link per source used (mission instruments page, overview-paper DOI, the record's own Description, etc.), so a reviewer can verify the ground truth rather than take it on faith. The external roster is the authority against which SPASE is judged; an unsourced authority is not one. This matters most when SPASE has few or no Instrument records: then the roster is the sole basis for the instruments pursued, and its provenance carries the whole run. Use `["record Description"]` (no URL) only when the roster came from the processed record itself; if a page could not be fetched, still list the URL and say so in `notes`.
 - `pending_instrument_runs` — **Observatory records only** (omit or leave `[]` otherwise); the worklist of instruments this run could NOT fully resolve, for a dedicated per-instrument finder pass. Add an entry when an instrument's description paper could not be located, its paper-selection was uncertain, or the instrument has no SPASE record: `{ "instrument": <ResourceID or name>, "spase_record": <instrument ResourceID or null if unregistered>, "description_paper": <DOI/URL if one was seen, else null>, "reason": <"paper not located" | "paper-selection uncertain" | "no SPASE record" | ...>, "notes": <what was captured anyway, e.g. Contacts-derived PIs> }`. Instruments fully resolved here (Contacts roles + paper authors taken) need no entry.
 - `candidates` — the array below
 - `notes` — array of free-text judgment calls, ambiguities, dead ends
@@ -83,6 +84,7 @@ Each candidate object:
   "instrument_coverage": {
     "spase_instruments": ["spase://SMWG/Instrument/PROBA2/LYRA", "spase://SMWG/Instrument/PROBA2/SWAP"],
     "external_roster": ["LYRA", "SWAP", "DSLP", "TPMU"],
+    "roster_sources": ["https://proba2.sidc.be/about/PROBA2", "record Description"],
     "missing_from_spase": ["DSLP", "TPMU"],
     "notes": "Roster from PROBA2 mission site (science payload page). LYRA is the producing instrument for this record; DSLP/TPMU absence noted for curators but not pursued — irrelevant to this data product."
   },
@@ -246,8 +248,9 @@ A CMAD is a strong-evidence *bonus when found*, never a hard requirement of this
 - **Observatory record:** there is no downward link to follow — do a **reverse lookup**: find Instrument records whose `ObservatoryID` points back to this observatory. In practice, list the registry path `https://spase-metadata.org/SMWG/Instrument/<ObservatoryName>/` (instrument records are conventionally grouped under the observatory name), and/or search hpde.io for the observatory's ResourceID. Confirm each hit's `ObservatoryID` actually matches — path conventions are not guaranteed.
 
 **Establish the true instrument roster from external ground truth**, then compare:
-- Check the **observatory/mission landing page** (via the record's `InformationURL`, or web search) for the science-payload / instrument-suite listing.
-- The **mission overview paper** also enumerates the payload.
+- Check the **observatory/mission landing page** (via the record's `InformationURL`, or web search) for the science-payload / instrument-suite listing. **Record the URL you actually used in `instrument_coverage.roster_sources`** — not in prose only.
+- The **mission overview paper** also enumerates the payload; record its DOI in `roster_sources` if the roster drew on it.
+- If more than one source contributed (e.g. a mission page plus the record's own Description), list them all — and if they disagree on the payload, say so in `notes`; a roster conflict is itself a finding.
 - Record the comparison in the `instrument_coverage` object: instruments found in SPASE, the external roster, and any instruments **missing from SPASE**. A missing instrument is a metadata gap worth surfacing to curators even when it doesn't affect this run's candidates.
 - **When an instrument relevant to the record being processed has no SPASE record** (e.g. processing an Observatory record whose key instrument is unregistered): its team can't be found via SPASE — pursue it through the provider's instrument pages and the instrument's description paper instead. Do not let a missing SPASE record silently drop a whole instrument team from an Observatory's candidate list.
 
