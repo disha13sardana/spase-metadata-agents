@@ -1,0 +1,289 @@
+{
+  "record": "spase://SMWG/Observatory/RadioJOVE/HNRAO",
+  "date": "2026-07-19",
+  "operating_span": {
+    "start": "2013-01-01",
+    "stop": null
+  },
+  "cmad": {
+    "found": false,
+    "expected": false,
+    "url": null,
+    "notes": "No CMAD located via web search ('Radio JOVE CMAD' / 'Radio JOVE Calibration and Measurement Algorithms Document'); RadioJOVE has no mission Science Data Center and no designated CMAD repository. RadioJOVE is a NASA-sponsored citizen-science/education project, not an operational spacecraft mission subject to Heliophysics senior review, so a CMAD is not part of its deliverables. Absence is unremarkable; no current-team CMAD evidence was available."
+  },
+  "instrument_coverage": {
+    "spase_instruments": [
+      "spase://SMWG/Instrument/Ground/HNRAO/DualDipole-RJ",
+      "spase://SMWG/Instrument/Ground/HNRAO/LWA-FSX2",
+      "spase://SMWG/Instrument/Ground/HNRAO/TFD-FSX8S",
+      "spase://SMWG/Instrument/Ground/HNRAO/TFD-RJ",
+      "spase://SMWG/Instrument/Ground/HNRAO/TFD-SDRPlay"
+    ],
+    "external_roster": [
+      "TFD array + JOVE I / RadioJOVE receiver (TFD-RJ)",
+      "JOVE dipole array + JOVE II / RadioJOVE receiver (DualDipole-RJ)",
+      "TFD array + FSX-8S spectrograph (TFD-FSX8S)",
+      "LWA antenna + FSX-2 spectrograph (LWA-FSX2)",
+      "TFD array + SDRPlay RSP2 SDR spectrograph (TFD-SDRPlay)",
+      "Mosely 20 MHz Yagi antenna"
+    ],
+    "roster_sources": [
+      "record Description",
+      "https://spase-metadata.org/GBO/NumericalData/RadioJOVE/HNRAO/TFD-SDRPlay/PT1.2S.html"
+    ],
+    "missing_from_spase": [
+      "Mosely 20 MHz Yagi antenna — named in the Observatory Description but has no dedicated SMWG/Instrument/Ground/HNRAO record and no associated receiver/data product; likely not paired with a spectrograph/receiver, so it produces no archived data. Flagged for curators."
+    ],
+    "notes": "Observatory records carry no downward instrument links; reverse lookup via github.com/hpde/SMWG (contents of Instrument/Ground/HNRAO) returned exactly the five records above, and each instrument's ObservatoryID confirms spase://SMWG/Observatory/RadioJOVE/HNRAO. The external roster was established from the Observatory record's own Description (which enumerates the antenna arrays and receivers) and corroborated by the linked GBO NumericalData products (one per instrument). All five described receiver/antenna systems have matching SPASE Instrument records; only the Mosely 20 MHz Yagi antenna, mentioned in the Description, lacks a record. The intended provider roster page (RadioJOVE Spectrograph Users Group, http://radiojove.org/SUG/) is defunct — the radiojove.org domain now serves unrelated spam/e-commerce content — so provider-page corroboration was unavailable; the live NASA project site is https://radiojove.gsfc.nasa.gov/."
+  },
+  "pending_instrument_runs": [
+    {
+      "instrument": "spase://SMWG/Instrument/Ground/HNRAO/TFD-RJ",
+      "spase_record": "spase://SMWG/Instrument/Ground/HNRAO/TFD-RJ",
+      "description_paper": null,
+      "reason": "paper not located",
+      "notes": "Amateur-built Terminated Folded Dipole + RadioJOVE-receiver system; no scholarly description paper exists (documentation was only the SUG station-diagram page, now defunct). Only Contact is James (Jim) Brown, role TechnicalContact (non-qualifying). Nothing further to harvest at instrument level."
+    },
+    {
+      "instrument": "spase://SMWG/Instrument/Ground/HNRAO/DualDipole-RJ",
+      "spase_record": "spase://SMWG/Instrument/Ground/HNRAO/DualDipole-RJ",
+      "description_paper": null,
+      "reason": "paper not located",
+      "notes": "Amateur-built Dual Dipole Array + RadioJOVE-receiver system; no description paper. Only Contact is James (Jim) Brown, TechnicalContact (non-qualifying)."
+    },
+    {
+      "instrument": "spase://SMWG/Instrument/Ground/HNRAO/TFD-FSX8S",
+      "spase_record": "spase://SMWG/Instrument/Ground/HNRAO/TFD-FSX8S",
+      "description_paper": null,
+      "reason": "paper not located",
+      "notes": "Amateur-built TFD + FSX-8S spectrograph system; no description paper. Only Contact is James (Jim) Brown, TechnicalContact (non-qualifying)."
+    },
+    {
+      "instrument": "spase://SMWG/Instrument/Ground/HNRAO/LWA-FSX2",
+      "spase_record": "spase://SMWG/Instrument/Ground/HNRAO/LWA-FSX2",
+      "description_paper": null,
+      "reason": "paper not located",
+      "notes": "Amateur-built LWA-element + FSX-2 spectrograph system; no description paper. Only Contact is James (Jim) Brown, TechnicalContact (non-qualifying)."
+    },
+    {
+      "instrument": "spase://SMWG/Instrument/Ground/HNRAO/TFD-SDRPlay",
+      "spase_record": "spase://SMWG/Instrument/Ground/HNRAO/TFD-SDRPlay",
+      "description_paper": null,
+      "reason": "paper not located",
+      "notes": "Amateur-built TFD + SDRPlay RSP2 SDR spectrograph system; no description paper. Only Contact is James (Jim) Brown, TechnicalContact (non-qualifying). The corresponding data record adds only non-qualifying roles (Jim Sky TechnicalContact, Garcia/King ArchiveSpecialist, Weygand/Bargatze MetadataContact)."
+    }
+  ],
+  "candidates": [
+    {
+      "name": "James R. Thieman",
+      "status": "included",
+      "confidence": "Medium",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Parent RadioJOVE ObservatoryGroup record Contacts (PrincipalInvestigator — qualifying role); the project-level PI of the umbrella RadioJOVE project this station belongs to, analogous to a mission PI",
+          "url": "https://spase-metadata.org/SMWG/Observatory/RadioJOVE.html",
+          "strength": "Medium"
+        },
+        {
+          "source": "Named as a RadioJOVE project co-founder ('Radio JOVE ... begun by James Thieman, Chuck Higgins, Leonard Garcia') on the NASA/project overview material",
+          "url": "https://science.nasa.gov/citizen-science/radio-jove/",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/James.R.Thieman",
+        "url": "https://spase-metadata.org/SMWG/Person/James.R.Thieman.html"
+      },
+      "orcid": null,
+      "affiliation": "NASA GSFC",
+      "activity_dates": null,
+      "affiliation_ror": null,
+      "enrichment": {
+        "orcid_source": null,
+        "orcid_confidence": null,
+        "affiliation_source": "finder (pre-existing, verified)",
+        "affiliation_type": "current",
+        "ror_source": null,
+        "ror_confidence": null,
+        "lookup_status": "complete",
+        "notes": "Identity confirmed: full name 'James R. Thieman' from the parent RadioJOVE ObservatoryGroup PI contact and a SPASE Person record; passes identity gate. ORCID: a single name match exists, ORCID 0000-0003-3615-9489 (given 'james', family 'thieman', record created 2020-02-01), but that ORCID record is completely empty - no public works, no employments, no keywords/biography/URLs - so there is nothing to corroborate identity against. A name-only match cannot be confirmed per the skill; orcid left null. Reviewer: 0000-0003-3615-9489 is the only candidate iD and is plausibly this person, but unconfirmed. No paper DOI appears in the finder's evidence, so the Crossref authorship route was unavailable. AFFILIATION: kept the finder's 'NASA GSFC', corroborated by his SPASE Person record OrganizationName 'NASA GSFC' and email james.r.thieman@nasa.gov. No dated employment history was available (empty ORCID, no paper), so this could not be era-matched against the 2013-present operating span; labeled 'current' (his registered/most-recent institution). ROR: not confirmed. ROR's purpose-built affiliation-match endpoint on 'NASA GSFC' set chosen:false and surfaced the wrong center (NASA Ames, ror.org/02acart68, score 0.75). The plain query ranks Goddard Space Flight Center (https://ror.org/0171mag52) first because 'GSFC' is registered as its acronym alias; that is the near-certain intended organization, corroborated by his nasa.gov email and documented NASA Goddard/RadioJOVE association. However 'NASA GSFC' is an acronym-only string and no ROR result was 'chosen', so per the skill's acronym-trap guidance the acronym is not hand-resolved; affiliation_ror left null. REVIEWER: https://ror.org/0171mag52 (Goddard Space Flight Center) is a one-click confirm."
+      }
+    },
+    {
+      "name": "James Brown (Jim Brown)",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "non-qualifying contact roles only (TechnicalContact on the Observatory and all five Instrument records; DataProducer on the data products). REVIEWER FLAG: he is the de facto operator/founder of HNRAO and the single strongest promotion candidate for this station-level record — see notes.",
+      "evidence": [
+        {
+          "source": "Observatory record Contacts (TechnicalContact — non-qualifying)",
+          "url": "https://spase-metadata.org/SMWG/Observatory/RadioJOVE/HNRAO.html",
+          "strength": "Low"
+        },
+        {
+          "source": "TechnicalContact on all five HNRAO Instrument records (DualDipole-RJ, LWA-FSX2, TFD-FSX8S, TFD-RJ, TFD-SDRPlay) — non-qualifying",
+          "url": "https://spase-metadata.org/SMWG/Instrument/Ground/HNRAO/TFD-SDRPlay.html",
+          "strength": "Low"
+        },
+        {
+          "source": "DataProducer on HNRAO NumericalData products — non-qualifying, but he is the entity that actually produces the observatory's data",
+          "url": "https://spase-metadata.org/GBO/NumericalData/RadioJOVE/HNRAO/TFD-SDRPlay/PT1.2S.html",
+          "strength": "Low"
+        },
+        {
+          "source": "SMWG Person record OrganizationName is 'Hawks Nest Radio Astronomy Observatory (HNRAO)' — his organizational identity is the observatory itself",
+          "url": "https://spase-metadata.org/SMWG/Person/James.Brown.html",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/James.Brown",
+        "url": "https://spase-metadata.org/SMWG/Person/James.Brown.html"
+      },
+      "orcid": null,
+      "affiliation": "Hawks Nest Radio Astronomy Observatory (HNRAO)",
+      "activity_dates": "2013-present (observatory operating span)"
+    },
+    {
+      "name": "Chuck Higgins",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "RadioJOVE project-level co-founder / author of the project overview document ('An Overview of the Radio JOVE Project – Summer 2014'); project-scope, not specific to the HNRAO participant station, and holds no qualifying role on any HNRAO-linked SPASE record",
+      "evidence": [
+        {
+          "source": "Author of 'An Overview of the Radio JOVE Project – Summer 2014' (project overview doc referenced in the HNRAO data record's InformationURL)",
+          "url": "https://radiojove.gsfc.nasa.gov/library/pubs/docs/RadioJoveSummary2014.pdf",
+          "strength": "Low"
+        },
+        {
+          "source": "Named RadioJOVE project co-founder on NASA/project material",
+          "url": "https://science.nasa.gov/citizen-science/radio-jove/",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Chuck.Higgins",
+        "url": "https://spase-metadata.org/SMWG/Person/Chuck.Higgins.html"
+      },
+      "orcid": null,
+      "affiliation": "Middle Tennessee State University",
+      "activity_dates": null
+    },
+    {
+      "name": "Leonard N. Garcia",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "RadioJOVE project-level co-founder and project archivist; appears on the HNRAO data record only as ArchiveSpecialist (non-qualifying role); project-scope, not an HNRAO-station author",
+      "evidence": [
+        {
+          "source": "HNRAO data record Contacts (ArchiveSpecialist — non-qualifying)",
+          "url": "https://spase-metadata.org/GBO/NumericalData/RadioJOVE/HNRAO/TFD-SDRPlay/PT1.2S.html",
+          "strength": "Low"
+        },
+        {
+          "source": "Named RadioJOVE project co-founder on NASA/project material",
+          "url": "https://science.nasa.gov/citizen-science/radio-jove/",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Leonard.N.Garcia",
+        "url": "https://spase-metadata.org/SMWG/Person/Leonard.N.Garcia.html"
+      },
+      "orcid": null,
+      "affiliation": "NASA Goddard Space Flight Center",
+      "activity_dates": null
+    },
+    {
+      "name": "Todd A. King",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "non-qualifying contact role only (ArchiveSpecialist, PDS/PPI archive at UCLA)",
+      "evidence": [
+        {
+          "source": "HNRAO data record Contacts (ArchiveSpecialist — non-qualifying)",
+          "url": "https://spase-metadata.org/GBO/NumericalData/RadioJOVE/HNRAO/TFD-SDRPlay/PT1.2S.html",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Todd.A.King",
+        "url": "https://spase-metadata.org/SMWG/Person/Todd.A.King.html"
+      },
+      "orcid": null,
+      "affiliation": null,
+      "activity_dates": null
+    },
+    {
+      "name": "James M. Weygand",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "metadata submitter/curator only (MetadataContact; RevisionHistory: 'Metadata submitted by J.M. Weygand on 2021-11-08'), not a data author",
+      "evidence": [
+        {
+          "source": "HNRAO data record Contacts (MetadataContact) and RevisionHistory submitter",
+          "url": "https://spase-metadata.org/GBO/NumericalData/RadioJOVE/HNRAO/TFD-SDRPlay/PT1.2S.html",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/James.M.Weygand",
+        "url": "https://spase-metadata.org/SMWG/Person/James.M.Weygand.html"
+      },
+      "orcid": null,
+      "affiliation": null,
+      "activity_dates": null
+    },
+    {
+      "name": "Lee Frost Bargatze",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "metadata curation role only (MetadataContact; RevisionHistory reviewer 'LFB'), not a data author",
+      "evidence": [
+        {
+          "source": "HNRAO data record Contacts (MetadataContact) and RevisionHistory reviewer",
+          "url": "https://spase-metadata.org/GBO/NumericalData/RadioJOVE/HNRAO/TFD-SDRPlay/PT1.2S.html",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Lee.Frost.Bargatze",
+        "url": "https://spase-metadata.org/SMWG/Person/Lee.Frost.Bargatze.html"
+      },
+      "orcid": null,
+      "affiliation": "UCLA",
+      "activity_dates": null
+    },
+    {
+      "name": "Jim Sky",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "software-tool provider (author of Radio-SkyPipe / Radio Sky Spectrograph software); appears as TechnicalContact (non-qualifying) on the data record, not a data author of HNRAO observations",
+      "evidence": [
+        {
+          "source": "HNRAO data record Contacts (TechnicalContact — non-qualifying); Radio-Sky Publishing",
+          "url": "https://spase-metadata.org/GBO/NumericalData/RadioJOVE/HNRAO/TFD-SDRPlay/PT1.2S.html",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Jim.Sky",
+        "url": "https://spase-metadata.org/SMWG/Person/Jim.Sky.html"
+      },
+      "orcid": null,
+      "affiliation": "Radio-Sky Publishing",
+      "activity_dates": null
+    }
+  ],
+  "notes": [
+    "Record type: Observatory for a single citizen-science RadioJOVE participant station (Hawk's Nest Radio Astronomy Observatory, Industry, Pennsylvania), operating since 2013, still active. This is not a professional spacecraft/observatory with instrument PIs and description papers; the five 'instruments' are amateur-built antenna+receiver systems, all operated by one person (Jim Brown), none with a scholarly description paper. Authorship evidence is therefore intrinsically thin.",
+    "STRONGEST REVIEWER DECISION: James (Jim) Brown is the de facto operator/founder of HNRAO — DataProducer of every HNRAO data product, sole TechnicalContact across the Observatory and all five Instrument records, and his SMWG Person organization literally is HNRAO. Per the skill's role gate he is formally EXCLUDED (all his roles — TechnicalContact, DataProducer — are non-qualifying), so he is recorded as excluded rather than promoted on the automated pass. He is the single most likely true station-level author and the top candidate for the human reviewer to promote. No qualifying-role, publication, or provider-PI evidence was found to elevate him automatically: the SUG provider page is defunct and the HNRAO personal site (hnrao.weebly.com) does not print an author byline.",
+    "No CMAD (not applicable to a citizen-science project) and no Strong-tier evidence of any kind (no HNRAO-specific overview paper, no CMAD front page, no provider PI page). The only included candidate is the RadioJOVE project PI via the parent ObservatoryGroup record.",
+    "Scoping of James R. Thieman (included, Medium): he is PrincipalInvestigator on the parent RadioJOVE ObservatoryGroup record (spase://SMWG/Observatory/RadioJOVE) and a RadioJOVE co-founder — the project-level PI of the umbrella project, treated here like a mission PI reached by following the group link upward. REVIEWER: decide whether project-level leadership belongs on an individual participant-station record, or only on the RadioJOVE group record. RadioJOVE has dozens of participant stations; Thieman is not HNRAO-specific.",
+    "Project-level founders/leaders (Chuck Higgins, Leonard N. Garcia) are recorded as excluded with a scoping reason: they are RadioJOVE project-scope, not authors of this specific participant station, and hold no qualifying role on any HNRAO-linked record. They are properly candidates for the RadioJOVE ObservatoryGroup record, not HNRAO.",
+    "No description-paper selection was performed for the instruments: none of the five amateur-built systems has a scholarly description paper, so no position-based (Strong/Medium) author evidence exists. Each instrument is logged in pending_instrument_runs with reason 'paper not located'. There is a RadioJOVE PROJECT overview literature (e.g. 'The Radio Jove Project: Citizen science for radio astronomy', doi:10.1553/pre8s125; book chapter 'The NASA Radio Jove Project', doi:10.1007/978-3-030-54906-0_12) but these describe the parent project/group, not the HNRAO station, so their author lists were not harvested onto this station-level record (wrong-level paper, analogous to using a mission-overview paper for a single instrument).",
+    "Instrument coverage: reverse lookup via github.com/hpde/SMWG (Instrument/Ground/HNRAO) found all five instrument records; all ObservatoryIDs confirm HNRAO. External roster from the record's own Description matches the five records; the Mosely 20 MHz Yagi antenna is named in the Description but unregistered (no Instrument record, no data product) — surfaced in instrument_coverage.missing_from_spase for curators, not pursued as it produces no archived data.",
+    "The RadioJOVE Spectrograph Users Group provider page (http://radiojove.org/SUG/) is defunct — the radiojove.org domain now serves unrelated spam/e-commerce content. Provider-team corroboration (which might have named Jim Brown as station operator with a clearer descriptor) was therefore unavailable. The live NASA project site is https://radiojove.gsfc.nasa.gov/."
+  ]
+}
