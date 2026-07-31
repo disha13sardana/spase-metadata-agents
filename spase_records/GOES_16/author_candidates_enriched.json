@@ -1,0 +1,1936 @@
+{
+  "record": "spase://SMWG/Observatory/GOES/16",
+  "date": "2026-07-31",
+  "operating_span": {
+    "start": "2016-11-19T23:42:00Z",
+    "stop": null
+  },
+  "cmad": {
+    "found": false,
+    "expected": false,
+    "url": null,
+    "notes": "No CMAD located. GOES-R is a NOAA-funded operational weather program (NOAA/NASA joint development), not a NASA heliophysics mission subject to the senior-review CMAD requirement, so absence is unremarkable (expected=false). Searched general web for 'GOES-R CMAD' and 'GOES-R Calibration and Measurement Algorithms Document' (hits returned only MMS, SDO/EVE, HERMES, SABER, STEREO/SECCHI CMADs), plus goes-r.gov and NOAA NCEI product pages. GOES-R's functional analogues are the Product Definition and Users' Guide (PUG) and per-instrument NCEI calibration/validation reports; these were NOT treated as CMAD front-page (Strong) evidence."
+  },
+  "instrument_coverage": {
+    "spase_instruments": [
+      "spase://SMWG/Instrument/GOES/16/MAG",
+      "spase://SMWG/Instrument/GOES/16/Ephemeris"
+    ],
+    "external_roster": [
+      "SUVI (Solar Ultraviolet Imager)",
+      "EXIS (Extreme Ultraviolet and X-ray Irradiance Sensors: EUVS + XRS)",
+      "SEISS (Space Environment In-Situ Suite: MPS-HI, MPS-LO, SGPS, EHIS)",
+      "MAG (Magnetometer)",
+      "ABI (Advanced Baseline Imager — Earth-pointing, out of heliophysics scope)",
+      "GLM (Geostationary Lightning Mapper — Earth-pointing, out of heliophysics scope)"
+    ],
+    "roster_sources": [
+      "https://www.goes-r.gov/spacesegment/instruments.html",
+      "https://doi.org/10.1016/b978-0-12-814327-8.00003-2",
+      "record Description"
+    ],
+    "missing_from_spase": [
+      "SUVI",
+      "EXIS",
+      "SEISS"
+    ],
+    "notes": "Reverse lookup of https://spase-metadata.org/SMWG/Instrument/GOES/16/ returns only two records: MAG and Ephemeris. Both were checked; MAG's ObservatoryID confirms spase://SMWG/Observatory/GOES/16. Ephemeris is a spacecraft-position pseudo-instrument with no science team and was not pursued. The external roster was established from the goes-r.gov instruments page and corroborated by Sullivan's 'GOES-R Series Spacecraft and Instruments' chapter; the two agree exactly. Three of the four space-weather instruments (SUVI, EXIS, SEISS) have NO SPASE Instrument record for GOES-16, so their teams were pursued via provider pages and description references instead of registry Contacts. CCOR flies only on GOES-U and is correctly absent from GOES-16. ABI and GLM are Earth-pointing weather instruments outside heliophysics authorship scope — recorded here for curator completeness, not pursued."
+  },
+  "pending_instrument_runs": [
+    {
+      "instrument": "SUVI (Solar Ultraviolet Imager)",
+      "spase_record": null,
+      "description_paper": "https://doi.org/10.1029/2022SW003044",
+      "reason": "no SPASE record",
+      "notes": "Description paper located and resolved: Darnel et al. 2022, 'The GOES-R Solar UltraViolet Imager' (Space Weather), 16 authors, not alphabetized; leads 1-3 (Darnel, Seaton, Bethge) taken Strong. A dedicated per-instrument run should register the SUVI record and harvest instrument-team depth (positions 4-16, incl. the Lockheed Martin build team) plus the Vasudevan et al. 2019 SPIE design/on-orbit-calibration paper (10.1117/12.2536196) and the 'GOES-R Series Solar Dynamics' book chapter (10.1016/b978-0-12-814327-8.00018-4, which adds Vicki Hsu)."
+    },
+    {
+      "instrument": "EXIS (Extreme Ultraviolet and X-ray Irradiance Sensors)",
+      "spase_record": null,
+      "description_paper": "https://doi.org/10.1016/B978-0-12-814327-8.00019-6",
+      "reason": "no SPASE record; suite has two components (EUVS, XRS) each with its own component-level description paper",
+      "notes": "Suite-level description reference located and resolved: Machol et al. 2020, 'GOES-R Series Solar X-ray and Ultraviolet Irradiance' (The GOES-R Series, ch. 19), 14 authors, not alphabetized; leads 1-3 (Machol, Eparvier, Viereck) taken Strong. Component runs still owed: EUVS (Eparvier et al. 2009 SPIE, 10.1117/12.826445 — NOTE: partially alphabetized, prefix = Eparvier alone) and XRS (Woods et al. 2024 JGR, 10.1029/2024JA032925 — not alphabetized, leads Woods, Eden, Eparvier). Component leads Woods, Eden, Crotser and Jones are excluded at observatory level as component-instrument depth and should be harvested at Strong/Medium on those component runs."
+    },
+    {
+      "instrument": "SEISS (Space Environment In-Situ Suite)",
+      "spase_record": null,
+      "description_paper": "https://doi.org/10.1117/12.2228537",
+      "reason": "no SPASE record + paper-selection uncertain (two co-equal suite-level description references from different communities)",
+      "notes": "Two competing suite-level descriptions score similarly on the heuristics: Galica et al. 2016 SPIE (builder team, Assurance Technology Corporation — 'instruments overview, calibration results, and data processing algorithms') and Kress, Rodriguez & Onsager 2020 (NOAA science team, The GOES-R Series ch. 20). Neither dominates, so the self-aware downgrade rule was applied and leads 1-3 of BOTH were taken at Medium rather than Strong. SEISS is itself a suite (MPS-HI, MPS-LO, two SGPS, EHIS + DPU); a dedicated run should register SEISS and its sub-sensors and settle the description-reference question."
+    }
+  ],
+  "candidates": [
+    {
+      "name": "Jonathan M. Darnel",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Lead author (position 1), non-alphabetized SUVI description paper 'The GOES-R Solar UltraViolet Imager' (Darnel et al. 2022, Space Weather)",
+          "url": "https://doi.org/10.1029/2022SW003044",
+          "strength": "Strong"
+        },
+        {
+          "source": "Author position 2, 'GOES-R Series Solar Dynamics' (The GOES-R Series ch. 18) — corroborates SUVI leadership",
+          "url": "https://doi.org/10.1016/b978-0-12-814327-8.00018-4",
+          "strength": "Medium"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Jonathan.Darnel",
+        "url": "https://spase-metadata.org/SMWG/Person/Jonathan.Darnel.html"
+      },
+      "orcid": "https://orcid.org/0000-0001-6601-9116",
+      "affiliation": "Cooperative Institute for Research in Environmental Sciences, University of Colorado Boulder / NOAA National Centers for Environmental Information",
+      "affiliation_ror": "https://ror.org/02ttsq026",
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Lead author (position 1), SUVI description paper (Darnel et al. 2022, 10.1029/2022SW003044)"
+        }
+      ],
+      "enrichment": {
+        "orcid_source": "finder (pre-existing, verified)",
+        "orcid_confidence": "Confirmed",
+        "affiliation_source": "finder (pre-existing, verified)",
+        "affiliation_type": "as-deposited",
+        "ror_source": "ROR affiliation-match (chosen)",
+        "ror_confidence": "Confirmed",
+        "lookup_status": "complete",
+        "notes": "ORCID: finder value passes the ISO 7064 mod 11-2 checksum and is corroborated twice - Crossref deposits it for author 1 of the SUVI description paper 10.1029/2022SW003044 (his own evidence DOI), and the ORCID record's works list 'The GOES-R Solar UltraViolet Imager'. AFFILIATION: era-matching yielded nothing - his only ORCID employment is an undated 'University of Colorado Boulder' entry (disambiguated by RINGGOLD 1877, not ROR), so no dated overlap with the 2016-11-19 -> open operating span could be computed. Finder value kept; verified verbatim against the Crossref deposit for author 1 of 10.1029/2022SW003044 (published 2022, inside the operating span), hence type as-deposited rather than era-matched. ROR affiliation-match on the primary institution of this multi-institution string (\"Cooperative Institute for Research in Environmental Sciences, University of Colorado Boulder, Boulder, CO, USA\") returned https://ror.org/02ttsq026 (University of Colorado Boulder) with chosen=true. The sub-unit CIRES has its own registry record (https://ror.org/00bdqav06) which also scored 1.0 but was NOT chosen, so the parent organization ROR is recorded per the sub-unit rule; a curator who prefers the institute-level ID can substitute it. The second institution in the string, NOAA National Centers for Environmental Information, resolves separately to https://ror.org/04r0wrp59 (chosen=true)."
+      }
+    },
+    {
+      "name": "Daniel B. Seaton",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Author position 2, non-alphabetized SUVI description paper (Darnel et al. 2022)",
+          "url": "https://doi.org/10.1029/2022SW003044",
+          "strength": "Strong"
+        },
+        {
+          "source": "Lead author, 'GOES-R Series Solar Dynamics' (The GOES-R Series ch. 18) — corroborates SUVI leadership",
+          "url": "https://doi.org/10.1016/b978-0-12-814327-8.00018-4",
+          "strength": "Medium"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Daniel.B.Seaton",
+        "url": "https://spase-metadata.org/SMWG/Person/Daniel.B.Seaton.html"
+      },
+      "orcid": "https://orcid.org/0000-0002-0494-2025",
+      "affiliation": "NOAA National Centers for Environmental Information",
+      "affiliation_ror": "https://ror.org/04r0wrp59",
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Author position 2, SUVI description paper (Darnel et al. 2022, 10.1029/2022SW003044)"
+        }
+      ],
+      "enrichment": {
+        "orcid_source": "finder (pre-existing, verified)",
+        "orcid_confidence": "Confirmed",
+        "affiliation_source": "ORCID employment",
+        "affiliation_type": "era-matched",
+        "ror_source": "ROR affiliation-match (chosen)",
+        "ror_confidence": "Confirmed",
+        "lookup_status": "complete",
+        "notes": "ORCID: finder value passes the checksum; Crossref deposits it for author 2 of the SUVI description paper 10.1029/2022SW003044 (his evidence DOI) and the ORCID record lists that paper. AFFILIATION DIFFERS FROM FINDER VALUE - FLAGGED FOR REVIEW. His ORCID employment history is dated, so era-matching applies. Three entries overlap the operating span (start 2016-11-19, open-ended): NOAA National Centers for Environmental Information / CCOG, Solar Physicist, 2015-12-01 to 2021-12-31; Southwest Research Institute Boulder, Principal Scientist, 2020-02 to present (concurrent, and his current employer); and an undated University of Colorado Boulder entry. Royal Observatory of Belgium (2008-07-15 to 2015-11-30) ended before the span and is excluded. NOAA NCEI was selected because it matches the GOES-16 data provider, per the multiple-overlap rule (SwRI overlaps for longer in wall-clock terms). MID-SPAN AFFILIATION CHANGE: NOAA NCEI (2015-2021) -> SwRI Boulder (2020-present); the 2025 SUVI paper 10.1029/2024SW004234 deposits SwRI for him. The finder's opportunistic value was 'Cooperative Institute for Research in Environmental Sciences, University of Colorado Boulder / NOAA National Centers for Environmental Information' (as deposited on the 2022 SUVI paper); it is consistent with the NOAA half of the era-matched value but is not dated evidence, so the era-matched value takes the field. ROR: the selected employment entry carries no disambiguated-organization block, so Route A did not apply; ROR affiliation-match on 'NOAA National Centers for Environmental Information, Boulder, CO, USA' returned https://ror.org/04r0wrp59 with chosen=true."
+      }
+    },
+    {
+      "name": "Christian Bethge",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Author position 3, non-alphabetized SUVI description paper (Darnel et al. 2022)",
+          "url": "https://doi.org/10.1029/2022SW003044",
+          "strength": "Strong"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Christian.Bethge",
+        "url": "https://spase-metadata.org/SMWG/Person/Christian.Bethge.html"
+      },
+      "orcid": "https://orcid.org/0000-0001-9076-6461",
+      "affiliation": "Cooperative Institute for Research in Environmental Sciences, University of Colorado Boulder / NOAA National Centers for Environmental Information",
+      "affiliation_ror": "https://ror.org/02ttsq026",
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Author position 3, SUVI description paper (Darnel et al. 2022, 10.1029/2022SW003044)"
+        }
+      ],
+      "enrichment": {
+        "orcid_source": "ORCID name-search (corroborated)",
+        "orcid_confidence": "Confirmed",
+        "affiliation_source": "finder (pre-existing, verified)",
+        "affiliation_type": "as-deposited",
+        "ror_source": "ROR affiliation-match (chosen)",
+        "ror_confidence": "Confirmed",
+        "lookup_status": "complete",
+        "notes": "ORCID: the SUVI description paper deposits no iD for him, so Route B was used. ORCID name search for 'Christian Bethge' returns exactly two people: 0000-0001-9076-6461 (bare record, no works or employments) and 0009-0003-4552-8087 (a library/open-science staff member at Martin Luther University Halle-Wittenberg, clearly a different person). The bare record alone would not have been acceptable, so corroboration was sought in Crossref: publisher-deposited metadata for 10.1029/2024SW004234 ('Thermospheric Density, Composition, and Temperature From GOES-R/SUVI Solar Occultations', Space Weather 2025) ties iD 0000-0001-9076-6461 to author 'C. Bethge' at CIRES, University of Colorado Boulder - the same instrument (GOES-R SUVI) and the same institution as this candidate. Checksum valid. Note the Crossref author name there is initials-only; the full given name 'Christian' comes from the ORCID registry entry for that same iD and from the SUVI description paper author list. AFFILIATION: the ORCID record has no employment entries at all, so no era-matched or current value was available. Finder value kept and verified verbatim against the Crossref deposit for author 3 of 10.1029/2022SW003044 (2022, inside the operating span). ROR affiliation-match on the primary institution of this multi-institution string (\"Cooperative Institute for Research in Environmental Sciences, University of Colorado Boulder, Boulder, CO, USA\") returned https://ror.org/02ttsq026 (University of Colorado Boulder) with chosen=true. The sub-unit CIRES has its own registry record (https://ror.org/00bdqav06) which also scored 1.0 but was NOT chosen, so the parent organization ROR is recorded per the sub-unit rule; a curator who prefers the institute-level ID can substitute it. The second institution in the string, NOAA National Centers for Environmental Information, resolves separately to https://ror.org/04r0wrp59 (chosen=true)."
+      }
+    },
+    {
+      "name": "Paul T. M. Loto'aniu",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Lead author (position 1), non-alphabetized MAG description paper 'The GOES-16 Spacecraft Science Magnetometer' (Loto'aniu et al. 2019, Space Science Reviews) — names GOES-16 explicitly",
+          "url": "https://doi.org/10.1007/s11214-019-0600-3",
+          "strength": "Strong"
+        },
+        {
+          "source": "Lead author, 'Magnetic Field Observations from the GOES-R Series' (The GOES-R Series ch. 21)",
+          "url": "https://doi.org/10.1016/b978-0-12-814327-8.00021-4",
+          "strength": "Medium"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": "https://orcid.org/0000-0002-2140-2370",
+      "affiliation": "Cooperative Institute for Research in Environmental Sciences, University of Colorado Boulder / National Centers for Environmental Information, National Oceanic and Atmospheric Administration",
+      "affiliation_ror": "https://ror.org/02ttsq026",
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Lead author (position 1), GOES-16 MAG description paper (Loto'aniu et al. 2019, 10.1007/s11214-019-0600-3)"
+        }
+      ],
+      "enrichment": {
+        "orcid_source": "Crossref (paper DOI)",
+        "orcid_confidence": "Confirmed",
+        "affiliation_source": "Crossref (paper DOI)",
+        "affiliation_type": "as-deposited",
+        "ror_source": "ROR affiliation-match (chosen)",
+        "ror_confidence": "Confirmed",
+        "lookup_status": "complete",
+        "notes": "ORCID: neither evidence DOI deposits iDs (Springer's Space Science Reviews record for 10.1007/s11214-019-0600-3 carries initials-only names and no ORCIDs; the Elsevier chapter carries none either). A Crossref author query located 10.1029/2023SW003736 ('Intersatellite Comparisons of GOES Magnetic Field Measurements', Space Weather 2024), where the publisher deposits iD 0000-0002-2140-2370 for author 3 'Paul T. M. Loto'aniu' - an exact full-name match to this candidate on a GOES magnetometer paper. Independently corroborated: the ORCID record's works include 'Magnetic Field Observations from the GOES-R Series' (his own evidence chapter, 10.1016/b978-0-12-814327-8.00021-4), 'Correcting the Arcjet Thruster Disturbance in GOES-16 Magnetometer Data' and 'Initial on-Orbit Results from the GOES-18 Spacecraft Science Magnetometer'. Checksum valid. CAUTION FOR REVIEWER: an ORCID name search on 'Loto*' also returns 0000-0003-0737-5182 ('TAPUOSI LOTOANIU', University of Colorado Boulder, no works) which is NOT the iD used here; if that is a duplicate registration of the same person it should be reported to ORCID, but nothing corroborates it and it was not used. AFFILIATION: the ORCID record has no employment entries, and neither evidence DOI deposits an affiliation, so the Crossref fallback was used - the affiliation deposited for him on 10.1029/2023SW003736 (2024, inside the operating span, and the same paper that carries his confirmed iD). ROR affiliation-match on the primary institution of this multi-institution string (\"Cooperative Institute for Research in Environmental Sciences, University of Colorado Boulder, Boulder, CO, USA\") returned https://ror.org/02ttsq026 (University of Colorado Boulder) with chosen=true. The sub-unit CIRES has its own registry record (https://ror.org/00bdqav06) which also scored 1.0 but was NOT chosen, so the parent organization ROR is recorded per the sub-unit rule; a curator who prefers the institute-level ID can substitute it. The second institution in the string, NOAA National Centers for Environmental Information, resolves separately to https://ror.org/04r0wrp59 (chosen=true)."
+      }
+    },
+    {
+      "name": "Robert J. Redmon",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Author position 2, non-alphabetized MAG description paper (Loto'aniu et al. 2019)",
+          "url": "https://doi.org/10.1007/s11214-019-0600-3",
+          "strength": "Strong"
+        },
+        {
+          "source": "Author position 3, 'Magnetic Field Observations from the GOES-R Series' (ch. 21); also co-editor of the GOES-R Series reference volume",
+          "url": "https://doi.org/10.1016/b978-0-12-814327-8.00021-4",
+          "strength": "Medium"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Robert.J.Redmon",
+        "url": "https://spase-metadata.org/SMWG/Person/Robert.J.Redmon.html"
+      },
+      "orcid": "https://orcid.org/0000-0001-5585-2719",
+      "affiliation": "NOAA National Centers for Environmental Information",
+      "affiliation_ror": "https://ror.org/04r0wrp59",
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Author position 2, GOES-16 MAG description paper (Loto'aniu et al. 2019, 10.1007/s11214-019-0600-3)"
+        }
+      ],
+      "enrichment": {
+        "orcid_source": "ORCID name-search (corroborated)",
+        "orcid_confidence": "Confirmed",
+        "affiliation_source": "finder (pre-existing, verified)",
+        "affiliation_type": "current",
+        "ror_source": "ROR affiliation-match (chosen)",
+        "ror_confidence": "Confirmed",
+        "lookup_status": "complete",
+        "notes": "ORCID: neither evidence DOI deposits iDs. ORCID name search returned two 'Robert Redmon' records; 0009-0007-9176-0652 (Oklahoma State University) has nothing in common with this candidate, while 0000-0001-5585-2719 is employed at NOAA / National Centers for Environmental Information and its works list includes 'The GOES-16 Spacecraft Science Magnetometer' - this candidate's own evidence paper - plus 'Long-Term Bias Stability of the GOES-NOP Magnetometers' and GOES-16 magnetometer wave studies. That is direct corroboration against the evidence, so the match is Confirmed. Checksum valid. AFFILIATION: his single ORCID employment (National Oceanic and Atmospheric Administration, department National Centers for Environmental Information, Director of the NOAA Center for Artificial Intelligence) carries NO dates, so era-matching was not possible and the current/most-recent rule applies. It agrees with the finder's value, which is therefore kept and marked verified. ROR: that employment's disambiguated-organization block uses FUNDREF (10.13039/100000192), not ROR, so Route A did not apply and the identifier was NOT converted by hand; ROR affiliation-match on 'NOAA National Centers for Environmental Information, Boulder, CO, USA' returned https://ror.org/04r0wrp59 with chosen=true."
+      }
+    },
+    {
+      "name": "Samuel Califf",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Author position 3, non-alphabetized MAG description paper (Loto'aniu et al. 2019)",
+          "url": "https://doi.org/10.1007/s11214-019-0600-3",
+          "strength": "Strong"
+        },
+        {
+          "source": "Author position 2, 'Magnetic Field Observations from the GOES-R Series' (ch. 21)",
+          "url": "https://doi.org/10.1016/b978-0-12-814327-8.00021-4",
+          "strength": "Medium"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": "https://orcid.org/0000-0002-7017-0916",
+      "affiliation": "Cooperative Institute for Research in Environmental Sciences, University of Colorado Boulder / National Centers for Environmental Information, National Oceanic and Atmospheric Administration",
+      "affiliation_ror": "https://ror.org/02ttsq026",
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Author position 3, GOES-16 MAG description paper (Loto'aniu et al. 2019, 10.1007/s11214-019-0600-3)"
+        }
+      ],
+      "enrichment": {
+        "orcid_source": "Crossref (paper DOI)",
+        "orcid_confidence": "Confirmed",
+        "affiliation_source": "Crossref (paper DOI)",
+        "affiliation_type": "as-deposited",
+        "ror_source": "ROR affiliation-match (chosen)",
+        "ror_confidence": "Confirmed",
+        "lookup_status": "complete",
+        "notes": "ORCID: his evidence DOIs deposit no iDs. ORCID name search returned exactly one 'Samuel Califf' (0000-0002-7017-0916) but with an empty record, which is not corroboration on its own. Crossref supplies it: the publisher deposits that same iD for author 2 'Samuel Califf' on 10.1029/2023SW003736 ('Intersatellite Comparisons of GOES Magnetic Field Measurements', Space Weather 2024) - the same GOES magnetometer subject matter, the same institution, and alongside the same co-authors (Loto'aniu, Singer, Rich) as his evidence paper. The same iD appears for 'Samuel T Califf' and 'S. Califf' on further GOES magnetometer preprints/papers. Checksum valid. AFFILIATION: no ORCID employment entries exist, and 10.1007/s11214-019-0600-3 deposits no affiliations, so the Crossref fallback was used - the affiliation deposited for him on 10.1029/2023SW003736 (2024, inside the operating span, same paper as the confirmed iD). ROR affiliation-match on the primary institution of this multi-institution string (\"Cooperative Institute for Research in Environmental Sciences, University of Colorado Boulder, Boulder, CO, USA\") returned https://ror.org/02ttsq026 (University of Colorado Boulder) with chosen=true. The sub-unit CIRES has its own registry record (https://ror.org/00bdqav06) which also scored 1.0 but was NOT chosen, so the parent organization ROR is recorded per the sub-unit rule; a curator who prefers the institute-level ID can substitute it. The second institution in the string, NOAA National Centers for Environmental Information, resolves separately to https://ror.org/04r0wrp59 (chosen=true)."
+      }
+    },
+    {
+      "name": "Howard J. Singer",
+      "status": "included",
+      "confidence": "Medium",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "PrincipalInvestigator (qualifying role) in the GOES-16 MAG SPASE Instrument record Contacts",
+          "url": "https://spase-metadata.org/SMWG/Instrument/GOES/16/MAG.html",
+          "strength": "Medium"
+        },
+        {
+          "source": "Named in the GOES-16 MAG record Acknowledgement ('Please acknowledge Howard Singer, the National Oceanic and Atmospheric Administration, and the Science Applications International Corporation, Inc.')",
+          "url": "https://spase-metadata.org/SMWG/Instrument/GOES/16/MAG.html",
+          "strength": "Medium"
+        },
+        {
+          "source": "Author position 4, MAG description paper (Loto'aniu et al. 2019) and position 4 of ch. 21 — corroborating, but position 4 of an instrument paper carries no observatory-level weight on its own",
+          "url": "https://doi.org/10.1007/s11214-019-0600-3",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Howard.J.Singer",
+        "url": "https://spase-metadata.org/SMWG/Person/Howard.J.Singer.html"
+      },
+      "orcid": "https://orcid.org/0000-0002-5364-6505",
+      "affiliation": "NOAA Space Weather Prediction Center",
+      "affiliation_ror": "https://ror.org/01j6j9107",
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author",
+        "PrincipalInvestigator"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "MAG PrincipalInvestigator in the GOES-16 MAG SPASE record, corroborated by the record Acknowledgement and MAG description-paper co-authorship (Medium inclusion evidence)"
+        },
+        {
+          "role": "PrincipalInvestigator",
+          "source": "GOES-16 MAG SPASE Instrument record Contacts (https://spase-metadata.org/SMWG/Instrument/GOES/16/MAG.html)"
+        }
+      ],
+      "enrichment": {
+        "orcid_source": "Crossref (paper DOI)",
+        "orcid_confidence": "Confirmed",
+        "affiliation_source": "finder (pre-existing, verified)",
+        "affiliation_type": "era-matched",
+        "ror_source": "ROR affiliation-match (chosen)",
+        "ror_confidence": "Confirmed",
+        "lookup_status": "complete",
+        "notes": "ORCID: two 'Howard Singer' records exist - 0000-0002-6316-8260 is completely empty (no works, no employments, nothing to corroborate or exclude; flagged here in case it is a duplicate registration), and 0000-0002-5364-6505 lists 'Space Weather Prediction Center, Chief Scientist, 1993-04 to present'. The latter is confirmed independently by Crossref: the publisher deposits 0000-0002-5364-6505 for author 6 'Howard J. Singer' at 'Space Weather Prediction Center NOAA' on 10.1029/2023SW003736 (GOES magnetic field measurements, Space Weather 2024) - full-name match, GOES magnetometer subject, and the same institution the GOES-16 MAG SPASE record and Acknowledgement name for him. Checksum valid. AFFILIATION: era-matched - the ORCID employment 'Space Weather Prediction Center, Chief Scientist' runs 1993-04 to present (no end date = ongoing) and therefore covers the whole operating span from 2016-11-19. It agrees with the finder's value, which is kept and marked verified (ORCID names the organization without the 'NOAA' prefix; Crossref deposits it as 'Space Weather Prediction Center NOAA'). ROR: that employment is disambiguated by RINGGOLD 221371, not ROR, so Route A did not apply and the Ringgold ID was not converted; ROR affiliation-match on 'NOAA Space Weather Prediction Center, Boulder, CO, USA' returned https://ror.org/01j6j9107 with chosen=true (NOAA Weather Prediction Center also scored 1.0 but was not chosen)."
+      }
+    },
+    {
+      "name": "Janet L. Machol",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Lead author (position 1), non-alphabetized EXIS suite description reference 'GOES-R Series Solar X-ray and Ultraviolet Irradiance' (Machol et al. 2020, The GOES-R Series ch. 19)",
+          "url": "https://doi.org/10.1016/B978-0-12-814327-8.00019-6",
+          "strength": "Strong"
+        },
+        {
+          "source": "Co-author (position 7) of the XRS design/pre-flight-calibration paper (Woods et al. 2024) — corroborates EXIS involvement",
+          "url": "https://doi.org/10.1029/2024JA032925",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": "https://orcid.org/0000-0002-0344-0314",
+      "affiliation": "Cooperative Institute for Research in Environmental Sciences, University of Colorado Boulder / NOAA National Centers for Environmental Information",
+      "affiliation_ror": "https://ror.org/02ttsq026",
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Lead author (position 1), EXIS suite description reference (Machol et al. 2020, 10.1016/B978-0-12-814327-8.00019-6)"
+        }
+      ],
+      "enrichment": {
+        "orcid_source": "finder (pre-existing, verified)",
+        "orcid_confidence": "Confirmed",
+        "affiliation_source": "finder (pre-existing, verified)",
+        "affiliation_type": "as-deposited",
+        "ror_source": "ROR affiliation-match (chosen)",
+        "ror_confidence": "Confirmed",
+        "lookup_status": "complete",
+        "notes": "ORCID: finder value passes the checksum and is corroborated twice - Crossref deposits it for author 7 'Janet L. Machol' of the XRS paper 10.1029/2024JA032925 (an evidence DOI on this candidate), and the ORCID record's works include 'GOES-R Series X-Ray Sensor (XRS): 1. Design and Pre-Flight Calibration', 'The GOES-R EUVS model for EUV irradiance variability' and 'High precision, high time-cadence measurements of the MgII index ... GOES-R EXIS'. AFFILIATION: era-matching yielded nothing - she has five ORCID employment entries (NOAA; NOAA NESDIS; NOAA NCEI; CIRES / University of Colorado Boulder; University of Colorado Boulder) and NONE of them is dated, so no overlap with the operating span could be computed. The finder's value is kept and verified verbatim against the Crossref deposit for author 7 of 10.1029/2024JA032925 (2024, inside the operating span); it also matches the two most specific undated ORCID employments (CIRES and NOAA NCEI), which is independent support for its correctness. ROR: because the affiliation is an as-deposited/finder string rather than a value taken from a selected ORCID employment, Route A was not used. ROR affiliation-match on the primary institution of this multi-institution string (\"Cooperative Institute for Research in Environmental Sciences, University of Colorado Boulder, Boulder, CO, USA\") returned https://ror.org/02ttsq026 (University of Colorado Boulder) with chosen=true. The sub-unit CIRES has its own registry record (https://ror.org/00bdqav06) which also scored 1.0 but was NOT chosen, so the parent organization ROR is recorded per the sub-unit rule; a curator who prefers the institute-level ID can substitute it. The second institution in the string, NOAA National Centers for Environmental Information, resolves separately to https://ror.org/04r0wrp59 (chosen=true). FOR THE REVIEWER: ORCID's own CIRES employment entry for her asserts https://ror.org/00bdqav06 and its NOAA NCEI entry asserts https://ror.org/04r0wrp59, so both alternatives are registry-backed if a curator prefers the institute- or agency-level ID over the parent university."
+      }
+    },
+    {
+      "name": "Francis G. Eparvier",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Documented EXIS Principal Investigator — NOAA SWPC provider presentations title him PI of both the GOES-R EUVS and the GOES-R XRS, the two instruments comprising EXIS",
+          "url": "https://www.swpc.noaa.gov/sites/default/files/images/u33/Eparvier_GOES_R_EUVS.pdf",
+          "strength": "Strong"
+        },
+        {
+          "source": "Author position 2, non-alphabetized EXIS suite description reference (Machol et al. 2020, ch. 19)",
+          "url": "https://doi.org/10.1016/B978-0-12-814327-8.00019-6",
+          "strength": "Strong"
+        },
+        {
+          "source": "Lead author (sole prefix author) of the EUVS component design paper 'The Extreme Ultraviolet Sensor (EUVS) for GOES-R' (Eparvier et al. 2009, SPIE) — author list partially alphabetized, prefix = Eparvier alone",
+          "url": "https://doi.org/10.1117/12.826445",
+          "strength": "Medium"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": "https://orcid.org/0000-0001-7143-2730",
+      "affiliation": "Laboratory for Atmospheric and Space Physics, University of Colorado Boulder",
+      "affiliation_ror": "https://ror.org/02ttsq026",
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author",
+        "PrincipalInvestigator"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Author position 2 of the EXIS suite description reference (Machol et al. 2020) and sole prefix author of the EUVS design paper (Eparvier et al. 2009)"
+        },
+        {
+          "role": "PrincipalInvestigator",
+          "source": "NOAA SWPC provider presentations naming him PI of the GOES-R EUVS and XRS (https://www.swpc.noaa.gov/sites/default/files/images/u33/Eparvier_GOES_R_EUVS.pdf)"
+        }
+      ],
+      "enrichment": {
+        "orcid_source": "finder (pre-existing, verified)",
+        "orcid_confidence": "Confirmed",
+        "affiliation_source": "finder (pre-existing, verified)",
+        "affiliation_type": "as-deposited",
+        "ror_source": "ROR affiliation-match (chosen)",
+        "ror_confidence": "Confirmed",
+        "lookup_status": "complete",
+        "notes": "ORCID: finder value passes the checksum and is corroborated twice - Crossref deposits it for author 3 'Francis G. Eparvier' of the XRS paper 10.1029/2024JA032925, and the ORCID record's 55 works include 'GOES-R Series X-Ray Sensor (XRS): 1. Design and Pre-Flight Calibration', 'Solar Atmospheric Oscillations as Measured by the GOES-R Series EXIS EUVS-C Instrument' and the GOES-R EUVS Mg II index papers - i.e. the exact instruments (EXIS/EUVS/XRS) for which he is named PI. Note 10.1029/2024JA032925 is not one of the evidence entries the finder recorded for him (his EXIS evidence is the ch. 19 reference and the 2009 EUVS SPIE paper, neither of which deposits iDs), but it is an EXIS/XRS paper he co-authored, so the corroboration is on-instrument. AFFILIATION: era-matching yielded nothing - his only ORCID employment is an undated 'University of Colorado Boulder' entry (RINGGOLD 1877, not ROR). Finder value kept and verified verbatim against the Crossref deposit for author 3 of 10.1029/2024JA032925 (2024, inside the operating span). ROR: affiliation-match on 'Laboratory for Atmospheric and Space Physics, University of Colorado Boulder, Boulder, CO, USA' returned https://ror.org/02ttsq026 (University of Colorado Boulder) with chosen=true. SUB-UNIT NOTE: LASP has its own registry record (https://ror.org/01fcjzv38) which also scored 1.0 but was NOT chosen, so the parent organization's ROR is recorded; a curator who prefers the laboratory-level ID can substitute it. The affiliation string itself retains the LASP sub-unit as the evidence stated it."
+      }
+    },
+    {
+      "name": "Rodney A. Viereck",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Author position 3, non-alphabetized EXIS suite description reference (Machol et al. 2020, ch. 19)",
+          "url": "https://doi.org/10.1016/B978-0-12-814327-8.00019-6",
+          "strength": "Strong"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Rodney.Viereck",
+        "url": "https://spase-metadata.org/SMWG/Person/Rodney.Viereck.html"
+      },
+      "orcid": null,
+      "affiliation": "NOAA Space Weather Prediction Center",
+      "affiliation_ror": "https://ror.org/01j6j9107",
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Author position 3, EXIS suite description reference (Machol et al. 2020, 10.1016/B978-0-12-814327-8.00019-6)"
+        }
+      ],
+      "enrichment": {
+        "orcid_source": null,
+        "orcid_confidence": null,
+        "affiliation_source": "Crossref (paper DOI)",
+        "affiliation_type": "as-deposited",
+        "ror_source": "ROR affiliation-match (chosen)",
+        "ror_confidence": "Confirmed",
+        "lookup_status": "complete",
+        "notes": "ORCID LEFT NULL - looked and could not confirm. His evidence DOI (the EXIS ch. 19 reference) deposits no iDs. ORCID name search returns exactly one 'Rodney Viereck', 0009-0004-3212-3766, whose record is completely empty (no works, no employments, no affiliations), so nothing in it corroborates identity and it must not be accepted on name alone; it is recorded here so a reviewer can resolve it in one click. A Crossref author sweep over ~25 of his solar-irradiance / space-weather papers (1996-2019) found no publisher-deposited ORCID for him on any of them. AFFILIATION: identity is confirmed independently of ORCID (full name 'Rodney A. Viereck' printed in the EXIS ch. 19 author list), so the Crossref fallback applies: Crossref deposits 'NOAA Space Weather Prediction Center, Boulder CO USA' for him on 10.1029/2018SW001886 (2018, inside the operating span), with the same institution deposited consistently on 10.1002/swe.20070 (2013), 10.1029/2018SW001866 and 10.1029/2018JA025525. This is affiliation at publication date, not dated employment evidence, hence as-deposited. ROR: affiliation-match on 'NOAA Space Weather Prediction Center, Boulder, CO, USA' returned https://ror.org/01j6j9107 with chosen=true. The ROR is for the institution named in the affiliation and carries no implication about his ORCID, which remains unresolved."
+      }
+    },
+    {
+      "name": "G. E. Galica",
+      "status": "included",
+      "confidence": "Medium",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Lead author (position 1), non-alphabetized SEISS overview paper 'GOES-R Space Environment In-Situ Suite: instruments overview, calibration results, and data processing algorithms, and expected on-orbit performance' (Galica et al. 2016, SPIE) — downgraded from Strong because SEISS description-reference selection is uncertain (two co-equal candidates)",
+          "url": "https://doi.org/10.1117/12.2228537",
+          "strength": "Medium"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": null,
+      "affiliation_ror": null,
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Lead author (position 1), SEISS overview paper (Galica et al. 2016, 10.1117/12.2228537); Medium under the uncertain-selection downgrade"
+        }
+      ],
+      "enrichment": {
+        "orcid_source": null,
+        "orcid_confidence": null,
+        "affiliation_source": null,
+        "affiliation_type": null,
+        "ror_source": null,
+        "ror_confidence": null,
+        "lookup_status": "skipped-unconfirmed-identity",
+        "notes": "IDENTITY GATE - NOT ENRICHED. No lookups were attempted for orcid, affiliation or affiliation_ror. This candidate is known only by printed initials: the SPIE paper 10.1117/12.2228537 prints the name as 'G. E. Galica', and the Crossref record for that DOI likewise deposits only the initials (given='G. E.', family='Galica') with no affiliations and no ORCIDs. No source in the finder's evidence, and nothing found while verifying it, supplies a full given name, so the person's identity is not established and no ORCID could be attributed without guessing. Per the skill an unconfirmed value may never be placed in the orcid, affiliation or affiliation_ror field. FOR THE REVIEWER: the finder recorded affiliation 'Assurance Technology Corporation' (the SEISS builder team's institution). That value is preserved in the finder's file and here in this note, but it is deliberately not carried into the affiliation field, because the identity gate blocks enrichment for this candidate. Resolving the full name upstream (SPIE proceedings front matter, the SEISS instrument run, or NOAA/ATC documentation) would let a re-run enrich all three fields normally."
+      }
+    },
+    {
+      "name": "B. K. Dichter",
+      "status": "included",
+      "confidence": "Medium",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Author position 2, SEISS overview paper (Galica et al. 2016) — downgraded from Strong under the uncertain-selection rule",
+          "url": "https://doi.org/10.1117/12.2228537",
+          "strength": "Medium"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": null,
+      "affiliation_ror": null,
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Author position 2, SEISS overview paper (Galica et al. 2016, 10.1117/12.2228537); Medium under the uncertain-selection downgrade"
+        }
+      ],
+      "enrichment": {
+        "orcid_source": null,
+        "orcid_confidence": null,
+        "affiliation_source": null,
+        "affiliation_type": null,
+        "ror_source": null,
+        "ror_confidence": null,
+        "lookup_status": "skipped-unconfirmed-identity",
+        "notes": "IDENTITY GATE - NOT ENRICHED. No lookups were attempted for orcid, affiliation or affiliation_ror. This candidate is known only by printed initials: the SPIE paper 10.1117/12.2228537 prints the name as 'B. K. Dichter', and the Crossref record for that DOI likewise deposits only the initials (given='B. K.', family='Dichter') with no affiliations and no ORCIDs. No source in the finder's evidence, and nothing found while verifying it, supplies a full given name, so the person's identity is not established and no ORCID could be attributed without guessing. Per the skill an unconfirmed value may never be placed in the orcid, affiliation or affiliation_ror field. A second, independent GOES-16/-17 SEISS paper (10.1029/2019SW002403, the MPS-HI bowtie inversion paper) also lists him as 'B.K. Dichter' with affiliation 'Assurance Technology Corporation, Carlisle MA USA' and no ORCID - which corroborates the institution but still leaves the given name unknown. FOR THE REVIEWER: the finder recorded affiliation 'Assurance Technology Corporation' (the SEISS builder team's institution). That value is preserved in the finder's file and here in this note, but it is deliberately not carried into the affiliation field, because the identity gate blocks enrichment for this candidate. Resolving the full name upstream (SPIE proceedings front matter, the SEISS instrument run, or NOAA/ATC documentation) would let a re-run enrich all three fields normally."
+      }
+    },
+    {
+      "name": "S. Tsui",
+      "status": "included",
+      "confidence": "Medium",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Author position 3, SEISS overview paper (Galica et al. 2016) — downgraded from Strong under the uncertain-selection rule",
+          "url": "https://doi.org/10.1117/12.2228537",
+          "strength": "Medium"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": null,
+      "affiliation_ror": null,
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Author position 3, SEISS overview paper (Galica et al. 2016, 10.1117/12.2228537); Medium under the uncertain-selection downgrade"
+        }
+      ],
+      "enrichment": {
+        "orcid_source": null,
+        "orcid_confidence": null,
+        "affiliation_source": null,
+        "affiliation_type": null,
+        "ror_source": null,
+        "ror_confidence": null,
+        "lookup_status": "skipped-unconfirmed-identity",
+        "notes": "IDENTITY GATE - NOT ENRICHED. No lookups were attempted for orcid, affiliation or affiliation_ror. This candidate is known only by printed initials: the SPIE paper 10.1117/12.2228537 prints the name as 'S. Tsui', and the Crossref record for that DOI likewise deposits only the initials (given='S.', family='Tsui') with no affiliations and no ORCIDs. No source in the finder's evidence, and nothing found while verifying it, supplies a full given name, so the person's identity is not established and no ORCID could be attributed without guessing. Per the skill an unconfirmed value may never be placed in the orcid, affiliation or affiliation_ror field. 'Tsui' with a single initial is an especially high-collision name, so an ORCID name search was deliberately not treated as a route to identity here. FOR THE REVIEWER: the finder recorded affiliation 'Assurance Technology Corporation' (the SEISS builder team's institution). That value is preserved in the finder's file and here in this note, but it is deliberately not carried into the affiliation field, because the identity gate blocks enrichment for this candidate. Resolving the full name upstream (SPIE proceedings front matter, the SEISS instrument run, or NOAA/ATC documentation) would let a re-run enrich all three fields normally."
+      }
+    },
+    {
+      "name": "Brian T. Kress",
+      "status": "included",
+      "confidence": "Medium",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Lead author (position 1), competing SEISS suite description reference 'The GOES-R Space Environment In Situ Suite (SEISS): Measurement of Energetic Particles in Geospace' (Kress, Rodriguez & Onsager 2020, The GOES-R Series ch. 20) — downgraded from Strong under the uncertain-selection rule",
+          "url": "https://doi.org/10.1016/b978-0-12-814327-8.00020-2",
+          "strength": "Medium"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": "https://orcid.org/0000-0002-3202-3739",
+      "affiliation": "University of Colorado Boulder",
+      "affiliation_ror": "https://ror.org/02ttsq026",
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Lead author (position 1), SEISS book-chapter description reference (Kress et al. 2020, 10.1016/b978-0-12-814327-8.00020-2); Medium under the uncertain-selection downgrade"
+        }
+      ],
+      "enrichment": {
+        "orcid_source": "Crossref (paper DOI)",
+        "orcid_confidence": "Confirmed",
+        "affiliation_source": "ORCID employment",
+        "affiliation_type": "current",
+        "ror_source": "ROR affiliation-match (chosen)",
+        "ror_confidence": "Confirmed",
+        "lookup_status": "complete",
+        "notes": "ORCID: his evidence DOI (SEISS ch. 20) deposits no iDs. ORCID name search returned two candidates - 0000-0002-9803-289X, whose single work is a medicinal-chemistry paper on PPAR-delta agonists (a different person), and 0000-0002-3202-3739 ('BRIAN KRESS', University of Colorado Boulder, no works listed). The bare university employment was NOT accepted as corroboration on its own; Crossref supplies it: publishers deposit 0000-0002-3202-3739 for 'Brian Kress' at 'Center for Cooperative Research in the Environmental Sciences at CU Boulder / NOAA - National Centers for Environmental Information' on 10.1029/2021JA029107 (solar energetic proton access to the inner magnetosphere), and for 'Brian T. Kress' on further GOES energetic-particle papers - the same radiation-environment subject as SEISS and the GOES-16 data provider institution. Checksum valid. AFFILIATION: his only ORCID employment entry is an undated 'University of Colorado Boulder', so no era-match was possible and the current/most-recent rule applies; ORCID's bare organization name is what is recorded. FOR THE REVIEWER: Crossref deposits during the operating span consistently give the fuller string 'Cooperative Institute for Research in Environmental Sciences, University of Colorado Boulder / NOAA National Centers for Environmental Information' for him (10.1029/2021JA029107, and 10.1029/2019SW002403 as 'B.T. Kress'), which a curator may prefer; it resolves to the same ROR. ROR: the ORCID employment is disambiguated by RINGGOLD 1877, not ROR, so Route A did not apply and the Ringgold ID was not converted; affiliation-match on 'University of Colorado Boulder, Boulder, CO, USA' returned https://ror.org/02ttsq026 with chosen=true."
+      }
+    },
+    {
+      "name": "Juan V. Rodriguez",
+      "status": "included",
+      "confidence": "Medium",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Author position 2, SEISS suite description chapter (Kress et al. 2020, ch. 20) — downgraded from Strong under the uncertain-selection rule",
+          "url": "https://doi.org/10.1016/b978-0-12-814327-8.00020-2",
+          "strength": "Medium"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Juan.V.Rodriguez",
+        "url": "https://spase-metadata.org/SMWG/Person/Juan.V.Rodriguez.html"
+      },
+      "orcid": "https://orcid.org/0000-0002-6847-4136",
+      "affiliation": "Cooperative Institute for Research in Environmental Sciences (CIRES), University of Colorado Boulder",
+      "affiliation_ror": "https://ror.org/02ttsq026",
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Author position 2, SEISS book-chapter description reference (Kress et al. 2020, 10.1016/b978-0-12-814327-8.00020-2); Medium under the uncertain-selection downgrade"
+        }
+      ],
+      "enrichment": {
+        "orcid_source": "Crossref (paper DOI)",
+        "orcid_confidence": "Confirmed",
+        "affiliation_source": "ORCID employment",
+        "affiliation_type": "era-matched",
+        "ror_source": "ORCID disambiguated-organization",
+        "ror_confidence": "Confirmed",
+        "lookup_status": "complete",
+        "notes": "ORCID: his evidence DOI (SEISS ch. 20) deposits no iDs, and an ORCID name search on 'Rodriguez, Juan' is hopeless for disambiguation (1179 hits, none corroborating). Crossref resolved it instead: the publisher deposits iD 0000-0002-6847-4136 for author 2 'J.V. Rodriguez' on 10.1029/2019SW002403 ('Development of a Bowtie Inversion Technique for Real-Time Processing of the GOES-16/-17 SEISS MPS-HI...', Space Weather 2020) - the exact instrument suite and observatory of this record - and the same iD for 'Juan V. Rodriguez' on 10.1002/2017SW001750. The ORCID record's works add 'GOES 275-500 MeV and >500 MeV Proton Observations', 'Quantitative Assessment of GOES 8-15 radiation belt electron fluxes' and 'Observations From NOAA's Newest Solar Proton Sensor'. Checksum valid. AFFILIATION: era-matched. Two dated employments overlap the operating span (start 2016-11-19, open-ended): Ball Corporation, 2019-07-01 to 2021-08-30, and University of Colorado Boulder / department 'Cooperative Institute for Research in Environmental Sciences (CIRES)', Senior Research Scientist, 2021-09-01 to present. CIRES was selected because it matches the GOES-16 data-provider ecosystem (CIRES is the NOAA cooperative institute at CU Boulder, and his SEISS work is deposited under CIRES/NOAA NCEI) and it is also the longer-overlapping entry. MID-SPAN AFFILIATION CHANGE, noted for the reviewer: Ball Corporation (2019-2021) -> CIRES / CU Boulder (2021-present); ORCID records nothing at all for 2016-2019, while Crossref deposits 'Cooperative Institute for Research in Environmental Sciences, University of Colorado / National Center for Environmental Information, NOAA' for him on the 2020 SEISS bowtie paper. ROR: Route A - the selected employment entry carries disambiguated-organization https://ror.org/02ttsq026 with disambiguation-source 'ROR', i.e. ORCID's own registry integration already tied this employer to that ROR ID; validated against https://api.ror.org/v2/organizations/02ttsq026 (University of Colorado Boulder, active, Boulder, United States). The affiliation names CIRES as a sub-unit; ROR's chosen identifier here is the parent university, which is exactly what ORCID asserted for this employment."
+      }
+    },
+    {
+      "name": "Terrance G. Onsager",
+      "status": "included",
+      "confidence": "Medium",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Author position 3, SEISS suite description chapter (Kress et al. 2020, ch. 20) — downgraded from Strong under the uncertain-selection rule",
+          "url": "https://doi.org/10.1016/b978-0-12-814327-8.00020-2",
+          "strength": "Medium"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": "https://orcid.org/0009-0002-2867-1255",
+      "affiliation": "NOAA Space Weather Prediction Center",
+      "affiliation_ror": "https://ror.org/01j6j9107",
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Author position 3, SEISS book-chapter description reference (Kress et al. 2020, 10.1016/b978-0-12-814327-8.00020-2); Medium under the uncertain-selection downgrade"
+        }
+      ],
+      "enrichment": {
+        "orcid_source": "Crossref (paper DOI)",
+        "orcid_confidence": "Confirmed",
+        "affiliation_source": "Crossref (paper DOI)",
+        "affiliation_type": "as-deposited",
+        "ror_source": "ROR affiliation-match (chosen)",
+        "ror_confidence": "Confirmed",
+        "lookup_status": "complete",
+        "notes": "ORCID: his evidence DOI (SEISS ch. 20) deposits no iDs. ORCID name search on family-name 'Onsager' returns six people, of whom only 0009-0002-2867-1255 ('Terry Onsager') is plausible - but that record is empty, so it was not accepted on name alone. Crossref confirms it: the publisher deposits 0009-0002-2867-1255 for author 5 'Terrance Onsager' at 'National Oceanic and Atmospheric Administration - Space Weather Prediction Center, Boulder CO USA' on 10.1029/2024SW004219 (radiation-belt observing-system experiments, Space Weather 2025). Full given name 'Terrance' matches the candidate, and NOAA SWPC matches both the data provider and the affiliation deposited for 'T.G. Onsager' on the GOES-16/-17 SEISS bowtie paper 10.1029/2019SW002403. Note 'Terry' in the ORCID display name is the familiar form of 'Terrance'; the confirmation rests on the Crossref deposit, not on that name. Checksum valid. AFFILIATION: the ORCID record has no employment entries, so the Crossref fallback applies - NOAA SWPC as deposited on 10.1029/2024SW004219 (the same paper carrying his confirmed iD) and, independently, on the 2020 SEISS bowtie paper. ROR: affiliation-match on the recorded form 'NOAA Space Weather Prediction Center, Boulder, CO, USA' returned https://ror.org/01j6j9107 with chosen=true. TRANSPARENCY NOTE: running the match on the verbatim deposited string 'National Oceanic and Atmospheric Administration, Space Weather Prediction Center, Boulder, CO, USA' returned NO chosen result (NOAA Weather Prediction Center 1.0, National Oceanic and Atmospheric Administration 1.0, NOAA Space Weather Prediction Center 0.99, all chosen=false) - the agency-plus-centre form confuses the matcher. The recorded affiliation string is the registry's own display name for the same institution and is identical to what is recorded for Singer and Viereck, so the match above is the one that applies to the affiliation this file actually asserts."
+      }
+    },
+    {
+      "name": "Steven J. Goodman",
+      "status": "included",
+      "confidence": "Medium",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Sole author of 'GOES-R Series Introduction' (The GOES-R Series ch. 1) and co-editor of the mission's reference volume — the closest thing to a GOES-R mission-overview description; Medium rather than Strong because mission-overview selection is uncertain (no peer-reviewed heliophysics mission-overview paper exists)",
+          "url": "https://doi.org/10.1016/b978-0-12-814327-8.00001-9",
+          "strength": "Medium"
+        },
+        {
+          "source": "GOES-R Program Senior/Chief Program Scientist 2007-2017 (NOAA) — primary science authority for the program, spanning the GOES-16 build and launch (qualifying role: ProgramScientist)",
+          "url": "https://www.goes-r.gov/org/team.html",
+          "strength": "Medium"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Steven.J.Goodman",
+        "url": "https://spase-metadata.org/SMWG/Person/Steven.J.Goodman.html"
+      },
+      "orcid": "https://orcid.org/0000-0003-1091-030X",
+      "affiliation": "NOAA National Environment Satellite Data and Information Service, GOES-R Program Office",
+      "affiliation_ror": "https://ror.org/007qwym43",
+      "activity_dates": "2007-2017 (GOES-R Program Senior Scientist)",
+      "qualifying_roles": [
+        "Author",
+        "ProgramScientist"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Sole author of the GOES-R Series Introduction chapter, the mission-overview description reference (10.1016/b978-0-12-814327-8.00001-9)"
+        },
+        {
+          "role": "ProgramScientist",
+          "source": "GOES-R Program Senior Scientist 2007-2017, NOAA (goes-r.gov program documentation)"
+        }
+      ],
+      "enrichment": {
+        "orcid_source": "ORCID name-search (corroborated)",
+        "orcid_confidence": "Confirmed",
+        "affiliation_source": "ORCID employment",
+        "affiliation_type": "era-matched",
+        "ror_source": "ROR affiliation-match (chosen)",
+        "ror_confidence": "Confirmed",
+        "lookup_status": "complete",
+        "notes": "ORCID: his evidence DOI (the GOES-R Series Introduction chapter) deposits no iDs. ORCID name search returned twelve 'Steven Goodman' records - a statistician, a museum biologist, an educator, a microscopy engineer, and others - of which exactly one, 0000-0003-1091-030X, corroborates this candidate, and does so precisely: its employment history contains 'NOAA National Environment Satellite Data and Information Service, department GOES-R Program Office, Senior Program Scientist, 2008-10-15 to 2017-12-23', which is the very role and tenure the finder recorded from goes-r.gov (2007-2017), preceded by 'NOAA NESDIS, Office of Research and Applications, Deputy Director, 2007-03-01 to 2008-10-15' and 'NASA Marshall Space Flight Center, Earth Science, 1988-2007'; its works include 'Initial Geostationary Lightning Mapper Observations' (a GOES-16 instrument paper). Checksum valid (final character X). AFFILIATION DIFFERS FROM FINDER VALUE - FLAGGED FOR REVIEW. Era-matched: two employments overlap the operating span (start 2016-11-19, open-ended) - NOAA NESDIS / GOES-R Program Office (2008-10-15 to 2017-12-23) and Thunderbolt Global Analytics, Huntsville, Owner-Consultant (2017-12-09 to present). NOAA NESDIS was selected under the multiple-overlap rule because it matches the data provider and is the position he held at GOES-16 launch, even though Thunderbolt overlaps the open-ended span for longer. MID-SPAN AFFILIATION CHANGE: NOAA NESDIS GOES-R Program Office (to 2017-12) -> Thunderbolt Global Analytics (2017-12 to present, his current affiliation). The finder's value was 'NOAA (retired)', which is consistent in spirit but is not dated evidence and names no organization ROR can resolve; the era-matched value takes the field. ROR: the selected employment is disambiguated by RINGGOLD 114092, not ROR, so Route A did not apply and the Ringgold ID was not converted; affiliation-match on the recorded string returned https://ror.org/007qwym43 (NOAA National Environmental Satellite Data and Information Service) with chosen=true, score 0.98. The 'GOES-R Program Office' sub-unit has no registry record of its own and is retained in the affiliation string only."
+      }
+    },
+    {
+      "name": "Pamela C. Sullivan",
+      "status": "included",
+      "confidence": "Medium",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Sole author of 'GOES-R Series Spacecraft and Instruments' (The GOES-R Series ch. 3) — the authoritative observatory-level description of the GOES-16 platform and payload; Medium under the uncertain mission-overview-selection downgrade",
+          "url": "https://doi.org/10.1016/b978-0-12-814327-8.00003-2",
+          "strength": "Medium"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": null,
+      "affiliation_ror": null,
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Sole author of the GOES-R Series Spacecraft and Instruments chapter (10.1016/b978-0-12-814327-8.00003-2)"
+        }
+      ],
+      "enrichment": {
+        "orcid_source": null,
+        "orcid_confidence": null,
+        "affiliation_source": null,
+        "affiliation_type": null,
+        "ror_source": null,
+        "ror_confidence": null,
+        "lookup_status": "complete",
+        "notes": "ALL THREE FIELDS LEFT NULL - looked and could not confirm; this is not an API failure. ORCID: her evidence DOI 10.1016/b978-0-12-814327-8.00003-2 deposits neither an iD nor an affiliation (Elsevier deposits only 'Pamela C. Sullivan' as the sole author). ORCID name search returns four 'Pamela Sullivan' records, and every one was fetched and checked: 0000-0001-8780-8501 is a hydrology/soil-biogeochemistry professor at Oregon State University; 0009-0006-7909-7803 has 95 cancer-biology works; 0009-0005-7738-5484 is at the University of Kentucky; 0000-0003-2280-8695 is completely empty. None corroborates a GOES-R/space-systems identity, so no iD can be attributed. A Crossref author sweep on 'Pamela Sullivan' + GOES-R spacecraft found no other paper by her carrying an iD. AFFILIATION: with no confirmed ORCID there is no employment history to era-match, and the only Crossref record for her deposits no affiliation string, so the Crossref fallback yields nothing either. She does not appear on the current goes-r.gov program-team page (fetched 2026-07-31), which lists only the present-day office holders. She is publicly documented elsewhere as the GOES-R System Program Director (NOAA), but no ORCID employment or Crossref deposit confirms an affiliation string, so the field stays empty rather than carrying an unverified value. ROR: not attempted - no affiliation means no ROR."
+      }
+    },
+    {
+      "name": "Daniel T. Lindsey",
+      "status": "included",
+      "confidence": "Medium",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Current GOES-R Program Scientist (NOAA), named with that title on the official GOES-R program team page (qualifying role: ProgramScientist)",
+          "url": "https://www.goes-r.gov/org/team.html",
+          "strength": "Medium"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": "https://orcid.org/0000-0002-0967-5683",
+      "affiliation": "National Oceanic and Atmospheric Administration, National Environmental Satellite, Data, and Information Service",
+      "affiliation_ror": "https://ror.org/007qwym43",
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author",
+        "ProgramScientist"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Current GOES-R Program Scientist named on the provider program-team page (Medium inclusion evidence)"
+        },
+        {
+          "role": "ProgramScientist",
+          "source": "GOES-R Program Team page, NOAA (https://www.goes-r.gov/org/team.html)"
+        }
+      ],
+      "enrichment": {
+        "orcid_source": "ORCID name-search (corroborated)",
+        "orcid_confidence": "Confirmed",
+        "affiliation_source": "Crossref (paper DOI)",
+        "affiliation_type": "as-deposited",
+        "ror_source": "ROR affiliation-match (chosen)",
+        "ror_confidence": "Confirmed",
+        "lookup_status": "complete",
+        "notes": "ORCID: his evidence is a provider web page, not a DOI, so Route A had no starting point. ORCID name search returns exactly one 'Daniel Lindsey', 0000-0002-0967-5683, and its 39 works are almost entirely GOES-R mission work - 'Use of the GOES-R Split-Window Difference to Diagnose Deepening Low-Level Water Vapor', 'Assimilating synthetic GOES-R radiances in cloudy conditions', 'GOES-14 super rapid scan operations to prepare for GOES-R', '10.35 um: an atmospheric window on the GOES-R Advanced Baseline Imager' - which corroborates the mission but, as the finder already flagged, confirms his ABI/Earth-science focus rather than a heliophysics one. Independently corroborated by Crossref, which deposits the same iD for 'Daniel Lindsey' at NOAA/NESDIS, Fort Collins on 10.1109/TGRS.2025.3585061. Checksum valid. AFFILIATION: the ORCID record has no employment entries at all, so era-matching was impossible and the Crossref fallback applies - the string deposited for him on 10.1109/TGRS.2025.3585061 (2025, inside the operating span, same paper as the confirmed iD). This refines rather than contradicts the finder's value 'NOAA' (NESDIS is the NOAA line office that runs GOES-R); the finder value is recorded here for traceability. Corroborating but non-Crossref: the goes-r.gov program-team page fetched 2026-07-31 titles him 'GOES-R Program Scientist and GeoXO Deputy Program Scientist, NOAA', confirming the role the finder cited is still current. ROR: affiliation-match on the recorded string returned https://ror.org/007qwym43 with chosen=true, score 0.97 (the parent agency NOAA, https://ror.org/02z5nhe81, scored 1.0 but was not chosen)."
+      }
+    },
+    {
+      "name": "Laurel Rachmeler",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "instrument-team depth (SUVI description paper position 4) — belongs to the SUVI Instrument-record run",
+      "evidence": [
+        {
+          "source": "Author position 4, SUVI description paper (Darnel et al. 2022)",
+          "url": "https://doi.org/10.1029/2022SW003044",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": "NOAA National Centers for Environmental Information",
+      "activity_dates": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "Alison Jarvis",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "instrument-team depth (SUVI description paper position 5) — belongs to the SUVI Instrument-record run",
+      "evidence": [
+        {
+          "source": "Author position 5, SUVI description paper (Darnel et al. 2022)",
+          "url": "https://doi.org/10.1029/2022SW003044",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": "Cooperative Institute for Research in Environmental Sciences, University of Colorado Boulder / NOAA",
+      "activity_dates": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "Steven M. Hill",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "instrument-team depth (SUVI description paper position 6) — belongs to the SUVI Instrument-record run",
+      "evidence": [
+        {
+          "source": "Author position 6, SUVI description paper (Darnel et al. 2022)",
+          "url": "https://doi.org/10.1029/2022SW003044",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": "NOAA Space Weather Prediction Center",
+      "activity_dates": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "Courtney L. Peck",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "instrument-team depth (SUVI description paper position 7) — belongs to the SUVI Instrument-record run",
+      "evidence": [
+        {
+          "source": "Author position 7, SUVI description paper (Darnel et al. 2022)",
+          "url": "https://doi.org/10.1029/2022SW003044",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": "Cooperative Institute for Research in Environmental Sciences, University of Colorado Boulder / NOAA",
+      "activity_dates": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "J. Marcus Hughes",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "instrument-team depth (SUVI description paper position 8; also position 4 of the 'Solar Dynamics' chapter) — belongs to the SUVI Instrument-record run",
+      "evidence": [
+        {
+          "source": "Author position 8, SUVI description paper (Darnel et al. 2022)",
+          "url": "https://doi.org/10.1029/2022SW003044",
+          "strength": "Low"
+        },
+        {
+          "source": "Author position 4, 'GOES-R Series Solar Dynamics' (ch. 18)",
+          "url": "https://doi.org/10.1016/b978-0-12-814327-8.00018-4",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": "Southwest Research Institute",
+      "activity_dates": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "Jason Shapiro",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "instrument-team depth (SUVI description paper position 9) — belongs to the SUVI Instrument-record run",
+      "evidence": [
+        {
+          "source": "Author position 9, SUVI description paper (Darnel et al. 2022)",
+          "url": "https://doi.org/10.1029/2022SW003044",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": "Cooperative Institute for Research in Environmental Sciences, University of Colorado Boulder / NOAA",
+      "activity_dates": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "Allyssa Riley",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "instrument-team depth (SUVI description paper position 10) — belongs to the SUVI Instrument-record run",
+      "evidence": [
+        {
+          "source": "Author position 10, SUVI description paper (Darnel et al. 2022)",
+          "url": "https://doi.org/10.1029/2022SW003044",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": "Cooperative Institute for Research in Environmental Sciences, University of Colorado Boulder / NOAA",
+      "activity_dates": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "Gopal Vasudevan",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "instrument-team depth (SUVI description paper position 11, Lockheed Martin build team) — belongs to the SUVI Instrument-record run, where he leads the SUVI design/on-orbit-calibration paper",
+      "evidence": [
+        {
+          "source": "Author position 11, SUVI description paper (Darnel et al. 2022)",
+          "url": "https://doi.org/10.1029/2022SW003044",
+          "strength": "Low"
+        },
+        {
+          "source": "Lead author, SUVI design and on-orbit calibration paper (Vasudevan et al. 2019, SPIE ICSO)",
+          "url": "https://doi.org/10.1117/12.2536196",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": "Lockheed Martin Advanced Technology Center",
+      "activity_dates": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "Lawrence Shing",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "instrument-team depth (SUVI description paper position 12, Lockheed Martin build team) — belongs to the SUVI Instrument-record run",
+      "evidence": [
+        {
+          "source": "Author position 12, SUVI description paper (Darnel et al. 2022); position 2 of the SUVI design paper (Vasudevan et al. 2019)",
+          "url": "https://doi.org/10.1029/2022SW003044",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": "Lockheed Martin Advanced Technology Center",
+      "activity_dates": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "George Koener",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "instrument-team depth (SUVI description paper position 13, Lockheed Martin build team) — belongs to the SUVI Instrument-record run",
+      "evidence": [
+        {
+          "source": "Author position 13, SUVI description paper (Darnel et al. 2022)",
+          "url": "https://doi.org/10.1029/2022SW003044",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": "Lockheed Martin Advanced Technology Center",
+      "activity_dates": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "Chris Edwards",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "instrument-team depth (SUVI description paper position 14, Lockheed Martin build team) — belongs to the SUVI Instrument-record run",
+      "evidence": [
+        {
+          "source": "Author position 14, SUVI description paper (Darnel et al. 2022); position 4 of the SUVI design paper (Vasudevan et al. 2019, as 'Christopher Edwards')",
+          "url": "https://doi.org/10.1029/2022SW003044",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": "Lockheed Martin Advanced Technology Center",
+      "activity_dates": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "Dnyanesh Mathur",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "instrument-team depth (SUVI description paper position 15, Lockheed Martin build team) — belongs to the SUVI Instrument-record run",
+      "evidence": [
+        {
+          "source": "Author position 15, SUVI description paper (Darnel et al. 2022); position 3 of the SUVI design paper (Vasudevan et al. 2019)",
+          "url": "https://doi.org/10.1029/2022SW003044",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": "Lockheed Martin Advanced Technology Center",
+      "activity_dates": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "Shelbe Timothy",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "instrument-team depth (SUVI description paper position 16, Lockheed Martin build team) — belongs to the SUVI Instrument-record run",
+      "evidence": [
+        {
+          "source": "Author position 16, SUVI description paper (Darnel et al. 2022)",
+          "url": "https://doi.org/10.1029/2022SW003044",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": "Lockheed Martin Advanced Technology Center",
+      "activity_dates": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "Vicki Hsu",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "not an author of the selected SUVI description paper; position 3 of the 'GOES-R Series Solar Dynamics' chapter, which is a science/data-products chapter rather than an instrument description — belongs to the SUVI Instrument-record run",
+      "evidence": [
+        {
+          "source": "Author position 3, 'GOES-R Series Solar Dynamics' (The GOES-R Series ch. 18)",
+          "url": "https://doi.org/10.1016/b978-0-12-814327-8.00018-4",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": null,
+      "activity_dates": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "Margaret Shaw",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "instrument-team depth — position 5 of the SUVI design/on-orbit-calibration paper (a secondary design paper, not the selected SUVI description paper) — belongs to the SUVI Instrument-record run",
+      "evidence": [
+        {
+          "source": "Author position 5, SUVI design and on-orbit calibration paper (Vasudevan et al. 2019, SPIE ICSO)",
+          "url": "https://doi.org/10.1117/12.2536196",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": "Lockheed Martin Advanced Technology Center",
+      "activity_dates": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "W. Rowland",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "instrument-team depth (MAG description paper position 5) — belongs to the MAG Instrument-record run",
+      "evidence": [
+        {
+          "source": "Author position 5, MAG description paper (Loto'aniu et al. 2019)",
+          "url": "https://doi.org/10.1007/s11214-019-0600-3",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": null,
+      "activity_dates": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "S. Macintyre",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "instrument-team depth (MAG description paper position 6) — belongs to the MAG Instrument-record run",
+      "evidence": [
+        {
+          "source": "Author position 6, MAG description paper (Loto'aniu et al. 2019)",
+          "url": "https://doi.org/10.1007/s11214-019-0600-3",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": null,
+      "activity_dates": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "C. Chastain",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "instrument-team depth (MAG description paper position 7) — belongs to the MAG Instrument-record run",
+      "evidence": [
+        {
+          "source": "Author position 7, MAG description paper (Loto'aniu et al. 2019)",
+          "url": "https://doi.org/10.1007/s11214-019-0600-3",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": null,
+      "activity_dates": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "R. Dence",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "instrument-team depth (MAG description paper position 8) — belongs to the MAG Instrument-record run",
+      "evidence": [
+        {
+          "source": "Author position 8, MAG description paper (Loto'aniu et al. 2019)",
+          "url": "https://doi.org/10.1007/s11214-019-0600-3",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": null,
+      "activity_dates": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "R. Bailey",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "instrument-team depth (MAG description paper position 9) — belongs to the MAG Instrument-record run",
+      "evidence": [
+        {
+          "source": "Author position 9, MAG description paper (Loto'aniu et al. 2019)",
+          "url": "https://doi.org/10.1007/s11214-019-0600-3",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": null,
+      "activity_dates": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "E. Shoemaker",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "instrument-team depth (MAG description paper position 10) — belongs to the MAG Instrument-record run",
+      "evidence": [
+        {
+          "source": "Author position 10, MAG description paper (Loto'aniu et al. 2019)",
+          "url": "https://doi.org/10.1007/s11214-019-0600-3",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": null,
+      "activity_dates": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "F. J. Rich",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "instrument-team depth (MAG description paper position 11) — belongs to the MAG Instrument-record run",
+      "evidence": [
+        {
+          "source": "Author position 11, MAG description paper (Loto'aniu et al. 2019)",
+          "url": "https://doi.org/10.1007/s11214-019-0600-3",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": null,
+      "activity_dates": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "D. Chu",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "instrument-team depth (MAG description paper position 12) — belongs to the MAG Instrument-record run",
+      "evidence": [
+        {
+          "source": "Author position 12, MAG description paper (Loto'aniu et al. 2019)",
+          "url": "https://doi.org/10.1007/s11214-019-0600-3",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": null,
+      "activity_dates": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "D. Early",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "instrument-team depth (MAG description paper position 13) — belongs to the MAG Instrument-record run",
+      "evidence": [
+        {
+          "source": "Author position 13, MAG description paper (Loto'aniu et al. 2019)",
+          "url": "https://doi.org/10.1007/s11214-019-0600-3",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": null,
+      "activity_dates": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "J. Kronenwetter",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "instrument-team depth (MAG description paper position 14) — belongs to the MAG Instrument-record run",
+      "evidence": [
+        {
+          "source": "Author position 14, MAG description paper (Loto'aniu et al. 2019)",
+          "url": "https://doi.org/10.1007/s11214-019-0600-3",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": null,
+      "activity_dates": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "Monica Todirita",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "instrument-team depth (MAG description paper position 15); her current program-office role (Acting Deputy Director, Office of Geostationary Earth Orbit Observations) is a management position and not a qualifying contact role",
+      "evidence": [
+        {
+          "source": "Author position 15, MAG description paper (Loto'aniu et al. 2019, as 'M. Todirita')",
+          "url": "https://doi.org/10.1007/s11214-019-0600-3",
+          "strength": "Low"
+        },
+        {
+          "source": "Acting Deputy Director, Office of Geostationary Earth Orbit Observations, NOAA — GOES-R program team page (non-qualifying role)",
+          "url": "https://www.goes-r.gov/org/team.html",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": "NOAA",
+      "activity_dates": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "Donald L. Woodraska",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "instrument-team depth (EXIS description reference position 4) — belongs to the EXIS Instrument-record run",
+      "evidence": [
+        {
+          "source": "Author position 4, EXIS suite description reference (Machol et al. 2020, ch. 19); also position 5 of the XRS design paper (Woods et al. 2024)",
+          "url": "https://doi.org/10.1016/B978-0-12-814327-8.00019-6",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": "https://orcid.org/0000-0001-9351-733X",
+      "affiliation": "Laboratory for Atmospheric and Space Physics, University of Colorado Boulder",
+      "activity_dates": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "Martin Snow",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "instrument-team depth (EXIS description reference position 5) — belongs to the EXIS Instrument-record run",
+      "evidence": [
+        {
+          "source": "Author position 5, EXIS suite description reference (Machol et al. 2020, ch. 19); also alphabetized-tail author of the EUVS design paper (Eparvier et al. 2009)",
+          "url": "https://doi.org/10.1016/B978-0-12-814327-8.00019-6",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": "Laboratory for Atmospheric and Space Physics, University of Colorado Boulder",
+      "activity_dates": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "Ed Thiemann",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "instrument-team depth (EXIS description reference position 6) — belongs to the EXIS Instrument-record run",
+      "evidence": [
+        {
+          "source": "Author position 6, EXIS suite description reference (Machol et al. 2020, ch. 19)",
+          "url": "https://doi.org/10.1016/B978-0-12-814327-8.00019-6",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": null,
+      "activity_dates": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "Thomas N. Woods",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "component-instrument depth — position 7 of the EXIS suite description reference; he leads the XRS component design paper, but XRS is a component of the EXIS payload instrument, so his lead authorship belongs to the EXIS/XRS Instrument-record run, not the observatory list. FLAGGED FOR REVIEW: the sibling GOES-18 run included him at Medium via the component paper.",
+      "evidence": [
+        {
+          "source": "Author position 7, EXIS suite description reference (Machol et al. 2020, ch. 19)",
+          "url": "https://doi.org/10.1016/B978-0-12-814327-8.00019-6",
+          "strength": "Low"
+        },
+        {
+          "source": "Lead author, XRS component design/pre-flight-calibration paper (Woods et al. 2024, JGR)",
+          "url": "https://doi.org/10.1029/2024JA032925",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Thomas.N.Woods",
+        "url": "https://spase-metadata.org/SMWG/Person/Thomas.N.Woods.html"
+      },
+      "orcid": "https://orcid.org/0000-0002-2308-6797",
+      "affiliation": "Laboratory for Atmospheric and Space Physics, University of Colorado Boulder",
+      "activity_dates": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "William E. McClintock",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "instrument-team depth (EXIS description reference position 8) — belongs to the EXIS Instrument-record run",
+      "evidence": [
+        {
+          "source": "Author position 8, EXIS suite description reference (Machol et al. 2020, ch. 19); also alphabetized-tail author of the EUVS design paper (Eparvier et al. 2009)",
+          "url": "https://doi.org/10.1016/B978-0-12-814327-8.00019-6",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/William.E.McClintock",
+        "url": "https://spase-metadata.org/SMWG/Person/William.E.McClintock.html"
+      },
+      "orcid": null,
+      "affiliation": "Laboratory for Atmospheric and Space Physics, University of Colorado Boulder",
+      "activity_dates": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "Steven Mueller",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "instrument-team depth (EXIS description reference position 9) — belongs to the EXIS Instrument-record run",
+      "evidence": [
+        {
+          "source": "Author position 9, EXIS suite description reference (Machol et al. 2020, ch. 19)",
+          "url": "https://doi.org/10.1016/B978-0-12-814327-8.00019-6",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": null,
+      "activity_dates": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "Thomas D. Eden",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "component-instrument depth — position 10 of the EXIS suite description reference and position 2 of the XRS component design paper; belongs to the EXIS/XRS Instrument-record run. FLAGGED FOR REVIEW: the sibling GOES-18 run included him at Medium via the component paper.",
+      "evidence": [
+        {
+          "source": "Author position 10, EXIS suite description reference (Machol et al. 2020, ch. 19)",
+          "url": "https://doi.org/10.1016/B978-0-12-814327-8.00019-6",
+          "strength": "Low"
+        },
+        {
+          "source": "Author position 2, XRS component design paper (Woods et al. 2024, as 'Thomas Eden')",
+          "url": "https://doi.org/10.1029/2024JA032925",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": "https://orcid.org/0000-0002-5622-3479",
+      "affiliation": "Laboratory for Atmospheric and Space Physics, University of Colorado Boulder",
+      "activity_dates": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "Randle Meisner",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "instrument-team depth (EXIS description reference position 11) — belongs to the EXIS Instrument-record run",
+      "evidence": [
+        {
+          "source": "Author position 11, EXIS suite description reference (Machol et al. 2020, ch. 19)",
+          "url": "https://doi.org/10.1016/B978-0-12-814327-8.00019-6",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": null,
+      "activity_dates": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "Stefan Codrescu",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "instrument-team depth (EXIS description reference position 12) — belongs to the EXIS Instrument-record run",
+      "evidence": [
+        {
+          "source": "Author position 12, EXIS suite description reference (Machol et al. 2020, ch. 19)",
+          "url": "https://doi.org/10.1016/B978-0-12-814327-8.00019-6",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": null,
+      "activity_dates": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "S. Dave Bouwer",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "instrument-team depth (EXIS description reference position 13) — belongs to the EXIS Instrument-record run",
+      "evidence": [
+        {
+          "source": "Author position 13, EXIS suite description reference (Machol et al. 2020, ch. 19)",
+          "url": "https://doi.org/10.1016/B978-0-12-814327-8.00019-6",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": null,
+      "activity_dates": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "Alysha A. Reinard",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "instrument-team depth (EXIS description reference position 14) — belongs to the EXIS Instrument-record run",
+      "evidence": [
+        {
+          "source": "Author position 14, EXIS suite description reference (Machol et al. 2020, ch. 19)",
+          "url": "https://doi.org/10.1016/B978-0-12-814327-8.00019-6",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": null,
+      "activity_dates": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "David Crotser",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "alphabetized-tail author of the EUVS component design paper (position 2 of a partially alphabetized list whose deliberate prefix is Eparvier alone) — no position-based evidence, and not an author of the selected EXIS description reference. FLAGGED FOR REVIEW: the sibling GOES-18 run treated him as a lead (position 2) at Medium, which the backward alphabetization scan does not support.",
+      "evidence": [
+        {
+          "source": "Author position 2, EUVS component design paper (Eparvier et al. 2009, SPIE) — inside the alphabetized tail (Crotser, Jones, McClintock, Snow, Woods)",
+          "url": "https://doi.org/10.1117/12.826445",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": "Laboratory for Atmospheric and Space Physics, University of Colorado Boulder",
+      "activity_dates": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "Andrew R. Jones",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "alphabetized-tail author of the EUVS component design paper (position 3 of a list whose deliberate prefix is Eparvier alone) and position 4 of the XRS component design paper — no position-based evidence at observatory level; belongs to the EXIS component runs. FLAGGED FOR REVIEW: the sibling GOES-18 run treated him as a lead (position 3) at Medium.",
+      "evidence": [
+        {
+          "source": "Author position 3, EUVS component design paper (Eparvier et al. 2009) — inside the alphabetized tail",
+          "url": "https://doi.org/10.1117/12.826445",
+          "strength": "Low"
+        },
+        {
+          "source": "Author position 4, XRS component design paper (Woods et al. 2024)",
+          "url": "https://doi.org/10.1029/2024JA032925",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": "https://orcid.org/0000-0001-5533-5498",
+      "affiliation": "Laboratory for Atmospheric and Space Physics, University of Colorado Boulder",
+      "activity_dates": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "Phillip C. Chamberlin",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "component-instrument depth (XRS component design paper position 6) — belongs to the EXIS/XRS Instrument-record run",
+      "evidence": [
+        {
+          "source": "Author position 6, XRS component design paper (Woods et al. 2024)",
+          "url": "https://doi.org/10.1029/2024JA032925",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": "https://orcid.org/0000-0003-4372-7405",
+      "affiliation": "Laboratory for Atmospheric and Space Physics, University of Colorado Boulder",
+      "activity_dates": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "M. J. Golightly",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "instrument-team depth (SEISS overview paper position 4; under the SEISS uncertain-selection downgrade, positions 4-5 drop to Low) — belongs to the SEISS Instrument-record run",
+      "evidence": [
+        {
+          "source": "Author position 4, SEISS overview paper (Galica et al. 2016)",
+          "url": "https://doi.org/10.1117/12.2228537",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": null,
+      "activity_dates": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "C. Lopate",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "instrument-team depth (SEISS overview paper position 5; downgraded to Low) — belongs to the SEISS Instrument-record run",
+      "evidence": [
+        {
+          "source": "Author position 5, SEISS overview paper (Galica et al. 2016)",
+          "url": "https://doi.org/10.1117/12.2228537",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": null,
+      "activity_dates": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "J. J. Connell",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "instrument-team depth (SEISS overview paper position 6) — belongs to the SEISS Instrument-record run",
+      "evidence": [
+        {
+          "source": "Author position 6, SEISS overview paper (Galica et al. 2016)",
+          "url": "https://doi.org/10.1117/12.2228537",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": "University of New Hampshire",
+      "activity_dates": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "Edward Grigsby",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "non-qualifying role only — Director, Office of Geostationary Earth Orbit Observations (NOAA) is a management position, not a qualifying contact role, and no other source corroborates authorship",
+      "evidence": [
+        {
+          "source": "GOES-R program team page, 'DIRECTOR, OFFICE OF GEOSTATIONARY EARTH ORBIT OBSERVATIONS, NOAA'",
+          "url": "https://www.goes-r.gov/org/team.html",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": "NOAA",
+      "activity_dates": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "Steve Bidwell",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "non-qualifying role only — Program Systems Engineering lead (NASA) is an engineering-management position, not a qualifying contact role",
+      "evidence": [
+        {
+          "source": "GOES-R program team page, 'PROGRAM SYSTEMS ENGINEERING lead, NASA'",
+          "url": "https://www.goes-r.gov/org/team.html",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": "NASA",
+      "activity_dates": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    }
+  ],
+  "notes": [
+    "Record's own Contacts are effectively empty: a single GeneralContact pointing at spase://SMWG/Person/UNKNOWN — a non-qualifying role AND a placeholder rather than a real person. It yields no candidate. Every candidate below therefore comes from sources outside the record. RevisionHistory names only the metadata editor initials 'JWL' (2026-07-20 SPASE 2.7.1 update), which is metadata curation, not authorship.",
+    "SPASE instrument coverage for GOES-16 is thin but not empty: MAG and Ephemeris are registered; SUVI, EXIS and SEISS have no Instrument record. This is better than the sibling GOES-18 record (zero instruments registered) and the MAG record is what recovers Howard J. Singer as PrincipalInvestigator. The three missing space-weather instruments are a metadata gap worth surfacing to curators.",
+    "No CMAD exists and none is expected — GOES-R is a NOAA operational program, not a NASA senior-review mission (see the cmad object).",
+    "MISSION-OVERVIEW SELECTION (observatory level) is UNCERTAIN and was downgraded one tier. No peer-reviewed heliophysics mission-overview paper exists for GOES-16; the mission's authoritative reference is the edited volume 'The GOES-R Series: A New Generation of Geostationary Environmental Satellites' (Goodman, Schmit, Daniels & Redmon, eds., Elsevier 2020, ISBN 978-0-12-814327-8). Its Introduction (Goodman, sole author) and 'GOES-R Series Spacecraft and Instruments' (Sullivan, sole author) chapters were used as the observatory-level description, so Goodman and Sullivan enter at Medium rather than Strong. Both are single-author chapters, which normally argues against description-paper status — they are accepted here because they are overview chapters of the mission's own reference volume, not stand-alone science papers. Flagged for reviewer judgment.",
+    "SUVI description paper (Darnel et al. 2022, 10.1029/2022SW003044): selection CONFIDENT — the title is exactly the instrument name, 16 authors, peer-reviewed (Space Weather), and it is the series-level instrument paper. It sits ~6 years after the GOES-16 operating-span start, slightly outside the nominal 2-5 year window; accepted because the GOES-R series spans 2016-2024 launches, so a 2022 series-level instrument paper is well inside the series era, and the competing candidate (Vasudevan et al. 2019 SPIE) is a builder design/calibration paper, not the instrument description. Backward alphabetization scan: longest sorted suffix = Edwards, Mathur, Timothy (3 names, below the 5-name threshold), so NOT alphabetized; positions 1-3 (Darnel, Seaton, Bethge) taken Strong, positions 4-16 excluded as SUVI instrument-team depth.",
+    "MAG description paper (Loto'aniu et al. 2019, 10.1007/s11214-019-0600-3): selection CONFIDENT — titled 'The GOES-16 Spacecraft Science Magnetometer', naming this exact observatory; 15 authors; Space Science Reviews; 2019, three years after the operating-span start. Backward scan: sorted suffix = Chu, Early, Kronenwetter, Todirita (4 names, below threshold), so NOT alphabetized; positions 1-3 (Loto'aniu, Redmon, Califf) taken Strong. Position-4 author Howard J. Singer is included at Medium via an INDEPENDENT source — PrincipalInvestigator in the GOES-16 MAG SPASE record plus the record Acknowledgement — not via paper position, per the symmetric scoping rule.",
+    "EXIS description reference (Machol et al. 2020, 10.1016/B978-0-12-814327-8.00019-6, 'GOES-R Series Solar X-ray and Ultraviolet Irradiance', The GOES-R Series ch. 19): selection CONFIDENT at suite level — it is the only description covering BOTH EXIS components (EUVS and XRS), has 14 authors, and appears in the mission's own reference volume four years after the operating-span start. Backward scan: sorted suffix = Bouwer, Reinard (2 names), so NOT alphabetized; positions 1-3 (Machol, Eparvier, Viereck) taken Strong. This supersedes the sibling GOES-18 run's approach, which lacked a suite-level reference, declared EXIS selection uncertain, and harvested the EUVS/XRS component papers instead.",
+    "DIVERGENCE FROM THE GOES-18 RUN (flagged for reviewer): (a) The EUVS design paper (Eparvier et al. 2009, 10.1117/12.826445) is PARTIALLY ALPHABETIZED — the backward scan finds a sorted suffix of exactly five (Crotser, Jones, McClintock, Snow, Woods), so the deliberate prefix is Eparvier ALONE. The GOES-18 run treated Crotser (2) and Jones (3) as leads; the alphabetization scan does not support that, and per the skill a short prefix must never be padded from the alphabetized tail. Crotser and Jones are therefore excluded here. (b) Thomas N. Woods and Thomas D. Eden lead the XRS component paper, but XRS is a component of the EXIS payload instrument, so under the Observatory-record scoping rule their lead authorship belongs to the EXIS/XRS component run, not this list; GOES-18 included them at Medium. Both divergences are recorded as excluded candidates with full evidence rather than dropped, so a reviewer can reinstate them if the intended scoping treats EUVS/XRS as top-level instruments.",
+    "SEISS description-reference selection is UNCERTAIN — two suite-level descriptions score similarly and come from different communities: Galica et al. 2016 (SPIE; builder team at Assurance Technology Corporation; 'instruments overview, calibration results, and data processing algorithms, and expected on-orbit performance'; 6 authors; 2016, valid pre-launch design/overview per the fuzzy lower boundary) and Kress, Rodriguez & Onsager 2020 (The GOES-R Series ch. 20; NOAA science team; 3 authors). Neither dominates on the heuristics, so the self-aware downgrade rule was applied: leads 1-3 of BOTH were taken at Medium instead of Strong, and Galica's positions 4-6 dropped to Low (excluded). Both author lists are non-alphabetized (Galica: no sorted suffix at the tail; Kress: 3 authors, below threshold).",
+    "Instrument roster cross-check: the goes-r.gov instruments page and Sullivan's 'Spacecraft and Instruments' chapter agree exactly on the GOES-16 payload (ABI, GLM, SUVI, EXIS, SEISS, MAG) — no roster conflict. CCOR is correctly absent (GOES-U only).",
+    "The GOES-R program team page was read for observatory-level contacts. Daniel T. Lindsey (current GOES-R Program Scientist) holds a qualifying role and is included at Medium; note he is Earth-science/ABI-focused (he authored the ABI RGB-composites chapter), so a reviewer may prefer to scope him out of a heliophysics DOI. Edward Grigsby, Monica Todirita and Steve Bidwell hold management/engineering-management titles that are NOT qualifying roles and are recorded as excluded. The remaining program-office staff on that page (Steve Grippando, Joe Kolesnick, Lili Alvarado, Eli Krall, Sislyn Barrett, Maryann Orellana, Jeremy Wilson) hold budget, procurement, contracting, chief-of-staff and IT-services positions; they were evaluated and are not authorship candidates under any source, so they are not carried as individual entries.",
+    "Steven J. Goodman's ProgramScientist tenure is documented as 2007-2017, which spans the GOES-16 build and its 2016-11-19 launch — recorded in activity_dates for the downstream role agent. Daniel T. Lindsey is the current holder of that role, so the two represent successive generations of GOES-R program scientist.",
+    "Initials-only names (G. E. Galica, B. K. Dichter, S. Tsui, W. Rowland, S. Macintyre, C. Chastain, R. Dence, R. Bailey, E. Shoemaker, F. J. Rich, D. Chu, D. Early, J. Kronenwetter, M. J. Golightly, C. Lopate, J. J. Connell) are recorded exactly as printed in the SPIE and Space Science Reviews author lists; downstream should expand and disambiguate them. 'M. Todirita' on the MAG paper is matched to Monica Todirita of the GOES-R program office on name grounds only — verify downstream.",
+    "ORCIDs and affiliations were captured opportunistically from Crossref only (SUVI paper and XRS paper carry them; the Space Science Reviews, SPIE and book-chapter records do not). Fields left null are unresolved, not absent — the affiliation enricher should fill them.",
+    "Person registry checks (HTTP 200 = record exists): Jonathan.Darnel, Daniel.B.Seaton, Christian.Bethge, Robert.J.Redmon, Howard.J.Singer, Rodney.Viereck, Juan.V.Rodriguez, Steven.J.Goodman, Thomas.N.Woods and William.E.McClintock exist. No Person record (404) for Loto'aniu, Califf, Machol, Eparvier, Kress, Onsager, Sullivan, Lindsey, Galica, Dichter, Tsui, Hsu or Rachmeler — downstream to create. Note Darnel's record is 'Jonathan.Darnel', not 'Jonathan.M.Darnel'."
+  ]
+}
