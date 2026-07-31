@@ -72,6 +72,8 @@ Each candidate object:
 - `orcid` — ORCID string if it surfaced in a fetched source, otherwise `null` (no dedicated lookup)
 - `affiliation` — string if it surfaced, otherwise `null`
 - `activity_dates` — string if it surfaced, otherwise `null` (the person's window of involvement, recorded for the downstream role agent; never used to include/exclude here)
+- `qualifying_roles` — array of SPASE roles this person will carry into the mission/observatory/instrument DOI. **Every included candidate is an author**, so `"Author"` is ALWAYS present for `status: "included"` — inclusion means Strong/Medium evidence, and that evidence is exactly what makes the person an author on the DOI. On top of `Author`, add each qualifying contact role a source names for them (from the Qualifying Contact Roles list — `PrincipalInvestigator`, `FormerPI`, `ProjectScientist`, etc.). So the array is `["Author"]` for a candidate with authorship evidence but no named contact role, and e.g. `["Author", "PrincipalInvestigator"]` when a source also names a role. **Excluded candidates carry `[]`** — they are not on the DOI and get no `Author`. This is a convenience list of just the role names; `role_evidence` below carries the same roles with their sources.
+- `role_evidence` — **always an array of `{ "role": <role>, "source": <where> }` objects, one per role in `qualifying_roles` — including `Author`.** Every role says where it came from, so the downstream SMWG writer emits one `<Role>` per entry in a single uniform loop, with no special-casing and no type-checking. `Author`'s source is the inclusion evidence that made the person an author (the paper byline, CMAD front page, or provider PI page — stated in role terms). Example: `[{ "role": "Author", "source": "Lead author, LYRA instrument paper (10.1007/s11207-013-0252-5)" }, { "role": "PrincipalInvestigator", "source": "LYRA Instrument record Contacts" }]`. **Excluded candidates carry `[]`** (empty array, not `null`), matching their empty `qualifying_roles`. Because every role appears in both fields, `qualifying_roles` is exactly the list of `role` values in `role_evidence` — they cannot drift.
 
 ### Example (from the PROBA2 LYRA Flarelist record)
 
@@ -103,7 +105,12 @@ Each candidate object:
       "person_record": { "id": "spase://SMWG/Person/Marie.Dominique", "url": "https://spase-metadata.org/SMWG/Person/Marie.Dominique.html" },
       "orcid": null,
       "affiliation": "Royal Observatory of Belgium",
-      "activity_dates": null
+      "activity_dates": null,
+      "qualifying_roles": ["Author", "PrincipalInvestigator"],
+      "role_evidence": [
+        { "role": "Author", "source": "Lead author, LYRA instrument paper (2013SoPh..286...21D)" },
+        { "role": "PrincipalInvestigator", "source": "LYRA Instrument record Contacts" }
+      ]
     },
     {
       "name": "Ingolf E. Dammasch",
@@ -117,7 +124,11 @@ Each candidate object:
       "person_record": { "id": null, "url": null },
       "orcid": null,
       "affiliation": null,
-      "activity_dates": null
+      "activity_dates": null,
+      "qualifying_roles": ["Author"],
+      "role_evidence": [
+        { "role": "Author", "source": "Flarelist product-page footer credits compiler 'IED' (Medium inclusion evidence)" }
+      ]
     },
     {
       "name": "Lee Frost Bargatze",
@@ -130,7 +141,9 @@ Each candidate object:
       "person_record": { "id": "spase://SMWG/Person/Lee.Frost.Bargatze", "url": "https://spase-metadata.org/SMWG/Person/Lee.Frost.Bargatze.html" },
       "orcid": null,
       "affiliation": "UCLA",
-      "activity_dates": null
+      "activity_dates": null,
+      "qualifying_roles": [],
+      "role_evidence": []
     },
     {
       "name": "Melanie Heil",
@@ -143,7 +156,9 @@ Each candidate object:
       "person_record": { "id": null, "url": null },
       "orcid": null,
       "affiliation": "ESA",
-      "activity_dates": null
+      "activity_dates": null,
+      "qualifying_roles": [],
+      "role_evidence": []
     },
     {
       "name": "Don McMullin",
@@ -156,7 +171,9 @@ Each candidate object:
       "person_record": { "id": "spase://SMWG/Person/Don.McMullin", "url": "https://spase-metadata.org/SMWG/Person/Don.McMullin.html" },
       "orcid": null,
       "affiliation": null,
-      "activity_dates": null
+      "activity_dates": null,
+      "qualifying_roles": [],
+      "role_evidence": []
     },
     {
       "name": "Pierre Cugnon",
@@ -169,7 +186,9 @@ Each candidate object:
       "person_record": { "id": null, "url": null },
       "orcid": null,
       "affiliation": null,
-      "activity_dates": null
+      "activity_dates": null,
+      "qualifying_roles": [],
+      "role_evidence": []
     }
   ],
   "notes": [
@@ -208,6 +227,8 @@ A qualifying role is **Medium** evidence, not Strong: SPASE records may be outda
 **Non-qualifying roles** (e.g. `GeneralContact`, `TechnicalContact`, `MetadataContact`, `ArchiveSpecialist`, `HostContact`, `Publisher`, `DataProducer`, `Scientist`, `TeamLeader`, `ProjectManager`, `ProgramManager`, `User`) are **not author-evidence on their own**. Record the appearance as Low-strength context evidence — the person may still become an included candidate via other sources, and the reviewer should see that they also appear in Contacts. A person whose ONLY evidence is a non-qualifying contact role is `excluded` with reason `"non-qualifying contact role only"`.
 
 Note that `FormerPI` qualifies deliberately: multiple generations of PI matter (original and current), and a FormerPI is authorship-relevant even though no longer active.
+
+**Populate the structured `qualifying_roles` and `role_evidence` fields** (see the candidate schema), not only the `evidence[].source` prose. For every included candidate, add an `Author` role — they cleared the Strong/Medium bar, so they will be authors on the DOI — with its source being the inclusion evidence (paper byline, CMAD front page, provider PI page). Then add each qualifying contact role a source names for them, each with its own source. So a candidate who is both a paper lead and the instrument PI becomes `qualifying_roles: ["Author", "PrincipalInvestigator"]` with a matching two-entry `role_evidence`. A role mentioned only in a top-level blob (e.g. a name titled "Project Scientist" inside `cmad.notes`) is easy for a parser to miss — so when you identify a qualifying contact role anywhere, attach it here with its source. Keep the two fields in lockstep: every role in `qualifying_roles` has exactly one `{role, source}` entry in `role_evidence`. Excluded candidates get `[]` for both. This lets the downstream SMWG writer emit one `<Role>` per `role_evidence` entry in a single uniform loop, instead of parsing roles out of free text.
 
 ---
 

@@ -27,6 +27,15 @@ visible. Never fabricate or guess people.
 
 Key rules from the skill that are easy to get wrong:
 
+- **Populate `qualifying_roles` and `role_evidence` together.** Every *included*
+  candidate gets an `Author` role (they cleared the bar → authors on the DOI),
+  plus each qualifying contact role a source names. `role_evidence` is always an
+  array of `{role, source}` — one entry per role, INCLUDING Author (whose source
+  is the inclusion evidence). Keep them in lockstep: same roles in both. A paper
+  lead who is also the instrument PI → `qualifying_roles: ["Author",
+  "PrincipalInvestigator"]` with two matching role_evidence entries. Excluded
+  candidates get `[]` for both. This lets the writer emit one `<Role>` per entry
+  with no special-casing.
 - **Contacts are role-gated and Medium, not Strong.** Only the qualifying roles
   listed in the skill count as author-evidence, and even then SPASE metadata may
   be outdated — corroborate against publications, CMADs, and provider pages. Trust
