@@ -1,0 +1,33 @@
+{
+  "_help": "For each name: set links[name] to an existing PersonID if it is the same human, or move the name into creates if it is a different person. Empty string means undecided.",
+  "_candidates": {
+    "B. K. Dichter": [
+      "B.Dichter",
+      "Bronislaw.K.Dichter"
+    ],
+    "Terrance G. Onsager": [
+      "Terry.Onsager"
+    ],
+    "Pamela C. Sullivan": [
+      "Robert.J.Sullivan.Jr",
+      "James.D.Sullivan"
+    ],
+    "Daniel T. Lindsey": [
+      "R.Lindsey"
+    ]
+  },
+  "_rationale": {
+    "B. K. Dichter": "SAME PERSON as Bronislaw.K.Dichter. The enricher's corroborating GOES-16/-17 SEISS paper (10.1029/2019SW002403) deposits 'B.K. Dichter' with affiliation 'Assurance Technology Corporation, Carlisle MA USA', matching the Bronislaw.K.Dichter record (Assurance Technology Corporation (ATC), dichter@Assurtech.com) exactly. The other match, B.Dichter at Panametrics Incorporated, is the same human at an earlier employer; linked to the fuller, current record. NOTE FOR REVIEWER: B.Dichter and Bronislaw.K.Dichter appear to duplicate each other in the registry. That is a pre-existing repository problem and was deliberately left untouched by this run.",
+    "Terrance G. Onsager": "SAME PERSON as Terry.Onsager - 'Terry' is the familiar form of 'Terrance'. The existing record is Terry Onsager, Space Weather Prediction Center, Terry.Onsager@noaa.gov; the candidate's affiliation is NOAA Space Weather Prediction Center, and the enricher confirmed via Crossref that ORCID 0009-0002-2867-1255 is deposited for 'Terrance Onsager' at NOAA SWPC (10.1029/2024SW004219).",
+    "Pamela C. Sullivan": "DIFFERENT PEOPLE - surname-only collision. Robert J. Sullivan, Jr. (Cornell University) and James D. Sullivan (Boston University) share only the family name; different given names, institutions and fields. New record created.",
+    "Daniel T. Lindsey": "DIFFERENT PEOPLE - R. Lindsey is at NASA Johnson Space Center, a different given initial and a different agency. The candidate is the NOAA/NESDIS GOES-R Program Scientist at Fort Collins (ORCID 0000-0002-0967-5683). New record created."
+  },
+  "links": {
+    "B. K. Dichter": "Bronislaw.K.Dichter",
+    "Terrance G. Onsager": "Terry.Onsager"
+  },
+  "creates": [
+    "Pamela C. Sullivan",
+    "Daniel T. Lindsey"
+  ]
+}
