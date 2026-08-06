@@ -371,6 +371,25 @@ Prefer the undated employment over a Crossref deposit only when the deposit fall
 outside the operating span, or when the employment names an institution the
 deposit does not.
 
+**Choosing among several in-span deposits.** Rank 2 can have more than one member:
+the same person may have several papers inside the span, each depositing a
+different affiliation string. Prefer, in order:
+1. the deposit that also carried the confirmed ORCID, if one did — the identity
+   and the affiliation then rest on the same record;
+2. the string that names the person's unit most specifically, provided it is
+   well-formed;
+3. the most recent deposit.
+
+**Never silently correct a deposited string.** Publisher deposits contain typos —
+a misplaced article, a misspelled institute, a truncated department. You have two
+honest options and one dishonest one. You may record the string verbatim, typo
+included, noting the error. You may prefer a different, well-formed in-span
+deposit and note why the more specific one was passed over. You may NOT retype
+the string with the error fixed: `affiliation` is a transcription of what the
+evidence said, and an emended string is no longer that — it is your reconstruction
+wearing a citation. Whichever you choose, name the rejected string and the reason
+in `notes` so the reviewer can overrule you.
+
 **This ranking applies identically whether or not the finder pre-filled the
 field.** Step 1 governs *provenance* — whether `affiliation_origin` reads
 `finder` or `enricher`, and whether you must flag a disagreement — not which
@@ -500,6 +519,30 @@ outcome: record the null and note it.
   and note the others. If you cannot tell which is primary, leave null and note it.
 - Do not construct a ROR URL from a GRID ID, an ISNI, a Ringgold number, or an
   organization name. A ROR ID comes from the registry or it does not exist.
+
+**Cross-candidate consistency check (run once, after all candidates).** Routes A
+and B can resolve the *same* institution to different granularities: ORCID's
+`disambiguated-organization` may assert a laboratory's own ROR while ROR's
+`chosen` flag picks the parent university for the same laboratory named in a
+deposited string. Both are correct by their own route, and neither should be
+overridden — but a file that carries both without saying so looks like an error.
+
+Before writing the file, group candidates by the institution their `affiliation`
+names. Where two or more candidates at the same institution carry different
+`affiliation_ror` values:
+- Leave every value as its route produced it. Do NOT align them by picking one
+  and rewriting the others; that would override either ORCID's own assertion or
+  ROR's `chosen` flag, and the skill defers to both.
+- Add a note on **each** affected candidate naming the other ID, the route that
+  produced it, and the fact that the two are the same institution at different
+  granularities.
+- Say plainly that this is a curation-policy choice — parent organization vs.
+  sub-unit — and that a reviewer wanting internal consistency must pick one.
+
+The check costs nothing (it is local to the file you already assembled) and it
+converts a silent inconsistency into a flagged decision. Without it, whether the
+discrepancy gets noticed depends on whether the same institution happened to come
+up twice by different routes.
 
 ---
 
