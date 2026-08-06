@@ -81,6 +81,61 @@ def mint_id(name):
     return ".".join(toks)
 
 
+def build_person_note(candidate):
+    """Person/Note records where the affiliation came from.
+
+    Only the provenance of OrganizationName -- source, the specific evidence
+    identifier, and type. The enricher's full reasoning blob belongs in the run
+    log, not in the registry. affiliation_origin is pipeline bookkeeping and is
+    deliberately not written: a curator reading the record cares which evidence
+    supports the value, not which stage first proposed it.
+    """
+    e = candidate.get("enrichment") or {}
+    src = (e.get("affiliation_source") or "").strip()
+    ev = (e.get("affiliation_evidence") or "").strip()
+    typ = (e.get("affiliation_type") or "").strip()
+
+    # Legacy outputs conflated origin and evidence into the source string. Strip
+    # the stage name so the Note never claims "pre-existing" of a changed value.
+    if src.startswith("finder (pre-existing"):
+        src = "uncorroborated" if src == "finder (pre-existing)" else ""
+
+    if not src and not typ:
+        return None
+    parts = []
+    if src:
+        parts.append("source: %s%s" % (src, (" " + ev) if ev else ""))
+    if typ:
+        parts.append("type: %s" % typ)
+    return "Affiliation " + "; ".join(parts) + "."
+
+
+OUR_NOTE_PREFIX = "Affiliation source:"
+
+
+def build_note(candidate):
+    """Contact/Note holds the role evidence.
+
+    Note has cardinality 0..1, so several role_evidence entries are folded into
+    one string, each labelled with the role it supports. Accepts the older
+    plain-string form of role_evidence too.
+    """
+    ev = candidate.get("role_evidence")
+    if not ev:
+        return None
+    if isinstance(ev, str):
+        return ev.strip() or None
+    entries = [e for e in ev
+               if isinstance(e, dict) and (e.get("source") or "").strip()]
+    if not entries:
+        return None
+    if len(entries) == 1:
+        return entries[0]["source"].strip()
+    return " | ".join(
+        "%s: %s" % ((e.get("role") or "Role").strip(), e["source"].strip())
+        for e in entries)
+
+
 # --------------------------------------------------------------------------
 # duplicate detection
 # --------------------------------------------------------------------------
@@ -179,7 +234,7 @@ def bump_schema(txt):
     return txt
 
 
-def new_person_xml(pid, name, org, orcid, ror, stamp):
+def new_person_xml(pid, name, org, orcid, ror, stamp, note=None):
     lines = ["<?xml version='1.0' encoding='UTF-8'?>",
              '<Spase xmlns="http://www.spase-group.org/data/schema" '
              'xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" '
@@ -194,6 +249,8 @@ def new_person_xml(pid, name, org, orcid, ror, stamp):
              "    <OrganizationName>%s</OrganizationName>" % esc(org)]
     if orcid:
         lines.append("    <ORCIdentifier>%s</ORCIdentifier>" % orcid)
+    if note:
+        lines.append("    <Note>%s</Note>" % esc(note))
     if ror:
         lines.append("    <RORIdentifier>%s</RORIdentifier>" % ror)
     lines += ["  </Person>", "</Spase>", ""]
@@ -262,6 +319,7 @@ def main():
 
     ids, by_sur = build_person_index(repo)
     contacts, creates, updates, log, blockers = [], [], [], [], []
+    written_ids = set()
 
     for c in included:
         name = c["name"]
@@ -273,13 +331,19 @@ def main():
             log.append("LINK       %s -> %s (confirmed by curator)" % (name, pid))
 
         if not pid:
+            minted = mint_id(name)
             hits = find_collisions(name, ids, by_sur)
-            if hits and name not in confirmed_new:
+            if minted in hits:
+                # The canonical ID for this name already exists -- that record
+                # IS this person (commonly our own output from an earlier run).
+                pid = minted
+            elif hits and name not in confirmed_new:
                 blockers.append((name, hits[:4]))
                 continue
-            pid = mint_id(name)
-            if pid != name.replace(" ", "."):
-                log.append("MINT       %s -> %s" % (name, pid))
+            else:
+                pid = minted
+                if pid != name.replace(" ", "."):
+                    log.append("MINT       %s -> %s" % (name, pid))
 
         orcid = bare_orcid(c.get("orcid"))
         ror = bare_ror(c.get("affiliation_ror"))
@@ -319,6 +383,19 @@ def main():
                 log.append("ORCID CLASH %s: repo=%s input=%s (kept repo)"
                            % (pid, existing_orcid, orcid))
 
+            # Note records affiliation provenance. Written whenever the input
+            # supplied a real affiliation -- the provenance holds even when the
+            # value matched what was already there. Not written when the input
+            # had no affiliation, or it would misattribute a curated value.
+            pnote = build_person_note(c)
+            if pnote and org:
+                old_note = (fields.get("Note") or [""])[0]
+                if old_note and not old_note.startswith(OUR_NOTE_PREFIX):
+                    log.append("NOTE KEPT  %s: curated Note preserved, "
+                               "provenance not written" % pid)
+                else:
+                    txt = set_field(txt, "Note", pnote)
+
             if ror and not (fields.get("RORIdentifier") or [""])[0]:
                 txt = set_field(txt, "RORIdentifier", ror)
 
@@ -336,7 +413,8 @@ def main():
                 log.append("NO AFFIL   %s -> OrganizationName=Unknown" % name)
             if not args.dry_run:
                 open(path, "w", encoding="utf-8").write(
-                    new_person_xml(pid, name, org, orcid, ror, stamp))
+                    new_person_xml(pid, name, org, orcid, ror, stamp,
+                                   build_person_note(c)))
             creates.append(pid)
 
         roles = c.get("qualifying_roles") or ["Author"]
@@ -345,8 +423,15 @@ def main():
         block = ["      <Contact>",
                  "        <PersonID>spase://SMWG/Person/%s</PersonID>" % pid]
         block += ["        <Role>%s</Role>" % r for r in roles]
+        note = build_note(c)
+        if note:
+            block.append("        <Note>%s</Note>" % esc(note))
+        else:
+            log.append("NO EVIDENCE %s: no role_evidence, Contact written "
+                       "without a Note" % pid)
         block.append("      </Contact>")
         contacts.append("\n".join(block))
+        written_ids.add(pid)
 
     if blockers:
         print("ABORT: %d unresolved possible duplicate(s). Nothing written.\n"
@@ -393,20 +478,49 @@ def main():
     txt = open(target, encoding="utf-8").read()
     txt = bump_schema(txt)
 
-    placeholder = re.search(
-        r"[ \t]*<Contact>\s*<PersonID>spase://SMWG/Person/UNKNOWN</PersonID>"
-        r"\s*<Role>[A-Za-z]+</Role>\s*</Contact>\n", txt)
-    if placeholder:
-        txt = txt[:placeholder.start()] + "\n".join(contacts) + "\n" + txt[placeholder.end():]
+    # Replace the UNKNOWN placeholder and any Contact for a person we are
+    # writing; leave unrelated Contacts alone. This makes re-runs idempotent.
+    blocks = list(re.finditer(r"[ \t]*<Contact>.*?</Contact>\n", txt, re.S))
+    if not blocks:
+        print("ABORT: no Contact block found in %s; cannot place new Contacts."
+              % target)
+        return 1
+
+    drop, keep = [], []
+    for m in blocks:
+        pm = re.search(r"<PersonID>\s*spase://SMWG/Person/([^<\s]+)\s*</PersonID>",
+                       m.group(0))
+        who = pm.group(1) if pm else None
+        if who == "UNKNOWN" or (who and who in written_ids):
+            drop.append(m)
+        else:
+            keep.append(who)
+
+    anchor = drop[0].start() if drop else blocks[-1].end()
+    out, cursor = [], 0
+    for m in drop:
+        out.append(txt[cursor:m.start()])
+        cursor = m.end()
+    out.append(txt[cursor:])
+    txt = "".join(out)
+
+    # recompute the anchor against the reduced text
+    if drop:
+        removed_before = sum(m.end() - m.start()
+                             for m in drop if m.start() < anchor)
+        insert_at = anchor - removed_before
     else:
-        last = None
-        for m in re.finditer(r"[ \t]*<Contact>.*?</Contact>\n", txt, re.S):
-            last = m
-        if not last:
-            print("ABORT: no Contact block found in %s; cannot place new Contacts." % target)
-            return 1
-        txt = txt[:last.end()] + "\n".join(contacts) + "\n" + txt[last.end():]
-        log.append("APPEND     kept existing Contacts, appended %d new" % len(contacts))
+        removed = sum(m.end() - m.start() for m in drop)
+        insert_at = anchor - removed
+    txt = txt[:insert_at] + "\n".join(contacts) + "\n" + txt[insert_at:]
+
+    if len(drop) > 1 or (drop and not any(
+            re.search(r"Person/UNKNOWN", m.group(0)) for m in drop)):
+        log.append("REPLACED   %d existing Contact block(s) for the same people"
+                   % len(drop))
+    if keep:
+        log.append("KEPT       %d unrelated Contact(s): %s"
+                   % (len(keep), ", ".join(k for k in keep if k)))
 
     note = args.note or (
         "Added mission Contacts with Author and qualifying roles derived from "

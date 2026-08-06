@@ -185,6 +185,32 @@ Add `ORCIdentifier` only when absent. If the record already has a different one,
 keep the existing value and log the clash — a conflicting ORCID means one of the
 two is attached to the wrong human, which needs a person to look at it.
 
+**Record affiliation provenance in `Person/Note`.** Where the affiliation came
+from is part of what makes the record auditable, so write the enrichment's
+`affiliation_source` and `affiliation_type` into the Person record's `Note`:
+
+```xml
+<Note>Affiliation source: ORCID employment; type: current.</Note>
+```
+
+`Note` is cardinality 0..1 and sits between `ORCIdentifier` and `RORIdentifier`
+in the Person sequence — not beside `ORCIdentifier`.
+
+Write it whenever the input supplied a real affiliation, including when that
+affiliation matched what the record already had: the provenance is true either
+way. Do **not** write it when the input had no affiliation and the existing
+`OrganizationName` was kept — that would attribute a curated value to a source
+that did not produce it.
+
+Never overwrite a curated `Note`. If a record already has one that this skill did
+not write (it will not begin with `Affiliation source:`), preserve it and log
+that the provenance was not recorded. Registry Notes carry things like
+"Retired as of the creation of this SPASE record", which must not be lost.
+
+Keep the Note to source and type. The enricher's full reasoning — candidate
+ORCIDs considered, checksum results, reviewer suggestions — belongs in the run
+log and the PR description, not in the registry record.
+
 ### Step 7 — Write Contact blocks
 
 Each candidate becomes one `Contact` with `Author` plus any `qualifying_roles`
@@ -201,11 +227,55 @@ from the input:
 `Role` has cardinality `(+)`, so multiple roles on one Contact are valid and
 preferred over duplicate Contact blocks for the same person.
 
-Placement: `Contact` appears in `ResourceHeader` after `Funding` and before
-`InformationURL`. When the record has the usual `spase://SMWG/Person/UNKNOWN`
-placeholder Contact, replace it — that placeholder is what this work exists to
-remove. Otherwise append after the last existing Contact and say so in the
-report, since preserving unrelated contacts is a judgement the human should see.
+### The Note carries the role evidence
+
+Every Contact gets a `<Note>` holding the `role_evidence` source from the input
+— the citation or record that justifies the role. This is what makes the
+authorship claim auditable: a reviewer can see *why* each person is listed
+without going back to the JSON.
+
+```xml
+<Contact>
+  <PersonID>spase://SMWG/Person/Paul.T.M.Lotoaniu</PersonID>
+  <Role>Author</Role>
+  <Note>Lead author (position 1), GOES-16 MAG description paper (Loto'aniu et al. 2019, 10.1007/s11214-019-0600-3)</Note>
+</Contact>
+```
+
+`Note` has cardinality 0..1 — **one Note per Contact, no more**. When a candidate
+has several `role_evidence` entries, fold them into a single Note, each labelled
+with the role it supports:
+
+```xml
+<Contact>
+  <PersonID>spase://SMWG/Person/Howard.J.Singer</PersonID>
+  <Role>Author</Role>
+  <Role>PrincipalInvestigator</Role>
+  <Note>Author: MAG PrincipalInvestigator in the GOES-16 MAG SPASE record, corroborated by the record Acknowledgement and MAG description-paper co-authorship | PrincipalInvestigator: GOES-16 MAG SPASE Instrument record Contacts (https://spase-metadata.org/SMWG/Instrument/GOES/16/MAG.html)</Note>
+</Contact>
+```
+
+Note text is transcribed from the input and XML-escaped, never composed. A
+candidate with no `role_evidence` gets a Contact without a Note, and the omission
+is logged rather than papered over with invented justification.
+
+`Note` is the last child of `Contact`: `PersonID, Role(+), StartDate, StopDate,
+Note`.
+
+### Placement, and re-running safely
+
+`Contact` appears in `ResourceHeader` after `Funding` and before
+`InformationURL`.
+
+Writing Contacts is **idempotent**. Replace the `spase://SMWG/Person/UNKNOWN`
+placeholder and any existing Contact whose `PersonID` is one you are writing;
+leave every other Contact untouched and report how many you kept. This matters
+because records get re-run — after a finder re-run, or to add a field like this
+one — and blind appending silently doubles the contact list.
+
+An existing Person record whose ID is exactly the ID you would mint for a
+candidate **is** that person; link to it rather than flagging a collision. That
+case is usually your own output from an earlier run.
 
 ### Step 8 — Correct schemaLocation
 
