@@ -77,15 +77,24 @@
         "url": null
       },
       "orcid": "https://orcid.org/0000-0001-6601-9116",
-      "affiliation": "CIRES, University of Colorado Boulder / NOAA National Centers for Environmental Information",
+      "affiliation": "Cooperative Institute for Research in Environmental Sciences, University of Colorado Boulder / NOAA National Centers for Environmental Information",
       "activity_dates": null,
+      "affiliation_ror": "https://ror.org/02ttsq026",
       "enrichment": {
-        "orcid_source": "finder (pre-existing, verified)",
+        "orcid_origin": "finder",
+        "orcid_source": "Crossref (paper DOI)",
+        "orcid_evidence": "10.1029/2022SW003044",
         "orcid_confidence": "Confirmed",
-        "affiliation_source": "finder (pre-existing, verified)",
+        "affiliation_origin": "finder",
+        "affiliation_source": "Crossref (paper DOI)",
+        "affiliation_evidence": "10.1029/2022SW003044",
         "affiliation_type": "as-deposited",
+        "ror_origin": "enricher",
+        "ror_source": "ROR affiliation-match (chosen)",
+        "ror_evidence": "https://ror.org/02ttsq026",
+        "ror_confidence": "Confirmed",
         "lookup_status": "complete",
-        "notes": "ORCID checksum valid. Independently confirmed: Crossref deposits the same iD (0000-0001-6601-9116) for Jonathan M. Darnel on the SUVI description paper (10.1029/2022SW003044). Affiliation matches the Crossref as-deposited string on that 2022 paper (CIRES/CU Boulder + NOAA NCEI, publication date within the operating span). ORCID employment record lists University of Colorado Boulder (undated), consistent."
+        "notes": "ORCID: the finder's value passes the ISO 7064 mod 11-2 checksum and Route A confirms it within his own evidence list - Crossref deposits this iD for author 1 ('Jonathan M.' / 'Darnel') of 10.1029/2022SW003044. Route A' therefore did not apply. AFFILIATION - EVIDENCE-STRENGTH RANKING APPLIED. His ORCID holds exactly one employment, an undated bare 'University of Colorado Boulder' (RINGGOLD 1877, not ROR), which is rank 3. The SUVI deposit was published 2022-04, inside the operating span (2022-03-01 onward), making it rank 2, and it names his institutions more specifically, so it is recorded and the undated employment is listed here instead. The finder wrote this institution pair in abbreviated form ('CIRES, University of Colorado Boulder / NOAA NCEI'); the wording recorded here is the unabbreviated form the publisher actually deposited, which is the evidence. The institutions are identical. ROR: ROR was resolved against the primary (first) institution of this multi-affiliation string. ROR set chosen:true on the parent University of Colorado Boulder (https://ror.org/02ttsq026) rather than on CIRES, whose own registry record (https://ror.org/00bdqav06, chosen:false) also scored 1.0; the NOAA NCEI half resolves separately to https://ror.org/04r0wrp59. The chosen flag was followed as the skill requires, but a reviewer may prefer one of the more specific IDs."
       }
     },
     {
@@ -105,15 +114,24 @@
         "url": "https://spase-metadata.org/SMWG/Person/Daniel.B.Seaton.html"
       },
       "orcid": "https://orcid.org/0000-0002-0494-2025",
-      "affiliation": "Southwest Research Institute, Boulder, CO / University of Colorado Boulder",
+      "affiliation": "Southwest Research Institute Boulder",
       "activity_dates": null,
+      "affiliation_ror": "https://ror.org/03tghng59",
       "enrichment": {
-        "orcid_source": "finder (pre-existing, verified)",
+        "orcid_origin": "finder",
+        "orcid_source": "Crossref (paper DOI)",
+        "orcid_evidence": "10.1029/2022SW003044",
         "orcid_confidence": "Confirmed",
+        "affiliation_origin": "enricher",
         "affiliation_source": "ORCID employment",
+        "affiliation_evidence": "https://orcid.org/0000-0002-0494-2025",
         "affiliation_type": "era-matched",
+        "ror_origin": "enricher",
+        "ror_source": "ROR affiliation-match (chosen)",
+        "ror_evidence": "https://ror.org/03tghng59",
+        "ror_confidence": "Confirmed",
         "lookup_status": "complete",
-        "notes": "ORCID checksum valid; Crossref deposits the same iD for Daniel B. Seaton on the SUVI paper (10.1029/2022SW003044) -> Confirmed. AFFILIATION DIFFERS FROM FINDER VALUE (reviewer flag): finder recorded 'CIRES, University of Colorado Boulder / NOAA NCEI / Southwest Research Institute'. ORCID dated employments show NOAA NCEI ran 2015-12-01 -> 2021-12-31, which ENDED BEFORE the operating-span start (2022-03-01) and is therefore not era-matched. Employments overlapping the span are Southwest Research Institute Boulder (2020-02 -> present) and University of Colorado Boulder (undated, ongoing). Era-matched value set to SwRI + CU Boulder."
+        "notes": "ORCID: checksum valid; Route A confirms it within his evidence list - Crossref deposits this iD for author 2 ('Daniel B. Seaton') of 10.1029/2022SW003044. AFFILIATION - DIFFERS FROM FINDER VALUE, please review, AND DIFFERS FROM THE GOES-16 RECORD FOR THE SAME PERSON. This is a genuine consequence of the different operating spans, not an inconsistency. GOES-18 starts 2022-03-01. His dated ORCID employment at NOAA National Centers for Environmental Information ran 2015-12-01 to 2021-12-31 and therefore does NOT overlap this span at all, though it is the era-matched value for GOES-16 (span from 2016-11-19). The employment that does overlap is 'Southwest Research Institute Boulder, Principal Scientist / Acting Section Manager, Department of Solar and Heliospheric Physics, 2020-02 to present', which is era-matched here and is rank 1, outranking the 2022 SUVI deposit. The finder carried 'CIRES, University of Colorado Boulder / NOAA NCEI / Southwest Research Institute' - a merged string listing all three; only SwRI is era-correct for this record. Royal Observatory of Belgium (2008-07-15 to 2015-11-30) and Harvard-Smithsonian CfA (2001-07 to 2003-08) end well before the span; an undated 'University of Colorado Boulder' entry was not used because dated entries take precedence. ROR: the SwRI employment's disambiguation-source is RINGGOLD (133951), not ROR, so Route A did not apply; Route B set chosen:true on https://ror.org/03tghng59. That registry record is the parent 'Southwest Research Institute'; the affiliation names the Boulder office, which ROR does not list separately, so the sub-unit is preserved in the affiliation string only."
       }
     },
     {
@@ -133,15 +151,24 @@
         "url": "https://spase-metadata.org/SMWG/Person/Christian.Bethge.html"
       },
       "orcid": null,
-      "affiliation": "CIRES, University of Colorado Boulder / NOAA NCEI",
+      "affiliation": "Cooperative Institute for Research in Environmental Sciences, University of Colorado Boulder / NOAA National Centers for Environmental Information",
       "activity_dates": null,
+      "affiliation_ror": "https://ror.org/02ttsq026",
       "enrichment": {
+        "orcid_origin": null,
         "orcid_source": null,
+        "orcid_evidence": null,
         "orcid_confidence": null,
+        "affiliation_origin": "finder",
         "affiliation_source": "Crossref (paper DOI)",
+        "affiliation_evidence": "10.1029/2022SW003044",
         "affiliation_type": "as-deposited",
+        "ror_origin": "enricher",
+        "ror_source": "ROR affiliation-match (chosen)",
+        "ror_evidence": "https://ror.org/02ttsq026",
+        "ror_confidence": "Confirmed",
         "lookup_status": "complete",
-        "notes": "ORCID left null. The SUVI paper (10.1029/2022SW003044) deposited no ORCID for Christian Bethge. ORCID name search returned two people: 0009-0003-4552-8087 (Martin Luther University Halle-Wittenberg, unrelated field) and 0000-0001-9076-6461 (empty public record - no works or employments to corroborate against the SUVI/GOES-R context). Neither can be confirmed, so ORCID stays null. Affiliation is the Crossref as-deposited string on the 2022 SUVI paper (CIRES/CU Boulder + NOAA NCEI), matching the finder value."
+        "notes": "ORCID NOT CONFIRMED - left null; closest call in this file, please review. Route A: Crossref deposits no ORCID for author 3 of 10.1029/2022SW003044. Route B: the name search returns two 'Christian Bethge' records - 0009-0003-4552-8087 is university-library staff at Martin Luther University Halle-Wittenberg (other name 'Christian Schmiljun'; works are library annual reports), a different person; 0000-0001-9076-6461 carries no works and no employments on the record itself. Route A' was run with GOES/SUVI-targeted queries and DOES find publisher deposits carrying 0000-0001-9076-6461 for a full-name 'Christian' Bethge - 10.1126/science.abb4462 'Global maps of the magnetic field in the solar corona', 10.3847/1538-4357/ad94f6, 10.3847/1538-4357/aded0e and 10.1007/s11207-022-02064-8 - but all of them FAIL the domain test on both limbs: none is on GOES-R, SUVI or any GOES instrument (they are solar coronal and chromospheric magnetometry), and the affiliations deposited with them are Universities Space Research Association and the High Altitude Observatory at NCAR, not the data provider. Same-field is explicitly not a corroborating domain. The iD is very likely his, but confirming it here would be the exact inference the rule forbids, so it is recorded for one-click reviewer resolution instead. This matches the conclusion reached independently for the GOES-16 record. AFFILIATION: the SUVI deposit (2022-04, inside the operating span (2022-03-01 onward)) supplies it; with no confirmed ORCID there was no employment history to era-match. The finder wrote this institution pair in abbreviated form ('CIRES, University of Colorado Boulder / NOAA NCEI'); the wording recorded here is the unabbreviated form the publisher actually deposited, which is the evidence. The institutions are identical. ROR: ROR was resolved against the primary (first) institution of this multi-affiliation string. ROR set chosen:true on the parent University of Colorado Boulder (https://ror.org/02ttsq026) rather than on CIRES, whose own registry record (https://ror.org/00bdqav06, chosen:false) also scored 1.0; the NOAA NCEI half resolves separately to https://ror.org/04r0wrp59. The chosen flag was followed as the skill requires, but a reviewer may prefer one of the more specific IDs."
       }
     },
     {
@@ -166,15 +193,24 @@
         "url": null
       },
       "orcid": "https://orcid.org/0000-0002-2140-2370",
-      "affiliation": "NOAA / CIRES, University of Colorado Boulder",
+      "affiliation": "Cooperative Institute for Research in Environmental Sciences, University of Colorado Boulder / NOAA National Centers for Environmental Information",
       "activity_dates": null,
+      "affiliation_ror": "https://ror.org/02ttsq026",
       "enrichment": {
-        "orcid_source": "finder (pre-existing, verified)",
+        "orcid_origin": "finder",
+        "orcid_source": "Crossref (paper DOI)",
+        "orcid_evidence": "10.1007/s11214-023-01032-3",
         "orcid_confidence": "Confirmed",
-        "affiliation_source": null,
-        "affiliation_type": null,
+        "affiliation_origin": "enricher",
+        "affiliation_source": "Crossref (paper DOI)",
+        "affiliation_evidence": "10.1029/2023SW003736",
+        "affiliation_type": "as-deposited",
+        "ror_origin": "enricher",
+        "ror_source": "ROR affiliation-match (chosen)",
+        "ror_evidence": "https://ror.org/02ttsq026",
+        "ror_confidence": "Confirmed",
         "lookup_status": "complete",
-        "notes": "ORCID checksum valid and strongly corroborated: the record's works include 'Initial on-Orbit Results from the GOES-18 Spacecraft Science Magnetometer' and 'Magnetic Field Observations from the GOES-R Series' - directly the GOES-R/GOES-18 magnetometer this candidate leads. Confirmed. AFFILIATION: no era-matched source available - the ORCID record lists no employments and the MAG description paper (10.1007/s11214-019-0600-3) deposited no author affiliations. Finder value 'NOAA / CIRES, University of Colorado Boulder' retained but unverified; affiliation_type unknown."
+        "notes": "ORCID: checksum valid, and unlike the GOES-16 record this one is confirmed by ROUTE A within his own evidence list. His GOES-18-specific evidence DOI 10.1007/s11214-023-01032-3 (Loto'aniu et al. 2023, on-orbit results) deposits this iD for author 1 with the full given name 'Paul T. M.'. The older MAG paper 10.1007/s11214-019-0600-3 deposits no iDs. Route A' was therefore not needed for the iD. Corroborated further by his ORCID works list, which includes 'Initial on-Orbit Results from the GOES-18 Spacecraft Science Magnetometer' and 'Magnetic Field Observations from the GOES-R Series'. AFFILIATION: neither evidence DOI deposits author affiliations, and his ORCID record lists no employments at all, so neither era-matching nor the current fallback was possible. The affiliation is taken from 10.1029/2023SW003736 'Intersatellite Comparisons of GOES Magnetic Field Measurements' (2024, inside the operating span (2022-03-01 onward)), which deposits it for him as author 3 under the same confirmed iD; that DOI lies OUTSIDE the finder's evidence list and is named here explicitly. The finder's value 'NOAA / CIRES, University of Colorado Boulder' names the same two institutions in the opposite order. POSSIBLE DUPLICATE ACCOUNT: the name search also returns 0000-0003-0737-5182 'TAPUOSI LOTOANIU' (University of Colorado Boulder, no works); his middle initials are T. M., so this may be a second, empty account for the same person. ROR: ROR was resolved against the primary (first) institution of this multi-affiliation string. ROR set chosen:true on the parent University of Colorado Boulder (https://ror.org/02ttsq026) rather than on CIRES, whose own registry record (https://ror.org/00bdqav06, chosen:false) also scored 1.0; the NOAA NCEI half resolves separately to https://ror.org/04r0wrp59. The chosen flag was followed as the skill requires, but a reviewer may prefer one of the more specific IDs."
       }
     },
     {
@@ -196,13 +232,22 @@
       "orcid": "https://orcid.org/0000-0001-5585-2719",
       "affiliation": "NOAA National Centers for Environmental Information",
       "activity_dates": null,
+      "affiliation_ror": "https://ror.org/04r0wrp59",
       "enrichment": {
-        "orcid_source": "ORCID name-search (corroborated)",
+        "orcid_origin": "enricher",
+        "orcid_source": "Crossref (paper DOI)",
+        "orcid_evidence": "10.1109/TPS.2024.3390658",
         "orcid_confidence": "Confirmed",
-        "affiliation_source": "finder (pre-existing, verified)",
-        "affiliation_type": "current",
+        "affiliation_origin": "finder",
+        "affiliation_source": "Crossref (paper DOI)",
+        "affiliation_evidence": "10.1109/TPS.2024.3390658",
+        "affiliation_type": "as-deposited",
+        "ror_origin": "enricher",
+        "ror_source": "ROR affiliation-match (chosen)",
+        "ror_evidence": "https://ror.org/04r0wrp59",
+        "ror_confidence": "Confirmed",
         "lookup_status": "complete",
-        "notes": "MAG paper deposited no ORCID. Name search: 0000-0001-5585-2719 corroborated - employment 'National Oceanic and Atmospheric Administration' (ongoing) plus works 'Long-Term Bias Stability of the GOES-NOP Magnetometers' and 'Relationship Between GOES-R Series Spacecraft Operational Anomalies', directly GOES-R/NOAA. Confirmed. (Other match 0009-0007-9176-0652 is at Oklahoma State University, unrelated.) ORCID employment (NOAA, undated) corroborates finder affiliation; affiliation_type current because the employment carries no dates to era-match."
+        "notes": "ORCID: checksum valid. His single evidence DOI 10.1007/s11214-019-0600-3 deposits no iDs, so Route A' was used: 10.1109/TPS.2024.3390658 'Relationship Between GOES-R Series Spacecraft Operational Anomalies and In Situ 30 eV-3-MeV Electron Measurements' deposits this iD for a full-name 'Robert J.' Redmon and is on the same series (GOES-R, which GOES-18 belongs to), satisfying the domain test. That DOI lies outside the finder's evidence list and is named here explicitly. Corroborated by his ORCID works list, which contains his evidence paper 'The GOES-16 Spacecraft Science Magnetometer' and 'Magnetic Field Observations from the GOES-R Series'. The other name-search hit, 0009-0007-9176-0652 (Oklahoma State University), is a different person. AFFILIATION - EVIDENCE-STRENGTH RANKING APPLIED. His sole ORCID employment ('National Oceanic and Atmospheric Administration', department 'National Centers for Environmental Information', role 'Director NOAA Center for Artificial Intelligence') is UNDATED, rank 3. The Route A' deposit is dated 2024, inside the operating span (2022-03-01 onward), rank 2, and is recorded instead. The value is identical either way and also matches the finder's value; only the provenance differs. ROR: the employment's disambiguation-source is FUNDREF, not ROR, so it was not converted by hand; Route B set chosen:true on https://ror.org/04r0wrp59."
       }
     },
     {
@@ -221,16 +266,25 @@
         "id": null,
         "url": null
       },
-      "orcid": null,
-      "affiliation": "NOAA / CIRES, University of Colorado Boulder",
+      "orcid": "https://orcid.org/0000-0002-7017-0916",
+      "affiliation": "Cooperative Institute for Research in Environmental Sciences, University of Colorado Boulder / NOAA National Centers for Environmental Information",
       "activity_dates": null,
+      "affiliation_ror": "https://ror.org/02ttsq026",
       "enrichment": {
-        "orcid_source": null,
-        "orcid_confidence": null,
-        "affiliation_source": null,
-        "affiliation_type": null,
+        "orcid_origin": "enricher",
+        "orcid_source": "Crossref (paper DOI)",
+        "orcid_evidence": "10.1029/2023SW003736",
+        "orcid_confidence": "Confirmed",
+        "affiliation_origin": "enricher",
+        "affiliation_source": "Crossref (paper DOI)",
+        "affiliation_evidence": "10.1029/2023SW003736",
+        "affiliation_type": "as-deposited",
+        "ror_origin": "enricher",
+        "ror_source": "ROR affiliation-match (chosen)",
+        "ror_evidence": "https://ror.org/02ttsq026",
+        "ror_confidence": "Confirmed",
         "lookup_status": "complete",
-        "notes": "ORCID left null. MAG paper deposited no ORCID. Name search returned a single match, 0000-0002-7017-0916 (Samuel Califf), but its public record has no works or employments, so it cannot be corroborated against the GOES-R/NOAA context - not accepted on name alone. Reviewer: 0000-0002-7017-0916 is the only same-name iD and is plausibly this person, but unconfirmed. Affiliation: no era-matched source (no ORCID employments; MAG paper had no affiliation strings); finder value retained but unverified, affiliation_type unknown."
+        "notes": "ORCID: checksum valid. RECOVERED BY ROUTE A'. Route A found nothing: his evidence DOI 10.1007/s11214-019-0600-3 deposits no iDs, and although he also appears on the GOES-18 MAG paper 10.1007/s11214-023-01032-3 that deposit gives his given name as 'S.' - initials only, which never confirm. Route B is insufficient on its own: the name search returns exactly one 'Samuel Califf' (0000-0002-7017-0916) but that record has no works and no employments, making it a name-only match. Route A' resolves it: 10.1029/2023SW003736 'Intersatellite Comparisons of GOES Magnetic Field Measurements' (2024) deposits the same iD for author 2 with the full given name 'Samuel', on the same instrument (GOES magnetometer) as his evidence. That DOI lies outside the finder's evidence list and is named here explicitly. AFFILIATION: the ORCID record lists no employments, so the Crossref fallback supplies the pair deposited on the same DOI, which is inside the operating span (2022-03-01 onward). The finder's value 'NOAA / CIRES, University of Colorado Boulder' names the same two institutions in the opposite order. ROR: ROR was resolved against the primary (first) institution of this multi-affiliation string. ROR set chosen:true on the parent University of Colorado Boulder (https://ror.org/02ttsq026) rather than on CIRES, whose own registry record (https://ror.org/00bdqav06, chosen:false) also scored 1.0; the NOAA NCEI half resolves separately to https://ror.org/04r0wrp59. The chosen flag was followed as the skill requires, but a reviewer may prefer one of the more specific IDs."
       }
     },
     {
@@ -262,13 +316,22 @@
       "orcid": "https://orcid.org/0000-0002-5364-6505",
       "affiliation": "NOAA Space Weather Prediction Center",
       "activity_dates": null,
+      "affiliation_ror": "https://ror.org/01j6j9107",
       "enrichment": {
-        "orcid_source": "ORCID name-search (corroborated)",
+        "orcid_origin": "enricher",
+        "orcid_source": "Crossref (paper DOI)",
+        "orcid_evidence": "10.1029/2023SW003736",
         "orcid_confidence": "Confirmed",
-        "affiliation_source": "finder (pre-existing, verified)",
+        "affiliation_origin": "finder",
+        "affiliation_source": "ORCID employment",
+        "affiliation_evidence": "https://orcid.org/0000-0002-5364-6505",
         "affiliation_type": "era-matched",
+        "ror_origin": "enricher",
+        "ror_source": "ROR affiliation-match (chosen)",
+        "ror_evidence": "https://ror.org/01j6j9107",
+        "ror_confidence": "Confirmed",
         "lookup_status": "complete",
-        "notes": "Name search: 0000-0002-5364-6505 corroborated - dated employment 'Space Weather Prediction Center' 1993-04 -> present, matching this candidate's known NOAA SWPC affiliation and the GOES MAG PI context. Confirmed and disambiguated from the other 'Howard Singer' (0000-0002-6316-8260, empty record). Employment (SWPC, 1993 -> ongoing) overlaps the operating span (2022-03 -> present) -> affiliation era-matched, agrees with finder value."
+        "notes": "ORCID: checksum valid. Route A found nothing - his evidence DOI 10.1007/s11214-019-0600-3 deposits no iDs, and the GOES-18 MAG paper 10.1007/s11214-023-01032-3 gives his given name as 'H. J.', initials only, which never confirm. Route A' resolves it: 10.1029/2023SW003736 deposits this iD for author 6 with the full given name 'Howard J.', on the same instrument (GOES magnetometer), with the affiliation 'Space Weather Prediction Center NOAA'. That DOI lies outside the finder's evidence list and is named here explicitly. Corroborated by his ORCID's dated employment 'Space Weather Prediction Center, Chief Scientist, 1993-04 to present', which matches the data provider institution named in the GOES-R MAG record's PrincipalInvestigator entry and Acknowledgement. AFFILIATION: that employment covers all of the operating span (2022-03-01 onward), so it is era-matched - rank 1, outranking the 2024 deposit. The finder's value agrees and is kept. ROR: the employment's disambiguation-source is RINGGOLD (221371), not ROR, so Route A did not apply; Route B set chosen:true on https://ror.org/01j6j9107. NOTE: a second 'Howard Singer' record exists, 0000-0002-6316-8260, with no works and no employments; nothing corroborates it."
       }
     },
     {
@@ -290,13 +353,22 @@
       "orcid": null,
       "affiliation": null,
       "activity_dates": null,
+      "affiliation_ror": null,
       "enrichment": {
+        "orcid_origin": null,
         "orcid_source": null,
+        "orcid_evidence": null,
         "orcid_confidence": null,
+        "affiliation_origin": null,
         "affiliation_source": null,
+        "affiliation_evidence": null,
         "affiliation_type": null,
+        "ror_origin": null,
+        "ror_source": null,
+        "ror_evidence": null,
+        "ror_confidence": null,
         "lookup_status": "skipped-unconfirmed-identity",
-        "notes": "Included by the finder but identity NOT confirmed: name is initials-only as printed in the SEISS overview paper (Galica et al. 2016, 10.1117/12.2228537) and the finder flagged it for downstream expansion/disambiguation. Per the identity gate, no enrichment attempted. The SEISS paper deposited no ORCIDs in Crossref, so no authorship-anchored iD is available. Finder recorded the as-printed affiliation 'Assurance Technology Corporation' (SEISS provider); preserved here for the reviewer but not confirmed to a resolved person, so the affiliation field is left null per the gate."
+        "notes": "SKIPPED BY THE IDENTITY GATE - no lookups attempted, including Route A'. The finder identifies this person only by initials ('G. E. Galica'), taken from the author list of the SPIE SEISS overview paper 10.1117/12.2228537; Crossref confirms that paper deposits initials-only given names and no ORCIDs or affiliations. No source in the finder's evidence establishes a full given name, so the identity cannot be confirmed and enrichment confidence is capped by identity confidence. Note that the finder rates this candidate's authorship evidence 'Strong' - the gate is deliberately judged from the evidence and notes rather than from the confidence field, because confidence measures evidence strength for authorship, not certainty about who the person is. Route A' would not help even if run: it requires a full-name-compatible deposit, and initials-only deposits never confirm. NOTE: the finder pre-filled affiliation 'Assurance Technology Corporation' for this candidate. It is deliberately NOT carried into the enriched file, because an institutional affiliation cannot be asserted for a person whose identity is unconfirmed; the value remains in the finder's own output and nothing is lost. Resolving the full name is the finder's job, not this skill's. This matches the treatment of the same three candidates in the GOES-16 record."
       }
     },
     {
@@ -318,13 +390,22 @@
       "orcid": null,
       "affiliation": null,
       "activity_dates": null,
+      "affiliation_ror": null,
       "enrichment": {
+        "orcid_origin": null,
         "orcid_source": null,
+        "orcid_evidence": null,
         "orcid_confidence": null,
+        "affiliation_origin": null,
         "affiliation_source": null,
+        "affiliation_evidence": null,
         "affiliation_type": null,
+        "ror_origin": null,
+        "ror_source": null,
+        "ror_evidence": null,
+        "ror_confidence": null,
         "lookup_status": "skipped-unconfirmed-identity",
-        "notes": "Included by the finder but identity NOT confirmed: name is initials-only as printed in the SEISS overview paper (Galica et al. 2016, 10.1117/12.2228537) and the finder flagged it for downstream expansion/disambiguation. Per the identity gate, no enrichment attempted. The SEISS paper deposited no ORCIDs in Crossref, so no authorship-anchored iD is available. Finder recorded the as-printed affiliation 'Assurance Technology Corporation' (SEISS provider); preserved here for the reviewer but not confirmed to a resolved person, so the affiliation field is left null per the gate."
+        "notes": "SKIPPED BY THE IDENTITY GATE - no lookups attempted, including Route A'. The finder identifies this person only by initials ('B. K. Dichter'), taken from the author list of the SPIE SEISS overview paper 10.1117/12.2228537; Crossref confirms that paper deposits initials-only given names and no ORCIDs or affiliations. No source in the finder's evidence establishes a full given name, so the identity cannot be confirmed and enrichment confidence is capped by identity confidence. Note that the finder rates this candidate's authorship evidence 'Strong' - the gate is deliberately judged from the evidence and notes rather than from the confidence field, because confidence measures evidence strength for authorship, not certainty about who the person is. Route A' would not help even if run: it requires a full-name-compatible deposit, and initials-only deposits never confirm. NOTE: the finder pre-filled affiliation 'Assurance Technology Corporation' for this candidate. It is deliberately NOT carried into the enriched file, because an institutional affiliation cannot be asserted for a person whose identity is unconfirmed; the value remains in the finder's own output and nothing is lost. Resolving the full name is the finder's job, not this skill's. This matches the treatment of the same three candidates in the GOES-16 record."
       }
     },
     {
@@ -346,13 +427,22 @@
       "orcid": null,
       "affiliation": null,
       "activity_dates": null,
+      "affiliation_ror": null,
       "enrichment": {
+        "orcid_origin": null,
         "orcid_source": null,
+        "orcid_evidence": null,
         "orcid_confidence": null,
+        "affiliation_origin": null,
         "affiliation_source": null,
+        "affiliation_evidence": null,
         "affiliation_type": null,
+        "ror_origin": null,
+        "ror_source": null,
+        "ror_evidence": null,
+        "ror_confidence": null,
         "lookup_status": "skipped-unconfirmed-identity",
-        "notes": "Included by the finder but identity NOT confirmed: name is initials-only as printed in the SEISS overview paper (Galica et al. 2016, 10.1117/12.2228537) and the finder flagged it for downstream expansion/disambiguation. Per the identity gate, no enrichment attempted. The SEISS paper deposited no ORCIDs in Crossref, so no authorship-anchored iD is available. Finder recorded the as-printed affiliation 'Assurance Technology Corporation' (SEISS provider); preserved here for the reviewer but not confirmed to a resolved person, so the affiliation field is left null per the gate."
+        "notes": "SKIPPED BY THE IDENTITY GATE - no lookups attempted, including Route A'. The finder identifies this person only by initials ('S. Tsui'), taken from the author list of the SPIE SEISS overview paper 10.1117/12.2228537; Crossref confirms that paper deposits initials-only given names and no ORCIDs or affiliations. No source in the finder's evidence establishes a full given name, so the identity cannot be confirmed and enrichment confidence is capped by identity confidence. Note that the finder rates this candidate's authorship evidence 'Strong' - the gate is deliberately judged from the evidence and notes rather than from the confidence field, because confidence measures evidence strength for authorship, not certainty about who the person is. Route A' would not help even if run: it requires a full-name-compatible deposit, and initials-only deposits never confirm. NOTE: the finder pre-filled affiliation 'Assurance Technology Corporation' for this candidate. It is deliberately NOT carried into the enriched file, because an institutional affiliation cannot be asserted for a person whose identity is unconfirmed; the value remains in the finder's own output and nothing is lost. Resolving the full name is the finder's job, not this skill's. This matches the treatment of the same three candidates in the GOES-16 record."
       }
     },
     {
@@ -379,13 +469,22 @@
       "orcid": "https://orcid.org/0000-0001-7143-2730",
       "affiliation": "Laboratory for Atmospheric and Space Physics, University of Colorado Boulder",
       "activity_dates": null,
+      "affiliation_ror": "https://ror.org/02ttsq026",
       "enrichment": {
+        "orcid_origin": "enricher",
         "orcid_source": "Crossref (paper DOI)",
+        "orcid_evidence": "10.1029/2024JA032925",
         "orcid_confidence": "Confirmed",
+        "affiliation_origin": "finder",
         "affiliation_source": "Crossref (paper DOI)",
+        "affiliation_evidence": "10.1029/2024JA032925",
         "affiliation_type": "as-deposited",
+        "ror_origin": "enricher",
+        "ror_source": "ROR affiliation-match (chosen)",
+        "ror_evidence": "https://ror.org/02ttsq026",
+        "ror_confidence": "Confirmed",
         "lookup_status": "complete",
-        "notes": "Crossref deposits iD 0000-0001-7143-2730 for 'Francis G. Eparvier' on the XRS design paper (10.1029/2024JA032925), an EXIS component paper this candidate is the documented PI of - full-name match, authorship-anchored. Confirmed. Affiliation is the Crossref as-deposited string on that 2024 paper (LASP/CU Boulder); ORCID employment lists University of Colorado Boulder (undated), consistent; matches finder value."
+        "notes": "ORCID: checksum valid. Neither evidence item yields an iD - one is a SWPC presentation PDF, not a DOI, and 10.1117/12.826445 is a 2009 SPIE proceeding depositing bare author names. Route A' was used: 10.1029/2024JA032925 'GOES-R Series X-Ray Sensor (XRS): 1. Design and Pre-Flight Calibration' deposits this iD for author 3 with the full given name 'Francis G.' and is on the very EXIS component he is PI of, satisfying the domain test. That DOI lies OUTSIDE the finder's evidence list and is named here explicitly. Corroborated by his ORCID works list, which includes that paper plus 'Solar Atmospheric Oscillations as Measured by the GOES-R Series EXIS EUVS-C Instrument' and the GOES-R EXIS EUVS-C Mg II index papers. AFFILIATION - EVIDENCE-STRENGTH RANKING APPLIED. His ORCID holds exactly one employment, an undated bare 'University of Colorado Boulder' (RINGGOLD 1877), rank 3. The XRS deposit is dated 2024-11, inside the operating span (2022-03-01 onward), rank 2, and names his laboratory specifically, so it is recorded and the undated employment is listed here. It matches the finder's value. ROR: Route B on the deposited LASP string returned chosen:true on the parent https://ror.org/02ttsq026 (University of Colorado Boulder); LASP's own registry record https://ror.org/01fcjzv38 also scored 1.0 but ROR set chosen:false on it. The chosen flag was followed. NOTE FOR THE REVIEWER: David Crotser in this same file carries LASP's own ID https://ror.org/01fcjzv38, because his came from ORCID's disambiguated-organization (Route A) rather than from a string match. The two routes legitimately disagree on granularity for the same institution; if the record should be internally consistent, this is the field to align."
       }
     },
     {
@@ -407,13 +506,22 @@
       "orcid": "https://orcid.org/0000-0002-2308-6797",
       "affiliation": "Laboratory for Atmospheric and Space Physics, University of Colorado Boulder",
       "activity_dates": null,
+      "affiliation_ror": "https://ror.org/02ttsq026",
       "enrichment": {
+        "orcid_origin": "enricher",
         "orcid_source": "Crossref (paper DOI)",
+        "orcid_evidence": "10.1029/2024JA032925",
         "orcid_confidence": "Confirmed",
+        "affiliation_origin": "finder",
         "affiliation_source": "Crossref (paper DOI)",
+        "affiliation_evidence": "10.1029/2024JA032925",
         "affiliation_type": "as-deposited",
+        "ror_origin": "enricher",
+        "ror_source": "ROR affiliation-match (chosen)",
+        "ror_evidence": "https://ror.org/02ttsq026",
+        "ror_confidence": "Confirmed",
         "lookup_status": "complete",
-        "notes": "Crossref deposits iD 0000-0002-2308-6797 for 'Thomas N. Woods' (lead author) on the XRS design paper (10.1029/2024JA032925) - full-name match, authorship-anchored. Confirmed. Affiliation is the Crossref as-deposited string (LASP/CU Boulder) on that 2024 paper; ORCID employment University of Colorado Boulder (undated), consistent; matches finder value."
+        "notes": "ORCID: checksum valid. Route A succeeded within his own evidence list - his single evidence DOI 10.1029/2024JA032925 deposits this iD for author 1 with the full given name 'Thomas N.'. Route A' therefore did not apply. Corroborated by his ORCID works list (56 works), which includes that paper, 'GOES-R Series X-Ray Sensor (XRS): 2. On-Orbit Measurements and Calibrations' and 'Solar Atmospheric Oscillations as Measured by the GOES-R Series EXIS EUVS-C Instrument'. AFFILIATION - EVIDENCE-STRENGTH RANKING APPLIED. His ORCID holds exactly one employment, an undated bare 'University of Colorado Boulder' (RINGGOLD 1877), rank 3. The XRS deposit is dated 2024-11, inside the operating span (2022-03-01 onward), rank 2, and names his laboratory specifically, so it is recorded. It matches the finder's value. ROR: Route B on the deposited LASP string returned chosen:true on the parent https://ror.org/02ttsq026 (University of Colorado Boulder); LASP's own registry record https://ror.org/01fcjzv38 also scored 1.0 but ROR set chosen:false on it. The chosen flag was followed. NOTE FOR THE REVIEWER: David Crotser in this same file carries LASP's own ID https://ror.org/01fcjzv38, because his came from ORCID's disambiguated-organization (Route A) rather than from a string match. The two routes legitimately disagree on granularity for the same institution; if the record should be internally consistent, this is the field to align."
       }
     },
     {
@@ -433,15 +541,24 @@
         "url": null
       },
       "orcid": "https://orcid.org/0009-0004-7222-1512",
-      "affiliation": "Laboratory for Atmospheric and Space Physics, University of Colorado Boulder",
+      "affiliation": "Laboratory for Atmospheric and Space Physics",
       "activity_dates": null,
+      "affiliation_ror": "https://ror.org/01fcjzv38",
       "enrichment": {
+        "orcid_origin": "enricher",
         "orcid_source": "ORCID name-search (corroborated)",
+        "orcid_evidence": "https://orcid.org/0009-0004-7222-1512",
         "orcid_confidence": "Confirmed",
+        "affiliation_origin": "enricher",
         "affiliation_source": "ORCID employment",
+        "affiliation_evidence": "https://orcid.org/0009-0004-7222-1512",
         "affiliation_type": "era-matched",
+        "ror_origin": "enricher",
+        "ror_source": "ORCID disambiguated-organization",
+        "ror_evidence": "https://orcid.org/0009-0004-7222-1512",
+        "ror_confidence": "Confirmed",
         "lookup_status": "complete",
-        "notes": "EUVS design paper (10.1117/12.826445) deposited no ORCID. Name search returned two CU-Boulder-linked 'David Crotser' iDs; disambiguated by record content. 0009-0004-7222-1512 corroborated - works include 'EUVS-C: the measurement of the magnesium II index for GOES-R EXIS' and LASP EUV instrument papers (EVE), and a LASP employment 2000-05 -> 2017-10 spanning the 2009 EUVS design paper. Confirmed. The other match, 0000-0002-6890-7392 (CU Boulder, empty record, no GOES/EUVS works), is rejected. Era-matching: employments overlapping the operating span (2022-03 -> present) are Roccor (2020-09 -> 2023-03) and LASP (2023-04 -> present); the data-provider institution LASP is selected. Mid-span change noted: Roccor through 2023-03, then returned to LASP 2023-04 -> present."
+        "notes": "ORCID: checksum valid. Route A found nothing - his evidence DOI 10.1117/12.826445 is a 2009 SPIE proceeding depositing bare author names. Route A' WAS ATTEMPTED AND DELIBERATELY NOT USED: it surfaces 10.3847/1538-4357/ae74ce (SEUSHI, a solar EUV spectrograph) carrying 0009-0004-7222-1512 for a 'Dave' Crotser, but that paper is not on GOES-R, EXIS or EUVS and is not deposited under the data provider, so it fails the domain test; the given name 'Dave' is also a diminutive rather than a straightforward full-name match. Route B resolves it cleanly instead: the name search returns two records, and 0009-0004-7222-1512's works list contains his own evidence paper 'The Extreme Ultraviolet Sensor (EUVS) for GOES-R' (2009) AND 'EUVS-C: the measurement of the magnesium II index for GOES-R EXIS' (2009) - listed works squarely on the instrument, which is exactly what Route B requires. POSSIBLE DUPLICATE ACCOUNT: the other hit, 0000-0002-6890-7392 'DAVID CROTSER' (University of Colorado Boulder, no works, undated), looks like an institutionally created stub for the same person. AFFILIATION: era-matched. Two employments overlap the operating span (2022-03-01 onward) - 'Laboratory for Atmospheric and Space Physics, Senior Instrument Engineer, 2023-04 to present' and 'Roccor (United States), Test Team Manager, 2020-09 to 2023-03'. Neither institution is the data provider, so the longest-overlapping was taken: LASP overlaps from 2023-04 onward, Roccor only from the span start to 2023-03. MID-SPAN AFFILIATION CHANGE, worth noting for the reviewer: he was at Roccor when GOES-18 began operating and returned to LASP in April 2023. His earlier LASP post (2000-05 to 2017-10), under which the 2009 EUVS evidence paper was written, and Blue Canyon Technologies (2017-12 to 2020-08) both end before the span. ROR: taken via Route A - the selected LASP employment carries disambiguated-organization-identifier https://ror.org/01fcjzv38 with disambiguation-source 'ROR', pre-corroborated by ORCID's registry integration. This is LASP's OWN registry record, whereas the other LASP-affiliated people in this file (Eparvier, Woods, Jones, Eden) carry the parent University of Colorado Boulder ID because theirs came from a string match where ROR set chosen:true on the parent. Both are correct by their own route; a reviewer wanting internal consistency should pick one granularity."
       }
     },
     {
@@ -463,13 +580,22 @@
       "orcid": "https://orcid.org/0000-0001-5533-5498",
       "affiliation": "Laboratory for Atmospheric and Space Physics, University of Colorado Boulder",
       "activity_dates": null,
+      "affiliation_ror": "https://ror.org/02ttsq026",
       "enrichment": {
+        "orcid_origin": "enricher",
         "orcid_source": "Crossref (paper DOI)",
+        "orcid_evidence": "10.1029/2024JA032925",
         "orcid_confidence": "Confirmed",
+        "affiliation_origin": "finder",
         "affiliation_source": "Crossref (paper DOI)",
+        "affiliation_evidence": "10.1029/2024JA032925",
         "affiliation_type": "as-deposited",
+        "ror_origin": "enricher",
+        "ror_source": "ROR affiliation-match (chosen)",
+        "ror_evidence": "https://ror.org/02ttsq026",
+        "ror_confidence": "Confirmed",
         "lookup_status": "complete",
-        "notes": "Crossref deposits iD 0000-0001-5533-5498 for 'Andrew R. Jones' on the XRS design paper (10.1029/2024JA032925) - full-name match, authorship-anchored. Confirmed. Affiliation is the Crossref as-deposited string (LASP/CU Boulder) on that 2024 paper; ORCID employment University of Colorado Boulder (undated), consistent; matches finder value."
+        "notes": "ORCID: checksum valid. Route A found nothing - the only DOI actually linked in his evidence is 10.1117/12.826445, a 2009 SPIE proceeding depositing bare author names. Route A' was used: 10.1029/2024JA032925 deposits this iD for author 4 with the full given name 'Andrew R.' and is on the same instrument suite (GOES-R EXIS/XRS). Note that the finder's evidence TEXT already mentions this paper ('also position 4 of the XRS design paper') even though the entry's url field points only at the SPIE proceeding, so the DOI is outside the evidence LINKS but not outside the finder's awareness; it is named here explicitly either way. CAUTION FOR THE REVIEWER: his ORCID works list (169 works) is dominated by Mars and SDO-EVE instrumentation rather than GOES-R, so the publisher deposit is doing the identification here, not the works list. The deposit is strong evidence - the publisher tied that iD to that author on that paper - but if this person is later found to be a different Andrew R. Jones at the same laboratory, this is the field to re-check. AFFILIATION - EVIDENCE-STRENGTH RANKING APPLIED. His ORCID holds exactly one employment, an undated bare 'University of Colorado Boulder' (RINGGOLD 1877), rank 3; the XRS deposit is dated 2024-11, inside the operating span (2022-03-01 onward), rank 2, and names his laboratory specifically, so it is recorded. It matches the finder's value. ROR: Route B on the deposited LASP string returned chosen:true on the parent https://ror.org/02ttsq026 (University of Colorado Boulder); LASP's own registry record https://ror.org/01fcjzv38 also scored 1.0 but ROR set chosen:false on it. The chosen flag was followed. NOTE FOR THE REVIEWER: David Crotser in this same file carries LASP's own ID https://ror.org/01fcjzv38, because his came from ORCID's disambiguated-organization (Route A) rather than from a string match. The two routes legitimately disagree on granularity for the same institution; if the record should be internally consistent, this is the field to align."
       }
     },
     {
@@ -491,13 +617,22 @@
       "orcid": "https://orcid.org/0000-0002-5622-3479",
       "affiliation": "Laboratory for Atmospheric and Space Physics, University of Colorado Boulder",
       "activity_dates": null,
+      "affiliation_ror": "https://ror.org/02ttsq026",
       "enrichment": {
+        "orcid_origin": "enricher",
         "orcid_source": "Crossref (paper DOI)",
+        "orcid_evidence": "10.1029/2024JA032925",
         "orcid_confidence": "Confirmed",
+        "affiliation_origin": "finder",
         "affiliation_source": "Crossref (paper DOI)",
+        "affiliation_evidence": "10.1029/2024JA032925",
         "affiliation_type": "as-deposited",
+        "ror_origin": "enricher",
+        "ror_source": "ROR affiliation-match (chosen)",
+        "ror_evidence": "https://ror.org/02ttsq026",
+        "ror_confidence": "Confirmed",
         "lookup_status": "complete",
-        "notes": "Crossref deposits iD 0000-0002-5622-3479 for 'Thomas Eden' on the XRS design paper (10.1029/2024JA032925) - full-name match, authorship-anchored. Confirmed. Affiliation is the Crossref as-deposited string (LASP/CU Boulder) on that 2024 paper; ORCID employment University of Colorado Boulder (undated), consistent; matches finder value."
+        "notes": "ORCID: checksum valid. Route A succeeded within his own evidence list - his single evidence DOI 10.1029/2024JA032925 deposits this iD for author 2 with the given name 'Thomas', matching the candidate name 'Thomas Eden' exactly. Route A' therefore did not apply. Corroborated by his ORCID works list, which is small (3 works) but entirely on-instrument: that paper, 'Solar Atmospheric Oscillations as Measured by the GOES-R Series EXIS EUVS-C Instrument' and 'First Results for Solar Soft X-Ray Irradiance Measurements from the Third-generation Miniature X-Ray Solar Spectrometer'. Note the same XRS paper deposits 'Thomas D. Eden' elsewhere in the literature; the iD is the publisher's, so the middle initial does not affect confirmation. AFFILIATION - EVIDENCE-STRENGTH RANKING APPLIED. His ORCID holds exactly one employment, an undated bare 'University of Colorado Boulder' (RINGGOLD 1877), rank 3; the XRS deposit is dated 2024-11, inside the operating span (2022-03-01 onward), rank 2, and names his laboratory specifically, so it is recorded. It matches the finder's value. ROR: Route B on the deposited LASP string returned chosen:true on the parent https://ror.org/02ttsq026 (University of Colorado Boulder); LASP's own registry record https://ror.org/01fcjzv38 also scored 1.0 but ROR set chosen:false on it. The chosen flag was followed. NOTE FOR THE REVIEWER: David Crotser in this same file carries LASP's own ID https://ror.org/01fcjzv38, because his came from ORCID's disambiguated-organization (Route A) rather than from a string match. The two routes legitimately disagree on granularity for the same institution; if the record should be internally consistent, this is the field to align."
       }
     },
     {
