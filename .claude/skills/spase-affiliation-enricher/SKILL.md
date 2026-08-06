@@ -527,8 +527,10 @@ and B can resolve the *same* institution to different granularities: ORCID's
 deposited string. Both are correct by their own route, and neither should be
 overridden — but a file that carries both without saying so looks like an error.
 
-Before writing the file, group candidates by the institution their `affiliation`
-names. Where two or more candidates at the same institution carry different
+Before writing the file, group candidates by the **institution the ROR was
+actually resolved against** — the primary institution under the multi-affiliation
+rule, or the sole institution when the string names one. Compare only within a
+group. Where two or more candidates in the same group carry different
 `affiliation_ror` values:
 - Leave every value as its route produced it. Do NOT align them by picking one
   and rewriting the others; that would override either ORCID's own assertion or
@@ -543,6 +545,21 @@ The check costs nothing (it is local to the file you already assembled) and it
 converts a silent inconsistency into a flagged decision. Without it, whether the
 discrepancy gets noticed depends on whether the same institution happened to come
 up twice by different routes.
+
+**Do NOT flag when the resolution targets differ.** Two candidates can share an
+institution *name* somewhere in their affiliation strings and still resolve to
+different, correct IDs — one names `NOAA NCEI` alone and gets the NCEI ID, another
+names `CIRES, University of Colorado Boulder / NOAA NCEI` and gets CU Boulder as
+its primary. Those IDs identify different organisations and are not in conflict;
+there is nothing for a reviewer to decide. Flagging it anyway buries the real
+discrepancies in noise. The trigger is *same resolution target, different ID*, not
+*same words appear in both strings*.
+
+**Keep the flag short and say it once per candidate.** One or two sentences: the
+other ID, the route that produced it, and that a reviewer must choose a
+granularity. Do not repeat a paragraph verbatim across every affected candidate —
+a note duplicated a dozen times reads as boilerplate and gets skimmed, which
+defeats the purpose of flagging it at all.
 
 ---
 

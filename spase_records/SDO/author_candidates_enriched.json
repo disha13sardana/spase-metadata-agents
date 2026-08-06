@@ -1,7 +1,10 @@
 {
   "record": "spase://SMWG/Observatory/SDO",
   "date": "2026-07-08",
-  "operating_span": { "start": "2010-02-11", "stop": null },
+  "operating_span": {
+    "start": "2010-02-11",
+    "stop": null
+  },
   "cmad": {
     "found": true,
     "expected": true,
@@ -14,7 +17,11 @@
       "spase://SMWG/Instrument/SDO/EVE",
       "spase://SMWG/Instrument/SDO/HMI"
     ],
-    "external_roster": ["AIA", "EVE", "HMI"],
+    "external_roster": [
+      "AIA",
+      "EVE",
+      "HMI"
+    ],
     "missing_from_spase": [],
     "notes": "Observatory record has no downward instrument links; reverse-lookup of https://spase-metadata.org/SMWG/Instrument/SDO/ returned AIA, EVE, HMI and each record's ObservatoryID confirms spase://SMWG/Observatory/SDO. External ground truth (SDO overview paper Pesnell et al. 2012 and the record's own Description) enumerates exactly three payload instruments: AIA, EVE, HMI. SPASE roster is complete -- no instruments missing. This is an Observatory record, so all three instruments' leads are legitimate candidates."
   },
@@ -25,20 +32,40 @@
       "confidence": "Strong",
       "exclusion_reason": null,
       "evidence": [
-        { "source": "Lead author (position 1 of 3), SDO mission overview description paper 'The Solar Dynamics Observatory (SDO)', Pesnell et al. 2012 (non-alphabetized, confident selection)", "url": "https://doi.org/10.1007/s11207-011-9841-3", "strength": "Strong" },
-        { "source": "Observatory record Contacts (ProjectScientist -- qualifying role)", "url": "https://spase-metadata.org/SMWG/Observatory/SDO", "strength": "Medium" }
+        {
+          "source": "Lead author (position 1 of 3), SDO mission overview description paper 'The Solar Dynamics Observatory (SDO)', Pesnell et al. 2012 (non-alphabetized, confident selection)",
+          "url": "https://doi.org/10.1007/s11207-011-9841-3",
+          "strength": "Strong"
+        },
+        {
+          "source": "Observatory record Contacts (ProjectScientist -- qualifying role)",
+          "url": "https://spase-metadata.org/SMWG/Observatory/SDO",
+          "strength": "Medium"
+        }
       ],
-      "person_record": { "id": "spase://SMWG/Person/W.Dean.Pesnell", "url": "https://spase-metadata.org/SMWG/Person/W.Dean.Pesnell.html" },
-      "orcid": "0000-0002-8306-2500",
+      "person_record": {
+        "id": "spase://SMWG/Person/W.Dean.Pesnell",
+        "url": "https://spase-metadata.org/SMWG/Person/W.Dean.Pesnell.html"
+      },
+      "orcid": "https://orcid.org/0000-0002-8306-2500",
       "affiliation": "NASA Goddard Space Flight Center",
       "activity_dates": null,
+      "affiliation_ror": "https://ror.org/0171mag52",
       "enrichment": {
-        "orcid_source": "ORCID name-search (corroborated)",
+        "orcid_origin": "enricher",
+        "orcid_source": "Crossref (paper DOI)",
+        "orcid_evidence": "10.3847/25c2cfeb.27cbf3b9",
         "orcid_confidence": "Confirmed",
-        "affiliation_source": "finder (pre-existing, verified)",
-        "affiliation_type": "current",
+        "affiliation_origin": "finder",
+        "affiliation_source": "Crossref (paper DOI)",
+        "affiliation_evidence": "10.3847/25c2cfeb.27cbf3b9",
+        "affiliation_type": "as-deposited",
+        "ror_origin": "enricher",
+        "ror_source": "ROR affiliation-match (chosen)",
+        "ror_evidence": "https://ror.org/0171mag52",
+        "ror_confidence": "Confirmed",
         "lookup_status": "complete",
-        "notes": "Crossref DOI 10.1007/s11207-011-9841-3 deposited no ORCIDs/affiliations. ORCID name search returned a single match (Dean Pesnell, NASA); record corroborated by SDO works (e.g. 'Characterization of the Van Allen Radiation Belt Using SDO Spikes', coronal-hole studies). ORCID employment lists 'National Aeronautics and Space Administration' (role Retired, no dates), consistent at the parent-org level with the finder's more specific 'NASA Goddard Space Flight Center' (SDO Project Scientist at GSFC); finder value retained. No dated employment, so affiliation labeled current."
+        "notes": "ORCID: checksum valid. Route A found nothing - his evidence DOI 10.1007/s11207-011-9841-3 is a 2011 Springer record depositing neither iDs nor affiliations, which is true of every evidence DOI on this record. Route A' was used and qualifies under the SECOND limb of the domain test rather than the first: 10.3847/25c2cfeb.27cbf3b9 'Solar Dynamics Constellation' is a decadal white paper, not an SDO paper, but it deposits this iD for a full-name 'Dean' Pesnell under the affiliation NASA Goddard Space Flight Center - the institution that manages SDO and the one his ProjectScientist role in the Observatory record sits at. That DOI lies outside the finder's evidence list and is named here explicitly. Independently corroborated by his ORCID works list, which includes SDO papers. AFFILIATION - EVIDENCE-STRENGTH RANKING APPLIED: his only ORCID employment is an undated 'National Aeronautics and Space Administration' (department Solar Physics Laboratory, role 'Retired'), rank 3; the 2023 deposit falls inside the operating span (2010-02-11 onward, launch-anchored) and names the centre rather than the agency, so it is rank 2 and is recorded. It matches the finder's value. ROR: Route B set chosen:true on https://ror.org/0171mag52 (Goddard Space Flight Center). Note his ORCID employment carries a ROR for NASA itself (https://ror.org/027ka1x80); Route A did not apply because the affiliation did not come from that employment."
       }
     },
     {
@@ -47,19 +74,35 @@
       "confidence": "Strong",
       "exclusion_reason": null,
       "evidence": [
-        { "source": "2nd author of 3, SDO mission overview description paper (non-alphabetized, confident selection)", "url": "https://doi.org/10.1007/s11207-011-9841-3", "strength": "Strong" }
+        {
+          "source": "2nd author of 3, SDO mission overview description paper (non-alphabetized, confident selection)",
+          "url": "https://doi.org/10.1007/s11207-011-9841-3",
+          "strength": "Strong"
+        }
       ],
-      "person_record": { "id": "spase://SMWG/Person/Barbara.J.Thompson", "url": "https://spase-metadata.org/SMWG/Person/Barbara.J.Thompson.html" },
-      "orcid": "0000-0001-6952-7343",
+      "person_record": {
+        "id": "spase://SMWG/Person/Barbara.J.Thompson",
+        "url": "https://spase-metadata.org/SMWG/Person/Barbara.J.Thompson.html"
+      },
+      "orcid": "https://orcid.org/0000-0001-6952-7343",
       "affiliation": "NASA Goddard Space Flight Center",
       "activity_dates": null,
+      "affiliation_ror": "https://ror.org/0171mag52",
       "enrichment": {
-        "orcid_source": "ORCID name-search (corroborated)",
+        "orcid_origin": "enricher",
+        "orcid_source": "Crossref (paper DOI)",
+        "orcid_evidence": "10.1109/TAES.2024.3409524",
         "orcid_confidence": "Confirmed",
+        "affiliation_origin": "finder",
         "affiliation_source": "ORCID employment",
+        "affiliation_evidence": "https://orcid.org/0000-0001-6952-7343",
         "affiliation_type": "era-matched",
+        "ror_origin": "enricher",
+        "ror_source": "ROR affiliation-match (chosen)",
+        "ror_evidence": "https://ror.org/0171mag52",
+        "ror_confidence": "Confirmed",
         "lookup_status": "complete",
-        "notes": "Name 'Barbara Thompson' has 13 ORCID matches; disambiguated to 0000-0001-6952-7343 (Barbara J. Thompson, NASA Goddard Space Flight Center) via SDO/HMI/EVE works (e.g. 'Tracking supergranulation near the poles with SDO/HMI', 'The SDO/EVE Solar Irradiance Coronal Dimming Index Catalog'). ORCID employment NASA GSFC (Astrophysicist, 1996-present) overlaps the operating span -> era-matched. Agrees with finder value."
+        "notes": "ORCID: checksum valid. Route A found nothing (2011 Springer deposit, initials-only 'B. J.' and no iDs). Route A' resolves it: 10.1109/TAES.2024.3409524 'Neural-Based Video Compression on Solar Dynamics Observatory Images' deposits this iD for a full-name 'Barbara J.' Thompson with the affiliation NASA Goddard Space Flight Center. The paper is squarely on this observatory, satisfying the first limb of the domain test, and the deposit satisfies the second as well. That DOI lies outside the finder's evidence list and is named here explicitly. Corroborated further by 10.3847/1538-4365/ab380e, the SDO/EVE coronal dimming catalog, which also carries this iD for her. AFFILIATION: era-matched - her ORCID holds one dated employment, 'NASA Goddard Space Flight Center, Astrophysicist, 1996-04-15 to present', which covers the whole of the operating span (2010-02-11 onward, launch-anchored). That is rank 1 and outranks the 2024 deposit, which names the same centre anyway. It agrees with the finder's value, which is kept. ROR: the employment carries no disambiguated-organization, so Route A did not apply; Route B set chosen:true on https://ror.org/0171mag52."
       }
     },
     {
@@ -68,20 +111,40 @@
       "confidence": "Strong",
       "exclusion_reason": null,
       "evidence": [
-        { "source": "3rd author of 3, SDO mission overview description paper (non-alphabetized, confident selection)", "url": "https://doi.org/10.1007/s11207-011-9841-3", "strength": "Strong" },
-        { "source": "Co-author (position 12 of 18, alphabetized-tail region) of the EVE instrument paper -- participation-level corroboration only", "url": "https://doi.org/10.1007/s11207-009-9487-6", "strength": "Low" }
+        {
+          "source": "3rd author of 3, SDO mission overview description paper (non-alphabetized, confident selection)",
+          "url": "https://doi.org/10.1007/s11207-011-9841-3",
+          "strength": "Strong"
+        },
+        {
+          "source": "Co-author (position 12 of 18, alphabetized-tail region) of the EVE instrument paper -- participation-level corroboration only",
+          "url": "https://doi.org/10.1007/s11207-009-9487-6",
+          "strength": "Low"
+        }
       ],
-      "person_record": { "id": null, "url": null },
-      "orcid": "0000-0003-4372-7405",
-      "affiliation": "University of Colorado Boulder",
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": "https://orcid.org/0000-0003-4372-7405",
+      "affiliation": "NASA Goddard Space Flight Center, Solar Physics Laboratory",
       "activity_dates": null,
+      "affiliation_ror": "https://ror.org/0171mag52",
       "enrichment": {
-        "orcid_source": "ORCID name-search (corroborated)",
+        "orcid_origin": "enricher",
+        "orcid_source": "Crossref (paper DOI)",
+        "orcid_evidence": "10.1007/s11207-024-02394-9",
         "orcid_confidence": "Confirmed",
+        "affiliation_origin": "enricher",
         "affiliation_source": "ORCID employment",
+        "affiliation_evidence": "https://orcid.org/0000-0003-4372-7405",
         "affiliation_type": "era-matched",
+        "ror_origin": "enricher",
+        "ror_source": "ROR affiliation-match (chosen)",
+        "ror_evidence": "https://ror.org/0171mag52",
+        "ror_confidence": "Confirmed",
         "lookup_status": "complete",
-        "notes": "Single ORCID match (Phillip Chamberlin, NASA GSFC + University of Colorado Boulder); corroborated by SDO/EVE solar-flare works. Mid-span affiliation change: NASA Goddard Space Flight Center (Research Scientist, 2009-2017) then University of Colorado Boulder (Research Scientist, 2017-present) -- both overlap the operating span. CU Boulder chosen as the current / longest-overlapping era-matched value; NASA GSFC (2009-2017) noted. Finder value was 'LASP, University of Colorado Boulder / NASA GSFC', consistent with both."
+        "notes": "ORCID: checksum valid. Route A found nothing on either evidence DOI (both deposit initials-only 'P. C.' and no iDs). Route A' resolves it: 10.1007/s11207-024-02394-9 'Improving the Spectral Resolution and Wavelength Scale of SDO/EVE' deposits this iD for a full-name 'Phillip' Chamberlin and is on the same instrument as his second evidence item. That DOI lies outside the finder's evidence list and is named here explicitly. AFFILIATION - DIFFERS FROM FINDER VALUE, please review, and this is the most consequential judgement in the file. TWO dated employments overlap the operating span (2010-02-11 onward, launch-anchored): 'NASA Goddard Space Flight Center, Solar Physics Laboratory, Research Scientist, 2009-07-19 to 2017-06-17' and 'University of Colorado Boulder, Laboratory for Atmospheric and Space Physics, Research Scientist, 2017-08-15 to present'. The multiple-overlap rule says prefer the employment matching the data provider's institution before falling back to longest overlap; NASA GSFC manages SDO, so GSFC was taken even though the LASP post is longer-overlapping and is his CURRENT affiliation. MID-SPAN AFFILIATION CHANGE: he moved from GSFC to LASP in August 2017, roughly seven years into the mission. The finder's value 'LASP, University of Colorado Boulder / NASA GSFC' names both, which is why it is flagged as differing rather than contradicted - a reviewer who wants the current-generation affiliation should take the LASP entry instead. ROR: the GSFC employment is disambiguated by RINGGOLD (53523), not ROR, so Route A did not apply; Route B set chosen:true on https://ror.org/0171mag52."
       }
     },
     {
@@ -90,19 +153,35 @@
       "confidence": "Strong",
       "exclusion_reason": null,
       "evidence": [
-        { "source": "Lead author (prefix position 1), AIA instrument paper 'The Atmospheric Imaging Assembly (AIA) on the SDO', Lemen et al. 2012 (partially alphabetized; backward scan -> long sorted tail from author 3, prefix = Lemen, Title; confident selection)", "url": "https://doi.org/10.1007/s11207-011-9776-8", "strength": "Strong" }
+        {
+          "source": "Lead author (prefix position 1), AIA instrument paper 'The Atmospheric Imaging Assembly (AIA) on the SDO', Lemen et al. 2012 (partially alphabetized; backward scan -> long sorted tail from author 3, prefix = Lemen, Title; confident selection)",
+          "url": "https://doi.org/10.1007/s11207-011-9776-8",
+          "strength": "Strong"
+        }
       ],
-      "person_record": { "id": "spase://SMWG/Person/James.R.Lemen", "url": "https://spase-metadata.org/SMWG/Person/James.R.Lemen.html" },
+      "person_record": {
+        "id": "spase://SMWG/Person/James.R.Lemen",
+        "url": "https://spase-metadata.org/SMWG/Person/James.R.Lemen.html"
+      },
       "orcid": null,
       "affiliation": "Lockheed Martin Solar and Astrophysics Laboratory (LMSAL)",
       "activity_dates": null,
+      "affiliation_ror": null,
       "enrichment": {
+        "orcid_origin": null,
         "orcid_source": null,
+        "orcid_evidence": null,
         "orcid_confidence": null,
-        "affiliation_source": "finder (pre-existing)",
-        "affiliation_type": "current",
+        "affiliation_origin": "finder",
+        "affiliation_source": "uncorroborated",
+        "affiliation_evidence": null,
+        "affiliation_type": null,
+        "ror_origin": null,
+        "ror_source": null,
+        "ror_evidence": null,
+        "ror_confidence": null,
         "lookup_status": "complete",
-        "notes": "Crossref DOI 10.1007/s11207-011-9776-8 deposited no ORCIDs/affiliations. ORCID name search 'Lemen' (16 results, none named James/J. and none in solar physics) yielded no corroborable match -> orcid left null. Finder's LMSAL affiliation retained but could not be independently verified by lookup (no ORCID record, no Crossref-deposited affiliation)."
+        "notes": "ORCID NOT CONFIRMED - left null, and this null is well tested. Route A: the AIA paper 10.1007/s11207-011-9776-8 does deposit his full given name (unusually for this record - most of the SDO-era Springer deposits are initials-only) but carries no ORCIDs for any of its 47 authors. Route A' was run against the SDO/AIA domain and returned no deposit carrying an ORCID under a full-name 'Lemen'. Route B: an ORCID name search returns ZERO records - there is no ORCID account under this name at all, which is unsurprising for a researcher whose principal work predates the registry's adoption in solar physics. This is a genuine absence rather than an unresolved ambiguity, and no reviewer action can recover it unless the person registers an iD. AFFILIATION: carried from the finder but NOT verified - there is no confirmed ORCID, so no employment history could be queried, and none of the SDO-era evidence DOIs deposits author affiliations (they are 2009-2012 Springer records that carry bare author names only). Recorded as uncorroborated with no evidence identifier and no type, because nothing dated it. ROR NOT ATTEMPTED: ROR confidence is capped by affiliation confidence, and a shaky affiliation cannot be firmed up by finding a confident match for its string. For reference, if a reviewer verifies the affiliation independently, the institution resolves to the parent https://ror.org/026er9r08 (Lockheed Martin, United States) - LMSAL has no registry record of its own."
       }
     },
     {
@@ -111,20 +190,40 @@
       "confidence": "Strong",
       "exclusion_reason": null,
       "evidence": [
-        { "source": "2nd prefix author, AIA instrument paper (partially alphabetized, prefix = Lemen, Title; confident selection)", "url": "https://doi.org/10.1007/s11207-011-9776-8", "strength": "Strong" },
-        { "source": "AIA Instrument record Contacts (FormerPI -- qualifying role)", "url": "https://spase-metadata.org/SMWG/Instrument/SDO/AIA", "strength": "Medium" }
+        {
+          "source": "2nd prefix author, AIA instrument paper (partially alphabetized, prefix = Lemen, Title; confident selection)",
+          "url": "https://doi.org/10.1007/s11207-011-9776-8",
+          "strength": "Strong"
+        },
+        {
+          "source": "AIA Instrument record Contacts (FormerPI -- qualifying role)",
+          "url": "https://spase-metadata.org/SMWG/Instrument/SDO/AIA",
+          "strength": "Medium"
+        }
       ],
-      "person_record": { "id": "spase://SMWG/Person/Alan.M.Title", "url": "https://spase-metadata.org/SMWG/Person/Alan.M.Title.html" },
+      "person_record": {
+        "id": "spase://SMWG/Person/Alan.M.Title",
+        "url": "https://spase-metadata.org/SMWG/Person/Alan.M.Title.html"
+      },
       "orcid": null,
       "affiliation": "Lockheed Martin Solar and Astrophysics Laboratory (LMSAL)",
       "activity_dates": null,
+      "affiliation_ror": null,
       "enrichment": {
+        "orcid_origin": null,
         "orcid_source": null,
+        "orcid_evidence": null,
         "orcid_confidence": null,
-        "affiliation_source": "finder (pre-existing)",
-        "affiliation_type": "current",
+        "affiliation_origin": "finder",
+        "affiliation_source": "uncorroborated",
+        "affiliation_evidence": null,
+        "affiliation_type": null,
+        "ror_origin": null,
+        "ror_source": null,
+        "ror_evidence": null,
+        "ror_confidence": null,
         "lookup_status": "complete",
-        "notes": "Crossref deposited no ORCIDs/affiliations for the AIA paper. ORCID name search 'Title' (given 'Alan', and unrestricted) returned no solar-physics / LMSAL match -> orcid left null (Alan M. Title likely predates broad ORCID adoption). Finder's LMSAL affiliation retained but not independently verified by lookup."
+        "notes": "ORCID NOT CONFIRMED - left null, and this null is well tested. Route A: the AIA paper 10.1007/s11207-011-9776-8 does deposit his full given name (unusually for this record - most of the SDO-era Springer deposits are initials-only) but carries no ORCIDs for any of its 47 authors. Route A' was run against the SDO/AIA domain and returned no deposit carrying an ORCID under a full-name 'Title'. Route B: an ORCID name search returns ZERO records - there is no ORCID account under this name at all, which is unsurprising for a researcher whose principal work predates the registry's adoption in solar physics. This is a genuine absence rather than an unresolved ambiguity, and no reviewer action can recover it unless the person registers an iD. AFFILIATION: carried from the finder but NOT verified - there is no confirmed ORCID, so no employment history could be queried, and none of the SDO-era evidence DOIs deposits author affiliations (they are 2009-2012 Springer records that carry bare author names only). Recorded as uncorroborated with no evidence identifier and no type, because nothing dated it. ROR NOT ATTEMPTED: ROR confidence is capped by affiliation confidence, and a shaky affiliation cannot be firmed up by finding a confident match for its string. For reference, if a reviewer verifies the affiliation independently, the institution resolves to the parent https://ror.org/026er9r08 (Lockheed Martin, United States) - LMSAL has no registry record of its own."
       }
     },
     {
@@ -133,19 +232,35 @@
       "confidence": "Medium",
       "exclusion_reason": null,
       "evidence": [
-        { "source": "AIA Instrument record Contacts (PrincipalInvestigator -- qualifying role; current AIA PI per SPASE metadata)", "url": "https://spase-metadata.org/SMWG/Instrument/SDO/AIA", "strength": "Medium" }
+        {
+          "source": "AIA Instrument record Contacts (PrincipalInvestigator -- qualifying role; current AIA PI per SPASE metadata)",
+          "url": "https://spase-metadata.org/SMWG/Instrument/SDO/AIA",
+          "strength": "Medium"
+        }
       ],
-      "person_record": { "id": "spase://SMWG/Person/Meng.Jin", "url": "https://spase-metadata.org/SMWG/Person/Meng.Jin.html" },
-      "orcid": "0000-0002-9672-3873",
-      "affiliation": "Lockheed Martin Solar and Astrophysics Laboratory (LMSAL)",
+      "person_record": {
+        "id": "spase://SMWG/Person/Meng.Jin",
+        "url": "https://spase-metadata.org/SMWG/Person/Meng.Jin.html"
+      },
+      "orcid": "https://orcid.org/0000-0002-9672-3873",
+      "affiliation": "Lockheed Martin Advanced Technology Center",
       "activity_dates": null,
+      "affiliation_ror": "https://ror.org/026er9r08",
       "enrichment": {
-        "orcid_source": "ORCID name-search (corroborated)",
+        "orcid_origin": "enricher",
+        "orcid_source": "Crossref (paper DOI)",
+        "orcid_evidence": "10.3847/1538-4357/ac589b",
         "orcid_confidence": "Confirmed",
+        "affiliation_origin": "enricher",
         "affiliation_source": "ORCID employment",
+        "affiliation_evidence": "https://orcid.org/0000-0002-9672-3873",
         "affiliation_type": "era-matched",
+        "ror_origin": "enricher",
+        "ror_source": "ROR query (corroborated)",
+        "ror_evidence": "https://ror.org/026er9r08",
+        "ror_confidence": "Confirmed",
         "lookup_status": "complete",
-        "notes": "'Meng Jin' is highly ambiguous (39+ ORCID records, most with no institution). Disambiguated via affiliation-filtered search to 0000-0002-9672-3873 (Lockheed Martin Advanced Technology Center / SETI Institute / University of Michigan), then corroborated by SDO/AIA solar works (e.g. 'Comparing Solar Structure Detection Methods in SDO/AIA Observations') -- matches the AIA data provider (LMSAL). Concurrent era-matched employments: Lockheed Martin Advanced Technology Center (2014-present) and SETI Institute (2018-present); LMSAL chosen as it matches the AIA data provider, SETI Institute noted as concurrent. Finder value 'LMSAL / SETI Institute' consistent."
+        "notes": "ORCID: checksum valid. His only evidence is the AIA SPASE record (PrincipalInvestigator), not a DOI, so Route A did not apply. Route A' resolves it: 10.3847/1538-4357/ac589b 'Coronal Mass Ejections and Dimmings: A Comparative Study Using MHD Simulations and SDO Observations' deposits this iD for a full-name 'Meng' Jin and is on this observatory, satisfying the domain test. That DOI is outside the finder's evidence list and is named here explicitly. AFFILIATION: era-matched. Two employments overlap the operating span (2010-02-11 onward, launch-anchored) - 'Lockheed Martin Advanced Technology Center, 2014-08-01 to present' and 'SETI Institute, 2018-01-16 to present'. Neither institution is the data provider, so the longest-overlapping was taken; Lockheed Martin overlaps from 2014 and SETI only from 2018. CONCURRENT POSITION: the SETI appointment runs alongside rather than replacing the Lockheed one, and the finder's value 'LMSAL / SETI Institute' records both - a reviewer may prefer to keep the pair. The employment names the Advanced Technology Center; LMSAL, which the finder named, is the solar group within it. ROR: resolved via Route C (plain query, corroborated by country) to the parent https://ror.org/026er9r08 (Lockheed Martin, United States, Bethesda). Neither LMSAL nor the Advanced Technology Center has a registry record of its own, so the sub-unit is preserved in the affiliation string only, per the department-string rule. Route B was tried first and had to be REJECTED - see below. ROR ROUTE B PRODUCED A FALSE MATCH, flagged for the reviewer and worth reporting upstream. Querying the affiliation endpoint with \"Lockheed Martin Advanced Technology Center\" returns chosen:true, score 1.0, on https://ror.org/046wj6g23 - which resolves to \"PC TECHNOLOGY CENTER\" / ПП «ТЕХНОЛОГІЧНИЙ ЦЕНТР», a private company in Kharkiv, Ukraine. It is not Lockheed Martin, not in the right country, and shares no name element beyond \"Technology Center\". The skill says the chosen flag must not be second-guessed in either direction, but it also says a wrong ROR misattributes a person to a different organisation in a public registry and that an honest null beats a confident wrong answer. The second rule governs here: chosen:true is necessary but cannot be sufficient when the returned organisation plainly is not the one the affiliation names. The same sanity check the skill already requires for a finder-supplied ROR - confirm the returned organisation matches the affiliation by name and country - was applied to this Route B result and it fails both. Route C was therefore used instead: a plain query for the institution name returns the Lockheed Martin family (Australia, Canada, United Kingdom, United States, Orincon), and applying the country known from the employment leaves exactly one plausible organisation."
       }
     },
     {
@@ -154,19 +269,35 @@
       "confidence": "Medium",
       "exclusion_reason": null,
       "evidence": [
-        { "source": "AIA Instrument record Contacts (FormerPI -- qualifying role)", "url": "https://spase-metadata.org/SMWG/Instrument/SDO/AIA", "strength": "Medium" }
+        {
+          "source": "AIA Instrument record Contacts (FormerPI -- qualifying role)",
+          "url": "https://spase-metadata.org/SMWG/Instrument/SDO/AIA",
+          "strength": "Medium"
+        }
       ],
-      "person_record": { "id": "spase://SMWG/Person/Mark.C.M.Cheung", "url": "https://spase-metadata.org/SMWG/Person/Mark.C.M.Cheung.html" },
-      "orcid": "0000-0003-2110-9753",
-      "affiliation": "Lockheed Martin Advanced Technology Center (LMSAL)",
+      "person_record": {
+        "id": "spase://SMWG/Person/Mark.C.M.Cheung",
+        "url": "https://spase-metadata.org/SMWG/Person/Mark.C.M.Cheung.html"
+      },
+      "orcid": "https://orcid.org/0000-0003-2110-9753",
+      "affiliation": "Lockheed Martin Advanced Technology Center, Solar & Astrophysics Laboratory",
       "activity_dates": null,
+      "affiliation_ror": "https://ror.org/026er9r08",
       "enrichment": {
-        "orcid_source": "ORCID name-search (corroborated)",
+        "orcid_origin": "enricher",
+        "orcid_source": "Crossref (paper DOI)",
+        "orcid_evidence": "10.3847/1538-4357/ac589b",
         "orcid_confidence": "Confirmed",
+        "affiliation_origin": "enricher",
         "affiliation_source": "ORCID employment",
+        "affiliation_evidence": "https://orcid.org/0000-0003-2110-9753",
         "affiliation_type": "era-matched",
+        "ror_origin": "enricher",
+        "ror_source": "ROR query (corroborated)",
+        "ror_evidence": "https://ror.org/026er9r08",
+        "ror_confidence": "Confirmed",
         "lookup_status": "complete",
-        "notes": "Name 'Mark Cheung' has 3 ORCID matches; disambiguated to 0000-0003-2110-9753 (CSIRO / Goettingen) via solar-physics works ('Machine learning in Solar Physics', 'Surface Flux Transport on the Sun') and Lockheed Martin employment. Mid-span affiliation change: Lockheed Martin Advanced Technology Center (Physicist, 2006-2022, = LMSAL, matches AIA data provider) then CSIRO (2022-present); also Stanford visiting scholar 2016-2019. Era-matched value = Lockheed Martin ATC (2006-2022); current CSIRO noted. Agrees with finder's LMSAL."
+        "notes": "ORCID: checksum valid. His only evidence is the AIA SPASE record (FormerPI), not a DOI, so Route A did not apply. Route A' resolves it: 10.3847/1538-4357/ac589b deposits this iD for a full-name 'Mark C. M.' Cheung and is on this observatory. That DOI is outside the finder's evidence list and is named here explicitly. AFFILIATION: era-matched. Three employments overlap the operating span (2010-02-11 onward, launch-anchored) - 'Lockheed Martin Advanced Technology Center, Solar & Astrophysics Lab, Physicist, 2006-09-11 to 2022-08-24', 'CSIRO Marsfield, Space & Astronomy, Deputy & Science Director, 2022-08-27 to present' and 'Stanford University, Visiting Scholar, 2016-11-15 to 2019-11-15'. None is the data provider, so the longest-overlapping was taken: Lockheed Martin covers 2010-02 to 2022-08, about twelve and a half years of the span, against roughly four for CSIRO and three for the Stanford visit. This is also the post under which his AIA FormerPI role was held, and its department is the LMSAL group the finder named. MID-SPAN AFFILIATION CHANGE: he left Lockheed Martin for CSIRO in August 2022 and CSIRO is his current employer, so a reviewer wanting the present-day affiliation should take that instead; the CSIRO entry carries ROR https://ror.org/03qn8fb07. ROR: resolved via Route C (plain query, corroborated by country) to the parent https://ror.org/026er9r08 (Lockheed Martin, United States, Bethesda). Neither LMSAL nor the Advanced Technology Center has a registry record of its own, so the sub-unit is preserved in the affiliation string only, per the department-string rule. Route B was tried first and had to be REJECTED - see below. ROR ROUTE B PRODUCED A FALSE MATCH, flagged for the reviewer and worth reporting upstream. Querying the affiliation endpoint with \"Lockheed Martin Advanced Technology Center\" returns chosen:true, score 1.0, on https://ror.org/046wj6g23 - which resolves to \"PC TECHNOLOGY CENTER\" / ПП «ТЕХНОЛОГІЧНИЙ ЦЕНТР», a private company in Kharkiv, Ukraine. It is not Lockheed Martin, not in the right country, and shares no name element beyond \"Technology Center\". The skill says the chosen flag must not be second-guessed in either direction, but it also says a wrong ROR misattributes a person to a different organisation in a public registry and that an honest null beats a confident wrong answer. The second rule governs here: chosen:true is necessary but cannot be sufficient when the returned organisation plainly is not the one the affiliation names. The same sanity check the skill already requires for a finder-supplied ROR - confirm the returned organisation matches the affiliation by name and country - was applied to this Route B result and it fails both. "
       }
     },
     {
@@ -175,20 +306,40 @@
       "confidence": "Medium",
       "exclusion_reason": null,
       "evidence": [
-        { "source": "AIA Instrument record Contacts (FormerPI -- qualifying role)", "url": "https://spase-metadata.org/SMWG/Instrument/SDO/AIA", "strength": "Medium" },
-        { "source": "Co-author 'Carolus J. Schrijver' (position 20 of 47, alphabetized tail) of the AIA instrument paper -- identity corroboration for the FormerPI role", "url": "https://doi.org/10.1007/s11207-011-9776-8", "strength": "Low" }
+        {
+          "source": "AIA Instrument record Contacts (FormerPI -- qualifying role)",
+          "url": "https://spase-metadata.org/SMWG/Instrument/SDO/AIA",
+          "strength": "Medium"
+        },
+        {
+          "source": "Co-author 'Carolus J. Schrijver' (position 20 of 47, alphabetized tail) of the AIA instrument paper -- identity corroboration for the FormerPI role",
+          "url": "https://doi.org/10.1007/s11207-011-9776-8",
+          "strength": "Low"
+        }
       ],
-      "person_record": { "id": "spase://SMWG/Person/Karel.Schrijver", "url": "https://spase-metadata.org/SMWG/Person/Karel.Schrijver.html" },
-      "orcid": "0000-0002-6010-8182",
+      "person_record": {
+        "id": "spase://SMWG/Person/Karel.Schrijver",
+        "url": "https://spase-metadata.org/SMWG/Person/Karel.Schrijver.html"
+      },
+      "orcid": "https://orcid.org/0000-0002-6010-8182",
       "affiliation": "Lockheed Martin Solar and Astrophysics Laboratory (LMSAL)",
       "activity_dates": null,
+      "affiliation_ror": null,
       "enrichment": {
-        "orcid_source": "ORCID name-search (corroborated)",
+        "orcid_origin": "enricher",
+        "orcid_source": "Crossref (paper DOI)",
+        "orcid_evidence": "10.3847/1538-4357/ac589b",
         "orcid_confidence": "Confirmed",
-        "affiliation_source": "finder (pre-existing)",
-        "affiliation_type": "current",
+        "affiliation_origin": "finder",
+        "affiliation_source": "uncorroborated",
+        "affiliation_evidence": null,
+        "affiliation_type": null,
+        "ror_origin": null,
+        "ror_source": null,
+        "ror_evidence": null,
+        "ror_confidence": null,
         "lookup_status": "complete",
-        "notes": "'Karel Schrijver' is the familiar form of 'Carolus J. Schrijver' (the AIA-paper co-author). Single ORCID match under 'Carolus Schrijver' = 0000-0002-6010-8182, corroborated by SDO / solar-stellar coronal works (e.g. 'Coronal Mass Ejections and Dimmings ... SDO Observations', 'Self-organized Criticality ... Solar-Stellar Connection'). ORCID record lists no employment history, so no era-matched affiliation could be derived; finder's LMSAL value retained (Schrijver is a now-retired LMSAL/Lockheed Martin solar physicist) and labeled current."
+        "notes": "ORCID: checksum valid. NAME NOTE: he publishes as 'Carolus J. Schrijver' and the finder recorded the familiar form 'Karel Schrijver', flagging the AIA paper's 'Carolus J.' byline itself as identity corroboration - so this is not an initials reconstruction and the identity gate passes. Route A found nothing (the AIA paper deposits no iDs). Route A' resolves it: 10.3847/1538-4357/ac589b deposits this iD for a full-name 'Carolus J.' Schrijver and is on this observatory. That DOI is outside the finder's evidence list and is named here explicitly. Corroborated independently by his ORCID works list (459 works), which includes that same SDO paper. AFFILIATION: carried from the finder but NOT verified. His ORCID record lists no employments at all, so neither era-matching nor the current fallback was possible, and neither the AIA paper nor the Route A' DOI deposits an affiliation for him. Recorded as uncorroborated with no evidence identifier and no type. ROR NOT ATTEMPTED: ROR confidence is capped by affiliation confidence, and an unverified affiliation cannot be firmed up by a confident match for its string. If a reviewer verifies it, the institution resolves to the parent https://ror.org/026er9r08 (Lockheed Martin, United States); LMSAL has no registry record of its own."
       }
     },
     {
@@ -197,20 +348,40 @@
       "confidence": "Strong",
       "exclusion_reason": null,
       "evidence": [
-        { "source": "Lead author (position 1), HMI instrument paper 'The Helioseismic and Magnetic Imager (HMI) Investigation for the SDO', Scherrer et al. 2012 (not alphabetized -- backward scan sorted suffix = 3 < 5; confident selection)", "url": "https://doi.org/10.1007/s11207-011-9834-2", "strength": "Strong" },
-        { "source": "HMI Instrument record Contacts (PrincipalInvestigator -- qualifying role)", "url": "https://spase-metadata.org/SMWG/Instrument/SDO/HMI", "strength": "Medium" }
+        {
+          "source": "Lead author (position 1), HMI instrument paper 'The Helioseismic and Magnetic Imager (HMI) Investigation for the SDO', Scherrer et al. 2012 (not alphabetized -- backward scan sorted suffix = 3 < 5; confident selection)",
+          "url": "https://doi.org/10.1007/s11207-011-9834-2",
+          "strength": "Strong"
+        },
+        {
+          "source": "HMI Instrument record Contacts (PrincipalInvestigator -- qualifying role)",
+          "url": "https://spase-metadata.org/SMWG/Instrument/SDO/HMI",
+          "strength": "Medium"
+        }
       ],
-      "person_record": { "id": "spase://SMWG/Person/Philip.H.Scherrer", "url": "https://spase-metadata.org/SMWG/Person/Philip.H.Scherrer.html" },
-      "orcid": "0000-0002-6937-6968",
+      "person_record": {
+        "id": "spase://SMWG/Person/Philip.H.Scherrer",
+        "url": "https://spase-metadata.org/SMWG/Person/Philip.H.Scherrer.html"
+      },
+      "orcid": "https://orcid.org/0000-0002-6937-6968",
       "affiliation": "Stanford University",
       "activity_dates": null,
+      "affiliation_ror": "https://ror.org/00f54p054",
       "enrichment": {
-        "orcid_source": "ORCID name-search (corroborated)",
+        "orcid_origin": "enricher",
+        "orcid_source": "Crossref (paper DOI)",
+        "orcid_evidence": "10.3847/1538-4365/adcf9f",
         "orcid_confidence": "Confirmed",
+        "affiliation_origin": "enricher",
         "affiliation_source": "ORCID employment",
+        "affiliation_evidence": "https://orcid.org/0000-0002-6937-6968",
         "affiliation_type": "era-matched",
+        "ror_origin": "enricher",
+        "ror_source": "ROR affiliation-match (chosen)",
+        "ror_evidence": "https://ror.org/00f54p054",
+        "ror_confidence": "Confirmed",
         "lookup_status": "complete",
-        "notes": "Single ORCID match (Philip Scherrer, Stanford University); corroborated by HMI / Stanford SDO JSOC works ('Stanford SDO JSOC CC0 Notice', solar-cycle magnetic-field studies). ORCID employment Stanford University (Professor, 1986-present) overlaps the operating span -> era-matched. Finder value 'Stanford University (W.W. Hansen Experimental Physics Laboratory)' -- WWHEPL is Scherrer's department within Stanford; kept the institution-level value."
+        "notes": "ORCID: checksum valid. Route A found nothing - the HMI paper 10.1007/s11207-011-9834-2 deposits initials-only given names ('P. H.') and no iDs. Route A' resolves it: 10.3847/1538-4365/adcf9f 'Calibrating HMI Magnetograms Using an End-to-end Magnetograph Model' deposits this iD for a full-name 'Philip H.' Scherrer and is on the same instrument. That DOI is outside the finder's evidence list and is named here explicitly. AFFILIATION: era-matched to 'Stanford University, Physics, Professor, 1986-09-01 to present', which covers the whole of the operating span (2010-02-11 onward, launch-anchored). SUB-UNIT DISCREPANCY for the reviewer: the finder recorded 'Stanford University (W.W. Hansen Experimental Physics Laboratory)' while the ORCID employment names the Physics department. Both are plausible for him and the skill does not adjudicate departments, so the bare institution was recorded rather than asserting either sub-unit. ROR: the employment is disambiguated by RINGGOLD (6429), not ROR, so Route A did not apply; Route B set chosen:true on https://ror.org/00f54p054."
       }
     },
     {
@@ -219,19 +390,35 @@
       "confidence": "Strong",
       "exclusion_reason": null,
       "evidence": [
-        { "source": "2nd author, HMI instrument paper (not alphabetized; confident selection)", "url": "https://doi.org/10.1007/s11207-011-9834-2", "strength": "Strong" }
+        {
+          "source": "2nd author, HMI instrument paper (not alphabetized; confident selection)",
+          "url": "https://doi.org/10.1007/s11207-011-9834-2",
+          "strength": "Strong"
+        }
       ],
-      "person_record": { "id": null, "url": null },
-      "orcid": "0000-0002-2391-6156",
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": "https://orcid.org/0000-0002-2391-6156",
       "affiliation": "Max Planck Institute for Solar System Research",
       "activity_dates": null,
+      "affiliation_ror": "https://ror.org/02j6gm739",
       "enrichment": {
-        "orcid_source": "ORCID name-search (corroborated)",
+        "orcid_origin": "enricher",
+        "orcid_source": "Crossref (paper DOI)",
+        "orcid_evidence": "10.1007/s11207-024-02259-1",
         "orcid_confidence": "Confirmed",
+        "affiliation_origin": "enricher",
         "affiliation_source": "ORCID employment",
+        "affiliation_evidence": "https://orcid.org/0000-0002-2391-6156",
         "affiliation_type": "current",
+        "ror_origin": "enricher",
+        "ror_source": "ROR affiliation-match (chosen)",
+        "ror_evidence": "https://ror.org/02j6gm739",
+        "ror_confidence": "Confirmed",
         "lookup_status": "complete",
-        "notes": "Name 'Jesper Schou' has 3 ORCID matches; disambiguated to 0000-0002-2391-6156 (Max Planck Institute for Solar System Research) via HMI works ('Stray Light Correction for the Helioseismic and Magnetic Imager', 'Modeling HMI observables'). ORCID employment lists MPS (undated, current) with no dated Stanford record, so an era-matched Stanford affiliation could not be confirmed even though the HMI paper places Schou at Stanford at operations start (2010). Affiliation labeled current (MPS); finder value 'Stanford University (later Max Planck Institute for Solar System Research)' captures the same trajectory."
+        "notes": "ORCID: checksum valid. Route A found nothing (initials-only 'J.' and no iDs on the HMI paper). Route A' resolves it: 10.1007/s11207-024-02259-1 'Correction to: Global-Mode Analysis of Full-Disk Data from the Michelson Doppler Imager and the Helioseismic and Magnetic Imager' deposits this iD for a full-name 'Jesper' Schou and names HMI, satisfying the domain test. That DOI is outside the finder's evidence list and is named here explicitly. AFFILIATION - DIFFERS FROM THE FINDER'S PRIMARY VALUE, though the finder anticipated it: it recorded 'Stanford University (later Max Planck Institute for Solar System Research)'. His ORCID holds two employment entries, both UNDATED and both naming the Max Planck Institute for Solar System Research. The several-undated rule exists to stop an arbitrary pick between different institutions; here the two entries name the SAME institution, so recording it involves no choice and no guess, and the rule's rationale does not bite. Labelled current because nothing dates it. His Stanford period - which is when the HMI instrument paper was written and is the era-correct affiliation for the early mission - is NOT in his ORCID record at all, so it could not be era-matched; a reviewer wanting the launch-era affiliation should take Stanford from the finder's value. ROR: the employment carries no disambiguated-organization, so Route A did not apply; Route B set chosen:true on https://ror.org/02j6gm739."
       }
     },
     {
@@ -240,20 +427,40 @@
       "confidence": "Strong",
       "exclusion_reason": null,
       "evidence": [
-        { "source": "3rd author, HMI instrument paper (not alphabetized; confident selection)", "url": "https://doi.org/10.1007/s11207-011-9834-2", "strength": "Strong" },
-        { "source": "Co-author 'Rock I. Bush' (position 35 of 47, alphabetized tail) of the AIA instrument paper -- participation-level corroboration", "url": "https://doi.org/10.1007/s11207-011-9776-8", "strength": "Low" }
+        {
+          "source": "3rd author, HMI instrument paper (not alphabetized; confident selection)",
+          "url": "https://doi.org/10.1007/s11207-011-9834-2",
+          "strength": "Strong"
+        },
+        {
+          "source": "Co-author 'Rock I. Bush' (position 35 of 47, alphabetized tail) of the AIA instrument paper -- participation-level corroboration",
+          "url": "https://doi.org/10.1007/s11207-011-9776-8",
+          "strength": "Low"
+        }
       ],
-      "person_record": { "id": null, "url": null },
+      "person_record": {
+        "id": null,
+        "url": null
+      },
       "orcid": null,
       "affiliation": "Stanford University",
       "activity_dates": null,
+      "affiliation_ror": null,
       "enrichment": {
+        "orcid_origin": null,
         "orcid_source": null,
+        "orcid_evidence": null,
         "orcid_confidence": null,
-        "affiliation_source": "finder (pre-existing)",
-        "affiliation_type": "current",
+        "affiliation_origin": "finder",
+        "affiliation_source": "uncorroborated",
+        "affiliation_evidence": null,
+        "affiliation_type": null,
+        "ror_origin": null,
+        "ror_source": null,
+        "ror_evidence": null,
+        "ror_confidence": null,
         "lookup_status": "complete",
-        "notes": "Crossref (HMI and AIA DOIs) deposited no ORCIDs/affiliations. ORCID name search 'Bush' (given 'Rock' -> 0 results; 'Bush' + affiliation Stanford -> only unrelated people) yielded no corroborable match -> orcid left null. Finder's Stanford University affiliation retained but not independently verified by lookup."
+        "notes": "ORCID NOT CONFIRMED - left null. Route A: the HMI paper deposits initials-only 'R. I.' and no iDs. Route A' was run against the SDO/HMI domain and returned no deposit carrying an ORCID under a full-name 'Rock' Bush. Route B: an ORCID name search for 'Rock Bush' returns ZERO records. A genuine absence, not an unresolved ambiguity. AFFILIATION: carried from the finder but NOT verified - there is no confirmed ORCID, so no employment history could be queried, and none of the SDO-era evidence DOIs deposits author affiliations (they are 2009-2012 Springer records that carry bare author names only). Recorded as uncorroborated with no evidence identifier and no type, because nothing dated it. ROR NOT ATTEMPTED: ROR confidence is capped by affiliation confidence, and a shaky affiliation cannot be firmed up by finding a confident match for its string. For reference, Philip H. Scherrer and Richard S. Bogart in this file carry https://ror.org/00f54p054 for the same institution, reached through their own dated employments; that ID is what a reviewer would use here after verifying the affiliation."
       }
     },
     {
@@ -262,19 +469,35 @@
       "confidence": "Medium",
       "exclusion_reason": null,
       "evidence": [
-        { "source": "4th author, HMI instrument paper (not alphabetized -- position 4 is Medium-tier; confident selection)", "url": "https://doi.org/10.1007/s11207-011-9834-2", "strength": "Medium" }
+        {
+          "source": "4th author, HMI instrument paper (not alphabetized -- position 4 is Medium-tier; confident selection)",
+          "url": "https://doi.org/10.1007/s11207-011-9834-2",
+          "strength": "Medium"
+        }
       ],
-      "person_record": { "id": null, "url": null },
-      "orcid": "0000-0003-0364-4883",
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": "https://orcid.org/0000-0003-0364-4883",
       "affiliation": "New Jersey Institute of Technology",
       "activity_dates": null,
+      "affiliation_ror": "https://ror.org/05e74xb87",
       "enrichment": {
-        "orcid_source": "ORCID name-search (corroborated)",
+        "orcid_origin": "enricher",
+        "orcid_source": "Crossref (paper DOI)",
+        "orcid_evidence": "10.3847/1538-4357/ab7b6a",
         "orcid_confidence": "Confirmed",
+        "affiliation_origin": "enricher",
         "affiliation_source": "ORCID employment",
+        "affiliation_evidence": "https://orcid.org/0000-0003-0364-4883",
         "affiliation_type": "current",
+        "ror_origin": "enricher",
+        "ror_source": "ORCID disambiguated-organization",
+        "ror_evidence": "https://orcid.org/0000-0003-0364-4883",
+        "ror_confidence": "Confirmed",
         "lookup_status": "complete",
-        "notes": "Single ORCID match (Alexander Kosovichev, New Jersey Institute of Technology); corroborated by helioseismology works (time-distance, solar convection, active-region emergence). ORCID employment lists NJIT (undated, current) with no dated Stanford record, so an era-matched Stanford affiliation could not be confirmed although he was at Stanford (HMI) at operations start. Affiliation labeled current (NJIT); finder value 'Stanford University (later New Jersey Institute of Technology)' captures the same trajectory."
+        "notes": "ORCID: checksum valid. Route A found nothing (initials-only 'A. G.' and no iDs on the HMI paper). Route A' resolves it: 10.3847/1538-4357/ab7b6a 'Response of SDO/HMI Observables to Heating of the Solar Atmosphere' deposits this iD for a full-name 'Alexander G.' Kosovichev and is on the same instrument. That DOI is outside the finder's evidence list and is named here explicitly. AFFILIATION - DIFFERS FROM THE FINDER'S PRIMARY VALUE, though the finder anticipated it: it recorded 'Stanford University (later New Jersey Institute of Technology)'. His ORCID holds exactly one employment, an undated 'New Jersey Institute of Technology'. Under the one-undated-employment rule it is usable, and there is no competing in-span deposit carrying an affiliation, so it is recorded and labelled current. His Stanford period - the era-correct affiliation for the HMI instrument paper and the early mission - is not in his ORCID record, so it could not be era-matched; a reviewer wanting the launch-era affiliation should take Stanford from the finder's value. ROR: taken via Route A - the employment carries disambiguated-organization-identifier https://ror.org/05e74xb87 with disambiguation-source 'ROR', pre-corroborated by ORCID's registry integration."
       }
     },
     {
@@ -283,19 +506,35 @@
       "confidence": "Medium",
       "exclusion_reason": null,
       "evidence": [
-        { "source": "5th author, HMI instrument paper (not alphabetized -- position 5 is Medium-tier; confident selection)", "url": "https://doi.org/10.1007/s11207-011-9834-2", "strength": "Medium" }
+        {
+          "source": "5th author, HMI instrument paper (not alphabetized -- position 5 is Medium-tier; confident selection)",
+          "url": "https://doi.org/10.1007/s11207-011-9834-2",
+          "strength": "Medium"
+        }
       ],
-      "person_record": { "id": null, "url": null },
-      "orcid": "0000-0002-0910-459X",
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": "https://orcid.org/0000-0002-0910-459X",
       "affiliation": "Stanford University",
       "activity_dates": null,
+      "affiliation_ror": "https://ror.org/00f54p054",
       "enrichment": {
-        "orcid_source": "ORCID name-search (corroborated)",
+        "orcid_origin": "enricher",
+        "orcid_source": "Crossref (paper DOI)",
+        "orcid_evidence": "10.1007/s11207-022-02034-0",
         "orcid_confidence": "Confirmed",
+        "affiliation_origin": "finder",
         "affiliation_source": "ORCID employment",
+        "affiliation_evidence": "https://orcid.org/0000-0002-0910-459X",
         "affiliation_type": "era-matched",
+        "ror_origin": "enricher",
+        "ror_source": "ROR affiliation-match (chosen)",
+        "ror_evidence": "https://ror.org/00f54p054",
+        "ror_confidence": "Confirmed",
         "lookup_status": "complete",
-        "notes": "Single ORCID match (Richard Bogart, Cornell / Stanford); corroborated by HMI works ('Stray Light Correction for the Helioseismic and Magnetic Imager', 'HMI Ring-Diagram Analysis'). ORCID employment Stanford University (Senior Research Scientist, 1982-present) overlaps the operating span -> era-matched. Agrees with finder value."
+        "notes": "ORCID: checksum valid. Route A found nothing (initials-only 'R. S.' and no iDs on the HMI paper). Route A' resolves it: 10.1007/s11207-022-02034-0 'HMI Ring-Diagram Analysis: Effects of Tracking, Noise, and Resolution' deposits this iD for a full-name 'Richard S.' Bogart and is on the same instrument. That DOI is outside the finder's evidence list and is named here explicitly. Corroborated further by 10.3847/25c2cfeb.f8b34dc8 'Helioseismology of the solar poles', which carries the same iD under the affiliation Stanford University. AFFILIATION: era-matched to 'Stanford University, HEPL, Senior Research Scientist, 1982-01-01 to present', which covers the whole of the operating span (2010-02-11 onward, launch-anchored) and agrees with the finder's value, which is kept. The employment names the Hansen Experimental Physics Laboratory as his department - the same sub-unit the finder attached to Philip H. Scherrer in this file. ROR: the employment is disambiguated by RINGGOLD (6429), not ROR, so Route A did not apply; Route B set chosen:true on https://ror.org/00f54p054."
       }
     },
     {
@@ -304,21 +543,45 @@
       "confidence": "Strong",
       "exclusion_reason": null,
       "evidence": [
-        { "source": "EVE CMAD front page -- revision-history approver 'TNW' (EVE PI); current-team Strong evidence", "url": "https://soma.larc.nasa.gov/lws/pdf_files/4.2a%20CMAD%20SDO-EVE.pdf", "strength": "Strong" },
-        { "source": "Lead author (prefix position 1), EVE instrument paper 'EVE on the SDO: Overview of Science Objectives, Instrument Design...', Woods et al. 2010 (partially alphabetized, sorted tail of 5 from author 14; confident selection)", "url": "https://doi.org/10.1007/s11207-009-9487-6", "strength": "Strong" },
-        { "source": "EVE Instrument record Contacts (PrincipalInvestigator -- qualifying role)", "url": "https://spase-metadata.org/SMWG/Instrument/SDO/EVE", "strength": "Medium" }
+        {
+          "source": "EVE CMAD front page -- revision-history approver 'TNW' (EVE PI); current-team Strong evidence",
+          "url": "https://soma.larc.nasa.gov/lws/pdf_files/4.2a%20CMAD%20SDO-EVE.pdf",
+          "strength": "Strong"
+        },
+        {
+          "source": "Lead author (prefix position 1), EVE instrument paper 'EVE on the SDO: Overview of Science Objectives, Instrument Design...', Woods et al. 2010 (partially alphabetized, sorted tail of 5 from author 14; confident selection)",
+          "url": "https://doi.org/10.1007/s11207-009-9487-6",
+          "strength": "Strong"
+        },
+        {
+          "source": "EVE Instrument record Contacts (PrincipalInvestigator -- qualifying role)",
+          "url": "https://spase-metadata.org/SMWG/Instrument/SDO/EVE",
+          "strength": "Medium"
+        }
       ],
-      "person_record": { "id": "spase://SMWG/Person/Thomas.N.Woods", "url": "https://spase-metadata.org/SMWG/Person/Thomas.N.Woods.html" },
-      "orcid": "0000-0002-2308-6797",
+      "person_record": {
+        "id": "spase://SMWG/Person/Thomas.N.Woods",
+        "url": "https://spase-metadata.org/SMWG/Person/Thomas.N.Woods.html"
+      },
+      "orcid": "https://orcid.org/0000-0002-2308-6797",
       "affiliation": "LASP, University of Colorado Boulder",
       "activity_dates": null,
+      "affiliation_ror": "https://ror.org/02ttsq026",
       "enrichment": {
-        "orcid_source": "ORCID name-search (corroborated)",
+        "orcid_origin": "enricher",
+        "orcid_source": "Crossref (paper DOI)",
+        "orcid_evidence": "10.3847/1538-4365/ab380e",
         "orcid_confidence": "Confirmed",
-        "affiliation_source": "finder (pre-existing, verified)",
+        "affiliation_origin": "finder",
+        "affiliation_source": "ORCID employment",
+        "affiliation_evidence": "https://orcid.org/0000-0002-2308-6797",
         "affiliation_type": "current",
+        "ror_origin": "enricher",
+        "ror_source": "ROR affiliation-match (chosen)",
+        "ror_evidence": "https://ror.org/02ttsq026",
+        "ror_confidence": "Confirmed",
         "lookup_status": "complete",
-        "notes": "Name 'Thomas Woods' has 8 ORCID matches; disambiguated to 0000-0002-2308-6797 (University of Colorado Boulder) via solar EUV-irradiance / flare works (SEUSHI, MinXSS soft X-ray, solar-flare nowcasting), matching the EVE data provider (LASP). ORCID employment University of Colorado Boulder is undated -> current; corroborates the finder's 'LASP, University of Colorado Boulder' value, which is retained (LASP is his institute within CU Boulder)."
+        "notes": "ORCID: checksum valid. Route A found nothing - the EVE paper 10.1007/s11207-009-9487-6 deposits initials-only 'T. N.' and no iDs, and his third evidence item is a CMAD PDF, not a DOI. Route A' resolves it: 10.3847/1538-4365/ab380e 'The SDO/EVE Solar Irradiance Coronal Dimming Index Catalog' deposits this iD for a full-name 'Thomas N.' Woods and is on the same instrument. That DOI is outside the finder's evidence list and is named here explicitly. Note his ORCID works list is dominated by SORCE and SOLSTICE rather than SDO, so the domain-restricted deposit is doing the identification here. AFFILIATION - EVIDENCE-STRENGTH RANKING APPLIED, with no rank-2 competitor. His ORCID holds exactly one employment, an undated bare 'University of Colorado Boulder' (RINGGOLD 1877, not ROR), which is rank 3. There is no rank-2 alternative: the SDO-era evidence DOIs deposit no affiliations, and the Route A' DOI 10.1007/s11207-021-01806-4 deposits none either, so no dated deposit competes. The undated employment agrees with the finder's value at institution level while naming only the parent university, so the finder's more specific string is kept and labelled current. ROR: the employment is disambiguated by RINGGOLD, not ROR, so Route A did not apply; Route B on the finder's string set chosen:true on https://ror.org/02ttsq026 (University of Colorado Boulder). LASP's own registry record https://ror.org/01fcjzv38 exists but ROR did not choose it, and the chosen flag is followed."
       }
     },
     {
@@ -327,20 +590,40 @@
       "confidence": "Strong",
       "exclusion_reason": null,
       "evidence": [
-        { "source": "EVE CMAD front page -- 'Prepared By: Francis G. Eparvier, EVE Project Scientist'; current-team Strong evidence", "url": "https://soma.larc.nasa.gov/lws/pdf_files/4.2a%20CMAD%20SDO-EVE.pdf", "strength": "Strong" },
-        { "source": "2nd prefix author, EVE instrument paper (partially alphabetized; confident selection)", "url": "https://doi.org/10.1007/s11207-009-9487-6", "strength": "Strong" }
+        {
+          "source": "EVE CMAD front page -- 'Prepared By: Francis G. Eparvier, EVE Project Scientist'; current-team Strong evidence",
+          "url": "https://soma.larc.nasa.gov/lws/pdf_files/4.2a%20CMAD%20SDO-EVE.pdf",
+          "strength": "Strong"
+        },
+        {
+          "source": "2nd prefix author, EVE instrument paper (partially alphabetized; confident selection)",
+          "url": "https://doi.org/10.1007/s11207-009-9487-6",
+          "strength": "Strong"
+        }
       ],
-      "person_record": { "id": null, "url": null },
-      "orcid": "0000-0001-7143-2730",
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": "https://orcid.org/0000-0001-7143-2730",
       "affiliation": "LASP, University of Colorado Boulder",
       "activity_dates": null,
+      "affiliation_ror": "https://ror.org/02ttsq026",
       "enrichment": {
-        "orcid_source": "ORCID name-search (corroborated)",
+        "orcid_origin": "enricher",
+        "orcid_source": "Crossref (paper DOI)",
+        "orcid_evidence": "10.1007/s11207-021-01806-4",
         "orcid_confidence": "Confirmed",
-        "affiliation_source": "finder (pre-existing, verified)",
+        "affiliation_origin": "finder",
+        "affiliation_source": "ORCID employment",
+        "affiliation_evidence": "https://orcid.org/0000-0001-7143-2730",
         "affiliation_type": "current",
+        "ror_origin": "enricher",
+        "ror_source": "ROR affiliation-match (chosen)",
+        "ror_evidence": "https://ror.org/02ttsq026",
+        "ror_confidence": "Confirmed",
         "lookup_status": "complete",
-        "notes": "Name search 'Eparvier' returned 3; disambiguated to 0000-0001-7143-2730 (Francis Eparvier, University of Colorado Boulder) via solar / EUV works (MAVEN EUVM, Mg II solar-activity index, GOES-R EXIS EUVS). ORCID employment University of Colorado Boulder is undated -> current; corroborates and retains the finder's 'LASP, University of Colorado Boulder' value."
+        "notes": "ORCID: checksum valid. Route A found nothing (initials-only 'F. G.' and no iDs on the EVE paper; the other evidence item is a CMAD PDF). Route A' resolves it: 10.1007/s11207-021-01806-4 'Evidence Against Carbonization of the Thin-Film Filters of the Extreme Ultraviolet Variability Experiment Onboard the Solar Dynamics Observatory' deposits this iD for a full-name 'Francis G.' Eparvier and is on this instrument and this observatory. That DOI is outside the finder's evidence list and is named here explicitly. This is the same iD confirmed independently for him on the GOES-16 and GOES-18 records, there via GOES-R XRS deposits; the confirmation here rests on SDO-domain evidence and does not depend on those. AFFILIATION - EVIDENCE-STRENGTH RANKING APPLIED, with no rank-2 competitor. His ORCID holds exactly one employment, an undated bare 'University of Colorado Boulder' (RINGGOLD 1877, not ROR), which is rank 3. There is no rank-2 alternative: the SDO-era evidence DOIs deposit no affiliations, and the Route A' DOI 10.1007/s11207-021-01806-4 deposits none either, so no dated deposit competes. The undated employment agrees with the finder's value at institution level while naming only the parent university, so the finder's more specific string is kept and labelled current. ROR: the employment is disambiguated by RINGGOLD, not ROR, so Route A did not apply; Route B on the finder's string set chosen:true on https://ror.org/02ttsq026 (University of Colorado Boulder). LASP's own registry record https://ror.org/01fcjzv38 exists but ROR did not choose it, and the chosen flag is followed."
       }
     },
     {
@@ -349,19 +632,35 @@
       "confidence": "Strong",
       "exclusion_reason": null,
       "evidence": [
-        { "source": "3rd prefix author, EVE instrument paper (partially alphabetized, prefix positions 1-3 Strong-tier; confident selection)", "url": "https://doi.org/10.1007/s11207-009-9487-6", "strength": "Strong" }
+        {
+          "source": "3rd prefix author, EVE instrument paper (partially alphabetized, prefix positions 1-3 Strong-tier; confident selection)",
+          "url": "https://doi.org/10.1007/s11207-009-9487-6",
+          "strength": "Strong"
+        }
       ],
-      "person_record": { "id": null, "url": null },
+      "person_record": {
+        "id": null,
+        "url": null
+      },
       "orcid": null,
       "affiliation": "LASP, University of Colorado Boulder",
       "activity_dates": null,
+      "affiliation_ror": null,
       "enrichment": {
+        "orcid_origin": null,
         "orcid_source": null,
+        "orcid_evidence": null,
         "orcid_confidence": null,
-        "affiliation_source": "finder (pre-existing)",
-        "affiliation_type": "current",
+        "affiliation_origin": "finder",
+        "affiliation_source": "uncorroborated",
+        "affiliation_evidence": null,
+        "affiliation_type": null,
+        "ror_origin": null,
+        "ror_source": null,
+        "ror_evidence": null,
+        "ror_confidence": null,
         "lookup_status": "complete",
-        "notes": "Crossref EVE DOI deposited no ORCIDs/affiliations. ORCID name search 'Hock' (given 'Rachel' -> 0 results; 'Hock' + affiliation Colorado -> 0 results) yielded no corroborable match -> orcid left null. Possible name change may hinder lookup (this EVE-era author has published as 'Rachel Hock Berndt'); reviewer may wish to confirm. Finder's 'LASP, University of Colorado Boulder' affiliation retained but not independently verified."
+        "notes": "ORCID NOT CONFIRMED - left null. Route A: the EVE paper deposits initials-only 'R.' and no iDs. Route A' was run against the SDO/EVE domain and returned no deposit carrying an ORCID under a full-name 'Rachel' Hock. Route B: a search on 'Rachel Hock' returns ZERO records; the search was then widened to family-name-only, which returns 158 'Hock' records, none of them a Rachel Hock and none affiliated with Colorado, LASP or a solar physics institution. NOTE FOR THE REVIEWER: she has published under a married name (Hock-Mysliwiec), and this skill searches the name the finder recorded; a search under the later surname is outside what the enricher may infer but may well succeed for a human. AFFILIATION: carried from the finder but NOT verified - there is no confirmed ORCID, so no employment history could be queried, and none of the SDO-era evidence DOIs deposits author affiliations (they are 2009-2012 Springer records that carry bare author names only). Recorded as uncorroborated with no evidence identifier and no type, because nothing dated it. ROR NOT ATTEMPTED: ROR confidence is capped by affiliation confidence, and a shaky affiliation cannot be firmed up by finding a confident match for its string. For reference, the four other LASP people in this file carry https://ror.org/02ttsq026."
       }
     },
     {
@@ -370,19 +669,35 @@
       "confidence": "Medium",
       "exclusion_reason": null,
       "evidence": [
-        { "source": "4th prefix author, EVE instrument paper (partially alphabetized -- prefix position 4 is Medium-tier; confident selection)", "url": "https://doi.org/10.1007/s11207-009-9487-6", "strength": "Medium" }
+        {
+          "source": "4th prefix author, EVE instrument paper (partially alphabetized -- prefix position 4 is Medium-tier; confident selection)",
+          "url": "https://doi.org/10.1007/s11207-009-9487-6",
+          "strength": "Medium"
+        }
       ],
-      "person_record": { "id": null, "url": null },
-      "orcid": "0000-0001-5533-5498",
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": "https://orcid.org/0000-0001-5533-5498",
       "affiliation": "LASP, University of Colorado Boulder",
       "activity_dates": null,
+      "affiliation_ror": "https://ror.org/02ttsq026",
       "enrichment": {
-        "orcid_source": "ORCID name-search (corroborated)",
+        "orcid_origin": "enricher",
+        "orcid_source": "Crossref (paper DOI)",
+        "orcid_evidence": "10.1007/s11207-021-01806-4",
         "orcid_confidence": "Confirmed",
-        "affiliation_source": "finder (pre-existing, verified)",
-        "affiliation_type": "current",
+        "affiliation_origin": "finder",
+        "affiliation_source": "Crossref (paper DOI)",
+        "affiliation_evidence": "10.3847/25c2cfeb.a05625a8",
+        "affiliation_type": "as-deposited",
+        "ror_origin": "enricher",
+        "ror_source": "ROR affiliation-match (chosen)",
+        "ror_evidence": "https://ror.org/02ttsq026",
+        "ror_confidence": "Confirmed",
         "lookup_status": "complete",
-        "notes": "'Andrew Jones' is highly ambiguous (118+ ORCID records). Disambiguated via affiliation-filtered search to 0000-0001-5533-5498 (Andrew Jones, University of Colorado Boulder), then corroborated by SDO/EVE-specific works ('Oxidation Caused by Water Outgassed from the Thermal Blanket on the SDO Spacecraft', 'Evidence Against Carbonization of the Thin-Film Filters of the EVE', SunCET) -- squarely the EVE/LASP instrument scientist. ORCID employment CU Boulder undated -> current; corroborates and retains the finder's 'LASP, University of Colorado Boulder' value."
+        "notes": "ORCID: checksum valid. Route A found nothing (initials-only 'A. R.' and no iDs on the EVE paper). Route A' resolves it: 10.1007/s11207-021-01806-4, the EVE thin-film filter paper, deposits this iD for a full-name 'Andrew R.' Jones and is on this instrument and observatory. That DOI is outside the finder's evidence list and is named here explicitly. This is the same iD confirmed for him on the GOES-18 record via a GOES-R XRS deposit; the confirmation here rests on SDO-domain evidence independently. The caution recorded on GOES-18 applies again - his ORCID works list runs heavily to Mars and SDO-EVE instrument engineering, so the deposits rather than the works list are doing the identification. AFFILIATION - EVIDENCE-STRENGTH RANKING APPLIED. His undated 'University of Colorado Boulder' employment is rank 3; unlike the other LASP people here he DOES have a rank-2 competitor, 10.3847/25c2cfeb.a05625a8 (2023, inside the operating span (2010-02-11 onward, launch-anchored)), which deposits an affiliation for him. That deposit therefore wins. Its string reads 'U. of Colorado, LASP' - the same institution and the same sub-unit as the finder's value, abbreviated; the finder's expanded wording is kept because the two agree and it is the better-formed rendering of the same content, and the abbreviation is quoted here so nothing is hidden. ROR: Route B set chosen:true on https://ror.org/02ttsq026."
       }
     },
     {
@@ -391,19 +706,35 @@
       "confidence": "Medium",
       "exclusion_reason": null,
       "evidence": [
-        { "source": "5th prefix author, EVE instrument paper (partially alphabetized -- prefix position 5 is Medium-tier; confident selection)", "url": "https://doi.org/10.1007/s11207-009-9487-6", "strength": "Medium" }
+        {
+          "source": "5th prefix author, EVE instrument paper (partially alphabetized -- prefix position 5 is Medium-tier; confident selection)",
+          "url": "https://doi.org/10.1007/s11207-009-9487-6",
+          "strength": "Medium"
+        }
       ],
-      "person_record": { "id": null, "url": null },
-      "orcid": "0000-0001-9351-733X",
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": "https://orcid.org/0000-0001-9351-733X",
       "affiliation": "LASP, University of Colorado Boulder",
       "activity_dates": null,
+      "affiliation_ror": "https://ror.org/02ttsq026",
       "enrichment": {
-        "orcid_source": "ORCID name-search (corroborated)",
+        "orcid_origin": "enricher",
+        "orcid_source": "Crossref (paper DOI)",
+        "orcid_evidence": "10.1007/s11207-021-01806-4",
         "orcid_confidence": "Confirmed",
-        "affiliation_source": "finder (pre-existing, verified)",
+        "affiliation_origin": "finder",
+        "affiliation_source": "ORCID employment",
+        "affiliation_evidence": "https://orcid.org/0000-0001-9351-733X",
         "affiliation_type": "current",
+        "ror_origin": "enricher",
+        "ror_source": "ROR affiliation-match (chosen)",
+        "ror_evidence": "https://ror.org/02ttsq026",
+        "ror_confidence": "Confirmed",
         "lookup_status": "complete",
-        "notes": "Single ORCID match (Donald Woodraska, NASA + University of Colorado Boulder); corroborated by EVE / solar-irradiance works ('Evidence Against Carbonization of the Thin-Film Filters of the EVE', FISM2, GOES-R EXIS). ORCID employment CU Boulder undated -> current; corroborates and retains the finder's 'LASP, University of Colorado Boulder' value."
+        "notes": "ORCID: checksum valid. NAME NOTE: the finder recorded 'Donald Woodraska' and the deposits give 'Donald L.' - an expansion, not a reconstruction, so the identity gate passes. Route A found nothing (initials-only 'D.' and no iDs on the EVE paper). Route A' resolves it: 10.1007/s11207-021-01806-4, the EVE thin-film filter paper, deposits this iD for him and is on this instrument and observatory. That DOI is outside the finder's evidence list and is named here explicitly. Corroborated further by 10.1002/essoar.10503732.2 'The Flare Irradiance Spectral Model - Version 2 (FISM2)', an SDO/EVE-derived model, which carries the same iD. AFFILIATION - EVIDENCE-STRENGTH RANKING APPLIED, with no rank-2 competitor. His ORCID holds exactly one employment, an undated bare 'University of Colorado Boulder' (RINGGOLD 1877, not ROR), which is rank 3. There is no rank-2 alternative: the SDO-era evidence DOIs deposit no affiliations, and the Route A' DOI 10.1007/s11207-021-01806-4 deposits none either, so no dated deposit competes. The undated employment agrees with the finder's value at institution level while naming only the parent university, so the finder's more specific string is kept and labelled current. ROR: the employment is disambiguated by RINGGOLD, not ROR, so Route A did not apply; Route B on the finder's string set chosen:true on https://ror.org/02ttsq026 (University of Colorado Boulder). LASP's own registry record https://ror.org/01fcjzv38 exists but ROR did not choose it, and the chosen flag is followed."
       }
     },
     {
@@ -412,9 +743,16 @@
       "confidence": null,
       "exclusion_reason": "non-lead co-author of the EVE instrument paper (position 11 of 18, within the prefix but far beyond position 5); position does not support inclusion and no corroborating source found",
       "evidence": [
-        { "source": "Co-author, EVE instrument paper", "url": "https://doi.org/10.1007/s11207-009-9487-6", "strength": "Low" }
+        {
+          "source": "Co-author, EVE instrument paper",
+          "url": "https://doi.org/10.1007/s11207-009-9487-6",
+          "strength": "Low"
+        }
       ],
-      "person_record": { "id": "spase://SMWG/Person/Don.McMullin", "url": "https://spase-metadata.org/SMWG/Person/Don.McMullin.html" },
+      "person_record": {
+        "id": "spase://SMWG/Person/Don.McMullin",
+        "url": "https://spase-metadata.org/SMWG/Person/Don.McMullin.html"
+      },
       "orcid": null,
       "affiliation": null,
       "activity_dates": null
@@ -425,9 +763,16 @@
       "confidence": null,
       "exclusion_reason": "alphabetized-tail co-author of the AIA instrument paper (position 3 -- first name of the sorted suffix, an alphabetical accident, not contribution order); uncorroborated elsewhere",
       "evidence": [
-        { "source": "Co-author, AIA instrument paper (alphabetized tail)", "url": "https://doi.org/10.1007/s11207-011-9776-8", "strength": "Low" }
+        {
+          "source": "Co-author, AIA instrument paper (alphabetized tail)",
+          "url": "https://doi.org/10.1007/s11207-011-9776-8",
+          "strength": "Low"
+        }
       ],
-      "person_record": { "id": null, "url": null },
+      "person_record": {
+        "id": null,
+        "url": null
+      },
       "orcid": null,
       "affiliation": null,
       "activity_dates": null
@@ -442,7 +787,6 @@
     "CMAD: an EVE CMAD (EVE-T-11003 Rev A, 2005) was located in the NASA LWS SOMA repository and gives Strong current-team evidence for Eparvier (prepared) and Woods (approver 'TNW'). No AIA or HMI CMAD was located despite filename probing in the same SOMA path and web search -- current AIA/HMI teams rest on SPASE Contacts + instrument papers. Reviewer should note the AIA/HMI CMAD gap.",
     "AIA current PI in SPASE Contacts is Meng Jin (Medium); FormerPIs Cheung, Schrijver, Title are qualifying-role Medium. This captures two PI generations for AIA (original team via the Lemen paper prefix + FormerPIs; current PI Meng Jin). Both generations are legitimate for an Observatory record.",
     "SMWG Person registry: existing records found for Pesnell, Thompson, Meng Jin, Cheung, Karel Schrijver, Title, Woods, Scherrer, Lemen. No Person record for Chamberlin (both P.C./Phillip.C variants 404), Schou, Bush, Kosovichev, Bogart, Eparvier, Hock, Jones, Woodraska -- ids left null, not drafted.",
-    "Provider team page (https://sdo.gsfc.nasa.gov/mission/project.php) did not expose a structured, machine-readable team roster (org chart is an image); mission-level roles were therefore taken from the overview paper and the Observatory Contacts (Pesnell, ProjectScientist).",
-    "ENRICHMENT (spase-affiliation-enricher, 2026-07-08): all 18 included candidates passed the identity gate (full names from paper author lists, SPASE Person records, and/or the EVE CMAD). None of the four Crossref DOIs deposited any ORCIDs or author affiliations, so every ORCID was resolved via ORCID name search with mandatory corroboration (works/employment consistent with the instrument, mission, or data provider). 14 of 18 confirmed an ORCID; 4 left null (Lemen, Title, Bush, Hock -- no corroborable ORCID record found). Affiliations: era-matched from dated ORCID employment for Thompson, Chamberlin, Meng Jin, Cheung, Scherrer, Bogart; current from undated ORCID employment for Pesnell, Schou, Kosovichev, Woods, Eparvier, Jones, Woodraska; finder value retained (unverified) for Lemen, Title, Bush, Hock, and (ORCID confirmed but no employment history) Schrijver. Reviewer flags: (1) Chamberlin and Cheung each changed institutions mid-span -- see their notes; (2) Schou and Kosovichev show only their current (post-Stanford) affiliation because ORCID carries no dated Stanford employment, though both were at Stanford for HMI at operations start; (3) Rachel Hock may have published under a changed surname."
+    "Provider team page (https://sdo.gsfc.nasa.gov/mission/project.php) did not expose a structured, machine-readable team roster (org chart is an image); mission-level roles were therefore taken from the overview paper and the Observatory Contacts (Pesnell, ProjectScientist)."
   ]
 }
