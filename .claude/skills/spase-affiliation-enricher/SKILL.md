@@ -262,6 +262,43 @@ affiliation, and the whole point of era-matching is that those can differ
    `orcid_origin: "enricher"`, `orcid_source: "Crossref (paper DOI)"`,
    `orcid_evidence:` the DOI.
 
+**Route A′ — Crossref author query beyond the evidence DOIs (same-instrument corroboration):**
+
+Route A is limited to the DOIs the finder recorded as evidence. Those are often
+book chapters, SPIE proceedings, or older journal records that deposit no iDs at
+all — so a candidate with a perfectly good publisher-deposited ORCID on a
+*different* paper gets nulled for a reason that has nothing to do with their
+identity. This route recovers those cases without weakening the standard.
+
+1. Use only when no evidence DOI carries an iD for the candidate.
+2. Query Crossref by author name, restricted to the instrument, mission,
+   observatory, or data provider domain (e.g. `query.author` plus
+   `query.bibliographic` naming the instrument). Do not sweep the author's whole
+   publication history looking for any iD.
+3. Accept a deposit as **Confirmed** only if BOTH hold:
+   - the deposited given name is **full-name compatible** with the candidate's
+     known full name — initials-only deposits (`given: "C."`) never confirm, even
+     when everything else matches; and
+   - the paper is on the **same instrument, mission, or observatory** as the
+     candidate's evidence, or is deposited under the data provider institution.
+   A paper merely in the same field is not enough. "Space physics" is not a
+   corroborating domain; "GOES-R SUVI" is.
+4. Record the DOI in `orcid_evidence` and state in `notes` that it lies outside
+   the finder's evidence list, naming it explicitly so a reviewer can check the
+   inference you made. Set `orcid_origin: "enricher"`,
+   `orcid_source: "Crossref (paper DOI)"`.
+5. This route is **not optional when it applies.** If you use it for one
+   candidate you must attempt it for every candidate whose evidence DOIs carry no
+   iD. Applying it to some and not others produces a file where a null means
+   "no iD exists" for one person and "I did not look as hard" for another, and
+   nothing in the output distinguishes the two.
+
+The same route supplies affiliations: when a Route A′ DOI deposits an affiliation
+string for the confirmed author, it is usable as `affiliation_source: "Crossref
+(paper DOI)"`, `affiliation_type: "as-deposited"`, with that DOI as
+`affiliation_evidence`. The identity must be confirmed first — either by the
+deposit itself or independently.
+
 **Route B — ORCID name search (only with corroboration):**
 1. `GET https://pub.orcid.org/v3.0/expanded-search/?q=family-name:<name>+AND+given-names:<name>`
    (header `Accept: application/json`).
@@ -284,10 +321,24 @@ With a confirmed ORCID:
    the record's operating span, using the overlap rules below.
    `affiliation_source: "ORCID employment"`, `affiliation_evidence:` the ORCID
    URL, `affiliation_type: "era-matched"`.
-3. **Current (fallback):** if no dated employment overlaps (or none is dated),
-   use the current/most-recent affiliation. `affiliation_source: "ORCID
+3. **Current (fallback):** if no dated employment overlaps, use the
+   current/most-recent affiliation. `affiliation_source: "ORCID
    employment"`, `affiliation_evidence:` the ORCID URL,
    `affiliation_type: "current"`.
+   - **One undated employment** → use it. It is the only candidate, and
+     `current` is the honest label since nothing dates it.
+   - **Several employments, all undated** → there is no "most recent" to pick.
+     ORCID does not order employments meaningfully, so choosing among them is a
+     guess dressed as a lookup. Do NOT pick one. Fall through to the Crossref
+     fallback (step 4), which at least carries a publication date. If that also
+     yields nothing, leave `affiliation` null and list every undated employment
+     in `notes` so the reviewer can choose. State the situation explicitly —
+     "N ORCID employments, none dated, no basis for selection" — because in the
+     output it is indistinguishable from "no employment history at all", and the
+     two call for different reviewer action.
+   - **Some dated, some undated** → era-match against the dated ones only. If
+     none overlaps, prefer the most recent dated entry over any undated one, and
+     list the undated entries in `notes`.
 
 Without a usable ORCID employment history (or without a confirmed ORCID at all,
 when identity was confirmed some other way):
@@ -452,6 +503,16 @@ This skill is where same-name disambiguation comes due (the finder deferred it).
 - When you cannot confirm, leave the field null and explain in `enrichment.notes`.
   Do not pick the "most likely" ORCID or the top-scoring ROR to avoid an empty
   field.
+
+**Apply the same effort to every candidate.** Whatever routes you use, use them
+for all candidates the gate lets through. If you widen the search for one person —
+an off-evidence Crossref query, an extra page of name-search results, a check
+against the provider's own documentation — you owe the same to everyone whose
+earlier routes came up empty. Otherwise a `null` means "nothing exists" for one
+candidate and "I stopped sooner" for another, and the file gives the reviewer no
+way to tell which. Uneven effort is the one failure mode that the provenance
+fields cannot record, which is why it has to be prevented rather than
+documented.
 
 ---
 
