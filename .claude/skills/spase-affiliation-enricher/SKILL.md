@@ -337,6 +337,10 @@ With a confirmed ORCID:
      "N ORCID employments, none dated, no basis for selection" — because in the
      output it is indistinguishable from "no employment history at all", and the
      two call for different reviewer action.
+     **Exception — they all name the same institution.** The rule exists to stop
+     an arbitrary pick *between different institutions*. If every undated entry
+     names one institution, recording it involves no choice and no guess, so use
+     it and label it `current`. Note that the entries agree.
    - **Some dated, some undated** → era-match against the dated ones only. If
      none overlaps, prefer the most recent dated entry over any undated one, and
      list the undated entries in `notes`.
@@ -464,6 +468,27 @@ outcome: record the null and note it.
    that flag and it is always listed first. `ror_origin: "enricher"`,
    `ror_source: "ROR affiliation-match (chosen)"`, `ror_evidence:` the returned
    ROR URL.
+
+   **`chosen: true` is necessary but not sufficient — sanity-check the returned
+   organization.** Before recording it, confirm it actually matches the
+   affiliation, exactly as Step 1 requires for a finder-supplied ROR: the returned
+   name, alias, or label corresponds to the institution the affiliation names, AND
+   the country matches what you know from the ORCID employment, the deposited
+   string, or the data provider. Reject the match only when it fails on
+   **objective, checkable grounds** — different country, or a name sharing nothing
+   but a generic fragment (`Technology Center`, `Institute`, `Laboratory`). A real
+   case: `Lockheed Martin Advanced Technology Center` returns `chosen: true` at
+   score 1.0 on a private company in Kharkiv, Ukraine.
+
+   This is not a licence to second-guess `chosen` on judgement. You may not reject
+   a match because you would have picked a different granularity, because the
+   `matching_type` looks weak, or because another result seems better — those are
+   exactly the preferences rule 5 forbids. The only permitted rejection is "this
+   is demonstrably a different organization." When you reject, say so in `notes`,
+   name the wrong ID and why it fails, and fall through to Route C. A ROR that
+   passes `chosen` but names the wrong organization is the worst outcome the
+   skill can produce: it is confidently wrong, it looks clean in the output, and
+   it publishes a false institutional claim about a real person.
 4. If no match is `chosen`, do NOT take the top-scoring match. Before leaving the
    field null, you MAY retry the match once on a **normalized form of the same
    string**, and only in this narrow case: the affiliation names a parent agency
