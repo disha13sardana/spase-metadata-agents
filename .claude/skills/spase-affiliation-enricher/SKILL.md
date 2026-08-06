@@ -141,9 +141,13 @@ Worked examples:
 {"affiliation_origin": "finder", "affiliation_source": "ORCID employment",
  "affiliation_evidence": "https://orcid.org/0000-0002-5364-6505", "affiliation_type": "era-matched"}
 
-// Kress — enricher found it directly
+// Rodriguez — enricher found it directly, from dated ORCID employment
 {"affiliation_origin": "enricher", "affiliation_source": "ORCID employment",
- "affiliation_evidence": "https://orcid.org/0000-0002-3202-3739", "affiliation_type": "current"}
+ "affiliation_evidence": "https://orcid.org/0000-0002-6847-4136", "affiliation_type": "era-matched"}
+
+// Shape of a finder value that no lookup could verify (schematic, not a real candidate)
+{"affiliation_origin": "finder", "affiliation_source": "uncorroborated",
+ "affiliation_evidence": null, "affiliation_type": "current"}
 ```
 
 The `affiliation_ror` field itself holds the full ROR URL form (e.g.
