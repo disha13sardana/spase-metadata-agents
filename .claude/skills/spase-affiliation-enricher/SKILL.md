@@ -91,15 +91,59 @@ on processed candidates, and adding the per-candidate `enrichment` object:
 
 ```json
 "enrichment": {
-  "orcid_source": "Crossref (paper DOI) | ORCID name-search (corroborated) | finder (pre-existing, verified) | null",
+  "orcid_origin": "finder | enricher | null",
+  "orcid_source": "Crossref (paper DOI) | ORCID name-search (corroborated) | uncorroborated | null",
+  "orcid_evidence": "DOI, ORCID URL, or page URL — null only when source is uncorroborated",
   "orcid_confidence": "Confirmed | null",
-  "affiliation_source": "ORCID employment | Crossref (paper DOI) | finder (pre-existing, verified) | null",
+  "affiliation_origin": "finder | enricher | null",
+  "affiliation_source": "Crossref (paper DOI) | ORCID employment | SPASE record | provider documentation | uncorroborated | null",
+  "affiliation_evidence": "DOI, ORCID URL, ROR URL, or page URL — null only when source is uncorroborated",
   "affiliation_type": "era-matched | current | as-deposited | null",
-  "ror_source": "ORCID disambiguated-organization | ROR affiliation-match (chosen) | ROR query (corroborated) | finder (pre-existing, verified) | null",
+  "ror_origin": "finder | enricher | null",
+  "ror_source": "ORCID disambiguated-organization | ROR affiliation-match (chosen) | ROR query (corroborated) | uncorroborated | null",
+  "ror_evidence": "ROR URL, or the ORCID URL whose employment asserted it — null only when source is uncorroborated",
   "ror_confidence": "Confirmed | null",
   "lookup_status": "complete | partial-api-error | skipped-unconfirmed-identity",
   "notes": "free text — ambiguity, multiple matches, discrepancies, why a field is null"
 }
+```
+
+**Provenance fields must name evidence, not pipeline stages.** A `*_source`
+field records what corroborates the value. It must never name a stage of this
+pipeline. "The finder proposed it" is not evidence — it is bookkeeping, and it
+belongs in `*_origin`. A curator reading a SPASE record sees only these values,
+and "pre-existing" reads to them as "already in this record", which is often
+false.
+
+**Never emit `finder (pre-existing, verified)` or `finder (pre-existing)`** in
+any `*_source` field. Both collapse origin and evidence into one string, and the
+first hides which evidence was used — Crossref for some candidates, ORCID
+employment for others. Those are different provenance and must not share a label.
+
+- When a finder value was verified → `origin: "finder"`, `source:` whatever
+  verified it, `evidence:` that identifier.
+- When a finder value could not be verified → `origin: "finder"`,
+  `source: "uncorroborated"`, `evidence: null`. Say so plainly rather than
+  implying support that was not found. `uncorroborated` is a legitimate value,
+  not a failure state; it is how the record stays honest about a value it
+  carries but could not confirm.
+- When this skill found the value itself → `origin: "enricher"`, plus source and
+  evidence as usual.
+
+Worked examples:
+
+```json
+// Bethge — finder value, verified against a Crossref deposit
+{"affiliation_origin": "finder", "affiliation_source": "Crossref (paper DOI)",
+ "affiliation_evidence": "10.1029/2022SW003044", "affiliation_type": "as-deposited"}
+
+// Singer — finder value, verified against dated ORCID employment
+{"affiliation_origin": "finder", "affiliation_source": "ORCID employment",
+ "affiliation_evidence": "https://orcid.org/0000-0002-5364-6505", "affiliation_type": "era-matched"}
+
+// Kress — enricher found it directly
+{"affiliation_origin": "enricher", "affiliation_source": "ORCID employment",
+ "affiliation_evidence": "https://orcid.org/0000-0002-3202-3739", "affiliation_type": "current"}
 ```
 
 The `affiliation_ror` field itself holds the full ROR URL form (e.g.
@@ -107,6 +151,16 @@ The `affiliation_ror` field itself holds the full ROR URL form (e.g.
 treats as canonical.
 
 Field semantics:
+- `*_origin` is bookkeeping only: `finder` if the finder proposed the value,
+  `enricher` if this skill found it. It never carries evidential weight and must
+  never appear in a `*_source` field.
+- `*_source` names the evidence that corroborates the value, drawn from the closed
+  vocabulary above. `uncorroborated` means the value is carried but nothing
+  verified it.
+- `*_evidence` is the specific identifier behind the source — a DOI, an ORCID URL,
+  a ROR URL, or a page URL. It is `null` only when the source is `uncorroborated`.
+  A source without an evidence identifier is a spec violation: if you cannot name
+  what corroborated the value, the source is `uncorroborated`.
 - `orcid_confidence` and `ror_confidence` are binary: `Confirmed` or `null`. There
   is no "probable" tier — unconfirmed possibilities live in `notes` only.
 - `affiliation_type`:
@@ -147,7 +201,9 @@ lookup disagrees with a pre-filled value, record both and flag for review.
 2. Fetch the ORCID record and corroborate: does it show a work or employment
    consistent with the instrument, observatory/mission, or data provider
    institution?
-3. If valid and corroborated → keep it; `orcid_source: "finder (pre-existing, verified)"`,
+3. If valid and corroborated → keep it; `orcid_origin: "finder"`, `orcid_source:`
+   whatever corroborated it (`Crossref (paper DOI)` or `ORCID name-search
+   (corroborated)`), `orcid_evidence:` that DOI or ORCID URL,
    `orcid_confidence: "Confirmed"`.
 4. If the checksum fails or corroboration fails → set `orcid` to null in the
    enriched file, record the finder's value and the failure in `notes`, and
@@ -159,12 +215,15 @@ finder's opportunistic value is almost certainly a current or as-deposited
 affiliation, and the whole point of era-matching is that those can differ
 (original vs. current PI institution). If the era-matched lookup:
 - agrees with the finder's value → keep it, set `affiliation_type` accordingly,
-  `affiliation_source: "finder (pre-existing, verified)"`.
+  `affiliation_origin: "finder"`, `affiliation_source: "ORCID employment"` (or
+  whatever actually verified it), `affiliation_evidence:` that identifier.
 - disagrees → put the era-matched value in `affiliation` (it is dated,
   evidence-backed), keep the finder's value in `notes` with an explicit
   "differs from finder value" flag for the reviewer.
-- yields nothing → keep the finder's value, `affiliation_type: "current"` or
-  `"as-deposited"` per its origin if known, else note the type is unknown.
+- yields nothing → keep the finder's value with `affiliation_origin: "finder"`,
+  `affiliation_source: "uncorroborated"`, `affiliation_evidence: null`, and
+  `affiliation_type: "current"` or `"as-deposited"` per its origin if known, else
+  note the type is unknown. Do not label it verified; nothing verified it.
 
 **Pre-filled ROR:** validate the same way as an ORCID.
 1. Check the form (`https://ror.org/` + 9 characters: `0` + 6 alphanumerics +
@@ -172,7 +231,9 @@ affiliation, and the whole point of era-matching is that those can differ
 2. `GET https://api.ror.org/v2/organizations/<id>` and confirm the returned
    organization actually matches the resolved `affiliation` string (name, alias,
    or label; plus country/location if known).
-3. If valid and matching → keep it; `ror_source: "finder (pre-existing, verified)"`,
+3. If valid and matching → keep it; `ror_origin: "finder"`, `ror_source:`
+   whatever confirmed it (`ROR affiliation-match (chosen)` or `ORCID
+   disambiguated-organization`), `ror_evidence:` that ROR or ORCID URL,
    `ror_confidence: "Confirmed"`.
 4. If the checksum fails, the ID does not resolve, or the organization does not
    match the affiliation → set `affiliation_ror` to null, record the finder's value
@@ -193,7 +254,9 @@ affiliation, and the whole point of era-matching is that those can differ
    compatible with the candidate's known full name. Initials-compatibility alone
    is NOT a match for confirmation purposes (it may only be recorded in `notes`).
 4. If the matching author carries an `ORCID` field, treat it as **Confirmed** —
-   the publisher tied that iD to that author on that paper.
+   the publisher tied that iD to that author on that paper. Emit
+   `orcid_origin: "enricher"`, `orcid_source: "Crossref (paper DOI)"`,
+   `orcid_evidence:` the DOI.
 
 **Route B — ORCID name search (only with corroboration):**
 1. `GET https://pub.orcid.org/v3.0/expanded-search/?q=family-name:<name>+AND+given-names:<name>`
@@ -201,7 +264,9 @@ affiliation, and the whole point of era-matching is that those can differ
 2. A name search may return multiple people. NEVER accept a match on name alone.
 3. Accept an iD only if the record itself corroborates identity: a listed work
    or dated employment consistent with the instrument, observatory/mission, or
-   data provider institution.
+   data provider institution. Emit `orcid_origin: "enricher"`,
+   `orcid_source: "ORCID name-search (corroborated)"`, `orcid_evidence:` the
+   ORCID URL.
 4. If multiple plausible matches remain, or the only match cannot be
    corroborated, leave `orcid` null and describe the ambiguity in `notes`
    (including candidate iDs, so the reviewer can resolve it in one click).
@@ -213,14 +278,18 @@ With a confirmed ORCID:
    `Accept: application/json`).
 2. **Era-matched (preferred):** select the employment whose date range overlaps
    the record's operating span, using the overlap rules below.
-   `affiliation_type: "era-matched"`.
+   `affiliation_source: "ORCID employment"`, `affiliation_evidence:` the ORCID
+   URL, `affiliation_type: "era-matched"`.
 3. **Current (fallback):** if no dated employment overlaps (or none is dated),
-   use the current/most-recent affiliation. `affiliation_type: "current"`.
+   use the current/most-recent affiliation. `affiliation_source: "ORCID
+   employment"`, `affiliation_evidence:` the ORCID URL,
+   `affiliation_type: "current"`.
 
 Without a usable ORCID employment history (or without a confirmed ORCID at all,
 when identity was confirmed some other way):
 4. **Crossref fallback:** use the affiliation string deposited for that author on
-   the paper, if any. `affiliation_type: "as-deposited"`.
+   the paper, if any. `affiliation_source: "Crossref (paper DOI)"`,
+   `affiliation_evidence:` the DOI, `affiliation_type: "as-deposited"`.
 5. If nothing yields a value, leave `affiliation` null with `lookup_status`
    reflecting whether lookups completed.
 
@@ -256,8 +325,9 @@ named in `affiliation` — no affiliation, no ROR, no lookup attempted.
    ```
 2. If `disambiguation-source` is `ROR`, take the identifier as **Confirmed**.
    ORCID's registry integration already tied that employer to that ROR ID; this
-   is the strongest route and costs no extra call.
-   `ror_source: "ORCID disambiguated-organization"`.
+   is the strongest route and costs no extra call. `ror_origin: "enricher"`,
+   `ror_source: "ORCID disambiguated-organization"`, `ror_evidence:` the ORCID
+   URL whose employment asserted it.
 3. If `disambiguation-source` is something else (`GRID`, `RINGGOLD`, `LEI`,
    `FUNDREF`), do NOT treat it as a ROR. GRID IDs in particular map to ROR
    one-to-one for legacy records and are tempting to convert — do not convert them
@@ -275,7 +345,9 @@ named in `affiliation` — no affiliation, no ROR, no lookup attempted.
    `matching_type` (`PHRASE`, `COMMON TERMS`, `FUZZY`, `HEURISTICS`, `ACRONYM`,
    `EXACT`), sorted by descending score.
 3. Accept the match **only** if ROR set `chosen: true`. At most one result carries
-   that flag and it is always listed first. `ror_source: "ROR affiliation-match (chosen)"`.
+   that flag and it is always listed first. `ror_origin: "enricher"`,
+   `ror_source: "ROR affiliation-match (chosen)"`, `ror_evidence:` the returned
+   ROR URL.
 4. If no match is `chosen`, do NOT take the top-scoring match. Leave
    `affiliation_ror` null and list the top candidates with their scores and
    matching types in `notes` for the reviewer.
@@ -297,7 +369,8 @@ named in `affiliation` — no affiliation, no ROR, no lookup attempted.
 2. Accept a result only if it is unambiguous: exactly one plausible organization,
    whose name/alias/label matches the affiliation and whose country matches what
    you know from the ORCID employment, the Crossref affiliation string, or the
-   data provider.
+   data provider. Emit `ror_origin: "enricher"`,
+   `ror_source: "ROR query (corroborated)"`, `ror_evidence:` the ROR URL.
 3. Multiple plausible organizations → leave null, list them in `notes`.
 
 **ROR-specific traps:**

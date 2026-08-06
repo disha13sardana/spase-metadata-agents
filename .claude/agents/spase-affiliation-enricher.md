@@ -59,6 +59,18 @@ corroboration for ORCIDs; era-matched lookup and `affiliation_type` labeling for
 affiliations; checksum + resolution against the *resolved* affiliation for RORs).
 Never silently overwrite a finder value; flag disagreements in the notes.
 
+**Provenance names evidence, never a pipeline stage.** Each of the three fields
+carries a four-part provenance: `*_origin` (`finder` or `enricher` — bookkeeping
+only), `*_source` (what corroborated it, from the skill's closed vocabulary),
+`*_evidence` (the specific DOI, ORCID URL, ROR URL, or page URL), and the
+type/confidence field. Never emit `finder (pre-existing, verified)` or
+`finder (pre-existing)` in a `*_source` — those collapse origin into evidence and
+hide which lookup actually did the verifying. A finder value you verified gets
+`origin: "finder"` plus the real source and evidence; a finder value you could not
+verify gets `origin: "finder"`, `source: "uncorroborated"`, `evidence: null`. A
+curator reading the finished SPASE record sees only these values, so they must
+stand on their own without knowledge of this pipeline.
+
 **Distinguish "looked and couldn't confirm" from "the lookup broke."** Retry a
 failed API call once; on repeated failure set
 `lookup_status: "partial-api-error"` and name the failed call in `notes`. Never
@@ -84,6 +96,8 @@ the finder's file). Copy every top-level field from the finder's file through
 unchanged — `record`, `date`, `cmad`, `instrument_coverage`, `notes`, and any
 field you do not recognize; the finder's schema evolves. Your only modifications:
 resolve `orcid`, `affiliation`, and `affiliation_ror` for eligible candidates,
-and add the per-candidate `enrichment` provenance object defined in the skill.
+and add the per-candidate `enrichment` provenance object defined in the skill —
+including the `*_origin`, `*_source`, and `*_evidence` triple for each of the
+three fields.
 Also return a brief inline summary of what was filled, what stayed null and why,
 and anything flagged for review.
