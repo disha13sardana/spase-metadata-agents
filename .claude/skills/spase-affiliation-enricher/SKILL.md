@@ -325,8 +325,9 @@ With a confirmed ORCID:
    current/most-recent affiliation. `affiliation_source: "ORCID
    employment"`, `affiliation_evidence:` the ORCID URL,
    `affiliation_type: "current"`.
-   - **One undated employment** → use it. It is the only candidate, and
-     `current` is the honest label since nothing dates it.
+   - **One undated employment** → it is usable, but it does not automatically
+     win. Apply the evidence-strength rule below before recording it.
+     `affiliation_type: "current"`.
    - **Several employments, all undated** → there is no "most recent" to pick.
      ORCID does not order employments meaningfully, so choosing among them is a
      guess dressed as a lookup. Do NOT pick one. Fall through to the Crossref
@@ -348,6 +349,37 @@ when identity was confirmed some other way):
 5. If nothing yields a value, leave `affiliation` null with `lookup_status`
    reflecting whether lookups completed.
 
+**Evidence strength — dated beats undated, and this outranks source order.**
+The route order above (ORCID employment before Crossref) assumes the employment
+is dated. It is not a claim that ORCID always wins. When the only ORCID
+employment is undated, compare it against the Crossref deposit on the merits:
+
+| Evidence | Rank |
+|---|---|
+| Dated ORCID employment overlapping the span (`era-matched`) | 1 |
+| Crossref deposit whose publication date falls inside the span (`as-deposited`) | 2 |
+| Undated ORCID employment (`current`) | 3 |
+
+An undated employment carries no date at all; an as-deposited affiliation is at
+least pinned to a publication date you can check against the operating span. So
+a bare undated `University of Colorado Boulder` does **not** displace a deposited
+`Laboratory for Atmospheric and Space Physics, University of Colorado Boulder`
+from a paper published inside the span — the deposit is both dated and more
+specific. Record the deposit, and list the undated employment in `notes`.
+
+Prefer the undated employment over a Crossref deposit only when the deposit falls
+outside the operating span, or when the employment names an institution the
+deposit does not.
+
+**This ranking applies identically whether or not the finder pre-filled the
+field.** Step 1 governs *provenance* — whether `affiliation_origin` reads
+`finder` or `enricher`, and whether you must flag a disagreement — not which
+value wins. Two candidates with the same evidence must end with the same
+affiliation; if one had a finder value and the other did not, that changes only
+the `origin` label. A file where the finder's incidental coverage decides how
+specific an affiliation is has smuggled bookkeeping back into the data, which is
+exactly what the `*_origin` / `*_source` split exists to prevent.
+
 **Date-overlap rules (era-matching):**
 - A missing employment end date means the position is ongoing (extends to today).
 - ORCID dates are often year-only. Treat a year as spanning Jan 1–Dec 31; any
@@ -368,6 +400,16 @@ when identity was confirmed some other way):
 
 Run this only when `affiliation` is non-null. The ROR identifies the institution
 named in `affiliation` — no affiliation, no ROR, no lookup attempted.
+
+**Never let ROR resolvability influence which affiliation you chose.** If two
+candidate affiliation strings are in play and one happens to resolve to a ROR
+while the other does not, that is not a reason to prefer it. Step 3 is settled on
+its own evidence before Step 4 runs. A string that resolves cleanly is not better
+evidence about where someone worked — it is better formatted. Choosing on that
+basis lets a formatting property masquerade as a factual one, and it is invisible
+in the output because both fields end up populated and plausible. If you notice
+that the affiliation you correctly selected leaves the ROR null, that is the right
+outcome: record the null and note it.
 
 **Route A — ORCID's own disambiguated organization (preferred; pre-corroborated):**
 1. Re-read the employment entry you selected in Step 3. ORCID stores a
@@ -403,9 +445,19 @@ named in `affiliation` — no affiliation, no ROR, no lookup attempted.
    that flag and it is always listed first. `ror_origin: "enricher"`,
    `ror_source: "ROR affiliation-match (chosen)"`, `ror_evidence:` the returned
    ROR URL.
-4. If no match is `chosen`, do NOT take the top-scoring match. Leave
-   `affiliation_ror` null and list the top candidates with their scores and
-   matching types in `notes` for the reviewer.
+4. If no match is `chosen`, do NOT take the top-scoring match. Before leaving the
+   field null, you MAY retry the match once on a **normalized form of the same
+   string**, and only in this narrow case: the affiliation names a parent agency
+   and one of its sub-units together (`National Oceanic and Atmospheric
+   Administration - Space Weather Prediction Center`), and the agency prefix is
+   pulling the parent and its siblings to the top. Strip the redundant agency
+   prefix and re-match (`NOAA Space Weather Prediction Center`). Accept the result
+   only if ROR sets `chosen: true` AND the returned organization is the sub-unit
+   the original string named. Record in `notes` that the match came from a
+   normalized string, quoting both forms. This is not rewriting the affiliation —
+   `affiliation` keeps the deposited string; only the query is normalized.
+   If the retry still yields nothing chosen, leave `affiliation_ror` null and list
+   the top candidates with their scores and matching types in `notes`.
 5. **Never select by `score`.** ROR explicitly advises against it, and `chosen`
    already encodes the discipline this skill wants: ROR sets it true only when a
    single result is a highly probable match, and sets it false on *every* result
