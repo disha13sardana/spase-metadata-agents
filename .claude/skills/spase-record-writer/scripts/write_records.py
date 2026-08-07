@@ -181,6 +181,12 @@ def build_note(candidate, indent="          "):
         return None
     if len(entries) == 1:
         return linkify_dois(entries[0]["source"].strip())
+    # Same precedence as the Role elements, so the Note reads in the order the
+    # roles are listed above it rather than in the enricher's emission order.
+    entries = sorted(
+        entries,
+        key=lambda e: (ROLE_RANK.get((e.get("role") or "").strip(), UNRANKED),
+                       (e.get("role") or "").strip()))
     return ("\n" + indent).join(
         "%s: %s" % ((e.get("role") or "Role").strip(),
                     linkify_dois(e["source"].strip()))

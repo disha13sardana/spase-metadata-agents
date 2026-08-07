@@ -273,7 +273,8 @@ without going back to the JSON.
 
 `Note` has cardinality 0..1 — **one Note per Contact, no more**. When a candidate
 has several `role_evidence` entries, fold them into a single Note, each labelled
-with the role it supports and **on its own line** — a run-on string carrying two
+with the role it supports, **ordered by the same role precedence as the `Role`
+elements above them**, and **on its own line** — a run-on string carrying two
 or three justifications is unreadable in a diff or a rendered record. Continuation
 lines are indented to sit under the opening tag; single-entry Notes stay on one
 line:
@@ -283,8 +284,8 @@ line:
   <PersonID>spase://SMWG/Person/Howard.J.Singer</PersonID>
   <Role>PrincipalInvestigator</Role>
   <Role>Author</Role>
-  <Note>Author: MAG PrincipalInvestigator in the GOES-16 MAG SPASE record, corroborated by the record Acknowledgement and MAG description-paper co-authorship
-          PrincipalInvestigator: GOES-16 MAG SPASE Instrument record Contacts (https://spase-metadata.org/SMWG/Instrument/GOES/16/MAG.html)</Note>
+  <Note>PrincipalInvestigator: GOES-16 MAG SPASE Instrument record Contacts (https://spase-metadata.org/SMWG/Instrument/GOES/16/MAG.html)
+          Author: MAG PrincipalInvestigator in the GOES-16 MAG SPASE record, corroborated by the record Acknowledgement and MAG description-paper co-authorship</Note>
 </Contact>
 ```
 
