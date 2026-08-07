@@ -31,6 +31,25 @@ SCHEMA_LOC = ("https://www.spase-group.org/data/schema "
 TARGET_VERSION = "2.7.1"
 UNKNOWN_ORG = "Unknown"
 
+# Curator-defined precedence. Contact blocks are ordered by each person's
+# highest-ranking role, and the Role elements inside a block follow the same
+# order. Roles outside this list sort last and are logged.
+ROLE_PRECEDENCE = [
+    "MissionPrincipalInvestigator",
+    "PrincipalInvestigator",
+    "ProgramScientist",
+    "ProjectScientist",
+    "CoPI",
+    "DeputyPI",
+    "FormerPI",
+    "InstrumentLead",
+    "InstrumentScientist",
+    "CoInvestigator",
+    "Author",
+]
+ROLE_RANK = {r: i for i, r in enumerate(ROLE_PRECEDENCE)}
+UNRANKED = len(ROLE_PRECEDENCE)
+
 # SPASE 2.7.1 Person child order -- insertion points are derived from this.
 PERSON_ORDER = [
     "ResourceID", "NamingAuthority", "ResourceType", "ReleaseDate",
@@ -81,6 +100,34 @@ def mint_id(name):
     return ".".join(toks)
 
 
+DOI_IN_TEXT = re.compile(r"(?<![\w/.])(10\.\d{4,9}/[^\s,;)\]<]+)")
+
+
+def doi_url(value):
+    """Bare DOI -> resolver URL. Anything already a URL passes through."""
+    v = (value or "").strip()
+    if not v:
+        return v
+    if v.lower().startswith(("http://", "https://")):
+        return v
+    if v.startswith("10."):
+        return "https://doi.org/" + v
+    return v
+
+
+def linkify_dois(text):
+    """Prefix bare DOIs inside free text so a reviewer can click them.
+
+    The lookbehind keeps DOIs that are already part of a URL untouched. Only a
+    prefix is added -- the identifier itself is never altered, so the note still
+    reproduces exactly what the input said.
+    """
+    if not text:
+        return text
+    return DOI_IN_TEXT.sub(
+        lambda m: "https://doi.org/" + m.group(1).rstrip("."), text)
+
+
 def build_person_note(candidate):
     """Person/Note records where the affiliation came from.
 
@@ -92,7 +139,7 @@ def build_person_note(candidate):
     """
     e = candidate.get("enrichment") or {}
     src = (e.get("affiliation_source") or "").strip()
-    ev = (e.get("affiliation_evidence") or "").strip()
+    ev = doi_url(e.get("affiliation_evidence") or "")
     typ = (e.get("affiliation_type") or "").strip()
 
     # Legacy outputs conflated origin and evidence into the source string. Strip
@@ -113,26 +160,30 @@ def build_person_note(candidate):
 OUR_NOTE_PREFIX = "Affiliation source:"
 
 
-def build_note(candidate):
+def build_note(candidate, indent="          "):
     """Contact/Note holds the role evidence.
 
     Note has cardinality 0..1, so several role_evidence entries are folded into
-    one string, each labelled with the role it supports. Accepts the older
-    plain-string form of role_evidence too.
+    one value -- each labelled with the role it supports and placed on its own
+    line, because a single run-on string is unreadable once it carries two or
+    three justifications.
+
+    Accepts the older plain-string form of role_evidence too.
     """
     ev = candidate.get("role_evidence")
     if not ev:
         return None
     if isinstance(ev, str):
-        return ev.strip() or None
+        return linkify_dois(ev.strip()) or None
     entries = [e for e in ev
                if isinstance(e, dict) and (e.get("source") or "").strip()]
     if not entries:
         return None
     if len(entries) == 1:
-        return entries[0]["source"].strip()
-    return " | ".join(
-        "%s: %s" % ((e.get("role") or "Role").strip(), e["source"].strip())
+        return linkify_dois(entries[0]["source"].strip())
+    return ("\n" + indent).join(
+        "%s: %s" % ((e.get("role") or "Role").strip(),
+                    linkify_dois(e["source"].strip()))
         for e in entries)
 
 
@@ -383,6 +434,14 @@ def main():
                 log.append("ORCID CLASH %s: repo=%s input=%s (kept repo)"
                            % (pid, existing_orcid, orcid))
 
+            # PersonName is optional in the schema but present on all but a
+            # handful of records. Backfill when missing; never overwrite, since
+            # registry names carry honorifics and forms the input does not.
+            if not (fields.get("PersonName") or [""])[0].strip():
+                txt = set_field(txt, "PersonName", name)
+                log.append("NAME ADDED %s: PersonName was missing, set to '%s'"
+                           % (pid, name))
+
             # Note records affiliation provenance. Written whenever the input
             # supplied a real affiliation -- the provenance holds even when the
             # value matched what was already there. Not written when the input
@@ -417,9 +476,16 @@ def main():
                                    build_person_note(c)))
             creates.append(pid)
 
-        roles = c.get("qualifying_roles") or ["Author"]
+        roles = list(c.get("qualifying_roles") or ["Author"])
         if "Author" not in roles:
-            roles = ["Author"] + list(roles)
+            roles = ["Author"] + roles
+        for r in roles:
+            if r not in ROLE_RANK:
+                log.append("ROLE UNRANKED %s: '%s' is not in the precedence "
+                           "list; sorted last" % (pid, r))
+        roles.sort(key=lambda r: (ROLE_RANK.get(r, UNRANKED), r))
+        rank = min(ROLE_RANK.get(r, UNRANKED) for r in roles)
+
         block = ["      <Contact>",
                  "        <PersonID>spase://SMWG/Person/%s</PersonID>" % pid]
         block += ["        <Role>%s</Role>" % r for r in roles]
@@ -430,8 +496,14 @@ def main():
             log.append("NO EVIDENCE %s: no role_evidence, Contact written "
                        "without a Note" % pid)
         block.append("      </Contact>")
-        contacts.append("\n".join(block))
+        contacts.append((rank, len(contacts), "\n".join(block)))
         written_ids.add(pid)
+
+    # Order Contact blocks by each person's highest-ranking role. The second
+    # key is the original position, so people sharing a rank keep the order the
+    # enricher produced (evidence strength / author position).
+    contacts.sort(key=lambda t: (t[0], t[1]))
+    contacts = [b for _, _, b in contacts]
 
     if blockers:
         print("ABORT: %d unresolved possible duplicate(s). Nothing written.\n"

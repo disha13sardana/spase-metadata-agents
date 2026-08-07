@@ -176,6 +176,15 @@ Note, RORIdentifier, Extension
 
 Note `RORIdentifier` sits *after* `Note`, not beside `ORCIdentifier`.
 
+**Backfill `PersonName` when it is missing.** It is optional in the schema but
+present on all but a handful of registry records, so a record without one stands
+out. Set it from the candidate's name and log the addition.
+
+Never overwrite an existing `PersonName`. Registry names carry honorifics and
+spellings the input does not — `Bronislaw K Dichter` against an input of
+`B. K. Dichter`, `Mr. William E. Shenk` against `William Shenk`. Replacing those
+would trade curated data for generated data and lose information.
+
 **Existing record** — edit in place. Preserve the file's existing indentation,
 field order and untouched content. Do not reformat, do not reorder, do not
 rewrite the file canonically: a whole-file rewrite turns three semantic changes
@@ -219,13 +228,33 @@ from the input:
 ```xml
 <Contact>
   <PersonID>spase://SMWG/Person/Howard.J.Singer</PersonID>
-  <Role>Author</Role>
   <Role>PrincipalInvestigator</Role>
+  <Role>Author</Role>
 </Contact>
 ```
 
 `Role` has cardinality `(+)`, so multiple roles on one Contact are valid and
 preferred over duplicate Contact blocks for the same person.
+
+### Role precedence
+
+Contact blocks are ordered by each person's **highest-ranking role**, and the
+`Role` elements inside a block follow the same order:
+
+```
+MissionPrincipalInvestigator, PrincipalInvestigator, ProgramScientist,
+ProjectScientist, CoPI, DeputyPI, FormerPI, InstrumentLead,
+InstrumentScientist, CoInvestigator, Author
+```
+
+`Author` ranks last, so people carrying only that role follow everyone with a
+mission or instrument role. This puts the record's most senior contributors at
+the top, where a reader looking for who ran the mission will find them.
+
+People sharing a rank keep the order the enricher produced — evidence strength
+and author position — so the sort is stable rather than reshuffling the list.
+A role outside the precedence list sorts last and is logged rather than dropped;
+that is a signal the list needs extending, not a reason to discard the role.
 
 ### The Note carries the role evidence
 
@@ -244,20 +273,33 @@ without going back to the JSON.
 
 `Note` has cardinality 0..1 — **one Note per Contact, no more**. When a candidate
 has several `role_evidence` entries, fold them into a single Note, each labelled
-with the role it supports:
+with the role it supports and **on its own line** — a run-on string carrying two
+or three justifications is unreadable in a diff or a rendered record. Continuation
+lines are indented to sit under the opening tag; single-entry Notes stay on one
+line:
 
 ```xml
 <Contact>
   <PersonID>spase://SMWG/Person/Howard.J.Singer</PersonID>
-  <Role>Author</Role>
   <Role>PrincipalInvestigator</Role>
-  <Note>Author: MAG PrincipalInvestigator in the GOES-16 MAG SPASE record, corroborated by the record Acknowledgement and MAG description-paper co-authorship | PrincipalInvestigator: GOES-16 MAG SPASE Instrument record Contacts (https://spase-metadata.org/SMWG/Instrument/GOES/16/MAG.html)</Note>
+  <Role>Author</Role>
+  <Note>Author: MAG PrincipalInvestigator in the GOES-16 MAG SPASE record, corroborated by the record Acknowledgement and MAG description-paper co-authorship
+          PrincipalInvestigator: GOES-16 MAG SPASE Instrument record Contacts (https://spase-metadata.org/SMWG/Instrument/GOES/16/MAG.html)</Note>
 </Contact>
 ```
 
 Note text is transcribed from the input and XML-escaped, never composed. A
 candidate with no `role_evidence` gets a Contact without a Note, and the omission
 is logged rather than papered over with invented justification.
+
+**Bare DOIs are turned into resolver URLs** so a reviewer can click straight
+through to the evidence: `10.1007/s11214-019-0600-3` becomes
+`https://doi.org/10.1007/s11214-019-0600-3`. This is the one permitted edit to
+transcribed text, and only because it is purely additive — a prefix goes on, the
+identifier itself is never altered, so the note still reproduces exactly what the
+input said. Strings that are already URLs are left alone, and a DOI already
+inside a URL is never prefixed twice. The same applies to `affiliation_evidence`
+in the Person Note.
 
 `Note` is the last child of `Contact`: `PersonID, Role(+), StartDate, StopDate,
 Note`.
