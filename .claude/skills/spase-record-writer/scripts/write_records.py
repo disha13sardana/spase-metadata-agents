@@ -610,10 +610,23 @@ def main():
     m = re.search(r"^([ \t]*)</RevisionHistory>", txt, re.M)
     if m:
         ind = m.group(1)
-        event = ("%s  <RevisionEvent>\n%s    <ReleaseDate>%s</ReleaseDate>\n"
-                 "%s    <Note>%s</Note>\n%s  </RevisionEvent>\n"
-                 % (ind, ind, stamp, ind, esc(note), ind))
-        txt = txt[:m.start()] + event + txt[m.start():]
+        # A re-run must not stack a second event carrying the same note. When the
+        # last event is already ours, restamp it in place; the pipeline normally
+        # resets the branch first, but write_records.py is also run directly.
+        last = None
+        for last in re.finditer(
+                r"<RevisionEvent>\s*<ReleaseDate>([^<]*)</ReleaseDate>\s*"
+                r"<Note>(.*?)</Note>\s*</RevisionEvent>", txt, re.S):
+            pass
+        if last and last.group(2).strip() == esc(note).strip():
+            txt = (txt[:last.start(1)] + stamp + txt[last.end(1):])
+            log.append("REVISION   restamped the existing RevisionEvent "
+                       "(same note) rather than adding a duplicate")
+        else:
+            event = ("%s  <RevisionEvent>\n%s    <ReleaseDate>%s</ReleaseDate>\n"
+                     "%s    <Note>%s</Note>\n%s  </RevisionEvent>\n"
+                     % (ind, ind, stamp, ind, esc(note), ind))
+            txt = txt[:m.start()] + event + txt[m.start():]
     else:
         log.append("WARN       no RevisionHistory in target; no RevisionEvent added")
 

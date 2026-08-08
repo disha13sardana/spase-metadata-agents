@@ -71,6 +71,32 @@ git checkout -b author-enrichment-<record-name>
 Never write to `master` or `main`. If the working tree is dirty, stop and ask —
 you cannot tell someone else's work in progress from a previous failed run.
 
+**Confirm you are in the right clone.** More than one clone of the same
+repository can exist on one machine, on branches of the same name, both clean.
+Nothing in a clone's git state identifies which one is live, so use the `--repo`
+path you were given rather than the first clone you find by name, and if a second
+one turns up, ask.
+
+**Re-runs reset, they do not stack.** If the branch already exists, reset it to
+the default branch before writing, and take the validation baseline *after* the
+reset. A re-run must neither build on the previous run's output nor inherit it as
+its baseline. Two things go wrong otherwise:
+
+- the writer reads its own earlier `OrganizationName` as a curated registry value
+  and reports `ORG KEPT` on it, so a bad write becomes permanent and invisible;
+- errors the earlier run introduced are counted as pre-existing, and the
+  regression check in Step 10 stops being able to fail.
+
+**Reset only what this skill wrote.** If any commit on the branch is not one of
+this skill's own, stop and ask. This is the same rule as the dirty working tree
+above, applied to commits: you cannot tell a curator's hand-correction from your
+own earlier output, and a reset would destroy it silently.
+
+Resetting is what makes the rest of the procedure safe to repeat, but it is not a
+substitute for checking the output. It stops the writer misreading its own work
+as curated data; it does not catch a value that was never in the input to begin
+with. That is Step 10's audit.
+
 ### Step 2 — Duplicate check, before any write
 
 For every included candidate without a `person_record.id`, search the existing
@@ -365,17 +391,31 @@ failure this catches, and they mean a Person record was missed.
 working tree, delete the branch if this run created it, and report which errors
 appeared. Never leave a half-applied change behind.
 
+**Audit every written value against the input before committing.** Diff the
+Person records this run touched and check each `OrganizationName`,
+`RORIdentifier` and `ORCIdentifier` you added or replaced against the candidate
+it came from. A written value with no matching value in the input is a bug, not a
+judgement call — the input is the only source. Being right about the real world
+is not the standard; matching the input is. A null is a researched finding, not a
+blank to fill.
+
 Then stage everything together:
 
 ```bash
 git add <target record> Person/
 git commit -m "GOES 16: add mission Contacts with Author and qualifying roles"
-git push -u origin author-enrichment-goes-16
+git push --force-with-lease -u origin author-enrichment-goes-16
 ```
 
 Person records and the target record **must** be in the same commit. A commit
 where the Contact exists and the Person file does not is a broken referential
 state that fails CI.
+
+The push is forced because Step 1 resets an existing branch, so a re-run diverges
+from what was pushed before. Use `--force-with-lease`, never bare `--force`: it
+refuses when the remote moved for a reason you have not seen. If it does refuse,
+stop and ask rather than escalating — someone else has touched the branch, which
+is exactly the case Step 1's reset guard exists to protect.
 
 Push the branch to the curator's own fork. Never push to `master` or `main`, and
 never open or merge a pull request — the branch is where the human's review

@@ -41,6 +41,10 @@ import sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 WRITER = os.path.join(HERE, "write_records.py")
 
+# Present in the body of every commit this pipeline makes. A branch carrying a
+# commit without it has been touched by someone else and must not be reset.
+COMMIT_MARKER = "Applied enriched author candidates:"
+
 
 def run(cmd, cwd=None, check=True, quiet=False):
     p = subprocess.run(cmd, cwd=cwd, capture_output=True, text=True)
@@ -76,6 +80,34 @@ def parse_errors(text):
     return out
 
 
+def default_branch(repo, override=None):
+    """The branch a re-run resets back to."""
+    if override:
+        return override
+    p = git(["symbolic-ref", "--short", "refs/remotes/origin/HEAD"], repo,
+            check=False)
+    if p.returncode == 0 and p.stdout.strip():
+        return p.stdout.strip().split("/", 1)[-1]
+    for b in ("master", "main"):
+        if git(["rev-parse", "--verify", b], repo, check=False).returncode == 0:
+            return b
+    return None
+
+
+def foreign_commits(repo, base, branch):
+    """Commits on branch, not on base, that this pipeline did not write."""
+    p = git(["log", "--format=%H%x00%s%x00%b%x01", "%s..%s" % (base, branch)],
+            repo, check=False)
+    out = []
+    for rec in p.stdout.split("\x01"):
+        if not rec.strip():
+            continue
+        sha, subject, body = (rec.strip().split("\x00") + ["", ""])[:3]
+        if COMMIT_MARKER not in body:
+            out.append((sha[:8], subject))
+    return out
+
+
 def check(checker, repo, targets):
     p = subprocess.run([sys.executable, checker, "--quiet"] + targets,
                        cwd=repo, capture_output=True, text=True)
@@ -89,6 +121,8 @@ def main():
                     help="enriched JSON; repeat for batch runs")
     ap.add_argument("--initials", default="")
     ap.add_argument("--branch", default=None)
+    ap.add_argument("--base", default=None,
+                    help="branch a re-run resets to (default: origin's HEAD)")
     ap.add_argument("--checker", default=os.path.join(HERE, "spase-localcheck.py"))
     ap.add_argument("--no-push", action="store_true")
     ap.add_argument("--no-commit", action="store_true")
@@ -126,9 +160,45 @@ def main():
     start_branch = git(["rev-parse", "--abbrev-ref", "HEAD"], repo).stdout.strip()
 
     # ---- 2. branch --------------------------------------------------------
+    # A re-run resets the branch rather than stacking on it: otherwise the writer
+    # reads its own earlier output as curated registry data, and the baseline
+    # below inherits any error the earlier run introduced.
+    base = default_branch(repo, args.base)
+    if base is None:
+        print("ABORT: cannot determine the default branch; pass --base.")
+        return 2
+
     exists = git(["rev-parse", "--verify", branch], repo, check=False).returncode == 0
+    orig_tip = None
+    if exists:
+        foreign = foreign_commits(repo, base, branch)
+        if foreign:
+            print("ABORT: %s carries %d commit(s) this pipeline did not write:\n"
+                  % (branch, len(foreign)))
+            for sha, subject in foreign:
+                print("  %s  %s" % (sha, subject))
+            print("\nA reset would discard them, and a hand-correction by a "
+                  "curator\nis indistinguishable from an earlier run's output. "
+                  "Decide what\nshould happen to those commits, then re-run.")
+            return 1
+        orig_tip = git(["rev-parse", branch], repo).stdout.strip()
+
     git(["checkout", branch] if exists else ["checkout", "-b", branch], repo)
-    print("branch   : %s%s" % (branch, " (existing)" if exists else " (new)"))
+    if exists:
+        git(["reset", "--hard", base], repo)
+        print("branch   : %s (existing, reset to %s)" % (branch, base))
+    else:
+        print("branch   : %s (new)" % branch)
+
+    def rollback():
+        """Leave the clone exactly as this run found it."""
+        git(["checkout", "--", "."], repo)
+        git(["clean", "-fd", "Person"], repo)
+        if orig_tip:
+            git(["reset", "--hard", orig_tip], repo)
+        elif not exists:
+            git(["checkout", start_branch], repo)
+            git(["branch", "-D", branch], repo)
 
     # ---- 3. baseline ------------------------------------------------------
     targets = []
@@ -154,11 +224,7 @@ def main():
         p = run(cmd)
         if p.returncode != 0:
             print("\nABORT: writer stopped on %s. Rolling back." % s)
-            git(["checkout", "--", "."], repo)
-            git(["clean", "-fd", "Person"], repo)
-            if not exists:
-                git(["checkout", start_branch], repo)
-                git(["branch", "-D", branch], repo)
+            rollback()
             print("\nResolve the flagged names in:\n  %s\nthen re-run this command."
                   % decisions)
             return 1
@@ -177,11 +243,7 @@ def main():
         print("\nABORT: this run introduced new errors. Rolling back.\n")
         for e in sorted(introduced):
             print("  " + e)
-        git(["checkout", "--", "."], repo)
-        git(["clean", "-fd", "Person"], repo)
-        if not exists:
-            git(["checkout", start_branch], repo)
-            git(["branch", "-D", branch], repo)
+        rollback()
         return 1
 
     print("\n" + git(["diff", "--stat"], repo).stdout.rstrip())
@@ -207,17 +269,23 @@ def main():
     print("committed on %s" % branch)
 
     if args.no_push:
-        print("--no-push: stopping. Push with:\n  git push -u %s %s"
-              % (args.remote, branch))
+        print("--no-push: stopping. Push with:\n  git push --force-with-lease "
+              "-u %s %s" % (args.remote, branch))
         return 0
 
     # ---- 7. push ----------------------------------------------------------
-    if branch in ("master", "main"):
+    if branch in ("master", "main", base):
         print("refusing to push to %s" % branch)
         return 1
-    p = git(["push", "-u", args.remote, branch], repo, check=False, quiet=False)
+    # Forced because step 2 resets an existing branch, so a re-run diverges from
+    # what was pushed before. --force-with-lease, never bare --force: it refuses
+    # when the remote moved for a reason this run has not seen.
+    p = git(["push", "--force-with-lease", "-u", args.remote, branch],
+            repo, check=False, quiet=False)
     if p.returncode != 0:
-        print("\npush failed; the commit is safe on %s locally." % branch)
+        print("\npush rejected; the commit is safe on %s locally." % branch)
+        print("If --force-with-lease refused, someone else has touched the "
+              "branch.\nLook at what they did before overriding it.")
         return 1
     print("pushed %s to %s" % (branch, args.remote))
     print("Open a PR from that branch when the diff and divergence log look right.")
