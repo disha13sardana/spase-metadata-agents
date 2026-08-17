@@ -1,12 +1,15 @@
 {
   "record": "spase://SMWG/Observatory/SOHO",
-  "date": "2026-07-07",
-  "operating_span": { "start": "1995-12-02", "stop": null },
+  "date": "2026-08-16",
+  "operating_span": {
+    "start": "1995-12-02",
+    "stop": null
+  },
   "cmad": {
     "found": false,
     "expected": true,
     "url": null,
-    "notes": "SOHO is still operational (launched 1995-12-02, no StopDate) and participates in NASA's Heliophysics senior review of operating missions (referenced in the 2020 Senior Review, which assesses PDMP/CMAD status), so a CMAD is nominally expected. No consolidated SOHO mission-level CMAD was located via general web search, the SOHO/NASA-GSFC pages, or instrument-team sites. SOHO is a joint ESA/NASA mission with ESA-led operations, and calibration is documented per-instrument (e.g. LASCO C2/C3 photometric calibration papers) rather than in a single mission CMAD, which likely explains the absence. Recorded as an expected-but-not-located gap; proceeded with the remaining sources."
+    "notes": "SOHO is an operational, NASA-co-funded mission (NASA is responsible for mission operations at GSFC and the mission is still returning data as of 2026-08-16), so a CMAD is expected. None located. Searched: (a) the SPASE NASA/Document registry (only ICON and MMS have CMAD document records; https://spase-metadata.org/NASA/Document/ returns 404 for a SOHO subdirectory); (b) the SOHO project site data/archive and publications pages (https://soho.nascom.nasa.gov/data/archive/ and https://soho.nascom.nasa.gov/publications/ - the latter posts 2001/2003/2005 Senior Review proposals but no CMAD); (c) general web search and a Zenodo API search for 'CMAD SOHO' (only unrelated SOHO/EPHIN and ERNE calibration datasets). Absence is a notable gap: current-team evidence for this run therefore came from the SOHO mission People page's 'SOHO PIs' table instead of a CMAD front page."
   },
   "instrument_coverage": {
     "spase_instruments": [
@@ -21,15 +24,33 @@
       "spase://SMWG/Instrument/SOHO/SUMER",
       "spase://SMWG/Instrument/SOHO/SWAN",
       "spase://SMWG/Instrument/SOHO/UVCS",
-      "spase://SMWG/Instrument/SOHO/VIRGO"
+      "spase://SMWG/Instrument/SOHO/VIRGO",
+      "spase://SMWG/Instrument/SOHO/Ephemeris"
     ],
     "external_roster": [
-      "CDS", "CELIAS", "COSTEP", "EIT", "ERNE", "GOLF",
-      "LASCO", "MDI", "SUMER", "SWAN", "UVCS", "VIRGO"
+      "CDS",
+      "CELIAS",
+      "COSTEP",
+      "EIT",
+      "ERNE",
+      "GOLF",
+      "LASCO",
+      "MDI",
+      "SUMER",
+      "SWAN",
+      "UVCS",
+      "VIRGO"
+    ],
+    "roster_sources": [
+      "https://soho.nascom.nasa.gov/about/instruments.html",
+      "https://soho.nascom.nasa.gov/about/about.html",
+      "https://doi.org/10.1007/BF00733425",
+      "record Description"
     ],
     "missing_from_spase": [],
-    "notes": "Observatory records carry no downward instrument links, so instruments were found by reverse-lookup of the SPASE registry path https://spase-metadata.org/SMWG/Instrument/SOHO/ ; each hit's ObservatoryID was confirmed to equal spase://SMWG/Observatory/SOHO. The registry also contains a SOHO/Ephemeris record, which is trajectory/orbit data, not a science instrument, and is excluded from the roster. External ground truth: the Observatory Description states 'Twelve instruments comprised the payload,' matching the canonical SOHO payload (CDS, CELIAS, COSTEP, EIT, ERNE, GOLF, LASCO, MDI, SUMER, SWAN, UVCS, VIRGO). All 12 have SPASE Instrument records, so coverage is complete and no instrument team is invisible to registry-based discovery. The mission instruments landing page (soho.nascom.nasa.gov) could not be fetched (tool permission denied), but the sibling instrument records supplied each instrument's lead directly."
+    "notes": "Reverse lookup of https://spase-metadata.org/SMWG/Instrument/SOHO/ returned 13 records; every one was verified to carry ObservatoryID = spase://SMWG/Observatory/SOHO. Twelve are payload instruments and match the external roster exactly; the thirteenth (SOHO/Ephemeris, 'SOHO Positions', InstrumentType=Platform) is a spacecraft-ephemeris pseudo-instrument with no PI and no description paper, so it contributes no instrument leads. The external roster was taken from the SOHO mission Instruments page and cross-checked against the About page ('The twelve instruments on board SOHO...'), the Observatory record's own Description ('Twelve instruments comprised the payload'), and the mission overview paper. All three agree: no instrument is missing from SPASE. Each of the 12 instruments has a dedicated description paper in the Solar Physics 162 (1995) SOHO special issue, all of which were retrieved from Crossref and processed."
   },
+  "pending_instrument_runs": [],
   "candidates": [
     {
       "name": "Vicente Domingo",
@@ -37,12 +58,33 @@
       "confidence": "Strong",
       "exclusion_reason": null,
       "evidence": [
-        { "source": "First author of the SOHO mission overview paper, 'The SOHO mission: An overview', Solar Physics 162 (1995) — 3-author paper, position 1", "url": "https://doi.org/10.1007/BF00733425", "strength": "Strong" }
+        {
+          "source": "Author 1 of the SOHO mission overview paper (Domingo, Fleck & Poland 1995, 'The SOHO mission: An overview', Solar Phys. 162, 1); 3-author list, no alphabetization detected (longest sorted suffix = 3, below the 5-name threshold), so position carries contribution weight; 1506 citations (OpenAlex)",
+          "url": "https://doi.org/10.1007/BF00733425",
+          "strength": "Strong"
+        },
+        {
+          "source": "Co-author of 'SOHO - An Observatory to Study the Solar Interior and the Solar Atmosphere' (Poland & Domingo 1990), the mission-level description paper cited inside the GOLF and VIRGO Instrument record Descriptions",
+          "url": "https://spase-metadata.org/SMWG/Instrument/SOHO/GOLF.html",
+          "strength": "Medium"
+        }
       ],
-      "person_record": { "id": "spase://SMWG/Person/Vicente.Domingo", "url": "https://spase-metadata.org/SMWG/Person/Vicente.Domingo.html" },
+      "person_record": {
+        "id": "spase://SMWG/Person/Vicente.Domingo",
+        "url": "https://spase-metadata.org/SMWG/Person/Vicente.Domingo.html"
+      },
       "orcid": null,
-      "affiliation": null,
-      "activity_dates": null
+      "affiliation": "Universidad de Barcelona (per SMWG Person record)",
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Author 1 of the SOHO mission overview paper (10.1007/BF00733425)"
+        }
+      ]
     },
     {
       "name": "Bernhard Fleck",
@@ -50,13 +92,48 @@
       "confidence": "Strong",
       "exclusion_reason": null,
       "evidence": [
-        { "source": "Second author of the SOHO mission overview paper, 'The SOHO mission: An overview', Solar Physics 162 (1995) — 3-author paper, position 2", "url": "https://doi.org/10.1007/BF00733425", "strength": "Strong" },
-        { "source": "Observatory record Contacts (ProjectScientist — qualifying role)", "url": "https://spase-metadata.org/SMWG/Observatory/SOHO", "strength": "Medium" }
+        {
+          "source": "Author 2 of the SOHO mission overview paper (Domingo, Fleck & Poland 1995); non-alphabetized 3-author list",
+          "url": "https://doi.org/10.1007/BF00733425",
+          "strength": "Strong"
+        },
+        {
+          "source": "SOHO Observatory record Contacts (ProjectScientist - qualifying role)",
+          "url": "https://spase-metadata.org/SMWG/Observatory/SOHO.html",
+          "strength": "Medium"
+        },
+        {
+          "source": "Live (non-retired) entry in the SOHO project-office telephone/e-mail roster, ESA address",
+          "url": "https://soho.nascom.nasa.gov/about/people.html",
+          "strength": "Medium"
+        },
+        {
+          "source": "Named as editor of Solar Physics 162 (the SOHO special issue) in the Observatory record Description: 'B. Fleck, V. Domingo, and A. I. Poland, eds.'",
+          "url": "https://spase-metadata.org/SMWG/Observatory/SOHO.html",
+          "strength": "Medium"
+        }
       ],
-      "person_record": { "id": "spase://SMWG/Person/Bernhard.Fleck", "url": "https://spase-metadata.org/SMWG/Person/Bernhard.Fleck.html" },
+      "person_record": {
+        "id": "spase://SMWG/Person/Bernhard.Fleck",
+        "url": "https://spase-metadata.org/SMWG/Person/Bernhard.Fleck.html"
+      },
       "orcid": null,
-      "affiliation": "ESA / NASA-GSFC (SOHO Project Scientist)",
-      "activity_dates": null
+      "affiliation": "European Space Agency",
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author",
+        "ProjectScientist"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Author 2 of the SOHO mission overview paper (10.1007/BF00733425)"
+        },
+        {
+          "role": "ProjectScientist",
+          "source": "SOHO Observatory record Contacts"
+        }
+      ]
     },
     {
       "name": "Arthur I. Poland",
@@ -64,12 +141,43 @@
       "confidence": "Strong",
       "exclusion_reason": null,
       "evidence": [
-        { "source": "Third author of the SOHO mission overview paper, 'The SOHO mission: An overview', Solar Physics 162 (1995) — 3-author paper, position 3", "url": "https://doi.org/10.1007/BF00733425", "strength": "Strong" }
+        {
+          "source": "Author 3 of the SOHO mission overview paper (Domingo, Fleck & Poland 1995); non-alphabetized 3-author list",
+          "url": "https://doi.org/10.1007/BF00733425",
+          "strength": "Strong"
+        },
+        {
+          "source": "Author 1 of 'SOHO - An Observatory to Study the Solar Interior and the Solar Atmosphere' (Poland & Domingo 1990), cited as the description source inside the GOLF and VIRGO Instrument records",
+          "url": "https://spase-metadata.org/SMWG/Instrument/SOHO/VIRGO.html",
+          "strength": "Medium"
+        },
+        {
+          "source": "Named as editor of Solar Physics 162 (SOHO special issue) in the Observatory record Description",
+          "url": "https://spase-metadata.org/SMWG/Observatory/SOHO.html",
+          "strength": "Medium"
+        },
+        {
+          "source": "Also author 11 of the SUMER instrument paper and author 24 of the CDS instrument paper (participation only; no position evidence)",
+          "url": "https://doi.org/10.1007/BF00733430",
+          "strength": "Low"
+        }
       ],
-      "person_record": { "id": "spase://SMWG/Person/Arthur.I.Poland", "url": "https://spase-metadata.org/SMWG/Person/Arthur.I.Poland.html" },
+      "person_record": {
+        "id": "spase://SMWG/Person/Arthur.I.Poland",
+        "url": "https://spase-metadata.org/SMWG/Person/Arthur.I.Poland.html"
+      },
       "orcid": null,
-      "affiliation": null,
-      "activity_dates": null
+      "affiliation": "NASA GSFC, Code 682 (per SMWG Person record)",
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Author 3 of the SOHO mission overview paper (10.1007/BF00733425)"
+        }
+      ]
     },
     {
       "name": "Jack Ireland",
@@ -77,155 +185,1667 @@
       "confidence": "Medium",
       "exclusion_reason": null,
       "evidence": [
-        { "source": "Observatory record Contacts (ProjectScientist — qualifying role); current SOHO Project Scientist", "url": "https://spase-metadata.org/SMWG/Observatory/SOHO", "strength": "Medium" }
+        {
+          "source": "SOHO Observatory record Contacts (ProjectScientist - qualifying role)",
+          "url": "https://spase-metadata.org/SMWG/Observatory/SOHO.html",
+          "strength": "Medium"
+        },
+        {
+          "source": "Live (non-retired) entry in the SOHO project-office telephone/e-mail roster at NASA GSFC",
+          "url": "https://soho.nascom.nasa.gov/about/people.html",
+          "strength": "Medium"
+        }
       ],
-      "person_record": { "id": "spase://SMWG/Person/Jack.Ireland", "url": "https://spase-metadata.org/SMWG/Person/Jack.Ireland.html" },
+      "person_record": {
+        "id": "spase://SMWG/Person/Jack.Ireland",
+        "url": "https://spase-metadata.org/SMWG/Person/Jack.Ireland.html"
+      },
+      "orcid": "0000-0002-2019-8881",
+      "affiliation": "NASA Goddard Space Flight Center",
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author",
+        "ProjectScientist"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Current SOHO Project Scientist per the Observatory record Contacts, corroborated by the live provider roster"
+        },
+        {
+          "role": "ProjectScientist",
+          "source": "SOHO Observatory record Contacts"
+        }
+      ]
+    },
+    {
+      "name": "Joseph B. Gurman",
+      "status": "included",
+      "confidence": "Medium",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Named 'the US project scientist for SOHO at NASA Goddard' on the NASA SOHO 20th-anniversary feature",
+          "url": "https://www.nasa.gov/solar-system/soho-celebrates-20-years-of-space-based-science/",
+          "strength": "Medium"
+        },
+        {
+          "source": "SDAC/GSFC personal page (Solar Data Analysis Center facility scientist, SOHO US project scientist)",
+          "url": "https://umbra.nascom.nasa.gov/jbg.html",
+          "strength": "Medium"
+        },
+        {
+          "source": "Entry in the SOHO project-office roster, now retired (HTML-commented out)",
+          "url": "https://soho.nascom.nasa.gov/about/people.html",
+          "strength": "Low"
+        },
+        {
+          "source": "Also author 23 of the EIT instrument paper and author 4 of the SOHO ground-segment companion paper (participation only; neither is the mission description paper)",
+          "url": "https://doi.org/10.1007/BF00733432",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Joseph.B.Gurman",
+        "url": "https://spase-metadata.org/SMWG/Person/Joseph.B.Gurman.html"
+      },
       "orcid": null,
-      "affiliation": null,
-      "activity_dates": null
+      "affiliation": "NASA GSFC, Code 682 (per SMWG Person record)",
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author",
+        "ProjectScientist"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Named US SOHO Project Scientist on NASA/SDAC provider pages"
+        },
+        {
+          "role": "ProjectScientist",
+          "source": "NASA SOHO feature article and SDAC provider page name him US SOHO Project Scientist"
+        }
+      ]
     },
     {
       "name": "Richard A. Harrison",
       "status": "included",
-      "confidence": "Medium",
+      "confidence": "Strong",
       "exclusion_reason": null,
       "evidence": [
-        { "source": "PrincipalInvestigator (qualifying role) in the SOHO/CDS sibling Instrument record Contacts", "url": "https://spase-metadata.org/SMWG/Instrument/SOHO/CDS.html", "strength": "Medium" }
+        {
+          "source": "Author 1 of the CDS instrument description paper (Harrison et al. 1995, 'The Coronal Diagnostic Spectrometer for SOHO', Solar Phys. 162, 233); author list not alphabetized (n=39; longest sorted suffix = 1), so position carries contribution weight",
+          "url": "https://doi.org/10.1007/BF00733431",
+          "strength": "Strong"
+        },
+        {
+          "source": "CDS Instrument record Contacts (PrincipalInvestigator); superseded - the SOHO mission People page lists Andrzej Fludra as the current CDS PI",
+          "url": "https://spase-metadata.org/SMWG/Instrument/SOHO/CDS.html",
+          "strength": "Medium"
+        }
       ],
-      "person_record": { "id": "spase://SMWG/Person/Richard.A.Harrison", "url": "https://spase-metadata.org/SMWG/Person/Richard.A.Harrison.html" },
+      "person_record": {
+        "id": "spase://SMWG/Person/Richard.A.Harrison",
+        "url": "https://spase-metadata.org/SMWG/Person/Richard.A.Harrison.html"
+      },
+      "orcid": null,
+      "affiliation": "Rutherford Appleton Laboratory",
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author",
+        "FormerPI"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Author 1 of the CDS instrument description paper (10.1007/BF00733431)"
+        },
+        {
+          "role": "FormerPI",
+          "source": "CDS Instrument record Contacts lists him as PrincipalInvestigator; the SOHO People page shows Andrzej Fludra as the current CDS PI, so this entry is the founding generation"
+        }
+      ]
+    },
+    {
+      "name": "E. C. Sawyer",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Author 2 of the CDS instrument description paper (Harrison et al. 1995, 'The Coronal Diagnostic Spectrometer for SOHO', Solar Phys. 162, 233); author list not alphabetized (n=39; longest sorted suffix = 1), so position carries contribution weight",
+          "url": "https://doi.org/10.1007/BF00733431",
+          "strength": "Strong"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
       "orcid": null,
       "affiliation": null,
-      "activity_dates": null
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Author 2 of the CDS instrument description paper (10.1007/BF00733431)"
+        }
+      ]
+    },
+    {
+      "name": "M. K. Carter",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Author 3 of the CDS instrument description paper (Harrison et al. 1995, 'The Coronal Diagnostic Spectrometer for SOHO', Solar Phys. 162, 233); author list not alphabetized (n=39; longest sorted suffix = 1), so position carries contribution weight",
+          "url": "https://doi.org/10.1007/BF00733431",
+          "strength": "Strong"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": null,
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Author 3 of the CDS instrument description paper (10.1007/BF00733431)"
+        }
+      ]
+    },
+    {
+      "name": "Andrzej Fludra",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Listed under 'SOHO PIs' as the current CDS Principal Investigator on the SOHO mission People page (page last modified 2026-07-23)",
+          "url": "https://soho.nascom.nasa.gov/about/people.html",
+          "strength": "Strong"
+        },
+        {
+          "source": "Also author 6 of the CDS instrument paper (position 6 carries no position-based evidence; listed for context)",
+          "url": "https://doi.org/10.1007/BF00733431",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Andrzej.Fludra",
+        "url": "https://spase-metadata.org/SMWG/Person/Andrzej.Fludra.html"
+      },
+      "orcid": null,
+      "affiliation": "Rutherford Appleton Laboratory",
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author",
+        "PrincipalInvestigator"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Current CDS Principal Investigator on the SOHO mission People page"
+        },
+        {
+          "role": "PrincipalInvestigator",
+          "source": "SOHO mission People page, 'SOHO PIs' table (current entry)"
+        }
+      ]
+    },
+    {
+      "name": "Dieter K. Hovestadt",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Author 1 of the CELIAS instrument description paper (Hovestadt et al. 1995, 'CELIAS - Charge, Element and Isotope Analysis System for SOHO', Solar Phys. 162, 441); author list not alphabetized (n=33; longest sorted suffix = 1), so position carries contribution weight",
+          "url": "https://doi.org/10.1007/BF00733436",
+          "strength": "Strong"
+        },
+        {
+          "source": "Sole author of 'The Charge, Element, and Isotope Analysis System CELIAS on SOHO' (ESA SP-348, 1992), the design-phase description paper cited inside the CELIAS Instrument record Description",
+          "url": "https://spase-metadata.org/SMWG/Instrument/SOHO/CELIAS.html",
+          "strength": "Medium"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Dieter.K.Hovestadt",
+        "url": "https://spase-metadata.org/SMWG/Person/Dieter.K.Hovestadt.html"
+      },
+      "orcid": null,
+      "affiliation": "Max-Planck-Institut fuer Extraterrestrische Physik",
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Author 1 of the CELIAS instrument description paper (10.1007/BF00733436)"
+        }
+      ]
+    },
+    {
+      "name": "M. Hilchenbach",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Author 2 of the CELIAS instrument description paper (Hovestadt et al. 1995, 'CELIAS - Charge, Element and Isotope Analysis System for SOHO', Solar Phys. 162, 441); author list not alphabetized (n=33; longest sorted suffix = 1), so position carries contribution weight",
+          "url": "https://doi.org/10.1007/BF00733436",
+          "strength": "Strong"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": null,
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Author 2 of the CELIAS instrument description paper (10.1007/BF00733436)"
+        }
+      ]
+    },
+    {
+      "name": "A. Buergi",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Author 3 of the CELIAS instrument description paper (Hovestadt et al. 1995, 'CELIAS - Charge, Element and Isotope Analysis System for SOHO', Solar Phys. 162, 441); author list not alphabetized (n=33; longest sorted suffix = 1), so position carries contribution weight",
+          "url": "https://doi.org/10.1007/BF00733436",
+          "strength": "Strong"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": null,
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Author 3 of the CELIAS instrument description paper (10.1007/BF00733436)"
+        }
+      ]
     },
     {
       "name": "Robert F. Wimmer-Schweingruber",
       "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Listed under 'SOHO PIs' as the current CELIAS Principal Investigator on the SOHO mission People page (page last modified 2026-07-23)",
+          "url": "https://soho.nascom.nasa.gov/about/people.html",
+          "strength": "Strong"
+        },
+        {
+          "source": "CELIAS Instrument record Contacts (PrincipalInvestigator)",
+          "url": "https://spase-metadata.org/SMWG/Instrument/SOHO/CELIAS.html",
+          "strength": "Medium"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Robert.F.Wimmer-Schweingruber",
+        "url": "https://spase-metadata.org/SMWG/Person/Robert.F.Wimmer-Schweingruber.html"
+      },
+      "orcid": null,
+      "affiliation": "Institute of Experimental and Applied Physics, Christian-Albrechts-Universitaet zu Kiel",
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author",
+        "PrincipalInvestigator"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Current CELIAS Principal Investigator on the SOHO mission People page"
+        },
+        {
+          "role": "PrincipalInvestigator",
+          "source": "SOHO mission People page 'SOHO PIs' table, corroborated by the CELIAS Instrument record Contacts"
+        }
+      ]
+    },
+    {
+      "name": "Berndt Klecker",
+      "status": "included",
       "confidence": "Medium",
       "exclusion_reason": null,
       "evidence": [
-        { "source": "PrincipalInvestigator (qualifying role) in the SOHO/CELIAS sibling Instrument record Contacts", "url": "https://spase-metadata.org/SMWG/Instrument/SOHO/CELIAS.html", "strength": "Medium" }
+        {
+          "source": "Appears as the CELIAS Principal Investigator in the 'SOHO PIs' table of the SOHO mission People page, but the entry is retired (HTML-commented out) and superseded by the current PI",
+          "url": "https://soho.nascom.nasa.gov/about/people.html",
+          "strength": "Medium"
+        },
+        {
+          "source": "Also author 4 of the CELIAS instrument paper - NOT counted on this Observatory run (an instrument paper's 4th+ authors are instrument-team depth); his inclusion rests on the independent provider PI listing",
+          "url": "https://doi.org/10.1007/BF00733436",
+          "strength": "Low"
+        }
       ],
-      "person_record": { "id": "spase://SMWG/Person/Robert.F.Wimmer-Schweingruber", "url": "https://spase-metadata.org/SMWG/Person/Robert.F.Wimmer-Schweingruber.html" },
+      "person_record": {
+        "id": "spase://SMWG/Person/Berndt.Klecker",
+        "url": "https://spase-metadata.org/SMWG/Person/Berndt.Klecker.html"
+      },
       "orcid": null,
-      "affiliation": "University of Kiel (SOHO-CELIAS team site)",
-      "activity_dates": null
+      "affiliation": "Max-Planck-Institut fuer Extraterrestrische Physik",
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author",
+        "FormerPI"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Named CELIAS Principal Investigator on the SOHO mission People page (entry now retired)"
+        },
+        {
+          "role": "FormerPI",
+          "source": "SOHO mission People page 'SOHO PIs' table, entry retired (HTML-commented) and superseded by Robert Wimmer-Schweingruber"
+        }
+      ]
+    },
+    {
+      "name": "Reinhold Mueller-Mellin",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Author 1 of the COSTEP instrument description paper (Mueller-Mellin et al. 1995, 'COSTEP - Comprehensive Suprathermal and Energetic Particle Analyser', Solar Phys. 162, 483); author list not alphabetized (n=19; longest sorted suffix = 1), so position carries contribution weight",
+          "url": "https://doi.org/10.1007/BF00733437",
+          "strength": "Strong"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Reinhold.Mueller-Mellin",
+        "url": "https://spase-metadata.org/SMWG/Person/Reinhold.Mueller-Mellin.html"
+      },
+      "orcid": null,
+      "affiliation": "University of Kiel",
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Author 1 of the COSTEP instrument description paper (10.1007/BF00733437)"
+        }
+      ]
+    },
+    {
+      "name": "Horst W. Kunow",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Author 2 of the COSTEP instrument description paper (Mueller-Mellin et al. 1995, 'COSTEP - Comprehensive Suprathermal and Energetic Particle Analyser', Solar Phys. 162, 483); author list not alphabetized (n=19; longest sorted suffix = 1), so position carries contribution weight",
+          "url": "https://doi.org/10.1007/BF00733437",
+          "strength": "Strong"
+        },
+        {
+          "source": "Lead author of 'COSTEP - Comprehensive Suprathermal and Energetic Particle Analyser for SOHO' (ESA SP-348, 1992), the design-phase description paper cited inside the COSTEP Instrument record Description",
+          "url": "https://spase-metadata.org/SMWG/Instrument/SOHO/COSTEP.html",
+          "strength": "Medium"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Horst.W.Kunow",
+        "url": "https://spase-metadata.org/SMWG/Person/Horst.W.Kunow.html"
+      },
+      "orcid": null,
+      "affiliation": "Universitaet Kiel",
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Author 2 of the COSTEP instrument description paper (10.1007/BF00733437)"
+        }
+      ]
+    },
+    {
+      "name": "V. Fleissner",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Author 3 of the COSTEP instrument description paper (Mueller-Mellin et al. 1995, 'COSTEP - Comprehensive Suprathermal and Energetic Particle Analyser', Solar Phys. 162, 483); author list not alphabetized (n=19; longest sorted suffix = 1), so position carries contribution weight",
+          "url": "https://doi.org/10.1007/BF00733437",
+          "strength": "Strong"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": null,
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Author 3 of the COSTEP instrument description paper (10.1007/BF00733437)"
+        }
+      ]
     },
     {
       "name": "Bernd Heber",
       "status": "included",
-      "confidence": "Medium",
+      "confidence": "Strong",
       "exclusion_reason": null,
       "evidence": [
-        { "source": "PrincipalInvestigator (qualifying role) in the SOHO/COSTEP sibling Instrument record Contacts", "url": "https://spase-metadata.org/SMWG/Instrument/SOHO/COSTEP.html", "strength": "Medium" }
+        {
+          "source": "Listed under 'SOHO PIs' as the current COSTEP Principal Investigator on the SOHO mission People page (page last modified 2026-07-23)",
+          "url": "https://soho.nascom.nasa.gov/about/people.html",
+          "strength": "Strong"
+        },
+        {
+          "source": "COSTEP Instrument record Contacts (PrincipalInvestigator)",
+          "url": "https://spase-metadata.org/SMWG/Instrument/SOHO/COSTEP.html",
+          "strength": "Medium"
+        }
       ],
-      "person_record": { "id": "spase://SMWG/Person/Bernd.Heber", "url": "https://spase-metadata.org/SMWG/Person/Bernd.Heber.html" },
+      "person_record": {
+        "id": "spase://SMWG/Person/Bernd.Heber",
+        "url": "https://spase-metadata.org/SMWG/Person/Bernd.Heber.html"
+      },
       "orcid": null,
-      "affiliation": "University of Kiel (SOHO-COSTEP team site)",
-      "activity_dates": null
+      "affiliation": "Institute of Experimental and Applied Physics, Christian-Albrechts-Universitaet zu Kiel",
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author",
+        "PrincipalInvestigator"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Current COSTEP Principal Investigator on the SOHO mission People page"
+        },
+        {
+          "role": "PrincipalInvestigator",
+          "source": "SOHO mission People page 'SOHO PIs' table, corroborated by the COSTEP Instrument record Contacts"
+        }
+      ]
     },
     {
-      "name": "Jean-Pierre Delaboudinière",
+      "name": "Jean-Pierre Delaboudiniere",
       "status": "included",
-      "confidence": "Medium",
+      "confidence": "Strong",
       "exclusion_reason": null,
       "evidence": [
-        { "source": "PrincipalInvestigator (qualifying role) in the SOHO/EIT sibling Instrument record Contacts", "url": "https://spase-metadata.org/SMWG/Instrument/SOHO/EIT.html", "strength": "Medium" }
+        {
+          "source": "Author 1 of the EIT instrument description paper (Delaboudiniere et al. 1995, 'EIT: Extreme-ultraviolet Imaging Telescope for SOHO', Solar Phys. 162, 291); author list not alphabetized (n=28; longest sorted suffix = 3, below the 5-name threshold), so position carries contribution weight",
+          "url": "https://doi.org/10.1007/BF00733432",
+          "strength": "Strong"
+        },
+        {
+          "source": "Lead author of 'Solar Corona Synoptic Observations from SOHO with an Extreme Ultraviolet Imaging Telescope' (ESA SP-348, 1992), cited as the description source inside the EIT Instrument record",
+          "url": "https://spase-metadata.org/SMWG/Instrument/SOHO/EIT.html",
+          "strength": "Medium"
+        },
+        {
+          "source": "EIT Instrument record Contacts (PrincipalInvestigator); superseded - the SOHO mission People page lists Frederic Auchere as the current EIT PI",
+          "url": "https://spase-metadata.org/SMWG/Instrument/SOHO/EIT.html",
+          "strength": "Medium"
+        }
       ],
-      "person_record": { "id": "spase://SMWG/Person/Jean-Pierre.Delaboudiniere", "url": "https://spase-metadata.org/SMWG/Person/Jean-Pierre.Delaboudiniere.html" },
+      "person_record": {
+        "id": "spase://SMWG/Person/Jean-Pierre.Delaboudiniere",
+        "url": "https://spase-metadata.org/SMWG/Person/Jean-Pierre.Delaboudiniere.html"
+      },
+      "orcid": null,
+      "affiliation": "Centre National de la Recherche Scientifique / Institut d'Astrophysique Spatiale",
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author",
+        "FormerPI"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Author 1 of the EIT instrument description paper (10.1007/BF00733432)"
+        },
+        {
+          "role": "FormerPI",
+          "source": "EIT Instrument record Contacts lists him as PrincipalInvestigator; the SOHO People page shows Frederic Auchere as the current EIT PI"
+        }
+      ]
+    },
+    {
+      "name": "G. E. Artzner",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Author 2 of the EIT instrument description paper (Delaboudiniere et al. 1995, 'EIT: Extreme-ultraviolet Imaging Telescope for SOHO', Solar Phys. 162, 291); author list not alphabetized (n=28; longest sorted suffix = 3, below the 5-name threshold), so position carries contribution weight",
+          "url": "https://doi.org/10.1007/BF00733432",
+          "strength": "Strong"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
       "orcid": null,
       "affiliation": null,
-      "activity_dates": null
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Author 2 of the EIT instrument description paper (10.1007/BF00733432)"
+        }
+      ]
+    },
+    {
+      "name": "J. Brunaud",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Author 3 of the EIT instrument description paper (Delaboudiniere et al. 1995, 'EIT: Extreme-ultraviolet Imaging Telescope for SOHO', Solar Phys. 162, 291); author list not alphabetized (n=28; longest sorted suffix = 3, below the 5-name threshold), so position carries contribution weight",
+          "url": "https://doi.org/10.1007/BF00733432",
+          "strength": "Strong"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": null,
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Author 3 of the EIT instrument description paper (10.1007/BF00733432)"
+        }
+      ]
+    },
+    {
+      "name": "Frederic Auchere",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Listed under 'SOHO PIs' as the current EIT Principal Investigator on the SOHO mission People page (page last modified 2026-07-23)",
+          "url": "https://soho.nascom.nasa.gov/about/people.html",
+          "strength": "Strong"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Frederic.Auchere",
+        "url": "https://spase-metadata.org/SMWG/Person/Frederic.Auchere.html"
+      },
+      "orcid": null,
+      "affiliation": "Institut d'Astrophysique Spatiale",
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author",
+        "PrincipalInvestigator"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Current EIT Principal Investigator on the SOHO mission People page"
+        },
+        {
+          "role": "PrincipalInvestigator",
+          "source": "SOHO mission People page, 'SOHO PIs' table (current entry)"
+        }
+      ]
+    },
+    {
+      "name": "Jarmo Torsti",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Author 1 of the ERNE instrument description paper (Torsti et al. 1995, 'Energetic particle experiment ERNE', Solar Phys. 162, 505); author list partially alphabetized (n=15; sorted suffix of 6 from position 10; prefix = positions 1-9), so position carries contribution weight",
+          "url": "https://doi.org/10.1007/BF00733438",
+          "strength": "Strong"
+        },
+        {
+          "source": "Lead author of 'Energetic Particle Analyser ERNE' (ESA SP-348, 1992), cited as the description source inside the ERNE Instrument record",
+          "url": "https://spase-metadata.org/SMWG/Instrument/SOHO/ERNE.html",
+          "strength": "Medium"
+        },
+        {
+          "source": "Appears as the ERNE Principal Investigator in the 'SOHO PIs' table of the SOHO mission People page, but the entry is retired (HTML-commented out) and superseded by the current PI",
+          "url": "https://soho.nascom.nasa.gov/about/people.html",
+          "strength": "Medium"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Jarmo.Torsti",
+        "url": "https://spase-metadata.org/SMWG/Person/Jarmo.Torsti.html"
+      },
+      "orcid": null,
+      "affiliation": "University of Turku",
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author",
+        "FormerPI"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Author 1 (prefix position 1) of the ERNE instrument description paper (10.1007/BF00733438)"
+        },
+        {
+          "role": "FormerPI",
+          "source": "SOHO mission People page 'SOHO PIs' table, entry retired (HTML-commented) and superseded by Rami Vainio"
+        }
+      ]
+    },
+    {
+      "name": "Eino Valtonen",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Author 2 of the ERNE instrument description paper (Torsti et al. 1995, 'Energetic particle experiment ERNE', Solar Phys. 162, 505); author list partially alphabetized (n=15; sorted suffix of 6 from position 10; prefix = positions 1-9), so position carries contribution weight",
+          "url": "https://doi.org/10.1007/BF00733438",
+          "strength": "Strong"
+        },
+        {
+          "source": "Appears as the ERNE Principal Investigator in the 'SOHO PIs' table of the SOHO mission People page, but the entry is retired (HTML-commented out) and superseded by the current PI",
+          "url": "https://soho.nascom.nasa.gov/about/people.html",
+          "strength": "Medium"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": "University of Turku",
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author",
+        "FormerPI"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Author 2 (prefix position 2) of the ERNE instrument description paper (10.1007/BF00733438)"
+        },
+        {
+          "role": "FormerPI",
+          "source": "SOHO mission People page 'SOHO PIs' table, entry retired (HTML-commented) and superseded by Rami Vainio"
+        }
+      ]
+    },
+    {
+      "name": "M. Lumme",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Author 3 of the ERNE instrument description paper (Torsti et al. 1995, 'Energetic particle experiment ERNE', Solar Phys. 162, 505); author list partially alphabetized (n=15; sorted suffix of 6 from position 10; prefix = positions 1-9), so position carries contribution weight",
+          "url": "https://doi.org/10.1007/BF00733438",
+          "strength": "Strong"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": null,
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Author 3 (prefix position 3) of the ERNE instrument description paper (10.1007/BF00733438)"
+        }
+      ]
     },
     {
       "name": "Rami Vainio",
       "status": "included",
-      "confidence": "Medium",
+      "confidence": "Strong",
       "exclusion_reason": null,
       "evidence": [
-        { "source": "PrincipalInvestigator (qualifying role) in the SOHO/ERNE sibling Instrument record Contacts", "url": "https://spase-metadata.org/SMWG/Instrument/SOHO/ERNE.html", "strength": "Medium" }
+        {
+          "source": "Listed under 'SOHO PIs' as the current ERNE Principal Investigator on the SOHO mission People page (page last modified 2026-07-23)",
+          "url": "https://soho.nascom.nasa.gov/about/people.html",
+          "strength": "Strong"
+        },
+        {
+          "source": "ERNE Instrument record Contacts (PrincipalInvestigator)",
+          "url": "https://spase-metadata.org/SMWG/Instrument/SOHO/ERNE.html",
+          "strength": "Medium"
+        }
       ],
-      "person_record": { "id": "spase://SMWG/Person/Rami.Vainio", "url": "https://spase-metadata.org/SMWG/Person/Rami.Vainio.html" },
+      "person_record": {
+        "id": "spase://SMWG/Person/Rami.Vainio",
+        "url": "https://spase-metadata.org/SMWG/Person/Rami.Vainio.html"
+      },
       "orcid": null,
-      "affiliation": "University of Turku (SOHO-ERNE team site)",
-      "activity_dates": null
+      "affiliation": "Department of Physics and Astronomy, University of Turku",
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author",
+        "PrincipalInvestigator"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Current ERNE Principal Investigator on the SOHO mission People page"
+        },
+        {
+          "role": "PrincipalInvestigator",
+          "source": "SOHO mission People page 'SOHO PIs' table, corroborated by the ERNE Instrument record Contacts"
+        }
+      ]
     },
     {
       "name": "Alan-Henri Gabriel",
       "status": "included",
-      "confidence": "Medium",
+      "confidence": "Strong",
       "exclusion_reason": null,
       "evidence": [
-        { "source": "PrincipalInvestigator (qualifying role) in the SOHO/GOLF sibling Instrument record Contacts", "url": "https://spase-metadata.org/SMWG/Instrument/SOHO/GOLF.html", "strength": "Medium" }
+        {
+          "source": "Author 1 of the GOLF instrument description paper (Gabriel et al. 1995, 'Global Oscillations at Low Frequency from the SOHO mission (GOLF)', Solar Phys. 162, 61); author list not alphabetized (n=31; longest sorted suffix = 1), so position carries contribution weight",
+          "url": "https://doi.org/10.1007/BF00733427",
+          "strength": "Strong"
+        },
+        {
+          "source": "GOLF Instrument record Contacts (PrincipalInvestigator); superseded - the SOHO mission People page lists Patrick Boumier as the current GOLF PI",
+          "url": "https://spase-metadata.org/SMWG/Instrument/SOHO/GOLF.html",
+          "strength": "Medium"
+        },
+        {
+          "source": "Also author 4 of the EIT instrument paper and author 6 of the SUMER instrument paper (participation only; no position evidence on this Observatory run)",
+          "url": "https://doi.org/10.1007/BF00733430",
+          "strength": "Low"
+        }
       ],
-      "person_record": { "id": "spase://SMWG/Person/Alan-Henri.Gabriel", "url": "https://spase-metadata.org/SMWG/Person/Alan-Henri.Gabriel.html" },
+      "person_record": {
+        "id": "spase://SMWG/Person/Alan-Henri.Gabriel",
+        "url": "https://spase-metadata.org/SMWG/Person/Alan-Henri.Gabriel.html"
+      },
+      "orcid": null,
+      "affiliation": "Universite Paris Sud / Institut d'Astrophysique Spatiale",
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author",
+        "FormerPI"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Author 1 of the GOLF instrument description paper (10.1007/BF00733427)"
+        },
+        {
+          "role": "FormerPI",
+          "source": "GOLF Instrument record Contacts lists him as PrincipalInvestigator; the SOHO People page shows Patrick Boumier as the current GOLF PI"
+        }
+      ]
+    },
+    {
+      "name": "G. Grec",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Author 2 of the GOLF instrument description paper (Gabriel et al. 1995, 'Global Oscillations at Low Frequency from the SOHO mission (GOLF)', Solar Phys. 162, 61); author list not alphabetized (n=31; longest sorted suffix = 1), so position carries contribution weight",
+          "url": "https://doi.org/10.1007/BF00733427",
+          "strength": "Strong"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
       "orcid": null,
       "affiliation": null,
-      "activity_dates": null
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Author 2 of the GOLF instrument description paper (10.1007/BF00733427)"
+        }
+      ]
+    },
+    {
+      "name": "J. Charra",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Author 3 of the GOLF instrument description paper (Gabriel et al. 1995, 'Global Oscillations at Low Frequency from the SOHO mission (GOLF)', Solar Phys. 162, 61); author list not alphabetized (n=31; longest sorted suffix = 1), so position carries contribution weight",
+          "url": "https://doi.org/10.1007/BF00733427",
+          "strength": "Strong"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": null,
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Author 3 of the GOLF instrument description paper (10.1007/BF00733427)"
+        }
+      ]
+    },
+    {
+      "name": "Patrick Boumier",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Listed under 'SOHO PIs' as the current GOLF Principal Investigator on the SOHO mission People page (page last modified 2026-07-23)",
+          "url": "https://soho.nascom.nasa.gov/about/people.html",
+          "strength": "Strong"
+        },
+        {
+          "source": "Also author 8 of the GOLF instrument paper (position 8 carries no position-based evidence; context only)",
+          "url": "https://doi.org/10.1007/BF00733427",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Patrick.Boumier",
+        "url": "https://spase-metadata.org/SMWG/Person/Patrick.Boumier.html"
+      },
+      "orcid": null,
+      "affiliation": "Institut d'Astrophysique Spatiale",
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author",
+        "PrincipalInvestigator"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Current GOLF Principal Investigator on the SOHO mission People page"
+        },
+        {
+          "role": "PrincipalInvestigator",
+          "source": "SOHO mission People page, 'SOHO PIs' table (current entry)"
+        }
+      ]
+    },
+    {
+      "name": "Guenter E. Brueckner",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Author 1 of the LASCO instrument description paper (Brueckner et al. 1995, 'The Large Angle Spectroscopic Coronagraph (LASCO)', Solar Phys. 162, 357); author list not alphabetized (n=15; longest sorted suffix = 2), so position carries contribution weight",
+          "url": "https://doi.org/10.1007/BF00733434",
+          "strength": "Strong"
+        },
+        {
+          "source": "Lead author of 'The Large Angle Spectroscopic Coronagraph (LASCO): Visible Light Coronal Imaging and Spectroscopy' (ESA SP-348, 1992), cited as the description source inside the LASCO Instrument record",
+          "url": "https://spase-metadata.org/SMWG/Instrument/SOHO/LASCO.html",
+          "strength": "Medium"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Guenter.E.Brueckner",
+        "url": "https://spase-metadata.org/SMWG/Person/Guenter.E.Brueckner.html"
+      },
+      "orcid": null,
+      "affiliation": "US Naval Research Laboratory",
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Author 1 of the LASCO instrument description paper (10.1007/BF00733434)"
+        }
+      ]
     },
     {
       "name": "Russell A. Howard",
       "status": "included",
-      "confidence": "Medium",
+      "confidence": "Strong",
       "exclusion_reason": null,
       "evidence": [
-        { "source": "PrincipalInvestigator (qualifying role) in the SOHO/LASCO sibling Instrument record Contacts (current PI)", "url": "https://spase-metadata.org/SMWG/Instrument/SOHO/LASCO.html", "strength": "Medium" }
+        {
+          "source": "Author 2 of the LASCO instrument description paper (Brueckner et al. 1995, 'The Large Angle Spectroscopic Coronagraph (LASCO)', Solar Phys. 162, 357); author list not alphabetized (n=15; longest sorted suffix = 2), so position carries contribution weight",
+          "url": "https://doi.org/10.1007/BF00733434",
+          "strength": "Strong"
+        },
+        {
+          "source": "LASCO Instrument record Contacts (PrincipalInvestigator); superseded - the SOHO mission People page lists Karl Battams as the current LASCO PI",
+          "url": "https://spase-metadata.org/SMWG/Instrument/SOHO/LASCO.html",
+          "strength": "Medium"
+        },
+        {
+          "source": "Also author 10 of the EIT instrument paper (participation only)",
+          "url": "https://doi.org/10.1007/BF00733432",
+          "strength": "Low"
+        }
       ],
-      "person_record": { "id": "spase://SMWG/Person/Russell.A.Howard", "url": "https://spase-metadata.org/SMWG/Person/Russell.A.Howard.html" },
+      "person_record": {
+        "id": "spase://SMWG/Person/Russell.A.Howard",
+        "url": "https://spase-metadata.org/SMWG/Person/Russell.A.Howard.html"
+      },
+      "orcid": "0000-0001-9027-8249",
+      "affiliation": "US Naval Research Laboratory (SMWG Person record now lists JHU/APL)",
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author",
+        "FormerPI"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Author 2 of the LASCO instrument description paper (10.1007/BF00733434)"
+        },
+        {
+          "role": "FormerPI",
+          "source": "LASCO Instrument record Contacts lists him as PrincipalInvestigator; the SOHO People page shows Karl Battams as the current LASCO PI"
+        }
+      ]
+    },
+    {
+      "name": "Martin J. Koomen",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Author 3 of the LASCO instrument description paper (Brueckner et al. 1995, 'The Large Angle Spectroscopic Coronagraph (LASCO)', Solar Phys. 162, 357); author list not alphabetized (n=15; longest sorted suffix = 2), so position carries contribution weight",
+          "url": "https://doi.org/10.1007/BF00733434",
+          "strength": "Strong"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Martin.J.Koomen",
+        "url": "https://spase-metadata.org/SMWG/Person/Martin.J.Koomen.html"
+      },
       "orcid": null,
-      "affiliation": null,
-      "activity_dates": null
+      "affiliation": "US Naval Research Laboratory",
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Author 3 of the LASCO instrument description paper (10.1007/BF00733434)"
+        }
+      ]
+    },
+    {
+      "name": "Karl Battams",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Listed under 'SOHO PIs' as the current LASCO Principal Investigator on the SOHO mission People page (page last modified 2026-07-23)",
+          "url": "https://soho.nascom.nasa.gov/about/people.html",
+          "strength": "Strong"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Karl.Battams",
+        "url": "https://spase-metadata.org/SMWG/Person/Karl.Battams.html"
+      },
+      "orcid": "0000-0002-8692-6925",
+      "affiliation": "US Naval Research Laboratory",
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author",
+        "PrincipalInvestigator"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Current LASCO Principal Investigator on the SOHO mission People page"
+        },
+        {
+          "role": "PrincipalInvestigator",
+          "source": "SOHO mission People page, 'SOHO PIs' table (current entry)"
+        }
+      ]
     },
     {
       "name": "Philip H. Scherrer",
       "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Author 1 of the MDI instrument description paper (Scherrer et al. 1995, 'The Solar Oscillations Investigation - Michelson Doppler Imager', Solar Phys. 162, 129); author list partially alphabetized (n=12; sorted suffix of 6 from position 7; prefix = positions 1-6), so position carries contribution weight",
+          "url": "https://doi.org/10.1007/BF00733429",
+          "strength": "Strong"
+        },
+        {
+          "source": "Listed under 'SOHO PIs' as the current MDI Principal Investigator on the SOHO mission People page (page last modified 2026-07-23)",
+          "url": "https://soho.nascom.nasa.gov/about/people.html",
+          "strength": "Strong"
+        },
+        {
+          "source": "MDI Instrument record Contacts (PrincipalInvestigator)",
+          "url": "https://spase-metadata.org/SMWG/Instrument/SOHO/MDI.html",
+          "strength": "Medium"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Philip.H.Scherrer",
+        "url": "https://spase-metadata.org/SMWG/Person/Philip.H.Scherrer.html"
+      },
+      "orcid": null,
+      "affiliation": "Stanford University",
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author",
+        "PrincipalInvestigator"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Prefix author 1 of the MDI instrument description paper (10.1007/BF00733429)"
+        },
+        {
+          "role": "PrincipalInvestigator",
+          "source": "SOHO mission People page 'SOHO PIs' table (current entry), corroborated by the MDI Instrument record Contacts"
+        }
+      ]
+    },
+    {
+      "name": "R. S. Bogart",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Author 2 of the MDI instrument description paper (Scherrer et al. 1995, 'The Solar Oscillations Investigation - Michelson Doppler Imager', Solar Phys. 162, 129); author list partially alphabetized (n=12; sorted suffix of 6 from position 7; prefix = positions 1-6), so position carries contribution weight",
+          "url": "https://doi.org/10.1007/BF00733429",
+          "strength": "Strong"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Rick.Bogart",
+        "url": "https://spase-metadata.org/SMWG/Person/Rick.Bogart.html"
+      },
+      "orcid": null,
+      "affiliation": "Stanford University",
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Prefix author 2 of the MDI instrument description paper (10.1007/BF00733429)"
+        }
+      ]
+    },
+    {
+      "name": "R. I. Bush",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Author 3 of the MDI instrument description paper (Scherrer et al. 1995, 'The Solar Oscillations Investigation - Michelson Doppler Imager', Solar Phys. 162, 129); author list partially alphabetized (n=12; sorted suffix of 6 from position 7; prefix = positions 1-6), so position carries contribution weight",
+          "url": "https://doi.org/10.1007/BF00733429",
+          "strength": "Strong"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": "Stanford University (inferred from the MDI team; not confirmed in a fetched source)",
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Prefix author 3 of the MDI instrument description paper (10.1007/BF00733429)"
+        }
+      ]
+    },
+    {
+      "name": "J. Todd Hoeksema",
+      "status": "included",
       "confidence": "Medium",
       "exclusion_reason": null,
       "evidence": [
-        { "source": "PrincipalInvestigator (qualifying role) in the SOHO/MDI sibling Instrument record Contacts", "url": "https://spase-metadata.org/SMWG/Instrument/SOHO/MDI.html", "strength": "Medium" }
+        {
+          "source": "Named lead author of 'The Solar Oscillations Investigation - Michelson Doppler Imager' (ESA SP-348, 1992) - the description source the MDI Instrument record's own Description cites ('by J. T. Hoeksma et al.')",
+          "url": "https://spase-metadata.org/SMWG/Instrument/SOHO/MDI.html",
+          "strength": "Medium"
+        },
+        {
+          "source": "Also prefix author 4 of the 1995 MDI instrument paper - NOT counted on this Observatory run (instrument-team depth); inclusion rests on the independent 1992 description paper",
+          "url": "https://doi.org/10.1007/BF00733429",
+          "strength": "Low"
+        }
       ],
-      "person_record": { "id": "spase://SMWG/Person/Philip.H.Scherrer", "url": "https://spase-metadata.org/SMWG/Person/Philip.H.Scherrer.html" },
+      "person_record": {
+        "id": "spase://SMWG/Person/Todd.Hoeksema",
+        "url": "https://spase-metadata.org/SMWG/Person/Todd.Hoeksema.html"
+      },
       "orcid": null,
-      "affiliation": null,
-      "activity_dates": null
+      "affiliation": "Stanford University",
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Lead author of the MDI description paper cited in the MDI Instrument record Description (Hoeksema et al., ESA SP-348, 1992)"
+        }
+      ]
     },
     {
       "name": "Klaus Wilhelm",
       "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Author 1 of the SUMER instrument description paper (Wilhelm et al. 1995, 'SUMER - Solar Ultraviolet Measurements of Emitted Radiation', Solar Phys. 162, 189); author list not alphabetized (n=16; longest sorted suffix = 2), so position carries contribution weight",
+          "url": "https://doi.org/10.1007/BF00733430",
+          "strength": "Strong"
+        },
+        {
+          "source": "SUMER Instrument record Contacts (PrincipalInvestigator); superseded - the SOHO mission People page lists Werner Curdt as the current SUMER PI",
+          "url": "https://spase-metadata.org/SMWG/Instrument/SOHO/SUMER.html",
+          "strength": "Medium"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Klaus.Wilhelm",
+        "url": "https://spase-metadata.org/SMWG/Person/Klaus.Wilhelm.html"
+      },
+      "orcid": null,
+      "affiliation": "Max-Planck-Institut fuer Aeronomie",
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author",
+        "FormerPI"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Author 1 of the SUMER instrument description paper (10.1007/BF00733430)"
+        },
+        {
+          "role": "FormerPI",
+          "source": "SUMER Instrument record Contacts lists him as PrincipalInvestigator; the SOHO People page shows Werner Curdt as the current SUMER PI"
+        }
+      ]
+    },
+    {
+      "name": "Werner Curdt",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Author 2 of the SUMER instrument description paper (Wilhelm et al. 1995, 'SUMER - Solar Ultraviolet Measurements of Emitted Radiation', Solar Phys. 162, 189); author list not alphabetized (n=16; longest sorted suffix = 2), so position carries contribution weight",
+          "url": "https://doi.org/10.1007/BF00733430",
+          "strength": "Strong"
+        },
+        {
+          "source": "Listed under 'SOHO PIs' as the current SUMER Principal Investigator on the SOHO mission People page (page last modified 2026-07-23)",
+          "url": "https://soho.nascom.nasa.gov/about/people.html",
+          "strength": "Strong"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Werner.Curdt",
+        "url": "https://spase-metadata.org/SMWG/Person/Werner.Curdt.html"
+      },
+      "orcid": null,
+      "affiliation": "Max-Planck-Institut fuer Sonnensystemforschung",
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author",
+        "PrincipalInvestigator"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Author 2 of the SUMER instrument description paper (10.1007/BF00733430)"
+        },
+        {
+          "role": "PrincipalInvestigator",
+          "source": "SOHO mission People page, 'SOHO PIs' table (current entry)"
+        }
+      ]
+    },
+    {
+      "name": "E. Marsch",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Author 3 of the SUMER instrument description paper (Wilhelm et al. 1995, 'SUMER - Solar Ultraviolet Measurements of Emitted Radiation', Solar Phys. 162, 189); author list not alphabetized (n=16; longest sorted suffix = 2), so position carries contribution weight",
+          "url": "https://doi.org/10.1007/BF00733430",
+          "strength": "Strong"
+        },
+        {
+          "source": "Also author 10 of the CELIAS instrument paper (participation only)",
+          "url": "https://doi.org/10.1007/BF00733436",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": null,
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Author 3 of the SUMER instrument description paper (10.1007/BF00733430)"
+        }
+      ]
+    },
+    {
+      "name": "Philippe M. Lemaire",
+      "status": "included",
       "confidence": "Medium",
       "exclusion_reason": null,
       "evidence": [
-        { "source": "PrincipalInvestigator (qualifying role) in the SOHO/SUMER sibling Instrument record Contacts", "url": "https://spase-metadata.org/SMWG/Instrument/SOHO/SUMER.html", "strength": "Medium" }
+        {
+          "source": "Named lead author of 'SUMER: Temperatures, Densities, and Velocities in the Outer Solar Atmosphere' (ESA SP-348, 1992) - the description source the SUMER Instrument record's own Description cites",
+          "url": "https://spase-metadata.org/SMWG/Instrument/SOHO/SUMER.html",
+          "strength": "Medium"
+        },
+        {
+          "source": "Also author 5 of the 1995 SUMER instrument paper - NOT counted on this Observatory run (instrument-team depth); inclusion rests on the independent 1992 description paper",
+          "url": "https://doi.org/10.1007/BF00733430",
+          "strength": "Low"
+        }
       ],
-      "person_record": { "id": "spase://SMWG/Person/Klaus.Wilhelm", "url": "https://spase-metadata.org/SMWG/Person/Klaus.Wilhelm.html" },
+      "person_record": {
+        "id": "spase://SMWG/Person/Philippe.M.Lemaire",
+        "url": "https://spase-metadata.org/SMWG/Person/Philippe.M.Lemaire.html"
+      },
       "orcid": null,
-      "affiliation": null,
-      "activity_dates": null
+      "affiliation": "Universite de Paris XI / Institut d'Astrophysique Spatiale",
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Lead author of the SUMER description paper cited in the SUMER Instrument record Description (Lemaire et al., ESA SP-348, 1992)"
+        }
+      ]
     },
     {
       "name": "Jean-Loup C. Bertaux",
       "status": "included",
-      "confidence": "Medium",
+      "confidence": "Strong",
       "exclusion_reason": null,
       "evidence": [
-        { "source": "PrincipalInvestigator (qualifying role) in the SOHO/SWAN sibling Instrument record Contacts", "url": "https://spase-metadata.org/SMWG/Instrument/SOHO/SWAN.html", "strength": "Medium" }
+        {
+          "source": "Author 1 of the SWAN instrument description paper (Bertaux et al. 1995, 'SWAN: A study of Solar Wind Anisotropies on SOHO', Solar Phys. 162, 403); author list not alphabetized (n=25; longest sorted suffix = 1), so position carries contribution weight",
+          "url": "https://doi.org/10.1007/BF00733435",
+          "strength": "Strong"
+        },
+        {
+          "source": "Lead author of 'SWAN - A Study of Solar Wind Anisotropies' (ESA SP-348, 1992), cited as the description source inside the SWAN Instrument record",
+          "url": "https://spase-metadata.org/SMWG/Instrument/SOHO/SWAN.html",
+          "strength": "Medium"
+        },
+        {
+          "source": "SWAN Instrument record Contacts (PrincipalInvestigator); superseded - the SOHO mission People page lists Eric Quemerais as the current SWAN PI",
+          "url": "https://spase-metadata.org/SMWG/Instrument/SOHO/SWAN.html",
+          "strength": "Medium"
+        },
+        {
+          "source": "Appears as the SWAN Principal Investigator in the 'SOHO PIs' table of the SOHO mission People page, but the entry is retired (HTML-commented out) and superseded by the current PI",
+          "url": "https://soho.nascom.nasa.gov/about/people.html",
+          "strength": "Medium"
+        }
       ],
-      "person_record": { "id": "spase://SMWG/Person/Jean-Loup.C.Bertaux", "url": "https://spase-metadata.org/SMWG/Person/Jean-Loup.C.Bertaux.html" },
+      "person_record": {
+        "id": "spase://SMWG/Person/Jean-Loup.C.Bertaux",
+        "url": "https://spase-metadata.org/SMWG/Person/Jean-Loup.C.Bertaux.html"
+      },
       "orcid": null,
-      "affiliation": null,
-      "activity_dates": null
+      "affiliation": "Centre National de la Recherche Scientifique / Service d'Aeronomie (now LATMOS)",
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author",
+        "FormerPI"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Author 1 of the SWAN instrument description paper (10.1007/BF00733435)"
+        },
+        {
+          "role": "FormerPI",
+          "source": "SOHO mission People page 'SOHO PIs' table, entry retired (HTML-commented) and superseded by Eric Quemerais; the SWAN Instrument record still lists him as PrincipalInvestigator"
+        }
+      ]
+    },
+    {
+      "name": "E. Kyroelae",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Author 2 of the SWAN instrument description paper (Bertaux et al. 1995, 'SWAN: A study of Solar Wind Anisotropies on SOHO', Solar Phys. 162, 403); author list not alphabetized (n=25; longest sorted suffix = 1), so position carries contribution weight",
+          "url": "https://doi.org/10.1007/BF00733435",
+          "strength": "Strong"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": "Finnish Meteorological Institute (inferred from the SWAN consortium; not confirmed in a fetched source)",
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Author 2 of the SWAN instrument description paper (10.1007/BF00733435)"
+        }
+      ]
+    },
+    {
+      "name": "Eric Quemerais",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Author 3 of the SWAN instrument description paper (Bertaux et al. 1995, 'SWAN: A study of Solar Wind Anisotropies on SOHO', Solar Phys. 162, 403); author list not alphabetized (n=25; longest sorted suffix = 1), so position carries contribution weight",
+          "url": "https://doi.org/10.1007/BF00733435",
+          "strength": "Strong"
+        },
+        {
+          "source": "Listed under 'SOHO PIs' as the current SWAN Principal Investigator on the SOHO mission People page (page last modified 2026-07-23)",
+          "url": "https://soho.nascom.nasa.gov/about/people.html",
+          "strength": "Strong"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Eric.Quemerais",
+        "url": "https://spase-metadata.org/SMWG/Person/Eric.Quemerais.html"
+      },
+      "orcid": null,
+      "affiliation": "Laboratoire Atmospheres, Milieux, Observations Spatiales (LATMOS)",
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author",
+        "PrincipalInvestigator"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Author 3 of the SWAN instrument description paper (10.1007/BF00733435)"
+        },
+        {
+          "role": "PrincipalInvestigator",
+          "source": "SOHO mission People page, 'SOHO PIs' table (current entry)"
+        }
+      ]
     },
     {
       "name": "John L. Kohl",
       "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Author 1 of the UVCS instrument description paper (Kohl et al. 1995, 'The Ultraviolet Coronagraph Spectrometer for SOHO', Solar Phys. 162, 313); author list not alphabetized (n=40; longest sorted suffix = 2), so position carries contribution weight",
+          "url": "https://doi.org/10.1007/BF00733433",
+          "strength": "Strong"
+        },
+        {
+          "source": "First of the two authors of 'UVCS - the Ultraviolet Coronagraph Spectrometer for SOHO' (Kohl & Noci, ESA SP-348, 1992), cited as the description source inside the UVCS Instrument record",
+          "url": "https://spase-metadata.org/SMWG/Instrument/SOHO/UVCS.html",
+          "strength": "Medium"
+        },
+        {
+          "source": "UVCS Instrument record Contacts (PrincipalInvestigator); superseded - the SOHO mission People page lists Leonard Strachan as the current UVCS PI",
+          "url": "https://spase-metadata.org/SMWG/Instrument/SOHO/UVCS.html",
+          "strength": "Medium"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/John.L.Kohl",
+        "url": "https://spase-metadata.org/SMWG/Person/John.L.Kohl.html"
+      },
+      "orcid": null,
+      "affiliation": "Harvard-Smithsonian Center for Astrophysics",
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author",
+        "FormerPI"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Author 1 of the UVCS instrument description paper (10.1007/BF00733433)"
+        },
+        {
+          "role": "FormerPI",
+          "source": "UVCS Instrument record Contacts lists him as PrincipalInvestigator; the SOHO People page shows Leonard Strachan as the current UVCS PI"
+        }
+      ]
+    },
+    {
+      "name": "R. Esser",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Author 2 of the UVCS instrument description paper (Kohl et al. 1995, 'The Ultraviolet Coronagraph Spectrometer for SOHO', Solar Phys. 162, 313); author list not alphabetized (n=40; longest sorted suffix = 2), so position carries contribution weight",
+          "url": "https://doi.org/10.1007/BF00733433",
+          "strength": "Strong"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": null,
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Author 2 of the UVCS instrument description paper (10.1007/BF00733433)"
+        }
+      ]
+    },
+    {
+      "name": "L. D. Gardner",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Author 3 of the UVCS instrument description paper (Kohl et al. 1995, 'The Ultraviolet Coronagraph Spectrometer for SOHO', Solar Phys. 162, 313); author list not alphabetized (n=40; longest sorted suffix = 2), so position carries contribution weight",
+          "url": "https://doi.org/10.1007/BF00733433",
+          "strength": "Strong"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": null,
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Author 3 of the UVCS instrument description paper (10.1007/BF00733433)"
+        }
+      ]
+    },
+    {
+      "name": "Leonard Strachan",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Listed under 'SOHO PIs' as the current UVCS Principal Investigator on the SOHO mission People page (page last modified 2026-07-23)",
+          "url": "https://soho.nascom.nasa.gov/about/people.html",
+          "strength": "Strong"
+        },
+        {
+          "source": "Also author 11 of the UVCS instrument paper (position 11 carries no position-based evidence; context only)",
+          "url": "https://doi.org/10.1007/BF00733433",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Leonard.Strachan",
+        "url": "https://spase-metadata.org/SMWG/Person/Leonard.Strachan.html"
+      },
+      "orcid": null,
+      "affiliation": "US Naval Research Laboratory",
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author",
+        "PrincipalInvestigator"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Current UVCS Principal Investigator on the SOHO mission People page"
+        },
+        {
+          "role": "PrincipalInvestigator",
+          "source": "SOHO mission People page, 'SOHO PIs' table (current entry)"
+        }
+      ]
+    },
+    {
+      "name": "G. Noci",
+      "status": "included",
       "confidence": "Medium",
       "exclusion_reason": null,
       "evidence": [
-        { "source": "PrincipalInvestigator (qualifying role) in the SOHO/UVCS sibling Instrument record Contacts", "url": "https://spase-metadata.org/SMWG/Instrument/SOHO/UVCS.html", "strength": "Medium" }
+        {
+          "source": "Second of the two authors of 'UVCS - the Ultraviolet Coronagraph Spectrometer for SOHO' (Kohl & Noci, ESA SP-348, 1992) - the description source the UVCS Instrument record's own Description cites",
+          "url": "https://spase-metadata.org/SMWG/Instrument/SOHO/UVCS.html",
+          "strength": "Medium"
+        },
+        {
+          "source": "Also author 13 of the 1995 UVCS instrument paper (Italian UVCS consortium; no position evidence)",
+          "url": "https://doi.org/10.1007/BF00733433",
+          "strength": "Low"
+        }
       ],
-      "person_record": { "id": "spase://SMWG/Person/John.L.Kohl", "url": "https://spase-metadata.org/SMWG/Person/John.L.Kohl.html" },
+      "person_record": {
+        "id": null,
+        "url": null
+      },
       "orcid": null,
-      "affiliation": null,
-      "activity_dates": null
+      "affiliation": "Universita di Firenze (inferred from the Italian UVCS consortium; not confirmed in a fetched source)",
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Named co-author of the UVCS description paper cited in the UVCS Instrument record Description (Kohl & Noci, ESA SP-348, 1992)"
+        }
+      ]
     },
     {
       "name": "J. Leonard Culhane",
@@ -233,36 +1853,231 @@
       "confidence": "Medium",
       "exclusion_reason": null,
       "evidence": [
-        { "source": "Listed with PrincipalInvestigator (qualifying role) in the SOHO/UVCS sibling Instrument record Contacts (second PI on UVCS)", "url": "https://spase-metadata.org/SMWG/Instrument/SOHO/UVCS.html", "strength": "Medium" }
+        {
+          "source": "UVCS Instrument record Contacts (PrincipalInvestigator - qualifying role). FLAGGED: this appears to be a SPASE metadata error - no independent source ties Culhane to UVCS, and the SOHO People page names Leonard Strachan as the current and John Kohl as the founding UVCS PI",
+          "url": "https://spase-metadata.org/SMWG/Instrument/SOHO/UVCS.html",
+          "strength": "Medium"
+        },
+        {
+          "source": "Appears as 'J. L. Gulhane' at position 15 of the CDS instrument paper - i.e. his documented SOHO involvement is with CDS/MSSL, not UVCS (position 15 carries no position evidence)",
+          "url": "https://doi.org/10.1007/BF00733431",
+          "strength": "Low"
+        }
       ],
-      "person_record": { "id": "spase://SMWG/Person/J.Leonard.Culhane", "url": "https://spase-metadata.org/SMWG/Person/J.Leonard.Culhane.html" },
+      "person_record": {
+        "id": "spase://SMWG/Person/J.Leonard.Culhane",
+        "url": "https://spase-metadata.org/SMWG/Person/J.Leonard.Culhane.html"
+      },
       "orcid": null,
-      "affiliation": null,
-      "activity_dates": null
+      "affiliation": "Mullard Space Science Laboratory",
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author",
+        "FormerPI"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Qualifying PrincipalInvestigator role in the UVCS Instrument record Contacts (flagged as probably erroneous - verify before use)"
+        },
+        {
+          "role": "FormerPI",
+          "source": "UVCS Instrument record Contacts (PrincipalInvestigator), superseded by Leonard Strachan on the SOHO People page; assignment itself is suspect - see notes"
+        }
+      ]
     },
     {
-      "name": "Claus Fröhlich",
+      "name": "Claus Froehlich",
       "status": "included",
-      "confidence": "Medium",
+      "confidence": "Strong",
       "exclusion_reason": null,
       "evidence": [
-        { "source": "PrincipalInvestigator (qualifying role) in the SOHO/VIRGO sibling Instrument record Contacts", "url": "https://spase-metadata.org/SMWG/Instrument/SOHO/VIRGO.html", "strength": "Medium" }
+        {
+          "source": "Author 1 of the VIRGO instrument description paper (Froehlich et al. 1995, 'VIRGO: Experiment for helioseismology and solar irradiance monitoring', Solar Phys. 162, 101); author list not alphabetized (n=25; longest sorted suffix = 4, below the 5-name threshold), so position carries contribution weight",
+          "url": "https://doi.org/10.1007/BF00733428",
+          "strength": "Strong"
+        },
+        {
+          "source": "VIRGO Instrument record Contacts (PrincipalInvestigator); superseded - the SOHO mission People page lists Wolfgang Finsterle as the current VIRGO PI",
+          "url": "https://spase-metadata.org/SMWG/Instrument/SOHO/VIRGO.html",
+          "strength": "Medium"
+        }
       ],
-      "person_record": { "id": "spase://SMWG/Person/Claus.Frohlich", "url": "https://spase-metadata.org/SMWG/Person/Claus.Frohlich.html" },
+      "person_record": {
+        "id": "spase://SMWG/Person/Claus.Frohlich",
+        "url": "https://spase-metadata.org/SMWG/Person/Claus.Frohlich.html"
+      },
+      "orcid": null,
+      "affiliation": "Physikalisch-Meteorologisches Observatorium Davos",
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author",
+        "FormerPI"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Author 1 of the VIRGO instrument description paper (10.1007/BF00733428)"
+        },
+        {
+          "role": "FormerPI",
+          "source": "VIRGO Instrument record Contacts lists him as PrincipalInvestigator; the SOHO People page shows Wolfgang Finsterle as the current VIRGO PI"
+        }
+      ]
+    },
+    {
+      "name": "Jose Romero",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Author 2 of the VIRGO instrument description paper (Froehlich et al. 1995, 'VIRGO: Experiment for helioseismology and solar irradiance monitoring', Solar Phys. 162, 101); author list not alphabetized (n=25; longest sorted suffix = 4, below the 5-name threshold), so position carries contribution weight",
+          "url": "https://doi.org/10.1007/BF00733428",
+          "strength": "Strong"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": "Physikalisch-Meteorologisches Observatorium Davos (inferred from the VIRGO team; not confirmed in a fetched source)",
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Author 2 of the VIRGO instrument description paper (10.1007/BF00733428)"
+        }
+      ]
+    },
+    {
+      "name": "Hansjoerg Roth",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Author 3 of the VIRGO instrument description paper (Froehlich et al. 1995, 'VIRGO: Experiment for helioseismology and solar irradiance monitoring', Solar Phys. 162, 101); author list not alphabetized (n=25; longest sorted suffix = 4, below the 5-name threshold), so position carries contribution weight",
+          "url": "https://doi.org/10.1007/BF00733428",
+          "strength": "Strong"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": "Physikalisch-Meteorologisches Observatorium Davos (inferred from the VIRGO team; not confirmed in a fetched source)",
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Author 3 of the VIRGO instrument description paper (10.1007/BF00733428)"
+        }
+      ]
+    },
+    {
+      "name": "Wolfgang Finsterle",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Listed under 'SOHO PIs' as the current VIRGO Principal Investigator on the SOHO mission People page (page last modified 2026-07-23)",
+          "url": "https://soho.nascom.nasa.gov/about/people.html",
+          "strength": "Strong"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Wolfgang.Finsterle",
+        "url": "https://spase-metadata.org/SMWG/Person/Wolfgang.Finsterle.html"
+      },
+      "orcid": null,
+      "affiliation": "Physikalisch-Meteorologisches Observatorium Davos",
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author",
+        "PrincipalInvestigator"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Current VIRGO Principal Investigator on the SOHO mission People page"
+        },
+        {
+          "role": "PrincipalInvestigator",
+          "source": "SOHO mission People page, 'SOHO PIs' table (current entry)"
+        }
+      ]
+    },
+    {
+      "name": "Jan Merka",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "non-qualifying contact role only (MetadataContact on the SOHO/Ephemeris platform record); metadata curation, not authorship",
+      "evidence": [
+        {
+          "source": "SOHO/Ephemeris Instrument record Contacts (MetadataContact)",
+          "url": "https://spase-metadata.org/SMWG/Instrument/SOHO/Ephemeris.html",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Jan.Merka",
+        "url": "https://spase-metadata.org/SMWG/Person/Jan.Merka.html"
+      },
       "orcid": null,
       "affiliation": null,
-      "activity_dates": null
+      "activity_dates": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "Kevin Schenk",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "provider staff-roster entry only - listed in the SOHO project-office telephone/e-mail roster with no stated role and no authorship or qualifying-role evidence",
+      "evidence": [
+        {
+          "source": "Live entry in the SOHO project-office telephone/e-mail roster (science operations / LASCO-EIT planning contact)",
+          "url": "https://soho.nascom.nasa.gov/about/people.html",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": null,
+      "activity_dates": null,
+      "qualifying_roles": [],
+      "role_evidence": []
     }
   ],
   "notes": [
-    "Record type is Observatory, so the description paper is the mission/observatory OVERVIEW paper: Domingo, Fleck & Poland, 'The SOHO mission: An overview', Solar Physics 162 (1995), doi:10.1007/BF00733425. Paper selection is CONFIDENT: title contains 'mission'/'overview', it names the observatory, it appears at the start of operations (Dec 1995 = launch month), and it is the canonical, heavily-cited SOHO reference explicitly cited in the SPASE Description ('B. Fleck, V. Domingo, and A. I. Poland, eds., Solar Physics, V. 162, 1995'). SciX/Springer agree on the author list.",
-    "Overview-paper alphabetization check: only 3 authors (Domingo, Fleck, Poland), below the 5-name threshold, so treated as NOT alphabetized — author order signals contribution. All three are positions 1-3, hence Strong-tier.",
-    "Bernhard Fleck is corroborated at two levels: overview co-author (Strong) AND Observatory-record ProjectScientist (Medium). Vicente Domingo (first Project Scientist) and Arthur I. Poland (a later Project Scientist) are the other overview authors; both have SMWG Person records (Poland's is Arthur.I.Poland; the bare 'Arthur.Poland' slug returns 404).",
-    "The 12 instrument PIs are Medium via the qualifying PrincipalInvestigator role in their sibling SOHO Instrument records; per the skill, for an Observatory record all instrument leads are legitimate candidates. Every one has an existing SMWG Person record.",
-    "SPASE instrument records reflect CURRENT PIs for several instruments, which differ from the original description-paper-era PIs: CELIAS (Wimmer-Schweingruber now; originally D. Hovestadt / P. Bochsler), COSTEP (Heber now; originally H. Kunow), ERNE (Vainio now; originally J. Torsti), LASCO (Howard now; originally G. Brueckner). These original/founding instrument PIs were NOT asserted as candidates in this run because no source naming them was fetched here; a downstream instrument-level pass should recover them from each instrument's own description paper (several instrument records link one, e.g. CELIAS doi:10.1007/BF00733436, COSTEP doi:10.1007/BF00733437, ERNE doi:10.1007/BF00733438).",
-    "UVCS lists two PrincipalInvestigators in SPASE (John L. Kohl and J. Leonard Culhane); both retained as Medium candidates.",
-    "CMAD expected but not located — see the cmad object. SOHO participates in NASA senior review but calibration is documented per-instrument rather than in a consolidated mission CMAD.",
-    "The Observatory record carries no explicit OperatingSpan element; operating_span.start was taken from the launch date in the Description (1995-12-02) and stop set to null because SOHO remains operational. Downstream era-matching should use these values.",
-    "The SOHO/Ephemeris registry entry is orbit/trajectory data, not a science instrument; excluded from the instrument roster and generates no candidates."
+    "Observatory record carries no OperatingSpan element. operating_span.start (1995-12-02) is the launch date given in the record's own Description and on the SOHO mission About page; stop is null because SOHO is still operating (SOHO mission-day counter read 11216 on 2026-08-16, and the site marked 30 years of operations in December 2025).",
+    "Mission-overview paper selection CONFIDENT: Domingo, Fleck & Poland 1995, 'The SOHO mission: An overview', Solar Phys. 162, 1-37 (10.1007/BF00733425). Passes every heuristic - title keyword 'overview', names the observatory, published the same month as launch, and 1506 citations per OpenAlex. Crossref and OpenAlex agree on the author list, and the two variant SOHO overview papers OpenAlex returns for 1995 (Space Sci. Rev. and the Solar Phys. reprint) have the identical three authors, so the selection cannot change who is taken. Semantic Scholar was rate-limited (HTTP 429) on every attempt; OpenAlex was used as the second literature index in its place.",
+    "Author-order detection, mission overview: n=3, longest sorted suffix = 3, which is below the 5-name threshold, so the list is treated as NOT alphabetized and positions 1-3 are Strong.",
+    "Author-order detection, instrument papers (backward scan on normalized family names): CDS n=39 suffix 1; CELIAS n=33 suffix 1; COSTEP n=19 suffix 1; EIT n=28 suffix 3; ERNE n=15 suffix 6 from position 10 (partially alphabetized, prefix = positions 1-9); GOLF n=31 suffix 1; LASCO n=15 suffix 2; MDI n=12 suffix 6 from position 7 (partially alphabetized, prefix = positions 1-6); SUMER n=16 suffix 2; SWAN n=25 suffix 1; UVCS n=40 suffix 2; VIRGO n=25 suffix 4. Only ERNE and MDI are partially alphabetized, and in both the prefix is longer than three, so positions 1-3 were taken from the prefix in every case. No paper was fully alphabetized.",
+    "Instrument-paper selection CONFIDENT for all twelve: each is the dedicated description paper in the Solar Physics 162 (1995) SOHO special issue, published the month of launch, with a large team author list, the instrument named in the title, and high citation counts (LASCO 2824, MDI 2413, EIT 1787, SUMER 797, CDS 573, UVCS 437, VIRGO 309, CELIAS 295, GOLF 237, ERNE 225, COSTEP 222 per OpenAlex). Three of the DOIs (CELIAS, COSTEP, ERNE) are cited by the SPASE Instrument records themselves, which anchors the whole contiguous DOI series.",
+    "Observatory scoping rule applied strictly and symmetrically: from each instrument paper only positions 1-3 (or prefix positions 1-3) were taken, at Strong. Every author at position 4 or beyond on all twelve instrument papers was excluded as instrument-team depth belonging to that Instrument record's own finder run - 262 people in total (298 authors across the twelve papers, minus the 36 taken), not enumerated individually. Three of them (Berndt Klecker, CELIAS 4; J. Todd Hoeksema, MDI 4; Philippe Lemaire, SUMER 5) are nevertheless included here, but only because an INDEPENDENT source earns it for them - a retired provider PI listing for Klecker, and lead authorship of the 1992 ESA SP-348 description paper the Instrument record itself cites for Hoeksema and Lemaire. Their instrument-paper position was not used.",
+    "Second description-paper generation: eight Instrument record Descriptions cite an earlier design-phase paper from the First SOHO Workshop (ESA SP-348, November 1992). Where such a citation names an individual not already captured, that individual was included at Medium as a named lead of a record-cited description paper: Hoeksema (MDI), Lemaire (SUMER), Noci (UVCS). The full author lists of those proceedings papers could not be retrieved (they are cited as 'et al.'), so only the explicitly named individuals were taken, and at Medium rather than Strong.",
+    "SPASE Instrument Contacts are systematically out of date relative to the provider's current PI table. Of the twelve payload records, only four name the current PI (CELIAS/Wimmer-Schweingruber, COSTEP/Heber, ERNE/Vainio, MDI/Scherrer). The other eight name the founding-generation PI: CDS/Harrison (now Fludra), EIT/Delaboudiniere (now Auchere), GOLF/Gabriel (now Boumier), LASCO/Howard (now Battams), SUMER/Wilhelm (now Curdt), SWAN/Bertaux (now Quemerais), UVCS/Kohl (now Strachan), VIRGO/Froehlich (now Finsterle). Those eight are recorded with role FormerPI, sourced to the Instrument record Contacts plus the superseding provider listing, rather than PrincipalInvestigator - emitting PrincipalInvestigator for them would assert a role the live provider page contradicts. This is a curation finding worth passing back to SMWG.",
+    "The SOHO People page's 'SOHO PIs' table also preserves four retired PI entries as HTML comments (Klecker/CELIAS, Bertaux/SWAN, Torsti/ERNE, Valtonen/ERNE). These were read as Medium FormerPI evidence: the entry is on the provider's official page but explicitly retired.",
+    "FLAG for the reviewer: the UVCS Instrument record lists TWO PrincipalInvestigators, John L. Kohl and J. Leonard Culhane. Culhane's documented SOHO involvement is with CDS/MSSL - he appears at position 15 of the CDS instrument paper (misspelled 'J. L. Gulhane' in the Crossref record) and nowhere in the UVCS author list. The UVCS PI entry for him is very probably a SPASE metadata error. He is included at Medium because a qualifying contact role is Medium evidence by rule, but this entry should be verified (and the UVCS record corrected) before he is written into any DOI.",
+    "A companion paper to the mission overview exists - 'SOHO ground segment, science operations, and data products', Solar Phys. 162, 39 (10.1007/BF00733426), 5 authors. It is a ground-segment/operations paper, not the observatory description paper, so no position-based evidence was drawn from it. Joseph Gurman appears on it, but his inclusion here rests on the independent NASA/SDAC provider pages naming him US SOHO Project Scientist.",
+    "Vicente Domingo and Arthur Poland are widely described as the founding ESA and NASA SOHO project scientists respectively, but no source fetched during this run states that role for either of them explicitly, so neither carries a ProjectScientist role here - only Author. Bernhard Fleck and Jack Ireland carry ProjectScientist because the Observatory record's own Contacts names it.",
+    "Names are recorded as found in the source. Where a source supplied only initials (E. C. Sawyer, M. K. Carter, M. Hilchenbach, A. Buergi, V. Fleissner, G. E. Artzner, J. Brunaud, M. Lumme, G. Grec, J. Charra, R. I. Bush, E. Marsch, E. Kyroelae, R. Esser, L. D. Gardner, G. Noci) no expansion was invented; downstream name resolution will be needed before Person records can be matched or created. Diacritics were transliterated in this file (Buergi/Fleissner/Kyroelae/Froehlich/Hansjoerg) and should be restored from the source papers downstream.",
+    "SMWG Person registry checked for every candidate by surname against the full index (5155 entries). No Person record exists for Sawyer (E. C.), Carter (M. K.), Hilchenbach, Buergi, Fleissner, Artzner, Brunaud, Valtonen, Lumme, Grec, Charra, Marsch, Kyroelae, Esser, Gardner (L. D.), Romero, Roth (Hansjoerg), or Noci. Note one near-miss trap: an 'R.Bush' Person record exists but is Dr. R. Bush of UC Berkeley, not MDI's R. I. Bush at Stanford, so MDI's Bush is recorded with a null Person record.",
+    "ORCIDs were captured opportunistically only. The 1995 Crossref records carry no ORCIDs or affiliations; the three ORCIDs present here (Ireland, Howard, Battams) came from SMWG Person records. Affiliations come from SMWG Person records where one exists and are flagged as inferred where they do not.",
+    "pending_instrument_runs is empty: all twelve payload instruments were fully resolved on this run (Contacts read in full, description paper located, selected with confidence, and classified for alphabetization)."
   ]
 }

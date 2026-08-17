@@ -262,6 +262,36 @@ from the input:
 `Role` has cardinality `(+)`, so multiple roles on one Contact are valid and
 preferred over duplicate Contact blocks for the same person.
 
+### Role vocabulary — check legality before ordering
+
+`Role` is a **closed enumeration** in SPASE 2.7.1. These are the only legal
+values:
+
+```
+ArchiveSpecialist, Author, CoInvestigator, Contributor, CoPI, DataProducer,
+DeputyPI, Developer, FormerPI, GeneralContact, HostContact, InstrumentLead,
+InstrumentScientist, MetadataContact, MissionManager,
+MissionPrincipalInvestigator, OperationsManager, PrincipalInvestigator,
+ProgramManager, ProgramScientist, ProjectEngineer, ProjectManager,
+ProjectScientist, Publisher, Scientist, TeamLeader, TeamMember,
+TechnicalContact, User
+```
+
+Note what is **not** there: `InstrumentPrincipalInvestigator`. A record using it
+will not validate.
+
+The registry's convention resolves the mission/instrument ambiguity with two
+existing terms rather than a new one: a PI of the mission is
+`MissionPrincipalInvestigator`, and a PI of an instrument is `InstrumentLead`.
+Bare `PrincipalInvestigator` says nothing about which, so upstream should stop
+emitting it — but it stays in the precedence list, because 465 existing
+Observatory records use it and those are not this skill's to rewrite.
+
+Write the role the input gives — the finder and enricher are the authority on who
+did what, and silently substituting a different role would misstate the evidence.
+But log any value outside the enumeration loudly, because it is a schema failure
+waiting to happen and the fix belongs upstream in the finder's vocabulary.
+
 ### Role precedence
 
 Contact blocks are ordered by each person's **highest-ranking role**, and the
@@ -300,18 +330,25 @@ without going back to the JSON.
 `Note` has cardinality 0..1 — **one Note per Contact, no more**. When a candidate
 has several `role_evidence` entries, fold them into a single Note, each labelled
 with the role it supports, **ordered by the same role precedence as the `Role`
-elements above them**, and **on its own line** — a run-on string carrying two
-or three justifications is unreadable in a diff or a rendered record. Continuation
-lines are indented to sit under the opening tag; single-entry Notes stay on one
-line:
+elements above them**, and **as a SPASE list item on its own line** — a run-on string carrying two
+or three justifications is unreadable in a diff or a rendered record. Single-entry Notes stay on one line.
+
+**Use the SPASE text mark-up, not bare newlines.** Section 3.4 of the 2.7.1 spec
+defines how a viewer interprets Note text, and a lone newline is not a break —
+which is why indented continuation lines render as one run-on paragraph. Two
+rules matter here: normalization forbids leading whitespace on any line, and a
+list item is a line beginning `* `. So the lines sit flush left, each prefixed
+with `* `, rather than indented to align under the opening tag:
 
 ```xml
 <Contact>
   <PersonID>spase://SMWG/Person/Howard.J.Singer</PersonID>
   <Role>PrincipalInvestigator</Role>
   <Role>Author</Role>
-  <Note>PrincipalInvestigator: GOES-16 MAG SPASE Instrument record Contacts (https://spase-metadata.org/SMWG/Instrument/GOES/16/MAG.html)
-          Author: MAG PrincipalInvestigator in the GOES-16 MAG SPASE record, corroborated by the record Acknowledgement and MAG description-paper co-authorship</Note>
+  <Note>
+* PrincipalInvestigator: GOES-16 MAG SPASE Instrument record Contacts (https://spase-metadata.org/SMWG/Instrument/GOES/16/MAG.html)
+* Author: MAG PrincipalInvestigator in the GOES-16 MAG SPASE record, corroborated by the record Acknowledgement and MAG description-paper co-authorship
+</Note>
 </Contact>
 ```
 

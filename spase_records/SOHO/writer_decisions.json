@@ -1,0 +1,24 @@
+{
+  "_help": "For each name: set links[name] to an existing PersonID if it is the same human, or move the name into creates if it is a different person. Empty string means undecided.",
+  "_candidates": {
+    "R. I. Bush": [
+      "R.Bush"
+    ]
+  },
+  "_decision_notes": {
+    "E. C. Sawyer": "CREATE. Given initials disagree (E.C. vs D.M. / H.R.) and neither existing record sits at the CDS instrument's home institution: Donald M. Sawyer is GSFC-Code 690.1, Heywood R. Sawyer is Colorado State University. Different people.",
+    "M. K. Carter": "CREATE. Given initials disagree (M.K. vs V.L.) and Miss V. L. Carter is 'Unknown - formerly at Aerospace Corp', not the CDS team. Different people.",
+    "L. D. Gardner": "CREATE. Given initials disagree (L.D. vs J.B.) and James B. Gardner is at TRW Incorporated, not the UVCS team's Harvard-Smithsonian. Different people.",
+    "Hansjoerg Roth": "CREATE. Different given name entirely (Hansjoerg vs Ilan) and Ilan Roth is at University of California, Berkeley, not PMOD Davos. Different people.",
+    "R. I. Bush": "LINK to R.Bush, decided by the curator 2026-08-16. Same human. The existing record's OrganizationName 'University of California, Berkeley' is kept: the input's affiliation for this candidate is null (enricher identity gate), so there is no value to replace it with."
+  },
+  "links": {
+    "R. I. Bush": "R.Bush"
+  },
+  "creates": [
+    "E. C. Sawyer",
+    "M. K. Carter",
+    "L. D. Gardner",
+    "Hansjoerg Roth"
+  ]
+}

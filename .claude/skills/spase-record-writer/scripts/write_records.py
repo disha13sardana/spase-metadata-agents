@@ -48,6 +48,19 @@ ROLE_PRECEDENCE = [
     "Author",
 ]
 ROLE_RANK = {r: i for i, r in enumerate(ROLE_PRECEDENCE)}
+
+# The closed Role enumeration in SPASE 2.7.1. A role outside this set is still
+# written -- the input is the authority on who did what -- but it will fail
+# schema validation, so it is logged prominently.
+SPASE_271_ROLES = {
+    "ArchiveSpecialist", "Author", "CoInvestigator", "Contributor", "CoPI",
+    "DataProducer", "DeputyPI", "Developer", "FormerPI", "GeneralContact",
+    "HostContact", "InstrumentLead", "InstrumentScientist", "MetadataContact",
+    "MissionManager", "MissionPrincipalInvestigator", "OperationsManager",
+    "PrincipalInvestigator", "ProgramManager", "ProgramScientist",
+    "ProjectEngineer", "ProjectManager", "ProjectScientist", "Publisher",
+    "Scientist", "TeamLeader", "TeamMember", "TechnicalContact", "User",
+}
 UNRANKED = len(ROLE_PRECEDENCE)
 
 # SPASE 2.7.1 Person child order -- insertion points are derived from this.
@@ -160,7 +173,7 @@ def build_person_note(candidate):
 OUR_NOTE_PREFIX = "Affiliation source:"
 
 
-def build_note(candidate, indent="          "):
+def build_note(candidate, indent=""):
     """Contact/Note holds the role evidence.
 
     Note has cardinality 0..1, so several role_evidence entries are folded into
@@ -187,10 +200,15 @@ def build_note(candidate, indent="          "):
         entries,
         key=lambda e: (ROLE_RANK.get((e.get("role") or "").strip(), UNRANKED),
                        (e.get("role") or "").strip()))
-    return ("\n" + indent).join(
-        "%s: %s" % ((e.get("role") or "Role").strip(),
-                    linkify_dois(e["source"].strip()))
+    # SPASE 2.7.1 section 3.4 defines the mark-up a viewer applies. A bare
+    # newline is not a break: a blank line makes a paragraph and a list item is
+    # a line beginning "* ". Normalization also forbids leading whitespace,
+    # which is why these lines sit flush left rather than indented to the tag.
+    items = "\n".join(
+        "* %s: %s" % ((e.get("role") or "Role").strip(),
+                      linkify_dois(e["source"].strip()))
         for e in entries)
+    return "\n" + items + "\n"
 
 
 # --------------------------------------------------------------------------
@@ -489,6 +507,10 @@ def main():
             if r not in ROLE_RANK:
                 log.append("ROLE UNRANKED %s: '%s' is not in the precedence "
                            "list; sorted last" % (pid, r))
+            if r not in SPASE_271_ROLES:
+                log.append("ROLE INVALID %s: '%s' is NOT in the SPASE 2.7.1 "
+                           "Role enumeration; this record will fail schema "
+                           "validation" % (pid, r))
         roles.sort(key=lambda r: (ROLE_RANK.get(r, UNRANKED), r))
         rank = min(ROLE_RANK.get(r, UNRANKED) for r in roles)
 
