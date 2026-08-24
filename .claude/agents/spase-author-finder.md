@@ -31,11 +31,35 @@ Key rules from the skill that are easy to get wrong:
   candidate gets an `Author` role (they cleared the bar → authors on the DOI),
   plus each qualifying contact role a source names. `role_evidence` is always an
   array of `{role, source}` — one entry per role, INCLUDING Author (whose source
-  is the inclusion evidence). Keep them in lockstep: same roles in both. A paper
-  lead who is also the instrument PI → `qualifying_roles: ["Author",
-  "PrincipalInvestigator"]` with two matching role_evidence entries. Excluded
+  is the inclusion evidence). Keep them in lockstep: same roles in both. Excluded
   candidates get `[]` for both. This lets the writer emit one `<Role>` per entry
   with no special-casing.
+- **Write `role_evidence` sources for a curator, not the pipeline.** These strings
+  are published verbatim in the SPASE record and read by people who have never
+  seen this skill. Say what was found and where, in plain words: "second author"
+  not "Author position 2"; "first author before the alphabetized remainder of the
+  author list" not "sole prefix author". Never restate confidence in prose — it
+  has its own field, so no "(Medium inclusion evidence)" or "downgraded under the
+  uncertain-selection rule". Where a rule changes what a reader should conclude,
+  state the consequence plainly ("two suite-level descriptions exist and neither
+  is clearly authoritative, so leads of both are recorded"). Test: read it aloud
+  to someone who has never seen the skill — if they can't tell what was found or
+  where, rewrite it. Keep source detail precise; drop scoring jargon.
+- **Cite publications as author, year, DOI — one parenthesis.**
+  `(Galica et al. 2016, 10.1117/12.2228537)`, not a bare DOI, URL, or bibcode. Use
+  `et al.` for 3+ authors, `&` for two, a bare surname for one; bare DOI form
+  (`10.xxxx/…`, no resolver prefix — the writer adds it); a volume or report ID
+  when there is no DOI (`(Hoeksema et al. 1992, ESA SP-348)`), never an invented
+  one. Non-paper evidence keeps its URL in parentheses.
+- **Match the role to the evidence's scope.** A PI of one instrument is
+  `InstrumentLead` (name the instrument in `role_evidence`); `PrincipalInvestigator`
+  is only for a PI of the mission/observatory as a whole. Scope decides, not
+  seniority — an eminent person listed as PI in an Instrument record's Contacts is
+  still `InstrumentLead`. Say which instrument or mission a `FormerPI` was PI of.
+  So a paper lead who is also that instrument's PI → `["Author", "InstrumentLead"]`.
+  Never emit `InstrumentPrincipalInvestigator` — it is not a legal SPASE 2.7.1 role
+  and fails schema validation. Check every role against the legal enumeration in
+  the skill before writing it.
 - **Contacts are role-gated and Medium, not Strong.** Only the qualifying roles
   listed in the skill count as author-evidence, and even then SPASE metadata may
   be outdated — corroborate against publications, CMADs, and provider pages. Trust

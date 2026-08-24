@@ -72,8 +72,39 @@ Each candidate object:
 - `orcid` — ORCID string if it surfaced in a fetched source, otherwise `null` (no dedicated lookup)
 - `affiliation` — string if it surfaced, otherwise `null`
 - `activity_dates` — string if it surfaced, otherwise `null` (the person's window of involvement, recorded for the downstream role agent; never used to include/exclude here)
-- `qualifying_roles` — array of SPASE roles this person will carry into the mission/observatory/instrument DOI. **Every included candidate is an author**, so `"Author"` is ALWAYS present for `status: "included"` — inclusion means Strong/Medium evidence, and that evidence is exactly what makes the person an author on the DOI. On top of `Author`, add each qualifying contact role a source names for them (from the Qualifying Contact Roles list — `PrincipalInvestigator`, `FormerPI`, `ProjectScientist`, etc.). So the array is `["Author"]` for a candidate with authorship evidence but no named contact role, and e.g. `["Author", "PrincipalInvestigator"]` when a source also names a role. **Excluded candidates carry `[]`** — they are not on the DOI and get no `Author`. This is a convenience list of just the role names; `role_evidence` below carries the same roles with their sources.
-- `role_evidence` — **always an array of `{ "role": <role>, "source": <where> }` objects, one per role in `qualifying_roles` — including `Author`.** Every role says where it came from, so the downstream SMWG writer emits one `<Role>` per entry in a single uniform loop, with no special-casing and no type-checking. `Author`'s source is the inclusion evidence that made the person an author (the paper byline, CMAD front page, or provider PI page — stated in role terms). Example: `[{ "role": "Author", "source": "Lead author, LYRA instrument paper (10.1007/s11207-013-0252-5)" }, { "role": "PrincipalInvestigator", "source": "LYRA Instrument record Contacts" }]`. **Excluded candidates carry `[]`** (empty array, not `null`), matching their empty `qualifying_roles`. Because every role appears in both fields, `qualifying_roles` is exactly the list of `role` values in `role_evidence` — they cannot drift.
+- `qualifying_roles` — array of SPASE roles this person will carry into the mission/observatory/instrument DOI. **Every included candidate is an author**, so `"Author"` is ALWAYS present for `status: "included"` — inclusion means Strong/Medium evidence, and that evidence is exactly what makes the person an author on the DOI. On top of `Author`, add each qualifying contact role a source names for them (from the Qualifying Contact Roles list — `InstrumentLead`, `PrincipalInvestigator`, `FormerPI`, `ProjectScientist`, etc.), choosing mission-level vs instrument-level roles by the scope of the evidence (see "Mission-level vs instrument-level" below). Every value must come from the legal SPASE `Role` enumeration. So the array is `["Author"]` for a candidate with authorship evidence but no named contact role, and e.g. `["Author", "PrincipalInvestigator"]` when a source also names a role. **Excluded candidates carry `[]`** — they are not on the DOI and get no `Author`. This is a convenience list of just the role names; `role_evidence` below carries the same roles with their sources.
+- `role_evidence` — **always an array of `{ "role": <role>, "source": <where> }` objects, one per role in `qualifying_roles` — including `Author`.** Every role says where it came from, so the downstream SMWG writer emits one `<Role>` per entry in a single uniform loop, with no special-casing and no type-checking. `Author`'s source is the inclusion evidence that made the person an author (the paper byline, CMAD front page, or provider PI page — stated in role terms). Example: `[{ "role": "Author", "source": "First author of the LYRA instrument description paper (Dominique et al. 2013, 10.1007/s11207-013-0252-5)" }, { "role": "InstrumentLead", "source": "Listed as Principal Investigator of the PROBA2/LYRA instrument in its SPASE Instrument record Contacts (https://spase-metadata.org/SMWG/Instrument/PROBA2/LYRA.html)" }]`. Note `InstrumentLead` rather than `PrincipalInvestigator`, because the evidence is instrument-scoped — and that both entries read as plain statements a curator could act on, naming the instrument and linking the record. **Excluded candidates carry `[]`** (empty array, not `null`), matching their empty `qualifying_roles`. Because every role appears in both fields, `qualifying_roles` is exactly the list of `role` values in `role_evidence` — they cannot drift.
+
+  **Write `source` for a curator, not for the pipeline.** The `source` string is transcribed verbatim into the published SPASE record, where it is read by people who have never seen this skill. Every term must be self-explanatory to a heliophysics curator with no knowledge of how the candidate was scored. **State what the evidence is, not how the skill weighed it** — confidence already has its own field, so never restate it in prose.
+
+  | Don't write | Write |
+  |---|---|
+  | `Medium under the uncertain-selection downgrade` | `one of two co-equal SEISS description references; see also (Galica et al. 2016, 10.1117/12.2228537)` |
+  | `(Medium inclusion evidence)` | *(omit — confidence already says this)* |
+  | `sole prefix author` | `first author before the alphabetized remainder of the author list` |
+  | `Author position 2` | `second author` |
+
+  **The test:** read the sentence aloud to someone who has never seen this skill. If they cannot tell what was found or where, rewrite it.
+
+  Where an internal rule genuinely affects what a reader should conclude, **say the consequence in plain words rather than naming the rule**. "Two suite-level descriptions of SEISS exist and neither is clearly authoritative, so leads of both are recorded" tells a curator something actionable; "Medium under the uncertain-selection downgrade" does not.
+
+  Keep the evidence itself precise — author position, record, paper, URL. Precision about sources is the point; jargon about scoring is the thing to drop.
+
+  **Citing publications in `role_evidence` — author, year, DOI, in that order, in one parenthesis.** Every reference to a paper, chapter, or report must carry a short citation, never a bare DOI or URL on its own. A reader scanning a Contact Note should be able to tell which paper is meant without resolving the link: `(Darnel et al. 2022, …)` is recognizable, `https://doi.org/10.1029/2022SW003044` is not.
+
+  ```
+  (Galica et al. 2016, 10.1117/12.2228537)
+  (Machol et al. 2020, 10.1016/B978-0-12-814327-8.00019-6)
+  (Loto'aniu et al. 2019, 10.1007/s11214-019-0600-3)
+  ```
+
+  - **Author** — the first author's family name, then `et al.` for three or more authors, `&` for exactly two, a bare surname for one: `(Sullivan 2020, …)`, `(Kohl & Noci 1992, …)`, `(Kress et al. 2020, …)`.
+  - **Year** — the publication year, with no parentheses of its own.
+  - **DOI** — the bare form `10.xxxx/…`, NOT a URL. The downstream writer prefixes the resolver, so pre-prefixing risks a double prefix.
+  - **No DOI available** — give the volume or report identifier in its place: `(Hoeksema et al. 1992, ESA SP-348)`. Never invent a DOI.
+  - Bibcodes are not citations — `(2013SoPh..286...21D)` tells a reader nothing. Convert to author-year-DOI form.
+
+  This applies to publications only. **Non-paper evidence keeps its URL in parentheses** as before: `(https://www.goes-r.gov/org/team.html)`.
 
 ### Example (from the PROBA2 LYRA Flarelist record)
 
@@ -98,18 +129,18 @@ Each candidate object:
       "confidence": "Strong",
       "exclusion_reason": null,
       "evidence": [
-        { "source": "Lead author, non-alphabetized instrument paper (2013SoPh..286...21D)", "url": "https://doi.org/10.1007/s11207-013-0252-5", "strength": "Strong" },
-        { "source": "LYRA Instrument record PI (qualifying role: PrincipalInvestigator)", "url": "https://spase-metadata.org/SMWG/Instrument/PROBA2/LYRA.html", "strength": "Medium" },
+        { "source": "Lead author, non-alphabetized instrument paper (Dominique et al. 2013, 10.1007/s11207-013-0252-5)", "url": "https://doi.org/10.1007/s11207-013-0252-5", "strength": "Strong" },
+        { "source": "PI of PROBA2/LYRA in the LYRA Instrument record Contacts (instrument-scoped ⇒ InstrumentLead)", "url": "https://spase-metadata.org/SMWG/Instrument/PROBA2/LYRA.html", "strength": "Medium" },
         { "source": "Record Contacts (GeneralContact — non-qualifying role; context only)", "url": "https://spase-metadata.org/ESA/NumericalData/PROBA2/LYRA/Flarelist/PT24H", "strength": "Low" }
       ],
       "person_record": { "id": "spase://SMWG/Person/Marie.Dominique", "url": "https://spase-metadata.org/SMWG/Person/Marie.Dominique.html" },
       "orcid": null,
       "affiliation": "Royal Observatory of Belgium",
       "activity_dates": null,
-      "qualifying_roles": ["Author", "PrincipalInvestigator"],
+      "qualifying_roles": ["Author", "InstrumentLead"],
       "role_evidence": [
-        { "role": "Author", "source": "Lead author, LYRA instrument paper (2013SoPh..286...21D)" },
-        { "role": "PrincipalInvestigator", "source": "LYRA Instrument record Contacts" }
+        { "role": "Author", "source": "First author of the LYRA instrument description paper (Dominique et al. 2013, 10.1007/s11207-013-0252-5)" },
+        { "role": "InstrumentLead", "source": "Listed as Principal Investigator of the PROBA2/LYRA instrument in its SPASE Instrument record Contacts (https://spase-metadata.org/SMWG/Instrument/PROBA2/LYRA.html)" }
       ]
     },
     {
@@ -127,7 +158,7 @@ Each candidate object:
       "activity_dates": null,
       "qualifying_roles": ["Author"],
       "role_evidence": [
-        { "role": "Author", "source": "Flarelist product-page footer credits compiler 'IED' (Medium inclusion evidence)" }
+        { "role": "Author", "source": "Credited as the Flarelist compiler in the product-page footer, as 'IED' (https://proba2.sidc.be/lyra/data/Flarelist/Flarelist.html)" }
       ]
     },
     {
@@ -195,7 +226,7 @@ Each candidate object:
     "Long-tail instrument-paper co-authors (Hochedez, Schmutz, Shapiro, Kretzschmar, Zhukov, Gillotay, Stockman, BenMoussa) not listed individually — co-authorship alone is below the inclusion bar unless corroborated by another source.",
     "Dammasch link is initials-inferred from product-page footer; downstream should verify identity and affiliation.",
     "Dominique's Strong confidence comes from lead authorship of the (non-alphabetized) instrument paper; her Instrument-record PI role corroborates at Medium. In the Flarelist record's own Contacts she appears only as GeneralContact (non-qualifying).",
-    "Paper selection confident: 2013SoPh..286...21D matches title keywords, author count, and operating-span timing; SciX and Semantic Scholar agree."
+    "Paper selection confident: (Dominique et al. 2013, 10.1007/s11207-013-0252-5) matches title keywords, author count, and operating-span timing; SciX and Semantic Scholar agree."
   ]
 }
 ```
@@ -228,7 +259,32 @@ A qualifying role is **Medium** evidence, not Strong: SPASE records may be outda
 
 Note that `FormerPI` qualifies deliberately: multiple generations of PI matter (original and current), and a FormerPI is authorship-relevant even though no longer active.
 
-**Populate the structured `qualifying_roles` and `role_evidence` fields** (see the candidate schema), not only the `evidence[].source` prose. For every included candidate, add an `Author` role — they cleared the Strong/Medium bar, so they will be authors on the DOI — with its source being the inclusion evidence (paper byline, CMAD front page, provider PI page). Then add each qualifying contact role a source names for them, each with its own source. So a candidate who is both a paper lead and the instrument PI becomes `qualifying_roles: ["Author", "PrincipalInvestigator"]` with a matching two-entry `role_evidence`. A role mentioned only in a top-level blob (e.g. a name titled "Project Scientist" inside `cmad.notes`) is easy for a parser to miss — so when you identify a qualifying contact role anywhere, attach it here with its source. Keep the two fields in lockstep: every role in `qualifying_roles` has exactly one `{role, source}` entry in `role_evidence`. Excluded candidates get `[]` for both. This lets the downstream SMWG writer emit one `<Role>` per `role_evidence` entry in a single uniform loop, instead of parsing roles out of free text.
+### Mission-level vs instrument-level: pick the role that matches the evidence's scope
+
+A PI of the *mission* and a PI of *one instrument* are different roles. A reader of an Observatory record cannot tell them apart if both are labelled the same way, so choose by scope:
+
+- **`PrincipalInvestigator`** — PI of the mission/observatory as a whole. Evidence must be **mission-level**: the mission's own PI listing, a mission overview paper, or a project page naming them PI of the mission. (`MissionPrincipalInvestigator` is also legal and may be used where a source explicitly uses that title.)
+- **`InstrumentLead`** — PI of a single instrument. Evidence is **instrument-scoped**: an Instrument record's Contacts, an instrument description paper, or a provider page naming them PI of that instrument. **Name the instrument in `role_evidence`.**
+
+**The scope of the evidence decides, not the person's seniority.** Someone listed as PI in `spase://SMWG/Instrument/SOHO/CDS` Contacts is an `InstrumentLead` for that record, however eminent they are. Do not promote an instrument PI to `PrincipalInvestigator` because they are well known, and do not demote a mission PI because their instrument work is better documented.
+
+Apply the same care to **`FormerPI`**, which is legal but level-blind: it says nothing about whether the person was formerly PI of a mission or of an instrument. Always say which in `role_evidence` — e.g. `"FormerPI of SOHO/CDS (CDS Instrument record Contacts)"` — so a reader isn't left guessing.
+
+**`InstrumentPrincipalInvestigator` is NOT a legal SPASE 2.7.1 role and must never be emitted** — a record using it fails schema validation. The legal `Role` enumeration is closed; every value written into `qualifying_roles` must appear in this list:
+
+```
+ArchiveSpecialist, Author, CoInvestigator, Contributor, CoPI, DataProducer,
+DeputyPI, Developer, FormerPI, GeneralContact, HostContact, InstrumentLead,
+InstrumentScientist, MetadataContact, MissionManager,
+MissionPrincipalInvestigator, OperationsManager, PrincipalInvestigator,
+ProgramManager, ProgramScientist, ProjectEngineer, ProjectManager,
+ProjectScientist, Publisher, Scientist, TeamLeader, TeamMember,
+TechnicalContact, User
+```
+
+(The qualifying-roles list above is the subset of these that counts as author-evidence. Never invent a role name outside this enumeration, however well it describes the person.)
+
+**Populate the structured `qualifying_roles` and `role_evidence` fields** (see the candidate schema), not only the `evidence[].source` prose. For every included candidate, add an `Author` role — they cleared the Strong/Medium bar, so they will be authors on the DOI — with its source being the inclusion evidence (paper byline, CMAD front page, provider PI page). Then add each qualifying contact role a source names for them, each with its own source. So a candidate who is both a paper lead and the PI of one instrument becomes `qualifying_roles: ["Author", "InstrumentLead"]` with a matching two-entry `role_evidence` naming that instrument — `InstrumentLead`, not `PrincipalInvestigator`, because the PI evidence is instrument-scoped. Reserve `PrincipalInvestigator` for mission-level PI evidence, and check every role against the legal SPASE enumeration before writing it. A role mentioned only in a top-level blob (e.g. a name titled "Project Scientist" inside `cmad.notes`) is easy for a parser to miss — so when you identify a qualifying contact role anywhere, attach it here with its source. Keep the two fields in lockstep: every role in `qualifying_roles` has exactly one `{role, source}` entry in `role_evidence`. When a source is a publication, cite it as author-year-DOI in one parenthesis — `(Loto'aniu et al. 2019, 10.1007/s11214-019-0600-3)` — never a bare DOI, URL, or bibcode (see the citation convention above). Write each `source` in a curator's voice: say what was found and where, in plain words, with no scoring jargon — these strings are published verbatim in the SPASE record. Excluded candidates get `[]` for both. This lets the downstream SMWG writer emit one `<Role>` per `role_evidence` entry in a single uniform loop, instead of parsing roles out of free text.
 
 ---
 
@@ -279,7 +335,7 @@ A CMAD is a strong-evidence *bonus when found*, never a hard requirement of this
 - For a *data record*, the producing instrument's team is what matters — do not sweep in the PIs of unrelated instruments on the same observatory (note them in `instrument_coverage` and move on).
 - For an *Observatory record*, each instrument contributes its **leads only** — not its full author team — **across both PI generations**. "Lead" has a precise definition here (see (b) below): paper positions 1–3, plus every qualifying-role person in the Instrument record's Contacts. Instrument-team depth (4th/5th authors, co-authors, tail members) belongs to that Instrument record's own finder run, not to the observatory's list. For each payload instrument, harvest both of the following:
 
-  **(a) From the Instrument record's Contacts — zero extra fetch.** Take every person with a qualifying role, not just the sitting PI: `PrincipalInvestigator` (current PI), `FormerPI` (founding/earlier PI — this is how the original generation is recovered for free), `CoPI`, `CoInvestigator`, `DeputyPI`, `InstrumentLead`, `InstrumentScientist`. All are Medium (see Qualifying Contact Roles). Do not stop at the first PI you find — read the whole Contacts table.
+  **(a) From the Instrument record's Contacts — zero extra fetch.** Take every person with a qualifying role, not just the sitting PI: the current PI, `FormerPI` (founding/earlier PI — this is how the original generation is recovered for free), `CoPI`, `CoInvestigator`, `DeputyPI`, `InstrumentScientist`. All are Medium (see Qualifying Contact Roles). Do not stop at the first PI you find — read the whole Contacts table. **Record an instrument's PI as `InstrumentLead`, not `PrincipalInvestigator`** — the evidence is instrument-scoped — and name the instrument in `role_evidence`. Likewise say which instrument a `FormerPI` was formerly PI of. On an Observatory run, `PrincipalInvestigator` is reserved for a PI of the mission as a whole.
 
   **(b) From the instrument's description paper, when the Instrument record links one** (or it is otherwise readily identified). Always run the FULL author-order procedure first — backward-scan alphabetization detection, then classification — because position is meaningless until the list is classified. Then, **on an Observatory record, take positions 1–3 only** (or prefix positions 1–3 of a partially alphabetized list): these are the instrument's leads, and they are Strong-tier. **Do NOT take the instrument paper's 4th and 5th authors here** — unlike the mission overview paper, whose 4th–5th are Medium-tier candidates, an instrument paper's 4th–5th authors are instrument-team depth and belong to that Instrument record's own run.
 
@@ -387,7 +443,7 @@ Rationale for the ordering: **trust publications over SPASE metadata.** A peer-r
 
 **Medium (include):**
 - Named in the record's own Contacts **with a qualifying role** (see Qualifying Contact Roles) — corroborate against other sources; SPASE records may be outdated or incomplete
-- *On an Observatory record:* every qualifying-role person in each instrument's Contacts — the current `PrincipalInvestigator`, any `FormerPI` (founding generation), `CoPI`, `CoInvestigator`, etc. Founding PIs commonly also appear as prefix authors of the instrument's paper, where they additionally earn Strong. See source 3 relevance scoping.
+- *On an Observatory record:* every qualifying-role person in each instrument's Contacts — the current PI (recorded as `InstrumentLead`, with the instrument named), any `FormerPI` (founding generation — say which instrument), `CoPI`, `CoInvestigator`, etc. Founding PIs commonly also appear as prefix authors of the instrument's paper, where they additionally earn Strong. See source 3 relevance scoping.
 - Named **with a qualifying role** in a sibling Instrument/Observatory SPASE record's Contacts — same caveat
 - The **4th or 5th author** (or 4th/5th prefix position) of the record's OWN description paper, when paper selection is confident. (On an Observatory record, this means the mission overview paper. An *instrument* paper's 4th/5th authors are NOT candidates on an Observatory run — see source 3 relevance scoping — but they are Medium on that Instrument record's own run.)
 - One of the first three authors / prefix authors of a description paper whose **selection was uncertain** (downgrade rule applied — reason in `notes`; positions 4–5 drop to Low under the same rule)

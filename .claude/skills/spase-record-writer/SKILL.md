@@ -141,10 +141,22 @@ dot-joining of the name, so a reviewer can see the transformation.
 
 The repository stores bare identifiers; the enricher emits URLs.
 
-| Field | Input | Written |
+Identifiers are written **bare**, matching the registry: 124 of 126 existing
+`ORCIdentifier` values and all 141 `RORIdentifier` values are.
+
+| Field | Input (either form) | Written |
 |---|---|---|
 | ORCID | `https://orcid.org/0000-0001-6601-9116` | `0000-0001-6601-9116` |
 | ROR | `https://ror.org/02ttsq026` | `02ttsq026` |
+
+`IDENTIFIER_FORM` in `write_records.py` switches this to `url` in one line, but
+only on a curator's instruction — writing URLs would put these records out of
+step with every neighbouring record in the registry.
+
+Within any record the skill touches, identifiers already present are re-rendered
+in the configured form, so a file never mixes the two. That changes how a value
+is written, never which value it is — normalising a format asserts nothing new,
+unlike replacing an identifier, which never happens silently.
 
 ### Step 5 — Resolve the affiliation
 
@@ -220,13 +232,27 @@ Add `ORCIdentifier` only when absent. If the record already has a different one,
 keep the existing value and log the clash — a conflicting ORCID means one of the
 two is attached to the wrong human, which needs a person to look at it.
 
-**Record affiliation provenance in `Person/Note`.** Where the affiliation came
-from is part of what makes the record auditable, so write the enrichment's
-`affiliation_source` and `affiliation_type` into the Person record's `Note`:
+**Record affiliation provenance in `Person/Note`, in plain English.** Where the
+affiliation came from is part of what makes the record auditable — but the Note
+is read by curators who have never seen this pipeline, so no internal vocabulary
+reaches the record. Render `affiliation_source` and `affiliation_type` as
+sentences:
 
 ```xml
-<Note>Affiliation source: ORCID employment; type: current.</Note>
+<Note>Affiliation from the person's ORCID employment history (https://orcid.org/0000-0002-0494-2025). This affiliation was held while the mission was operating.</Note>
+<Note>Affiliation as printed on the paper (Darnel et al. 2022, https://doi.org/10.1029/2022SW003044). This is the affiliation recorded at the time of publication.</Note>
 ```
+
+**Cite papers the same way the Contact Notes do** — `(Author et al. Year, DOI)`,
+not a bare DOI. Take the citation from `affiliation_evidence_citation` where the
+enricher supplies it. Where it does not, fall back to a citation for the same DOI
+found elsewhere in the candidate's evidence. Where neither exists, the DOI stands
+alone — an author and year are never inferred from a DOI.
+
+Never write the raw enumeration values — `as-deposited`, `era-matched`,
+`Crossref (paper DOI)` — into a record. A value with no known rendering falls
+through to its raw string rather than being dropped: an odd phrase is better than
+a silent omission, and it signals that the mapping needs extending.
 
 `Note` is cardinality 0..1 and sits between `ORCIdentifier` and `RORIdentifier`
 in the Person sequence — not beside `ORCIdentifier`.
@@ -335,10 +361,16 @@ or three justifications is unreadable in a diff or a rendered record. Single-ent
 
 **Use the SPASE text mark-up, not bare newlines.** Section 3.4 of the 2.7.1 spec
 defines how a viewer interprets Note text, and a lone newline is not a break —
-which is why indented continuation lines render as one run-on paragraph. Two
-rules matter here: normalization forbids leading whitespace on any line, and a
-list item is a line beginning `* `. So the lines sit flush left, each prefixed
-with `* `, rather than indented to align under the opening tag:
+which is why plain indented continuation lines render as one run-on paragraph.
+What a viewer does recognise is a list item: a line beginning `* `.
+
+**Indent the items to sit under the tag.** Normalization strips leading
+whitespace *before* the interpretation rules run, and the spec explicitly allows
+white space "introduced in the form of indentation" to keep the XML readable. So
+indentation costs nothing at render time and keeps the file aligned for anyone
+reading the raw XML or a diff — where reviewers do most of their reading. Items
+are indented one level past `<Note>`, and the closing tag returns to the level of
+its siblings:
 
 ```xml
 <Contact>
@@ -346,9 +378,9 @@ with `* `, rather than indented to align under the opening tag:
   <Role>PrincipalInvestigator</Role>
   <Role>Author</Role>
   <Note>
-* PrincipalInvestigator: GOES-16 MAG SPASE Instrument record Contacts (https://spase-metadata.org/SMWG/Instrument/GOES/16/MAG.html)
-* Author: MAG PrincipalInvestigator in the GOES-16 MAG SPASE record, corroborated by the record Acknowledgement and MAG description-paper co-authorship
-</Note>
+    * PrincipalInvestigator: GOES-16 MAG SPASE Instrument record Contacts (https://spase-metadata.org/SMWG/Instrument/GOES/16/MAG.html)
+    * Author: MAG PrincipalInvestigator in the GOES-16 MAG SPASE record, corroborated by the record Acknowledgement and MAG description-paper co-authorship
+  </Note>
 </Contact>
 ```
 

@@ -91,12 +91,37 @@ def esc(s):
     return s.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
 
 
+# Registry convention: identifiers are written bare (124 of 126 existing
+# ORCIdentifier values and all 141 RORIdentifier values are). Set to "url" to
+# write resolvable URLs instead -- but only on a curator's instruction, since it
+# would put these records out of step with the rest of the registry.
+IDENTIFIER_FORM = "bare"
+
+ORCID_BASE = "https://orcid.org/"
+ROR_BASE = "https://ror.org/"
+
+
+def _norm_identifier(v, base):
+    """Return the identifier in the configured form, either way round."""
+    if not v:
+        return None
+    v = v.strip()
+    bare = re.sub(r"^https?://[^/]+/", "", v)
+    return (base + bare) if IDENTIFIER_FORM == "url" else bare
+
+
+def _same_identifier(a, b):
+    """True when two identifiers differ only in bare-vs-URL form."""
+    strip = lambda v: re.sub(r"^https?://[^/]+/", "", (v or "").strip())
+    return bool(a) and strip(a) == strip(b)
+
+
 def bare_orcid(v):
-    return re.sub(r"^https?://orcid\.org/", "", v).strip() if v else None
+    return _norm_identifier(v, ORCID_BASE)
 
 
 def bare_ror(v):
-    return re.sub(r"^https?://ror\.org/", "", v).strip() if v else None
+    return _norm_identifier(v, ROR_BASE)
 
 
 def primary_affiliation(v):
@@ -141,39 +166,94 @@ def linkify_dois(text):
         lambda m: "https://doi.org/" + m.group(1).rstrip("."), text)
 
 
-def build_person_note(candidate):
-    """Person/Note records where the affiliation came from.
+# Plain-English renderings of the enricher's controlled vocabulary. The Note is
+# read by curators who have never seen the pipeline, so no internal term reaches
+# the record. Unknown values fall through to the raw string rather than being
+# dropped -- a reader seeing an odd phrase is better than a reader seeing nothing.
+AFFIL_SOURCE_PHRASE = {
+    "Crossref (paper DOI)": "as printed on the paper",
+    "ORCID employment": "from the person's ORCID employment history",
+    "ORCID name-search (corroborated)": "from the person's ORCID record",
+    "provider documentation": "from the data provider's own documentation",
+    "SPASE record": "from an existing SPASE record",
+    "uncorroborated": "reported but not confirmed against an independent source",
+}
 
-    Only the provenance of OrganizationName -- source, the specific evidence
-    identifier, and type. The enricher's full reasoning blob belongs in the run
-    log, not in the registry. affiliation_origin is pipeline bookkeeping and is
-    deliberately not written: a curator reading the record cares which evidence
-    supports the value, not which stage first proposed it.
+AFFIL_TYPE_PHRASE = {
+    "as-deposited": "This is the affiliation recorded at the time of publication",
+    "era-matched": "This affiliation was held while the mission was operating",
+    "current": "This is the person's current or most recent affiliation",
+}
+
+
+CITATION_RE = re.compile(
+    r"\(([^()]*?\b(?:19|20)\d{2}[^()]*?),\s*(10\.[^\s,()]+?)\)")
+
+
+def find_citation(candidate, doi):
+    """Recover '(Author et al. Year, DOI)' for a DOI already cited elsewhere in
+    this candidate, so the affiliation Note matches the Contact Note style.
+
+    The enricher supplies affiliation_evidence as a bare DOI. Where the same DOI
+    is cited in the candidate's evidence with an author and year, that citation is
+    reused; where it is not, the DOI stands alone rather than being invented.
+    """
+    if not doi or not doi.startswith("10."):
+        return None
+    want = doi.lower().rstrip(".")
+    pool = [e.get("source", "") for e in (candidate.get("role_evidence") or [])]
+    pool += [e.get("source", "") for e in (candidate.get("evidence") or [])]
+    for text in pool:
+        for m in CITATION_RE.finditer(text or ""):
+            if m.group(2).lower().rstrip(".") == want:
+                return m.group(1).strip()
+    return None
+
+
+def build_person_note(candidate):
+    """Person/Note records where the affiliation came from, in plain English.
+
+    Only the provenance of OrganizationName -- what supports it, and what period
+    it refers to. The enricher's full reasoning belongs in the run log, not the
+    registry. affiliation_origin is pipeline bookkeeping and is not written: a
+    curator cares which evidence supports the value, not which stage proposed it.
     """
     e = candidate.get("enrichment") or {}
     src = (e.get("affiliation_source") or "").strip()
-    ev = doi_url(e.get("affiliation_evidence") or "")
+    raw_ev = (e.get("affiliation_evidence") or "").strip()
+    # Prefer the enricher's own citation; fall back to one recovered from the
+    # candidate's other evidence; never infer an author or year from a DOI.
+    cite = (e.get("affiliation_evidence_citation") or "").strip() \
+        or find_citation(candidate, raw_ev)
+    ev = doi_url(raw_ev)
+    if cite and ev:
+        ev = "%s, %s" % (cite, ev)
     typ = (e.get("affiliation_type") or "").strip()
 
-    # Legacy outputs conflated origin and evidence into the source string. Strip
-    # the stage name so the Note never claims "pre-existing" of a changed value.
+    # Legacy outputs conflated origin and evidence into the source string.
     if src.startswith("finder (pre-existing"):
         src = "uncorroborated" if src == "finder (pre-existing)" else ""
 
     if not src and not typ:
         return None
-    parts = []
+
+    first = "Affiliation"
     if src:
-        parts.append("source: %s%s" % (src, (" " + ev) if ev else ""))
-    if typ:
-        parts.append("type: %s" % typ)
-    return "Affiliation " + "; ".join(parts) + "."
+        first += " " + AFFIL_SOURCE_PHRASE.get(src, src)
+    if ev:
+        first += " (%s)" % ev
+    first += "."
+
+    second = AFFIL_TYPE_PHRASE.get(typ)
+    if typ and not second:
+        second = "Affiliation period: %s" % typ
+    return first + (" " + second + "." if second else "")
 
 
 OUR_NOTE_PREFIX = "Affiliation source:"
 
 
-def build_note(candidate, indent=""):
+def build_note(candidate, indent="          ", close_indent="        "):
     """Contact/Note holds the role evidence.
 
     Note has cardinality 0..1, so several role_evidence entries are folded into
@@ -200,15 +280,16 @@ def build_note(candidate, indent=""):
         entries,
         key=lambda e: (ROLE_RANK.get((e.get("role") or "").strip(), UNRANKED),
                        (e.get("role") or "").strip()))
-    # SPASE 2.7.1 section 3.4 defines the mark-up a viewer applies. A bare
-    # newline is not a break: a blank line makes a paragraph and a list item is
-    # a line beginning "* ". Normalization also forbids leading whitespace,
-    # which is why these lines sit flush left rather than indented to the tag.
-    items = "\n".join(
+    # SPASE 2.7.1 section 3.4: a bare newline is not a break -- a list item is a
+    # line beginning "* ". Normalization strips leading whitespace before the
+    # interpretation rules run, and the spec explicitly allows indentation added
+    # for XML readability, so the items are indented to sit under the tag and
+    # still render as a list.
+    items = ("\n" + indent).join(
         "* %s: %s" % ((e.get("role") or "Role").strip(),
                       linkify_dois(e["source"].strip()))
         for e in entries)
-    return "\n" + items + "\n"
+    return "\n" + indent + items + "\n" + close_indent
 
 
 # --------------------------------------------------------------------------
@@ -454,9 +535,24 @@ def main():
             existing_orcid = (fields.get("ORCIdentifier") or [""])[0]
             if orcid and not existing_orcid:
                 txt = set_field(txt, "ORCIdentifier", orcid)
+            elif orcid and _same_identifier(existing_orcid, orcid):
+                pass  # same iD, form normalised below
             elif orcid and existing_orcid != orcid:
                 log.append("ORCID CLASH %s: repo=%s input=%s (kept repo)"
                            % (pid, existing_orcid, orcid))
+
+            # Keep one record internally consistent: an identifier already in the
+            # file is re-rendered in the configured form. This changes how the
+            # value is written, never which value it is, so it asserts nothing
+            # new -- it just avoids a bare iD sitting beside a URL-form ROR.
+            for tag, base in (("ORCIdentifier", ORCID_BASE),
+                              ("RORIdentifier", ROR_BASE)):
+                for cur in (fields.get(tag) or []):
+                    want = _norm_identifier(cur, base)
+                    if cur and want and cur != want:
+                        txt = set_field(txt, tag, want)
+                        log.append("FORM %s: %s rewritten as %s"
+                                   % (pid, tag, IDENTIFIER_FORM))
 
             # PersonName is optional in the schema but present on all but a
             # handful of records. Backfill when missing; never overwrite, since

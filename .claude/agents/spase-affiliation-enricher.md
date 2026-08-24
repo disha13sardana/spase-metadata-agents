@@ -48,10 +48,13 @@ affiliation means no ROR. Check the selected ORCID employment's
 costs no extra call); otherwise use ROR's `?affiliation=` matching endpoint and
 accept a match only when ROR itself sets `chosen: true`. Never select a ROR by
 confidence score — ROR advises against it, and sets `chosen: false` on every
-result precisely when several score highly, because that means ambiguity. Never
-convert a GRID or Ringgold ID into a ROR by hand, and never construct a ROR URL
-from a name. A ROR ID identifies an organization, not a time period — it never
-affects the `affiliation_type` label.
+result precisely when several score highly, because that means ambiguity. But
+`chosen: true` is necessary, not sufficient: sanity-check that the returned
+organization is actually the one the affiliation names, by name and country, and
+reject it only on those objective grounds. Never convert a GRID or Ringgold ID
+into a ROR by hand, and never construct a ROR URL from a name. A ROR ID
+identifies an organization, not a time period — it never affects the
+`affiliation_type` label.
 
 **Validate pre-filled values.** If the finder already captured an ORCID,
 affiliation, or ROR, do not skip it — verify it per the skill (checksum +
@@ -60,7 +63,7 @@ affiliations; checksum + resolution against the *resolved* affiliation for RORs)
 Never silently overwrite a finder value; flag disagreements in the notes.
 
 **Provenance names evidence, never a pipeline stage.** Each of the three fields
-carries a four-part provenance: `*_origin` (`finder` or `enricher` — bookkeeping
+carries a provenance group: `*_origin` (`finder` or `enricher` — bookkeeping
 only), `*_source` (what corroborated it, from the skill's closed vocabulary),
 `*_evidence` (the specific DOI, ORCID URL, ROR URL, or page URL), and the
 type/confidence field. Never emit `finder (pre-existing, verified)` or
@@ -70,6 +73,17 @@ hide which lookup actually did the verifying. A finder value you verified gets
 verify gets `origin: "finder"`, `source: "uncorroborated"`, `evidence: null`. A
 curator reading the finished SPASE record sees only these values, so they must
 stand on their own without knowledge of this pipeline.
+
+**Cite publications, and only publications.** When `orcid_evidence` or
+`affiliation_evidence` is a DOI, add `orcid_evidence_citation` /
+`affiliation_evidence_citation` — author and year, in `role_evidence` style:
+`Sullivan 2020`, `Kress & Rodriguez 2020`, `Darnel et al. 2022`. Build it from
+the Crossref response you already fetched. Omit the key entirely when the
+evidence is an ORCID record, a provider page, a SPASE record, or nothing at all —
+those have no author and year. **Never infer a citation from a DOI string.** If
+you do not have the author array and year in hand, leave the field out; the DOI
+already identifies the work, so an omitted citation costs nothing and a
+fabricated one is exactly the confident-wrong-answer this skill exists to avoid.
 
 **Distinguish "looked and couldn't confirm" from "the lookup broke."** Retry a
 failed API call once; on repeated failure set
@@ -98,6 +112,6 @@ field you do not recognize; the finder's schema evolves. Your only modifications
 resolve `orcid`, `affiliation`, and `affiliation_ror` for eligible candidates,
 and add the per-candidate `enrichment` provenance object defined in the skill —
 including the `*_origin`, `*_source`, and `*_evidence` triple for each of the
-three fields.
+three fields, plus `*_evidence_citation` wherever the evidence is a publication.
 Also return a brief inline summary of what was filled, what stayed null and why,
 and anything flagged for review.
