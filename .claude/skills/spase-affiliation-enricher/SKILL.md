@@ -94,10 +94,12 @@ on processed candidates, and adding the per-candidate `enrichment` object:
   "orcid_origin": "finder | enricher | null",
   "orcid_source": "Crossref (paper DOI) | ORCID name-search (corroborated) | uncorroborated | null",
   "orcid_evidence": "DOI, ORCID URL, or page URL — null only when source is uncorroborated",
+  "orcid_evidence_citation": "short citation — publications only; omit otherwise",
   "orcid_confidence": "Confirmed | null",
   "affiliation_origin": "finder | enricher | null",
   "affiliation_source": "Crossref (paper DOI) | ORCID employment | SPASE record | provider documentation | uncorroborated | null",
   "affiliation_evidence": "DOI, ORCID URL, ROR URL, or page URL — null only when source is uncorroborated",
+  "affiliation_evidence_citation": "short citation — publications only; omit otherwise",
   "affiliation_type": "era-matched | current | as-deposited | null",
   "ror_origin": "finder | enricher | null",
   "ror_source": "ORCID disambiguated-organization | ROR affiliation-match (chosen) | ROR query (corroborated) | uncorroborated | null",
@@ -135,9 +137,12 @@ Worked examples:
 ```json
 // Bethge — finder value, verified against a Crossref deposit
 {"affiliation_origin": "finder", "affiliation_source": "Crossref (paper DOI)",
- "affiliation_evidence": "10.1029/2022SW003044", "affiliation_type": "as-deposited"}
+ "affiliation_evidence": "10.1029/2022SW003044",
+ "affiliation_evidence_citation": "Darnel et al. 2022",
+ "affiliation_type": "as-deposited"}
 
 // Singer — finder value, verified against dated ORCID employment
+// (no citation: an ORCID record is not a publication)
 {"affiliation_origin": "finder", "affiliation_source": "ORCID employment",
  "affiliation_evidence": "https://orcid.org/0000-0002-5364-6505", "affiliation_type": "era-matched"}
 
@@ -148,6 +153,16 @@ Worked examples:
 // Shape of a finder value that no lookup could verify (schematic, not a real candidate)
 {"affiliation_origin": "finder", "affiliation_source": "uncorroborated",
  "affiliation_evidence": null, "affiliation_type": "current"}
+
+// Redmon — ORCID confirmed by a Route A' deposit, affiliation from the same paper
+{"orcid_origin": "enricher", "orcid_source": "Crossref (paper DOI)",
+ "orcid_evidence": "10.1109/TPS.2024.3390658",
+ "orcid_evidence_citation": "Redmon et al. 2024",
+ "orcid_confidence": "Confirmed",
+ "affiliation_origin": "finder", "affiliation_source": "Crossref (paper DOI)",
+ "affiliation_evidence": "10.1109/TPS.2024.3390658",
+ "affiliation_evidence_citation": "Redmon et al. 2024",
+ "affiliation_type": "as-deposited"}
 ```
 
 The `affiliation_ror` field itself holds the full ROR URL form (e.g.
@@ -165,6 +180,30 @@ Field semantics:
   a ROR URL, or a page URL. It is `null` only when the source is `uncorroborated`.
   A source without an evidence identifier is a spec violation: if you cannot name
   what corroborated the value, the source is `uncorroborated`.
+- `orcid_evidence_citation` and `affiliation_evidence_citation` accompany their
+  `*_evidence` field **when that evidence is a publication**, so a downstream
+  record can display provenance the way `role_evidence` displays authorship.
+  A bare DOI tells a curator nothing without resolving it; `Redmon et al. 2024`
+  is legible in place.
+  - **Format.** Author, then year: `Redmon et al. 2024`. Use the same author
+    conventions as `role_evidence` — bare family name for one author
+    (`Sullivan 2020`), `A & B` for exactly two (`Kress & Rodriguez 2020`),
+    `A et al.` for three or more (`Darnel et al. 2022`). Family names only, no
+    initials, no title, no journal.
+  - **Omit the field entirely when the evidence is not a publication.** An ORCID
+    record, a provider web page, a SPASE record, a ROR URL — none of these has an
+    author and a year, and an empty or invented citation on one is worse than its
+    absence. `uncorroborated` has no evidence at all, so it has no citation.
+    Omit the key; do not emit `null`.
+  - **Never derive the citation from the DOI string.** You already hold the
+    Crossref response that gave you the iD or the affiliation — take the `author`
+    array and the publication year from it. If you did not fetch that response, or
+    it does not carry both, leave the field out. A guessed author or year is a
+    fabricated citation, and this skill's whole discipline is that a confident
+    wrong answer is worse than an absent one. The DOI in `*_evidence` already
+    identifies the work uniquely; the citation adds legibility, never
+    identification, so nothing is lost by omitting it and something real is lost
+    by inventing it.
 - `orcid_confidence` and `ror_confidence` are binary: `Confirmed` or `null`. There
   is no "probable" tier — unconfirmed possibilities live in `notes` only.
 - `affiliation_type`:
@@ -208,7 +247,8 @@ lookup disagrees with a pre-filled value, record both and flag for review.
 3. If valid and corroborated → keep it; `orcid_origin: "finder"`, `orcid_source:`
    whatever corroborated it (`Crossref (paper DOI)` or `ORCID name-search
    (corroborated)`), `orcid_evidence:` that DOI or ORCID URL,
-   `orcid_confidence: "Confirmed"`.
+   `orcid_confidence: "Confirmed"`. Add `orcid_evidence_citation` if the evidence
+   is a DOI.
 4. If the checksum fails or corroboration fails → set `orcid` to null in the
    enriched file, record the finder's value and the failure in `notes`, and
    proceed to Step 2 as if the field were empty. (The finder's file still holds
@@ -260,7 +300,8 @@ affiliation, and the whole point of era-matching is that those can differ
 4. If the matching author carries an `ORCID` field, treat it as **Confirmed** —
    the publisher tied that iD to that author on that paper. Emit
    `orcid_origin: "enricher"`, `orcid_source: "Crossref (paper DOI)"`,
-   `orcid_evidence:` the DOI.
+   `orcid_evidence:` the DOI, and `orcid_evidence_citation` built from the
+   `author` array and year in the response you just read.
 
 **Route A′ — Crossref author query beyond the evidence DOIs (same-instrument corroboration):**
 
@@ -283,10 +324,10 @@ identity. This route recovers those cases without weakening the standard.
      candidate's evidence, or is deposited under the data provider institution.
    A paper merely in the same field is not enough. "Space physics" is not a
    corroborating domain; "GOES-R SUVI" is.
-4. Record the DOI in `orcid_evidence` and state in `notes` that it lies outside
-   the finder's evidence list, naming it explicitly so a reviewer can check the
-   inference you made. Set `orcid_origin: "enricher"`,
-   `orcid_source: "Crossref (paper DOI)"`.
+4. Record the DOI in `orcid_evidence`, the citation in `orcid_evidence_citation`,
+   and state in `notes` that the DOI lies outside the finder's evidence list,
+   naming it explicitly so a reviewer can check the inference you made. Set
+   `orcid_origin: "enricher"`, `orcid_source: "Crossref (paper DOI)"`.
 5. This route is **not optional when it applies.** If you use it for one
    candidate you must attempt it for every candidate whose evidence DOIs carry no
    iD. Applying it to some and not others produces a file where a null means
@@ -296,8 +337,8 @@ identity. This route recovers those cases without weakening the standard.
 The same route supplies affiliations: when a Route A′ DOI deposits an affiliation
 string for the confirmed author, it is usable as `affiliation_source: "Crossref
 (paper DOI)"`, `affiliation_type: "as-deposited"`, with that DOI as
-`affiliation_evidence`. The identity must be confirmed first — either by the
-deposit itself or independently.
+`affiliation_evidence` and its citation as `affiliation_evidence_citation`. The
+identity must be confirmed first — either by the deposit itself or independently.
 
 **Route B — ORCID name search (only with corroboration):**
 1. `GET https://pub.orcid.org/v3.0/expanded-search/?q=family-name:<name>+AND+given-names:<name>`
@@ -307,7 +348,8 @@ deposit itself or independently.
    or dated employment consistent with the instrument, observatory/mission, or
    data provider institution. Emit `orcid_origin: "enricher"`,
    `orcid_source: "ORCID name-search (corroborated)"`, `orcid_evidence:` the
-   ORCID URL.
+   ORCID URL. Omit `orcid_evidence_citation` — an ORCID record is not a
+   publication, even when a work listed on it is what corroborated the identity.
 4. If multiple plausible matches remain, or the only match cannot be
    corroborated, leave `orcid` null and describe the ambiguity in `notes`
    (including candidate iDs, so the reviewer can resolve it in one click).
@@ -320,7 +362,7 @@ With a confirmed ORCID:
 2. **Era-matched (preferred):** select the employment whose date range overlaps
    the record's operating span, using the overlap rules below.
    `affiliation_source: "ORCID employment"`, `affiliation_evidence:` the ORCID
-   URL, `affiliation_type: "era-matched"`.
+   URL, `affiliation_type: "era-matched"`. No citation — this is not a publication.
 3. **Current (fallback):** if no dated employment overlaps, use the
    current/most-recent affiliation. `affiliation_source: "ORCID
    employment"`, `affiliation_evidence:` the ORCID URL,
@@ -349,7 +391,8 @@ Without a usable ORCID employment history (or without a confirmed ORCID at all,
 when identity was confirmed some other way):
 4. **Crossref fallback:** use the affiliation string deposited for that author on
    the paper, if any. `affiliation_source: "Crossref (paper DOI)"`,
-   `affiliation_evidence:` the DOI, `affiliation_type: "as-deposited"`.
+   `affiliation_evidence:` the DOI, `affiliation_evidence_citation:` its citation,
+   `affiliation_type: "as-deposited"`.
 5. If nothing yields a value, leave `affiliation` null with `lookup_status`
    reflecting whether lookups completed.
 
@@ -379,7 +422,7 @@ deposit does not.
 the same person may have several papers inside the span, each depositing a
 different affiliation string. Prefer, in order:
 1. the deposit that also carried the confirmed ORCID, if one did — the identity
-   and the affiliation then rest on the same record;
+   and the affiliation then rest on the same record, and one citation covers both;
 2. the string that names the person's unit most specifically, provided it is
    well-formed;
 3. the most recent deposit.
@@ -598,7 +641,10 @@ ordinary web pages.
 - **Crossref**: `https://api.crossref.org/works/<DOI>` — author lists with ORCIDs
   and affiliations as deposited by publishers. Include a `mailto:` contact in the
   `User-Agent` header (Crossref "polite pool"). Primary route for ORCID
-  resolution because it anchors identity to a specific authorship.
+  resolution because it anchors identity to a specific authorship. The same
+  response supplies the `author` array and year for `*_evidence_citation`, so read
+  it once and take everything you need — do not reconstruct a citation later from
+  the DOI alone.
 - **ORCID public API** (`https://pub.orcid.org/v3.0/`, header
   `Accept: application/json`):
   - `/<orcid-id>/record` — full public record (works, employments) for corroboration.
