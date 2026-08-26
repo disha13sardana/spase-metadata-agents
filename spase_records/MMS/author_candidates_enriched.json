@@ -1,0 +1,3341 @@
+{
+  "record": "spase://SMWG/Observatory/MMS",
+  "date": "2026-08-25",
+  "operating_span": {
+    "start": "2015-03-13",
+    "stop": null
+  },
+  "cmad": {
+    "found": true,
+    "expected": true,
+    "url": "https://doi.org/10.48322/vshd-sv21",
+    "notes": "Two revisions were located and both were used. The current CMAD (v2.1, released 2024-09-01 for the 2023 Heliophysics Senior Review, DOI 10.48322/vshd-sv21, registered in SPASE as spase://NASA/Document/MMS/CMAD) carries a 40-name author list; that list opens with Burch and Giles and is alphabetized from the third name onward, so being named on it is the evidence, not position within it. Revision 0 (prepared 2020-05-06 by Kristopher Larsen, downloadable from the LASP MMS Science Working Team space) carries a signature page naming the mission PI, project scientist, program scientist, project manager, Science Operations Center leads, and the lead of each instrument suite - the single richest role-labelled source found in this run. Both post-date the 2015 start of operations, so both describe operating-era teams; where they differ, v2.1 is the more recent statement. A CMAD was expected: MMS is an operational, NASA-funded mission still under senior review."
+  },
+  "instrument_coverage": {
+    "spase_instruments": [
+      "spase://SMWG/Instrument/MMS/1/EnergeticParticleDetector/EIS",
+      "spase://SMWG/Instrument/MMS/1/EnergeticParticleDetector/FEEPS",
+      "spase://SMWG/Instrument/MMS/1/Ephemeris",
+      "spase://SMWG/Instrument/MMS/1/FastPlasmaInstrument/DES",
+      "spase://SMWG/Instrument/MMS/1/FastPlasmaInstrument/DIS",
+      "spase://SMWG/Instrument/MMS/1/FIELDS/ADP",
+      "spase://SMWG/Instrument/MMS/1/FIELDS/DSP",
+      "spase://SMWG/Instrument/MMS/1/FIELDS/EDI",
+      "spase://SMWG/Instrument/MMS/1/FIELDS/FGM",
+      "spase://SMWG/Instrument/MMS/1/FIELDS/SCM",
+      "spase://SMWG/Instrument/MMS/1/FIELDS/SDP",
+      "spase://SMWG/Instrument/MMS/1/HotPlasmaCompositionAnalyzer",
+      "spase://SMWG/Instrument/MMS/1/InstrumentControl/ASPOC"
+    ],
+    "external_roster": [
+      "ASPOC",
+      "EIS",
+      "FEEPS",
+      "FGM (AFG + DFG)",
+      "ADP",
+      "SDP",
+      "SCM",
+      "EDI",
+      "DSP",
+      "DES",
+      "DIS",
+      "HPCA",
+      "MEC / Ephemerides"
+    ],
+    "roster_sources": [
+      "https://lasp.colorado.edu/mms/sdc/public/datasets/",
+      "https://mms.gsfc.nasa.gov/instruments.html",
+      "https://doi.org/10.1007/s11214-015-0164-9",
+      "https://doi.org/10.48322/vshd-sv21"
+    ],
+    "missing_from_spase": [],
+    "notes": "The MMS Observatory record has no downward instrument links, so the SPASE side was established by reverse lookup of https://spase-metadata.org/SMWG/Instrument/MMS/ and confirmed against a local clone of the SMWG repository. Fifty-two Instrument records exist: the thirteen listed above, replicated identically under MMS/1, MMS/2, MMS/3 and MMS/4. Note that each of those records sets ObservatoryID to spase://SMWG/Observatory/MMS/<n>, the per-spacecraft Observatory records, which in turn set ObservatoryGroupID to spase://SMWG/Observatory/MMS - so no Instrument record points directly at the record being processed, and a naive ObservatoryID match would have found none. The external roster was taken from the MMS Science Data Center dataset index, the mission instruments page, the mission overview paper and the CMAD chapter structure; all four agree. Every instrument on the roster has a SPASE record, so nothing is missing. Two mapping details: SPASE folds the analogue (AFG, UCLA) and digital (DFG, IWF Graz) fluxgate magnetometers into one FGM record, and the SDC's 'Ephemerides' products correspond to the SPASE Ephemeris record and the CMAD's Magnetic Ephemeris Coordinates (MEC) chapter. SPASE additionally carries a DSP record that the SDC dataset index does not break out separately."
+  },
+  "pending_instrument_runs": [
+    {
+      "instrument": "MMS Ephemeris / Magnetic Ephemeris Coordinates (MEC)",
+      "spase_record": "spase://SMWG/Instrument/MMS/1/Ephemeris (and MMS/2-4)",
+      "description_paper": null,
+      "reason": "paper not located",
+      "notes": "No peer-reviewed description paper exists for the MMS ephemeris products; they are documented only in chapter 3 of the CMAD, which names no MEC lead. The Instrument record's Contacts list only James L. Burch as mission PrincipalInvestigator, so no instrument-specific person was recoverable. A dedicated run should pursue the MEC software authors through the MMS Science Data Center and the SPEDAS MEC documentation."
+    },
+    {
+      "instrument": "MMS FIELDS Fluxgate Magnetometer (FGM)",
+      "spase_record": "spase://SMWG/Instrument/MMS/1/FIELDS/FGM (and MMS/2-4)",
+      "description_paper": "https://doi.org/10.1007/s11214-014-0057-3",
+      "reason": "author-order classification limits what the paper yields",
+      "notes": "The description paper (Russell et al. 2016, 10.1007/s11214-014-0057-3) was confidently identified, but its author list is alphabetized from the second author to the nineteenth, leaving Russell as the only author whose position carries contribution information. Anderson and Baumjohann, who follow him, are recorded as excluded for that reason. A dedicated FGM run should establish the AFG and DFG sub-instrument leads from UCLA and IWF Graz provider pages, since the paper cannot supply them."
+    }
+  ],
+  "information_urls": [
+    {
+      "name": "Mission web page",
+      "url": "https://mms.gsfc.nasa.gov/",
+      "description": "NASA Goddard home page for the Magnetospheric Multiscale mission, with links to the science, spacecraft, instrument and team pages.",
+      "scope": "observatory"
+    },
+    {
+      "name": "MMS instruments overview",
+      "url": "https://mms.gsfc.nasa.gov/instruments.html",
+      "description": "Mission page describing the MMS instrument payload and naming James L. Burch as Principal Investigator of the payload science team.",
+      "scope": "observatory"
+    },
+    {
+      "name": "MMS mission team",
+      "url": "https://mms.gsfc.nasa.gov/team.html",
+      "description": "Mission page listing the MMS project office and project science leadership at NASA Goddard.",
+      "scope": "observatory"
+    },
+    {
+      "name": "Magnetospheric Multiscale Overview and Science Objectives",
+      "url": "https://doi.org/10.1007/s11214-015-0164-9",
+      "description": "The MMS mission overview paper, describing the mission's science objectives, measurement strategy and payload.",
+      "scope": "observatory"
+    },
+    {
+      "name": "MMS Calibration and Measurement Algorithms Document (CMAD)",
+      "url": "https://doi.org/10.48322/vshd-sv21",
+      "description": "Mission-wide CMAD front matter: the MMS science operations plan, instrumentation status, and the mission's declared author team as of the 2023 Heliophysics Senior Review.",
+      "scope": "observatory"
+    },
+    {
+      "name": "MMS CMAD Revision 0 (2020)",
+      "url": "https://lasp.colorado.edu/galaxy/download/attachments/1900656/CMAD%20Edited%20Version-Edits%201Dec2021b.pdf?version=1&modificationDate=1649681145324&api=v2",
+      "description": "Earlier revision of the MMS CMAD, whose signature page names the mission PI, project scientist, program scientist and each instrument-suite lead as of 2020.",
+      "scope": "observatory"
+    },
+    {
+      "name": "MMS Science Data Center",
+      "url": "https://lasp.colorado.edu/mms/sdc/public/",
+      "description": "The MMS Science Data Center at LASP, which distributes MMS data and documentation and lists the instrument suites that produce them.",
+      "scope": "observatory"
+    },
+    {
+      "name": "Magnetospheric Multiscale Instrument Suite Operations and Data System",
+      "url": "https://doi.org/10.1007/s11214-014-0128-5",
+      "description": "Description of how MMS science operations, the Science Operations Center and the data system are organised.",
+      "scope": "observatory"
+    },
+    {
+      "name": "Magnetospheric Multiscale Science Mission Profile and Operations",
+      "url": "https://doi.org/10.1007/s11214-014-0087-x",
+      "description": "Description of the MMS orbital phases, science regions of interest and observing strategy.",
+      "scope": "observatory"
+    },
+    {
+      "name": "The FIELDS Instrument Suite on MMS",
+      "url": "https://doi.org/10.1007/s11214-014-0109-8",
+      "description": "Suite-level description of the six MMS FIELDS instruments, their scientific objectives, measurements and data products.",
+      "scope": "instrument",
+      "instrument": "FIELDS"
+    },
+    {
+      "name": "The Magnetospheric Multiscale Magnetometers",
+      "url": "https://doi.org/10.1007/s11214-014-0057-3",
+      "description": "Description of the MMS analogue and digital fluxgate magnetometers that together form the FGM instrument.",
+      "scope": "instrument",
+      "instrument": "FGM"
+    },
+    {
+      "name": "The Search-Coil Magnetometer for MMS",
+      "url": "https://doi.org/10.1007/s11214-014-0096-9",
+      "description": "Description and calibration of the MMS Search-Coil Magnetometer.",
+      "scope": "instrument",
+      "instrument": "SCM"
+    },
+    {
+      "name": "The Axial Double Probe and Fields Signal Processing for the MMS Mission",
+      "url": "https://doi.org/10.1007/s11214-014-0115-x",
+      "description": "Description of the MMS Axial Double Probe electric field instrument (this paper also describes the FIELDS Digital Signal Processor).",
+      "scope": "instrument",
+      "instrument": "ADP"
+    },
+    {
+      "name": "The Axial Double Probe and Fields Signal Processing for the MMS Mission",
+      "url": "https://doi.org/10.1007/s11214-014-0115-x",
+      "description": "Description of the FIELDS Digital Signal Processor, which conditions and digitises the ADP, SDP and SCM signals (published jointly with the ADP description).",
+      "scope": "instrument",
+      "instrument": "DSP"
+    },
+    {
+      "name": "The Spin-Plane Double Probe Electric Field Instrument for MMS",
+      "url": "https://doi.org/10.1007/s11214-014-0116-9",
+      "description": "Description of the MMS Spin-plane Double Probe electric field instrument.",
+      "scope": "instrument",
+      "instrument": "SDP"
+    },
+    {
+      "name": "The Electron Drift Instrument for MMS",
+      "url": "https://doi.org/10.1007/s11214-015-0182-7",
+      "description": "Description of the MMS Electron Drift Instrument and its gun-detector units.",
+      "scope": "instrument",
+      "instrument": "EDI"
+    },
+    {
+      "name": "Fast Plasma Investigation for Magnetospheric Multiscale",
+      "url": "https://doi.org/10.1007/s11214-016-0245-4",
+      "description": "Description of the MMS Fast Plasma Investigation, including the Dual Electron Spectrometers.",
+      "scope": "instrument",
+      "instrument": "DES"
+    },
+    {
+      "name": "Fast Plasma Investigation for Magnetospheric Multiscale",
+      "url": "https://doi.org/10.1007/s11214-016-0245-4",
+      "description": "Description of the MMS Fast Plasma Investigation, including the Dual Ion Spectrometers.",
+      "scope": "instrument",
+      "instrument": "DIS"
+    },
+    {
+      "name": "Hot Plasma Composition Analyzer for the Magnetospheric Multiscale Mission",
+      "url": "https://doi.org/10.1007/s11214-014-0119-6",
+      "description": "Description of the MMS Hot Plasma Composition Analyzer.",
+      "scope": "instrument",
+      "instrument": "HPCA"
+    },
+    {
+      "name": "The Energetic Particle Detector (EPD) Investigation and the Energetic Ion Spectrometer (EIS) for MMS",
+      "url": "https://doi.org/10.1007/s11214-014-0055-5",
+      "description": "Description of the MMS Energetic Particle Detector investigation and of the Energetic Ion Spectrometer.",
+      "scope": "instrument",
+      "instrument": "EIS"
+    },
+    {
+      "name": "The Fly's Eye Energetic Particle Spectrometer (FEEPS) Sensors for MMS",
+      "url": "https://doi.org/10.1007/s11214-015-0163-x",
+      "description": "Description of the MMS Fly's Eye Energetic Particle Sensor.",
+      "scope": "instrument",
+      "instrument": "FEEPS"
+    },
+    {
+      "name": "Active Spacecraft Potential Control Investigation",
+      "url": "https://doi.org/10.1007/s11214-014-0049-3",
+      "description": "Description of the MMS Active Spacecraft Potential Control instrument and its indium ion emitters.",
+      "scope": "instrument",
+      "instrument": "ASPOC"
+    }
+  ],
+  "candidates": [
+    {
+      "name": "James L. Burch",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Named Principal Investigator of the MMS payload science team on the mission's instruments page",
+          "url": "https://mms.gsfc.nasa.gov/instruments.html",
+          "strength": "Strong"
+        },
+        {
+          "source": "First author of the MMS mission overview paper (Burch et al. 2016, 10.1007/s11214-015-0164-9)",
+          "url": "https://doi.org/10.1007/s11214-015-0164-9",
+          "strength": "Strong"
+        },
+        {
+          "source": "Listed as an author of the MMS Calibration and Measurement Algorithms Document, released 2024-09-01 for the 2023 Heliophysics Senior Review (Burch et al. 2024, 10.48322/vshd-sv21)",
+          "url": "https://doi.org/10.48322/vshd-sv21",
+          "strength": "Strong"
+        },
+        {
+          "source": "Approved the document as \"Jim Burch, SwRI MMS PI\" on the signature page of the MMS Calibration and Measurement Algorithms Document, Revision 0, prepared 2020-05-06 (Larsen 2020, 670-Proj-Plan-CMAD)",
+          "url": "https://lasp.colorado.edu/galaxy/download/attachments/1900656/CMAD%20Edited%20Version-Edits%201Dec2021b.pdf?version=1&modificationDate=1649681145324&api=v2",
+          "strength": "Strong"
+        },
+        {
+          "source": "Listed as PrincipalInvestigator in the Contacts of the MMS Observatory record, and repeated in the Contacts of all 52 MMS Instrument records",
+          "url": "https://spase-metadata.org/SMWG/Observatory/MMS",
+          "strength": "Medium"
+        },
+        {
+          "source": "Second author of the Hot Plasma Composition Analyzer (HPCA) description paper (Young et al. 2016, 10.1007/s11214-014-0119-6) (prefix authors 1-14 precede an alphabetized remainder)",
+          "url": "https://doi.org/10.1007/s11214-014-0119-6",
+          "strength": "Strong"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/James.L.Burch",
+        "url": "https://spase-metadata.org/SMWG/Person/James.L.Burch.html"
+      },
+      "orcid": "https://orcid.org/0000-0003-0452-8403",
+      "affiliation": "Southwest Research Institute",
+      "activity_dates": "Mission PI from selection through the present",
+      "qualifying_roles": [
+        "Author",
+        "PrincipalInvestigator"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "First author of the MMS mission overview paper (Burch et al. 2016, 10.1007/s11214-015-0164-9) and first author of the MMS Calibration and Measurement Algorithms Document (Burch et al. 2024, 10.48322/vshd-sv21)"
+        },
+        {
+          "role": "PrincipalInvestigator",
+          "source": "Principal Investigator of the MMS mission as a whole, named as such on the mission instruments page (https://mms.gsfc.nasa.gov/instruments.html), on the CMAD signature page as \"Jim Burch, SwRI MMS PI\" (https://doi.org/10.48322/vshd-sv21), and in the Contacts of the MMS Observatory record (https://spase-metadata.org/SMWG/Observatory/MMS)"
+        }
+      ],
+      "affiliation_ror": "https://ror.org/03tghng59",
+      "enrichment": {
+        "orcid_origin": "enricher",
+        "orcid_source": "Crossref (paper DOI)",
+        "orcid_evidence": "10.1029/2020ja027822",
+        "orcid_evidence_citation": "Liu et al. 2020",
+        "orcid_confidence": "Confirmed",
+        "affiliation_origin": "finder",
+        "affiliation_source": "ORCID employment",
+        "affiliation_evidence": "https://orcid.org/0000-0003-0452-8403",
+        "affiliation_type": "era-matched",
+        "ror_origin": "enricher",
+        "ror_source": "ROR affiliation-match (chosen)",
+        "ror_evidence": "https://ror.org/03tghng59",
+        "ror_confidence": "Confirmed",
+        "lookup_status": "complete",
+        "notes": "No DOI in the finder's evidence list deposits an ORCID iD for any author (the 2016 Space Science Reviews MMS papers deposit none at all, except Pollock's), so the iD was confirmed from a publisher deposit on a different MMS paper, named in orcid_evidence. The deposit gives the given name in full ('James L.') on an MMS paper. ORCID employment: Southwest Research Institute, San Antonio, 1977-01 and ongoing, covering the whole 2015-03-13-to-present operating span. That employment carries a Ringgold identifier rather than a ROR, so the ROR came from ROR's affiliation matcher."
+      }
+    },
+    {
+      "name": "Thomas E. Moore",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Second author of the MMS mission overview paper (Burch et al. 2016, 10.1007/s11214-015-0164-9)",
+          "url": "https://doi.org/10.1007/s11214-015-0164-9",
+          "strength": "Strong"
+        },
+        {
+          "source": "Listed as an author of the MMS Calibration and Measurement Algorithms Document, released 2024-09-01 for the 2023 Heliophysics Senior Review (Burch et al. 2024, 10.48322/vshd-sv21)",
+          "url": "https://doi.org/10.48322/vshd-sv21",
+          "strength": "Strong"
+        },
+        {
+          "source": "Listed as \"MMS Project Scientist\" on the mission team page",
+          "url": "https://mms.gsfc.nasa.gov/team.html",
+          "strength": "Medium"
+        },
+        {
+          "source": "Second author of the Fast Plasma Investigation (FPI) description paper (Pollock et al. 2016, 10.1007/s11214-016-0245-4) (prefix authors 1-16 precede an alphabetized remainder)",
+          "url": "https://doi.org/10.1007/s11214-016-0245-4",
+          "strength": "Strong"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Thomas.E.Moore",
+        "url": "https://spase-metadata.org/SMWG/Person/Thomas.E.Moore.html"
+      },
+      "orcid": "https://orcid.org/0000-0002-3150-1137",
+      "affiliation": "NASA Goddard Space Flight Center",
+      "activity_dates": "MMS Project Scientist; succeeded in the role by Barbara L. Giles and subsequently Guan Le",
+      "qualifying_roles": [
+        "Author",
+        "ProjectScientist"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Second author of the MMS mission overview paper (Burch et al. 2016, 10.1007/s11214-015-0164-9)"
+        },
+        {
+          "role": "ProjectScientist",
+          "source": "Named MMS Project Scientist for the mission as a whole on the MMS team page (https://mms.gsfc.nasa.gov/team.html)"
+        }
+      ],
+      "affiliation_ror": null,
+      "enrichment": {
+        "orcid_origin": "enricher",
+        "orcid_source": "ORCID name-search (corroborated)",
+        "orcid_evidence": "https://orcid.org/0000-0002-3150-1137",
+        "orcid_confidence": "Confirmed",
+        "affiliation_origin": "finder",
+        "affiliation_source": "uncorroborated",
+        "affiliation_evidence": null,
+        "affiliation_type": null,
+        "ror_origin": null,
+        "ror_source": null,
+        "ror_evidence": null,
+        "ror_confidence": null,
+        "lookup_status": "complete",
+        "notes": "The ORCID record carries the credit name 'Thomas Earle Moore' and lists 17 works, three of which name MMS in the title (for example 'A Statistical Study of Slow-Mode Shocks Observed by MMS in the Dayside Magnetopause'); the remainder are MMS-era magnetopause and magnetotail reconnection papers. That work list is what corroborates the identity. The iD was located from a Crossref deposit under the initials 'T. E. Moore' on an MMS paper, which on its own could not confirm anything. No ORCID employment history is public for this iD and no evidence DOI deposits an affiliation, so the finder's affiliation is carried unverified; affiliation_ror was not resolved, because a ROR would only normalise a string nothing corroborated."
+      }
+    },
+    {
+      "name": "Roy B. Torbert",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Third author of the MMS mission overview paper (Burch et al. 2016, 10.1007/s11214-015-0164-9)",
+          "url": "https://doi.org/10.1007/s11214-015-0164-9",
+          "strength": "Strong"
+        },
+        {
+          "source": "First author of the FIELDS instrument suite description paper (Torbert et al. 2016, 10.1007/s11214-014-0109-8)",
+          "url": "https://doi.org/10.1007/s11214-014-0109-8",
+          "strength": "Strong"
+        },
+        {
+          "source": "First author of the Electron Drift Instrument (EDI) description paper (Torbert et al. 2016, 10.1007/s11214-015-0182-7)",
+          "url": "https://doi.org/10.1007/s11214-015-0182-7",
+          "strength": "Strong"
+        },
+        {
+          "source": "Third author of the Spin-plane Double Probe (SDP) description paper (Lindqvist et al. 2016, 10.1007/s11214-014-0116-9)",
+          "url": "https://doi.org/10.1007/s11214-014-0116-9",
+          "strength": "Strong"
+        },
+        {
+          "source": "Listed as an author of the MMS Calibration and Measurement Algorithms Document, released 2024-09-01 for the 2023 Heliophysics Senior Review (Burch et al. 2024, 10.48322/vshd-sv21)",
+          "url": "https://doi.org/10.48322/vshd-sv21",
+          "strength": "Strong"
+        },
+        {
+          "source": "Concurred as \"Roy Torbert, UNH Fields Lead\" on the signature page of the MMS Calibration and Measurement Algorithms Document, Revision 0, prepared 2020-05-06 (Larsen 2020, 670-Proj-Plan-CMAD)",
+          "url": "https://lasp.colorado.edu/galaxy/download/attachments/1900656/CMAD%20Edited%20Version-Edits%201Dec2021b.pdf?version=1&modificationDate=1649681145324&api=v2",
+          "strength": "Strong"
+        },
+        {
+          "source": "Listed as CoInvestigator of the MMS FIELDS suite in the Contacts of its SPASE Instrument record (records are duplicated for spacecraft MMS 1-4)",
+          "url": "https://spase-metadata.org/SMWG/Instrument/MMS/1/FIELDS/FGM.html",
+          "strength": "Medium"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Roy.B.Torbert",
+        "url": "https://spase-metadata.org/SMWG/Person/Roy.B.Torbert.html"
+      },
+      "orcid": "https://orcid.org/0000-0001-7188-8690",
+      "affiliation": "University of New Hampshire",
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author",
+        "InstrumentLead",
+        "CoInvestigator"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Third author of the MMS mission overview paper (Burch et al. 2016, 10.1007/s11214-015-0164-9) and first author of the FIELDS instrument suite paper (Torbert et al. 2016, 10.1007/s11214-014-0109-8)"
+        },
+        {
+          "role": "InstrumentLead",
+          "source": "Lead of the MMS FIELDS instrument suite, named \"Roy Torbert, UNH Fields Lead\" on the signature page of the MMS Calibration and Measurement Algorithms Document (https://doi.org/10.48322/vshd-sv21)"
+        },
+        {
+          "role": "CoInvestigator",
+          "source": "Listed as CoInvestigator for the MMS FIELDS suite instruments (ADP, DSP, EDI, FGM, SCM, SDP) in the Contacts of their SPASE Instrument records (https://spase-metadata.org/SMWG/Instrument/MMS/1/FIELDS/FGM.html)"
+        }
+      ],
+      "affiliation_ror": "https://ror.org/01rmh9n78",
+      "enrichment": {
+        "orcid_origin": "enricher",
+        "orcid_source": "Crossref (paper DOI)",
+        "orcid_evidence": "10.1002/essoar.10509282.1",
+        "orcid_evidence_citation": "Rogers et al. 2021",
+        "orcid_confidence": "Confirmed",
+        "affiliation_origin": "finder",
+        "affiliation_source": "provider documentation",
+        "affiliation_evidence": "https://lasp.colorado.edu/galaxy/download/attachments/1900656/CMAD%20Edited%20Version-Edits%201Dec2021b.pdf?version=1&modificationDate=1649681145324&api=v2",
+        "affiliation_type": null,
+        "ror_origin": "enricher",
+        "ror_source": "ROR query (corroborated)",
+        "ror_evidence": "https://ror.org/01rmh9n78",
+        "ror_confidence": "Confirmed",
+        "lookup_status": "complete",
+        "notes": "No DOI in the finder's evidence list deposits an ORCID iD for any author (the 2016 Space Science Reviews MMS papers deposit none at all, except Pollock's), so the iD was confirmed from a publisher deposit on a different MMS paper, named in orcid_evidence. The deposit gives 'Roy B.' in full on an MMS current-sheet paper from his own UNH group. The affiliation is corroborated by the CMAD Revision 0 signature page, which names him 'Roy Torbert, UNH Fields Lead'. affiliation_type is null because the value rests on a mission/registry statement of the person's institution rather than on a dated ORCID employment or a Crossref deposit, so none of era-matched, current or as-deposited applies. ROR's affiliation matcher chose nothing for 'University of New Hampshire' ('University of New Hampshire at Manchester' also scored 1.00), so the ID came from a plain ROR query, in which https://ror.org/01rmh9n78 (Durham, United States) is the only organization carrying exactly that name."
+      }
+    },
+    {
+      "name": "Barbara L. Giles",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Approved the document as \"Barbara Giles, GSFC MMS Project Scientist\" on the signature page of the MMS Calibration and Measurement Algorithms Document, Revision 0, prepared 2020-05-06 (Larsen 2020, 670-Proj-Plan-CMAD)",
+          "url": "https://lasp.colorado.edu/galaxy/download/attachments/1900656/CMAD%20Edited%20Version-Edits%201Dec2021b.pdf?version=1&modificationDate=1649681145324&api=v2",
+          "strength": "Strong"
+        },
+        {
+          "source": "Second author of the MMS Calibration and Measurement Algorithms Document (Burch et al. 2024, 10.48322/vshd-sv21)",
+          "url": "https://doi.org/10.48322/vshd-sv21",
+          "strength": "Strong"
+        },
+        {
+          "source": "Fourth author of the MMS mission overview paper (Burch et al. 2016, 10.1007/s11214-015-0164-9)",
+          "url": "https://doi.org/10.1007/s11214-015-0164-9",
+          "strength": "Medium"
+        },
+        {
+          "source": "Named \"The FPI Lead Co-I is Dr. Barbara L. Giles\" in the Description of the MMS FPI Instrument records, and listed there as CoInvestigator",
+          "url": "https://spase-metadata.org/SMWG/Instrument/MMS/1/FastPlasmaInstrument/DES.html",
+          "strength": "Medium"
+        },
+        {
+          "source": "Listed with role Author in the Contacts of the MMS CMAD SPASE Document record",
+          "url": "https://spase-metadata.org/NASA/Document/MMS/CMAD.html",
+          "strength": "Medium"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Barbara.L.Giles",
+        "url": "https://spase-metadata.org/SMWG/Person/Barbara.L.Giles.html"
+      },
+      "orcid": "https://orcid.org/0000-0001-8054-825X",
+      "affiliation": "NASA Goddard Space Flight Center",
+      "activity_dates": "MMS Project Scientist as of the 2020 CMAD; FPI Lead Co-Investigator",
+      "qualifying_roles": [
+        "Author",
+        "ProjectScientist",
+        "InstrumentLead",
+        "CoInvestigator"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Second author of the MMS Calibration and Measurement Algorithms Document (Burch et al. 2024, 10.48322/vshd-sv21) and fourth author of the MMS mission overview paper (Burch et al. 2016, 10.1007/s11214-015-0164-9)"
+        },
+        {
+          "role": "ProjectScientist",
+          "source": "Project Scientist of the MMS mission as a whole, named \"Barbara Giles, GSFC MMS Project Scientist\" on the CMAD signature page (https://doi.org/10.48322/vshd-sv21)"
+        },
+        {
+          "role": "InstrumentLead",
+          "source": "Lead Co-Investigator of the MMS Fast Plasma Investigation (FPI), stated in the Description of the FPI Instrument records (https://spase-metadata.org/SMWG/Instrument/MMS/1/FastPlasmaInstrument/DES.html)"
+        },
+        {
+          "role": "CoInvestigator",
+          "source": "Listed as CoInvestigator for the MMS FPI instruments DES and DIS in the Contacts of their SPASE Instrument records (https://spase-metadata.org/SMWG/Instrument/MMS/1/FastPlasmaInstrument/DES.html)"
+        }
+      ],
+      "affiliation_ror": "https://ror.org/0171mag52",
+      "enrichment": {
+        "orcid_origin": "enricher",
+        "orcid_source": "ORCID name-search (corroborated)",
+        "orcid_evidence": "https://orcid.org/0000-0001-8054-825X",
+        "orcid_confidence": "Confirmed",
+        "affiliation_origin": "finder",
+        "affiliation_source": "ORCID employment",
+        "affiliation_evidence": "https://orcid.org/0000-0001-8054-825X",
+        "affiliation_type": "current",
+        "ror_origin": "enricher",
+        "ror_source": "ROR affiliation-match (chosen)",
+        "ror_evidence": "https://ror.org/0171mag52",
+        "ror_confidence": "Confirmed",
+        "lookup_status": "complete",
+        "notes": "The iD was found by searching ORCID for records claiming the finder's evidence DOI; this record lists the MMS mission overview paper 10.1007/s11214-015-0164-9 among its works, along with 101 further works naming MMS, which is what corroborates the identity. The employment entry names 'Goddard Space Flight Center' but carries no dates, so it is labelled current rather than era-matched; the finder's fuller string is kept. That entry carries a Crossref Funder Registry identifier rather than a ROR, so the ROR came from ROR's affiliation matcher."
+      }
+    },
+    {
+      "name": "Guan Le",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Listed as an author of the MMS Calibration and Measurement Algorithms Document, released 2024-09-01 for the 2023 Heliophysics Senior Review (Burch et al. 2024, 10.48322/vshd-sv21)",
+          "url": "https://doi.org/10.48322/vshd-sv21",
+          "strength": "Strong"
+        },
+        {
+          "source": "Listed with role ProjectScientist, starting 2023-06-02, in the Contacts of the MMS CMAD SPASE Document record",
+          "url": "https://spase-metadata.org/NASA/Document/MMS/CMAD.html",
+          "strength": "Medium"
+        },
+        {
+          "source": "NASA Goddard staff biography states she \"is currently the Project Scientist for Magnetospheric MultiScale (MMS) mission\"",
+          "url": "https://science.gsfc.nasa.gov/sci/bio/7398/",
+          "strength": "Medium"
+        },
+        {
+          "source": "Listed as \"Deputy Project Scientist\" on the MMS interdisciplinary-science team page, and as the mission site's NASA Official",
+          "url": "https://mms.gsfc.nasa.gov/inter_scientist_team.html",
+          "strength": "Medium"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Guan.Le",
+        "url": "https://spase-metadata.org/SMWG/Person/Guan.Le.html"
+      },
+      "orcid": "https://orcid.org/0000-0002-9504-5214",
+      "affiliation": "NASA Goddard Space Flight Center",
+      "activity_dates": "Deputy Project Scientist in the earlier mission era; Project Scientist from 2023-06-02",
+      "qualifying_roles": [
+        "Author",
+        "ProjectScientist"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Listed as an author of the MMS Calibration and Measurement Algorithms Document (Burch et al. 2024, 10.48322/vshd-sv21)"
+        },
+        {
+          "role": "ProjectScientist",
+          "source": "Project Scientist of the MMS mission as a whole from 2023-06-02, recorded in the Contacts of the MMS CMAD SPASE Document record (https://spase-metadata.org/NASA/Document/MMS/CMAD.html) and confirmed by her NASA Goddard staff biography (https://science.gsfc.nasa.gov/sci/bio/7398/)"
+        }
+      ],
+      "affiliation_ror": "https://ror.org/0171mag52",
+      "enrichment": {
+        "orcid_origin": "enricher",
+        "orcid_source": "ORCID name-search (corroborated)",
+        "orcid_evidence": "https://orcid.org/0000-0002-9504-5214",
+        "orcid_confidence": "Confirmed",
+        "affiliation_origin": "finder",
+        "affiliation_source": "provider documentation",
+        "affiliation_evidence": "https://science.gsfc.nasa.gov/sci/bio/7398/",
+        "affiliation_type": null,
+        "ror_origin": "enricher",
+        "ror_source": "ROR affiliation-match (chosen)",
+        "ror_evidence": "https://ror.org/0171mag52",
+        "ror_confidence": "Confirmed",
+        "lookup_status": "complete",
+        "notes": "The iD was found by searching ORCID for records claiming MMS instrument papers; this record lists the FIELDS suite paper 10.1007/s11214-014-0109-8 and the magnetometers paper 10.1007/s11214-014-0057-3 among its works, plus 29 further works naming MMS. Neither of those DOIs is in the finder's evidence list for her, but both are MMS instrument papers, so they corroborate the mission link. The affiliation comes from her NASA Goddard staff biography, already in the finder's evidence. Her ORCID employment names only the parent agency, 'National Aeronautics and Space Administration' (undated, ROR https://ror.org/027ka1x80); the ROR recorded here is the Goddard Space Flight Center, matching the affiliation actually resolved. affiliation_type is null because the value rests on a mission/registry statement of the person's institution rather than on a dated ORCID employment or a Crossref deposit, so none of era-matched, current or as-deposited applies."
+      }
+    },
+    {
+      "name": "Galen Fowler",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Approved the document as \"Galen Fowler, NASA MMS Program Scientist\" on the signature page of the MMS Calibration and Measurement Algorithms Document, Revision 0, prepared 2020-05-06 (Larsen 2020, 670-Proj-Plan-CMAD)",
+          "url": "https://lasp.colorado.edu/galaxy/download/attachments/1900656/CMAD%20Edited%20Version-Edits%201Dec2021b.pdf?version=1&modificationDate=1649681145324&api=v2",
+          "strength": "Strong"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": "NASA Headquarters",
+      "activity_dates": "NASA MMS Program Scientist as of the 2020 CMAD revision; not listed among the authors of the 2024 CMAD v2.1",
+      "qualifying_roles": [
+        "Author",
+        "ProgramScientist"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Named on the signature page of the MMS Calibration and Measurement Algorithms Document, Revision 0, prepared 2020-05-06 (Larsen 2020, 670-Proj-Plan-CMAD)"
+        },
+        {
+          "role": "ProgramScientist",
+          "source": "NASA Program Scientist for the MMS mission, named \"Galen Fowler, NASA MMS Program Scientist\" on the CMAD Revision 0 signature page (https://doi.org/10.48322/vshd-sv21)"
+        }
+      ],
+      "affiliation_ror": null,
+      "enrichment": {
+        "orcid_origin": null,
+        "orcid_source": null,
+        "orcid_evidence": null,
+        "orcid_confidence": null,
+        "affiliation_origin": "finder",
+        "affiliation_source": "uncorroborated",
+        "affiliation_evidence": null,
+        "affiliation_type": null,
+        "ror_origin": null,
+        "ror_source": null,
+        "ror_evidence": null,
+        "ror_confidence": null,
+        "lookup_status": "complete",
+        "notes": "ORCID holds no record for a Galen Fowler, and no Crossref deposit in the MMS domain carries an iD for a Fowler with that given name, so the orcid field is left null after both routes ran. The CMAD Revision 0 signature page identifies him as 'Galen Fowler, NASA MMS Program Scientist', which names the agency but no centre, so it does not corroborate the finder's 'NASA Headquarters'. No ORCID record could be confirmed and no evidence DOI deposits an affiliation, so the finder's affiliation is carried unverified; affiliation_ror was not resolved, because a ROR would only normalise a string nothing corroborated."
+      }
+    },
+    {
+      "name": "Kristopher Larsen",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Prepared the document, credited as \"Kristopher Larsen, SOC Science Data Center Lead\" on the signature page of the MMS Calibration and Measurement Algorithms Document, Revision 0, prepared 2020-05-06 (Larsen 2020, 670-Proj-Plan-CMAD)",
+          "url": "https://lasp.colorado.edu/galaxy/download/attachments/1900656/CMAD%20Edited%20Version-Edits%201Dec2021b.pdf?version=1&modificationDate=1649681145324&api=v2",
+          "strength": "Strong"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Kristopher.Larsen",
+        "url": "https://spase-metadata.org/SMWG/Person/Kristopher.Larsen.html"
+      },
+      "orcid": "https://orcid.org/0009-0009-3547-500X",
+      "affiliation": "Laboratory for Atmospheric and Space Physics, University of Colorado Boulder",
+      "activity_dates": "Science Data Center Lead as of the 2020 CMAD revision; not listed among the authors of the 2024 CMAD v2.1",
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Prepared and is credited as the author of the MMS Calibration and Measurement Algorithms Document, Revision 0, 2020-05-06 (Larsen 2020, 670-Proj-Plan-CMAD)"
+        }
+      ],
+      "affiliation_ror": "https://ror.org/01fcjzv38",
+      "enrichment": {
+        "orcid_origin": "enricher",
+        "orcid_source": "ORCID name-search (corroborated)",
+        "orcid_evidence": "https://orcid.org/0009-0009-3547-500X",
+        "orcid_confidence": "Confirmed",
+        "affiliation_origin": "finder",
+        "affiliation_source": "ORCID employment",
+        "affiliation_evidence": "https://orcid.org/0009-0009-3547-500X",
+        "affiliation_type": "current",
+        "ror_origin": "enricher",
+        "ror_source": "ORCID disambiguated-organization",
+        "ror_evidence": "https://orcid.org/0009-0009-3547-500X",
+        "ror_confidence": "Confirmed",
+        "lookup_status": "complete",
+        "notes": "Corroborated by an employment at the Laboratory for Atmospheric and Space Physics, the institution that hosts the MMS Science Data Center he led; the record also carries a NASA qualification. It lists no works. ORCID holds a second Kristopher Larsen, https://orcid.org/0000-0001-7853-7690, whose only affiliation is the University of Colorado Boulder generally; it was not used because nothing on it connects to MMS or to LASP, but a reviewer should be aware the two records may be duplicates of one person. The employment is undated, hence current rather than era-matched. ROR granularity flag: this record carries https://ror.org/01fcjzv38 (Laboratory for Atmospheric and Space Physics) from ORCID's own disambiguated-organization, while Pankratz, Ergun, Baker and Ahmadi carry https://ror.org/02ttsq026 (University of Colorado Boulder) from ROR's chosen affiliation match. Same institution at two granularities; a reviewer wanting one convention must pick it."
+      }
+    },
+    {
+      "name": "Christopher K. Pankratz",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Concurred as \"Chris Pankratz, LASP MMS SOC Lead\" on the signature page of the MMS Calibration and Measurement Algorithms Document, Revision 0, prepared 2020-05-06 (Larsen 2020, 670-Proj-Plan-CMAD)",
+          "url": "https://lasp.colorado.edu/galaxy/download/attachments/1900656/CMAD%20Edited%20Version-Edits%201Dec2021b.pdf?version=1&modificationDate=1649681145324&api=v2",
+          "strength": "Strong"
+        },
+        {
+          "source": "Third author of the MMS instrument suite operations and data system paper (Baker et al. 2016, 10.1007/s11214-014-0128-5)",
+          "url": "https://doi.org/10.1007/s11214-014-0128-5",
+          "strength": "Medium"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": "https://orcid.org/0000-0002-4022-8080",
+      "affiliation": "Laboratory for Atmospheric and Space Physics, University of Colorado Boulder",
+      "activity_dates": "MMS Science Operations Center Lead as of the 2020 CMAD revision",
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Named as MMS Science Operations Center Lead on the signature page of the MMS Calibration and Measurement Algorithms Document, Revision 0 (Larsen 2020, 670-Proj-Plan-CMAD), and third author of the MMS operations and data system paper (Baker et al. 2016, 10.1007/s11214-014-0128-5)"
+        }
+      ],
+      "affiliation_ror": "https://ror.org/02ttsq026",
+      "enrichment": {
+        "orcid_origin": "enricher",
+        "orcid_source": "Crossref (paper DOI)",
+        "orcid_evidence": "10.1002/essoar.10501765.1",
+        "orcid_evidence_citation": "Barnum et al. 2020",
+        "orcid_confidence": "Confirmed",
+        "affiliation_origin": "finder",
+        "affiliation_source": "ORCID employment",
+        "affiliation_evidence": "https://orcid.org/0000-0002-4022-8080",
+        "affiliation_type": "current",
+        "ror_origin": "enricher",
+        "ror_source": "ROR affiliation-match (chosen)",
+        "ror_evidence": "https://ror.org/02ttsq026",
+        "ror_confidence": "Confirmed",
+        "lookup_status": "complete",
+        "notes": "No DOI in the finder's evidence list deposits an ORCID iD for any author (the 2016 Space Science Reviews MMS papers deposit none at all, except Pollock's), so the iD was confirmed from a publisher deposit on a different MMS paper, named in orcid_evidence. The deposit gives the given name 'Christopher' in full on 'How Automation has Improved the Performance of the MMS SDC', a paper about the MMS Science Operations Centre he led, and Kristopher Larsen is a co-author. Note that the CMAD signature page names him 'Chris Pankratz, LASP MMS SOC Lead'; no cited source gives the middle initial in the finder's 'Christopher K. Pankratz'. The ORCID employment names only 'University of Colorado Boulder' and is undated, so the label is current; the finder's more specific LASP string is kept and is separately supported by that signature line. ROR granularity flag: this record carries https://ror.org/02ttsq026 (University of Colorado Boulder), ROR's chosen match for the affiliation string, while Kristopher Larsen carries https://ror.org/01fcjzv38 (Laboratory for Atmospheric and Space Physics) from ORCID's own disambiguated-organization. Same institution at two granularities; a reviewer wanting one convention must pick it."
+      }
+    },
+    {
+      "name": "Stephen A. Fuselier",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Concurred as \"Stephen Fuselier, SwRI HPCA Lead\" on the signature page of the MMS Calibration and Measurement Algorithms Document, Revision 0, prepared 2020-05-06 (Larsen 2020, 670-Proj-Plan-CMAD)",
+          "url": "https://lasp.colorado.edu/galaxy/download/attachments/1900656/CMAD%20Edited%20Version-Edits%201Dec2021b.pdf?version=1&modificationDate=1649681145324&api=v2",
+          "strength": "Strong"
+        },
+        {
+          "source": "Listed as an author of the MMS Calibration and Measurement Algorithms Document, released 2024-09-01 for the 2023 Heliophysics Senior Review (Burch et al. 2024, 10.48322/vshd-sv21)",
+          "url": "https://doi.org/10.48322/vshd-sv21",
+          "strength": "Strong"
+        },
+        {
+          "source": "First author of the MMS science mission profile and operations paper (Fuselier et al. 2016, 10.1007/s11214-014-0087-x)",
+          "url": "https://doi.org/10.1007/s11214-014-0087-x",
+          "strength": "Medium"
+        },
+        {
+          "source": "Named \"The HPCA investigation is led by Co-I S. A. Fuselier (SwRI)\" in the Description of the MMS HPCA Instrument records, and listed there as CoInvestigator",
+          "url": "https://spase-metadata.org/SMWG/Instrument/MMS/1/HotPlasmaCompositionAnalyzer.html",
+          "strength": "Medium"
+        },
+        {
+          "source": "Eighth author of the HPCA description paper (Young et al. 2016, 10.1007/s11214-014-0119-6)",
+          "url": "https://doi.org/10.1007/s11214-014-0119-6",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Stephen.A.Fuselier",
+        "url": "https://spase-metadata.org/SMWG/Person/Stephen.A.Fuselier.html"
+      },
+      "orcid": "https://orcid.org/0000-0003-4101-7901",
+      "affiliation": "Southwest Research Institute",
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author",
+        "InstrumentLead",
+        "CoInvestigator"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Named as MMS HPCA Lead on the CMAD signature page and listed as an author of the MMS Calibration and Measurement Algorithms Document (Burch et al. 2024, 10.48322/vshd-sv21)"
+        },
+        {
+          "role": "InstrumentLead",
+          "source": "Lead of the MMS Hot Plasma Composition Analyzer (HPCA), named \"Stephen Fuselier, SwRI HPCA Lead\" on the CMAD signature page (https://doi.org/10.48322/vshd-sv21) and \"The HPCA investigation is led by Co-I S. A. Fuselier (SwRI)\" in the HPCA Instrument record Description (https://spase-metadata.org/SMWG/Instrument/MMS/1/HotPlasmaCompositionAnalyzer.html)"
+        },
+        {
+          "role": "CoInvestigator",
+          "source": "Listed as CoInvestigator for the MMS HPCA instrument in the Contacts of its SPASE Instrument record (https://spase-metadata.org/SMWG/Instrument/MMS/1/HotPlasmaCompositionAnalyzer.html)"
+        }
+      ],
+      "affiliation_ror": "https://ror.org/03tghng59",
+      "enrichment": {
+        "orcid_origin": "enricher",
+        "orcid_source": "Crossref (paper DOI)",
+        "orcid_evidence": "10.1002/essoar.10512111.1",
+        "orcid_evidence_citation": "Nikoukar et al. 2022",
+        "orcid_confidence": "Confirmed",
+        "affiliation_origin": "finder",
+        "affiliation_source": "provider documentation",
+        "affiliation_evidence": "https://lasp.colorado.edu/galaxy/download/attachments/1900656/CMAD%20Edited%20Version-Edits%201Dec2021b.pdf?version=1&modificationDate=1649681145324&api=v2",
+        "affiliation_type": null,
+        "ror_origin": "enricher",
+        "ror_source": "ROR affiliation-match (chosen)",
+        "ror_evidence": "https://ror.org/03tghng59",
+        "ror_confidence": "Confirmed",
+        "lookup_status": "complete",
+        "notes": "No DOI in the finder's evidence list deposits an ORCID iD for any author (the 2016 Space Science Reviews MMS papers deposit none at all, except Pollock's), so the iD was confirmed from a publisher deposit on a different MMS paper, named in orcid_evidence. The deposit gives 'Stephen A.' in full on an MMS magnetotail paper co-authored with Cohen, Mauk and Gomez. The ORCID record lists 179 works, 44 naming MMS, but no employment history, so the affiliation instead comes from the CMAD Revision 0 signature page, which names him 'Stephen Fuselier, SwRI HPCA Lead'; the SPASE HPCA Instrument record says the same ('Co-I S. A. Fuselier (SwRI)'). affiliation_type is null because the value rests on a mission/registry statement of the person's institution rather than on a dated ORCID employment or a Crossref deposit, so none of era-matched, current or as-deposited applies."
+      }
+    },
+    {
+      "name": "Daniel J. Gershman",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Concurred as \"Daniel Gershman, GSFC FPI Lead\" on the signature page of the MMS Calibration and Measurement Algorithms Document, Revision 0, prepared 2020-05-06 (Larsen 2020, 670-Proj-Plan-CMAD)",
+          "url": "https://lasp.colorado.edu/galaxy/download/attachments/1900656/CMAD%20Edited%20Version-Edits%201Dec2021b.pdf?version=1&modificationDate=1649681145324&api=v2",
+          "strength": "Strong"
+        },
+        {
+          "source": "Listed as an author of the MMS Calibration and Measurement Algorithms Document, released 2024-09-01 for the 2023 Heliophysics Senior Review (Burch et al. 2024, 10.48322/vshd-sv21)",
+          "url": "https://doi.org/10.48322/vshd-sv21",
+          "strength": "Strong"
+        },
+        {
+          "source": "Twelfth author of the FPI description paper (Pollock et al. 2016, 10.1007/s11214-016-0245-4)",
+          "url": "https://doi.org/10.1007/s11214-016-0245-4",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Daniel.J.Gershman",
+        "url": "https://spase-metadata.org/SMWG/Person/Daniel.J.Gershman.html"
+      },
+      "orcid": "https://orcid.org/0000-0003-1304-4769",
+      "affiliation": "NASA Goddard Space Flight Center",
+      "activity_dates": "FPI Lead as of the 2020 CMAD revision and later",
+      "qualifying_roles": [
+        "Author",
+        "InstrumentLead"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Named as MMS FPI Lead on the CMAD signature page and listed as an author of the MMS Calibration and Measurement Algorithms Document (Burch et al. 2024, 10.48322/vshd-sv21)"
+        },
+        {
+          "role": "InstrumentLead",
+          "source": "Lead of the MMS Fast Plasma Investigation (FPI), named \"Daniel Gershman, GSFC FPI Lead\" on the CMAD signature page (https://doi.org/10.48322/vshd-sv21)"
+        }
+      ],
+      "affiliation_ror": "https://ror.org/0171mag52",
+      "enrichment": {
+        "orcid_origin": "enricher",
+        "orcid_source": "Crossref (paper DOI)",
+        "orcid_evidence": "10.1002/essoar.10501080.1",
+        "orcid_evidence_citation": "Hasegawa et al. 2019",
+        "orcid_confidence": "Confirmed",
+        "affiliation_origin": "finder",
+        "affiliation_source": "provider documentation",
+        "affiliation_evidence": "https://lasp.colorado.edu/galaxy/download/attachments/1900656/CMAD%20Edited%20Version-Edits%201Dec2021b.pdf?version=1&modificationDate=1649681145324&api=v2",
+        "affiliation_type": null,
+        "ror_origin": "enricher",
+        "ror_source": "ROR affiliation-match (chosen)",
+        "ror_evidence": "https://ror.org/0171mag52",
+        "ror_confidence": "Confirmed",
+        "lookup_status": "complete",
+        "notes": "No DOI in the finder's evidence list deposits an ORCID iD for any author (the 2016 Space Science Reviews MMS papers deposit none at all, except Pollock's), so the iD was confirmed from a publisher deposit on a different MMS paper, named in orcid_evidence. The deposit gives 'Daniel J' in full on an MMS Kelvin-Helmholtz paper. The ORCID record publishes no works or employments, so the affiliation comes from the CMAD Revision 0 signature page, which names him 'Daniel Gershman, GSFC FPI Lead'. affiliation_type is null because the value rests on a mission/registry statement of the person's institution rather than on a dated ORCID employment or a Crossref deposit, so none of era-matched, current or as-deposited applies."
+      }
+    },
+    {
+      "name": "Ian J. Cohen",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Concurred as \"Ian Cohen, APL EPD Lead\" on the signature page of the MMS Calibration and Measurement Algorithms Document, Revision 0, prepared 2020-05-06 (Larsen 2020, 670-Proj-Plan-CMAD)",
+          "url": "https://lasp.colorado.edu/galaxy/download/attachments/1900656/CMAD%20Edited%20Version-Edits%201Dec2021b.pdf?version=1&modificationDate=1649681145324&api=v2",
+          "strength": "Strong"
+        },
+        {
+          "source": "Listed as an author of the MMS Calibration and Measurement Algorithms Document, released 2024-09-01 for the 2023 Heliophysics Senior Review (Burch et al. 2024, 10.48322/vshd-sv21)",
+          "url": "https://doi.org/10.48322/vshd-sv21",
+          "strength": "Strong"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Ian.J.Cohen",
+        "url": "https://spase-metadata.org/SMWG/Person/Ian.J.Cohen.html"
+      },
+      "orcid": "https://orcid.org/0000-0002-9163-6009",
+      "affiliation": "Johns Hopkins University Applied Physics Laboratory",
+      "activity_dates": "EPD Lead as of the 2020 CMAD revision and later",
+      "qualifying_roles": [
+        "Author",
+        "InstrumentLead"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Named as MMS EPD Lead on the CMAD signature page and listed as an author of the MMS Calibration and Measurement Algorithms Document (Burch et al. 2024, 10.48322/vshd-sv21)"
+        },
+        {
+          "role": "InstrumentLead",
+          "source": "Lead of the MMS Energetic Particle Detector (EPD) suite, which comprises the EIS and FEEPS instruments, named \"Ian Cohen, APL EPD Lead\" on the CMAD signature page (https://doi.org/10.48322/vshd-sv21)"
+        }
+      ],
+      "affiliation_ror": "https://ror.org/029pp9z10",
+      "enrichment": {
+        "orcid_origin": "enricher",
+        "orcid_source": "Crossref (paper DOI)",
+        "orcid_evidence": "10.1029/2019gl082008",
+        "orcid_evidence_citation": "Cohen et al. 2019",
+        "orcid_confidence": "Confirmed",
+        "affiliation_origin": "finder",
+        "affiliation_source": "ORCID employment",
+        "affiliation_evidence": "https://orcid.org/0000-0002-9163-6009",
+        "affiliation_type": "era-matched",
+        "ror_origin": "enricher",
+        "ror_source": "ROR affiliation-match (chosen)",
+        "ror_evidence": "https://ror.org/029pp9z10",
+        "ror_confidence": "Confirmed",
+        "lookup_status": "complete",
+        "notes": "No DOI in the finder's evidence list deposits an ORCID iD for any author (the 2016 Space Science Reviews MMS papers deposit none at all, except Pollock's), so the iD was confirmed from a publisher deposit on a different MMS paper, named in orcid_evidence. The deposit gives 'Ian J.' in full on an MMS paper he leads. Six overlapping employments: five at the Johns Hopkins University Applied Physics Laboratory (2015-08 onward) and one at the University of New Hampshire (2015-05 to 2015-09, at the very start of the operating span). APL, the MMS EPD provider, was preferred; the entry selected is the longest-overlapping one, 2016-11 to 2024-09, which carries a Ringgold identifier rather than a ROR, so the ROR came from ROR's affiliation matcher. It is the same ID (https://ror.org/029pp9z10) that his later APL entries assert directly."
+      }
+    },
+    {
+      "name": "Klaus M. Torkar",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "First author of the Active Spacecraft Potential Control (ASPOC) description paper (Torkar et al. 2016, 10.1007/s11214-014-0049-3)",
+          "url": "https://doi.org/10.1007/s11214-014-0049-3",
+          "strength": "Strong"
+        },
+        {
+          "source": "Concurred as \"Klaus Torkar, Austrian Academy of Sciences, ASPOC Lead\" on the signature page of the MMS Calibration and Measurement Algorithms Document, Revision 0, prepared 2020-05-06 (Larsen 2020, 670-Proj-Plan-CMAD)",
+          "url": "https://lasp.colorado.edu/galaxy/download/attachments/1900656/CMAD%20Edited%20Version-Edits%201Dec2021b.pdf?version=1&modificationDate=1649681145324&api=v2",
+          "strength": "Strong"
+        },
+        {
+          "source": "Listed as an author of the MMS Calibration and Measurement Algorithms Document, released 2024-09-01 for the 2023 Heliophysics Senior Review (Burch et al. 2024, 10.48322/vshd-sv21)",
+          "url": "https://doi.org/10.48322/vshd-sv21",
+          "strength": "Strong"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Klaus.M.Torkar",
+        "url": "https://spase-metadata.org/SMWG/Person/Klaus.M.Torkar.html"
+      },
+      "orcid": "https://orcid.org/0000-0003-4820-1920",
+      "affiliation": "Space Research Institute, Austrian Academy of Sciences",
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author",
+        "InstrumentLead"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "First author of the ASPOC description paper (Torkar et al. 2016, 10.1007/s11214-014-0049-3)"
+        },
+        {
+          "role": "InstrumentLead",
+          "source": "Lead of the MMS Active Spacecraft Potential Control (ASPOC) instrument, named \"Klaus Torkar, Austrian Academy of Sciences, ASPOC Lead\" on the CMAD signature page (https://doi.org/10.48322/vshd-sv21)"
+        }
+      ],
+      "affiliation_ror": "https://ror.org/03anc3s24",
+      "enrichment": {
+        "orcid_origin": "enricher",
+        "orcid_source": "Crossref (paper DOI)",
+        "orcid_evidence": "10.1002/2017ja025086",
+        "orcid_evidence_citation": "Andriopoulou et al. 2018",
+        "orcid_confidence": "Confirmed",
+        "affiliation_origin": "finder",
+        "affiliation_source": "provider documentation",
+        "affiliation_evidence": "https://lasp.colorado.edu/galaxy/download/attachments/1900656/CMAD%20Edited%20Version-Edits%201Dec2021b.pdf?version=1&modificationDate=1649681145324&api=v2",
+        "affiliation_type": null,
+        "ror_origin": "enricher",
+        "ror_source": "ROR affiliation-match (chosen)",
+        "ror_evidence": "https://ror.org/03anc3s24",
+        "ror_confidence": "Confirmed",
+        "lookup_status": "complete",
+        "notes": "No DOI in the finder's evidence list deposits an ORCID iD for any author (the 2016 Space Science Reviews MMS papers deposit none at all, except Pollock's), so the iD was confirmed from a publisher deposit on a different MMS paper, named in orcid_evidence. The deposit gives 'Klaus' in full on 'Plasma Density Estimates From Spacecraft Potential Using MMS Observations', and the record's own works include 'Active Spacecraft Potential Control in the MMS Mission', i.e. the instrument he leads. No employment history is public, so the affiliation comes from the CMAD Revision 0 signature page, 'Klaus Torkar, Austrian Academy of Sciences, ASPOC Lead'; that line names only the academy, while the finder's string additionally names its Graz institute (IWF), which the cited page does not state. affiliation_type is null because the value rests on a mission/registry statement of the person's institution rather than on a dated ORCID employment or a Crossref deposit, so none of era-matched, current or as-deposited applies. The affiliation names a sub-unit and ROR chose the parent Austrian Academy of Sciences. ROR also lists a separate 'Space Research Institute' in Austria (https://ror.org/002w0jp71) at score 1.00 but did not choose it, so it was not used."
+      }
+    },
+    {
+      "name": "Rumi Nakamura",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Second author of the Active Spacecraft Potential Control (ASPOC) description paper (Torkar et al. 2016, 10.1007/s11214-014-0049-3)",
+          "url": "https://doi.org/10.1007/s11214-014-0049-3",
+          "strength": "Strong"
+        },
+        {
+          "source": "Listed as an author of the MMS Calibration and Measurement Algorithms Document, released 2024-09-01 for the 2023 Heliophysics Senior Review (Burch et al. 2024, 10.48322/vshd-sv21)",
+          "url": "https://doi.org/10.48322/vshd-sv21",
+          "strength": "Strong"
+        },
+        {
+          "source": "Named \"The ASPOC Lead Co-I for Phase E is Rumi Nakamura (IFW, OAF)\" in the Description of the MMS ASPOC Instrument records, and listed there as CoInvestigator",
+          "url": "https://spase-metadata.org/SMWG/Instrument/MMS/1/InstrumentControl/ASPOC.html",
+          "strength": "Medium"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Rumi.Nakamura",
+        "url": "https://spase-metadata.org/SMWG/Person/Rumi.Nakamura.html"
+      },
+      "orcid": "https://orcid.org/0000-0002-2620-9211",
+      "affiliation": "Space Research Institute, Austrian Academy of Sciences",
+      "activity_dates": "ASPOC Lead Co-Investigator for mission Phase E",
+      "qualifying_roles": [
+        "Author",
+        "InstrumentLead",
+        "CoInvestigator"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Second author of the ASPOC description paper (Torkar et al. 2016, 10.1007/s11214-014-0049-3)"
+        },
+        {
+          "role": "InstrumentLead",
+          "source": "Lead Co-Investigator for the MMS Active Spacecraft Potential Control (ASPOC) instrument during mission Phase E, stated in the ASPOC Instrument record Description (https://spase-metadata.org/SMWG/Instrument/MMS/1/InstrumentControl/ASPOC.html)"
+        },
+        {
+          "role": "CoInvestigator",
+          "source": "Listed as CoInvestigator for the MMS ASPOC instrument in the Contacts of its SPASE Instrument record (https://spase-metadata.org/SMWG/Instrument/MMS/1/InstrumentControl/ASPOC.html)"
+        }
+      ],
+      "affiliation_ror": "https://ror.org/03anc3s24",
+      "enrichment": {
+        "orcid_origin": "enricher",
+        "orcid_source": "ORCID name-search (corroborated)",
+        "orcid_evidence": "https://orcid.org/0000-0002-2620-9211",
+        "orcid_confidence": "Confirmed",
+        "affiliation_origin": "finder",
+        "affiliation_source": "ORCID employment",
+        "affiliation_evidence": "https://orcid.org/0000-0002-2620-9211",
+        "affiliation_type": "era-matched",
+        "ror_origin": "enricher",
+        "ror_source": "ROR affiliation-match (chosen)",
+        "ror_evidence": "https://ror.org/03anc3s24",
+        "ror_confidence": "Confirmed",
+        "lookup_status": "complete",
+        "notes": "The iD was found by searching ORCID for records claiming the finder's evidence DOIs; this record lists the ASPOC description paper 10.1007/s11214-014-0049-3 among its works, together with 60 further works naming MMS. Employment: Austrian Academy of Sciences, Vienna, from 2000-04 and ongoing, which spans the operating period. That entry carries a GRID identifier, not a ROR, and GRID identifiers were not converted by hand, so the ROR came from ROR's affiliation matcher. The employment names the academy while the finder's string names its Graz institute (IWF). The affiliation names a sub-unit and ROR chose the parent Austrian Academy of Sciences. ROR also lists a separate 'Space Research Institute' in Austria (https://ror.org/002w0jp71) at score 1.00 but did not choose it, so it was not used."
+      }
+    },
+    {
+      "name": "Barry H. Mauk",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "First author of the Energetic Particle Detector (EPD) investigation and Energetic Ion Spectrometer (EIS) description paper (Mauk et al. 2016, 10.1007/s11214-014-0055-5) (prefix authors 1-8 precede an alphabetized remainder)",
+          "url": "https://doi.org/10.1007/s11214-014-0055-5",
+          "strength": "Strong"
+        },
+        {
+          "source": "Second author of the Fly's Eye Energetic Particle Sensor (FEEPS) description paper (Blake et al. 2016, 10.1007/s11214-015-0163-x) (prefix is just the first two authors; the remainder is alphabetized)",
+          "url": "https://doi.org/10.1007/s11214-015-0163-x",
+          "strength": "Strong"
+        },
+        {
+          "source": "Listed as an author of the MMS Calibration and Measurement Algorithms Document, released 2024-09-01 for the 2023 Heliophysics Senior Review (Burch et al. 2024, 10.48322/vshd-sv21)",
+          "url": "https://doi.org/10.48322/vshd-sv21",
+          "strength": "Strong"
+        },
+        {
+          "source": "Named \"EIS development is led by Co-I B. H. Mauk (Applied Physics Laboratory), who also heads the Energetic Particle investigation as a whole\" in the Description of the MMS EIS Instrument records, and listed there as CoInvestigator",
+          "url": "https://spase-metadata.org/SMWG/Instrument/MMS/1/EnergeticParticleDetector/EIS.html",
+          "strength": "Medium"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Barry.H.Mauk",
+        "url": "https://spase-metadata.org/SMWG/Person/Barry.H.Mauk.html"
+      },
+      "orcid": "https://orcid.org/0000-0001-9789-3797",
+      "affiliation": "Johns Hopkins University Applied Physics Laboratory",
+      "activity_dates": "Founding lead of the EPD investigation and of EIS",
+      "qualifying_roles": [
+        "Author",
+        "InstrumentLead",
+        "CoInvestigator"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "First author of the EPD investigation and EIS description paper (Mauk et al. 2016, 10.1007/s11214-014-0055-5) and second author of the FEEPS description paper (Blake et al. 2016, 10.1007/s11214-015-0163-x)"
+        },
+        {
+          "role": "InstrumentLead",
+          "source": "Lead of the MMS Energetic Ion Spectrometer (EIS) and head of the Energetic Particle Detector (EPD) investigation as a whole, stated in the EIS Instrument record Description (https://spase-metadata.org/SMWG/Instrument/MMS/1/EnergeticParticleDetector/EIS.html)"
+        },
+        {
+          "role": "CoInvestigator",
+          "source": "Listed as CoInvestigator for the MMS EIS instrument in the Contacts of its SPASE Instrument record (https://spase-metadata.org/SMWG/Instrument/MMS/1/EnergeticParticleDetector/EIS.html)"
+        }
+      ],
+      "affiliation_ror": "https://ror.org/029pp9z10",
+      "enrichment": {
+        "orcid_origin": "enricher",
+        "orcid_source": "Crossref (paper DOI)",
+        "orcid_evidence": "10.1002/essoar.10512111.1",
+        "orcid_evidence_citation": "Nikoukar et al. 2022",
+        "orcid_confidence": "Confirmed",
+        "affiliation_origin": "finder",
+        "affiliation_source": "SPASE record",
+        "affiliation_evidence": "https://spase-metadata.org/SMWG/Instrument/MMS/1/EnergeticParticleDetector/EIS.html",
+        "affiliation_type": null,
+        "ror_origin": "enricher",
+        "ror_source": "ROR affiliation-match (chosen)",
+        "ror_evidence": "https://ror.org/029pp9z10",
+        "ror_confidence": "Confirmed",
+        "lookup_status": "complete",
+        "notes": "No DOI in the finder's evidence list deposits an ORCID iD for any author (the 2016 Space Science Reviews MMS papers deposit none at all, except Pollock's), so the iD was confirmed from a publisher deposit on a different MMS paper, named in orcid_evidence. The deposit gives 'Barry H.' in full on an MMS magnetotail paper, and the record lists 24 further works naming MMS. No employment history is public, so the affiliation comes from the SPASE EIS Instrument record, which states 'EIS development is led by Co-I B. H. Mauk (Applied Physics Laboratory)'. affiliation_type is null because the value rests on a mission/registry statement of the person's institution rather than on a dated ORCID employment or a Crossref deposit, so none of era-matched, current or as-deposited applies."
+      }
+    },
+    {
+      "name": "J. Bernard Blake",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "First author of the Fly's Eye Energetic Particle Sensor (FEEPS) description paper (Blake et al. 2016, 10.1007/s11214-015-0163-x) (prefix is just the first two authors; the remainder is alphabetized)",
+          "url": "https://doi.org/10.1007/s11214-015-0163-x",
+          "strength": "Strong"
+        },
+        {
+          "source": "Second author of the Energetic Particle Detector (EPD) investigation and Energetic Ion Spectrometer (EIS) description paper (Mauk et al. 2016, 10.1007/s11214-014-0055-5) (prefix authors 1-8 precede an alphabetized remainder)",
+          "url": "https://doi.org/10.1007/s11214-014-0055-5",
+          "strength": "Strong"
+        },
+        {
+          "source": "Listed as an author of the MMS Calibration and Measurement Algorithms Document, released 2024-09-01 for the 2023 Heliophysics Senior Review (Burch et al. 2024, 10.48322/vshd-sv21)",
+          "url": "https://doi.org/10.48322/vshd-sv21",
+          "strength": "Strong"
+        },
+        {
+          "source": "Named \"FEEPS development is led by Co-I J. B. Blake (Aerospace Corporation)\" in the Description of the MMS FEEPS Instrument records, and listed there as CoInvestigator",
+          "url": "https://spase-metadata.org/SMWG/Instrument/MMS/1/EnergeticParticleDetector/FEEPS.html",
+          "strength": "Medium"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/J.Bernard.Blake",
+        "url": "https://spase-metadata.org/SMWG/Person/J.Bernard.Blake.html"
+      },
+      "orcid": "https://orcid.org/0000-0001-7439-4362",
+      "affiliation": "The Aerospace Corporation",
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author",
+        "InstrumentLead",
+        "CoInvestigator"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "First author of the FEEPS description paper (Blake et al. 2016, 10.1007/s11214-015-0163-x) and second author of the EPD/EIS description paper (Mauk et al. 2016, 10.1007/s11214-014-0055-5)"
+        },
+        {
+          "role": "InstrumentLead",
+          "source": "Lead of the MMS Fly's Eye Energetic Particle Sensor (FEEPS), stated in the FEEPS Instrument record Description (https://spase-metadata.org/SMWG/Instrument/MMS/1/EnergeticParticleDetector/FEEPS.html)"
+        },
+        {
+          "role": "CoInvestigator",
+          "source": "Listed as CoInvestigator for the MMS FEEPS instrument in the Contacts of its SPASE Instrument record (https://spase-metadata.org/SMWG/Instrument/MMS/1/EnergeticParticleDetector/FEEPS.html)"
+        }
+      ],
+      "affiliation_ror": "https://ror.org/01ar9e455",
+      "enrichment": {
+        "orcid_origin": "enricher",
+        "orcid_source": "Crossref (paper DOI)",
+        "orcid_evidence": "10.1029/2019gl082008",
+        "orcid_evidence_citation": "Cohen et al. 2019",
+        "orcid_confidence": "Confirmed",
+        "affiliation_origin": "finder",
+        "affiliation_source": "SPASE record",
+        "affiliation_evidence": "https://spase-metadata.org/SMWG/Instrument/MMS/1/EnergeticParticleDetector/FEEPS.html",
+        "affiliation_type": null,
+        "ror_origin": "enricher",
+        "ror_source": "ROR query (corroborated)",
+        "ror_evidence": "https://ror.org/01ar9e455",
+        "ror_confidence": "Confirmed",
+        "lookup_status": "complete",
+        "notes": "No DOI in the finder's evidence list deposits an ORCID iD for any author (the 2016 Space Science Reviews MMS papers deposit none at all, except Pollock's), so the iD was confirmed from a publisher deposit on a different MMS paper, named in orcid_evidence. The deposit gives 'J. Bernard' on an MMS energetic-electron paper, which is exactly the name form the finder records, so it is a full-name match rather than initials. The ORCID record itself is empty, so the affiliation comes from the SPASE FEEPS Instrument record, 'FEEPS development is led by Co-I J. B. Blake (Aerospace Corporation)'. affiliation_type is null because the value rests on a mission/registry statement of the person's institution rather than on a dated ORCID employment or a Crossref deposit, so none of era-matched, current or as-deposited applies. ROR's affiliation matcher chose nothing for 'The Aerospace Corporation' (that organization, https://ror.org/01ar9e455, and Eureka Aerospace, https://ror.org/00q9x4d93, both scored 1.00), so the ID came from a plain ROR query, in which 'The Aerospace Corporation' (El Segundo, United States) is the only organization of that name."
+      }
+    },
+    {
+      "name": "Christopher T. Russell",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "First author, and the only author before the alphabetized block that runs from the second to the nineteenth author, of the MMS magnetometers description paper (Russell et al. 2016, 10.1007/s11214-014-0057-3)",
+          "url": "https://doi.org/10.1007/s11214-014-0057-3",
+          "strength": "Strong"
+        },
+        {
+          "source": "Second author of the FIELDS instrument suite description paper (Torbert et al. 2016, 10.1007/s11214-014-0109-8)",
+          "url": "https://doi.org/10.1007/s11214-014-0109-8",
+          "strength": "Strong"
+        },
+        {
+          "source": "Listed as an author of the MMS Calibration and Measurement Algorithms Document, released 2024-09-01 for the 2023 Heliophysics Senior Review (Burch et al. 2024, 10.48322/vshd-sv21)",
+          "url": "https://doi.org/10.48322/vshd-sv21",
+          "strength": "Strong"
+        },
+        {
+          "source": "Named \"C. T. Russell (UCLA) has overall responsibility for fluxgate development\" in the Description of the MMS FGM Instrument records; listed there with role TeamLeader, which is not an author-qualifying role",
+          "url": "https://spase-metadata.org/SMWG/Instrument/MMS/1/FIELDS/FGM.html",
+          "strength": "Medium"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Christopher.T.Russell",
+        "url": "https://spase-metadata.org/SMWG/Person/Christopher.T.Russell.html"
+      },
+      "orcid": "https://orcid.org/0000-0003-1639-8298",
+      "affiliation": "University of California, Los Angeles",
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author",
+        "InstrumentLead"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "First author of the MMS magnetometers description paper (Russell et al. 2016, 10.1007/s11214-014-0057-3) and second author of the FIELDS suite paper (Torbert et al. 2016, 10.1007/s11214-014-0109-8)"
+        },
+        {
+          "role": "InstrumentLead",
+          "source": "Holds overall responsibility for development of the MMS Fluxgate Magnetometer (FGM), stated in the FGM Instrument record Description (https://spase-metadata.org/SMWG/Instrument/MMS/1/FIELDS/FGM.html)"
+        }
+      ],
+      "affiliation_ror": "https://ror.org/046rm7j60",
+      "enrichment": {
+        "orcid_origin": "enricher",
+        "orcid_source": "Crossref (paper DOI)",
+        "orcid_evidence": "10.1002/essoar.10501080.1",
+        "orcid_evidence_citation": "Hasegawa et al. 2019",
+        "orcid_confidence": "Confirmed",
+        "affiliation_origin": "finder",
+        "affiliation_source": "ORCID employment",
+        "affiliation_evidence": "https://orcid.org/0000-0003-1639-8298",
+        "affiliation_type": "current",
+        "ror_origin": "enricher",
+        "ror_source": "ORCID disambiguated-organization",
+        "ror_evidence": "https://orcid.org/0000-0003-1639-8298",
+        "ror_confidence": "Confirmed",
+        "lookup_status": "complete",
+        "notes": "No DOI in the finder's evidence list deposits an ORCID iD for any author (the 2016 Space Science Reviews MMS papers deposit none at all, except Pollock's), so the iD was confirmed from a publisher deposit on a different MMS paper, named in orcid_evidence. The deposit gives 'Christopher T.' in full on an MMS paper, and the record lists 65 works naming MMS. The UCLA employment is undated, hence current rather than era-matched. Its disambiguated organization is a ROR, so that was used directly; it is the same ID ROR's matcher returns for the affiliation string."
+      }
+    },
+    {
+      "name": "Werner Magnes",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Third author of the FIELDS instrument suite description paper (Torbert et al. 2016, 10.1007/s11214-014-0109-8)",
+          "url": "https://doi.org/10.1007/s11214-014-0109-8",
+          "strength": "Strong"
+        },
+        {
+          "source": "Listed as an author of the MMS Calibration and Measurement Algorithms Document, released 2024-09-01 for the 2023 Heliophysics Senior Review (Burch et al. 2024, 10.48322/vshd-sv21)",
+          "url": "https://doi.org/10.48322/vshd-sv21",
+          "strength": "Strong"
+        },
+        {
+          "source": "Tenth author of the MMS magnetometers description paper (Russell et al. 2016, 10.1007/s11214-014-0057-3)",
+          "url": "https://doi.org/10.1007/s11214-014-0057-3",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Werner.Magnes",
+        "url": "https://spase-metadata.org/SMWG/Person/Werner.Magnes.html"
+      },
+      "orcid": "https://orcid.org/0000-0003-0086-6288",
+      "affiliation": "Space Research Institute, Austrian Academy of Sciences",
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Third author of the FIELDS instrument suite paper (Torbert et al. 2016, 10.1007/s11214-014-0109-8), and an author of the MMS Calibration and Measurement Algorithms Document (Burch et al. 2024, 10.48322/vshd-sv21)"
+        }
+      ],
+      "affiliation_ror": "https://ror.org/03anc3s24",
+      "enrichment": {
+        "orcid_origin": "enricher",
+        "orcid_source": "ORCID name-search (corroborated)",
+        "orcid_evidence": "https://orcid.org/0000-0003-0086-6288",
+        "orcid_confidence": "Confirmed",
+        "affiliation_origin": "finder",
+        "affiliation_source": "ORCID employment",
+        "affiliation_evidence": "https://orcid.org/0000-0003-0086-6288",
+        "affiliation_type": "era-matched",
+        "ror_origin": "enricher",
+        "ror_source": "ROR affiliation-match (chosen)",
+        "ror_evidence": "https://ror.org/03anc3s24",
+        "ror_confidence": "Confirmed",
+        "lookup_status": "complete",
+        "notes": "Sole Werner Magnes in ORCID. Corroborated by a dated employment at the Austrian Academy of Sciences in Graz, from 1992-10 and ongoing, which is the institute (IWF) that supplied the MMS digital fluxgate magnetometer, and by five works on spaceborne fluxgate magnetometer calibration. None of those works names MMS, so the corroboration is institutional and instrumental rather than a direct MMS publication; a Crossref deposit under the full name 'Werner Magnes' exists on 10.5194/gi-2020-31, a fluxgate in-flight calibration paper co-authored with Plaschke and Fischer, but it does not name MMS and so was not relied on. The employment carries no disambiguated organization, so the ROR came from ROR's affiliation matcher. The affiliation names a sub-unit and ROR chose the parent Austrian Academy of Sciences. ROR also lists a separate 'Space Research Institute' in Austria (https://ror.org/002w0jp71) at score 1.00 but did not choose it, so it was not used."
+      }
+    },
+    {
+      "name": "Olivier Le Contel",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "First author of the Search-Coil Magnetometer (SCM) description paper (Le Contel et al. 2016, 10.1007/s11214-014-0096-9)",
+          "url": "https://doi.org/10.1007/s11214-014-0096-9",
+          "strength": "Strong"
+        },
+        {
+          "source": "Listed as an author of the MMS Calibration and Measurement Algorithms Document, released 2024-09-01 for the 2023 Heliophysics Senior Review (Burch et al. 2024, 10.48322/vshd-sv21)",
+          "url": "https://doi.org/10.48322/vshd-sv21",
+          "strength": "Strong"
+        },
+        {
+          "source": "Sixth author of the FIELDS instrument suite paper (Torbert et al. 2016, 10.1007/s11214-014-0109-8)",
+          "url": "https://doi.org/10.1007/s11214-014-0109-8",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Olivier.Le.Contel",
+        "url": "https://spase-metadata.org/SMWG/Person/Olivier.Le.Contel.html"
+      },
+      "orcid": "https://orcid.org/0000-0003-2713-7966",
+      "affiliation": "Laboratoire de Physique des Plasmas, CNRS",
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "First author of the Search-Coil Magnetometer description paper (Le Contel et al. 2016, 10.1007/s11214-014-0096-9)"
+        }
+      ],
+      "affiliation_ror": "https://ror.org/05c95bg36",
+      "enrichment": {
+        "orcid_origin": "enricher",
+        "orcid_source": "ORCID name-search (corroborated)",
+        "orcid_evidence": "https://orcid.org/0000-0003-2713-7966",
+        "orcid_confidence": "Confirmed",
+        "affiliation_origin": "finder",
+        "affiliation_source": "ORCID employment",
+        "affiliation_evidence": "https://orcid.org/0000-0003-2713-7966",
+        "affiliation_type": "era-matched",
+        "ror_origin": "enricher",
+        "ror_source": "ROR affiliation-match (chosen)",
+        "ror_evidence": "https://ror.org/05c95bg36",
+        "ror_confidence": "Confirmed",
+        "lookup_status": "complete",
+        "notes": "The iD was found by searching ORCID for records claiming the finder's evidence DOI; this record lists the Search-Coil Magnetometer paper 10.1007/s11214-014-0096-9 and the FIELDS suite paper 10.1007/s11214-014-0109-8 among its works, with 56 works naming MMS in total. The dated employment (2000-10 and ongoing) names 'CNRS Delegation Ile-de-France Sud', the CNRS regional delegation that administers LPP, rather than the laboratory itself; the finder's laboratory-level string is kept because both name the same employer at different granularities, and a reviewer preferring a verbatim transcription of the employment should substitute the delegation name. The employment carries a Ringgold identifier, so the ROR came from ROR's affiliation matcher, which resolved the laboratory itself."
+      }
+    },
+    {
+      "name": "P. Leroy",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Second author of the Search-Coil Magnetometer (SCM) description paper (Le Contel et al. 2016, 10.1007/s11214-014-0096-9)",
+          "url": "https://doi.org/10.1007/s11214-014-0096-9",
+          "strength": "Strong"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/P.Leroy",
+        "url": "https://spase-metadata.org/SMWG/Person/P.Leroy.html"
+      },
+      "orcid": null,
+      "affiliation": null,
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Second author of the Search-Coil Magnetometer description paper (Le Contel et al. 2016, 10.1007/s11214-014-0096-9)"
+        }
+      ],
+      "affiliation_ror": null,
+      "enrichment": {
+        "orcid_origin": null,
+        "orcid_source": null,
+        "orcid_evidence": null,
+        "orcid_confidence": null,
+        "affiliation_origin": null,
+        "affiliation_source": null,
+        "affiliation_evidence": null,
+        "affiliation_type": null,
+        "ror_origin": null,
+        "ror_source": null,
+        "ror_evidence": null,
+        "ror_confidence": null,
+        "lookup_status": "skipped-unconfirmed-identity",
+        "notes": "Identity gate: the finder records this person only by initials and no source in its evidence establishes a full given name (the description paper deposits the same initials in Crossref), so no ORCID, affiliation or ROR lookup was attempted and all three fields are left null. The finder's affiliation value, not carried forward here, was \"Laboratoire de Physique des Plasmas, CNRS\". No ORCID record claims the Search-Coil Magnetometer paper 10.1007/s11214-014-0096-9 under the family name Leroy (the only claimants are Le Contel and Mirioni), so even a relaxed reading of the gate would have found nothing here."
+      }
+    },
+    {
+      "name": "Alain Roux",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Third author of the Search-Coil Magnetometer (SCM) description paper (Le Contel et al. 2016, 10.1007/s11214-014-0096-9)",
+          "url": "https://doi.org/10.1007/s11214-014-0096-9",
+          "strength": "Strong"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Alain.Roux",
+        "url": "https://spase-metadata.org/SMWG/Person/Alain.Roux.html"
+      },
+      "orcid": null,
+      "affiliation": "Laboratoire de Physique des Plasmas, CNRS",
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Third author of the Search-Coil Magnetometer description paper (Le Contel et al. 2016, 10.1007/s11214-014-0096-9)"
+        }
+      ],
+      "affiliation_ror": null,
+      "enrichment": {
+        "orcid_origin": null,
+        "orcid_source": null,
+        "orcid_evidence": null,
+        "orcid_confidence": null,
+        "affiliation_origin": "finder",
+        "affiliation_source": "uncorroborated",
+        "affiliation_evidence": null,
+        "affiliation_type": null,
+        "ror_origin": null,
+        "ror_source": null,
+        "ror_evidence": null,
+        "ror_confidence": null,
+        "lookup_status": "complete",
+        "notes": "ORCID holds one 'alain roux', https://orcid.org/0000-0001-5048-6625, with no works, no employments and no affiliations, so nothing corroborates it and it was not used; two further hits are 'Alain Le Roux', a different name. No Crossref deposit in the MMS or search-coil domain carries an iD for a Roux. Separately, the reviewer should note that no cited source states the full given name: the Search-Coil Magnetometer paper deposits 'A. Roux' and the full form comes from the finder. No ORCID record could be confirmed and no evidence DOI deposits an affiliation, so the finder's affiliation is carried unverified; affiliation_ror was not resolved, because a ROR would only normalise a string nothing corroborated."
+      }
+    },
+    {
+      "name": "Robert E. Ergun",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "First author of the Axial Double Probe (ADP) and FIELDS signal-processing (DSP) description paper (Ergun et al. 2016, 10.1007/s11214-014-0115-x)",
+          "url": "https://doi.org/10.1007/s11214-014-0115-x",
+          "strength": "Strong"
+        },
+        {
+          "source": "Listed as an author of the MMS Calibration and Measurement Algorithms Document, released 2024-09-01 for the 2023 Heliophysics Senior Review (Burch et al. 2024, 10.48322/vshd-sv21)",
+          "url": "https://doi.org/10.48322/vshd-sv21",
+          "strength": "Strong"
+        },
+        {
+          "source": "Fourth author of the FIELDS instrument suite paper (Torbert et al. 2016, 10.1007/s11214-014-0109-8)",
+          "url": "https://doi.org/10.1007/s11214-014-0109-8",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Robert.E.Ergun",
+        "url": "https://spase-metadata.org/SMWG/Person/Robert.E.Ergun.html"
+      },
+      "orcid": "https://orcid.org/0000-0002-3096-8579",
+      "affiliation": "Laboratory for Atmospheric and Space Physics, University of Colorado Boulder",
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "First author of the Axial Double Probe and FIELDS signal processing description paper (Ergun et al. 2016, 10.1007/s11214-014-0115-x), and an author of the MMS Calibration and Measurement Algorithms Document (Burch et al. 2024, 10.48322/vshd-sv21)"
+        }
+      ],
+      "affiliation_ror": "https://ror.org/02ttsq026",
+      "enrichment": {
+        "orcid_origin": "enricher",
+        "orcid_source": "Crossref (paper DOI)",
+        "orcid_evidence": "10.1002/essoar.10501080.1",
+        "orcid_evidence_citation": "Hasegawa et al. 2019",
+        "orcid_confidence": "Confirmed",
+        "affiliation_origin": "finder",
+        "affiliation_source": "ORCID employment",
+        "affiliation_evidence": "https://orcid.org/0000-0002-3096-8579",
+        "affiliation_type": "current",
+        "ror_origin": "enricher",
+        "ror_source": "ROR affiliation-match (chosen)",
+        "ror_evidence": "https://ror.org/02ttsq026",
+        "ror_confidence": "Confirmed",
+        "lookup_status": "complete",
+        "notes": "No DOI in the finder's evidence list deposits an ORCID iD for any author (the 2016 Space Science Reviews MMS papers deposit none at all, except Pollock's), so the iD was confirmed from a publisher deposit on a different MMS paper, named in orcid_evidence. The deposit gives 'Robert E' in full on an MMS Kelvin-Helmholtz paper. The ORCID employment names only 'University of Colorado Boulder' and is undated, so the label is current; the finder's more specific LASP string, LASP being the CU Boulder institute that built the MMS ADP and DSP, is kept, but nothing in the sources fetched states it explicitly. ROR granularity flag: this record carries https://ror.org/02ttsq026 (University of Colorado Boulder), ROR's chosen match for the affiliation string, while Kristopher Larsen carries https://ror.org/01fcjzv38 (Laboratory for Atmospheric and Space Physics) from ORCID's own disambiguated-organization. Same institution at two granularities; a reviewer wanting one convention must pick it."
+      }
+    },
+    {
+      "name": "S. Tucker",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Second author of the Axial Double Probe (ADP) and FIELDS signal-processing (DSP) description paper (Ergun et al. 2016, 10.1007/s11214-014-0115-x)",
+          "url": "https://doi.org/10.1007/s11214-014-0115-x",
+          "strength": "Strong"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/S.Tucker",
+        "url": "https://spase-metadata.org/SMWG/Person/S.Tucker.html"
+      },
+      "orcid": null,
+      "affiliation": null,
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Second author of the Axial Double Probe and FIELDS signal processing description paper (Ergun et al. 2016, 10.1007/s11214-014-0115-x)"
+        }
+      ],
+      "affiliation_ror": null,
+      "enrichment": {
+        "orcid_origin": null,
+        "orcid_source": null,
+        "orcid_evidence": null,
+        "orcid_confidence": null,
+        "affiliation_origin": null,
+        "affiliation_source": null,
+        "affiliation_evidence": null,
+        "affiliation_type": null,
+        "ror_origin": null,
+        "ror_source": null,
+        "ror_evidence": null,
+        "ror_confidence": null,
+        "lookup_status": "skipped-unconfirmed-identity",
+        "notes": "Identity gate: the finder records this person only by initials and no source in its evidence establishes a full given name (the description paper deposits the same initials in Crossref), so no ORCID, affiliation or ROR lookup was attempted and all three fields are left null. The finder's affiliation value, not carried forward here, was \"Laboratory for Atmospheric and Space Physics, University of Colorado Boulder\". No ORCID record claims the Axial Double Probe paper 10.1007/s11214-014-0115-x under the family name Tucker."
+      }
+    },
+    {
+      "name": "J. Westfall",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Third author of the Axial Double Probe (ADP) and FIELDS signal-processing (DSP) description paper (Ergun et al. 2016, 10.1007/s11214-014-0115-x)",
+          "url": "https://doi.org/10.1007/s11214-014-0115-x",
+          "strength": "Strong"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/J.Westfall",
+        "url": "https://spase-metadata.org/SMWG/Person/J.Westfall.html"
+      },
+      "orcid": null,
+      "affiliation": null,
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Third author of the Axial Double Probe and FIELDS signal processing description paper (Ergun et al. 2016, 10.1007/s11214-014-0115-x)"
+        }
+      ],
+      "affiliation_ror": null,
+      "enrichment": {
+        "orcid_origin": null,
+        "orcid_source": null,
+        "orcid_evidence": null,
+        "orcid_confidence": null,
+        "affiliation_origin": null,
+        "affiliation_source": null,
+        "affiliation_evidence": null,
+        "affiliation_type": null,
+        "ror_origin": null,
+        "ror_source": null,
+        "ror_evidence": null,
+        "ror_confidence": null,
+        "lookup_status": "skipped-unconfirmed-identity",
+        "notes": "Identity gate: the finder records this person only by initials and no source in its evidence establishes a full given name (the description paper deposits the same initials in Crossref), so no ORCID, affiliation or ROR lookup was attempted and all three fields are left null. The finder's affiliation value, not carried forward here, was \"Laboratory for Atmospheric and Space Physics, University of Colorado Boulder\". No ORCID record claims the Axial Double Probe paper 10.1007/s11214-014-0115-x under the family name Westfall."
+      }
+    },
+    {
+      "name": "Per-Arne Lindqvist",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "First author of the Spin-plane Double Probe (SDP) description paper (Lindqvist et al. 2016, 10.1007/s11214-014-0116-9)",
+          "url": "https://doi.org/10.1007/s11214-014-0116-9",
+          "strength": "Strong"
+        },
+        {
+          "source": "Listed as an author of the MMS Calibration and Measurement Algorithms Document, released 2024-09-01 for the 2023 Heliophysics Senior Review (Burch et al. 2024, 10.48322/vshd-sv21)",
+          "url": "https://doi.org/10.48322/vshd-sv21",
+          "strength": "Strong"
+        },
+        {
+          "source": "Fifth author of the FIELDS instrument suite paper (Torbert et al. 2016, 10.1007/s11214-014-0109-8)",
+          "url": "https://doi.org/10.1007/s11214-014-0109-8",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Per-Arne.Lindqvist",
+        "url": "https://spase-metadata.org/SMWG/Person/Per-Arne.Lindqvist.html"
+      },
+      "orcid": "https://orcid.org/0000-0001-5617-9765",
+      "affiliation": "KTH Royal Institute of Technology",
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "First author of the Spin-plane Double Probe description paper (Lindqvist et al. 2016, 10.1007/s11214-014-0116-9), and an author of the MMS Calibration and Measurement Algorithms Document (Burch et al. 2024, 10.48322/vshd-sv21)"
+        }
+      ],
+      "affiliation_ror": "https://ror.org/026vcq606",
+      "enrichment": {
+        "orcid_origin": "enricher",
+        "orcid_source": "ORCID name-search (corroborated)",
+        "orcid_evidence": "https://orcid.org/0000-0001-5617-9765",
+        "orcid_confidence": "Confirmed",
+        "affiliation_origin": "finder",
+        "affiliation_source": "ORCID employment",
+        "affiliation_evidence": "https://orcid.org/0000-0001-5617-9765",
+        "affiliation_type": "current",
+        "ror_origin": "enricher",
+        "ror_source": "ROR affiliation-match (chosen)",
+        "ror_evidence": "https://ror.org/026vcq606",
+        "ror_confidence": "Confirmed",
+        "lookup_status": "complete",
+        "notes": "The iD was found by searching ORCID for records claiming the finder's evidence DOIs; this record lists the Spin-plane Double Probe paper 10.1007/s11214-014-0116-9 and the FIELDS suite paper 10.1007/s11214-014-0109-8 among its works, with 78 works naming MMS. The KTH employment is undated, hence current rather than era-matched, and carries no disambiguated organization, so the ROR came from ROR's affiliation matcher."
+      }
+    },
+    {
+      "name": "G. Olsson",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Second author of the Spin-plane Double Probe (SDP) description paper (Lindqvist et al. 2016, 10.1007/s11214-014-0116-9)",
+          "url": "https://doi.org/10.1007/s11214-014-0116-9",
+          "strength": "Strong"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/G.Olsson",
+        "url": "https://spase-metadata.org/SMWG/Person/G.Olsson.html"
+      },
+      "orcid": null,
+      "affiliation": null,
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Second author of the Spin-plane Double Probe description paper (Lindqvist et al. 2016, 10.1007/s11214-014-0116-9)"
+        }
+      ],
+      "affiliation_ror": null,
+      "enrichment": {
+        "orcid_origin": null,
+        "orcid_source": null,
+        "orcid_evidence": null,
+        "orcid_confidence": null,
+        "affiliation_origin": null,
+        "affiliation_source": null,
+        "affiliation_evidence": null,
+        "affiliation_type": null,
+        "ror_origin": null,
+        "ror_source": null,
+        "ror_evidence": null,
+        "ror_confidence": null,
+        "lookup_status": "skipped-unconfirmed-identity",
+        "notes": "Identity gate: the finder records this person only by initials and no source in its evidence establishes a full given name (the description paper deposits the same initials in Crossref), so no ORCID, affiliation or ROR lookup was attempted and all three fields are left null. The finder's affiliation value, not carried forward here, was \"KTH Royal Institute of Technology\". No ORCID record claims the Spin-plane Double Probe paper 10.1007/s11214-014-0116-9 under the family name Olsson."
+      }
+    },
+    {
+      "name": "Hans E. Vaith",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Second author of the Electron Drift Instrument (EDI) description paper (Torbert et al. 2016, 10.1007/s11214-015-0182-7)",
+          "url": "https://doi.org/10.1007/s11214-015-0182-7",
+          "strength": "Strong"
+        },
+        {
+          "source": "Seventh author of the FIELDS instrument suite paper (Torbert et al. 2016, 10.1007/s11214-014-0109-8)",
+          "url": "https://doi.org/10.1007/s11214-014-0109-8",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Hans.E.Vaith",
+        "url": "https://spase-metadata.org/SMWG/Person/Hans.E.Vaith.html"
+      },
+      "orcid": null,
+      "affiliation": "University of New Hampshire",
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Second author of the Electron Drift Instrument description paper (Torbert et al. 2016, 10.1007/s11214-015-0182-7)"
+        }
+      ],
+      "affiliation_ror": null,
+      "enrichment": {
+        "orcid_origin": null,
+        "orcid_source": null,
+        "orcid_evidence": null,
+        "orcid_confidence": null,
+        "affiliation_origin": "finder",
+        "affiliation_source": "uncorroborated",
+        "affiliation_evidence": null,
+        "affiliation_type": null,
+        "ror_origin": null,
+        "ror_source": null,
+        "ror_evidence": null,
+        "ror_confidence": null,
+        "lookup_status": "complete",
+        "notes": "ORCID holds no record for anyone named Vaith other than an unrelated 'Jakub Vaith', including when the search is restricted to the University of New Hampshire, and no Crossref deposit in the MMS or Electron Drift Instrument domain carries an iD for a Vaith. Separately, the reviewer should note that no cited source states the full given name: both evidence papers deposit 'H. Vaith' and the full form comes from the finder. No ORCID record could be confirmed and no evidence DOI deposits an affiliation, so the finder's affiliation is carried unverified; affiliation_ror was not resolved, because a ROR would only normalise a string nothing corroborated."
+      }
+    },
+    {
+      "name": "M. Granoff",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Third author of the Electron Drift Instrument (EDI) description paper (Torbert et al. 2016, 10.1007/s11214-015-0182-7)",
+          "url": "https://doi.org/10.1007/s11214-015-0182-7",
+          "strength": "Strong"
+        },
+        {
+          "source": "Fifth author of the Spin-plane Double Probe description paper (Lindqvist et al. 2016, 10.1007/s11214-014-0116-9)",
+          "url": "https://doi.org/10.1007/s11214-014-0116-9",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/M.Granoff",
+        "url": "https://spase-metadata.org/SMWG/Person/M.Granoff.html"
+      },
+      "orcid": null,
+      "affiliation": null,
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Third author of the Electron Drift Instrument description paper (Torbert et al. 2016, 10.1007/s11214-015-0182-7)"
+        }
+      ],
+      "affiliation_ror": null,
+      "enrichment": {
+        "orcid_origin": null,
+        "orcid_source": null,
+        "orcid_evidence": null,
+        "orcid_confidence": null,
+        "affiliation_origin": null,
+        "affiliation_source": null,
+        "affiliation_evidence": null,
+        "affiliation_type": null,
+        "ror_origin": null,
+        "ror_source": null,
+        "ror_evidence": null,
+        "ror_confidence": null,
+        "lookup_status": "skipped-unconfirmed-identity",
+        "notes": "Identity gate: the finder records this person only by initials and no source in its evidence establishes a full given name (the description paper deposits the same initials in Crossref), so no ORCID, affiliation or ROR lookup was attempted and all three fields are left null. The finder's affiliation value, not carried forward here, was \"University of New Hampshire\". No ORCID record claims the Electron Drift Instrument paper 10.1007/s11214-015-0182-7 or the Spin-plane Double Probe paper under the family name Granoff."
+      }
+    },
+    {
+      "name": "Craig J. Pollock",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "First author of the Fast Plasma Investigation (FPI) description paper (Pollock et al. 2016, 10.1007/s11214-016-0245-4) (prefix authors 1-16 precede an alphabetized remainder)",
+          "url": "https://doi.org/10.1007/s11214-016-0245-4",
+          "strength": "Strong"
+        },
+        {
+          "source": "Listed as an author of the MMS Calibration and Measurement Algorithms Document, released 2024-09-01 for the 2023 Heliophysics Senior Review (Burch et al. 2024, 10.48322/vshd-sv21)",
+          "url": "https://doi.org/10.48322/vshd-sv21",
+          "strength": "Strong"
+        },
+        {
+          "source": "Eleventh author of the HPCA description paper (Young et al. 2016, 10.1007/s11214-014-0119-6)",
+          "url": "https://doi.org/10.1007/s11214-014-0119-6",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Craig.J.Pollock",
+        "url": "https://spase-metadata.org/SMWG/Person/Craig.J.Pollock.html"
+      },
+      "orcid": "https://orcid.org/0000-0001-9249-3540",
+      "affiliation": "NASA Goddard Space Flight Center",
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "First author of the Fast Plasma Investigation description paper (Pollock et al. 2016, 10.1007/s11214-016-0245-4), and an author of the MMS Calibration and Measurement Algorithms Document (Burch et al. 2024, 10.48322/vshd-sv21)"
+        }
+      ],
+      "affiliation_ror": null,
+      "enrichment": {
+        "orcid_origin": "finder",
+        "orcid_source": "Crossref (paper DOI)",
+        "orcid_evidence": "10.1007/s11214-016-0245-4",
+        "orcid_evidence_citation": "Pollock et al. 2016",
+        "orcid_confidence": "Confirmed",
+        "affiliation_origin": "finder",
+        "affiliation_source": "uncorroborated",
+        "affiliation_evidence": null,
+        "affiliation_type": null,
+        "ror_origin": null,
+        "ror_source": null,
+        "ror_evidence": null,
+        "ror_confidence": null,
+        "lookup_status": "complete",
+        "notes": "The finder's pre-filled iD was validated: the checksum is correct, and Springer deposited it for the first author of the Fast Plasma Investigation description paper, which is the finder's own evidence for him. It is the only ORCID iD deposited anywhere in the 2016 Space Science Reviews MMS set. The ORCID record itself is empty, publishing neither works nor employments, so the deposit is the whole of the corroboration and there is no employment history to era-match. No ORCID employment history is public for this iD and no evidence DOI deposits an affiliation, so the finder's affiliation is carried unverified; affiliation_ror was not resolved, because a ROR would only normalise a string nothing corroborated."
+      }
+    },
+    {
+      "name": "A. Jacques",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Third author of the Fast Plasma Investigation (FPI) description paper (Pollock et al. 2016, 10.1007/s11214-016-0245-4) (prefix authors 1-16 precede an alphabetized remainder)",
+          "url": "https://doi.org/10.1007/s11214-016-0245-4",
+          "strength": "Strong"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/A.Jacques",
+        "url": "https://spase-metadata.org/SMWG/Person/A.Jacques.html"
+      },
+      "orcid": null,
+      "affiliation": null,
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Third author of the Fast Plasma Investigation description paper (Pollock et al. 2016, 10.1007/s11214-016-0245-4)"
+        }
+      ],
+      "affiliation_ror": null,
+      "enrichment": {
+        "orcid_origin": null,
+        "orcid_source": null,
+        "orcid_evidence": null,
+        "orcid_confidence": null,
+        "affiliation_origin": null,
+        "affiliation_source": null,
+        "affiliation_evidence": null,
+        "affiliation_type": null,
+        "ror_origin": null,
+        "ror_source": null,
+        "ror_evidence": null,
+        "ror_confidence": null,
+        "lookup_status": "skipped-unconfirmed-identity",
+        "notes": "Identity gate: the finder records this person only by initials and no source in its evidence establishes a full given name (the description paper deposits the same initials in Crossref), so no ORCID, affiliation or ROR lookup was attempted and all three fields are left null. The finder's affiliation value, not carried forward here, was \"NASA Goddard Space Flight Center\". No ORCID record claims the Fast Plasma Investigation paper 10.1007/s11214-016-0245-4 under the family name Jacques."
+      }
+    },
+    {
+      "name": "David T. Young",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "First author of the Hot Plasma Composition Analyzer (HPCA) description paper (Young et al. 2016, 10.1007/s11214-014-0119-6) (prefix authors 1-14 precede an alphabetized remainder)",
+          "url": "https://doi.org/10.1007/s11214-014-0119-6",
+          "strength": "Strong"
+        },
+        {
+          "source": "Listed as an author of the MMS Calibration and Measurement Algorithms Document, released 2024-09-01 for the 2023 Heliophysics Senior Review (Burch et al. 2024, 10.48322/vshd-sv21)",
+          "url": "https://doi.org/10.48322/vshd-sv21",
+          "strength": "Strong"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/David.T.Young",
+        "url": "https://spase-metadata.org/SMWG/Person/David.T.Young.html"
+      },
+      "orcid": null,
+      "affiliation": "Southwest Research Institute",
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "First author of the Hot Plasma Composition Analyzer description paper (Young et al. 2016, 10.1007/s11214-014-0119-6), and an author of the MMS Calibration and Measurement Algorithms Document (Burch et al. 2024, 10.48322/vshd-sv21)"
+        }
+      ],
+      "affiliation_ror": null,
+      "enrichment": {
+        "orcid_origin": null,
+        "orcid_source": null,
+        "orcid_evidence": null,
+        "orcid_confidence": null,
+        "affiliation_origin": "finder",
+        "affiliation_source": "uncorroborated",
+        "affiliation_evidence": null,
+        "affiliation_type": null,
+        "ror_origin": null,
+        "ror_source": null,
+        "ror_evidence": null,
+        "ror_confidence": null,
+        "lookup_status": "complete",
+        "notes": "ORCID returns 90 records for 'David Young' and none can be tied to MMS: searches restricted to Southwest Research Institute and to the credit name 'David T. Young' both return nothing, and the only Young carrying an iD on an MMS Crossref deposit is Sean A. Q. Young, a different person. Left null rather than choosing among the 90. No ORCID record could be confirmed and no evidence DOI deposits an affiliation, so the finder's affiliation is carried unverified; affiliation_ror was not resolved, because a ROR would only normalise a string nothing corroborated."
+      }
+    },
+    {
+      "name": "Roman G. Gomez",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Third author of the Hot Plasma Composition Analyzer (HPCA) description paper (Young et al. 2016, 10.1007/s11214-014-0119-6) (prefix authors 1-14 precede an alphabetized remainder)",
+          "url": "https://doi.org/10.1007/s11214-014-0119-6",
+          "strength": "Strong"
+        },
+        {
+          "source": "Listed as an author of the MMS Calibration and Measurement Algorithms Document, released 2024-09-01 for the 2023 Heliophysics Senior Review (Burch et al. 2024, 10.48322/vshd-sv21)",
+          "url": "https://doi.org/10.48322/vshd-sv21",
+          "strength": "Strong"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Roman.G.Gomez",
+        "url": "https://spase-metadata.org/SMWG/Person/Roman.G.Gomez.html"
+      },
+      "orcid": "https://orcid.org/0000-0001-7888-668X",
+      "affiliation": "Southwest Research Institute",
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Third author of the Hot Plasma Composition Analyzer description paper (Young et al. 2016, 10.1007/s11214-014-0119-6), and an author of the MMS Calibration and Measurement Algorithms Document (Burch et al. 2024, 10.48322/vshd-sv21)"
+        }
+      ],
+      "affiliation_ror": "https://ror.org/03tghng59",
+      "enrichment": {
+        "orcid_origin": "enricher",
+        "orcid_source": "Crossref (paper DOI)",
+        "orcid_evidence": "10.3847/1538-4357/ab960c",
+        "orcid_evidence_citation": "Starkey et al. 2020",
+        "orcid_confidence": "Confirmed",
+        "affiliation_origin": "finder",
+        "affiliation_source": "ORCID employment",
+        "affiliation_evidence": "https://orcid.org/0000-0001-7888-668X",
+        "affiliation_type": "era-matched",
+        "ror_origin": "enricher",
+        "ror_source": "ROR affiliation-match (chosen)",
+        "ror_evidence": "https://ror.org/03tghng59",
+        "ror_confidence": "Confirmed",
+        "lookup_status": "complete",
+        "notes": "No DOI in the finder's evidence list deposits an ORCID iD for any author (the 2016 Space Science Reviews MMS papers deposit none at all, except Pollock's), so the iD was confirmed from a publisher deposit on a different MMS paper, named in orcid_evidence. The deposit gives 'Roman G.' in full on 'MMS Observations of Accelerated Interstellar Pickup He+ Ions at an Interplanetary Shock', co-authored with Fuselier. Employment: Southwest Research Institute, San Antonio, from 2008-07 and ongoing, covering the operating span. It carries a Ringgold identifier, so the ROR came from ROR's affiliation matcher."
+      }
+    },
+    {
+      "name": "Daniel N. Baker",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Third author of the Energetic Particle Detector (EPD) investigation and Energetic Ion Spectrometer (EIS) description paper (Mauk et al. 2016, 10.1007/s11214-014-0055-5) (prefix authors 1-8 precede an alphabetized remainder)",
+          "url": "https://doi.org/10.1007/s11214-014-0055-5",
+          "strength": "Strong"
+        },
+        {
+          "source": "Listed as an author of the MMS Calibration and Measurement Algorithms Document, released 2024-09-01 for the 2023 Heliophysics Senior Review (Burch et al. 2024, 10.48322/vshd-sv21)",
+          "url": "https://doi.org/10.48322/vshd-sv21",
+          "strength": "Strong"
+        },
+        {
+          "source": "First author of the MMS instrument suite operations and data system paper (Baker et al. 2016, 10.1007/s11214-014-0128-5)",
+          "url": "https://doi.org/10.1007/s11214-014-0128-5",
+          "strength": "Medium"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Daniel.N.Baker",
+        "url": "https://spase-metadata.org/SMWG/Person/Daniel.N.Baker.html"
+      },
+      "orcid": "https://orcid.org/0000-0001-5909-0926",
+      "affiliation": "Laboratory for Atmospheric and Space Physics, University of Colorado Boulder",
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Third author of the EPD investigation and EIS description paper (Mauk et al. 2016, 10.1007/s11214-014-0055-5), and an author of the MMS Calibration and Measurement Algorithms Document (Burch et al. 2024, 10.48322/vshd-sv21)"
+        }
+      ],
+      "affiliation_ror": "https://ror.org/02ttsq026",
+      "enrichment": {
+        "orcid_origin": "enricher",
+        "orcid_source": "Crossref (paper DOI)",
+        "orcid_evidence": "10.1029/2019gl082008",
+        "orcid_evidence_citation": "Cohen et al. 2019",
+        "orcid_confidence": "Confirmed",
+        "affiliation_origin": "finder",
+        "affiliation_source": "ORCID employment",
+        "affiliation_evidence": "https://orcid.org/0000-0001-5909-0926",
+        "affiliation_type": "current",
+        "ror_origin": "enricher",
+        "ror_source": "ROR affiliation-match (chosen)",
+        "ror_evidence": "https://ror.org/02ttsq026",
+        "ror_confidence": "Confirmed",
+        "lookup_status": "complete",
+        "notes": "No DOI in the finder's evidence list deposits an ORCID iD for any author (the 2016 Space Science Reviews MMS papers deposit none at all, except Pollock's), so the iD was confirmed from a publisher deposit on a different MMS paper, named in orcid_evidence. The deposit gives 'Daniel N.' in full on an MMS energetic-electron paper. The ORCID employment names only 'University of Colorado Boulder' and is undated, so the label is current; the finder's more specific LASP string, LASP being the institute he directs, is kept but is not stated by any source fetched. ROR granularity flag: this record carries https://ror.org/02ttsq026 (University of Colorado Boulder), ROR's chosen match for the affiliation string, while Kristopher Larsen carries https://ror.org/01fcjzv38 (Laboratory for Atmospheric and Space Physics) from ORCID's own disambiguated-organization. Same institution at two granularities; a reviewer wanting one convention must pick it."
+      }
+    },
+    {
+      "name": "Martin Tajmar",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Third author of the Active Spacecraft Potential Control (ASPOC) description paper (Torkar et al. 2016, 10.1007/s11214-014-0049-3)",
+          "url": "https://doi.org/10.1007/s11214-014-0049-3",
+          "strength": "Strong"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/M.Tajmar",
+        "url": "https://spase-metadata.org/SMWG/Person/M.Tajmar.html"
+      },
+      "orcid": "https://orcid.org/0000-0002-7406-7588",
+      "affiliation": "Technische Universität Dresden",
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Third author of the ASPOC description paper (Torkar et al. 2016, 10.1007/s11214-014-0049-3)"
+        }
+      ],
+      "affiliation_ror": "https://ror.org/042aqky30",
+      "enrichment": {
+        "orcid_origin": "enricher",
+        "orcid_source": "ORCID name-search (corroborated)",
+        "orcid_evidence": "https://orcid.org/0000-0002-7406-7588",
+        "orcid_confidence": "Confirmed",
+        "affiliation_origin": "enricher",
+        "affiliation_source": "ORCID employment",
+        "affiliation_evidence": "https://orcid.org/0000-0002-7406-7588",
+        "affiliation_type": "era-matched",
+        "ror_origin": "enricher",
+        "ror_source": "ROR affiliation-match (chosen)",
+        "ror_evidence": "https://ror.org/042aqky30",
+        "ror_confidence": "Confirmed",
+        "lookup_status": "complete",
+        "notes": "DIFFERS FROM FINDER VALUE. The finder recorded 'Space Research Institute, Austrian Academy of Sciences'; his ORCID record shows no Austrian Academy of Sciences employment at any date. His Austrian space-propulsion post, which is when the ASPOC indium ion emitters were developed, was at the Austrian Institute of Technology from 2000-10 to 2010-12, and that ended more than four years before the 2015-03-13 start of the operating span. Three employments overlap the span: Technische Universitaet Dresden from 2012-03 (Professor for Space Systems and Institute Director), Technische Universitaet Wien from 2001 (Lecturer, Advanced Space Propulsion Systems), and AGH University of Krakow from 2025-03. The Dresden and Vienna entries cover the span equally, so the tie was broken on the substantive post; a reviewer who prefers the Vienna lectureship should say so. The identity itself is firm despite the finder recording a full name the ASPOC paper does not deposit ('M. Tajmar'): the ORCID record is named Martin Tajmar and lists both 'Active Spacecraft Potential Control for the Magnetospheric Multiscale Mission' and 'Qualification of the Liquid Metal Ion Source Instruments for the NASA MMS Mission' among its works."
+      }
+    },
+    {
+      "name": "Narges Ahmadi",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Listed as an author of the MMS Calibration and Measurement Algorithms Document, released 2024-09-01 for the 2023 Heliophysics Senior Review (Burch et al. 2024, 10.48322/vshd-sv21)",
+          "url": "https://doi.org/10.48322/vshd-sv21",
+          "strength": "Strong"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Narges.Ahmadi",
+        "url": "https://spase-metadata.org/SMWG/Person/Narges.Ahmadi.html"
+      },
+      "orcid": "https://orcid.org/0000-0001-5267-0485",
+      "affiliation": "Laboratory for Atmospheric and Space Physics, University of Colorado Boulder",
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Listed as an author of the MMS Calibration and Measurement Algorithms Document (Burch et al. 2024, 10.48322/vshd-sv21), the mission's formal statement of its current team"
+        }
+      ],
+      "affiliation_ror": "https://ror.org/02ttsq026",
+      "enrichment": {
+        "orcid_origin": "enricher",
+        "orcid_source": "Crossref (paper DOI)",
+        "orcid_evidence": "10.22541/essoar.174726006.66446505/v1",
+        "orcid_evidence_citation": "Lentz et al. 2025",
+        "orcid_confidence": "Confirmed",
+        "affiliation_origin": "finder",
+        "affiliation_source": "ORCID employment",
+        "affiliation_evidence": "https://orcid.org/0000-0001-5267-0485",
+        "affiliation_type": "era-matched",
+        "ror_origin": "enricher",
+        "ror_source": "ROR affiliation-match (chosen)",
+        "ror_evidence": "https://ror.org/02ttsq026",
+        "ror_confidence": "Confirmed",
+        "lookup_status": "complete",
+        "notes": "No DOI in the finder's evidence list deposits an ORCID iD for any author (the 2016 Space Science Reviews MMS papers deposit none at all, except Pollock's), so the iD was confirmed from a publisher deposit on a different MMS paper, named in orcid_evidence. The deposit gives 'Narges' in full on an MMS Kelvin-Helmholtz paper, and the record lists 19 works naming MMS. Employment: University of Colorado Boulder from 2016-01 and ongoing, which overlaps the operating span. The entry names only the university, not LASP; the finder's more specific string is kept. It carries a Ringgold identifier, so the ROR came from ROR's affiliation matcher. ROR granularity flag: this record carries https://ror.org/02ttsq026 (University of Colorado Boulder), ROR's chosen match for the affiliation string, while Kristopher Larsen carries https://ror.org/01fcjzv38 (Laboratory for Atmospheric and Space Physics) from ORCID's own disambiguated-organization. Same institution at two granularities; a reviewer wanting one convention must pick it."
+      }
+    },
+    {
+      "name": "Matthew R. Argall",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Listed as an author of the MMS Calibration and Measurement Algorithms Document, released 2024-09-01 for the 2023 Heliophysics Senior Review (Burch et al. 2024, 10.48322/vshd-sv21)",
+          "url": "https://doi.org/10.48322/vshd-sv21",
+          "strength": "Strong"
+        },
+        {
+          "source": "Tenth author of the Electron Drift Instrument description paper (Torbert et al. 2016, 10.1007/s11214-015-0182-7)",
+          "url": "https://doi.org/10.1007/s11214-015-0182-7",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Matthew.R.Argall",
+        "url": "https://spase-metadata.org/SMWG/Person/Matthew.R.Argall.html"
+      },
+      "orcid": "https://orcid.org/0000-0001-6315-1613",
+      "affiliation": "University of New Hampshire",
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Listed as an author of the MMS Calibration and Measurement Algorithms Document (Burch et al. 2024, 10.48322/vshd-sv21), the mission's formal statement of its current team"
+        }
+      ],
+      "affiliation_ror": null,
+      "enrichment": {
+        "orcid_origin": "enricher",
+        "orcid_source": "Crossref (paper DOI)",
+        "orcid_evidence": "10.3847/1538-4357/ae5f72",
+        "orcid_evidence_citation": "Gurram et al. 2026",
+        "orcid_confidence": "Confirmed",
+        "affiliation_origin": "finder",
+        "affiliation_source": "uncorroborated",
+        "affiliation_evidence": null,
+        "affiliation_type": null,
+        "ror_origin": null,
+        "ror_source": null,
+        "ror_evidence": null,
+        "ror_confidence": null,
+        "lookup_status": "complete",
+        "notes": "No DOI in the finder's evidence list deposits an ORCID iD for any author (the 2016 Space Science Reviews MMS papers deposit none at all, except Pollock's), so the iD was confirmed from a publisher deposit on a different MMS paper, named in orcid_evidence. The deposit gives 'Matthew R.' in full on 'MMS Insights into Coronal Mass Ejection-driven Sub-Alfvenic Solar Wind at 1 au'. No ORCID employment history is public for this iD and no evidence DOI deposits an affiliation, so the finder's affiliation is carried unverified; affiliation_ror was not resolved, because a ROR would only normalise a string nothing corroborated."
+      }
+    },
+    {
+      "name": "Kenneth R. Bromund",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Listed as an author of the MMS Calibration and Measurement Algorithms Document, released 2024-09-01 for the 2023 Heliophysics Senior Review (Burch et al. 2024, 10.48322/vshd-sv21)",
+          "url": "https://doi.org/10.48322/vshd-sv21",
+          "strength": "Strong"
+        },
+        {
+          "source": "Fourth author of the MMS magnetometers description paper (Russell et al. 2016, 10.1007/s11214-014-0057-3), within its alphabetized block",
+          "url": "https://doi.org/10.1007/s11214-014-0057-3",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Kenneth.R.Bromund",
+        "url": "https://spase-metadata.org/SMWG/Person/Kenneth.R.Bromund.html"
+      },
+      "orcid": "https://orcid.org/0000-0003-0383-7845",
+      "affiliation": "NASA Goddard Space Flight Center",
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Listed as an author of the MMS Calibration and Measurement Algorithms Document (Burch et al. 2024, 10.48322/vshd-sv21), the mission's formal statement of its current team"
+        }
+      ],
+      "affiliation_ror": null,
+      "enrichment": {
+        "orcid_origin": "enricher",
+        "orcid_source": "Crossref (paper DOI)",
+        "orcid_evidence": "10.22541/essoar.169447459.98754807/v1",
+        "orcid_evidence_citation": "Qeeq et al. 2023",
+        "orcid_confidence": "Confirmed",
+        "affiliation_origin": "finder",
+        "affiliation_source": "uncorroborated",
+        "affiliation_evidence": null,
+        "affiliation_type": null,
+        "ror_origin": null,
+        "ror_source": null,
+        "ror_evidence": null,
+        "ror_confidence": null,
+        "lookup_status": "complete",
+        "notes": "No DOI in the finder's evidence list deposits an ORCID iD for any author (the 2016 Space Science Reviews MMS papers deposit none at all, except Pollock's), so the iD was confirmed from a publisher deposit on a different MMS paper, named in orcid_evidence. The deposit gives 'Kenneth R' in full on 'Two classes of equatorial magnetotail dipolarization fronts observed by Magnetospheric Multiscale Mission'. No ORCID employment history is public for this iD and no evidence DOI deposits an affiliation, so the finder's affiliation is carried unverified; affiliation_ror was not resolved, because a ROR would only normalise a string nothing corroborated."
+      }
+    },
+    {
+      "name": "Joseph F. Fennell",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Listed as an author of the MMS Calibration and Measurement Algorithms Document, released 2024-09-01 for the 2023 Heliophysics Senior Review (Burch et al. 2024, 10.48322/vshd-sv21)",
+          "url": "https://doi.org/10.48322/vshd-sv21",
+          "strength": "Strong"
+        },
+        {
+          "source": "Tenth author of the FEEPS description paper (Blake et al. 2016, 10.1007/s11214-015-0163-x)",
+          "url": "https://doi.org/10.1007/s11214-015-0163-x",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Joseph.F.Fennell",
+        "url": "https://spase-metadata.org/SMWG/Person/Joseph.F.Fennell.html"
+      },
+      "orcid": "https://orcid.org/0000-0001-6028-244X",
+      "affiliation": "The Aerospace Corporation",
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Listed as an author of the MMS Calibration and Measurement Algorithms Document (Burch et al. 2024, 10.48322/vshd-sv21), the mission's formal statement of its current team"
+        }
+      ],
+      "affiliation_ror": null,
+      "enrichment": {
+        "orcid_origin": "enricher",
+        "orcid_source": "Crossref (paper DOI)",
+        "orcid_evidence": "10.1029/2019gl082008",
+        "orcid_evidence_citation": "Cohen et al. 2019",
+        "orcid_confidence": "Confirmed",
+        "affiliation_origin": "finder",
+        "affiliation_source": "uncorroborated",
+        "affiliation_evidence": null,
+        "affiliation_type": null,
+        "ror_origin": null,
+        "ror_source": null,
+        "ror_evidence": null,
+        "ror_confidence": null,
+        "lookup_status": "complete",
+        "notes": "No DOI in the finder's evidence list deposits an ORCID iD for any author (the 2016 Space Science Reviews MMS papers deposit none at all, except Pollock's), so the iD was confirmed from a publisher deposit on a different MMS paper, named in orcid_evidence. The deposit gives 'Joseph F.' in full on an MMS energetic-electron paper whose co-authors are the MMS EPD team, and the same iD is deposited under the full given name on three further MMS papers. FLAG FOR REVIEW: a second ORCID record, https://orcid.org/0000-0003-3378-1993, is also named Joseph Fennell and is deposited on MMS-era papers, but only ever under the initials 'J. F.' or 'J.', which cannot confirm an identity; the two are most likely duplicate accounts for one person, and a reviewer should check which he uses. Both records are empty, publishing neither works nor employments, which is also why the affiliation could not be verified. No ORCID employment history is public for this iD and no evidence DOI deposits an affiliation, so the finder's affiliation is carried unverified; affiliation_ror was not resolved, because a ROR would only normalise a string nothing corroborated."
+      }
+    },
+    {
+      "name": "David Fischer",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Listed as an author of the MMS Calibration and Measurement Algorithms Document, released 2024-09-01 for the 2023 Heliophysics Senior Review (Burch et al. 2024, 10.48322/vshd-sv21)",
+          "url": "https://doi.org/10.48322/vshd-sv21",
+          "strength": "Strong"
+        },
+        {
+          "source": "Sixth author of the MMS magnetometers description paper (Russell et al. 2016, 10.1007/s11214-014-0057-3), within its alphabetized block",
+          "url": "https://doi.org/10.1007/s11214-014-0057-3",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/David.Fischer",
+        "url": "https://spase-metadata.org/SMWG/Person/David.Fischer.html"
+      },
+      "orcid": "https://orcid.org/0000-0002-8435-7220",
+      "affiliation": "Space Research Institute, Austrian Academy of Sciences",
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Listed as an author of the MMS Calibration and Measurement Algorithms Document (Burch et al. 2024, 10.48322/vshd-sv21), the mission's formal statement of its current team"
+        }
+      ],
+      "affiliation_ror": "https://ror.org/03anc3s24",
+      "enrichment": {
+        "orcid_origin": "enricher",
+        "orcid_source": "ORCID name-search (corroborated)",
+        "orcid_evidence": "https://orcid.org/0000-0002-8435-7220",
+        "orcid_confidence": "Confirmed",
+        "affiliation_origin": "finder",
+        "affiliation_source": "ORCID employment",
+        "affiliation_evidence": "https://orcid.org/0000-0002-8435-7220",
+        "affiliation_type": "era-matched",
+        "ror_origin": "enricher",
+        "ror_source": "ROR affiliation-match (chosen)",
+        "ror_evidence": "https://ror.org/03anc3s24",
+        "ror_confidence": "Confirmed",
+        "lookup_status": "complete",
+        "notes": "The iD was found by searching ORCID for records claiming the finder's evidence DOI; this record lists the magnetometers paper 10.1007/s11214-014-0057-3 and the FIELDS suite paper 10.1007/s11214-014-0109-8 among its works, along with MMS fluxgate calibration and Fluxgate-Searchcoil Merged data-product papers. Three employments overlap the operating span: Space Research Institute, Austrian Academy of Sciences from 2005, Graz University of Technology from 2007, and Fachhochschule Wiener Neustadt from 2014 to 2023. The first was selected because it is the MMS magnetometer provider and matches the finder's value; the others are noted here. It carries no disambiguated organization, so the ROR came from ROR's affiliation matcher. The affiliation names a sub-unit and ROR chose the parent Austrian Academy of Sciences. ROR also lists a separate 'Space Research Institute' in Austria (https://ror.org/002w0jp71) at score 1.00 but did not choose it, so it was not used."
+      }
+    },
+    {
+      "name": "Christine E. Gabrielse",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Listed as an author of the MMS Calibration and Measurement Algorithms Document, released 2024-09-01 for the 2023 Heliophysics Senior Review (Burch et al. 2024, 10.48322/vshd-sv21)",
+          "url": "https://doi.org/10.48322/vshd-sv21",
+          "strength": "Strong"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Christine.E.Gabrielse",
+        "url": "https://spase-metadata.org/SMWG/Person/Christine.E.Gabrielse.html"
+      },
+      "orcid": "https://orcid.org/0000-0001-6905-2288",
+      "affiliation": "The Aerospace Corporation",
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Listed as an author of the MMS Calibration and Measurement Algorithms Document (Burch et al. 2024, 10.48322/vshd-sv21), the mission's formal statement of its current team"
+        }
+      ],
+      "affiliation_ror": "https://ror.org/01ar9e455",
+      "enrichment": {
+        "orcid_origin": "enricher",
+        "orcid_source": "Crossref (paper DOI)",
+        "orcid_evidence": "10.1029/2019gl082008",
+        "orcid_evidence_citation": "Cohen et al. 2019",
+        "orcid_confidence": "Confirmed",
+        "affiliation_origin": "finder",
+        "affiliation_source": "ORCID employment",
+        "affiliation_evidence": "https://orcid.org/0000-0001-6905-2288",
+        "affiliation_type": "era-matched",
+        "ror_origin": "enricher",
+        "ror_source": "ROR query (corroborated)",
+        "ror_evidence": "https://ror.org/01ar9e455",
+        "ror_confidence": "Confirmed",
+        "lookup_status": "complete",
+        "notes": "No DOI in the finder's evidence list deposits an ORCID iD for any author (the 2016 Space Science Reviews MMS papers deposit none at all, except Pollock's), so the iD was confirmed from a publisher deposit on a different MMS paper, named in orcid_evidence. The deposit gives 'Christine' in full on an MMS energetic-electron paper, and the record lists four works naming MMS. Her affiliation changed during the operating span: University of California Los Angeles from 2014 to 2019-01, then The Aerospace Corporation, El Segundo, from 2019-01 and ongoing. The Aerospace Corporation was preferred because it is the MMS FEEPS provider and matches the finder's value; the UCLA period is flagged here because a curator dating the record to the early mission era may want it instead. ROR's affiliation matcher chose nothing for 'The Aerospace Corporation' (that organization, https://ror.org/01ar9e455, and Eureka Aerospace, https://ror.org/00q9x4d93, both scored 1.00), so the ID came from a plain ROR query, in which 'The Aerospace Corporation' (El Segundo, United States) is the only organization of that name."
+      }
+    },
+    {
+      "name": "Daniel Bruce Graham",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Listed as an author of the MMS Calibration and Measurement Algorithms Document, released 2024-09-01 for the 2023 Heliophysics Senior Review (Burch et al. 2024, 10.48322/vshd-sv21)",
+          "url": "https://doi.org/10.48322/vshd-sv21",
+          "strength": "Strong"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Daniel.Bruce.Graham",
+        "url": "https://spase-metadata.org/SMWG/Person/Daniel.Bruce.Graham.html"
+      },
+      "orcid": "https://orcid.org/0000-0002-1046-746X",
+      "affiliation": "Swedish Institute of Space Physics, Uppsala",
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Listed as an author of the MMS Calibration and Measurement Algorithms Document (Burch et al. 2024, 10.48322/vshd-sv21), the mission's formal statement of its current team"
+        }
+      ],
+      "affiliation_ror": "https://ror.org/043kppn11",
+      "enrichment": {
+        "orcid_origin": "enricher",
+        "orcid_source": "Crossref (paper DOI)",
+        "orcid_evidence": "10.1002/essoar.10507496.1",
+        "orcid_evidence_citation": "Settino et al. 2021",
+        "orcid_confidence": "Confirmed",
+        "affiliation_origin": "finder",
+        "affiliation_source": "ORCID employment",
+        "affiliation_evidence": "https://orcid.org/0000-0002-1046-746X",
+        "affiliation_type": "era-matched",
+        "ror_origin": "enricher",
+        "ror_source": "ROR affiliation-match (chosen)",
+        "ror_evidence": "https://ror.org/043kppn11",
+        "ror_confidence": "Confirmed",
+        "lookup_status": "complete",
+        "notes": "No DOI in the finder's evidence list deposits an ORCID iD for any author (the 2016 Space Science Reviews MMS papers deposit none at all, except Pollock's), so the iD was confirmed from a publisher deposit on a different MMS paper, named in orcid_evidence. The deposit gives 'Daniel Bruce' in full on an MMS Kelvin-Helmholtz paper, and the record lists 25 works naming MMS. Two consecutive employments at the Swedish Institute of Space Physics in Uppsala (2012-10 to 2015-12, then 2016-01 and ongoing) both overlap the operating span and name the same institution, so the choice between them is immaterial. The current entry carries a GRID identifier, which was not converted by hand, so the ROR came from ROR's affiliation matcher; it resolved the institute itself, and the finder's string names the Uppsala site of it."
+      }
+    },
+    {
+      "name": "Michael G. Henderson",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Listed as an author of the MMS Calibration and Measurement Algorithms Document, released 2024-09-01 for the 2023 Heliophysics Senior Review (Burch et al. 2024, 10.48322/vshd-sv21)",
+          "url": "https://doi.org/10.48322/vshd-sv21",
+          "strength": "Strong"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Michael.G.Henderson",
+        "url": "https://spase-metadata.org/SMWG/Person/Michael.G.Henderson.html"
+      },
+      "orcid": "https://orcid.org/0000-0003-4975-9029",
+      "affiliation": "Los Alamos National Laboratory",
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Listed as an author of the MMS Calibration and Measurement Algorithms Document (Burch et al. 2024, 10.48322/vshd-sv21), the mission's formal statement of its current team"
+        }
+      ],
+      "affiliation_ror": "https://ror.org/01e41cf67",
+      "enrichment": {
+        "orcid_origin": "enricher",
+        "orcid_source": "ORCID name-search (corroborated)",
+        "orcid_evidence": "https://orcid.org/0000-0003-4975-9029",
+        "orcid_confidence": "Confirmed",
+        "affiliation_origin": "finder",
+        "affiliation_source": "ORCID employment",
+        "affiliation_evidence": "https://orcid.org/0000-0003-4975-9029",
+        "affiliation_type": "era-matched",
+        "ror_origin": "enricher",
+        "ror_source": "ROR affiliation-match (chosen)",
+        "ror_evidence": "https://ror.org/01e41cf67",
+        "ror_confidence": "Confirmed",
+        "lookup_status": "complete",
+        "notes": "Of 22 ORCID records named Michael Henderson, this is the only one in space physics: a dated employment at Los Alamos National Laboratory from 1994-12 and ongoing, matching the institution the CMAD associates with him, plus 141 works on substorms, radiation belts and inner-magnetosphere modelling. None of those works names MMS, so the corroboration is institutional and domain-level rather than a direct MMS publication; a reviewer wanting a stricter standard may prefer this left null. A Crossref deposit under the full name exists on 10.22541/essoar.171838426.61128573/v1, but that paper is not an MMS paper, so it was not used to confirm. The employment carries a Ringgold identifier, so the ROR came from ROR's affiliation matcher."
+      }
+    },
+    {
+      "name": "B.G. Huang",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Listed as an author of the MMS Calibration and Measurement Algorithms Document, released 2024-09-01 for the 2023 Heliophysics Senior Review (Burch et al. 2024, 10.48322/vshd-sv21)",
+          "url": "https://doi.org/10.48322/vshd-sv21",
+          "strength": "Strong"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/B.G.Huang",
+        "url": "https://spase-metadata.org/SMWG/Person/B.G.Huang.html"
+      },
+      "orcid": null,
+      "affiliation": null,
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Listed as an author of the MMS Calibration and Measurement Algorithms Document (Burch et al. 2024, 10.48322/vshd-sv21), the mission's formal statement of its current team"
+        }
+      ],
+      "affiliation_ror": null,
+      "enrichment": {
+        "orcid_origin": null,
+        "orcid_source": null,
+        "orcid_evidence": null,
+        "orcid_confidence": null,
+        "affiliation_origin": null,
+        "affiliation_source": null,
+        "affiliation_evidence": null,
+        "affiliation_type": null,
+        "ror_origin": null,
+        "ror_source": null,
+        "ror_evidence": null,
+        "ror_confidence": null,
+        "lookup_status": "skipped-unconfirmed-identity",
+        "notes": "Identity gate: the finder records this person only by initials and no source in its evidence establishes a full given name (the description paper deposits the same initials in Crossref), so no ORCID, affiliation or ROR lookup was attempted and all three fields are left null. The finder's affiliation value, not carried forward here, was null. The finder recorded no affiliation for this person either. No ORCID record claims the CMAD DOI 10.48322/vshd-sv21, and the CMAD author list gives only initials, so there is nothing to search on."
+      }
+    },
+    {
+      "name": "Harald Jeszenszky",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Listed as an author of the MMS Calibration and Measurement Algorithms Document, released 2024-09-01 for the 2023 Heliophysics Senior Review (Burch et al. 2024, 10.48322/vshd-sv21)",
+          "url": "https://doi.org/10.48322/vshd-sv21",
+          "strength": "Strong"
+        },
+        {
+          "source": "Fifth author of the ASPOC description paper (Torkar et al. 2016, 10.1007/s11214-014-0049-3)",
+          "url": "https://doi.org/10.1007/s11214-014-0049-3",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Harald.Jeszenszky",
+        "url": "https://spase-metadata.org/SMWG/Person/Harald.Jeszenszky.html"
+      },
+      "orcid": "https://orcid.org/0009-0008-7477-0581",
+      "affiliation": "Space Research Institute, Austrian Academy of Sciences",
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Listed as an author of the MMS Calibration and Measurement Algorithms Document (Burch et al. 2024, 10.48322/vshd-sv21), the mission's formal statement of its current team"
+        }
+      ],
+      "affiliation_ror": "https://ror.org/03anc3s24",
+      "enrichment": {
+        "orcid_origin": "enricher",
+        "orcid_source": "ORCID name-search (corroborated)",
+        "orcid_evidence": "https://orcid.org/0009-0008-7477-0581",
+        "orcid_confidence": "Confirmed",
+        "affiliation_origin": "finder",
+        "affiliation_source": "ORCID employment",
+        "affiliation_evidence": "https://orcid.org/0009-0008-7477-0581",
+        "affiliation_type": "era-matched",
+        "ror_origin": "enricher",
+        "ror_source": "ORCID disambiguated-organization",
+        "ror_evidence": "https://orcid.org/0009-0008-7477-0581",
+        "ror_confidence": "Confirmed",
+        "lookup_status": "complete",
+        "notes": "Sole Harald Jeszenszky in ORCID. The record lists no works, so the corroboration is the dated employment at the Austrian Academy of Sciences from 1995-10 and ongoing, the institution that built ASPOC, on which he is the fifth author of the description paper. Its disambiguated organization is a ROR, so that was used directly; it is the same ID ROR's matcher returns for the other Graz candidates' affiliation string, so the file is internally consistent on this institution. The affiliation names a sub-unit and ROR chose the parent Austrian Academy of Sciences. ROR also lists a separate 'Space Research Institute' in Austria (https://ror.org/002w0jp71) at score 1.00 but did not choose it, so it was not used."
+      }
+    },
+    {
+      "name": "Hans Ulrich Eichelberger",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Listed as an author of the MMS Calibration and Measurement Algorithms Document, released 2024-09-01 for the 2023 Heliophysics Senior Review (Burch et al. 2024, 10.48322/vshd-sv21)",
+          "url": "https://doi.org/10.48322/vshd-sv21",
+          "strength": "Strong"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Hans.Ulrich.Eichelberger",
+        "url": "https://spase-metadata.org/SMWG/Person/Hans.Ulrich.Eichelberger.html"
+      },
+      "orcid": null,
+      "affiliation": "Space Research Institute, Austrian Academy of Sciences",
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Listed as an author of the MMS Calibration and Measurement Algorithms Document (Burch et al. 2024, 10.48322/vshd-sv21), the mission's formal statement of its current team"
+        }
+      ],
+      "affiliation_ror": null,
+      "enrichment": {
+        "orcid_origin": null,
+        "orcid_source": null,
+        "orcid_evidence": null,
+        "orcid_confidence": null,
+        "affiliation_origin": "finder",
+        "affiliation_source": "uncorroborated",
+        "affiliation_evidence": null,
+        "affiliation_type": null,
+        "ror_origin": null,
+        "ror_source": null,
+        "ror_evidence": null,
+        "ror_confidence": null,
+        "lookup_status": "complete",
+        "notes": "ORCID holds one 'Hans Eichelberger', https://orcid.org/0000-0002-0164-2502, but the record is entirely empty (no works, no employments, no affiliations), so nothing corroborates it and it was not placed in the orcid field; a search restricted to the Austrian Academy of Sciences returns nothing. No Crossref deposit in the MMS domain carries an iD for an Eichelberger. The candidate iD is recorded here so a reviewer can confirm it in one click. No ORCID record could be confirmed and no evidence DOI deposits an affiliation, so the finder's affiliation is carried unverified; affiliation_ror was not resolved, because a ROR would only normalise a string nothing corroborated."
+      }
+    },
+    {
+      "name": "Hannes Karl Leinweber",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Listed as an author of the MMS Calibration and Measurement Algorithms Document, released 2024-09-01 for the 2023 Heliophysics Senior Review (Burch et al. 2024, 10.48322/vshd-sv21)",
+          "url": "https://doi.org/10.48322/vshd-sv21",
+          "strength": "Strong"
+        },
+        {
+          "source": "Eighth author of the MMS magnetometers description paper (Russell et al. 2016, 10.1007/s11214-014-0057-3), within its alphabetized block",
+          "url": "https://doi.org/10.1007/s11214-014-0057-3",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Hannes.Karl.Leinweber",
+        "url": "https://spase-metadata.org/SMWG/Person/Hannes.Karl.Leinweber.html"
+      },
+      "orcid": null,
+      "affiliation": "University of California, Los Angeles",
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Listed as an author of the MMS Calibration and Measurement Algorithms Document (Burch et al. 2024, 10.48322/vshd-sv21), the mission's formal statement of its current team"
+        }
+      ],
+      "affiliation_ror": null,
+      "enrichment": {
+        "orcid_origin": null,
+        "orcid_source": null,
+        "orcid_evidence": null,
+        "orcid_confidence": null,
+        "affiliation_origin": "finder",
+        "affiliation_source": "uncorroborated",
+        "affiliation_evidence": null,
+        "affiliation_type": null,
+        "ror_origin": null,
+        "ror_source": null,
+        "ror_evidence": null,
+        "ror_confidence": null,
+        "lookup_status": "complete",
+        "notes": "ORCID holds one 'Hannes Leinweber', https://orcid.org/0000-0002-1897-9080, but the record is entirely empty, so nothing on it corroborates the identity. Crossref does deposit that same iD for 'H. K. Leinweber' on 10.1029/2022ja030664, a Jupiter magnetopause paper: initials only, and not an MMS paper, so it fails both halves of the confirmation test. The iD is very probably his and is recorded here for a reviewer to confirm, but it was not placed in the orcid field. No ORCID record could be confirmed and no evidence DOI deposits an affiliation, so the finder's affiliation is carried unverified; affiliation_ror was not resolved, because a ROR would only normalise a string nothing corroborated."
+      }
+    },
+    {
+      "name": "Laurent Mirioni",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Listed as an author of the MMS Calibration and Measurement Algorithms Document, released 2024-09-01 for the 2023 Heliophysics Senior Review (Burch et al. 2024, 10.48322/vshd-sv21)",
+          "url": "https://doi.org/10.48322/vshd-sv21",
+          "strength": "Strong"
+        },
+        {
+          "source": "Seventh author of the Search-Coil Magnetometer description paper (Le Contel et al. 2016, 10.1007/s11214-014-0096-9)",
+          "url": "https://doi.org/10.1007/s11214-014-0096-9",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Laurent.Mirioni",
+        "url": "https://spase-metadata.org/SMWG/Person/Laurent.Mirioni.html"
+      },
+      "orcid": "https://orcid.org/0000-0002-5771-5766",
+      "affiliation": "Laboratoire de Physique des Plasmas, CNRS",
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Listed as an author of the MMS Calibration and Measurement Algorithms Document (Burch et al. 2024, 10.48322/vshd-sv21), the mission's formal statement of its current team"
+        }
+      ],
+      "affiliation_ror": null,
+      "enrichment": {
+        "orcid_origin": "enricher",
+        "orcid_source": "ORCID name-search (corroborated)",
+        "orcid_evidence": "https://orcid.org/0000-0002-5771-5766",
+        "orcid_confidence": "Confirmed",
+        "affiliation_origin": "finder",
+        "affiliation_source": "uncorroborated",
+        "affiliation_evidence": null,
+        "affiliation_type": null,
+        "ror_origin": null,
+        "ror_source": null,
+        "ror_evidence": null,
+        "ror_confidence": null,
+        "lookup_status": "complete",
+        "notes": "The iD was found by searching ORCID for records claiming the finder's evidence DOI; this record lists the Search-Coil Magnetometer paper 10.1007/s11214-014-0096-9 among its works, and 43 of its 64 works name MMS. No ORCID employment history is public for this iD and no evidence DOI deposits an affiliation, so the finder's affiliation is carried unverified; affiliation_ror was not resolved, because a ROR would only normalise a string nothing corroborated."
+      }
+    },
+    {
+      "name": "Steven Karl Morley",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Listed as an author of the MMS Calibration and Measurement Algorithms Document, released 2024-09-01 for the 2023 Heliophysics Senior Review (Burch et al. 2024, 10.48322/vshd-sv21)",
+          "url": "https://doi.org/10.48322/vshd-sv21",
+          "strength": "Strong"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Steven.Karl.Morley",
+        "url": "https://spase-metadata.org/SMWG/Person/Steven.Karl.Morley.html"
+      },
+      "orcid": "https://orcid.org/0000-0001-8520-0199",
+      "affiliation": "Los Alamos National Laboratory",
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Listed as an author of the MMS Calibration and Measurement Algorithms Document (Burch et al. 2024, 10.48322/vshd-sv21), the mission's formal statement of its current team"
+        }
+      ],
+      "affiliation_ror": "https://ror.org/01e41cf67",
+      "enrichment": {
+        "orcid_origin": "enricher",
+        "orcid_source": "ORCID name-search (corroborated)",
+        "orcid_evidence": "https://orcid.org/0000-0001-8520-0199",
+        "orcid_confidence": "Confirmed",
+        "affiliation_origin": "finder",
+        "affiliation_source": "ORCID employment",
+        "affiliation_evidence": "https://orcid.org/0000-0001-8520-0199",
+        "affiliation_type": "era-matched",
+        "ror_origin": "enricher",
+        "ror_source": "ROR affiliation-match (chosen)",
+        "ror_evidence": "https://ror.org/01e41cf67",
+        "ror_confidence": "Confirmed",
+        "lookup_status": "complete",
+        "notes": "Two ORCID records are named Steven Morley; the other is at the University of Edinburgh in an unrelated field. This one has a dated employment at Los Alamos National Laboratory from 2009-04 and ongoing, matching the institution the CMAD associates with him, plus 133 works on radiation belts and the inner magnetosphere. None names MMS, so as with Henderson the corroboration is institutional and domain-level rather than a direct MMS publication. Earlier positions (University of Newcastle, Rutherford Appleton Laboratory, British Antarctic Survey) all ended before the operating span. A second, undated LANL entry names the same institution. The employment carries a Ringgold identifier, so the ROR came from ROR's affiliation matcher."
+      }
+    },
+    {
+      "name": "Ferdinand Plaschke",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Listed as an author of the MMS Calibration and Measurement Algorithms Document, released 2024-09-01 for the 2023 Heliophysics Senior Review (Burch et al. 2024, 10.48322/vshd-sv21)",
+          "url": "https://doi.org/10.48322/vshd-sv21",
+          "strength": "Strong"
+        },
+        {
+          "source": "Fifteenth author of the MMS magnetometers description paper (Russell et al. 2016, 10.1007/s11214-014-0057-3), within its alphabetized block",
+          "url": "https://doi.org/10.1007/s11214-014-0057-3",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Ferdinand.Plaschke",
+        "url": "https://spase-metadata.org/SMWG/Person/Ferdinand.Plaschke.html"
+      },
+      "orcid": "https://orcid.org/0000-0002-5104-6282",
+      "affiliation": "Space Research Institute, Austrian Academy of Sciences",
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Listed as an author of the MMS Calibration and Measurement Algorithms Document (Burch et al. 2024, 10.48322/vshd-sv21), the mission's formal statement of its current team"
+        }
+      ],
+      "affiliation_ror": null,
+      "enrichment": {
+        "orcid_origin": "enricher",
+        "orcid_source": "ORCID name-search (corroborated)",
+        "orcid_evidence": "https://orcid.org/0000-0002-5104-6282",
+        "orcid_confidence": "Confirmed",
+        "affiliation_origin": "finder",
+        "affiliation_source": "uncorroborated",
+        "affiliation_evidence": null,
+        "affiliation_type": null,
+        "ror_origin": null,
+        "ror_source": null,
+        "ror_evidence": null,
+        "ror_confidence": null,
+        "lookup_status": "complete",
+        "notes": "The iD was found by searching ORCID for records claiming the finder's evidence DOI; this record lists the magnetometers paper 10.1007/s11214-014-0057-3, the FIELDS suite paper and the Electron Drift Instrument paper among its works, with 32 works naming MMS. No ORCID employment history is public for this iD and no evidence DOI deposits an affiliation, so the finder's affiliation is carried unverified; affiliation_ror was not resolved, because a ROR would only normalise a string nothing corroborated."
+      }
+    },
+    {
+      "name": "Robert J. Strangeway",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Listed as an author of the MMS Calibration and Measurement Algorithms Document, released 2024-09-01 for the 2023 Heliophysics Senior Review (Burch et al. 2024, 10.48322/vshd-sv21)",
+          "url": "https://doi.org/10.48322/vshd-sv21",
+          "strength": "Strong"
+        },
+        {
+          "source": "Eighteenth author of the MMS magnetometers description paper (Russell et al. 2016, 10.1007/s11214-014-0057-3), within its alphabetized block",
+          "url": "https://doi.org/10.1007/s11214-014-0057-3",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Robert.J.Strangeway",
+        "url": "https://spase-metadata.org/SMWG/Person/Robert.J.Strangeway.html"
+      },
+      "orcid": "https://orcid.org/0000-0001-9839-1828",
+      "affiliation": "University of California, Los Angeles",
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Listed as an author of the MMS Calibration and Measurement Algorithms Document (Burch et al. 2024, 10.48322/vshd-sv21), the mission's formal statement of its current team"
+        }
+      ],
+      "affiliation_ror": "https://ror.org/046rm7j60",
+      "enrichment": {
+        "orcid_origin": "enricher",
+        "orcid_source": "Crossref (paper DOI)",
+        "orcid_evidence": "10.1029/2023ja031698",
+        "orcid_evidence_citation": "Salinas et al. 2023",
+        "orcid_confidence": "Confirmed",
+        "affiliation_origin": "finder",
+        "affiliation_source": "ORCID employment",
+        "affiliation_evidence": "https://orcid.org/0000-0001-9839-1828",
+        "affiliation_type": "current",
+        "ror_origin": "enricher",
+        "ror_source": "ROR affiliation-match (chosen)",
+        "ror_evidence": "https://ror.org/046rm7j60",
+        "ror_confidence": "Confirmed",
+        "lookup_status": "complete",
+        "notes": "No DOI in the finder's evidence list deposits an ORCID iD for any author (the 2016 Space Science Reviews MMS papers deposit none at all, except Pollock's), so the iD was confirmed from a publisher deposit on a different MMS paper, named in orcid_evidence. The deposit gives 'Robert J.' in full on an MMS magnetosheath paper, and the record lists 18 works naming MMS. The UCLA employment is undated, hence current rather than era-matched, and carries no disambiguated organization, so the ROR came from ROR's affiliation matcher; it is the same ID ORCID asserts directly for Russell and Wei."
+      }
+    },
+    {
+      "name": "Drew L. Turner",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Listed as an author of the MMS Calibration and Measurement Algorithms Document, released 2024-09-01 for the 2023 Heliophysics Senior Review (Burch et al. 2024, 10.48322/vshd-sv21)",
+          "url": "https://doi.org/10.48322/vshd-sv21",
+          "strength": "Strong"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Drew.L.Turner",
+        "url": "https://spase-metadata.org/SMWG/Person/Drew.L.Turner.html"
+      },
+      "orcid": "https://orcid.org/0000-0002-2425-7818",
+      "affiliation": "Johns Hopkins University Applied Physics Laboratory",
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Listed as an author of the MMS Calibration and Measurement Algorithms Document (Burch et al. 2024, 10.48322/vshd-sv21), the mission's formal statement of its current team"
+        }
+      ],
+      "affiliation_ror": "https://ror.org/029pp9z10",
+      "enrichment": {
+        "orcid_origin": "enricher",
+        "orcid_source": "Crossref (paper DOI)",
+        "orcid_evidence": "10.1029/2025ja034252",
+        "orcid_evidence_citation": "Toy-Edens et al. 2025",
+        "orcid_confidence": "Confirmed",
+        "affiliation_origin": "finder",
+        "affiliation_source": "ORCID employment",
+        "affiliation_evidence": "https://orcid.org/0000-0002-2425-7818",
+        "affiliation_type": "era-matched",
+        "ror_origin": "enricher",
+        "ror_source": "ROR affiliation-match (chosen)",
+        "ror_evidence": "https://ror.org/029pp9z10",
+        "ror_confidence": "Confirmed",
+        "lookup_status": "complete",
+        "notes": "No DOI in the finder's evidence list deposits an ORCID iD for any author (the 2016 Space Science Reviews MMS papers deposit none at all, except Pollock's), so the iD was confirmed from a publisher deposit on a different MMS paper, named in orcid_evidence. The deposit gives 'Drew L.' in full on an MMS bow-shock paper, and the record lists 25 works naming MMS. His affiliation changed during the operating span: The Aerospace Corporation from 2014-09 to 2019-11, then the Johns Hopkins University Applied Physics Laboratory from 2019-11 and ongoing; an earlier UCLA post ended 2014-08, before the span. Both Aerospace and APL are MMS instrument providers, so the tie was broken on length of overlap, which favours APL (about 6.8 years against 4.6) and also matches the finder's value. A curator dating the record to the early mission era should consider the Aerospace period instead. The APL entry carries a Ringgold identifier, so the ROR came from ROR's affiliation matcher."
+      }
+    },
+    {
+      "name": "Hanying Wei",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Listed as an author of the MMS Calibration and Measurement Algorithms Document, released 2024-09-01 for the 2023 Heliophysics Senior Review (Burch et al. 2024, 10.48322/vshd-sv21)",
+          "url": "https://doi.org/10.48322/vshd-sv21",
+          "strength": "Strong"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Hanying.Wei",
+        "url": "https://spase-metadata.org/SMWG/Person/Hanying.Wei.html"
+      },
+      "orcid": "https://orcid.org/0000-0002-8574-0416",
+      "affiliation": "University of California, Los Angeles",
+      "activity_dates": null,
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Listed as an author of the MMS Calibration and Measurement Algorithms Document (Burch et al. 2024, 10.48322/vshd-sv21), the mission's formal statement of its current team"
+        }
+      ],
+      "affiliation_ror": "https://ror.org/046rm7j60",
+      "enrichment": {
+        "orcid_origin": "enricher",
+        "orcid_source": "Crossref (paper DOI)",
+        "orcid_evidence": "10.1186/s40623-025-02355-x",
+        "orcid_evidence_citation": "Chen et al. 2026",
+        "orcid_confidence": "Confirmed",
+        "affiliation_origin": "finder",
+        "affiliation_source": "ORCID employment",
+        "affiliation_evidence": "https://orcid.org/0000-0002-8574-0416",
+        "affiliation_type": "era-matched",
+        "ror_origin": "enricher",
+        "ror_source": "ORCID disambiguated-organization",
+        "ror_evidence": "https://orcid.org/0000-0002-8574-0416",
+        "ror_confidence": "Confirmed",
+        "lookup_status": "complete",
+        "notes": "No DOI in the finder's evidence list deposits an ORCID iD for any author (the 2016 Space Science Reviews MMS papers deposit none at all, except Pollock's), so the iD was confirmed from a publisher deposit on a different MMS paper, named in orcid_evidence. The deposit gives 'Hanying' in full on 'Cold proton nonresonant response to EMIC waves: MMS observations and a hybrid simulation'. Employment: University of California, Los Angeles from 2010-07 and ongoing, covering the operating span. Its disambiguated organization is a ROR, so that was used directly; it is the same ID ROR's matcher returns for the string."
+      }
+    },
+    {
+      "name": "James Clapsadle",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "CMAD signatory in a project-management function only; ProjectManager is not an author-qualifying SPASE role and no other source names him",
+      "evidence": [
+        {
+          "source": "Approved the document as \"James Clapsadle, GSFC MMS Project Manager\" on the signature page of the MMS Calibration and Measurement Algorithms Document, Revision 0, prepared 2020-05-06 (Larsen 2020, 670-Proj-Plan-CMAD)",
+          "url": "https://lasp.colorado.edu/galaxy/download/attachments/1900656/CMAD%20Edited%20Version-Edits%201Dec2021b.pdf?version=1&modificationDate=1649681145324&api=v2",
+          "strength": "Strong"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": "NASA Goddard Space Flight Center",
+      "activity_dates": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "Ulrich Hans",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "appears to be a transcription artifact of \"Hans Ulrich Eichelberger\" in the same CMAD author list, where the separator is also missing between \"Eichelberger, Hans Ulrich\" and \"Le, Guan\"; no independent evidence of a separate person",
+      "evidence": [
+        {
+          "source": "Seventeenth name in the author list of the MMS Calibration and Measurement Algorithms Document (Burch et al. 2024, 10.48322/vshd-sv21)",
+          "url": "https://doi.org/10.48322/vshd-sv21",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": null,
+      "activity_dates": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "Brian J. Anderson",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "second author of the MMS magnetometers paper, but inside the alphabetized block running from its second to nineteenth author, so position carries no contribution information; no CMAD, Contacts, or provider-page source corroborates",
+      "evidence": [
+        {
+          "source": "Second author of the MMS magnetometers description paper (Russell et al. 2016, 10.1007/s11214-014-0057-3), first name of its alphabetized block",
+          "url": "https://doi.org/10.1007/s11214-014-0057-3",
+          "strength": "Low"
+        },
+        {
+          "source": "Twenty-first author of the FIELDS instrument suite paper (Torbert et al. 2016, 10.1007/s11214-014-0109-8)",
+          "url": "https://doi.org/10.1007/s11214-014-0109-8",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Brian.J.Anderson",
+        "url": "https://spase-metadata.org/SMWG/Person/Brian.J.Anderson.html"
+      },
+      "orcid": null,
+      "affiliation": "Johns Hopkins University Applied Physics Laboratory",
+      "activity_dates": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "Wolfgang Baumjohann",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "third author of the MMS magnetometers paper, but inside the alphabetized block running from its second to nineteenth author, so position carries no contribution information; no CMAD, Contacts, or provider-page source corroborates",
+      "evidence": [
+        {
+          "source": "Third author of the MMS magnetometers description paper (Russell et al. 2016, 10.1007/s11214-014-0057-3), second name of its alphabetized block",
+          "url": "https://doi.org/10.1007/s11214-014-0057-3",
+          "strength": "Low"
+        },
+        {
+          "source": "Twenty-second author of the FIELDS instrument suite paper (Torbert et al. 2016, 10.1007/s11214-014-0109-8); fourteenth author of the EDI description paper (Torbert et al. 2016, 10.1007/s11214-015-0182-7)",
+          "url": "https://doi.org/10.1007/s11214-014-0109-8",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Wolfgang.Baumjohann",
+        "url": "https://spase-metadata.org/SMWG/Person/Wolfgang.Baumjohann.html"
+      },
+      "orcid": null,
+      "affiliation": "Space Research Institute, Austrian Academy of Sciences",
+      "activity_dates": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "Melvyn L. Goldstein",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "leads an MMS Interdisciplinary Scientist team, which analyses MMS data rather than building or operating the observatory; TeamLeader is not an author-qualifying SPASE role, and none of the three IDS leads appears in the CMAD author list, the mission overview paper, or any Instrument record Contacts",
+      "evidence": [
+        {
+          "source": "Listed as \"IDS Team 1 Lead, NASA Goddard Space Flight Center\" on the MMS interdisciplinary-science team page",
+          "url": "https://mms.gsfc.nasa.gov/inter_scientist_team.html",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Melvyn.L.Goldstein",
+        "url": "https://spase-metadata.org/SMWG/Person/Melvyn.L.Goldstein.html"
+      },
+      "orcid": null,
+      "affiliation": null,
+      "activity_dates": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "Martin V. Goldman",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "leads an MMS Interdisciplinary Scientist team, which analyses MMS data rather than building or operating the observatory; TeamLeader is not an author-qualifying SPASE role, and none of the three IDS leads appears in the CMAD author list, the mission overview paper, or any Instrument record Contacts",
+      "evidence": [
+        {
+          "source": "Listed as \"IDS Team 2 Lead, University of Colorado\" on the MMS interdisciplinary-science team page",
+          "url": "https://mms.gsfc.nasa.gov/inter_scientist_team.html",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": null,
+      "activity_dates": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "Tai Phan",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "leads an MMS Interdisciplinary Scientist team, which analyses MMS data rather than building or operating the observatory; TeamLeader is not an author-qualifying SPASE role, and none of the three IDS leads appears in the CMAD author list, the mission overview paper, or any Instrument record Contacts",
+      "evidence": [
+        {
+          "source": "Listed as \"IDS Team 3 Lead, University of California, Berkeley\" on the MMS interdisciplinary-science team page",
+          "url": "https://mms.gsfc.nasa.gov/inter_scientist_team.html",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Tai.D.Phan",
+        "url": "https://spase-metadata.org/SMWG/Person/Tai.D.Phan.html"
+      },
+      "orcid": null,
+      "affiliation": null,
+      "activity_dates": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "Craig R. Tooley",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "named on the MMS team page in a project-management or engineering function only; the corresponding SPASE roles (ProjectManager, ProjectEngineer) are not author-qualifying and no other source names them",
+      "evidence": [
+        {
+          "source": "Listed as \"MMS Project Manager\" on the MMS team page",
+          "url": "https://mms.gsfc.nasa.gov/team.html",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Craig.R.Tooley",
+        "url": "https://spase-metadata.org/SMWG/Person/Craig.R.Tooley.html"
+      },
+      "orcid": null,
+      "affiliation": "NASA Goddard Space Flight Center",
+      "activity_dates": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "Brent Robertson",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "named on the MMS team page in a project-management or engineering function only; the corresponding SPASE roles (ProjectManager, ProjectEngineer) are not author-qualifying and no other source names them",
+      "evidence": [
+        {
+          "source": "Listed as \"MMS Deputy Project Manager\" on the MMS team page",
+          "url": "https://mms.gsfc.nasa.gov/team.html",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": "NASA Goddard Space Flight Center",
+      "activity_dates": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "William Sluder",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "named on the MMS team page in a project-management or engineering function only; the corresponding SPASE roles (ProjectManager, ProjectEngineer) are not author-qualifying and no other source names them",
+      "evidence": [
+        {
+          "source": "Listed as \"MMS Deputy Project Manager/Resources\" on the MMS team page",
+          "url": "https://mms.gsfc.nasa.gov/team.html",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": "NASA Goddard Space Flight Center",
+      "activity_dates": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "Peter Spidaliere",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "named on the MMS team page in a project-management or engineering function only; the corresponding SPASE roles (ProjectManager, ProjectEngineer) are not author-qualifying and no other source names them",
+      "evidence": [
+        {
+          "source": "Listed as \"MMS Mission System Engineering\" on the MMS team page",
+          "url": "https://mms.gsfc.nasa.gov/team.html",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": "NASA Goddard Space Flight Center",
+      "activity_dates": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "John Blackwood",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "named on the MMS team page in a project-management or engineering function only; the corresponding SPASE roles (ProjectManager, ProjectEngineer) are not author-qualifying and no other source names them",
+      "evidence": [
+        {
+          "source": "Listed as \"Chief Safety and Mission Assurance Officer\" on the MMS team page",
+          "url": "https://mms.gsfc.nasa.gov/team.html",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": "NASA Goddard Space Flight Center",
+      "activity_dates": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "DeLee Smith",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "website curator for the MMS mission pages; a metadata/web curation role, not a data or instrument author",
+      "evidence": [
+        {
+          "source": "Listed as \"Curator\" in the footer of the MMS mission web pages",
+          "url": "https://mms.gsfc.nasa.gov/",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": "NASA Goddard Space Flight Center",
+      "activity_dates": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    }
+  ],
+  "notes": [
+    "The MMS Observatory record is minimal: a Description, one Contact (James L. Burch as PrincipalInvestigator), two InformationURLs, and no OperatingSpan element at all. The operating span reported here (2015-03-13, still open) was taken from the OperatingSpan of the MMS Instrument records, all of which give StartDate 2015-03-13T02:44:00 with no StopDate. The missing OperatingSpan on the Observatory record itself is worth flagging to curators.",
+    "Paper selection was confident for the mission overview and for every instrument paper used. All are from the 2016 Space Science Reviews MMS special issue (volume 199), published within a year of the 2015 start of operations; each names its instrument in the title, carries a large team author list, and is heavily cited (the mission overview at over 1200 citations, the FPI paper over 1000, the magnetometers paper over 900). Crossref, the CMAD reference lists and the MMS Science Data Center all point to the same set, so no downgrade was applied.",
+    "Author-order classification, paper by paper. Mission overview (Burch et al. 2016, n=4): backward scan finds a sorted suffix of 1, so not alphabetized; authors 1-3 (Burch, Moore, Torbert) are Strong and author 4 (Giles) is Medium, this being the record's own description paper. FIELDS suite (n=34), SCM (n=30), ADP/DSP (n=20), SDP (n=21), EDI (n=24): sorted suffixes of 1 and longest internal sorted runs of 3-4, all below the five-name threshold, so all four are treated as not alphabetized and positions 1-3 taken. FPI (n=97): sorted suffix of 32 from author 66, with further sorted blocks at 8-16 and 17-65, so partially alphabetized with a deliberate prefix; positions 1-3 (Pollock, Moore, Jacques) taken. HPCA (n=29): sorted suffix of 15 from author 15, prefix 1-14, positions 1-3 taken. EIS (n=26): sorted suffix of 18 from author 9, prefix 1-8, positions 1-3 taken. FEEPS (n=27): sorted suffix of 25 from author 3, so the prefix is only two names - Blake and Mauk were taken and nothing was padded from the alphabetized tail. ASPOC (n=9): sorted suffix of 2, not alphabetized, positions 1-3 taken.",
+    "The MMS magnetometers paper (Russell et al. 2016) is the one case where the backward-scan rule and the evidence disagree. The scan finds a sorted suffix of only 1, because four names (Hagen, Jernej, Valavanoglou, Richter) were appended after the main list - but authors 2 through 19 form an unbroken alphabetical run of eighteen, which cannot be coincidence. The list was therefore read as a one-name prefix (Russell) followed by an alphabetized block and a short appendix. Only Russell earns position-based evidence; Anderson and Baumjohann, who sit at the head of the alphabetized block, are recorded as excluded. Baumjohann in particular is a senior figure in the MMS magnetometer effort, so a reviewer may wish to reinstate him - but no source found in this run (CMAD, Contacts, provider pages) corroborates him, and the rule is applied symmetrically rather than case by case.",
+    "This being an Observatory record, each instrument contributed its leads only: every qualifying-role person in the Instrument record Contacts, plus positions 1-3 of the instrument's description paper. Authors at position 4 and beyond in an instrument paper are instrument-team depth and belong to that Instrument record's own run; they were not enumerated individually here, since the eleven instrument papers carry over 300 authors between them. Several of those deeper authors are nevertheless included candidates, but every one of them earned it through an independent source - the CMAD author list, an Instrument record contact role, or the mission overview paper - and not through their instrument-paper position.",
+    "The FIELDS suite paper was treated as a suite-level description alongside the six individual FIELDS instrument papers, because FIELDS is a distinct grouping in SPASE (seven Instrument records sit under MMS/n/FIELDS/) and the CMAD and mission pages treat it as one investigation with a single named lead. Positions 1-3 were taken from the suite paper (Torbert, Russell, Magnes) and from each member instrument's own paper. The same reasoning applies to the EPD suite, whose EIS paper (Mauk et al. 2016) is explicitly both the suite and the EIS description, and to FPI, whose single paper covers both DES and DIS.",
+    "Instrument PIs and suite leads are recorded as InstrumentLead with the instrument named, never as PrincipalInvestigator; that role is reserved here for James L. Burch, the PI of the mission as a whole. InstrumentLead was assigned only where a source explicitly names the person as lead or PI of that instrument - the CMAD signature page or an Instrument record Description - and not merely because they led its description paper. So Torbert (FIELDS), Gershman and Giles (FPI), Cohen (EPD), Torkar and Nakamura (ASPOC), Fuselier (HPCA), Mauk (EIS/EPD), Blake (FEEPS) and Russell (FGM) carry the role, while Ergun, Le Contel, Lindqvist, Pollock and Young, who lead papers but are not named lead anywhere in the sources fetched, carry Author alone.",
+    "James L. Burch is listed as PrincipalInvestigator in the Contacts of all fifty-two MMS Instrument records. That is mission-level evidence repeated at instrument level, not fifty-two instrument PI-ships, and it is recorded once as a mission PrincipalInvestigator role.",
+    "Christopher T. Russell appears in the FGM Instrument record Contacts with role TeamLeader, which is not author-qualifying. He is an included candidate on other grounds entirely - lead author of the magnetometers paper, second author of the FIELDS suite paper, and a CMAD author - and his TeamLeader entry is recorded as context only.",
+    "Three names from the 2020 CMAD signature page do not appear in the 2024 v2.1 author list: Galen Fowler (NASA MMS Program Scientist), Kristopher Larsen (who prepared Revision 0) and Chris Pankratz (Science Operations Center Lead). All three are included on the strength of the 2020 document, with the era noted; a reviewer checking against the current team should expect them to be earlier-generation. James Clapsadle, the fourth such name, is excluded because his stated function is project management.",
+    "The MMS Calibration and Measurement Algorithms Document v2.1 author string in the SPASE Document record contains a transcription error - \"Eichelberger, Hans UlrichLe, Guan\" is missing a separator - and the same list carries a separate seventeenth name, \"Hans, Ulrich\". These are almost certainly the same person, Hans Ulrich Eichelberger of IWF Graz. Eichelberger is included; \"Ulrich Hans\" is recorded as excluded, flagged as the artifact. A curator should verify this against the CMAD PDF before publication.",
+    "The MMS interdisciplinary-science team page names three IDS team leads (Melvyn L. Goldstein, Martin V. Goldman, Tai Phan). Being named on a provider team page is normally Medium evidence, but IDS teams analyse MMS data rather than build or operate the observatory, none of the three appears in the CMAD author list or the mission overview paper, and TeamLeader is not an author-qualifying role - so all three are recorded as excluded rather than included. This is a judgment call a reviewer may want to revisit.",
+    "Two further observatory-scope papers were consulted but produced no candidates on their own: the operations and data system paper (Baker et al. 2016, 10.1007/s11214-014-0128-5) and the mission profile and operations paper (Fuselier et al. 2016, 10.1007/s11214-014-0087-x). Neither is the mission description paper, so no position-based evidence was drawn from them; they appear in information_urls and were used only to corroborate Baker, Fuselier and Pankratz, all of whom are included through other sources.",
+    "Person records exist in the SMWG registry for all but three included candidates: Galen Fowler and Christopher K. Pankratz have none, and several instrument-paper leads are registered only under initials (P.Leroy, S.Tucker, J.Westfall, G.Olsson, M.Granoff, A.Jacques, M.Tajmar). Downstream work should expand those initials to full names and confirm identity before creating or citing the records.",
+    "ORCIDs were almost entirely absent from Crossref for the 2016 Space Science Reviews papers; only Craig J. Pollock's was registered. Affiliations shown here come from the CMAD signature page, the SPASE Instrument record Descriptions and the papers' own institutional attributions, and should be treated as era-specific rather than current."
+  ]
+}
