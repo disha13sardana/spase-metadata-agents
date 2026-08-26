@@ -1,0 +1,28 @@
+{
+  "_help": "For each name: set links[name] to an existing PersonID if it is the same human, or move the name into creates if it is a different person. Empty string means undecided.",
+  "_record": "spase://SMWG/Observatory/MMS",
+  "_decisions_note": "The writer's automatic collision check runs only for candidates with no person_record.id, which was Galen Fowler and Christopher K. Pankratz. The seven initials-only names below carried a person_record.id in the enriched input that resolves to no file in the clone, so they bypassed the check and were created at the asserted ID. Every surname below was searched by hand against Person/ at master; findings recorded per name. No genuine duplicate was found, so all nine were created.",
+  "_candidates": {
+    "Galen Fowler": ["Sue.C.Bodine-Fowler -- different person: different given name, hyphenated surname, unrelated field"],
+    "Christopher K. Pankratz": ["no Pankratz record exists at master"],
+    "P. Leroy": ["Leroy.L.Cogger and George.Leroy.Nelms carry Leroy as a GIVEN name, not a surname; no Leroy-surnamed record exists"],
+    "S. Tucker": ["no Tucker record exists at master"],
+    "J. Westfall": ["no Westfall record exists at master"],
+    "M. Granoff": ["no Granoff record exists at master"],
+    "A. Jacques": ["all ten Jacques* records carry Jacques as a GIVEN name; no Jacques-surnamed record exists"],
+    "G. Olsson": ["no Olsson record exists at master"],
+    "Martin Tajmar": ["no Tajmar record exists at master; created at the input's asserted ID M.Tajmar, not the conventional mint Martin.Tajmar -- see report"]
+  },
+  "links": {},
+  "creates": [
+    "Galen Fowler",
+    "Christopher K. Pankratz",
+    "P. Leroy",
+    "S. Tucker",
+    "J. Westfall",
+    "M. Granoff",
+    "A. Jacques",
+    "G. Olsson",
+    "Martin Tajmar"
+  ]
+}

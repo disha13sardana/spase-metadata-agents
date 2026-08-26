@@ -112,6 +112,20 @@ Real cases this catches:
 | Pamela C. Sullivan | `Robert.J.Sullivan.Jr`, `James.D.Sullivan` | no — different people |
 | Daniel T. Lindsey | `R.Lindsey` | no |
 
+**Check whenever a record would be created, not only when an ID was minted.**
+An ID asserted by the input is a claim about which file *should* exist, not
+evidence that it does. When the asserted ID resolves to no file, the writer is
+about to create a record — so it gets the same scrutiny as one this skill minted.
+Gating the check on "the input supplied no ID" lets asserted IDs through
+unchecked, which is the shortest path to a silent duplicate: `T.Onsager` asserted
+against an existing `Terry.Onsager` would create a second record for one person
+without a word in the log.
+
+Where the ID differs from the conventional form for that name, log `ID SHAPE`.
+`M.Tajmar` for a person whose name is Martin Tajmar is legal and may be
+deliberate, but it is also exactly the shape that collides with a full-name
+record later, so a curator should see it.
+
 **When anything is flagged, write nothing and stop.** Report every flagged name
 with its candidate matches and ask the human to decide each one. Resolutions are
 passed back as explicit `--link "<name>=<PersonID>"` or `--create "<name>"`

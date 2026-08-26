@@ -564,19 +564,26 @@ def main():
             log.append("LINK       %s -> %s (confirmed by curator)" % (name, pid))
 
         if not pid:
-            minted = mint_id(name)
-            hits = find_collisions(name, ids, by_sur)
-            if minted in hits:
-                # The canonical ID for this name already exists -- that record
-                # IS this person (commonly our own output from an earlier run).
-                pid = minted
-            elif hits and name not in confirmed_new:
+            pid = mint_id(name)
+
+        # The collision check belongs to CREATING a record, not to how the ID was
+        # arrived at. An ID asserted by the input is a claim about which file
+        # should exist, not proof that it does -- so an asserted ID with no file
+        # behind it gets the same scrutiny as a minted one. Gating this on
+        # "no person_record.id" let asserted IDs through unchecked, which is the
+        # exact path to a silent duplicate.
+        if not os.path.isfile(os.path.join(repo, "Person", pid + ".xml")):
+            hits = [h for h in find_collisions(name, ids, by_sur) if h != pid]
+            if hits and name not in confirmed_new:
                 blockers.append((name, hits[:4]))
                 continue
-            else:
-                pid = minted
-                if pid != name.replace(" ", "."):
-                    log.append("MINT       %s -> %s" % (name, pid))
+            conventional = mint_id(name)
+            if pid != conventional:
+                log.append("ID SHAPE   %s: minting '%s' for '%s'; the "
+                           "conventional form is '%s'"
+                           % (pid, pid, name, conventional))
+            elif pid != name.replace(" ", "."):
+                log.append("MINT       %s -> %s" % (name, pid))
 
         orcid = bare_orcid(c.get("orcid"))
         ror = bare_ror(c.get("affiliation_ror"))
@@ -682,8 +689,16 @@ def main():
                     log.append("NOTE KEPT  %s: existing Note preserved and "
                                "appended to" % pid)
 
-            if ror and not (fields.get("RORIdentifier") or [""])[0]:
+            existing_ror_now = (fields.get("RORIdentifier") or [""])[0]
+            if ror and not existing_ror_now:
                 txt = set_field(txt, "RORIdentifier", ror)
+            elif ror and not replaced_org and existing_ror_now != ror:
+                # The organisation did not change, so the existing ROR stands --
+                # but the record now holds a ROR the input disagrees with, and a
+                # silent disagreement is the kind a reviewer never sees.
+                log.append("ROR KEPT   %s: record has '%s', input says '%s'; "
+                           "organisation unchanged so the record value stands"
+                           % (pid, existing_ror_now, ror))
 
             if txt != before:
                 txt = bump_schema(txt)

@@ -56,6 +56,25 @@ into a ROR by hand, and never construct a ROR URL from a name. A ROR ID
 identifies an organization, not a time period — it never affects the
 `affiliation_type` label.
 
+**Era-matched beats current.** When someone's employment history offers both a
+position overlapping the operating span and a later or present one, record the
+era-matched position — the record documents a mission, and the affiliation under
+which the work was done is what belongs in it. The test is the end date: a
+position that ended is *past*, a position running "to present" is *current*, and
+any past position overlapping the span beats every ongoing one. Never use
+longest-overlap to break that tie — on an open-ended span the ongoing position
+grows longer every day, which would hand the record to the present-day employer
+by the passage of time. Provider-match and longest-overlap apply only among past
+positions. `OrganizationName` is single-valued downstream, so this is a choice,
+not a merge: never concatenate or parenthesize the two, and put the alternative
+in `notes` so a curator can see what was set aside.
+
+**Never cite the record you are about to change.** A SPASE Person record is not a
+valid `affiliation_source` — the downstream writer overwrites that record, so the
+citation would dangle. Where the registry is the only support for an affiliation,
+either corroborate it independently or leave `affiliation` null and quote the
+registry's value in `notes` as unconfirmed.
+
 **Validate pre-filled values.** If the finder already captured an ORCID,
 affiliation, or ROR, do not skip it — verify it per the skill (checksum +
 corroboration for ORCIDs; era-matched lookup and `affiliation_type` labeling for

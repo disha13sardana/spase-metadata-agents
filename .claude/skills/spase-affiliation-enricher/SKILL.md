@@ -97,7 +97,7 @@ on processed candidates, and adding the per-candidate `enrichment` object:
   "orcid_evidence_citation": "short citation — publications only; omit otherwise",
   "orcid_confidence": "Confirmed | null",
   "affiliation_origin": "finder | enricher | null",
-  "affiliation_source": "Crossref (paper DOI) | ORCID employment | SPASE record | provider documentation | uncorroborated | null",
+  "affiliation_source": "Crossref (paper DOI) | ORCID employment | provider documentation | uncorroborated | null",
   "affiliation_evidence": "DOI, ORCID URL, ROR URL, or page URL — null only when source is uncorroborated",
   "affiliation_evidence_citation": "short citation — publications only; omit otherwise",
   "affiliation_type": "era-matched | current | as-deposited | null",
@@ -208,7 +208,10 @@ Field semantics:
   is no "probable" tier — unconfirmed possibilities live in `notes` only.
 - `affiliation_type`:
   - `era-matched` — held during the record's operating span, from dated ORCID employment.
-  - `current` — the person's current/most-recent affiliation (no era overlap found, or no dated history).
+  - `current` — the person's current/most-recent affiliation. This is a
+    **fallback, never a preference**: it is correct only when no dated employment
+    overlaps the span, or when nothing in the history is dated at all. If an
+    era-matched position exists, it wins — see "Era-matched outranks current".
   - `as-deposited` — the affiliation string a publisher deposited with the paper in
     Crossref. This is affiliation-at-publication-date; it may or may not fall inside
     the operating span. Do not relabel it era-matched even if the publication date
@@ -396,6 +399,32 @@ when identity was confirmed some other way):
 5. If nothing yields a value, leave `affiliation` null with `lookup_status`
    reflecting whether lookups completed.
 
+**Never cite the record you are about to change.** A SPASE Person record is not
+an admissible `affiliation_source`, and `SPASE record` is deliberately absent from
+the vocabulary above. The reason is mechanical rather than evidential: the
+downstream writer *overwrites* that Person record. Citing it produces a Note that
+points at a value which, by the time anyone reads it, has been replaced by the
+value the Note is supposedly supporting. The provenance becomes circular and the
+citation dangles.
+
+So where the registry's own Person record is the only support for an affiliation,
+you have two honest options and neither is to cite it:
+- **Corroborate it independently** — an ORCID employment, a Crossref deposit, a
+  provider page. If an outside source confirms what the registry says, record
+  that source; the registry value simply stops being the evidence.
+- **Leave `affiliation` null**, and say in `notes` that the SPASE Person record
+  carries a value, quote it, and state that nothing outside the registry confirmed
+  it. The curator then has the string, knows where it came from, and knows it is
+  unverified — which is strictly more than a self-referential citation would have
+  told them.
+
+Do not route around this by labelling the registry value `uncorroborated` with the
+registry as `*_evidence`. `uncorroborated` means *no* evidence identifier, and
+this is the case it was built for: `affiliation_source: "uncorroborated"`,
+`affiliation_evidence: null`, the registry string quoted in `notes`. Reserve that
+shape for a value the finder carried; a value you found only in the Person record
+should not be promoted into `affiliation` at all.
+
 **Evidence strength — dated beats undated, and this outranks source order.**
 The route order above (ORCID employment before Crossref) assumes the employment
 is dated. It is not a claim that ORCID always wins. When the only ORCID
@@ -417,6 +446,44 @@ specific. Record the deposit, and list the undated employment in `notes`.
 Prefer the undated employment over a Crossref deposit only when the deposit falls
 outside the operating span, or when the employment names an institution the
 deposit does not.
+
+**Era-matched outranks current — always record the era-matched value.** When the
+employment history offers both — one position overlapping the operating span and
+a later or present one — record the era-matched position and set
+`affiliation_type: "era-matched"`. This record documents a *mission*, and the
+affiliation under which the work was done is the one that belongs in it. A
+person's current employer is a fact about them today; it is not a fact about the
+mission, and a curator reading the finished record is asking who built and ran
+the instrument, not who happens to employ them now.
+
+This applies even when the current position is longer-overlapping, more
+prestigious, or more recognizable. It applies even when the era-matched position
+has since been abolished, renamed, or absorbed. The date range is what decides.
+
+`OrganizationName` is single-valued downstream, so this is a **choice, not a
+merge**. Do not concatenate the two institutions into one string, do not
+parenthesize the later one, and do not hedge with "formerly" or "now at" inside
+the `affiliation` field. Record one value and put the alternative in `notes` —
+named, dated, and identified as the current position — so a curator can see what
+was set aside and reinstate it if the record's purpose turns out to be
+present-day contact rather than mission history.
+
+**What counts as "current" — the test is an open end date.** A position with an
+end date is a *past* position; a position running "to present" is the person's
+*current* one. If any past position overlaps the operating span, it wins over
+every ongoing position, full stop. Do not fall through to longest-overlap to
+break that tie: on an open-ended span the ongoing position accrues overlap every
+day that passes, so longest-overlap would hand the record to the present-day
+employer by the mere passage of time — which is exactly the outcome this rule
+exists to prevent. Seaton on GOES-16 is the case: NCEI (2015–2021) is past and
+overlaps; SwRI (2020–present) is ongoing and by now overlaps longer. NCEI wins
+because it ended, not because it is longer.
+
+The multiple-overlap rules below — provider-match first, then longest overlap —
+apply only *among past positions* that all overlap the span. They never promote
+an ongoing position over a past one. When every overlapping position is ongoing,
+there is no past candidate to prefer, so those rules decide among the ongoing
+ones and the result is labelled `current`, not `era-matched`.
 
 **Choosing among several in-span deposits.** Rank 2 can have more than one member:
 the same person may have several papers inside the span, each depositing a
@@ -453,8 +520,11 @@ exactly what the `*_origin` / `*_source` split exists to prevent.
 - An open-ended operating span (resource still producing data) overlaps every
   employment that did not end before the span's start.
 - **Multiple overlapping employments** (mid-span move, or concurrent positions):
-  prefer the one matching the data provider's institution; if none matches or
-  several do, take the longest-overlapping one and list the others in `notes`.
+  first discard any ongoing position if a past one overlaps — see "Era-matched
+  outranks current" above; longest-overlap must never be used to choose between a
+  past and an ongoing position. Among the remaining candidates, prefer the one
+  matching the data provider's institution; if none matches or several do, take
+  the longest-overlapping one and list the others in `notes`.
   A mid-span institutional change is itself useful signal (original vs. current
   PI generation) — note it explicitly, e.g. "affiliation changed during operating
   span: Institution X (2010–2015), Institution Y (2015–present)."
