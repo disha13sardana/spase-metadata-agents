@@ -103,11 +103,19 @@ An existing SPASE record (ResourceID, URL, or XML). Read the record and follow
 its internal links outward to find everything else. Do not assume any provider
 URLs or paper references have been pre-supplied.
 
+- **Collect `information_urls` as you go.** Every description paper, mission or
+  programme page, and CMAD you resolve becomes an entry — `name`, `url`,
+  one-sentence `description`, and a required `scope` (`observatory` or
+  `instrument`, plus the `instrument` short name when instrument-scoped; an entry
+  without a scope is skipped downstream). Link each once, under the scope it
+  belongs to; a CMAD with mission front matter and per-instrument chapters is
+  several entries, not one.
+
 ## Output
 
 The JSON candidate list defined in the skill — including the top-level `cmad`,
-`instrument_coverage`, and (for Observatory records) `pending_instrument_runs`
-objects — saved to
+`instrument_coverage`, `information_urls`, and (for Observatory records)
+`pending_instrument_runs` objects — saved to
 `spase_records/<record-name>/author_candidates.json` (create the directory if
 needed). Also return a brief inline summary of the top candidates, the CMAD
 outcome, and any instruments found missing from SPASE.

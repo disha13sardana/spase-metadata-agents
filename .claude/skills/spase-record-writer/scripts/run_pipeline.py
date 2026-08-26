@@ -59,6 +59,51 @@ def git(args, cwd, check=True, quiet=True):
     return run(["git"] + args, cwd=cwd, check=check, quiet=quiet)
 
 
+
+def derive_artifacts_url(input_path):
+    """Build a commit-pinned GitHub URL for the folder holding the input.
+
+    Returns (url, problem). A pinned SHA is used rather than a branch name so the
+    link always shows the artifacts that produced this record version -- a branch
+    link drifts as soon as the record is re-enriched, and would then appear to
+    corroborate values the record does not contain.
+    """
+    d = os.path.dirname(os.path.abspath(input_path))
+    root = run(["git", "-C", d, "rev-parse", "--show-toplevel"],
+               check=False, quiet=True)
+    if root.returncode != 0:
+        return None, "input is not inside a git repository"
+    root = root.stdout.strip()
+    rel = os.path.relpath(d, root)
+
+    dirty = run(["git", "-C", root, "status", "--porcelain", "--", d],
+                check=False, quiet=True).stdout.strip()
+    if dirty:
+        return None, ("uncommitted changes in %s -- commit and push the "
+                      "artifacts first so the link points at them" % rel)
+
+    sha = run(["git", "-C", root, "log", "-1", "--format=%H", "--", d],
+              check=False, quiet=True).stdout.strip()
+    if not sha:
+        return None, "no commit touches %s yet" % rel
+
+    on_remote = run(["git", "-C", root, "branch", "-r", "--contains", sha],
+                    check=False, quiet=True).stdout.strip()
+    if not on_remote:
+        return None, ("commit %s is not on any remote -- push the artifacts "
+                      "first or the link will 404" % sha[:7])
+
+    remote = run(["git", "-C", root, "remote", "get-url", "origin"],
+                 check=False, quiet=True).stdout.strip()
+    m = re.match(r"(?:git@github\.com:|https://github\.com/)(.+?)(?:\.git)?$",
+                 remote)
+    if not m:
+        return None, "origin is not a recognised GitHub remote: %s" % remote
+
+    return ("https://github.com/%s/tree/%s/%s"
+            % (m.group(1), sha[:7], rel.replace(os.sep, "/"))), None
+
+
 def record_slug(input_path, data):
     """GOES_16 from the directory name, else from the ResourceID."""
     d = os.path.basename(os.path.dirname(os.path.abspath(input_path)))
@@ -127,6 +172,11 @@ def main():
     ap.add_argument("--no-push", action="store_true")
     ap.add_argument("--no-commit", action="store_true")
     ap.add_argument("--remote", default="origin")
+    ap.add_argument("--artifacts-url", default=None,
+                    help="commit-pinned URL for the input artifacts; derived "
+                         "from the input's own repo when omitted")
+    ap.add_argument("--no-artifacts-url", action="store_true",
+                    help="omit the artifacts link from the RevisionEvent")
     args = ap.parse_args()
 
     repo = os.path.abspath(os.path.expanduser(args.repo))
@@ -221,6 +271,21 @@ def main():
                "--decisions", decisions]
         if args.initials:
             cmd += ["--initials", args.initials]
+
+        if not args.no_artifacts_url:
+            url = args.artifacts_url
+            if not url:
+                url, problem = derive_artifacts_url(i)
+                if problem:
+                    print("\nABORT: cannot pin the artifacts link for %s." % s)
+                    print("  %s" % problem)
+                    print("  Commit and push the enricher output, then re-run;")
+                    print("  or pass --artifacts-url, or --no-artifacts-url to "
+                          "omit the link.")
+                    rollback()
+                    return 1
+            print("artifacts : %s" % url)
+            cmd += ["--artifacts-url", url]
         p = run(cmd)
         if p.returncode != 0:
             print("\nABORT: writer stopped on %s. Rolling back." % s)

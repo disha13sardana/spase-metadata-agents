@@ -250,6 +250,22 @@ def build_person_note(candidate):
     return first + (" " + second + "." if second else "")
 
 
+# Segments this skill writes into a Person Note. Recognising them lets a re-run
+# rebuild the Note instead of appending to its own previous output.
+OURS_RE = re.compile(
+    r"(?:Affiliation\b[^.]*?\.(?:\s*(?:This is|This affiliation)[^.]*?\.)?"
+    r"|Previously recorded in this record as [^.]*?\.)\s*")
+
+STATUS_RE = re.compile(r"\b(retired|deceased|emeritus|formerly|no longer)\b", re.I)
+
+
+def split_curated(note):
+    """Return the part of an existing Note this skill did not write."""
+    if not note:
+        return ""
+    return OURS_RE.sub("", note).strip()
+
+
 OUR_NOTE_PREFIX = "Affiliation source:"
 
 
@@ -382,6 +398,64 @@ def set_field(txt, tag, value):
     return txt
 
 
+def existing_urls(txt):
+    """Every URL already present in the record, normalised for comparison."""
+    out = set()
+    for u in re.findall(r"<URL>([^<]*)</URL>", txt):
+        out.add(u.strip().rstrip("/").lower())
+    return out
+
+
+def norm_url(u):
+    return (u or "").strip().rstrip("/").lower()
+
+
+def build_information_urls(data, target_scope, txt):
+    """Transcribe scope-matching entries from the input's information_urls.
+
+    Scope is the input's to declare, never the writer's to infer: an observatory
+    record takes observatory-level references, an instrument record takes its
+    own. An entry with no scope is skipped and logged rather than guessed at,
+    because putting an instrument paper on a mission record misattributes it.
+    """
+    blocks, log = [], []
+    have = existing_urls(txt)
+    for item in (data.get("information_urls") or []):
+        url = (item.get("url") or "").strip()
+        name = (item.get("name") or "").strip()
+        scope = (item.get("scope") or "").strip().lower()
+        desc = (item.get("description") or "").strip()
+        if not url or not name:
+            log.append("URL SKIPPED  incomplete entry (needs name and url): %r"
+                       % (url or name))
+            continue
+        if not scope:
+            log.append("URL SKIPPED  %s has no scope; not added" % url)
+            continue
+        if scope != target_scope:
+            log.append("URL DEFERRED %s is %s-level, not written to this "
+                       "%s record" % (url, scope, target_scope))
+            continue
+        if norm_url(url) in have:
+            log.append("URL PRESENT  %s already in the record" % url)
+            continue
+        have.add(norm_url(url))
+        b = ["      <InformationURL>",
+             "        <Name>%s</Name>" % esc(name),
+             "        <URL>%s</URL>" % esc(url)]
+        if desc:
+            b.append("        <Description>%s</Description>" % esc(desc))
+        b.append("      </InformationURL>")
+        blocks.append("\n".join(b))
+    return blocks, log
+
+
+def drop_field(txt, tag):
+    """Remove every occurrence of an element, and its line, from a record."""
+    return re.sub(r"^[ \t]*<%s>.*?</%s>[ \t]*\n" % (tag, tag), "", txt,
+                  flags=re.M | re.S)
+
+
 def bump_schema(txt):
     txt = re.sub(r'xsi:schemaLocation="[^"]*"',
                  'xsi:schemaLocation="%s"' % SCHEMA_LOC, txt, count=1)
@@ -430,6 +504,9 @@ def main():
     ap.add_argument("--decisions", default=None, metavar="PATH",
                     help="JSON file of persistent link/create decisions. "
                          "Written as a template on first abort.")
+    ap.add_argument("--artifacts-url", default=None,
+                    help="commit-pinned URL for the candidate and enrichment "
+                         "files, appended to the RevisionEvent note")
     ap.add_argument("--note", default=None, help="RevisionEvent note")
     ap.add_argument("--initials", default="", help="curator initials for the note")
     args = ap.parse_args()
@@ -514,20 +591,33 @@ def main():
             txt, fields = read_person(path)
             before = txt
             existing_org = (fields.get("OrganizationName") or [""])[0]
+            replaced_org = ""
 
             # RULE: never overwrite a real value with the Unknown fallback.
             if org and org != existing_org:
                 if existing_org and existing_org != UNKNOWN_ORG:
+                    replaced_org = existing_org
                     log.append("ORG CHANGE %s: '%s' -> '%s'"
                                % (pid, existing_org, org))
                 txt = set_field(txt, "OrganizationName", org)
-                # RULE: OrganizationName and RORIdentifier move together.
+                # RULE: OrganizationName and RORIdentifier move together. A ROR
+                # identifies the organisation named beside it, so when the
+                # organisation changes the old ROR is no longer true of this
+                # record. Replace it when the input has one; REMOVE it when the
+                # input has none, rather than leaving a stale ID attached to an
+                # organisation it does not identify.
                 existing_ror = (fields.get("RORIdentifier") or [""])[0]
-                if ror and existing_ror and existing_ror != ror:
-                    log.append("ROR CHANGE %s: '%s' -> '%s' (follows org)"
-                               % (pid, existing_ror, ror))
                 if ror:
+                    if existing_ror and existing_ror != ror:
+                        log.append("ROR CHANGE %s: '%s' -> '%s' (follows org)"
+                                   % (pid, existing_ror, ror))
                     txt = set_field(txt, "RORIdentifier", ror)
+                elif existing_ror:
+                    txt = drop_field(txt, "RORIdentifier")
+                    log.append("ROR DROPPED %s: '%s' identified the previous "
+                               "organisation and the input supplies none; "
+                               "removed rather than left stale"
+                               % (pid, existing_ror))
             elif not org and existing_org:
                 log.append("ORG KEPT   %s: no affiliation in input, kept '%s'"
                            % (pid, existing_org))
@@ -562,18 +652,35 @@ def main():
                 log.append("NAME ADDED %s: PersonName was missing, set to '%s'"
                            % (pid, name))
 
-            # Note records affiliation provenance. Written whenever the input
-            # supplied a real affiliation -- the provenance holds even when the
-            # value matched what was already there. Not written when the input
-            # had no affiliation, or it would misattribute a curated value.
+            # The Note is rebuilt from three parts, so nothing a curator wrote
+            # is lost and a re-run does not append to its own output:
+            #   1. whatever a human put there, preserved verbatim and first
+            #   2. any OrganizationName this run replaced -- 347 records carry
+            #      status such as "Retired - formerly at ..." in that field, and
+            #      dropping it would assert current employment that has ended
+            #   3. this run's affiliation provenance
             pnote = build_person_note(c)
+            curated = split_curated((fields.get("Note") or [""])[0])
+            parts = []
+            if curated:
+                parts.append(curated.rstrip())
+            if replaced_org:
+                parts.append("Previously recorded in this record as '%s'."
+                             % replaced_org)
+                if STATUS_RE.search(replaced_org):
+                    log.append("ORG STATUS %s: replaced value carried a person "
+                               "status ('%s') -- preserved in the Note, but "
+                               "verify the new value is right"
+                               % (pid, replaced_org))
             if pnote and org:
-                old_note = (fields.get("Note") or [""])[0]
-                if old_note and not old_note.startswith(OUR_NOTE_PREFIX):
-                    log.append("NOTE KEPT  %s: curated Note preserved, "
-                               "provenance not written" % pid)
-                else:
-                    txt = set_field(txt, "Note", pnote)
+                parts.append(pnote)
+            if parts:
+                joined = " ".join(x.rstrip() for x in parts if x)
+                if joined != (fields.get("Note") or [""])[0]:
+                    txt = set_field(txt, "Note", joined)
+                if curated:
+                    log.append("NOTE KEPT  %s: existing Note preserved and "
+                               "appended to" % pid)
 
             if ror and not (fields.get("RORIdentifier") or [""])[0]:
                 txt = set_field(txt, "RORIdentifier", ror)
@@ -718,10 +825,42 @@ def main():
         log.append("KEPT       %d unrelated Contact(s): %s"
                    % (len(keep), ", ".join(k for k in keep if k)))
 
+    # InformationURL sits after Contact and before Association in ResourceHeader,
+    # so new entries are appended after the last existing InformationURL, or
+    # immediately after the Contact block when the record has none.
+    scope = "instrument" if "/Instrument/" in rid else "observatory"
+    url_blocks, url_log = build_information_urls(data, scope, txt)
+    log.extend(url_log)
+    if url_blocks:
+        last_url = None
+        for m in re.finditer(r"[ \t]*<InformationURL>.*?</InformationURL>\n",
+                             txt, re.S):
+            last_url = m
+        if last_url:
+            at = last_url.end()
+        else:
+            last_contact = None
+            for m in re.finditer(r"[ \t]*<Contact>.*?</Contact>\n", txt, re.S):
+                last_contact = m
+            at = last_contact.end() if last_contact else None
+        if at is None:
+            log.append("URL SKIPPED  no anchor found; none written")
+        else:
+            txt = txt[:at] + "\n".join(url_blocks) + "\n" + txt[at:]
+            log.append("URL ADDED    %d InformationURL entr%s"
+                       % (len(url_blocks), "y" if len(url_blocks) == 1 else "ies"))
+
     note = args.note or (
         "Added mission Contacts with Author and qualifying roles derived from "
         "mission literature and instrument records; corrected schemaLocation to "
         "match the declared SPASE Version.")
+    # Provenance of this edit belongs in the RevisionEvent, which is what a
+    # RevisionEvent is for. The URL must be commit-pinned: a branch link drifts
+    # as soon as the record is re-enriched and would then appear to corroborate
+    # values the record does not contain.
+    if args.artifacts_url:
+        note = (note.rstrip(".") + ". Candidate and enrichment files: %s"
+                % args.artifacts_url.strip())
     if args.initials:
         note = note.rstrip(".") + ". " + args.initials
 

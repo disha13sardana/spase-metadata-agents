@@ -171,9 +171,22 @@ record. The enricher may supply several separated by ` / `.
 - **Real affiliation, existing record:** overwrite, and log the before/after.
   The input carries the current affiliation; the registry value is often stale.
 
-**`RORIdentifier` follows `OrganizationName`.** When you change the organisation,
-change its ROR in the same edit. Leaving the old ROR beside a new organisation
-makes the record assert two different institutions.
+**`RORIdentifier` follows `OrganizationName`.** A ROR identifies the organisation
+named beside it, so when the organisation changes the old ROR is no longer true
+of that record. Two cases, and the second is the one that is easy to miss:
+
+- **Input supplies a ROR** — replace, and log the change.
+- **Input supplies none** — **remove** the existing ROR. Leaving it makes the
+  record assert a specific institution that is not the one it names, which is
+  worse than having no ROR at all: a consumer resolving the ID gets a confident,
+  wrong answer.
+
+Removing an identifier is normally forbidden, and this is the one exception. It
+is not a retraction of curated data but the consequence of a change made in the
+same edit — the ROR described the value being replaced. Log it as `ROR DROPPED`
+so a reviewer sees the removal and can supply the right ID by hand.
+
+A ROR is untouched when the organisation does not change.
 
 Do not attempt to encode era-matched affiliation in the Person record. Person
 records are global and shared across every mission that references them, and
@@ -263,10 +276,24 @@ way. Do **not** write it when the input had no affiliation and the existing
 `OrganizationName` was kept — that would attribute a curated value to a source
 that did not produce it.
 
-Never overwrite a curated `Note`. If a record already has one that this skill did
-not write (it will not begin with `Affiliation source:`), preserve it and log
-that the provenance was not recorded. Registry Notes carry things like
-"Retired as of the creation of this SPASE record", which must not be lost.
+**Never lose what a curator wrote.** The Note is rebuilt from up to three parts,
+in this order:
+
+1. **Existing Note text this skill did not write** — preserved verbatim, first.
+2. **Any `OrganizationName` this run replaced.** 347 Person records carry status
+   inside that field — "Retired - formerly at Science and Exploration
+   Directorate", "Deceased - formerly at GSFC". Replacing one with a plain
+   organisation name does not merely lose detail; it asserts current employment
+   for someone who has retired or died. The old value is recorded as
+   `Previously recorded in this record as '...'.`
+3. **This run's affiliation provenance.**
+
+When the replaced value carried a person status, log `ORG STATUS` as well — the
+Note preserves it, but a human should confirm the new value is right at all.
+
+Rebuilding is idempotent: this skill's own segments are recognised and replaced
+rather than appended to, so a re-run does not stack duplicates. Curated text is
+never matched by that pattern and so is never removed.
 
 Keep the Note to source and type. The enricher's full reasoning — candidate
 ORCIDs considered, checksum results, reviewer suggestions — belongs in the run
@@ -415,6 +442,42 @@ An existing Person record whose ID is exactly the ID you would mint for a
 candidate **is** that person; link to it rather than flagging a collision. That
 case is usually your own output from an earlier run.
 
+### Step 7b — Write InformationURL entries
+
+Reference links — description papers, mission pages, CMADs — come from the
+input's `information_urls` block and are transcribed into `InformationURL`
+elements:
+
+```xml
+<InformationURL>
+  <Name>GOES-R Series Introduction</Name>
+  <URL>https://doi.org/10.1016/b978-0-12-814327-8.00001-9</URL>
+  <Description>Mission overview chapter of the GOES-R Series reference volume.</Description>
+</InformationURL>
+```
+
+`Name` and `URL` are required; `Description` is optional but expected — 776 of
+the 852 existing entries carry one. Placement is after `Contact` and before
+`Association`: append after the last existing `InformationURL`, or after the last
+`Contact` when the record has none.
+
+**Scope decides which record a link belongs to, and the input declares it.**
+Observatory-level references — mission overview papers, mission home pages,
+programme team pages, mission-wide CMADs — go on the Observatory record.
+Instrument-level references — instrument description papers, per-instrument CMAD
+chapters — go on that instrument's record, never on the mission's.
+
+The writer takes the scope from each entry's `scope` field and matches it against
+the target record's own type, which it derives from the ResourceID. It does not
+infer scope from the URL, the title, or surrounding prose: a paper titled for an
+instrument may still be the mission's overview reference, and guessing wrong
+misattributes the link. An entry whose scope does not match is left for the
+record it belongs to and logged as `URL DEFERRED`; an entry with no scope at all
+is skipped and logged, never assumed.
+
+Skip a URL already present in the record — comparison ignores case and a trailing
+slash — and log it as `URL PRESENT` rather than writing a second copy.
+
 ### Step 8 — Correct schemaLocation
 
 Records commonly declare `<Version>2.7.1</Version>` while pointing
@@ -445,6 +508,39 @@ and update the `ResourceHeader` `ReleaseDate` to the same timestamp.
   <Note>Added mission Contacts with Author and qualifying roles derived from mission literature and instrument records; corrected schemaLocation to match the declared SPASE Version. DS</Note>
 </RevisionEvent>
 ```
+
+### Step 9b — Link the artifacts, pinned to a commit
+
+The RevisionEvent documents this edit, so it is where the provenance of the edit
+belongs. Append a link to the candidate and enrichment files that produced it:
+
+```
+... corrected schemaLocation to match the declared SPASE Version. Candidate and
+enrichment files: https://github.com/<owner>/<repo>/tree/62b74df/spase_records/SOHO. DS
+```
+
+**The URL must name a commit, never a branch.** A `/tree/main/...` link resolves
+to whatever is in that folder when someone clicks it. Records get re-enriched —
+and runs disagree — so a branch link will eventually show values the record does
+not contain, while looking like corroboration. A commit hash names one immutable
+snapshot: the artifacts that produced this version of this record.
+
+The pipeline derives the URL from the input file's own repository, so no hash is
+copied by hand. It uses the last commit touching the record's artifact folder,
+not repository HEAD, so the link is precise even when other work has landed since.
+
+It refuses to guess when the link would be wrong:
+
+- **uncommitted changes in the folder** — the link would not show what was used
+- **commit not on any remote** — the link would 404
+- **origin is not a GitHub remote** — no URL can be built
+
+Each aborts with the reason and rolls the run back. `--artifacts-url` supplies
+one explicitly; `--no-artifacts-url` omits the link.
+
+This puts a new ordering on the run: commit and push the enricher output first,
+then write the record. That sequence is what makes the link meaningful — the
+artifacts have to exist publicly before a record can point at them.
 
 ### Step 10 — Validate, then hand over
 

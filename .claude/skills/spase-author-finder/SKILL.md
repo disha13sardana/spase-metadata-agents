@@ -59,6 +59,14 @@ Top-level fields:
   This makes silent gaps visible: an instrument absent from SPASE is invisible to registry-based discovery, so the external roster is the ground truth and this object reports the difference.
   **`roster_sources` is required whenever `external_roster` is non-empty** — one clickable link per source used (mission instruments page, overview-paper DOI, the record's own Description, etc.), so a reviewer can verify the ground truth rather than take it on faith. The external roster is the authority against which SPASE is judged; an unsourced authority is not one. This matters most when SPASE has few or no Instrument records: then the roster is the sole basis for the instruments pursued, and its provenance carries the whole run. Use `["record Description"]` (no URL) only when the roster came from the processed record itself; if a page could not be fetched, still list the URL and say so in `notes`.
 - `pending_instrument_runs` — **Observatory records only** (omit or leave `[]` otherwise); the worklist of instruments this run could NOT fully resolve, for a dedicated per-instrument finder pass. Add an entry when an instrument's description paper could not be located, its paper-selection was uncertain, or the instrument has no SPASE record: `{ "instrument": <ResourceID or name>, "spase_record": <instrument ResourceID or null if unregistered>, "description_paper": <DOI/URL if one was seen, else null>, "reason": <"paper not located" | "paper-selection uncertain" | "no SPASE record" | ...>, "notes": <what was captured anyway, e.g. Contacts-derived PIs> }`. Instruments fully resolved here (Contacts roles + paper authors taken) need no entry.
+- `information_urls` — array of the mission and instrument references worth linking from the record: description papers, mission and programme pages, CMADs. This is the raw material for the record's `InformationURL` entries, so collect links as you encounter them during the hunt rather than reconstructing them afterwards. Each entry:
+  - `name` — a short human title, in the style of existing SPASE entries (`NSSDC Master Catalog`, `HelioData`, `Mission web page`).
+  - `url` — the link. For publications use the resolvable DOI URL.
+  - `description` — one sentence on what a reader will find there.
+  - `scope` — **required**, `"observatory"` or `"instrument"`. Observatory-level: mission overview papers, mission home pages, programme team pages, mission-wide CMADs. Instrument-level: instrument description papers, per-instrument CMAD chapters. **An entry without a scope is skipped downstream, so decide it here.**
+  - `instrument` — the instrument's short name; **required when `scope` is `"instrument"`**, so the entry can be routed to the right record later.
+
+  **Include a link once, under the scope it belongs to.** A CMAD with mission-wide front matter and per-instrument chapters is several entries, not one: the introduction at `observatory` scope, each chapter at `instrument` scope with its instrument named. The same goes for an edited reference volume whose chapters describe different instruments.
 - `candidates` — the array below
 - `notes` — array of free-text judgment calls, ambiguities, dead ends
 
@@ -122,6 +130,28 @@ Each candidate object:
     "notes": "Roster from PROBA2 mission site (science payload page). LYRA is the producing instrument for this record; DSLP/TPMU absence noted for curators but not pursued — irrelevant to this data product."
   },
   "pending_instrument_runs": [],
+  "information_urls": [
+    {
+      "name": "PROBA2 mission web page",
+      "url": "https://proba2.sidc.be/about/PROBA2",
+      "description": "ESA PROBA2 mission home page, including the science payload listing.",
+      "scope": "observatory"
+    },
+    {
+      "name": "The LYRA Instrument Onboard PROBA2",
+      "url": "https://doi.org/10.1007/s11207-013-0252-5",
+      "description": "LYRA instrument description and in-flight performance paper.",
+      "scope": "instrument",
+      "instrument": "LYRA"
+    },
+    {
+      "name": "LYRA Flarelist product page",
+      "url": "https://proba2.sidc.be/lyra/data/Flarelist/Flarelist.html",
+      "description": "Provider page for the LYRA flare list, including the compiler credit and column descriptions.",
+      "scope": "instrument",
+      "instrument": "LYRA"
+    }
+  ],
   "candidates": [
     {
       "name": "Marie Dominique",
@@ -313,6 +343,8 @@ Find a CMAD in this order; stop at the first that works:
 - **(b) The mission's data center / Science Data Center (SDC) site** — many active missions post CMADs there (e.g. the MMS SDC at `https://lasp.colorado.edu/mms/sdc/public/`).
 - **(c) General web search** — `"<mission> CMAD"` or `"<mission> Calibration and Measurement Algorithms Document"`.
 
+**When a CMAD is found, add it to `information_urls`** — a mission-wide CMAD at `observatory` scope, and any per-instrument chapters as separate `instrument`-scope entries with their instrument named.
+
 A CMAD is a strong-evidence *bonus when found*, never a hard requirement of this procedure. **If no CMAD is found, proceed with the remaining sources and record the outcome** (found/expected/notes in the `cmad` object). Do not fail or stall when a CMAD is missing — but do distinguish "absent and unremarkable" from "expected but not located."
 
 ### 3. Sibling SPASE records — and the instruments SPASE doesn't know about
@@ -354,10 +386,12 @@ A CMAD is a strong-evidence *bonus when found*, never a hard requirement of this
 ### 4. The data provider's website
 - Follow `AccessURL` and `InformationURL` links to the provider's pages.
 - Look for an explicit team/PI listing — and note the **instrument roster** for the `instrument_coverage` comparison (source 3) while there.
+- **Add the mission home page, programme team page, and any per-instrument provider pages to `information_urls`**, each at the scope it belongs to.
 - **For derived products (event lists, catalogs):** check whether the product page names a *maintainer* or *compiler* distinct from the instrument PI — that person is a candidate too. Also note if the product derives from another source (e.g. cross-calibrated against external event reports), which may introduce additional contributors.
 - Note: provider links in older records may be outdated and redirect. Follow redirects to the current site.
 
 ### 5. The description paper
+- **Add every description paper you resolve to `information_urls`** — the record's own at `observatory` scope (for an Observatory record) and each instrument's at `instrument` scope with the instrument named. These links are as much a deliverable as the candidates.
 - Find the record's description paper (see heuristic below — which paper that is depends on the record type). Publication authorship is **Strong** evidence *when the paper selection is confident*: a peer-reviewed author list is deliberate, static, and more trustworthy than possibly outdated SPASE metadata. Apply the author-order rules below to extract the right people, and the self-aware downgrade rule when selection is uncertain.
 
 ### 6. The SMWG Person registry
