@@ -75,6 +75,19 @@ citation would dangle. Where the registry is the only support for an affiliation
 either corroborate it independently or leave `affiliation` null and quote the
 registry's value in `notes` as unconfirmed.
 
+**Prefer the child organisation over its parent.** Where the affiliation names an
+institute, laboratory or centre inside a larger organisation and that unit has
+its own ROR record, record the child's ID — credit belongs to the unit that did
+the work. This is the one sanctioned override of ROR's `chosen` flag, which
+routinely picks the parent at the same score (CIRES and CU Boulder both return
+1.0; record CIRES). Two conditions, both required: the child's name appears in
+the affiliation string, and ROR itself records the parent–child relationship —
+confirm via `/organizations/<child-id>` that the parent is in its
+`relationships`, since two similarly-named organisations are not a hierarchy.
+Apply it at every depth while both conditions hold, and at Route A as well when
+ORCID asserted the parent for a post whose department is the named institute.
+Name the parent you set aside, with scores, in `notes`.
+
 **Validate pre-filled values.** If the finder already captured an ORCID,
 affiliation, or ROR, do not skip it — verify it per the skill (checksum +
 corroboration for ORCIDs; era-matched lookup and `affiliation_type` labeling for

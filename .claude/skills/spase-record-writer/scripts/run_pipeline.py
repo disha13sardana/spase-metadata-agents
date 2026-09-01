@@ -172,6 +172,9 @@ def main():
     ap.add_argument("--no-push", action="store_true")
     ap.add_argument("--no-commit", action="store_true")
     ap.add_argument("--remote", default="origin")
+    ap.add_argument("--drop-stale-contacts", action="store_true",
+                    help="forwarded to the writer: remove Address, PhoneNumber "
+                         "and FaxNumber when OrganizationName changes")
     ap.add_argument("--artifacts-url", default=None,
                     help="commit-pinned URL for the input artifacts; derived "
                          "from the input's own repo when omitted")
@@ -271,6 +274,8 @@ def main():
                "--decisions", decisions]
         if args.initials:
             cmd += ["--initials", args.initials]
+        if args.drop_stale_contacts:
+            cmd += ["--drop-stale-contacts"]
 
         if not args.no_artifacts_url:
             url = args.artifacts_url

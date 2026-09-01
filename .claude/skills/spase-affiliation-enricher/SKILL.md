@@ -561,6 +561,20 @@ outcome: record the null and note it.
    is the strongest route and costs no extra call. `ror_origin: "enricher"`,
    `ror_source: "ORCID disambiguated-organization"`, `ror_evidence:` the ORCID
    URL whose employment asserted it.
+
+   **The child-preference rule applies here too.** ORCID commonly asserts the
+   parent university for an employment whose `department-name` is the institute —
+   Rodriguez's CIRES post carries CU Boulder's `02ttsq026`. Where the affiliation
+   string names the institute and the institute is a recorded ROR child of what
+   ORCID asserted, descend to the child under the same two conditions as Route B,
+   and set `ror_source: "ROR affiliation-match (chosen)"` or
+   `"ROR query (corroborated)"` to reflect the lookup that actually produced the
+   recorded ID — ORCID asserted the parent, so it cannot be cited for the child.
+   Note the descent and ORCID's original assertion.
+   (Your instruction named `chosen` specifically; extending it to Route A is an
+   inference from the same rationale, and it is what keeps a file from carrying
+   the institute's ID for one person and the university's for another at the same
+   institution. Reverse it if ORCID's assertion should win.)
 3. If `disambiguation-source` is something else (`GRID`, `RINGGOLD`, `LEI`,
    `FUNDREF`), do NOT treat it as a ROR. GRID IDs in particular map to ROR
    one-to-one for legacy records and are tempting to convert — do not convert them
@@ -602,6 +616,40 @@ outcome: record the null and note it.
    passes `chosen` but names the wrong organization is the worst outcome the
    skill can produce: it is confidently wrong, it looks clean in the output, and
    it publishes a false institutional claim about a real person.
+
+   **Descend to the named child — this overrides `chosen`.** The affiliation
+   endpoint routinely sets `chosen: true` on a parent and `chosen: false` on an
+   equally-scoring child: `Cooperative Institute for Research in Environmental
+   Sciences, University of Colorado Boulder` returns CU Boulder
+   (`https://ror.org/02ttsq026`, chosen) and CIRES (`https://ror.org/00bdqav06`,
+   not chosen) **both at score 1.0**. Record CIRES. ROR's flag answers "which
+   single organisation does this string best match"; this skill is asking "which
+   organisation did the work", and for a string naming a unit inside a university
+   those are different questions.
+
+   This is the one sanctioned override of `chosen`, and it is bounded by **two
+   conditions, both required**:
+   1. **The child's name appears in the affiliation string.** Do not descend to a
+      unit the affiliation does not name. The string is the evidence; picking an
+      unnamed sub-unit invents a claim about where someone worked, which is the
+      thing this skill exists to prevent.
+   2. **ROR itself records the parent–child relationship.** Fetch
+      `https://api.ror.org/v2/organizations/<child-id>` and confirm the matched
+      parent appears in its `relationships` as a parent (equivalently, the child
+      appears in the parent's). A lower-scoring separate match is not a child.
+      Two organisations with similar names are not a hierarchy, and assuming one
+      is would fabricate an institutional structure.
+
+   Where both hold, record the child and say so in `notes`: name the parent set
+   aside, and give the score each received. Where either fails, keep the `chosen`
+   result. Note that condition 2 costs one extra `/organizations/` call per
+   descent — serialize it with the rest.
+
+   **Apply this at every depth.** A named laboratory inside a named institute
+   inside a university takes the laboratory's ID, provided every step is a
+   recorded ROR child relationship and every step is named in the string. Stop
+   descending at the first step where either condition fails, and record the
+   deepest unit that satisfied both.
 4. If no match is `chosen`, do NOT take the top-scoring match. Before leaving the
    field null, you MAY retry the match once on a **normalized form of the same
    string**, and only in this narrow case: the affiliation names a parent agency
@@ -620,7 +668,10 @@ outcome: record the null and note it.
    single result is a highly probable match, and sets it false on *every* result
    when several score highly, because that pattern means ambiguity. A high score
    with `chosen: false` is therefore evidence *against* the match, not weak
-   evidence for it. Do not second-guess the flag in either direction.
+   evidence for it. Do not second-guess the flag in either direction. The single sanctioned
+   exception is the child-over-parent descent in step 3, which is not a
+   preference between competing matches but a move to a more specific unit
+   that ROR itself records as a child of the chosen one.
 6. `matching_type: "ACRONYM"` never yields `chosen: true` — ROR disabled that
    after acronym matching produced too many false positives. Acronyms collide
    badly in this domain ("MPS", "IAP", "NRL", "ROB"), so if an acronym-only
@@ -638,13 +689,20 @@ outcome: record the null and note it.
 3. Multiple plausible organizations → leave null, list them in `notes`.
 
 **ROR-specific traps:**
-- **Department strings.** Affiliations frequently name a department or lab that has
-  no ROR record of its own ("Solar-Terrestrial Centre of Excellence, Royal
-  Observatory of Belgium"). Resolve to the ROR of the **parent organization that
-  the registry actually lists**, and note in `notes` that the affiliation named a
-  sub-unit. Never invent a ROR for an unlisted sub-unit; never silently drop the
-  sub-unit from the `affiliation` string itself — `affiliation` keeps what the
-  evidence said, `affiliation_ror` points at what ROR lists.
+- **Department strings — prefer the child.** Affiliations frequently name an
+  institute, laboratory or centre inside a larger organisation
+  ("Cooperative Institute for Research in Environmental Sciences, University of
+  Colorado Boulder"). Where that unit has its own ROR record, **record the child's
+  ID, not the parent's.** Credit belongs to the unit that did the work, and a
+  record that points at the university tells a curator less than one that points
+  at the institute. This is the common case in this corpus, not an exception.
+  Where the affiliation names only the parent — a bare `University of Colorado
+  Boulder` — the parent's ID is correct and nothing changes.
+  Where the named unit has no registry record of its own, resolve to the parent
+  that ROR does list and note that the affiliation named an unlisted sub-unit.
+  Never invent a ROR for an unlisted unit; never silently drop the unit from the
+  `affiliation` string itself — `affiliation` keeps what the evidence said,
+  `affiliation_ror` points at the most specific thing ROR lists.
 - **Successor and renamed organizations.** ROR records carry status
   (`active`, `inactive`, `withdrawn`) and successor relationships. An era-matched
   affiliation from the 1990s may name an institution that has since merged or been
@@ -678,6 +736,14 @@ group. Where two or more candidates in the same group carry different
   granularities.
 - Say plainly that this is a curation-policy choice — parent organization vs.
   sub-unit — and that a reviewer wanting internal consistency must pick one.
+
+With the child-preference rule in force this check should rarely fire: both
+routes now descend to the same named unit, so the granularity split that
+motivated it — one candidate carrying a laboratory's ID and another the
+parent university's — largely resolves itself. Keep the check anyway; it
+still catches the case where one candidate's affiliation names the unit and
+another's names only the parent, which is a real difference in the evidence
+rather than an artefact of the lookup.
 
 The check costs nothing (it is local to the file you already assembled) and it
 converts a silent inconsistency into a flagged decision. Without it, whether the

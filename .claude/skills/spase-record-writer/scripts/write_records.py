@@ -179,6 +179,21 @@ AFFIL_SOURCE_PHRASE = {
     "uncorroborated": "reported but not confirmed against an independent source",
 }
 
+# Contact fields whose value describes the organisation, named in plain words.
+CONTACT_FIELD_WORDS = [
+    ("Address", "address"),
+    ("PhoneNumber", "phone number"),
+    ("FaxNumber", "fax number"),
+    ("Email", "email address"),
+]
+
+
+def join_words(words):
+    if len(words) == 1:
+        return words[0]
+    return ", ".join(words[:-1]) + " and " + words[-1]
+
+
 AFFIL_TYPE_PHRASE = {
     "as-deposited": "This is the affiliation recorded at the time of publication",
     "era-matched": "This affiliation was held while the mission was operating",
@@ -210,7 +225,7 @@ def find_citation(candidate, doi):
     return None
 
 
-def build_person_note(candidate):
+def build_person_note(candidate, lead=None):
     """Person/Note records where the affiliation came from, in plain English.
 
     Only the provenance of OrganizationName -- what supports it, and what period
@@ -237,7 +252,7 @@ def build_person_note(candidate):
     if not src and not typ:
         return None
 
-    first = "Affiliation"
+    first = lead or "Affiliation"
     if src:
         first += " " + AFFIL_SOURCE_PHRASE.get(src, src)
     if ev:
@@ -253,8 +268,13 @@ def build_person_note(candidate):
 # Segments this skill writes into a Person Note. Recognising them lets a re-run
 # rebuild the Note instead of appending to its own previous output.
 OURS_RE = re.compile(
-    r"(?:Affiliation\b[^.]*?\.(?:\s*(?:This is|This affiliation)[^.]*?\.)?"
-    r"|Previously recorded in this record as [^.]*?\.)\s*")
+    r"(?:"
+    r"Previously recorded in this record as [^\n]*?\."
+    r"|The [a-z ,]*?(?:address|phone number|fax number|email address)[^\n]*?"
+    r"previous(?:ly recorded)? organi[sz]ation\."
+    r"|(?:Affiliation|The organization name on display is)\b[^.]*?\."
+    r"(?:\s*(?:This is|This affiliation)[^.]*?\.)?"
+    r")\s*", re.S)
 
 STATUS_RE = re.compile(r"\b(retired|deceased|emeritus|formerly|no longer)\b", re.I)
 
@@ -504,6 +524,11 @@ def main():
     ap.add_argument("--decisions", default=None, metavar="PATH",
                     help="JSON file of persistent link/create decisions. "
                          "Written as a template on first abort.")
+    ap.add_argument("--drop-stale-contacts", action="store_true",
+                    help="when OrganizationName changes, also remove Address, "
+                         "PhoneNumber and FaxNumber, which describe the previous "
+                         "organisation. Off by default: many changes rename the "
+                         "same employer, where those details are still correct.")
     ap.add_argument("--artifacts-url", default=None,
                     help="commit-pinned URL for the candidate and enrichment "
                          "files, appended to the RevisionEvent note")
@@ -666,28 +691,76 @@ def main():
             #      status such as "Retired - formerly at ..." in that field, and
             #      dropping it would assert current employment that has ended
             #   3. this run's affiliation provenance
-            pnote = build_person_note(c)
+            # The Note is what a curator actually reads, so what they need to
+            # act on goes here, not only into the run log. Up to three
+            # paragraphs:
+            #   1. whatever a human wrote, preserved verbatim and first
+            #   2. the OrganizationName this run replaced, and which contact
+            #      fields still describe it -- 451 records carry an Address, and
+            #      after an org change it belongs to the previous employer
+            #   3. where the organisation now shown came from
             curated = split_curated((fields.get("Note") or [""])[0])
-            parts = []
+            paras = []
             if curated:
-                parts.append(curated.rstrip())
+                paras.append(curated.rstrip())
+
             if replaced_org:
-                parts.append("Previously recorded in this record as '%s'."
-                             % replaced_org)
+                sent = ["Previously recorded in this record as '%s'." % replaced_org]
+                kept = [w for t, w in CONTACT_FIELD_WORDS
+                        if fields.get(t) and not (args.drop_stale_contacts
+                                                  and t != "Email")]
+                if kept:
+                    sent.append("The %s in this record %s that previous "
+                                "organization."
+                                % (join_words(kept),
+                                   "relates to" if len(kept) == 1 else "relate to"))
+                paras.append(" ".join(sent))
                 if STATUS_RE.search(replaced_org):
                     log.append("ORG STATUS %s: replaced value carried a person "
                                "status ('%s') -- preserved in the Note, but "
                                "verify the new value is right"
                                % (pid, replaced_org))
+
+            lead = "The organization name on display is" if replaced_org else None
+            pnote = build_person_note(c, lead=lead)
             if pnote and org:
-                parts.append(pnote)
-            if parts:
-                joined = " ".join(x.rstrip() for x in parts if x)
+                paras.append(pnote)
+
+            if paras:
+                if len(paras) > 1:
+                    body = ("\n\n          ").join(paras)
+                    joined = "\n          " + body + "\n        "
+                else:
+                    joined = paras[0]
                 if joined != (fields.get("Note") or [""])[0]:
                     txt = set_field(txt, "Note", joined)
                 if curated:
                     log.append("NOTE KEPT  %s: existing Note preserved and "
                                "appended to" % pid)
+
+            # Address, PhoneNumber and FaxNumber describe where the person
+            # worked at the PREVIOUS organisation. The input never supplies
+            # replacements, so the choice is keep or remove -- and it is not the
+            # writer's to make: an ORG CHANGE may be a real move, where those
+            # details are now wrong, or a renaming of the same employer, where
+            # they remain correct. Flag by default; remove only when told.
+            if replaced_org:
+                stale = [t for t in ("Address", "PhoneNumber", "FaxNumber")
+                         if fields.get(t)]
+                if stale and args.drop_stale_contacts:
+                    for t in stale:
+                        txt = drop_field(txt, t)
+                    log.append("CONTACT DROP %s: removed %s -- described the "
+                               "previous organisation" % (pid, ", ".join(stale)))
+                elif stale:
+                    log.append("CONTACT CHECK %s: record still holds %s from "
+                               "'%s'; verify against the new organisation, or "
+                               "re-run with --drop-stale-contacts"
+                               % (pid, ", ".join(stale), replaced_org))
+                if fields.get("Email"):
+                    log.append("EMAIL CHECK  %s: '%s' may belong to the previous "
+                               "organisation; kept, since an address often "
+                               "outlives a move" % (pid, fields["Email"][0]))
 
             existing_ror_now = (fields.get("RORIdentifier") or [""])[0]
             if ror and not existing_ror_now:

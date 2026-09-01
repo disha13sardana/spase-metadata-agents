@@ -185,6 +185,46 @@ record. The enricher may supply several separated by ` / `.
 - **Real affiliation, existing record:** overwrite, and log the before/after.
   The input carries the current affiliation; the registry value is often stale.
 
+**Address, phone and fax are flagged, not moved.** `Address`, `PhoneNumber` and
+`FaxNumber` describe where the person worked at the *previous* organisation — 451,
+318 and 104 records carry them. The input never supplies replacements, so the
+only choice is keep or remove, and that choice is not the writer's:
+
+- Some `ORG CHANGE` lines are a **real move**. Pollock, SwRI to GSFC: the address
+  and phone are now wrong.
+- Many are a **renaming of the same employer**. `Institute of Geophysics and
+  Planetary Physics ... University of California, Los Angeles` normalised to
+  `University of California, Los Angeles` is the same building, and the address
+  and phone remain correct.
+
+Nothing in the input distinguishes them, so removing by default would destroy
+correct data in the second class to fix the first. Leave them in place, and **say
+so in the Note** — a curator reads the record, not the run log, so a caution that
+lives only in terminal output is a caution nobody acts on:
+
+```
+Previously recorded in this record as 'Institute of Geophysics and Planetary
+Physics ... University of California, Los Angeles'. The address, phone number,
+fax number and email address in this record relate to that previous organization.
+
+The organization name on display is from the person's ORCID employment history
+(https://orcid.org/0000-0002-6847-4136). This affiliation was held while the
+mission was operating.
+```
+
+Name only the fields the record actually holds. `--drop-stale-contacts` removes
+them when a curator has confirmed a real move, and the sentence then names only
+what remains.
+
+`Email` is kept even then, and flagged separately as `EMAIL CHECK`. An address
+often survives a move, and it is frequently the only way to reach the person —
+deleting it costs more than an out-of-date phone number does.
+
+This is deliberately unlike the ROR rule below. A ROR is a machine-resolvable
+identifier *of the organisation string beside it*, so a changed string makes it
+definitionally wrong. Contact details describe a person at a place, and a renamed
+employer does not move anybody.
+
 **`RORIdentifier` follows `OrganizationName`.** A ROR identifies the organisation
 named beside it, so when the organisation changes the old ROR is no longer true
 of that record. Two cases, and the second is the one that is easy to miss:
@@ -300,7 +340,14 @@ in this order:
    organisation name does not merely lose detail; it asserts current employment
    for someone who has retired or died. The old value is recorded as
    `Previously recorded in this record as '...'.`
-3. **This run's affiliation provenance.**
+3. **This run's affiliation provenance**, phrased so it is clear which
+   organisation it describes. Where a previous value is named in the paragraph
+   above, the sentence opens "The organization name on display is ..." rather
+   than "Affiliation ...", because the Note now mentions two organisations and
+   the reader must not have to guess which one has the evidence behind it.
+
+Paragraphs are separated by a blank line, which is what SPASE 2.7.1 section 3.4
+treats as a break — a single newline renders as one run-on paragraph.
 
 When the replaced value carried a person status, log `ORG STATUS` as well — the
 Note preserves it, but a human should confirm the new value is right at all.
