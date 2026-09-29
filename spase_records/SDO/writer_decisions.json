@@ -1,0 +1,24 @@
+{
+  "_help": "For each name: set links[name] to an existing PersonID if it is the same human, or move the name into creates if it is a different person. Empty string means undecided.",
+  "_candidates": {
+    "Wei Liu": [
+      "Zhen-Xing.Liu",
+      "Anthony.S.Liu"
+    ],
+    "Andrew R. Jones": [
+      "Andrew.Jones",
+      "A.V.Jones",
+      "Bernard.B.Jones",
+      "W.Linwood.Jones.Jr"
+    ],
+    "Rock I. Bush": [
+      "R.Bush"
+    ]
+  },
+  "links": {
+    "Wei Liu": "",
+    "Andrew R. Jones": "",
+    "Rock I. Bush": ""
+  },
+  "creates": []
+}
