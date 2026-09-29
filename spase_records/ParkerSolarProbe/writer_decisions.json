@@ -7,5 +7,125 @@
   "creates": [
     "Marco Velli",
     "Arik Posner"
-  ]
+  ],
+  "writer_run": {
+    "date": "2026-09-29",
+    "record": "spase://SMWG/Observatory/ParkerSolarProbe",
+    "target_file": "Observatory/ParkerSolarProbe.xml",
+    "repo": "/Users/dishasardana/Documents/nasa-hdrl/ai-agents/code/SMWG",
+    "branch": "author-enrichment-parkersolarprobe",
+    "base": "master @ f3ab7138",
+    "commit": "839bf036",
+    "pushed": false,
+    "initials": "DS",
+    "artifacts_url": "https://github.com/disha13sardana/spase-metadata-agents/tree/2035ed5/spase_records/ParkerSolarProbe",
+    "release_stamp": "2026-09-29T08:55:47Z",
+    "candidates_included": 17,
+    "candidates_excluded": 28,
+    "contacts_written": 17,
+    "contacts_replaced": 3,
+    "contacts_kept": [
+      "James.M.Weygand",
+      "Lee.Frost.Bargatze"
+    ],
+    "person_records_created": [
+      "Marco.Velli",
+      "Arik.Posner"
+    ],
+    "person_records_updated": [
+      "Nicola.J.Fox",
+      "Stuart.D.Bale",
+      "Keith.A.Goetz",
+      "Peter.R.Harvey",
+      "David.J.McComas",
+      "Eric.R.Christian",
+      "Justin.C.Kasper",
+      "Michael.L.Stevens",
+      "Angelos.Vourlidas",
+      "Russell.A.Howard",
+      "Simon.Plunkett",
+      "Mark.Linton",
+      "Nour.Raouafi",
+      "Robert.B.Decker",
+      "Adam.Szabo"
+    ],
+    "information_urls_added": 6,
+    "information_urls_present": 1,
+    "information_urls_deferred": 8,
+    "validation": {
+      "baseline_errors": 14,
+      "post_run_errors": 14,
+      "introduced": 0,
+      "target_record": "1 ok, 0 warnings, 0 errors",
+      "note": "All 14 errors are pre-existing and sit in Person files this run did not touch: Aaron.W.Breneman, Asti.N.Bhat, Guiping.liu, 'John.Grant.Mitchell .xml', Kornyanat.Hozumi, Nathaniel.Frissell, Stefan.Erikson, William.Engelke."
+    },
+    "value_audit": "All 17 included candidates audited field by field: every OrganizationName, ORCIdentifier and RORIdentifier written matches the enriched input exactly. No value was sourced from anywhere but the input.",
+    "version_audit": {
+      "downgrades": [],
+      "result": "No Version downgrade occurred. Every touched Person record declared 2.7.1 or older, so Step 8 only upgraded. The SDO-run failure mode (Madhulika.Guhathakurta 2.7.2 forced to 2.7.1) did not recur.",
+      "upgraded": {
+        "Nicola.J.Fox": "2.2.2 -> 2.7.1",
+        "Stuart.D.Bale": "2.2.0 -> 2.7.1",
+        "Keith.A.Goetz": "2.2.0 -> 2.7.1",
+        "Peter.R.Harvey": "2.2.0 -> 2.7.1",
+        "Justin.C.Kasper": "2.2.0 -> 2.7.1",
+        "Robert.B.Decker": "2.6.0 -> 2.7.1",
+        "David.J.McComas": "2.7.0 -> 2.7.1",
+        "Adam.Szabo": "2.7.0 -> 2.7.1",
+        "Simon.Plunkett": "2.7.0 -> 2.7.1"
+      },
+      "unchanged_at_2_7_1": [
+        "Angelos.Vourlidas",
+        "Eric.R.Christian",
+        "Mark.Linton",
+        "Michael.L.Stevens",
+        "Nour.Raouafi",
+        "Russell.A.Howard"
+      ]
+    },
+    "divergence_log": [
+      "ORG CHANGE Nicola.J.Fox: 'JHU/APL' -> 'Johns Hopkins University Applied Physics Laboratory'",
+      "CONTACT CHECK Nicola.J.Fox: record still holds Address from 'JHU/APL'; kept, noted in the Person Note",
+      "EMAIL CHECK Nicola.J.Fox: 'nicola.fox@jhuapl.edu' may belong to the previous organisation; kept",
+      "ORG CHANGE Stuart.D.Bale: 'University of California, Berkeley' -> 'Space Sciences Laboratory, University of California, Berkeley'",
+      "ORG CHANGE Keith.A.Goetz: 'University of Minnesota' -> 'School of Physics and Astronomy, University of Minnesota'",
+      "ORG CHANGE David.J.McComas: 'Princeton University' -> 'Department of Astrophysical Sciences, Princeton University'",
+      "ORG CHANGE Justin.C.Kasper: 'University of Michigan' -> 'Climate and Space Sciences and Engineering, University of Michigan'",
+      "LINK Michael L. Stevens -> Michael.L.Stevens (confirmed by curator)",
+      "ORG CHANGE Michael.L.Stevens: 'Harvard-Smithsonian Center for Astrophysics' -> 'Center for Astrophysics | Harvard & Smithsonian'",
+      "ORG CHANGE Russell.A.Howard: 'Johns Hopkins University Applied Physics Laboratory' -> 'US Naval Research Laboratory'",
+      "EMAIL CHECK Russell.A.Howard: 'Russell.Howard@jhuapl.edu' may belong to the previous organisation; kept",
+      "LINK Simon P. Plunkett -> Simon.Plunkett (confirmed by curator)",
+      "ORG KEPT Simon.Plunkett: no affiliation in input, kept 'NASA Headquarter'",
+      "NAME ADDED Simon.Plunkett: PersonName was missing, set to 'Simon P. Plunkett'",
+      "LINK Mark G. Linton -> Mark.Linton (confirmed by curator)",
+      "ORG CHANGE Mark.Linton: 'US Naval Research Laboratory' -> 'Naval Research Laboratory Space Science Division  Washington DC USA'",
+      "ORG CHANGE Nour.Raouafi: 'Johns Hopkins Applied Physics Laboratory' -> 'Johns Hopkins University Applied Physics Laboratory'",
+      "ORG CHANGE Robert.B.Decker: 'Applied Physics Laboratory' -> 'Johns Hopkins University Applied Physics Laboratory'",
+      "EMAIL CHECK Robert.B.Decker: 'Rob.Decker@jhuapl.edu' may belong to the previous organisation; kept",
+      "REPLACED 3 existing Contact block(s) for the same people (Nour.Raouafi, Nicola.J.Fox, Robert.B.Decker)",
+      "KEPT 2 unrelated Contact(s): James.M.Weygand, Lee.Frost.Bargatze",
+      "URL PRESENT https://doi.org/10.1007/s11214-015-0211-6 already in the record",
+      "URL DEFERRED 8 instrument-level entries left for the FIELDS/ISOIS/SWEAP/WISPR Instrument records",
+      "URL ADDED 6 observatory-scope InformationURL entries"
+    ],
+    "reconciliations_flagged_by_caller": {
+      "Nour.Raouafi_role": "The record's existing Contact carried Role PrincipalInvestigator. Transcribe-only applies: the Contact was REPLACED with the input's roles, ProjectScientist then Author (precedence order). The PrincipalInvestigator role is gone from the record. The input's own role_evidence text, transcribed verbatim into the Contact Note, states that the Observatory record gave him PrincipalInvestigator and that no source outside SPASE supports that title, so the record now documents the demotion and its justification. No role was invented or promoted.",
+      "Simon.Plunkett_nulls": "orcid, affiliation and affiliation_ror are all null in the input. Nothing was looked up. No ORCIdentifier and no RORIdentifier were written; the existing OrganizationName 'NASA Headquarter' was KEPT typo and all, because a null input is not a licence to correct curated text; no Person Note was written, because there is no affiliation provenance to record. PersonName was backfilled from the candidate name. The writer also added the schema-required NamingAuthority, ResourceType and ReleaseDate, which the record lacked entirely.",
+      "version_downgrade_check": "Checked on all 17 touched files. Zero downgrades. See version_audit."
+    },
+    "reviewer_attention": [
+      "ORG CHANGE Russell.A.Howard is a reversal of direction, not a refinement: the registry said Johns Hopkins University Applied Physics Laboratory, the input says US Naval Research Laboratory, and the retained Email is Russell.Howard@jhuapl.edu. The input's source is the SPDF/CDAWeb PSP readme (provider documentation, era-matched). Transcribed as given; a curator should confirm which institution is right for the operating span and whether the APL email should stay.",
+      "ORG CHANGE Mark.Linton wrote the raw Crossref deposit string 'Naval Research Laboratory Space Science Division  Washington DC USA', including its double space, replacing the cleaner 'US Naval Research Laboratory'. The input carries no punctuation, so it was not edited. A curator may want to normalise it, and note that Russell.A.Howard now reads 'US Naval Research Laboratory' for the same institution - two granularities/spellings for NRL across two records.",
+      "ORG CHANGE Michael.L.Stevens, Stuart.D.Bale, Keith.A.Goetz, David.J.McComas and Justin.C.Kasper are department- or unit-level refinements of the same employer, not moves. Their Address/Email/Phone fields were left in place and the Person Note says so.",
+      "GRANULARITY Stuart.D.Bale carries the Space Sciences Laboratory ROR 048400679 while Peter.R.Harvey carries the parent UC Berkeley ROR 01an7q238. The enricher flagged this as a difference in the evidence, not a lookup artefact. Two granularities for one institution.",
+      "DUPLICATE (pre-existing, not fixed) Person/Michael.Louis.Stevens.xml is the same human as Michael.L.Stevens: identical PersonName 'Michael Louis Stevens', both Harvard-Smithsonian CfA, created a month apart in 2017. Michael.L.Stevens holds 2 inbound references (Repository/HU/CfA.xml, Instrument/DSCOVR/PlasMag/FaradayCup.xml) and was written; Michael.Louis.Stevens is an orphan with 0 references but richer contact details. It was NOT written to and NOT deleted. Needs a curator merge outside an authorship change.",
+      "DUPLICATE LINK (pre-existing, not fixed) The record now holds two entries for the APL mission home page: the existing 'Parker Solar Probe Mission Web Page, JPL' at http://parkersolarprobe.jhuapl.edu/ and the newly added 'Parker Solar Probe mission web page, JHU/APL' at https://parkersolarprobe.jhuapl.edu/. The URL PRESENT check ignores case and trailing slash but not the scheme, so the http/https pair was not deduplicated. The pre-existing entry is also mislabelled 'JPL' for what is an APL page. A curator should drop or merge one.",
+      "SCHEMA ONLY (pre-existing, not fixed) 14 checker errors remain in untouched Person files: Aaron.W.Breneman, Asti.N.Bhat, Guiping.liu, 'John.Grant.Mitchell .xml' (filename has a stray space), Kornyanat.Hozumi, Nathaniel.Frissell, Stefan.Erikson, William.Engelke. Mostly ResourceID/path mismatches and dangling ResourceIDs. Identical to the baseline.",
+      "ROLE SUBSTITUTIONS MADE UPSTREAM, transcribed here: Robert.B.Decker is Deputy Project Scientist but SPASE has no such role, so ProjectScientist was written with the deputy status in the Note. Marco Velli is the mission's Observatory Scientist and Adam Szabo the Mission Scientist; neither post exists in the enumeration, so only Author was written. All roles used - Author, ProgramScientist, ProjectScientist, DeputyPI, FormerPI, InstrumentLead - are legal in the 2.7.1 enumeration.",
+      "STRUCTURAL GAPS reported by the enricher, out of scope here: IS(.)IS/EPI-Hi and FIELDS/RFS have no Instrument records of their own, and FIELDS/FIELDS2/TDS has an intermediate 'FIELDS2' directory with no record. No PSP CMAD could be located anywhere public.",
+      "CONFIDENCE MIX of the 17 written candidates: 12 Strong, 5 Medium (Eric.R.Christian, Nour.Raouafi, Robert.B.Decker, Adam.Szabo, Arik.Posner). Confidence did not gate writing."
+    ],
+    "push_command": "git -C /Users/dishasardana/Documents/nasa-hdrl/ai-agents/code/SMWG push --force-with-lease -u origin author-enrichment-parkersolarprobe"
+  }
 }
