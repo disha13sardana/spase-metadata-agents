@@ -633,23 +633,41 @@ outcome: record the null and note it.
       unit the affiliation does not name. The string is the evidence; picking an
       unnamed sub-unit invents a claim about where someone worked, which is the
       thing this skill exists to prevent.
-   2. **ROR itself records the parent–child relationship.** Fetch
-      `https://api.ror.org/v2/organizations/<child-id>` and confirm the matched
-      parent appears in its `relationships` as a parent (equivalently, the child
-      appears in the parent's). A lower-scoring separate match is not a child.
-      Two organisations with similar names are not a hierarchy, and assuming one
-      is would fabricate an institutional structure.
+   2. **The child's ROR record is demonstrably the unit the string names.** Fetch
+      `https://api.ror.org/v2/organizations/<child-id>` and confirm it by one of
+      two routes, strongest first:
+      - **Recorded relationship (preferred).** The matched parent appears in the
+        child's `relationships` as a parent, or the child in the parent's. This
+        settles identity outright.
+      - **Location match (when no relationship is recorded).** ROR's relationship
+        data is incomplete, and a missing link usually means nobody entered it —
+        not that the unit belongs to someone else. So when the relationship is
+        absent, accept the child if its record's name, alias or label matches the
+        unit the string names AND its location matches the parent's: same
+        country, and same city wherever either record gives one.
+      What this condition guards against is a **same-named unit at a different
+      institution**. Laboratory and centre names collide across universities —
+      "Space Sciences Laboratory", "Center for Space Physics", "Plasma Physics
+      Laboratory" — and without a check, a string naming one university's lab
+      can resolve to another university's lab of the same name. Refuse the
+      descent if the location contradicts the parent, or if several records
+      match the unit's name and nothing distinguishes them; fall back to the
+      parent and list the candidates in `notes`.
 
-   Where both hold, record the child and say so in `notes`: name the parent set
-   aside, and give the score each received. Where either fails, keep the `chosen`
-   result. Note that condition 2 costs one extra `/organizations/` call per
-   descent — serialize it with the rest.
+   Where both conditions hold, record the child and say so in `notes`: name the
+   parent set aside, give the score each received, and state which route
+   confirmed the child. **When it was the location route, say explicitly that ROR
+   records no parent–child relationship between the two**, so a reviewer knows
+   the link rests on name and location rather than on the registry's own
+   hierarchy. Where either condition fails, keep the `chosen` result. Condition 2
+   costs one extra `/organizations/` call per descent — serialize it with the
+   rest.
 
    **Apply this at every depth.** A named laboratory inside a named institute
-   inside a university takes the laboratory's ID, provided every step is a
-   recorded ROR child relationship and every step is named in the string. Stop
-   descending at the first step where either condition fails, and record the
-   deepest unit that satisfied both.
+   inside a university takes the laboratory's ID, provided every step is named in
+   the string and every step passes condition 2 by either route. Stop descending
+   at the first step where either condition fails, and record the deepest unit
+   that satisfied both.
 4. If no match is `chosen`, do NOT take the top-scoring match. Before leaving the
    field null, you MAY retry the match once on a **normalized form of the same
    string**, and only in this narrow case: the affiliation names a parent agency

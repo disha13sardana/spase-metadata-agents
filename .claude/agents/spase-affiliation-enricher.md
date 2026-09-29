@@ -81,9 +81,13 @@ its own ROR record, record the child's ID — credit belongs to the unit that di
 the work. This is the one sanctioned override of ROR's `chosen` flag, which
 routinely picks the parent at the same score (CIRES and CU Boulder both return
 1.0; record CIRES). Two conditions, both required: the child's name appears in
-the affiliation string, and ROR itself records the parent–child relationship —
-confirm via `/organizations/<child-id>` that the parent is in its
-`relationships`, since two similarly-named organisations are not a hierarchy.
+the affiliation string, and the child's ROR record is demonstrably that unit —
+either ROR records it as a child of the matched parent, or, where ROR records no
+relationship, its name matches the unit and its location (country, and city
+where given) matches the parent's. The location route exists because ROR's
+relationship data is incomplete; it guards against same-named labs at other
+institutions. When the location route confirms the child, say in `notes` that
+ROR records no parent–child link.
 Apply it at every depth while both conditions hold, and at Route A as well when
 ORCID asserted the parent for a post whose department is the named institute.
 Name the parent you set aside, with scores, in `notes`.
