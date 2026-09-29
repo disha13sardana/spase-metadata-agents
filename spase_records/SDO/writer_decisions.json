@@ -1,24 +1,65 @@
 {
-  "_help": "For each name: set links[name] to an existing PersonID if it is the same human, or move the name into creates if it is a different person. Empty string means undecided.",
-  "_candidates": {
-    "Wei Liu": [
-      "Zhen-Xing.Liu",
-      "Anthony.S.Liu"
-    ],
-    "Andrew R. Jones": [
-      "Andrew.Jones",
-      "A.V.Jones",
-      "Bernard.B.Jones",
-      "W.Linwood.Jones.Jr"
-    ],
-    "Rock I. Bush": [
-      "R.Bush"
-    ]
-  },
   "links": {
-    "Wei Liu": "",
-    "Andrew R. Jones": "",
-    "Rock I. Bush": ""
+    "Andrew R. Jones": "Andrew.Jones",
+    "Madhulika Guhathakurta": "Madhulika.Guhathakurta",
+    "Rock I. Bush": "R.Bush"
   },
-  "creates": []
+  "creates": [
+    "Wei Liu"
+  ],
+  "decision_notes": {
+    "Rock I. Bush": "Same person as spase://SMWG/Person/R.Bush; ruled by the curator on 2026-09-29. The record's 'University of California, Berkeley' was his doctoral institution, not a rival identity; corrected to the input's Stanford University value with ROR 00f54p054. Rock.I.Bush was NOT minted.",
+    "Andrew R. Jones": "Same person as spase://SMWG/Person/Andrew.Jones (LASP email andrew.jones@lasp.colorado.edu matches the input's LASP affiliation).",
+    "Madhulika Guhathakurta": "Existing record confirmed; ID was already asserted by the enricher and the file exists.",
+    "Wei Liu": "Distinct from Zhen-Xing.Liu and Anthony.S.Liu; new record Wei.Liu created."
+  },
+  "run": {
+    "date": "2026-09-29T07:39:53Z",
+    "repo": "/Users/dishasardana/Documents/nasa-hdrl/ai-agents/code/SMWG",
+    "branch": "author-enrichment-sdo",
+    "base": "master (f3ab7138)",
+    "commit": "7a7d8064",
+    "pushed": false,
+    "target_record": "Observatory/SDO.xml",
+    "contacts_written": 19,
+    "contacts_replaced": 1,
+    "person_records_created": [
+      "Phillip.C.Chamberlin",
+      "Wei.Liu",
+      "Francis.G.Eparvier",
+      "Rachel.A.Hock",
+      "Rita.J.Borelli",
+      "Jesper.Schou"
+    ],
+    "person_records_updated": [
+      "W.Dean.Pesnell",
+      "Barbara.J.Thompson",
+      "Madhulika.Guhathakurta",
+      "James.R.Lemen",
+      "Alan.M.Title",
+      "Mark.C.M.Cheung",
+      "Meng.Jin",
+      "Karel.Schrijver",
+      "Thomas.N.Woods",
+      "Andrew.Jones",
+      "Don.Woodraska",
+      "Philip.H.Scherrer",
+      "R.Bush"
+    ],
+    "information_urls_added": 4,
+    "information_urls_deferred": 11,
+    "validation": {
+      "baseline_errors": 14,
+      "post_run_errors": 14,
+      "introduced": 0
+    },
+    "artifacts_url": "https://github.com/disha13sardana/spase-metadata-agents/tree/be9d560/spase_records/SDO",
+    "artifacts_url_note": "Passed explicitly because the auto-deriver refuses on any uncommitted change in the artifacts folder, and this decisions file itself is uncommitted. The value is exactly what derivation would have produced: be9d560 is the last commit touching spase_records/SDO and it is on origin/main.",
+    "audit": "Every OrganizationName, RORIdentifier and ORCIdentifier written was re-checked against the input candidate. All match. Two expected non-literal cases: Mark.C.M.Cheung's '&' is XML-escaped as '&amp;', and Rachel.A.Hock uses the 'Unknown' fallback because the input carries no affiliation.",
+    "for_curator_review": [
+      "James.R.Lemen OrganizationName replaced with an uncorroborated input value; see report.",
+      "Rachel.A.Hock created with OrganizationName=Unknown and no ORCID or ROR; enricher lookup_status skipped-unconfirmed-identity.",
+      "Madhulika.Guhathakurta declared Version 2.7.2 and was rewritten to 2.7.1 by the Step 8 schemaLocation correction."
+    ]
+  }
 }

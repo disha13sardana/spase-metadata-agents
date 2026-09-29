@@ -1,0 +1,958 @@
+{
+  "record": "spase://SMWG/Observatory/ParkerSolarProbe",
+  "date": "2026-09-29",
+  "operating_span": { "start": "2018-08-12T07:31:00", "stop": null },
+  "cmad": {
+    "found": false,
+    "expected": true,
+    "url": null,
+    "notes": "No Parker Solar Probe CMAD located after all three search strategies. (a) Designated repository: a Zenodo full-text query for \"Parker Solar Probe\" CMAD returned 244 hits, none of which is a Calibration and Measurement Algorithms Document (all are science datasets, catalogues, software and conference material). (b) Data-centre sites: the SPDF/CDAWeb PSP readme (https://cdaweb.gsfc.nasa.gov/sp_phys/data/psp/00readme.html, last updated 2022-02-16) describes each suite and names its PI but links no CMAD; the APL PSP Science Gateway (https://sppgway.jhuapl.edu/) is a JavaScript application with no crawlable document index, so it could not be inspected without a browser. (c) General web search surfaced CMADs for other heliophysics missions (MMS, SDO/EVE, STEREO/SWAVES, SABER) and the 2023 Heliophysics Senior Review report (which confirms CMADs are a standing requirement), but no PSP document. Parker Solar Probe is still operating (no StopDate; perihelia scheduled through 2026) and is NASA-funded under Living With a Star contract NNN06AA01C, so a CMAD is expected to exist and its absence from public locations is a notable gap - it may be held internally at APL or GSFC. Current-team evidence was instead taken from the JHU/APL mission team page, which is dated 2026 and names the sitting instrument PIs."
+  },
+  "instrument_coverage": {
+    "spase_instruments": [
+      "spase://SMWG/Instrument/ParkerSolarProbe/FIELDS",
+      "spase://SMWG/Instrument/ParkerSolarProbe/FIELDS/DFB",
+      "spase://SMWG/Instrument/ParkerSolarProbe/FIELDS/MAG",
+      "spase://SMWG/Instrument/ParkerSolarProbe/FIELDS/SCM",
+      "spase://SMWG/Instrument/ParkerSolarProbe/FIELDS/V1",
+      "spase://SMWG/Instrument/ParkerSolarProbe/FIELDS/V2",
+      "spase://SMWG/Instrument/ParkerSolarProbe/FIELDS/V3",
+      "spase://SMWG/Instrument/ParkerSolarProbe/FIELDS/V4",
+      "spase://SMWG/Instrument/ParkerSolarProbe/FIELDS/V5",
+      "spase://SMWG/Instrument/ParkerSolarProbe/FIELDS/RFS/HFR",
+      "spase://SMWG/Instrument/ParkerSolarProbe/FIELDS/RFS/LFR",
+      "spase://SMWG/Instrument/ParkerSolarProbe/FIELDS/FIELDS2/TDS",
+      "spase://SMWG/Instrument/ParkerSolarProbe/ISOIS",
+      "spase://SMWG/Instrument/ParkerSolarProbe/ISOIS/EPI-Lo",
+      "spase://SMWG/Instrument/ParkerSolarProbe/ISOIS/EPI-Hi/HET",
+      "spase://SMWG/Instrument/ParkerSolarProbe/ISOIS/EPI-Hi/LET1",
+      "spase://SMWG/Instrument/ParkerSolarProbe/ISOIS/EPI-Hi/LET2",
+      "spase://SMWG/Instrument/ParkerSolarProbe/SWEAP",
+      "spase://SMWG/Instrument/ParkerSolarProbe/SWEAP/SPC",
+      "spase://SMWG/Instrument/ParkerSolarProbe/SWEAP/SPAN-A",
+      "spase://SMWG/Instrument/ParkerSolarProbe/SWEAP/SPAN-B",
+      "spase://SMWG/Instrument/ParkerSolarProbe/WISPR",
+      "spase://SMWG/Instrument/ParkerSolarProbe/WISPR/InnerTelescope",
+      "spase://SMWG/Instrument/ParkerSolarProbe/WISPR/OuterTelescope",
+      "spase://SMWG/Instrument/ParkerSolarProbe/Ephemeris"
+    ],
+    "external_roster": ["FIELDS", "WISPR", "SWEAP", "ISOIS"],
+    "roster_sources": [
+      "https://science.nasa.gov/mission/parker-solar-probe/",
+      "https://science.nasa.gov/mission/parker-solar-probe/parker-solar-probe-instruments/",
+      "https://parkersolarprobe.jhuapl.edu/The-Mission/index.php",
+      "https://cdaweb.gsfc.nasa.gov/sp_phys/data/psp/00readme.html",
+      "https://doi.org/10.1007/s11214-015-0211-6",
+      "record Description"
+    ],
+    "missing_from_spase": [],
+    "notes": "The external roster is unambiguous and every source agrees: Parker Solar Probe carries exactly four science instrument suites - FIELDS, WISPR, SWEAP and IS⊙IS. This is stated by the NASA Science mission page, the NASA Science instruments page (which also names a PI for each suite), the JHU/APL mission team page (which lists four 'Instrument Principal Investigators'), the SPDF/CDAWeb PSP readme (four data subdirectories plus ephemeris), the mission overview paper (Fox et al. 2015, 10.1007/s11214-015-0211-6), and the processed record's own Description. All four have SPASE Instrument records, so nothing is missing from SPASE at suite level. Two structural gaps exist one level down and are worth flagging to curators rather than counted as missing instruments: (1) IS⊙IS/EPI-Hi has no Instrument record of its own - only its three telescopes (HET, LET1, LET2) are registered, under an EPI-Hi directory that contains no EPI-Hi record; (2) FIELDS/RFS (the Radio Frequency Spectrometer) likewise has no record of its own, only its HFR and LFR receivers. A third oddity: the FIELDS Time Domain Sampler is registered at the path FIELDS/FIELDS2/TDS, where the intermediate 'FIELDS2' directory has no record and appears to be a pathing artefact rather than a real instrument. The clone was verified against the published registry at spase-metadata.org and the two agree exactly on all 25 records above. The Ephemeris record is a housekeeping/trajectory pseudo-instrument, not a payload element, and carries only metadata contacts."
+  },
+  "pending_instrument_runs": [
+    {
+      "instrument": "PSP FIELDS sub-instruments (MAG, SCM, DFB, RFS/LFR, RFS/HFR, TDS, V1-V5 antennas)",
+      "spase_record": "spase://SMWG/Instrument/ParkerSolarProbe/FIELDS/*",
+      "description_paper": "https://doi.org/10.1007/s11214-016-0244-5",
+      "reason": "deferred by scope - sub-instrument rosters below suite level",
+      "notes": "This Observatory run resolved FIELDS at suite level only (Contacts PI plus positions 1-3 of the suite paper). Each sub-instrument has its own SPASE record, but all eleven carry identical Contacts - Stuart D. Bale as PrincipalInvestigator, Nicola J. Fox as ProjectScientist, Lee Frost Bargatze as MetadataContact - so no new people are recoverable from the records themselves. The sub-instrument leads (for example the MAG fluxgate, SCM search coil, Digital Fields Board and Radio Frequency Spectrometer teams) are described in dedicated sections of the suite paper (Bale et al. 2016, 10.1007/s11214-016-0244-5) and in separate sub-instrument papers, none of which were resolved here. A per-instrument finder pass is needed for each."
+    },
+    {
+      "instrument": "PSP IS⊙IS sub-instruments (EPI-Lo, EPI-Hi and its HET/LET1/LET2 telescopes)",
+      "spase_record": "spase://SMWG/Instrument/ParkerSolarProbe/ISOIS/*",
+      "description_paper": "https://doi.org/10.1007/s11214-014-0059-1",
+      "reason": "deferred by scope - sub-instrument rosters below suite level",
+      "notes": "Resolved at suite level only. All four sub-instrument records carry identical Contacts - David J. McComas as PrincipalInvestigator, Nicola J. Fox as ProjectScientist, Lee Frost Bargatze as MetadataContact - and contribute no new people. EPI-Lo and EPI-Hi each have their own instrument leads at APL and Caltech respectively, documented in sections of (McComas et al. 2014, 10.1007/s11214-014-0059-1) and in later dedicated papers that were not resolved here. Note also that EPI-Hi itself has no SPASE Instrument record."
+    },
+    {
+      "instrument": "PSP SWEAP sub-instruments (SPC, SPAN-A, SPAN-B)",
+      "spase_record": "spase://SMWG/Instrument/ParkerSolarProbe/SWEAP/*",
+      "description_paper": "https://doi.org/10.1007/s11214-015-0206-3",
+      "reason": "deferred by scope - sub-instrument rosters below suite level",
+      "notes": "Resolved at suite level only. All three sub-instrument records carry identical Contacts - Justin C. Kasper as PrincipalInvestigator, Nicola J. Fox as ProjectScientist, Lee Frost Bargatze as MetadataContact. Dedicated description papers exist for the Solar Probe Cup and for the Solar Probe ANalyzers (ions and electrons) and were seen in search results but not resolved, so their author lists were not extracted; a per-instrument pass is needed."
+    },
+    {
+      "instrument": "PSP WISPR telescopes (InnerTelescope, OuterTelescope)",
+      "spase_record": "spase://SMWG/Instrument/ParkerSolarProbe/WISPR/*",
+      "description_paper": "https://doi.org/10.1007/s11214-014-0114-y",
+      "reason": "deferred by scope - sub-instrument rosters below suite level",
+      "notes": "Resolved at suite level only. Both telescope records carry identical Contacts - Russell A. Howard as PrincipalInvestigator, Nicola J. Fox as ProjectScientist, Lee Frost Bargatze as MetadataContact. The two telescopes are optical channels of one instrument rather than separately led hardware, so a per-instrument pass will most likely confirm the suite roster; the WISPR team site (https://wispr.nrl.navy.mil/) hosts calibration and documentation pages that were not mined here."
+    },
+    {
+      "instrument": "PSP Spacecraft Ephemeris",
+      "spase_record": "spase://SMWG/Instrument/ParkerSolarProbe/Ephemeris",
+      "description_paper": null,
+      "reason": "paper not located",
+      "notes": "A trajectory/housekeeping pseudo-instrument rather than a payload element. Its Contacts list only James M. Weygand and Lee Frost Bargatze as MetadataContacts, so it yields no author candidates, and it has no description paper of its own - its InformationURLs point at the mission overview paper and the NSSDC spacecraft entry. The people behind PSP ephemeris production are the APL mission design and navigation team (see the excluded mission-team entries below); a dedicated pass would need the SPICE kernel documentation at https://spdf.gsfc.nasa.gov/pub/data/psp/ephemeris/."
+    }
+  ],
+  "information_urls": [
+    {
+      "name": "The Solar Probe Plus Mission: Humanity's First Visit to Our Star",
+      "url": "https://doi.org/10.1007/s11214-015-0211-6",
+      "description": "Mission overview and description paper for Parker Solar Probe (published under the mission's former name, Solar Probe Plus), covering science objectives, spacecraft design, trajectory and the four-suite payload.",
+      "scope": "observatory"
+    },
+    {
+      "name": "Parker Solar Probe mission web page, JHU/APL",
+      "url": "https://parkersolarprobe.jhuapl.edu/",
+      "description": "Home page of the mission maintained by the Johns Hopkins Applied Physics Laboratory, which designed, built and operates the spacecraft.",
+      "scope": "observatory"
+    },
+    {
+      "name": "Parker Solar Probe mission team page, JHU/APL",
+      "url": "https://parkersolarprobe.jhuapl.edu/The-Mission/index.php",
+      "description": "Mission page whose Team section lists NASA Headquarters and APL project management, the Project and Deputy Project Scientists, and the current Principal Investigator of each of the four instrument suites.",
+      "scope": "observatory"
+    },
+    {
+      "name": "Parker Solar Probe mission page, NASA Science",
+      "url": "https://science.nasa.gov/mission/parker-solar-probe/",
+      "description": "NASA's own mission page, giving the science overview and naming the four instrument suites.",
+      "scope": "observatory"
+    },
+    {
+      "name": "Parker Solar Probe Instruments, NASA Science",
+      "url": "https://science.nasa.gov/mission/parker-solar-probe/parker-solar-probe-instruments/",
+      "description": "Mission-wide payload page describing all four suites and naming the Principal Investigator and lead institution of each as of instrument delivery.",
+      "scope": "observatory"
+    },
+    {
+      "name": "Parker Solar Probe readme, SPDF/CDAWeb",
+      "url": "https://cdaweb.gsfc.nasa.gov/sp_phys/data/psp/00readme.html",
+      "description": "Archive readme for the PSP holdings at the Space Physics Data Facility, summarising each suite's measurements, naming its Principal Investigator and institution, and linking the instrument team sites.",
+      "scope": "observatory"
+    },
+    {
+      "name": "Parker Solar Probe Science Gateway, JHU/APL",
+      "url": "https://sppgway.jhuapl.edu/",
+      "description": "Mission science gateway at APL, listing the solar encounters and Venus flybys and serving team data products.",
+      "scope": "observatory"
+    },
+    {
+      "name": "The FIELDS Instrument Suite for Solar Probe Plus",
+      "url": "https://doi.org/10.1007/s11214-016-0244-5",
+      "description": "Description paper for the FIELDS suite of magnetometers, electric field antennas and radio receivers, including its sub-instrument sections.",
+      "scope": "instrument",
+      "instrument": "FIELDS"
+    },
+    {
+      "name": "PSP/FIELDS instrument team web page",
+      "url": "http://fields.ssl.berkeley.edu/",
+      "description": "FIELDS team site at the UC Berkeley Space Sciences Laboratory, with instrument documentation and data.",
+      "scope": "instrument",
+      "instrument": "FIELDS"
+    },
+    {
+      "name": "Integrated Science Investigation of the Sun (IS⊙IS): Design of the Energetic Particle Investigation",
+      "url": "https://doi.org/10.1007/s11214-014-0059-1",
+      "description": "Description paper for the IS⊙IS energetic particle investigation, covering both the EPI-Lo and EPI-Hi instruments.",
+      "scope": "instrument",
+      "instrument": "ISOIS"
+    },
+    {
+      "name": "PSP/IS⊙IS instrument team web page",
+      "url": "https://spacephysics.princeton.edu/missions-instruments/isois/",
+      "description": "IS⊙IS team site at Princeton University, with instrument descriptions, data products and release notes.",
+      "scope": "instrument",
+      "instrument": "ISOIS"
+    },
+    {
+      "name": "Solar Wind Electrons Alphas and Protons (SWEAP) Investigation",
+      "url": "https://doi.org/10.1007/s11214-015-0206-3",
+      "description": "Description paper for the SWEAP suite, covering the Solar Probe Cup and the two Solar Probe ANalyzers.",
+      "scope": "instrument",
+      "instrument": "SWEAP"
+    },
+    {
+      "name": "PSP/SWEAP instrument team web page",
+      "url": "https://sweap.cfa.harvard.edu/",
+      "description": "SWEAP team site at the Center for Astrophysics | Harvard & Smithsonian, including the data user guide.",
+      "scope": "instrument",
+      "instrument": "SWEAP"
+    },
+    {
+      "name": "The Wide-Field Imager for Solar Probe Plus (WISPR)",
+      "url": "https://doi.org/10.1007/s11214-014-0114-y",
+      "description": "Description paper for the WISPR white-light imager, its two telescopes, optical design and observing programme.",
+      "scope": "instrument",
+      "instrument": "WISPR"
+    },
+    {
+      "name": "PSP/WISPR instrument team web page",
+      "url": "https://wispr.nrl.navy.mil/",
+      "description": "WISPR team site at the US Naval Research Laboratory, with calibration notes, documentation and data products.",
+      "scope": "instrument",
+      "instrument": "WISPR"
+    }
+  ],
+  "candidates": [
+    {
+      "name": "Nicola J. Fox",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        { "source": "First author of the mission overview paper (Fox et al. 2015, 10.1007/s11214-015-0211-6). The author list is a two-name deliberate prefix followed by an alphabetized remainder, and she heads the prefix.", "url": "https://doi.org/10.1007/s11214-015-0211-6", "strength": "Strong" },
+        { "source": "Listed as ProjectScientist in the Observatory record's own Contacts, and as ProjectScientist in the Contacts of all twenty sub-instrument records under ParkerSolarProbe", "url": "https://spase-metadata.org/SMWG/Observatory/ParkerSolarProbe", "strength": "Medium" },
+        { "source": "Also a co-author in the alphabetized remainder of three of the four suite papers - FIELDS, IS⊙IS and SWEAP - which is participation evidence only", "url": "https://doi.org/10.1007/s11214-016-0244-5", "strength": "Low" }
+      ],
+      "person_record": { "id": "spase://SMWG/Person/Nicola.J.Fox", "url": "https://spase-metadata.org/SMWG/Person/Nicola.J.Fox.html" },
+      "orcid": null,
+      "affiliation": "Johns Hopkins University Applied Physics Laboratory (at the time of the mission overview paper); now NASA Headquarters, Science Mission Directorate",
+      "activity_dates": "Project Scientist through mission development and launch; the 2026 JHU/APL mission team page names Nour Raouafi in that post instead, so her PSP tenure has ended",
+      "qualifying_roles": ["Author", "ProjectScientist"],
+      "role_evidence": [
+        { "role": "Author", "source": "First author of the Parker Solar Probe mission overview paper (Fox et al. 2015, 10.1007/s11214-015-0211-6)" },
+        { "role": "ProjectScientist", "source": "Listed as Project Scientist for the Parker Solar Probe mission in the Observatory record's Contacts (https://spase-metadata.org/SMWG/Observatory/ParkerSolarProbe); she held the post at JHU/APL during mission development and launch and has since moved to NASA Headquarters" }
+      ]
+    },
+    {
+      "name": "Marco Velli",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        { "source": "Second author of the mission overview paper (Fox et al. 2015, 10.1007/s11214-015-0211-6), in the two-name deliberate prefix that precedes the alphabetized remainder", "url": "https://doi.org/10.1007/s11214-015-0211-6", "strength": "Strong" },
+        { "source": "Described as the Parker Solar Probe Observatory Scientist, responsible for the scientific performance of the payload as a whole, in UCLA's mission announcement", "url": "https://newsroom.ucla.edu/stories/ucla-professor-marco-velli-NASA-parker-solar-probe", "strength": "Medium" },
+        { "source": "A co-author on all four suite description papers (FIELDS, IS⊙IS, SWEAP and WISPR), which is consistent with a mission-wide science role but is participation evidence only", "url": "https://doi.org/10.1007/s11214-014-0114-y", "strength": "Low" }
+      ],
+      "person_record": { "id": null, "url": null },
+      "orcid": null,
+      "affiliation": "University of California, Los Angeles, Department of Earth, Planetary and Space Sciences; previously Jet Propulsion Laboratory, where he was lead theorist on the Solar Probe concept",
+      "activity_dates": "Involved from the Solar Probe concept studies at JPL through the present; at UCLA since 2014",
+      "qualifying_roles": ["Author"],
+      "role_evidence": [
+        { "role": "Author", "source": "Second author of the Parker Solar Probe mission overview paper (Fox et al. 2015, 10.1007/s11214-015-0211-6), and the mission's Observatory Scientist - a mission-wide post that has no equivalent in the SPASE role list, so only authorship is recorded here (https://newsroom.ucla.edu/stories/ucla-professor-marco-velli-NASA-parker-solar-probe)" }
+      ]
+    },
+    {
+      "name": "Stuart D. Bale",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        { "source": "First author of the FIELDS suite description paper (Bale et al. 2016, 10.1007/s11214-016-0244-5)", "url": "https://doi.org/10.1007/s11214-016-0244-5", "strength": "Strong" },
+        { "source": "Named as Principal Investigator of FIELDS on NASA's Parker Solar Probe instruments page, on the JHU/APL mission team page (still the sitting PI in 2026), and in the SPDF/CDAWeb PSP archive readme", "url": "https://science.nasa.gov/mission/parker-solar-probe/parker-solar-probe-instruments/", "strength": "Strong" },
+        { "source": "Listed as PrincipalInvestigator in the FIELDS Instrument record's Contacts, and in all eleven FIELDS sub-instrument records", "url": "https://spase-metadata.org/SMWG/Instrument/ParkerSolarProbe/FIELDS.html", "strength": "Medium" },
+        { "source": "Also a co-author in the alphabetized remainder of the mission overview paper and of the IS⊙IS and SWEAP suite papers - participation evidence only", "url": "https://doi.org/10.1007/s11214-015-0211-6", "strength": "Low" }
+      ],
+      "person_record": { "id": "spase://SMWG/Person/Stuart.D.Bale", "url": "https://spase-metadata.org/SMWG/Person/Stuart.D.Bale.html" },
+      "orcid": null,
+      "affiliation": "Space Sciences Laboratory, University of California, Berkeley",
+      "activity_dates": "FIELDS Principal Investigator from instrument development to the present",
+      "qualifying_roles": ["Author", "InstrumentLead"],
+      "role_evidence": [
+        { "role": "Author", "source": "First author of the FIELDS instrument suite description paper (Bale et al. 2016, 10.1007/s11214-016-0244-5)" },
+        { "role": "InstrumentLead", "source": "Principal Investigator of the Parker Solar Probe FIELDS instrument suite, named as such on NASA's PSP instruments page (https://science.nasa.gov/mission/parker-solar-probe/parker-solar-probe-instruments/), on the JHU/APL mission team page, in the SPDF/CDAWeb archive readme, and in the FIELDS Instrument record's Contacts (https://spase-metadata.org/SMWG/Instrument/ParkerSolarProbe/FIELDS.html)" }
+      ]
+    },
+    {
+      "name": "Keith A. Goetz",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        { "source": "Second author of the FIELDS suite description paper (Bale et al. 2016, 10.1007/s11214-016-0244-5), within the nine-name deliberate prefix that precedes the alphabetized remainder of the 84-author list", "url": "https://doi.org/10.1007/s11214-016-0244-5", "strength": "Strong" }
+      ],
+      "person_record": { "id": "spase://SMWG/Person/Keith.A.Goetz", "url": "https://spase-metadata.org/SMWG/Person/Keith.A.Goetz.html" },
+      "orcid": null,
+      "affiliation": "University of Minnesota (per the existing SPASE Person record)",
+      "activity_dates": null,
+      "qualifying_roles": ["Author"],
+      "role_evidence": [
+        { "role": "Author", "source": "Second author of the FIELDS instrument suite description paper (Bale et al. 2016, 10.1007/s11214-016-0244-5)" }
+      ]
+    },
+    {
+      "name": "Peter R. Harvey",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        { "source": "Third author of the FIELDS suite description paper (Bale et al. 2016, 10.1007/s11214-016-0244-5), within the nine-name deliberate prefix that precedes the alphabetized remainder of the 84-author list", "url": "https://doi.org/10.1007/s11214-016-0244-5", "strength": "Strong" }
+      ],
+      "person_record": { "id": "spase://SMWG/Person/Peter.R.Harvey", "url": "https://spase-metadata.org/SMWG/Person/Peter.R.Harvey.html" },
+      "orcid": null,
+      "affiliation": "University of California, Berkeley (per the existing SPASE Person record)",
+      "activity_dates": null,
+      "qualifying_roles": ["Author"],
+      "role_evidence": [
+        { "role": "Author", "source": "Third author of the FIELDS instrument suite description paper (Bale et al. 2016, 10.1007/s11214-016-0244-5)" }
+      ]
+    },
+    {
+      "name": "David J. McComas",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        { "source": "First author of the IS⊙IS suite description paper (McComas et al. 2014, 10.1007/s11214-014-0059-1); he is the only name before the alphabetized remainder of the 51-author list", "url": "https://doi.org/10.1007/s11214-014-0059-1", "strength": "Strong" },
+        { "source": "Named as Principal Investigator of IS⊙IS on NASA's Parker Solar Probe instruments page, on the JHU/APL mission team page (still the sitting PI in 2026), and in the SPDF/CDAWeb PSP archive readme", "url": "https://science.nasa.gov/mission/parker-solar-probe/parker-solar-probe-instruments/", "strength": "Strong" },
+        { "source": "Listed as PrincipalInvestigator in the IS⊙IS Instrument record's Contacts, and in all four IS⊙IS sub-instrument records", "url": "https://spase-metadata.org/SMWG/Instrument/ParkerSolarProbe/ISOIS.html", "strength": "Medium" },
+        { "source": "Also a co-author in the alphabetized remainder of the mission overview paper and of the FIELDS and SWEAP suite papers - participation evidence only", "url": "https://doi.org/10.1007/s11214-015-0211-6", "strength": "Low" }
+      ],
+      "person_record": { "id": "spase://SMWG/Person/David.J.McComas", "url": "https://spase-metadata.org/SMWG/Person/David.J.McComas.html" },
+      "orcid": null,
+      "affiliation": "Princeton University (Southwest Research Institute at the time of the 2014 IS⊙IS paper)",
+      "activity_dates": "IS⊙IS Principal Investigator from instrument development to the present",
+      "qualifying_roles": ["Author", "InstrumentLead"],
+      "role_evidence": [
+        { "role": "Author", "source": "First author of the IS⊙IS instrument suite description paper (McComas et al. 2014, 10.1007/s11214-014-0059-1)" },
+        { "role": "InstrumentLead", "source": "Principal Investigator of the Parker Solar Probe IS⊙IS (Integrated Science Investigation of the Sun) instrument suite, named as such on NASA's PSP instruments page (https://science.nasa.gov/mission/parker-solar-probe/parker-solar-probe-instruments/), on the JHU/APL mission team page, in the SPDF/CDAWeb archive readme, and in the IS⊙IS Instrument record's Contacts (https://spase-metadata.org/SMWG/Instrument/ParkerSolarProbe/ISOIS.html)" }
+      ]
+    },
+    {
+      "name": "Eric R. Christian",
+      "status": "included",
+      "confidence": "Medium",
+      "exclusion_reason": null,
+      "evidence": [
+        { "source": "Listed as DeputyPI in the IS⊙IS Instrument record's Contacts", "url": "https://spase-metadata.org/SMWG/Instrument/ParkerSolarProbe/ISOIS.html", "strength": "Medium" },
+        { "source": "A co-author of the IS⊙IS suite description paper (McComas et al. 2014, 10.1007/s11214-014-0059-1); his position falls in the alphabetized remainder so it carries no weight on its own, but it corroborates the deputy-PI role", "url": "https://doi.org/10.1007/s11214-014-0059-1", "strength": "Medium" }
+      ],
+      "person_record": { "id": "spase://SMWG/Person/Eric.R.Christian", "url": "https://spase-metadata.org/SMWG/Person/Eric.R.Christian.html" },
+      "orcid": null,
+      "affiliation": "NASA Goddard Space Flight Center",
+      "activity_dates": null,
+      "qualifying_roles": ["Author", "DeputyPI"],
+      "role_evidence": [
+        { "role": "Author", "source": "Deputy Principal Investigator of IS⊙IS and a co-author of its description paper (McComas et al. 2014, 10.1007/s11214-014-0059-1)" },
+        { "role": "DeputyPI", "source": "Listed as Deputy Principal Investigator of the Parker Solar Probe IS⊙IS instrument suite in its SPASE Instrument record Contacts (https://spase-metadata.org/SMWG/Instrument/ParkerSolarProbe/ISOIS.html)" }
+      ]
+    },
+    {
+      "name": "Justin C. Kasper",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        { "source": "First author of the SWEAP suite description paper (Kasper et al. 2015, 10.1007/s11214-015-0206-3); he is the only name before the alphabetized remainder of the 79-author list", "url": "https://doi.org/10.1007/s11214-015-0206-3", "strength": "Strong" },
+        { "source": "Named as Principal Investigator of SWEAP on NASA's Parker Solar Probe instruments page and in the SPDF/CDAWeb PSP archive readme (which was last updated in 2022)", "url": "https://cdaweb.gsfc.nasa.gov/sp_phys/data/psp/00readme.html", "strength": "Strong" },
+        { "source": "Listed as PrincipalInvestigator in the SWEAP Instrument record's Contacts and in all three SWEAP sub-instrument records; the JHU/APL mission team page now names Michael Stevens in that post instead, so the SPASE records are describing the founding PI", "url": "https://spase-metadata.org/SMWG/Instrument/ParkerSolarProbe/SWEAP.html", "strength": "Medium" },
+        { "source": "Also a co-author in the alphabetized remainder of the mission overview paper and of the FIELDS and IS⊙IS suite papers - participation evidence only", "url": "https://doi.org/10.1007/s11214-015-0211-6", "strength": "Low" }
+      ],
+      "person_record": { "id": "spase://SMWG/Person/Justin.C.Kasper", "url": "https://spase-metadata.org/SMWG/Person/Justin.C.Kasper.html" },
+      "orcid": "https://orcid.org/0000-0002-7077-930X",
+      "affiliation": "University of Michigan and Smithsonian Astrophysical Observatory (as given in the SPDF/CDAWeb readme); Harvard-Smithsonian Center for Astrophysics at the time of the 2015 SWEAP paper",
+      "activity_dates": "SWEAP Principal Investigator from instrument proposal through at least 2022; succeeded by Michael Stevens by 2026",
+      "qualifying_roles": ["Author", "FormerPI"],
+      "role_evidence": [
+        { "role": "Author", "source": "First author of the SWEAP instrument suite description paper (Kasper et al. 2015, 10.1007/s11214-015-0206-3)" },
+        { "role": "FormerPI", "source": "Founding Principal Investigator of the Parker Solar Probe SWEAP instrument suite - named as SWEAP PI on NASA's PSP instruments page, in the SPDF/CDAWeb archive readme (https://cdaweb.gsfc.nasa.gov/sp_phys/data/psp/00readme.html) and in the SWEAP Instrument record's Contacts, while the current JHU/APL mission team page lists Michael Stevens as SWEAP PI instead (https://parkersolarprobe.jhuapl.edu/The-Mission/index.php)" }
+      ]
+    },
+    {
+      "name": "Michael L. Stevens",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        { "source": "Named as the current Principal Investigator of SWEAP in the Instrument Principal Investigators list on the JHU/APL mission team page", "url": "https://parkersolarprobe.jhuapl.edu/The-Mission/index.php", "strength": "Strong" },
+        { "source": "A co-author of the SWEAP suite description paper (Kasper et al. 2015, 10.1007/s11214-015-0206-3), in its alphabetized remainder; participation evidence that corroborates his long-standing SWEAP involvement", "url": "https://doi.org/10.1007/s11214-015-0206-3", "strength": "Low" },
+        { "source": "Institutional profile confirming he leads Solar Probe Cup data analysis for SWEAP at the Center for Astrophysics", "url": "https://www.cfa.harvard.edu/people/michael-stevens", "strength": "Medium" }
+      ],
+      "person_record": { "id": "spase://SMWG/Person/Michael.L.Stevens", "url": "https://spase-metadata.org/SMWG/Person/Michael.L.Stevens.html" },
+      "orcid": null,
+      "affiliation": "Center for Astrophysics | Harvard & Smithsonian",
+      "activity_dates": "SWEAP co-investigator from instrument development; Principal Investigator by 2026",
+      "qualifying_roles": ["Author", "InstrumentLead"],
+      "role_evidence": [
+        { "role": "Author", "source": "Current Principal Investigator of the SWEAP instrument suite and a co-author of its description paper (Kasper et al. 2015, 10.1007/s11214-015-0206-3)" },
+        { "role": "InstrumentLead", "source": "Named as Principal Investigator of the Parker Solar Probe SWEAP instrument suite on the JHU/APL mission team page (https://parkersolarprobe.jhuapl.edu/The-Mission/index.php); the SWEAP Instrument record's Contacts still list the founding PI, Justin Kasper" }
+      ]
+    },
+    {
+      "name": "Angelos Vourlidas",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        { "source": "First author of the WISPR instrument description paper (Vourlidas et al. 2015, 10.1007/s11214-014-0114-y). Its 27-name author list is not alphabetized, so the leading positions reflect contribution.", "url": "https://doi.org/10.1007/s11214-014-0114-y", "strength": "Strong" }
+      ],
+      "person_record": { "id": "spase://SMWG/Person/Angelos.Vourlidas", "url": "https://spase-metadata.org/SMWG/Person/Angelos.Vourlidas.html" },
+      "orcid": null,
+      "affiliation": "Johns Hopkins University Applied Physics Laboratory (per the existing SPASE Person record); US Naval Research Laboratory at the time of the 2015 WISPR paper",
+      "activity_dates": null,
+      "qualifying_roles": ["Author"],
+      "role_evidence": [
+        { "role": "Author", "source": "First author of the WISPR instrument description paper (Vourlidas et al. 2015, 10.1007/s11214-014-0114-y)" }
+      ]
+    },
+    {
+      "name": "Russell A. Howard",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        { "source": "Second author of the WISPR instrument description paper (Vourlidas et al. 2015, 10.1007/s11214-014-0114-y), whose 27-name author list is not alphabetized", "url": "https://doi.org/10.1007/s11214-014-0114-y", "strength": "Strong" },
+        { "source": "Named as Principal Investigator of WISPR on NASA's Parker Solar Probe instruments page and in the SPDF/CDAWeb PSP archive readme (last updated 2022)", "url": "https://cdaweb.gsfc.nasa.gov/sp_phys/data/psp/00readme.html", "strength": "Strong" },
+        { "source": "Listed as PrincipalInvestigator in the WISPR Instrument record's Contacts and in both WISPR telescope records; the JHU/APL mission team page now names Mark Linton in that post instead, so the SPASE records are describing the founding PI", "url": "https://spase-metadata.org/SMWG/Instrument/ParkerSolarProbe/WISPR.html", "strength": "Medium" },
+        { "source": "Also a co-author in the alphabetized remainder of the mission overview paper and of the FIELDS suite paper - participation evidence only", "url": "https://doi.org/10.1007/s11214-015-0211-6", "strength": "Low" }
+      ],
+      "person_record": { "id": "spase://SMWG/Person/Russell.A.Howard", "url": "https://spase-metadata.org/SMWG/Person/Russell.A.Howard.html" },
+      "orcid": null,
+      "affiliation": "US Naval Research Laboratory (later Johns Hopkins University Applied Physics Laboratory)",
+      "activity_dates": "WISPR Principal Investigator from instrument proposal through at least 2022; succeeded by Mark Linton by 2026",
+      "qualifying_roles": ["Author", "FormerPI"],
+      "role_evidence": [
+        { "role": "Author", "source": "Second author of the WISPR instrument description paper (Vourlidas et al. 2015, 10.1007/s11214-014-0114-y)" },
+        { "role": "FormerPI", "source": "Founding Principal Investigator of the Parker Solar Probe WISPR instrument - named as WISPR PI on NASA's PSP instruments page, in the SPDF/CDAWeb archive readme (https://cdaweb.gsfc.nasa.gov/sp_phys/data/psp/00readme.html) and in the WISPR Instrument record's Contacts, while the current JHU/APL mission team page lists Mark Linton as WISPR PI instead (https://parkersolarprobe.jhuapl.edu/The-Mission/index.php)" }
+      ]
+    },
+    {
+      "name": "Simon P. Plunkett",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        { "source": "Third author of the WISPR instrument description paper (Vourlidas et al. 2015, 10.1007/s11214-014-0114-y), whose 27-name author list is not alphabetized", "url": "https://doi.org/10.1007/s11214-014-0114-y", "strength": "Strong" }
+      ],
+      "person_record": { "id": "spase://SMWG/Person/Simon.Plunkett", "url": "https://spase-metadata.org/SMWG/Person/Simon.Plunkett.html" },
+      "orcid": null,
+      "affiliation": "US Naval Research Laboratory at the time of the 2015 WISPR paper; the existing SPASE Person record gives NASA Headquarters",
+      "activity_dates": null,
+      "qualifying_roles": ["Author"],
+      "role_evidence": [
+        { "role": "Author", "source": "Third author of the WISPR instrument description paper (Vourlidas et al. 2015, 10.1007/s11214-014-0114-y)" }
+      ]
+    },
+    {
+      "name": "Mark G. Linton",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        { "source": "Named as the current Principal Investigator of WISPR in the Instrument Principal Investigators list on the JHU/APL mission team page", "url": "https://parkersolarprobe.jhuapl.edu/The-Mission/index.php", "strength": "Strong" },
+        { "source": "A co-author of the WISPR instrument description paper (Vourlidas et al. 2015, 10.1007/s11214-014-0114-y); his position is past the fifth author so it carries no weight on its own, but it corroborates his long-standing WISPR involvement", "url": "https://doi.org/10.1007/s11214-014-0114-y", "strength": "Low" }
+      ],
+      "person_record": { "id": "spase://SMWG/Person/Mark.Linton", "url": "https://spase-metadata.org/SMWG/Person/Mark.Linton.html" },
+      "orcid": null,
+      "affiliation": "US Naval Research Laboratory",
+      "activity_dates": "WISPR co-investigator from instrument development; Principal Investigator by 2026",
+      "qualifying_roles": ["Author", "InstrumentLead"],
+      "role_evidence": [
+        { "role": "Author", "source": "Current Principal Investigator of the WISPR instrument and a co-author of its description paper (Vourlidas et al. 2015, 10.1007/s11214-014-0114-y)" },
+        { "role": "InstrumentLead", "source": "Named as Principal Investigator of the Parker Solar Probe WISPR instrument on the JHU/APL mission team page (https://parkersolarprobe.jhuapl.edu/The-Mission/index.php); the WISPR Instrument record's Contacts still list the founding PI, Russell Howard" }
+      ]
+    },
+    {
+      "name": "Nour E. Raouafi",
+      "status": "included",
+      "confidence": "Medium",
+      "exclusion_reason": null,
+      "evidence": [
+        { "source": "Named as the mission's Project Scientist on the JHU/APL mission team page (where a duplicated line misspells the surname as 'Rawafi')", "url": "https://parkersolarprobe.jhuapl.edu/The-Mission/index.php", "strength": "Medium" },
+        { "source": "Listed in the Observatory record's own Contacts, with the role PrincipalInvestigator - a listing not supported by any external source, since the mission team page gives him the Project Scientist post and Parker Solar Probe has no mission-level science PI", "url": "https://spase-metadata.org/SMWG/Observatory/ParkerSolarProbe", "strength": "Medium" },
+        { "source": "A co-author of the mission overview paper (Fox et al. 2015, 10.1007/s11214-015-0211-6); his position falls in the alphabetized remainder so it carries no weight on its own, but it corroborates his mission-level science role", "url": "https://doi.org/10.1007/s11214-015-0211-6", "strength": "Medium" }
+      ],
+      "person_record": { "id": "spase://SMWG/Person/Nour.Raouafi", "url": "https://spase-metadata.org/SMWG/Person/Nour.Raouafi.html" },
+      "orcid": null,
+      "affiliation": "Johns Hopkins University Applied Physics Laboratory",
+      "activity_dates": "Project Scientist as of 2026; involved from mission development (co-author of the 2015 overview paper)",
+      "qualifying_roles": ["Author", "ProjectScientist"],
+      "role_evidence": [
+        { "role": "Author", "source": "Project Scientist of the Parker Solar Probe mission and a co-author of its overview paper (Fox et al. 2015, 10.1007/s11214-015-0211-6)" },
+        { "role": "ProjectScientist", "source": "Named as Project Scientist for the Parker Solar Probe mission on the JHU/APL mission team page (https://parkersolarprobe.jhuapl.edu/The-Mission/index.php). The Observatory record's Contacts currently give him the role PrincipalInvestigator instead; no source outside SPASE supports that title, so Project Scientist is the one recorded here." }
+      ]
+    },
+    {
+      "name": "Robert B. Decker",
+      "status": "included",
+      "confidence": "Medium",
+      "exclusion_reason": null,
+      "evidence": [
+        { "source": "Named as the mission's Deputy Project Scientist (as 'Rob Decker') on the JHU/APL mission team page", "url": "https://parkersolarprobe.jhuapl.edu/The-Mission/index.php", "strength": "Medium" },
+        { "source": "A co-author of the mission overview paper (Fox et al. 2015, 10.1007/s11214-015-0211-6); his position falls in the alphabetized remainder so it carries no weight on its own, but it corroborates his mission-level science role", "url": "https://doi.org/10.1007/s11214-015-0211-6", "strength": "Medium" },
+        { "source": "Listed in the Observatory record's own Contacts with the role Scientist, which is not one of the roles that counts as author-evidence; recorded here as context", "url": "https://spase-metadata.org/SMWG/Observatory/ParkerSolarProbe", "strength": "Low" }
+      ],
+      "person_record": { "id": "spase://SMWG/Person/Robert.B.Decker", "url": "https://spase-metadata.org/SMWG/Person/Robert.B.Decker.html" },
+      "orcid": null,
+      "affiliation": "Johns Hopkins University Applied Physics Laboratory",
+      "activity_dates": "Involved from mission development (co-author of the 2015 overview paper) and still Deputy Project Scientist as of 2026",
+      "qualifying_roles": ["Author", "ProjectScientist"],
+      "role_evidence": [
+        { "role": "Author", "source": "Deputy Project Scientist of the Parker Solar Probe mission and a co-author of its overview paper (Fox et al. 2015, 10.1007/s11214-015-0211-6)" },
+        { "role": "ProjectScientist", "source": "Listed as Deputy Project Scientist for the Parker Solar Probe mission on the JHU/APL mission team page (https://parkersolarprobe.jhuapl.edu/The-Mission/index.php); SPASE has no separate deputy-project-scientist role, so the project-scientist role is used and the deputy status noted here" }
+      ]
+    },
+    {
+      "name": "Adam Szabo",
+      "status": "included",
+      "confidence": "Medium",
+      "exclusion_reason": null,
+      "evidence": [
+        { "source": "Named as the Parker Solar Probe Mission Scientist at NASA Goddard Space Flight Center on the JHU/APL mission team page", "url": "https://parkersolarprobe.jhuapl.edu/The-Mission/index.php", "strength": "Medium" },
+        { "source": "A co-author of the mission overview paper (Fox et al. 2015, 10.1007/s11214-015-0211-6); his position falls in the alphabetized remainder so it carries no weight on its own, but it corroborates his mission-level science role", "url": "https://doi.org/10.1007/s11214-015-0211-6", "strength": "Medium" },
+        { "source": "Also a co-author in the alphabetized remainders of the FIELDS and SWEAP suite papers - participation evidence only", "url": "https://doi.org/10.1007/s11214-016-0244-5", "strength": "Low" }
+      ],
+      "person_record": { "id": "spase://SMWG/Person/Adam.Szabo", "url": "https://spase-metadata.org/SMWG/Person/Adam.Szabo.html" },
+      "orcid": null,
+      "affiliation": "NASA Goddard Space Flight Center",
+      "activity_dates": "Involved from mission development (co-author of the 2015 overview paper) and still Mission Scientist as of 2026",
+      "qualifying_roles": ["Author"],
+      "role_evidence": [
+        { "role": "Author", "source": "Parker Solar Probe Mission Scientist at NASA Goddard Space Flight Center (https://parkersolarprobe.jhuapl.edu/The-Mission/index.php) and a co-author of the mission overview paper (Fox et al. 2015, 10.1007/s11214-015-0211-6). SPASE has no mission-scientist role, so only authorship is recorded here." }
+      ]
+    },
+    {
+      "name": "Arik Posner",
+      "status": "included",
+      "confidence": "Medium",
+      "exclusion_reason": null,
+      "evidence": [
+        { "source": "Named as the Parker Solar Probe Program Scientist at NASA Headquarters on the JHU/APL mission team page", "url": "https://parkersolarprobe.jhuapl.edu/The-Mission/index.php", "strength": "Medium" }
+      ],
+      "person_record": { "id": null, "url": null },
+      "orcid": null,
+      "affiliation": "NASA Headquarters",
+      "activity_dates": "Program Scientist as of 2026",
+      "qualifying_roles": ["Author", "ProgramScientist"],
+      "role_evidence": [
+        { "role": "Author", "source": "Program Scientist for the Parker Solar Probe mission at NASA Headquarters, as listed on the JHU/APL mission team page (https://parkersolarprobe.jhuapl.edu/The-Mission/index.php)" },
+        { "role": "ProgramScientist", "source": "Named as Parker Solar Probe Program Scientist (NASA Headquarters) on the JHU/APL mission team page (https://parkersolarprobe.jhuapl.edu/The-Mission/index.php)" }
+      ]
+    },
+    {
+      "name": "Paul Turin",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "instrument-team depth - belongs to the FIELDS Instrument-record run",
+      "evidence": [
+        { "source": "Fourth author of the FIELDS suite description paper (Bale et al. 2016, 10.1007/s11214-016-0244-5), within its nine-name deliberate prefix", "url": "https://doi.org/10.1007/s11214-016-0244-5", "strength": "Low" },
+        { "source": "Also a co-author in the alphabetized remainder of the SWEAP suite paper (Kasper et al. 2015, 10.1007/s11214-015-0206-3)", "url": "https://doi.org/10.1007/s11214-015-0206-3", "strength": "Low" }
+      ],
+      "person_record": { "id": null, "url": null },
+      "orcid": null,
+      "affiliation": "Space Sciences Laboratory, University of California, Berkeley",
+      "activity_dates": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "John W. Bonnell",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "instrument-team depth - belongs to the FIELDS Instrument-record run",
+      "evidence": [
+        { "source": "Fifth author of the FIELDS suite description paper (Bale et al. 2016, 10.1007/s11214-016-0244-5), within its nine-name deliberate prefix", "url": "https://doi.org/10.1007/s11214-016-0244-5", "strength": "Low" }
+      ],
+      "person_record": { "id": "spase://SMWG/Person/John.W.Bonnell", "url": "https://spase-metadata.org/SMWG/Person/John.W.Bonnell.html" },
+      "orcid": null,
+      "affiliation": "Space Sciences Laboratory, University of California, Berkeley",
+      "activity_dates": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "Clarence M. Korendyke",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "instrument-team depth - belongs to the WISPR Instrument-record run",
+      "evidence": [
+        { "source": "Fourth author of the WISPR instrument description paper (Vourlidas et al. 2015, 10.1007/s11214-014-0114-y)", "url": "https://doi.org/10.1007/s11214-014-0114-y", "strength": "Low" }
+      ],
+      "person_record": { "id": null, "url": null },
+      "orcid": null,
+      "affiliation": "US Naval Research Laboratory",
+      "activity_dates": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "Arnaud F. R. Thernisien",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "instrument-team depth - belongs to the WISPR Instrument-record run",
+      "evidence": [
+        { "source": "Fifth author of the WISPR instrument description paper (Vourlidas et al. 2015, 10.1007/s11214-014-0114-y)", "url": "https://doi.org/10.1007/s11214-014-0114-y", "strength": "Low" }
+      ],
+      "person_record": { "id": "spase://SMWG/Person/Arnaud.Thernisien", "url": "https://spase-metadata.org/SMWG/Person/Arnaud.Thernisien.html" },
+      "orcid": null,
+      "affiliation": "US Naval Research Laboratory",
+      "activity_dates": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "Andrew Driesman",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "co-author in the alphabetized remainder of the mission overview paper, with no corroborating author-qualifying role found",
+      "evidence": [
+        { "source": "A co-author of the mission overview paper (Fox et al. 2015, 10.1007/s11214-015-0211-6), in the alphabetized remainder that follows the two-name prefix; position therefore carries no evidence", "url": "https://doi.org/10.1007/s11214-015-0211-6", "strength": "Low" },
+        { "source": "Not named on the current JHU/APL mission team page, and no PI, project-scientist or co-investigator listing was found for him in any source consulted", "url": "https://parkersolarprobe.jhuapl.edu/The-Mission/index.php", "strength": "Low" }
+      ],
+      "person_record": { "id": null, "url": null },
+      "orcid": null,
+      "affiliation": "Johns Hopkins University Applied Physics Laboratory",
+      "activity_dates": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "James Kinnison",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "co-author in the alphabetized remainder of the mission overview paper, with no corroborating author-qualifying role found",
+      "evidence": [
+        { "source": "A co-author of the mission overview paper (Fox et al. 2015, 10.1007/s11214-015-0211-6), in the alphabetized remainder; position carries no evidence and no PI, project-scientist or co-investigator listing was found elsewhere", "url": "https://doi.org/10.1007/s11214-015-0211-6", "strength": "Low" }
+      ],
+      "person_record": { "id": null, "url": null },
+      "orcid": null,
+      "affiliation": "Johns Hopkins University Applied Physics Laboratory",
+      "activity_dates": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "Marybeth Kusterer",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "co-author in the alphabetized remainder of the mission overview paper, with no corroborating author-qualifying role found",
+      "evidence": [
+        { "source": "A co-author of the mission overview paper (Fox et al. 2015, 10.1007/s11214-015-0211-6), listed as 'M. Kusterer', in the alphabetized remainder; position carries no evidence and no PI, project-scientist or co-investigator listing was found elsewhere", "url": "https://doi.org/10.1007/s11214-015-0211-6", "strength": "Low" }
+      ],
+      "person_record": { "id": null, "url": null },
+      "orcid": null,
+      "affiliation": "Johns Hopkins University Applied Physics Laboratory",
+      "activity_dates": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "David Lario",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "co-author in the alphabetized remainder of the mission overview paper, with no corroborating author-qualifying role found",
+      "evidence": [
+        { "source": "A co-author of the mission overview paper (Fox et al. 2015, 10.1007/s11214-015-0211-6), in the alphabetized remainder; position carries no evidence and no PI, project-scientist or co-investigator listing was found elsewhere", "url": "https://doi.org/10.1007/s11214-015-0211-6", "strength": "Low" }
+      ],
+      "person_record": { "id": null, "url": null },
+      "orcid": null,
+      "affiliation": "Johns Hopkins University Applied Physics Laboratory at the time of the overview paper; later NASA Goddard Space Flight Center",
+      "activity_dates": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "Mary Kae Lockwood",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "co-author in the alphabetized remainder of the mission overview paper, with no corroborating author-qualifying role found",
+      "evidence": [
+        { "source": "A co-author of the mission overview paper (Fox et al. 2015, 10.1007/s11214-015-0211-6), listed as 'M. K. Lockwood', in the alphabetized remainder; position carries no evidence and no PI, project-scientist or co-investigator listing was found elsewhere", "url": "https://doi.org/10.1007/s11214-015-0211-6", "strength": "Low" }
+      ],
+      "person_record": { "id": null, "url": null },
+      "orcid": null,
+      "affiliation": "Johns Hopkins University Applied Physics Laboratory",
+      "activity_dates": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "Eugene N. Parker",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "mission namesake; his sole authorship link is a co-author position deep in the alphabetized remainder of the FIELDS suite paper, which carries no evidence",
+      "evidence": [
+        { "source": "The mission is named for him, as stated in the Observatory record's own Description and on the JHU/APL mission pages; he died in March 2022", "url": "https://parkersolarprobe.jhuapl.edu/The-Mission/index.php", "strength": "Low" },
+        { "source": "A co-author of the FIELDS suite description paper (Bale et al. 2016, 10.1007/s11214-016-0244-5), far into its alphabetized remainder", "url": "https://doi.org/10.1007/s11214-016-0244-5", "strength": "Low" }
+      ],
+      "person_record": { "id": null, "url": null },
+      "orcid": null,
+      "affiliation": "University of Chicago, Department of Astronomy and Astrophysics",
+      "activity_dates": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "Ursula Rick",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "non-qualifying role only - Program Executive (programme administration) on the mission team page",
+      "evidence": [
+        { "source": "Listed as Parker Solar Probe Program Executive (NASA Headquarters) on the JHU/APL mission team page", "url": "https://parkersolarprobe.jhuapl.edu/The-Mission/index.php", "strength": "Low" }
+      ],
+      "person_record": { "id": null, "url": null },
+      "orcid": null,
+      "affiliation": "NASA Headquarters",
+      "activity_dates": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "Mike Moreau",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "non-qualifying role only - acting SSMO Program Manager on the mission team page",
+      "evidence": [
+        { "source": "Listed as SSMO Program Manager (Acting), NASA Goddard Space Flight Center, on the JHU/APL mission team page", "url": "https://parkersolarprobe.jhuapl.edu/The-Mission/index.php", "strength": "Low" }
+      ],
+      "person_record": { "id": null, "url": null },
+      "orcid": null,
+      "affiliation": "NASA Goddard Space Flight Center",
+      "activity_dates": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "Clifford Williams",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "non-qualifying role only - Mission Operations Director on the mission team page",
+      "evidence": [
+        { "source": "Listed as Parker Solar Probe Mission Operations Director (NASA Goddard Space Flight Center) on the JHU/APL mission team page", "url": "https://parkersolarprobe.jhuapl.edu/The-Mission/index.php", "strength": "Low" }
+      ],
+      "person_record": { "id": null, "url": null },
+      "orcid": null,
+      "affiliation": "NASA Goddard Space Flight Center",
+      "activity_dates": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "Helene Winters",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "non-qualifying role only - Project Manager on the mission team page",
+      "evidence": [
+        { "source": "Listed as Parker Solar Probe Project Manager on the JHU/APL mission team page", "url": "https://parkersolarprobe.jhuapl.edu/The-Mission/index.php", "strength": "Low" }
+      ],
+      "person_record": { "id": null, "url": null },
+      "orcid": null,
+      "affiliation": "Johns Hopkins University Applied Physics Laboratory",
+      "activity_dates": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "Art Azarbarzin",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "non-qualifying role only - Deputy Project Manager on the mission team page",
+      "evidence": [
+        { "source": "Listed as Parker Solar Probe Deputy Project Manager on the JHU/APL mission team page", "url": "https://parkersolarprobe.jhuapl.edu/The-Mission/index.php", "strength": "Low" }
+      ],
+      "person_record": { "id": null, "url": null },
+      "orcid": null,
+      "affiliation": "Johns Hopkins University Applied Physics Laboratory",
+      "activity_dates": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "Bobby Braun",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "non-qualifying role only - institutional leadership (Space Exploration Sector Head) on the mission team page",
+      "evidence": [
+        { "source": "Listed as Space Exploration Sector Head at JHU/APL on the Parker Solar Probe mission team page", "url": "https://parkersolarprobe.jhuapl.edu/The-Mission/index.php", "strength": "Low" }
+      ],
+      "person_record": { "id": null, "url": null },
+      "orcid": null,
+      "affiliation": "Johns Hopkins University Applied Physics Laboratory",
+      "activity_dates": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "Steve Krein",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "non-qualifying role only - institutional leadership (acting Civil Space Flight Mission Area Executive) on the mission team page",
+      "evidence": [
+        { "source": "Listed as Civil Space Flight Mission Area Executive (Acting) at JHU/APL on the Parker Solar Probe mission team page", "url": "https://parkersolarprobe.jhuapl.edu/The-Mission/index.php", "strength": "Low" }
+      ],
+      "person_record": { "id": null, "url": null },
+      "orcid": null,
+      "affiliation": "Johns Hopkins University Applied Physics Laboratory",
+      "activity_dates": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "Helmut Seifert",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "non-qualifying role only - Civil Space Flight Program Area Manager for Heliophysics on the mission team page",
+      "evidence": [
+        { "source": "Listed as Civil Space Flight Program Area Manager for Heliophysics at JHU/APL on the Parker Solar Probe mission team page", "url": "https://parkersolarprobe.jhuapl.edu/The-Mission/index.php", "strength": "Low" },
+        { "source": "An 'H. Seifert' also appears in the alphabetized remainder of the IS⊙IS suite paper (McComas et al. 2014, 10.1007/s11214-014-0059-1); most likely the same person, but position there carries no evidence", "url": "https://doi.org/10.1007/s11214-014-0059-1", "strength": "Low" }
+      ],
+      "person_record": { "id": null, "url": null },
+      "orcid": null,
+      "affiliation": "Johns Hopkins University Applied Physics Laboratory",
+      "activity_dates": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "John Wirzburger",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "non-qualifying role only - Mission Systems Engineer on the mission team page",
+      "evidence": [
+        { "source": "Listed as Parker Solar Probe Mission Systems Engineer on the JHU/APL mission team page", "url": "https://parkersolarprobe.jhuapl.edu/The-Mission/index.php", "strength": "Low" }
+      ],
+      "person_record": { "id": null, "url": null },
+      "orcid": null,
+      "affiliation": "Johns Hopkins University Applied Physics Laboratory",
+      "activity_dates": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "Maria McQuaide",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "non-qualifying role only - Spacecraft Systems Engineer on the mission team page",
+      "evidence": [
+        { "source": "Listed as Parker Solar Probe Spacecraft Systems Engineer on the JHU/APL mission team page", "url": "https://parkersolarprobe.jhuapl.edu/The-Mission/index.php", "strength": "Low" }
+      ],
+      "person_record": { "id": null, "url": null },
+      "orcid": null,
+      "affiliation": "Johns Hopkins University Applied Physics Laboratory",
+      "activity_dates": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "Fazle Siddique",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "non-qualifying role only - Mission Design and Navigation Manager on the mission team page",
+      "evidence": [
+        { "source": "Listed as Parker Solar Probe Mission Design and Navigation Manager on the JHU/APL mission team page", "url": "https://parkersolarprobe.jhuapl.edu/The-Mission/index.php", "strength": "Low" }
+      ],
+      "person_record": { "id": null, "url": null },
+      "orcid": null,
+      "affiliation": "Johns Hopkins University Applied Physics Laboratory",
+      "activity_dates": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "David Sepan",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "non-qualifying role only - Mission Operations Manager on the mission team page",
+      "evidence": [
+        { "source": "Listed as Parker Solar Probe Mission Operations Manager on the JHU/APL mission team page", "url": "https://parkersolarprobe.jhuapl.edu/The-Mission/index.php", "strength": "Low" }
+      ],
+      "person_record": { "id": null, "url": null },
+      "orcid": null,
+      "affiliation": "Johns Hopkins University Applied Physics Laboratory",
+      "activity_dates": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "Mike Buckley",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "non-qualifying role only - Public Affairs Lead on the mission team page",
+      "evidence": [
+        { "source": "Listed as Parker Solar Probe Public Affairs Lead on the JHU/APL mission team page", "url": "https://parkersolarprobe.jhuapl.edu/The-Mission/index.php", "strength": "Low" }
+      ],
+      "person_record": { "id": null, "url": null },
+      "orcid": null,
+      "affiliation": "Johns Hopkins University Applied Physics Laboratory",
+      "activity_dates": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "Troy Cline",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "non-qualifying role only - Public Engagement Lead on the mission team page",
+      "evidence": [
+        { "source": "Listed as Parker Solar Probe Public Engagement Lead on the JHU/APL mission team page", "url": "https://parkersolarprobe.jhuapl.edu/The-Mission/index.php", "strength": "Low" }
+      ],
+      "person_record": { "id": null, "url": null },
+      "orcid": null,
+      "affiliation": "Johns Hopkins University Applied Physics Laboratory",
+      "activity_dates": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "Lan Jian",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "archive data contact for the PSP holdings at SPDF, not a mission or instrument author",
+      "evidence": [
+        { "source": "Given as the data contact on the SPDF/CDAWeb Parker Solar Probe archive readme", "url": "https://cdaweb.gsfc.nasa.gov/sp_phys/data/psp/00readme.html", "strength": "Low" }
+      ],
+      "person_record": { "id": null, "url": null },
+      "orcid": null,
+      "affiliation": "NASA Goddard Space Flight Center",
+      "activity_dates": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "Robert M. Candey",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "approving NASA official for the archive web page, not a mission or instrument author",
+      "evidence": [
+        { "source": "Named as the approving NASA official and head of the Space Physics Data Facility at the foot of the SPDF/CDAWeb Parker Solar Probe archive readme", "url": "https://cdaweb.gsfc.nasa.gov/sp_phys/data/psp/00readme.html", "strength": "Low" }
+      ],
+      "person_record": { "id": "spase://SMWG/Person/Robert.M.Candey", "url": "https://spase-metadata.org/SMWG/Person/Robert.M.Candey.html" },
+      "orcid": null,
+      "affiliation": "NASA Goddard Space Flight Center, Space Physics Data Facility",
+      "activity_dates": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "James M. Weygand",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "metadata curation role only (MetadataContact), not a data author",
+      "evidence": [
+        { "source": "Listed as MetadataContact in the Observatory record's Contacts and in every Parker Solar Probe Instrument record's Contacts", "url": "https://spase-metadata.org/SMWG/Observatory/ParkerSolarProbe", "strength": "Low" }
+      ],
+      "person_record": { "id": "spase://SMWG/Person/James.M.Weygand", "url": "https://spase-metadata.org/SMWG/Person/James.M.Weygand.html" },
+      "orcid": null,
+      "affiliation": "University of California, Los Angeles",
+      "activity_dates": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "Lee Frost Bargatze",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "metadata curation role only (MetadataContact and RevisionHistory reviewer 'LFB'), not a data author",
+      "evidence": [
+        { "source": "Listed as MetadataContact in the Observatory record's Contacts and in every Parker Solar Probe Instrument record's Contacts; also the reviewer initialled 'LFB' in the 2021 RevisionHistory note", "url": "https://spase-metadata.org/SMWG/Observatory/ParkerSolarProbe", "strength": "Low" }
+      ],
+      "person_record": { "id": "spase://SMWG/Person/Lee.Frost.Bargatze", "url": "https://spase-metadata.org/SMWG/Person/Lee.Frost.Bargatze.html" },
+      "orcid": null,
+      "affiliation": "University of California, Los Angeles",
+      "activity_dates": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    }
+  ],
+  "notes": [
+    "Paper selection confident for the Observatory description paper. (Fox et al. 2015, 10.1007/s11214-015-0211-6), 'The Solar Probe Plus Mission: Humanity's First Visit to Our Star', passes every heuristic: mission-overview title keywords, 14 authors, 1234 Crossref citations, publication in November 2015 - within the fuzzy pre-operations window ahead of the 2018-08-12 launch - and it is already cited in the processed record's own InformationURL list and in the Ephemeris record. No competing candidate paper. The later review (Raouafi et al. 2023, 10.1007/s11214-023-00952-4) was considered and set aside as a science review rather than a description paper.",
+    "Mission overview paper author order: backward scan found a sorted suffix of 12 names running from author 3 (Bale) to author 14 (Szabo), with the Velli-to-Bale step breaking alphabetical order. Classification: partially alphabetized, deliberate prefix = Fox, Velli (2 authors). Fox and Velli therefore take position-based Strong evidence and nobody else does. In particular the prefix was NOT padded out to five names from the alphabetized remainder - Bale, Decker and Driesman sit at positions 3, 4 and 5 by accident of the alphabet. Bale, Decker, Howard, Kasper, McComas, Raouafi and Szabo are all included, but each via an independent source (instrument PI listing, mission team page, or Instrument-record Contacts), never via their position in this list.",
+    "FIELDS paper author order (Bale et al. 2016, 10.1007/s11214-016-0244-5, 84 authors): the list is alphabetized by family name from author 10 (Andre) to the end, with two isolated single-name anomalies (Parker before Pankow at 66-67, Yehle before Werthimer at 82-83). A strict backward scan stops at those anomalies and would classify the list as not alphabetized; reading the anomalies as typographical gives a deliberate prefix of 9 (Bale, Goetz, Harvey, Turin, Bonnell, Dudok de Wit, Ergun, MacDowall, Pulupa). Both readings award Strong evidence to the same three people - Bale, Goetz, Harvey - so the ambiguity does not change the outcome. Prefix positions 4 and 5 (Turin, Bonnell) are recorded as excluded instrument-team depth; prefix positions 6-9 and the entire alphabetized remainder carry no position-based evidence and were not enumerated.",
+    "IS⊙IS paper author order (McComas et al. 2014, 10.1007/s11214-014-0059-1, 51 authors): authors 2-51 are cleanly alphabetized by family name, and McComas heads the list out of alphabetical order. Classification: partially alphabetized, prefix = 1 author. Only McComas takes position-based evidence; the prefix was not padded from the alphabetized remainder, so no other IS⊙IS author is a candidate on position. Eric Christian, at position 10 in the remainder, is included on the strength of his DeputyPI listing in the Instrument record instead.",
+    "SWEAP paper author order (Kasper et al. 2015, 10.1007/s11214-015-0206-3, 79 authors): authors 2-79 are alphabetized by family name with three isolated single-name anomalies (Gauron before Gates, McFadden before Marchant, Messina before Mercer), and Kasper heads the list out of alphabetical order. Reading the anomalies as typographical gives a deliberate prefix of 1 - Kasper alone. A strict backward scan would instead cut the sorted suffix at author 58 and treat authors 2 and 3 (Abiad, Austin) as prefix leads, which is plainly an artefact of the alphabet; the conservative reading was taken, so only Kasper earns position-based evidence. Michael Stevens, at position 69 in the remainder, is included because the mission team page names him the current SWEAP PI.",
+    "WISPR paper author order (Vourlidas et al. 2015, 10.1007/s11214-014-0114-y, 27 authors): the backward scan finds no sorted suffix of five or more - the list is grouped by institution, not alphabetized - so author order signals contribution. Positions 1-3 (Vourlidas, Howard, Plunkett) take Strong evidence; positions 4 and 5 (Korendyke, Thernisien) are recorded as excluded instrument-team depth; Mark Linton at position 11 gets no position-based evidence and is included instead on the mission team page's PI listing.",
+    "Two generations of instrument PI are present and the sources split cleanly by date. The founding PIs are Bale (FIELDS), McComas (IS⊙IS), Kasper (SWEAP) and Howard (WISPR) - this is what the SPASE Instrument records, NASA's instruments page, and the 2022 SPDF/CDAWeb readme all say. The 2026 JHU/APL mission team page keeps Bale and McComas but names Michael Stevens for SWEAP and Mark Linton for WISPR. Kasper and Howard are therefore recorded as FormerPI of their suites and Stevens and Linton as the sitting InstrumentLeads. Curators should note that the SWEAP and WISPR Instrument records (and all five of their sub-instrument records) are out of date on this point.",
+    "Discrepancy in the Observatory record's own Contacts: Nour Raouafi is listed with the role PrincipalInvestigator, but no source outside SPASE gives him that title - the JHU/APL mission team page names him Project Scientist, and Parker Solar Probe, as a strategic APL-led mission, has no mission-level science PI. ProjectScientist is what this run records for him. Nicola Fox, listed as ProjectScientist in the record, held that post during development and launch but is no longer on the mission team page, having moved to NASA Headquarters; her project-scientist role is kept but should be read as historical. Robert Decker is listed only as Scientist, which is not an author-qualifying role, yet the mission team page names him Deputy Project Scientist - he is included on that basis, not on the record's Contacts entry.",
+    "The JHU/APL mission team page contains a duplicated Project Scientist line, the second of which misspells the surname as 'Nour Rawafi'. This is the same person as Nour Raouafi and no separate candidate was created.",
+    "Person record duplicate to resolve downstream: the SWEAP PI exists twice in the registry, as spase://SMWG/Person/Michael.L.Stevens and spase://SMWG/Person/Michael.Louis.Stevens, both with PersonName 'Michael Louis Stevens' and the Harvard-Smithsonian Center for Astrophysics as organisation (the Michael.Louis.Stevens record additionally carries the email mstevens@cfa.harvard.edu). Michael.L.Stevens is cited above as the conventional First.Initial.Last form; a curator should merge them.",
+    "Missing Person records confirmed against the published registry, not just the local clone: Marco Velli and Arik Posner both return HTTP 404 at spase-metadata.org, as do Clarence M. Korendyke, Paul Turin, Andrew Driesman, David Lario and James Kinnison. Marco Velli is the most significant gap - he is the mission's Observatory Scientist and the second author of the overview paper, and needs a Person record before he can be cited.",
+    "Two mission-level titles have no counterpart in the SPASE role enumeration and so appear as Author only: Marco Velli's 'Observatory Scientist' and Adam Szabo's 'Mission Scientist'. Robert Decker's 'Deputy Project Scientist' was mapped to ProjectScientist with the deputy status stated in the role source, since SPASE has no deputy-project-scientist role.",
+    "No CMAD was located despite Parker Solar Probe being an operating, NASA-funded mission for which one is expected; see the cmad object for the three search strategies tried. Current-team evidence came from the 2026 JHU/APL mission team page instead, which is what surfaced the SWEAP and WISPR PI changes.",
+    "Instrument coverage is complete at suite level - all four suites named by every external source have SPASE Instrument records - but the sub-instrument tree has three structural gaps worth a curator's attention: IS⊙IS/EPI-Hi and FIELDS/RFS are each registered only through their component telescopes and receivers with no record of their own, and the FIELDS Time Domain Sampler sits at FIELDS/FIELDS2/TDS behind an intermediate 'FIELDS2' directory that has no record and does not correspond to any real instrument.",
+    "All twenty sub-instrument records were read. Every one carries exactly three Contacts - its suite PI as PrincipalInvestigator, Nicola J. Fox as ProjectScientist, and Lee Frost Bargatze as MetadataContact - so the deep tree yielded no people beyond those already captured at suite level. The sub-instrument teams themselves are deferred to pending_instrument_runs, per the Observatory-level scoping of this run.",
+    "This run took each suite's leads only - the Instrument record's qualifying-role contacts plus positions 1-3 of the suite description paper. Suite-paper authors at position 4 and beyond are instrument-team depth and belong to that Instrument record's own finder run; the fourth and fifth authors of the FIELDS and WISPR papers are listed individually as excluded, while the IS⊙IS and SWEAP papers have single-author prefixes and so have no fourth or fifth to consider."
+  ]
+}
