@@ -236,12 +236,16 @@ def main():
             return 1
         orig_tip = git(["rev-parse", branch], repo).stdout.strip()
 
-    git(["checkout", branch] if exists else ["checkout", "-b", branch], repo)
+    # A new branch starts from base too, not from wherever the clone happens to
+    # be: after one record's run the clone sits on that record's branch, and a
+    # bare `checkout -b` would stack the next record's run on top of it.
+    git(["checkout", branch] if exists else ["checkout", "-b", branch, base],
+        repo)
     if exists:
         git(["reset", "--hard", base], repo)
         print("branch   : %s (existing, reset to %s)" % (branch, base))
     else:
-        print("branch   : %s (new)" % branch)
+        print("branch   : %s (new, from %s)" % (branch, base))
 
     def rollback():
         """Leave the clone exactly as this run found it."""
