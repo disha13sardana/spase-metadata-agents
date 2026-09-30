@@ -587,8 +587,12 @@ misattributes the link. An entry whose scope does not match is left for the
 record it belongs to and logged as `URL DEFERRED`; an entry with no scope at all
 is skipped and logged, never assumed.
 
-Skip a URL already present in the record — comparison ignores case and a trailing
-slash — and log it as `URL PRESENT` rather than writing a second copy.
+Skip a URL already present in the record — comparison ignores case, a trailing
+slash and the `http`/`https` scheme — and log it as `URL PRESENT` rather than
+writing a second copy. When the copy already there is written differently, the
+log names it (`already in the record as http://…`). The existing entry is kept as
+curated, even if its Name or Description is wrong; that is a curator item, not
+something to replace.
 
 ### Step 8 — Correct schemaLocation
 
@@ -607,6 +611,14 @@ xsi:schemaLocation="https://www.spase-group.org/data/schema https://www.spase-gr
 
 Describe this in the RevisionEvent as a *correction* — the declared Version
 already said 2.7.1, so the edit makes the file internally consistent.
+
+**Never lower a Version.** A record that already declares a newer Version
+(2.7.2, say) keeps its Version and schemaLocation exactly as they are: a newer
+schema already holds every element the writer adds, and rewriting it to 2.7.1
+would be a silent downgrade that still validates, so nobody would notice it. Log it
+as `VERSION KEPT`. If the target record itself is the newer one, the
+RevisionEvent note leaves out the schemaLocation clause, since nothing was
+corrected.
 
 ### Step 9 — RevisionEvent and ReleaseDate
 

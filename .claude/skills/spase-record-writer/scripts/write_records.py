@@ -433,16 +433,17 @@ def set_field(txt, tag, value):
     return txt
 
 
-def existing_urls(txt):
-    """Every URL already present in the record, normalised for comparison."""
-    out = set()
-    for u in re.findall(r"<URL>([^<]*)</URL>", txt):
-        out.add(u.strip().rstrip("/").lower())
-    return out
-
-
 def norm_url(u):
-    return (u or "").strip().rstrip("/").lower()
+    """A URL reduced to the page it names: case, a trailing slash and the
+    http/https scheme are ignored, so one page is never listed twice."""
+    u = (u or "").strip().rstrip("/").lower()
+    return re.sub(r"^https?://", "", u)
+
+
+def existing_urls(txt):
+    """Every URL already present in the record: normalised form -> as written."""
+    return {norm_url(u): u.strip()
+            for u in re.findall(r"<URL>([^<]*)</URL>", txt)}
 
 
 def build_information_urls(data, target_scope, txt):
@@ -471,10 +472,15 @@ def build_information_urls(data, target_scope, txt):
             log.append("URL DEFERRED %s is %s-level, not written to this "
                        "%s record" % (url, scope, target_scope))
             continue
-        if norm_url(url) in have:
-            log.append("URL PRESENT  %s already in the record" % url)
+        key = norm_url(url)
+        if key in have:
+            # Name the form already there when it differs, so a curator can see
+            # that an http:// entry is standing in for the https:// one.
+            log.append("URL PRESENT  %s already in the record%s"
+                       % (url, "" if have[key] == url
+                          else " as %s" % have[key]))
             continue
-        have.add(norm_url(url))
+        have[key] = url
         b = ["      <InformationURL>",
              "        <Name>%s</Name>" % esc(name),
              "        <URL>%s</URL>" % esc(url)]
@@ -491,12 +497,31 @@ def drop_field(txt, tag):
                   flags=re.M | re.S)
 
 
+def version_tuple(v):
+    """'2.7.1' -> (2, 7, 1); None when the text is not a dotted version."""
+    parts = (v or "").strip().split(".")
+    if not all(p.isdigit() for p in parts):
+        return None
+    return tuple(int(p) for p in parts)
+
+
 def bump_schema(txt):
+    """Raise a record to TARGET_VERSION; never lower one that is already newer.
+
+    Returns (txt, kept). kept is the record's own Version when it declares a
+    newer one than this writer targets: both Version and schemaLocation are
+    then left exactly as they are, since a newer schema already holds every
+    element the writer adds, and rewriting it would be a silent downgrade.
+    """
+    m = re.search(r"<Version>([^<]*)</Version>", txt)
+    have = version_tuple(m.group(1)) if m else None
+    if have and have > version_tuple(TARGET_VERSION):
+        return txt, m.group(1).strip()
     txt = re.sub(r'xsi:schemaLocation="[^"]*"',
                  'xsi:schemaLocation="%s"' % SCHEMA_LOC, txt, count=1)
     txt = re.sub(r"<Version>[^<]*</Version>",
                  "<Version>%s</Version>" % TARGET_VERSION, txt, count=1)
-    return txt
+    return txt, None
 
 
 def new_person_xml(pid, name, org, orcid, ror, stamp, note=None):
@@ -789,7 +814,12 @@ def main():
                            % (pid, existing_ror_now, ror))
 
             if txt != before:
-                txt = bump_schema(txt)
+                txt, newer = bump_schema(txt)
+                if newer:
+                    log.append("VERSION KEPT %s: record declares SPASE %s, "
+                               "newer than the %s this writer targets; Version "
+                               "and schemaLocation left as they are"
+                               % (pid, newer, TARGET_VERSION))
                 txt = set_field(txt, "ReleaseDate", stamp)
                 txt = set_field(txt, "NamingAuthority", "SMWG")
                 txt = set_field(txt, "ResourceType", "Person")
@@ -918,7 +948,11 @@ def main():
 
     # ---- target record ----------------------------------------------------
     txt = open(target, encoding="utf-8").read()
-    txt = bump_schema(txt)
+    txt, target_newer = bump_schema(txt)
+    if target_newer:
+        log.append("VERSION KEPT %s: record declares SPASE %s, newer than the "
+                   "%s this writer targets; Version and schemaLocation left as "
+                   "they are" % (rid, target_newer, TARGET_VERSION))
 
     # Replace the UNKNOWN placeholder and any Contact for a person we are
     # writing; leave unrelated Contacts alone. This makes re-runs idempotent.
@@ -991,8 +1025,9 @@ def main():
 
     note = args.note or (
         "Added mission Contacts with Author and qualifying roles derived from "
-        "mission literature and instrument records; corrected schemaLocation to "
-        "match the declared SPASE Version.")
+        "mission literature and instrument records" +
+        ("." if target_newer else "; corrected schemaLocation to match the "
+         "declared SPASE Version."))
     # Provenance of this edit belongs in the RevisionEvent, which is what a
     # RevisionEvent is for. The URL must be commit-pinned: a branch link drifts
     # as soon as the record is re-enriched and would then appear to corroborate
