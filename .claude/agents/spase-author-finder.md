@@ -62,6 +62,9 @@ Key rules from the skill that are easy to get wrong:
   is only for a PI of the mission/observatory as a whole. Scope decides, not
   seniority — an eminent person listed as PI in an Instrument record's Contacts is
   still `InstrumentLead`. Say which instrument or mission a `FormerPI` was PI of.
+  `InstrumentLead` is for the *sitting* lead: when a current source (mission team
+  or PI page, current CMAD) names a different current PI, a PI listed only in
+  out-of-date Contacts or older sources is `FormerPI` of that instrument.
   So a paper lead who is also that instrument's PI → `["Author", "InstrumentLead"]`.
   Never emit `InstrumentPrincipalInvestigator` — it is not a legal SPASE 2.7.1 role
   and fails schema validation. Check every role against the legal enumeration in
