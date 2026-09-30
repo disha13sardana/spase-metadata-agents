@@ -794,7 +794,11 @@ ordinary web pages.
 
 - **Crossref**: `https://api.crossref.org/works/<DOI>` — author lists with ORCIDs
   and affiliations as deposited by publishers. Include a `mailto:` contact in the
-  `User-Agent` header (Crossref "polite pool"). Primary route for ORCID
+  `User-Agent` header (Crossref "polite pool"). The contact is **the email of the
+  person running the pipeline**: `$CROSSREF_MAILTO` if set, otherwise
+  `git config user.email` in this repo; if neither is set, send no `mailto:`
+  (the public pool is fine at this volume). Send it to `api.crossref.org` only —
+  never to any other service — and never write it into an output file. Primary route for ORCID
   resolution because it anchors identity to a specific authorship. The same
   response supplies the `author` array and year for `*_evidence_citation`, so read
   it once and take everything you need — do not reconstruct a citation later from
