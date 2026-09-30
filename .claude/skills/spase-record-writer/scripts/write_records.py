@@ -24,6 +24,7 @@ import json
 import os
 import re
 import sys
+import unicodedata
 from datetime import datetime, timezone
 
 SCHEMA_LOC = ("https://www.spase-group.org/data/schema "
@@ -158,10 +159,42 @@ def primary_affiliation(v):
     return split_affiliation(v)[0]
 
 
+# Letters NFKD does not decompose into a base letter plus accent.
+_FOLD_SPECIAL = str.maketrans({"ß": "ss", "Æ": "AE", "æ": "ae", "Œ": "OE",
+                               "œ": "oe", "Ø": "O", "ø": "o", "Ł": "L",
+                               "ł": "l", "Đ": "D", "đ": "d", "Þ": "Th",
+                               "þ": "th", "ı": "i"})
+
+
+def ascii_fold(s):
+    """'Göran Kyrölä' -> 'Goran Kyrola': accents folded to the base letter, as
+    the registry's own IDs do (Goran.T.Marklund, Bengt-Goran.Andersson)."""
+    s = unicodedata.normalize("NFKD", (s or "").translate(_FOLD_SPECIAL))
+    return "".join(ch for ch in s if not unicodedata.combining(ch))
+
+
+def name_key(s):
+    """Lowercase letters only, accents folded -- for comparing names with IDs."""
+    return re.sub(r"[^a-z]", "", ascii_fold(s).lower())
+
+
+# German umlauts are also written as two letters, and the registry has both
+# forms (Goran.T.Marklund, but Daniel.Mueller).
+_UMLAUT_PAIRS = str.maketrans({"ä": "ae", "ö": "oe", "ü": "ue",
+                               "Ä": "Ae", "Ö": "Oe", "Ü": "Ue"})
+
+
+def name_keys(s):
+    """Every key a name may be filed under: 'Müller' -> {'muller', 'mueller'}."""
+    return {name_key(s), name_key((s or "").translate(_UMLAUT_PAIRS))}
+
+
 def mint_id(name):
-    """'Paul T. M. Loto'aniu' -> Paul.T.M.Lotoaniu (apostrophes stripped)."""
-    cleaned = re.sub(r"[^A-Za-z. ]", "", name)
-    toks = [t.strip(".") for t in cleaned.split() if t.strip(".")]
+    """'Paul T. M. Loto'aniu' -> Paul.T.M.Lotoaniu (apostrophes stripped);
+    'Göran Olsson' -> Goran.Olsson; 'Bengt-Göran Andersson' ->
+    Bengt-Goran.Andersson (accents folded, hyphens kept)."""
+    cleaned = re.sub(r"[^A-Za-z.\- ]", "", ascii_fold(name))
+    toks = [t.strip(".-") for t in cleaned.split() if t.strip(".-")]
     return ".".join(toks)
 
 
@@ -365,31 +398,38 @@ def build_person_index(repo):
     by_sur = {}
     for pid in ids:
         parts = pid.split(".")
-        sur = parts[-1].lower()
+        sur = name_key(parts[-1])
         if sur in ("jr", "sr", "ii", "iii") and len(parts) > 1:
-            sur = parts[-2].lower()
+            sur = name_key(parts[-2])
         by_sur.setdefault(sur, []).append(pid)
     return ids, by_sur
 
 
 def find_collisions(name, ids, by_sur):
-    """Return existing Person IDs that may be the same human."""
+    """Return existing Person IDs that may be the same human.
+
+    Both sides go through name_key, so 'Kyrölä' meets an existing 'Kyrola' and
+    'Rodriguez-Pacheco' meets 'Rodriguez-Pacheco' -- a key built one way for the
+    candidate and another for the registry silently misses them. Umlauts are
+    tried both ways, so 'Müller' meets 'Muller' and 'Mueller'."""
     toks = [t for t in name.split() if t]
     if not toks:
         return []
-    sur = re.sub(r"[^a-z]", "", toks[-1].lower())
-    hits = list(by_sur.get(sur, []))
+    hits = []
+    for sur in sorted(name_keys(toks[-1])):
+        hits += [p for p in by_sur.get(sur, []) if p not in hits]
     if not hits:
-        flat = re.sub(r"[^a-z]", "", name.lower())
-        close = difflib.get_close_matches(
-            flat, [re.sub(r"[^a-z]", "", i.lower()) for i in ids],
-            n=3, cutoff=0.85)
-        hits = [i for i in ids if re.sub(r"[^a-z]", "", i.lower()) in close]
+        keys = {i: name_key(i) for i in ids}
+        close = set()
+        for flat in name_keys(name):
+            close |= set(difflib.get_close_matches(flat, list(keys.values()),
+                                                   n=3, cutoff=0.85))
+        hits = [i for i in ids if keys[i] in close]
     # rank: nickname-aware given-name agreement first
-    given = re.sub(r"[^a-z]", "", toks[0].lower())
+    given = name_key(toks[0])
     alt = NICKNAMES.get(given, "")
     def score(pid):
-        first = pid.split(".")[0].lower()
+        first = name_key(pid.split(".")[0])
         if first == given or first == alt:
             return 0
         if len(given) == 1 and first.startswith(given):

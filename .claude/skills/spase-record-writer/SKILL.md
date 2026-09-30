@@ -140,12 +140,20 @@ an authorship change.
 
 Convention: `GivenName.[MiddleName. or MI.]FamilyName`.
 
-Strip characters outside `[A-Za-z. ]` from the ID. Apostrophes in particular
-have no precedent in the registry and cause trouble in filenames and URIs:
+Fold accented letters to their base letter, keep hyphens, and strip anything
+else outside `[A-Za-z.- ]`. Apostrophes in particular have no precedent in the
+registry and cause trouble in filenames and URIs; folded accents and kept
+hyphens are the registry's own practice (`Goran.T.Marklund`,
+`Bengt-Goran.Andersson`, `Jorg-Micha.Jahn`):
 
 ```
 Paul T. M. Loto'aniu   ->   Paul.T.M.Lotoaniu
+Göran Olsson           ->   Goran.Olsson
+Bengt-Göran Andersson  ->   Bengt-Goran.Andersson
 ```
+
+The duplicate check compares names on the same folded, letters-only key on both
+sides, so an accented or hyphenated surname still meets its existing record.
 
 The `PersonName` element keeps the correct spelling, apostrophe included. Only
 the ID is normalised. Log every mint where the ID differs from a straight
