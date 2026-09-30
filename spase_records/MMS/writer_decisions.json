@@ -3,15 +3,36 @@
   "_record": "spase://SMWG/Observatory/MMS",
   "_decisions_note": "The writer's automatic collision check runs only for candidates with no person_record.id, which was Galen Fowler and Christopher K. Pankratz. The seven initials-only names below carried a person_record.id in the enriched input that resolves to no file in the clone, so they bypassed the check and were created at the asserted ID. Every surname below was searched by hand against Person/ at master; findings recorded per name. No genuine duplicate was found, so all nine were created.",
   "_candidates": {
-    "Galen Fowler": ["Sue.C.Bodine-Fowler -- different person: different given name, hyphenated surname, unrelated field"],
-    "Christopher K. Pankratz": ["no Pankratz record exists at master"],
-    "P. Leroy": ["Leroy.L.Cogger and George.Leroy.Nelms carry Leroy as a GIVEN name, not a surname; no Leroy-surnamed record exists"],
-    "S. Tucker": ["no Tucker record exists at master"],
-    "J. Westfall": ["no Westfall record exists at master"],
-    "M. Granoff": ["no Granoff record exists at master"],
-    "A. Jacques": ["all ten Jacques* records carry Jacques as a GIVEN name; no Jacques-surnamed record exists"],
-    "G. Olsson": ["no Olsson record exists at master"],
-    "Martin Tajmar": ["no Tajmar record exists at master; created at the input's asserted ID M.Tajmar, not the conventional mint Martin.Tajmar -- see report"]
+    "Galen Fowler": [
+      "Sue.C.Bodine-Fowler -- different person: different given name, hyphenated surname, unrelated field"
+    ],
+    "Christopher K. Pankratz": [
+      "no Pankratz record exists at master"
+    ],
+    "P. Leroy": [
+      "Leroy.L.Cogger and George.Leroy.Nelms carry Leroy as a GIVEN name, not a surname; no Leroy-surnamed record exists"
+    ],
+    "S. Tucker": [
+      "no Tucker record exists at master"
+    ],
+    "J. Westfall": [
+      "no Westfall record exists at master"
+    ],
+    "M. Granoff": [
+      "no Granoff record exists at master"
+    ],
+    "A. Jacques": [
+      "all ten Jacques* records carry Jacques as a GIVEN name; no Jacques-surnamed record exists"
+    ],
+    "G. Olsson": [
+      "no Olsson record exists at master"
+    ],
+    "Martin Tajmar": [
+      "no Tajmar record exists at master; created at the input's asserted ID M.Tajmar, not the conventional mint Martin.Tajmar -- see report"
+    ],
+    "Michael Hesse": [
+      "Michel.Herse"
+    ]
   },
   "links": {},
   "creates": [
@@ -23,6 +44,10 @@
     "M. Granoff",
     "A. Jacques",
     "G. Olsson",
-    "Martin Tajmar"
-  ]
+    "Martin Tajmar",
+    "Michael Hesse"
+  ],
+  "_rationale": {
+    "Michael Hesse": "DIFFERENT PEOPLE (user ruling, 2026-10-01) - flagged only by fuzzy whole-name similarity ('michaelhesse' ~ 'michelherse'); no Hesse surname exists in Person/. The candidate is the MMS Theory and Modeling Team Lead Co-I (LASP team page, NASA GSFC; ORCID 0000-0003-0377-9673 confirmed on 10.1029/2021gl095065, NASA Ames). Michel.Herse is 'Dr. Michel Herse', CNRS Service d'Aeronomie, imported from VSPO in 2007 with no email, ORCID or ROR. No shared identifier, email or institution. New record created."
+  }
 }
