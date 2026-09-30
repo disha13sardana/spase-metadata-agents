@@ -1,6 +1,6 @@
 {
   "record": "spase://SMWG/Observatory/SDO",
-  "date": "2026-09-28",
+  "date": "2026-09-30",
   "operating_span": {
     "start": "2010-02-11",
     "stop": null
@@ -8,8 +8,8 @@
   "cmad": {
     "found": true,
     "expected": true,
-    "url": "https://doi.org/10.25810/nh0m-ze62",
-    "notes": "SDO is an operating NASA mission (launched 11 February 2010, no StopDate), so a CMAD is expected. One SDO CMAD was located, and only for the EVE instrument: 'SDO EVE Calibration and Measurement Algorithms Document Rev B' (LASP, 2025, https://doi.org/10.25810/nh0m-ze62), whose named front-matter authors are A. R. Jones, T. N. Woods, D. L. Woodraska, R. J. Borelli, P. C. Chamberlin (spelled 'Chamberlain' in the deposited metadata) and F. G. Eparvier. Because Rev B carries a 2025 date, well inside the operating span, its names are treated as current-team evidence. An earlier pre-launch revision also exists: EVE CMAD Rev A, Document No. EVE-T-11003, dated 31 January 2005 (https://soma.larc.nasa.gov/lws/pdf_files/4.2a%20CMAD%20SDO-EVE.pdf), prepared by Francis G. Eparvier as EVE Project Scientist and approved by 'TNW' (Thomas N. Woods); it predates launch by five years, so its names are founding-era rather than current-team evidence. No AIA CMAD and no HMI CMAD were found, and no mission-wide SDO CMAD was found, after searching (a) DataCite, which indexes only three heliophysics CMADs in total and for SDO only the EVE Rev B document, (b) the provider data centres (lmsal.com/sdodocs document index, hmi.stanford.edu, lasp.colorado.edu/eve, sdo.gsfc.nasa.gov) and (c) general web search plus the NASA LWS/SOMA programme library. This is a real gap: the SDO 2020 Senior Review Proposal budgeted AIA, EVE and HMI CMAD production for FY21-FY23 (Sections 3.1-3.4 and Appendix B), so AIA and HMI CMADs were planned but are not publicly locatable. Current-team evidence for AIA and HMI therefore rests on the provider pages and the SPASE Instrument records instead."
+    "url": "https://soma.larc.nasa.gov/lws/pdf_files/4.2a%20CMAD%20SDO-EVE.pdf",
+    "notes": "SDO is operating and NASA-funded (Living With a Star), so a CMAD is expected. The 2023 Heliophysics Senior Review report (https://science.nasa.gov/wp-content/uploads/2023/09/final-2023-senior-review-report-tagged.pdf) says SDO's 'draft CMADs were provided to the Senior Review panel and are nearing completion', so current SDO CMADs exist in draft. None was located publicly after searching Zenodo, the SDO/GSFC site, the HMI/JSOC and LMSAL AIA sites, the LASP EVE pages and the web (two passes). The only CMAD found is the pre-launch EVE CMAD, document EVE-T-11003 Rev. A dated 2005-01-31 (revised draft for CDR; first draft for PDR 2003-12-13), prepared by Francis G. Eparvier, EVE Project Scientist, and approved 'TNW' (Tom Woods). It is hosted as an example document in the NASA LWS GDC Program Library (https://soma.larc.nasa.gov/lws/gdc/programlibrary.html). It predates launch by five years and covers EVE only, so its front page is founding-era, instrument-level evidence, not current-team evidence. Current-team evidence came instead from the SDO Senior Review proposals (2015, 2017, 2020), the SDO team and contact pages, and the Instrument record Contacts."
   },
   "instrument_coverage": {
     "spase_instruments": [
@@ -24,120 +24,98 @@
     ],
     "roster_sources": [
       "https://sdo.gsfc.nasa.gov/mission/instruments.php",
-      "https://doi.org/10.1007/s11207-011-9841-3",
+      "https://sdo.gsfc.nasa.gov/mission/definitive-publications.php",
+      "http://hmi.stanford.edu/papers/SDO_SR_2020_assembled_3.pdf",
       "record Description"
     ],
     "missing_from_spase": [],
-    "notes": "The Observatory record has no downward instrument links, so the SPASE side was established by reverse lookup: the three records under SMWG/Instrument/SDO/ (AIA, EVE, HMI) were each opened and each carries ObservatoryID spase://SMWG/Observatory/SDO. Ground truth for the payload came from three independent sources that agree exactly: the SDO mission instruments page (which also names a PI and PI institution for each of HMI, AIA and EVE), the mission overview paper (Pesnell et al. 2012, 10.1007/s11207-011-9841-3), and the Observatory record's own Description ('The spacecraft carries three instruments'). SDO's payload is genuinely three instruments, so SPASE coverage is complete and nothing is missing. Note that EVE is an instrument suite with named subsystems (MEGS with channels A, B, SAM and P; ESP; EEB) and HMI/AIA share the Joint Science Operations Center at Stanford; none of these subsystems has its own SPASE Instrument record, which is consistent with how the mission itself counts three instruments."
+    "notes": "Reverse lookup: every record in the SMWG clone (hpde/SMWG @ b8c8b803) was searched for ObservatoryID spase://SMWG/Observatory/SDO. Only AIA, EVE and HMI match, and the registry listing https://spase-metadata.org/SMWG/Instrument/SDO/ shows the same three. The SDO instruments page, the Definitive Publications page, the 2020 Senior Review fact sheet and the record's own Description all give the same three-instrument payload, so the SPASE coverage is complete. EVE's MEGS and ESP are subsystems within EVE (EVE record Description), not separate instruments."
   },
-  "pending_instrument_runs": [
-    {
-      "instrument": "spase://SMWG/Instrument/SDO/HMI",
-      "spase_record": "spase://SMWG/Instrument/SDO/HMI",
-      "description_paper": "https://doi.org/10.1007/s11207-011-9834-2",
-      "reason": "paper-selection uncertain - two co-equal HMI description papers",
-      "notes": "HMI has two description papers published side by side in the same Solar Physics SDO special issue, and neither is clearly the single authoritative one: the investigation paper (Scherrer et al. 2012, 10.1007/s11207-011-9834-2, 13 authors, ~2300 citations) and the design and ground-calibration paper (Schou et al. 2012, 10.1007/s11207-011-9842-2, 21 authors, ~1800 citations). The HMI SPASE Instrument record links neither. For this Observatory run the ambiguity turns out not to matter, because both papers name the same three leads in their first three positions - Scherrer, Schou and Bush - so all three are recorded at full strength with both papers cited. A dedicated HMI run must still settle which paper is the instrument's reference before taking its 4th and 5th authors. The HMI run should also harvest the HMI science-team page (http://hmi.stanford.edu/ScienceTeam/index.html), which lists roughly 35 Co-Investigators and Associated Investigators with explicit per-person roles across Stanford, LMSAL, HAO and 15 other institutions; that roster is instrument-team depth and was deliberately not swept into this Observatory-level list."
-    }
-  ],
+  "pending_instrument_runs": [],
   "information_urls": [
-    {
-      "name": "The Solar Dynamics Observatory (SDO)",
-      "url": "https://doi.org/10.1007/s11207-011-9841-3",
-      "description": "The SDO mission overview paper, describing the science goals, spacecraft, orbit, ground system and the three-instrument payload.",
-      "scope": "observatory"
-    },
     {
       "name": "SDO instruments page",
       "url": "https://sdo.gsfc.nasa.gov/mission/instruments.php",
-      "description": "Mission page listing the SDO science payload, with a Principal Investigator and PI institution named for each of HMI, AIA and EVE.",
+      "description": "NASA/GSFC SDO page describing the three instruments (AIA, EVE, HMI), their lead institutions and principal investigators.",
       "scope": "observatory"
     },
     {
-      "name": "SDO team page",
-      "url": "https://sdo.gsfc.nasa.gov/mission/team.php",
-      "description": "Mission team page naming the SDO Project Scientist, the three instrument PIs and the pre-launch project leadership; the live page refuses automated requests, so it was read from the Internet Archive snapshot of 23 December 2024.",
+      "name": "SDO definitive publications",
+      "url": "https://sdo.gsfc.nasa.gov/mission/definitive-publications.php",
+      "description": "The SDO project's list of reference papers for the mission and for each instrument.",
       "scope": "observatory"
     },
     {
-      "name": "SDO 2020 Senior Review Proposal",
+      "name": "The Solar Dynamics Observatory (SDO)",
+      "url": "https://doi.org/10.1007/s11207-011-9841-3",
+      "description": "SDO mission overview paper in the Solar Physics SDO issue (Pesnell, Thompson & Chamberlin 2012).",
+      "scope": "observatory"
+    },
+    {
+      "name": "The Solar Dynamics Observatory (book)",
+      "url": "https://doi.org/10.1007/978-1-4614-3673-7",
+      "description": "Edited reference volume collecting the SDO mission and instrument description papers (Chamberlin, Pesnell & Thompson, eds., 2012).",
+      "scope": "observatory"
+    },
+    {
+      "name": "SDO 2020 Senior Review proposal",
       "url": "http://hmi.stanford.edu/papers/SDO_SR_2020_assembled_3.pdf",
-      "description": "Mission fact sheet naming the Project Scientist and the three Science Investigation Team PIs, plus the signed SDO Project Data Management Plan signature page and the appended EVE CMAD.",
+      "description": "The SDO mission's 2020 extended-mission proposal to NASA's Heliophysics Senior Review, naming the Project Scientist and the AIA, EVE and HMI principal investigators.",
       "scope": "observatory"
     },
     {
-      "name": "The Atmospheric Imaging Assembly (AIA) on SDO",
+      "name": "The Atmospheric Imaging Assembly (AIA) on the Solar Dynamics Observatory (SDO)",
       "url": "https://doi.org/10.1007/s11207-011-9776-8",
-      "description": "AIA instrument description paper, linked from the AIA SPASE Instrument record.",
+      "description": "AIA instrument description paper (Lemen et al. 2012).",
       "scope": "instrument",
       "instrument": "AIA"
     },
     {
-      "name": "AIA web site at the PI institution",
-      "url": "http://aia.lmsal.com/",
-      "description": "Lockheed Martin Solar and Astrophysics Laboratory site for AIA, with data products, processing notes and a programme contact.",
-      "scope": "instrument",
-      "instrument": "AIA"
-    },
-    {
-      "name": "Extreme Ultraviolet Variability Experiment (EVE) on SDO",
+      "name": "Extreme Ultraviolet Variability Experiment (EVE) on the Solar Dynamics Observatory (SDO)",
       "url": "https://doi.org/10.1007/s11207-009-9487-6",
-      "description": "EVE instrument description paper covering science objectives, instrument design, data products and model developments.",
+      "description": "EVE instrument description paper covering science objectives, instrument design, data products and models (Woods et al. 2012).",
       "scope": "instrument",
       "instrument": "EVE"
     },
     {
-      "name": "EVE web site at LASP",
-      "url": "https://lasp.colorado.edu/eve/",
-      "description": "Provider home page for EVE, with instrument description, data access and release news.",
-      "scope": "instrument",
-      "instrument": "EVE"
-    },
-    {
-      "name": "EVE personnel page",
-      "url": "https://lasp.colorado.edu/eve/reference/personnel/",
-      "description": "EVE team listing giving the prime-mission science team by institution and the LASP personnel with their named EVE roles.",
-      "scope": "instrument",
-      "instrument": "EVE"
-    },
-    {
-      "name": "SDO EVE Calibration and Measurement Algorithms Document Rev B",
-      "url": "https://doi.org/10.25810/nh0m-ze62",
-      "description": "Current EVE CMAD (2025), describing pre-flight and in-flight calibration and the algorithms converting instrument signals to solar spectral irradiances.",
-      "scope": "instrument",
-      "instrument": "EVE"
-    },
-    {
-      "name": "SDO EVE Calibration and Measurement Algorithms Document Rev A",
+      "name": "SDO EVE Calibration and Measurement Algorithms Document (CMAD)",
       "url": "https://soma.larc.nasa.gov/lws/pdf_files/4.2a%20CMAD%20SDO-EVE.pdf",
-      "description": "Pre-launch EVE CMAD (Document No. EVE-T-11003 Rev. A, 31 January 2005), the design-phase calibration and algorithm document.",
+      "description": "Pre-launch (2005) EVE calibration plan and algorithms for converting instrument signals to solar spectral irradiance, with error budgets.",
       "scope": "instrument",
       "instrument": "EVE"
     },
     {
-      "name": "The Helioseismic and Magnetic Imager (HMI) Investigation for SDO",
-      "url": "https://doi.org/10.1007/s11207-011-9834-2",
-      "description": "HMI investigation paper describing the science objectives, observables and data analysis pipeline.",
+      "name": "EVE personnel",
+      "url": "https://lasp.colorado.edu/eve/reference/personnel/",
+      "description": "LASP page listing the EVE prime-mission science team and the LASP EVE staff with their roles.",
       "scope": "instrument",
-      "instrument": "HMI"
+      "instrument": "EVE"
     },
     {
-      "name": "Design and Ground Calibration of the HMI Instrument on SDO",
+      "name": "Design and Ground Calibration of the Helioseismic and Magnetic Imager (HMI) Instrument on the Solar Dynamics Observatory (SDO)",
       "url": "https://doi.org/10.1007/s11207-011-9842-2",
-      "description": "Companion HMI paper describing the instrument design and its ground calibration.",
+      "description": "HMI instrument design and pre-flight calibration paper, listed by the SDO project as the HMI reference paper (Schou et al. 2012).",
       "scope": "instrument",
       "instrument": "HMI"
     },
     {
-      "name": "HMI web site at Stanford University",
-      "url": "http://hmi.stanford.edu",
-      "description": "Provider home page for the HMI investigation and the Joint Science Operations Center.",
+      "name": "The Helioseismic and Magnetic Imager (HMI) Investigation for the Solar Dynamics Observatory (SDO)",
+      "url": "https://doi.org/10.1007/s11207-011-9834-2",
+      "description": "Overview of the HMI investigation's science objectives, instrument and standard data products (Scherrer et al. 2012).",
       "scope": "instrument",
       "instrument": "HMI"
     },
     {
-      "name": "HMI science team page",
+      "name": "The Helioseismic and Magnetic Imager (HMI) Vector Magnetic Field Pipeline",
+      "url": "https://doi.org/10.1007/s11207-014-0516-8",
+      "description": "Description of the HMI vector magnetic field data pipeline, listed on the SDO Definitive Publications page (Hoeksema et al. 2014).",
+      "scope": "instrument",
+      "instrument": "HMI"
+    },
+    {
+      "name": "HMI Science Team",
       "url": "http://hmi.stanford.edu/ScienceTeam/index.html",
-      "description": "HMI science team roster giving each member's role (PI, Co-Investigator, Associated Investigator), institution and area of responsibility.",
+      "description": "Stanford HMI page listing the HMI principal investigator, co-investigators and associated investigators with their development and operations roles.",
       "scope": "instrument",
       "instrument": "HMI"
     }
@@ -150,29 +128,34 @@
       "exclusion_reason": null,
       "evidence": [
         {
-          "source": "First author of the SDO mission overview paper (Pesnell et al. 2012, 10.1007/s11207-011-9841-3); the three-author list is not alphabetized, so position carries contribution order",
+          "source": "First author of the SDO mission overview paper (Pesnell et al. 2012, 10.1007/s11207-011-9841-3); three-author list, not alphabetized. The SDO project lists it as the mission paper on its Definitive Publications page",
           "url": "https://doi.org/10.1007/s11207-011-9841-3",
           "strength": "Strong"
         },
         {
-          "source": "Named as SDO Project Scientist on the SDO mission team page",
-          "url": "https://sdo.gsfc.nasa.gov/mission/team.php",
+          "source": "SDO Observatory record Contacts: ProjectScientist",
+          "url": "https://spase-metadata.org/SMWG/Observatory/SDO.html",
           "strength": "Medium"
         },
         {
-          "source": "Named as Project Scientist on the mission fact sheet, and signed the SDO Project Data Management Plan signature page as 'SDO Project Scientist (GSFC)' on 10 December 2009, in the SDO 2020 Senior Review Proposal",
+          "source": "Named 'SDO Project Scientist' on the SDO team page, where he says he accepted the post in 2005 (page archived 2025-06-16; live page returns 403)",
+          "url": "http://web.archive.org/web/20250616051309/https://sdo.gsfc.nasa.gov/mission/team.php",
+          "strength": "Medium"
+        },
+        {
+          "source": "Named 'SDO Project Scientist - Goddard Space Flight Center' on the SDO contact page (archived 2025-06-16)",
+          "url": "http://web.archive.org/web/20250616051311/https://sdo.gsfc.nasa.gov/mission/contact.php",
+          "strength": "Medium"
+        },
+        {
+          "source": "Front page ('W. Dean Pesnell, Project Scientist') and first author of the SDO Senior Review proposals of 2015, 2017 and 2020",
           "url": "http://hmi.stanford.edu/papers/SDO_SR_2020_assembled_3.pdf",
           "strength": "Medium"
         },
         {
-          "source": "Observatory record Contacts (ProjectScientist)",
-          "url": "https://spase-metadata.org/SMWG/Observatory/SDO",
-          "strength": "Medium"
-        },
-        {
-          "source": "Lead guest editor of the Solar Physics SDO special issue in which the mission and instrument papers appeared",
-          "url": "https://doi.org/10.1007/s11207-009-9487-6",
-          "strength": "Medium"
+          "source": "Guest editor of the Solar Physics SDO issue (vol. 275) and co-editor of the SDO reference volume (Chamberlin et al. 2012, 10.1007/978-1-4614-3673-7)",
+          "url": "https://doi.org/10.1007/978-1-4614-3673-7",
+          "strength": "Low"
         }
       ],
       "person_record": {
@@ -180,8 +163,10 @@
         "url": "https://spase-metadata.org/SMWG/Person/W.Dean.Pesnell.html"
       },
       "orcid": "0000-0002-8306-2500",
-      "affiliation": "Solar Physics Laboratory, NASA/Goddard Space Flight Center",
-      "activity_dates": "Project Scientist from 2005; still named in the 2020 Senior Review and the 2024 team page",
+      "affiliation": "Solar Physics Laboratory NASA Goddard Space Flight Center Greenbelt MD USA",
+      "affiliation_ror": "https://ror.org/0171mag52",
+      "activity_dates": "SDO Project Scientist since 2005 (SDO team page); still Project Scientist on the SDO contact page archived 2025-06-16",
+      "authorship_scope": "observatory",
       "qualifying_roles": [
         "Author",
         "ProjectScientist"
@@ -193,27 +178,26 @@
         },
         {
           "role": "ProjectScientist",
-          "source": "Named as SDO Project Scientist for the mission as a whole on the SDO mission team page (https://sdo.gsfc.nasa.gov/mission/team.php), in the Observatory record's own Contacts, and on the signature page of the SDO Project Data Management Plan reproduced in the SDO 2020 Senior Review Proposal (http://hmi.stanford.edu/papers/SDO_SR_2020_assembled_3.pdf)"
+          "source": "SDO Project Scientist, listed in the SDO Observatory record Contacts (https://spase-metadata.org/SMWG/Observatory/SDO.html), on the SDO contact page (http://web.archive.org/web/20250616051311/https://sdo.gsfc.nasa.gov/mission/contact.php) and on the front page of the SDO Senior Review proposals of 2015, 2017 and 2020 (http://hmi.stanford.edu/papers/SDO_SR_2020_assembled_3.pdf)"
         }
       ],
-      "affiliation_ror": "https://ror.org/0171mag52",
       "enrichment": {
         "orcid_origin": "enricher",
         "orcid_source": "Crossref (paper DOI)",
-        "orcid_evidence": "10.1029/2018sw002080",
-        "orcid_evidence_citation": "Pesnell 2018",
+        "orcid_evidence": "10.1029/2022sw003310",
+        "orcid_evidence_citation": "Kasapis et al. 2023",
         "orcid_confidence": "Confirmed",
-        "affiliation_origin": "enricher",
+        "affiliation_origin": "finder",
         "affiliation_source": "Crossref (paper DOI)",
-        "affiliation_evidence": "10.1029/2018sw002080",
-        "affiliation_evidence_citation": "Pesnell 2018",
+        "affiliation_evidence": "10.1029/2022sw003310",
+        "affiliation_evidence_citation": "Kasapis et al. 2023",
         "affiliation_type": "as-deposited",
         "ror_origin": "enricher",
         "ror_source": "ROR affiliation-match (chosen)",
         "ror_evidence": "https://ror.org/0171mag52",
         "ror_confidence": "Confirmed",
         "lookup_status": "complete",
-        "notes": "ORCID came from a Crossref deposit that gives the full given name 'W. Dean' and is deposited under the SDO data provider institution (Solar Physics Laboratory, NASA/Goddard Space Flight Center); none of the finder's evidence DOIs deposits any iD. Decisive corroboration is that the ORCID record itself lists the finder's own evidence paper, 'The Solar Dynamics Observatory (SDO)' (2012), among ten SDO works. The DOI used lies outside the finder's evidence list. Affiliation: the only ORCID employment is undated (National Aeronautics and Space Administration, department Solar Physics Laboratory, role 'Retired', carrying ROR https://ror.org/027ka1x80), so the dated in-span 2018 deposit was preferred as both dated and more specific; deposited string verbatim was 'Solar Physics Laboratory NASA/Goddard Space Flight Center  Greenbelt MD USA' - address dropped, separator normalised. Agrees with the finder's institution; the finder's string added GSFC mail code 671, which no external source corroborated. ROR: 'Solar Physics Laboratory' is not among GSFC's ROR-listed children, so the parent GSFC is recorded for an unlisted sub-unit."
+        "notes": "ORCID: the evidence DOIs (10.1007/s11207-011-9841-3; the SDO reference volume 10.1007/978-1-4614-3673-7) deposit no iDs, so Route A' was used. Kasapis et al. 2023 (10.1029/2022sw003310, 'Turning Noise Into Data: Characterization of the Van Allen Radiation Belt Using SDO Spikes Data') lies OUTSIDE the finder's evidence list; Crossref deposits 'William D. Pesnell' there with ORCID 0000-0002-8306-2500 (checksum valid). The ORCID record lists 'William Dean Pesnell' as another name and includes the SDO overview paper among its works. Affiliation: the only ORCID employment is undated (role 'Retired', Solar Physics Laboratory, National Aeronautics and Space Administration; ORCID asserts NASA's ROR https://ror.org/027ka1x80). Under the evidence-strength rule, an in-span Crossref deposit outranks an undated employment. So the deposit on the same ORCID-bearing SDO paper (published 2023) is recorded; it names GSFC and its laboratory, and it also names the institution the undated employment names. Whitespace runs in the deposited string were collapsed; the wording is unchanged. Agrees with the finder's 'NASA Goddard Space Flight Center'. The undated employment is set aside; the reviewer may note that ORCID describes him as retired. ROR: Route B chose Goddard Space Flight Center (score 1.0, SINGLE SEARCH); name and country (US) match. The named sub-unit 'Solar Physics Laboratory' has no ROR record, so the parent is recorded. NASA's ROR from the set-aside employment was not used."
       }
     },
     {
@@ -223,14 +207,24 @@
       "exclusion_reason": null,
       "evidence": [
         {
-          "source": "Second author of the SDO mission overview paper (Pesnell et al. 2012, 10.1007/s11207-011-9841-3); the three-author list is not alphabetized, so position carries contribution order",
+          "source": "Second author of the SDO mission overview paper (Pesnell et al. 2012, 10.1007/s11207-011-9841-3); three-author list, not alphabetized",
           "url": "https://doi.org/10.1007/s11207-011-9841-3",
           "strength": "Strong"
         },
         {
-          "source": "Guest editor of the Solar Physics SDO special issue in which the mission and instrument papers appeared",
-          "url": "https://doi.org/10.1007/s11207-009-9487-6",
+          "source": "Named 'SDO Deputy Project Scientist - Goddard Space Flight Center' and NASA Official on the SDO contact page (archived 2025-06-16). SPASE has no Deputy Project Scientist role, so no contact role is attached",
+          "url": "http://web.archive.org/web/20250616051311/https://sdo.gsfc.nasa.gov/mission/contact.php",
           "strength": "Medium"
+        },
+        {
+          "source": "Guest editor of the Solar Physics SDO issue and co-editor of the SDO reference volume (Chamberlin et al. 2012, 10.1007/978-1-4614-3673-7)",
+          "url": "https://doi.org/10.1007/978-1-4614-3673-7",
+          "strength": "Low"
+        },
+        {
+          "source": "Wikipedia biography says she was SDO project scientist 'through development and early flight'. Not confirmed by any SDO source, and the SDO team page has Pesnell taking that post in 2005, so ProjectScientist is not attached",
+          "url": "https://en.wikipedia.org/wiki/Barbara_J._Thompson",
+          "strength": "Low"
         }
       ],
       "person_record": {
@@ -239,7 +233,9 @@
       },
       "orcid": "0000-0001-6952-7343",
       "affiliation": "Goddard Space Flight Center",
-      "activity_dates": null,
+      "affiliation_ror": "https://ror.org/0171mag52",
+      "activity_dates": "SDO Deputy Project Scientist (SDO contact page archived 2025-06-16)",
+      "authorship_scope": "observatory",
       "qualifying_roles": [
         "Author"
       ],
@@ -249,14 +245,13 @@
           "source": "Second author of the SDO mission overview paper (Pesnell et al. 2012, 10.1007/s11207-011-9841-3)"
         }
       ],
-      "affiliation_ror": "https://ror.org/0171mag52",
       "enrichment": {
         "orcid_origin": "enricher",
         "orcid_source": "Crossref (paper DOI)",
-        "orcid_evidence": "10.1109/taes.2024.3409524",
-        "orcid_evidence_citation": "Khoshkhahtinat et al. 2024",
+        "orcid_evidence": "10.1029/2022sw003310",
+        "orcid_evidence_citation": "Kasapis et al. 2023",
         "orcid_confidence": "Confirmed",
-        "affiliation_origin": "enricher",
+        "affiliation_origin": "finder",
         "affiliation_source": "ORCID employment",
         "affiliation_evidence": "https://orcid.org/0000-0001-6952-7343",
         "affiliation_type": "era-matched",
@@ -265,7 +260,7 @@
         "ror_evidence": "https://orcid.org/0000-0001-6952-7343",
         "ror_confidence": "Confirmed",
         "lookup_status": "complete",
-        "notes": "ORCID from a deposit giving the full given name 'Barbara J.' on an SDO paper ('Neural-Based Video Compression on Solar Dynamics Observatory Images') with a NASA Goddard affiliation; the same iD also appears on an SDO/EVE paper (10.3847/1538-4365/ab380e). The DOI used lies outside the finder's evidence list, neither of which deposits any iD. Affiliation is the era-matched ORCID employment, Goddard Space Flight Center, 1996-04-15 to 2026-06-30, which is a past position overlapping the operating span. Set aside per the era-matched rule: her current position, Beryllium10 Knowledge Technologies, Bowie MD, from 2026-08-15 to present, which carries no ROR. Agrees with the finder's institution; the finder's string added GSFC mail code 682.3, which no external source corroborated. ROR was asserted by ORCID with disambiguation-source ROR on the selected employment."
+        "notes": "ORCID: the evidence DOIs deposit no iDs (overview paper byline 'B. J. Thompson'), so Route A' was used. Kasapis et al. 2023 (10.1029/2022sw003310, SDO spikes data) lies OUTSIDE the finder's evidence list; it deposits 'Barbara J. Thompson' with ORCID 0000-0001-6952-7343 (checksum valid). The same iD is deposited on two further SDO papers: Khoshkhahtinat et al. 2024 (10.1109/taes.2024.3409524, 'Neural-Based Video Compression on Solar Dynamics Observatory Images') and Mason et al. 2019 (10.3847/1538-4365/ab380e, SDO/EVE dimming catalog). Affiliation: the ORCID employment 'Research Scientist, Goddard Space Flight Center, Greenbelt' ran 1996-04-15 to 2026-06-30. It is a past position overlapping the span, so it is recorded as era-matched. Set aside: her current position, Research Scientist at Beryllium10 Knowledge Technologies, Bowie (2026-08-15 to present). Agrees with the finder's 'NASA Goddard Space Flight Center'; the recorded wording follows ORCID. ROR: ORCID asserts https://ror.org/0171mag52 on the selected employment (disambiguation source ROR). The registry confirms Goddard Space Flight Center, Greenbelt, US. The affiliation names no sub-unit, so there is no descent."
       }
     },
     {
@@ -275,28 +270,23 @@
       "exclusion_reason": null,
       "evidence": [
         {
-          "source": "Third author of the SDO mission overview paper (Pesnell et al. 2012, 10.1007/s11207-011-9841-3); the three-author list is not alphabetized, so position carries contribution order",
+          "source": "Third author of the SDO mission overview paper (Pesnell et al. 2012, 10.1007/s11207-011-9841-3); three-author list, not alphabetized",
           "url": "https://doi.org/10.1007/s11207-011-9841-3",
           "strength": "Strong"
         },
         {
-          "source": "Named in the front matter of the current SDO EVE Calibration and Measurement Algorithms Document Rev B (2025), where the deposited metadata spells the surname 'Chamberlain'",
-          "url": "https://doi.org/10.25810/nh0m-ze62",
-          "strength": "Strong"
+          "source": "NASA Science profile: 'Deputy Project Scientist for the Solar Dynamics Observatory (SDO)', Research Astrophysicist at NASA GSFC. SPASE has no Deputy Project Scientist role, so no contact role is attached",
+          "url": "https://science.nasa.gov/people/phillip-chamberlin/",
+          "strength": "Medium"
         },
         {
-          "source": "Listed on the EVE prime-mission science team (University of Colorado / LASP group) on the EVE personnel page",
+          "source": "Guest editor of the Solar Physics SDO issue and first editor of the SDO reference volume (Chamberlin et al. 2012, 10.1007/978-1-4614-3673-7)",
+          "url": "https://doi.org/10.1007/978-1-4614-3673-7",
+          "strength": "Low"
+        },
+        {
+          "source": "Twelfth author of the EVE instrument paper (Woods et al. 2012, 10.1007/s11207-009-9487-6) (instrument-team depth, context only); listed under University of Colorado / LASP on the EVE Prime Mission Science Team",
           "url": "https://lasp.colorado.edu/eve/reference/personnel/",
-          "strength": "Medium"
-        },
-        {
-          "source": "Guest editor of the Solar Physics SDO special issue in which the mission and instrument papers appeared",
-          "url": "https://doi.org/10.1007/s11207-009-9487-6",
-          "strength": "Medium"
-        },
-        {
-          "source": "Twelfth author of the EVE instrument paper (Woods et al. 2012, 10.1007/s11207-009-9487-6) - position beyond the fifth carries no contribution weight, listed here as participation context only",
-          "url": "https://doi.org/10.1007/s11207-009-9487-6",
           "strength": "Low"
         }
       ],
@@ -306,24 +296,25 @@
       },
       "orcid": "0000-0003-4372-7405",
       "affiliation": "Solar Physics Laboratory, NASA Goddard Space Flight Center",
-      "activity_dates": "EVE prime-mission science team from before launch through the 2025 EVE CMAD",
+      "affiliation_ror": "https://ror.org/0171mag52",
+      "activity_dates": "SDO Deputy Project Scientist (NASA Science profile; dates not given)",
+      "authorship_scope": "observatory",
       "qualifying_roles": [
         "Author"
       ],
       "role_evidence": [
         {
           "role": "Author",
-          "source": "Third author of the SDO mission overview paper (Pesnell et al. 2012, 10.1007/s11207-011-9841-3), and a named author of the current SDO/EVE Calibration and Measurement Algorithms Document Rev B (Jones et al. 2025, 10.25810/nh0m-ze62)"
+          "source": "Third author of the SDO mission overview paper (Pesnell et al. 2012, 10.1007/s11207-011-9841-3)"
         }
       ],
-      "affiliation_ror": "https://ror.org/0171mag52",
       "enrichment": {
         "orcid_origin": "enricher",
         "orcid_source": "Crossref (paper DOI)",
         "orcid_evidence": "10.1007/s11207-024-02394-9",
         "orcid_evidence_citation": "Gonzalez et al. 2024",
         "orcid_confidence": "Confirmed",
-        "affiliation_origin": "enricher",
+        "affiliation_origin": "finder",
         "affiliation_source": "ORCID employment",
         "affiliation_evidence": "https://orcid.org/0000-0003-4372-7405",
         "affiliation_type": "era-matched",
@@ -332,293 +323,60 @@
         "ror_evidence": "https://ror.org/0171mag52",
         "ror_confidence": "Confirmed",
         "lookup_status": "complete",
-        "notes": "ORCID from a deposit giving the full given name 'Phillip' on a paper about the same instrument ('Improving the Spectral Resolution and Wavelength Scale of SDO/EVE MEGS-A Flare Observations'); the DOI lies outside the finder's evidence list, none of which deposits an iD. DIFFERS FROM FINDER VALUE: the finder gave 'Laboratory for Atmospheric and Space Physics, University of Colorado Boulder' with NASA Goddard in a parenthetical. The era-matched ORCID employment is NASA Goddard Space Flight Center, department Solar Physics Laboratory, 2009-07-19 to 2017-06-17 - a past position overlapping the operating span - so Goddard is recorded and the finder's primary value is the position set aside: University of Colorado Boulder, department Laboratory for Atmospheric and Space Physics, 2017-08-15 to present, his current post (corroborated by a 2023 deposit, 10.3847/25c2cfeb.a05625a8, giving 'U. of Colorado, LASP'). ROR: ORCID's disambiguation-source on the Goddard employment is RINGGOLD 53523, not ROR, so it was not converted; ROR's affiliation endpoint chose GSFC at score 1.0. 'Solar Physics Laboratory' is not a ROR-listed GSFC child, so the parent is recorded for an unlisted sub-unit. Per the finder, the 2025 EVE CMAD deposit spells the surname 'Chamberlain'; that is a deposit typo, not a second person."
+        "notes": "ORCID: the evidence DOIs deposit no iDs (overview byline 'P. C. Chamberlin'), so Route A' was used. Gonzalez et al. 2024 (10.1007/s11207-024-02394-9, 'Improving the Spectral Resolution and Wavelength Scale of SDO/EVE MEGS-A Flare Observations') lies OUTSIDE the finder's evidence list; it deposits 'Phillip Chamberlin' with ORCID 0000-0003-4372-7405 (checksum valid). The ORCID record's works include the SDO overview paper and the EVE instrument paper. Affiliation: his affiliation changed during the operating span. He was at the Solar Physics Laboratory, NASA Goddard Space Flight Center, Greenbelt from 2009-07-19 to 2017-06-17. That is a past position overlapping the span, so it is recorded as era-matched. Set aside: his current position, Research Scientist at the Laboratory for Atmospheric and Space Physics, University of Colorado Boulder (2017-08-15 to present). Agrees with the finder's 'NASA Goddard Space Flight Center'. ROR: ORCID disambiguates the selected employment as RINGGOLD 53523, not ROR, so Route B was used. It chose Goddard Space Flight Center (score 1.0); name and country match. The named 'Solar Physics Laboratory' has no ROR record, so the parent is recorded."
       }
     },
     {
-      "name": "Madhulika Guhathakurta",
-      "status": "included",
-      "confidence": "Medium",
-      "exclusion_reason": null,
-      "evidence": [
-        {
-          "source": "Signed the SDO Project Data Management Plan signature page as 'Program Scientist (HQ)' on 14 December 2009, reproduced in the SDO 2020 Senior Review Proposal alongside the Project Scientist and the three instrument PIs",
-          "url": "http://hmi.stanford.edu/papers/SDO_SR_2020_assembled_3.pdf",
-          "strength": "Medium"
-        },
-        {
-          "source": "Sole author of a 2026 review of SDO in the NASA Living With a Star programme; single-author reviews are not description papers, so this corroborates her programme-level involvement without supplying position-based evidence",
-          "url": "https://arxiv.org/abs/2605.22999",
-          "strength": "Low"
-        }
-      ],
-      "person_record": {
-        "id": "spase://SMWG/Person/Madhulika.Guhathakurta",
-        "url": "https://spase-metadata.org/SMWG/Person/Madhulika.Guhathakurta.html"
-      },
-      "orcid": "0000-0001-5357-4452",
-      "affiliation": "NASA Headquarters",
-      "activity_dates": "NASA Headquarters Program Scientist at the time the SDO Project Data Management Plan was signed in December 2009",
-      "qualifying_roles": [
-        "Author",
-        "ProgramScientist"
-      ],
-      "role_evidence": [
-        {
-          "role": "Author",
-          "source": "Named and signed as the NASA Headquarters Program Scientist for SDO on the signature page of the SDO Project Data Management Plan, reproduced in the SDO 2020 Senior Review Proposal (http://hmi.stanford.edu/papers/SDO_SR_2020_assembled_3.pdf)"
-        },
-        {
-          "role": "ProgramScientist",
-          "source": "Signed the SDO Project Data Management Plan as 'Program Scientist (HQ)' on 14 December 2009, alongside the SDO Project Scientist and the AIA, EVE and HMI Instrument Principal Investigators (http://hmi.stanford.edu/papers/SDO_SR_2020_assembled_3.pdf)"
-        }
-      ],
-      "affiliation_ror": "https://ror.org/027ka1x80",
-      "enrichment": {
-        "orcid_origin": "enricher",
-        "orcid_source": "ORCID name-search (corroborated)",
-        "orcid_evidence": "https://orcid.org/0000-0001-5357-4452",
-        "orcid_confidence": "Confirmed",
-        "affiliation_origin": "finder",
-        "affiliation_source": "ORCID employment",
-        "affiliation_evidence": "https://orcid.org/0000-0001-5357-4452",
-        "affiliation_type": "current",
-        "ror_origin": "enricher",
-        "ror_source": "ROR affiliation-match (chosen)",
-        "ror_evidence": "https://ror.org/027ka1x80",
-        "ror_confidence": "Confirmed",
-        "lookup_status": "complete",
-        "notes": "Neither of the finder's evidence sources is a Crossref-indexed paper that deposits an iD, and a domain-restricted Crossref author query found no deposit carrying one, so the iD came from an ORCID name search: of 22 records with this surname exactly one is 'madhulika guhathakurta', and its dated employment - NASA Headquarters, Science Mission Directorate, Program Scientist, from 1998-12-01 - matches the role in which she signed the SDO Project Data Management Plan as 'Program Scientist (HQ)'. Caveat for the reviewer: the record lists only two works, neither SDO-specific, so the corroboration rests on the employment rather than on a work. Affiliation agrees with the finder's value; labelled current because the employment is ongoing with no end date, though running from 1998 it also covers the whole operating span. ROR: ORCID's disambiguation-source is FUNDREF, not ROR, so it was not converted; ROR has no separate NASA Headquarters record, and the ID recorded is NASA's own, which carries 'NASA Headquarters' as an alias and 'NASA HQ' as an acronym, located in Washington, United States."
-      }
-    },
-    {
-      "name": "James R. Lemen",
+      "name": "Philip H. Scherrer",
       "status": "included",
       "confidence": "Strong",
       "exclusion_reason": null,
       "evidence": [
         {
-          "source": "First author of the AIA instrument paper (Lemen et al. 2012, 10.1007/s11207-011-9776-8), first of the two deliberately placed authors before the alphabetized remainder of the 47-name author list",
-          "url": "https://doi.org/10.1007/s11207-011-9776-8",
+          "source": "First author of the HMI investigation paper (Scherrer et al. 2012, 10.1007/s11207-011-9834-2); not alphabetized",
+          "url": "https://doi.org/10.1007/s11207-011-9834-2",
           "strength": "Strong"
         },
         {
-          "source": "AIA instrumentation pre-print credited to 'Lemen, et al.' on the AIA site at the PI institution",
-          "url": "http://aia.lmsal.com/",
-          "strength": "Medium"
-        }
-      ],
-      "person_record": {
-        "id": "spase://SMWG/Person/James.R.Lemen",
-        "url": "https://spase-metadata.org/SMWG/Person/James.R.Lemen.html"
-      },
-      "orcid": null,
-      "affiliation": "Lockheed Martin Solar and Astrophysics Laboratory",
-      "activity_dates": null,
-      "qualifying_roles": [
-        "Author"
-      ],
-      "role_evidence": [
-        {
-          "role": "Author",
-          "source": "First author of the AIA instrument description paper (Lemen et al. 2012, 10.1007/s11207-011-9776-8)"
-        }
-      ],
-      "affiliation_ror": null,
-      "enrichment": {
-        "orcid_origin": null,
-        "orcid_source": null,
-        "orcid_evidence": null,
-        "orcid_confidence": null,
-        "affiliation_origin": "finder",
-        "affiliation_source": "uncorroborated",
-        "affiliation_evidence": null,
-        "affiliation_type": null,
-        "ror_origin": null,
-        "ror_source": null,
-        "ror_evidence": null,
-        "ror_confidence": null,
-        "lookup_status": "complete",
-        "notes": "No ORCID found and none guessed. The AIA instrument paper (10.1007/s11207-011-9776-8) deposits no iDs and no affiliation strings for any of its 47 authors; domain-restricted Crossref author queries found no SDO-era deposit carrying an iD for him; and an ORCID search returns 16 records with this surname, none of them a James Lemen or a solar physicist. Affiliation is carried from the finder but nothing verified it, so it is marked uncorroborated with no evidence identifier and no type. Two things a reviewer should know. First, the finder's string also carried a parenthetical citing the existing SPASE Person record's 'Lockheed Palo Alto Research Laboratory'; a Person record is not admissible evidence here (the downstream writer overwrites it), so that value is reported only as an unconfirmed registry string. Second, three 1992 Crossref deposits give the full given name 'James R.' Lemen at 'Lockheed Palo Alto Research Laboratory, Palo Alto, CA 94304, U.S.A.' - which independently corroborates the registry string - but they are Yohkoh/SXT papers from eighteen years before the operating span, so they were not used as the affiliation evidence. affiliation_ror was left null because the affiliation itself is uncorroborated and a ROR would lend registry-grade institutional precision to an unverified claim; if a reviewer confirms LMSAL, note that ROR lists no record for it and the resolvable parent would be Lockheed Martin (United States), https://ror.org/026er9r08."
-      }
-    },
-    {
-      "name": "Alan M. Title",
-      "status": "included",
-      "confidence": "Strong",
-      "exclusion_reason": null,
-      "evidence": [
-        {
-          "source": "Second author of the AIA instrument paper (Lemen et al. 2012, 10.1007/s11207-011-9776-8), the second of the two deliberately placed authors before the alphabetized remainder of the 47-name author list",
-          "url": "https://doi.org/10.1007/s11207-011-9776-8",
+          "source": "Second author of the HMI instrument design and ground-calibration paper (Schou et al. 2012, 10.1007/s11207-011-9842-2), the HMI paper listed on the SDO Definitive Publications page; not alphabetized",
+          "url": "https://doi.org/10.1007/s11207-011-9842-2",
           "strength": "Strong"
         },
         {
-          "source": "Named as AIA Principal Investigator, PI institution Lockheed Martin Solar Astrophysics Laboratory, on the SDO mission instruments page",
-          "url": "https://sdo.gsfc.nasa.gov/mission/instruments.php",
-          "strength": "Strong"
-        },
-        {
-          "source": "Named as AIA Principal Investigator in the pre-launch team section of the SDO mission team page",
-          "url": "https://sdo.gsfc.nasa.gov/mission/team.php",
+          "source": "HMI Instrument record Contacts: PrincipalInvestigator",
+          "url": "https://spase-metadata.org/SMWG/Instrument/SDO/HMI.html",
           "strength": "Medium"
         },
         {
-          "source": "AIA Instrument record Contacts (FormerPI)",
-          "url": "https://spase-metadata.org/SMWG/Instrument/SDO/AIA.html",
+          "source": "Named 'HMI Principal Investigator' on the SDO team page (archived 2025-06-16) and 'PI: Phil Scherrer' on the SDO instruments page",
+          "url": "http://web.archive.org/web/20250616051309/https://sdo.gsfc.nasa.gov/mission/team.php",
           "strength": "Medium"
         },
         {
-          "source": "Listed as an HMI Co-Investigator at LMSAL, responsible for the HMI instrument, on the HMI science team page",
+          "source": "Listed as PI on the HMI Science Team page (last modified 2011-11-15)",
           "url": "http://hmi.stanford.edu/ScienceTeam/index.html",
           "strength": "Medium"
         },
         {
-          "source": "Tenth author of the HMI investigation paper (Scherrer et al. 2012, 10.1007/s11207-011-9834-2) and seventeenth author of the HMI design paper (Schou et al. 2012, 10.1007/s11207-011-9842-2) - positions beyond the fifth carry no contribution weight, listed as participation context only",
-          "url": "https://doi.org/10.1007/s11207-011-9834-2",
+          "source": "Co-author of the SDO Senior Review proposals of 2015, 2017 and 2020, whose fact sheets name him HMI Principal Investigator",
+          "url": "http://hmi.stanford.edu/papers/SDO_SR_2020_assembled_3.pdf",
+          "strength": "Medium"
+        },
+        {
+          "source": "Thirty-sixth author of the AIA instrument paper (Lemen et al. 2012, 10.1007/s11207-011-9776-8) (alphabetized part of the list; context only)",
+          "url": "https://doi.org/10.1007/s11207-011-9776-8",
           "strength": "Low"
         }
       ],
       "person_record": {
-        "id": "spase://SMWG/Person/Alan.M.Title",
-        "url": "https://spase-metadata.org/SMWG/Person/Alan.M.Title.html"
+        "id": "spase://SMWG/Person/Philip.H.Scherrer",
+        "url": "https://spase-metadata.org/SMWG/Person/Philip.H.Scherrer.html"
       },
-      "orcid": null,
-      "affiliation": "Lockheed Martin Solar Astrophysics Laboratory",
-      "activity_dates": "AIA PI through the pre-launch and early mission phases; recorded as a former PI in the AIA Instrument record",
-      "qualifying_roles": [
-        "Author",
-        "FormerPI",
-        "CoInvestigator"
-      ],
-      "role_evidence": [
-        {
-          "role": "Author",
-          "source": "Second author of the AIA instrument description paper (Lemen et al. 2012, 10.1007/s11207-011-9776-8), and named AIA Principal Investigator on the SDO mission instruments page (https://sdo.gsfc.nasa.gov/mission/instruments.php)"
-        },
-        {
-          "role": "FormerPI",
-          "source": "Formerly Principal Investigator of the SDO/AIA instrument: recorded as FormerPI in the AIA SPASE Instrument record Contacts (https://spase-metadata.org/SMWG/Instrument/SDO/AIA.html) and named as AIA Principal Investigator in the pre-launch team section of the SDO mission team page"
-        },
-        {
-          "role": "CoInvestigator",
-          "source": "Listed as a Co-Investigator of the SDO/HMI instrument, at LMSAL with responsibility for the HMI instrument, on the HMI science team page (http://hmi.stanford.edu/ScienceTeam/index.html)"
-        }
-      ],
-      "affiliation_ror": "https://ror.org/026er9r08",
-      "enrichment": {
-        "orcid_origin": null,
-        "orcid_source": null,
-        "orcid_evidence": null,
-        "orcid_confidence": null,
-        "affiliation_origin": "enricher",
-        "affiliation_source": "provider documentation",
-        "affiliation_evidence": "https://sdo.gsfc.nasa.gov/mission/instruments.php",
-        "affiliation_type": "era-matched",
-        "ror_origin": "enricher",
-        "ror_source": "ROR query (corroborated)",
-        "ror_evidence": "https://ror.org/026er9r08",
-        "ror_confidence": "Confirmed",
-        "lookup_status": "complete",
-        "notes": "No ORCID found and none guessed: ORCID holds only three records with the family name 'Title' (none of them Alan), and no Crossref deposit for him carries an iD. Affiliation from the SDO mission instruments page, which names his PI institution in full as 'Lockheed Martin Solar Astrophysics Laboratory'; labelled era-matched because the HMI science team roster, a page dated 15 November 2011 and so inside the operating span, independently lists 'Alan M. Title, Co-I, LMSAL' - note that the label therefore rests on dated provider documentation rather than on a dated ORCID employment. The finder's value spells the unit 'Lockheed Martin Solar and Astrophysics Laboratory'; the provider page's spelling was kept. An in-span Crossref deposit (10.1029/2010ja016224, Schrijver & Title 2011) gives the parent instead, 'Lockheed Martin Advanced Technology Center; Palo Alto California USA'; the more specific unit was recorded. The finder flags this provider page as stale on AIA leadership - it still names him as sitting PI - but the affiliation it attributes to him is era-appropriate. ROR lists no record for either the Lockheed Martin Advanced Technology Center or its Solar and Astrophysics Laboratory, so the ID recorded is the listed parent corporation, Lockheed Martin (United States) - the affiliation names an unlisted sub-unit. ROR's affiliation-match endpoint had to be overridden: it set chosen:true at score 1.0 on https://ror.org/046wj6g23 'PC TECHNOLOGY CENTER' (Kharkiv, Ukraine), rejected as a demonstrably different organisation - different country, and the names share only the generic fragment 'Technology Center'. A plain ROR query then returned Lockheed Martin entities for Australia, Canada, the United Kingdom, the United States and Orincon; only the United States entity is plausible for a Palo Alto, California facility. Karel Schrijver in this file carries the parent-level string because that is what his evidence deposited; both resolve to the same ROR ID, so there is no ID conflict to settle."
-      }
-    },
-    {
-      "name": "Mark C. M. Cheung",
-      "status": "included",
-      "confidence": "Strong",
-      "exclusion_reason": null,
-      "evidence": [
-        {
-          "source": "Named as the AIA Principal Investigator on the mission fact sheet of the SDO 2020 Senior Review Proposal, and signed its reproduced SDO Project Data Management Plan as 'AIA Instrument Principal Investigator' on 8 December 2009",
-          "url": "http://hmi.stanford.edu/papers/SDO_SR_2020_assembled_3.pdf",
-          "strength": "Strong"
-        },
-        {
-          "source": "Named as 'AIA PI, Lockheed Martin' on the SDO mission team page",
-          "url": "https://sdo.gsfc.nasa.gov/mission/team.php",
-          "strength": "Medium"
-        },
-        {
-          "source": "AIA Instrument record Contacts (FormerPI)",
-          "url": "https://spase-metadata.org/SMWG/Instrument/SDO/AIA.html",
-          "strength": "Medium"
-        },
-        {
-          "source": "Named as the contact for the AIA programme on the AIA site at the PI institution; this page has not been updated since the PI changed",
-          "url": "http://aia.lmsal.com/",
-          "strength": "Medium"
-        }
-      ],
-      "person_record": {
-        "id": "spase://SMWG/Person/Mark.C.M.Cheung",
-        "url": "https://spase-metadata.org/SMWG/Person/Mark.C.M.Cheung.html"
-      },
-      "orcid": "0000-0003-2110-9753",
-      "affiliation": "Solar & Astrophysics Lab, Lockheed Martin Advanced Technology Center",
-      "activity_dates": "Sitting AIA PI from the late 2000s through at least the 2020 Senior Review; succeeded as AIA PI in 2022",
-      "qualifying_roles": [
-        "Author",
-        "FormerPI"
-      ],
-      "role_evidence": [
-        {
-          "role": "Author",
-          "source": "Named as the AIA Principal Investigator on the mission fact sheet of the SDO 2020 Senior Review Proposal and signed its SDO Project Data Management Plan as AIA Instrument Principal Investigator (http://hmi.stanford.edu/papers/SDO_SR_2020_assembled_3.pdf)"
-        },
-        {
-          "role": "FormerPI",
-          "source": "Formerly Principal Investigator of the SDO/AIA instrument: recorded as FormerPI in the AIA SPASE Instrument record Contacts (https://spase-metadata.org/SMWG/Instrument/SDO/AIA.html), having been the sitting AIA PI at the 2020 Senior Review before the role passed to Meng Jin in 2022"
-        }
-      ],
-      "affiliation_ror": "https://ror.org/026er9r08",
-      "enrichment": {
-        "orcid_origin": "enricher",
-        "orcid_source": "Crossref (paper DOI)",
-        "orcid_evidence": "10.3847/1538-4357/ac589b",
-        "orcid_evidence_citation": "Jin et al. 2022",
-        "orcid_confidence": "Confirmed",
-        "affiliation_origin": "enricher",
-        "affiliation_source": "ORCID employment",
-        "affiliation_evidence": "https://orcid.org/0000-0003-2110-9753",
-        "affiliation_type": "era-matched",
-        "ror_origin": "enricher",
-        "ror_source": "ROR query (corroborated)",
-        "ror_evidence": "https://ror.org/026er9r08",
-        "ror_confidence": "Confirmed",
-        "lookup_status": "complete",
-        "notes": "ORCID from a deposit giving the full given name 'Mark C. M.' on an SDO paper ('Coronal Mass Ejections and Dimmings: A Comparative Study Using MHD Simulations and SDO Observations'); the same iD also appears on 10.3847/1538-4365/ab1005, the SDO machine-learning dataset paper. The DOI lies outside the finder's evidence list, which is provider pages and a proposal PDF and deposits no iDs. Affiliation is the era-matched ORCID employment, Lockheed Martin Advanced Technology Center, department 'Solar & Astrophysics Lab', 2006-09-11 to 2022-08-24 - a past position overlapping the operating span, and the one matching the AIA PI institution. Set aside per the era-matched rule: his current position, CSIRO Space & Astronomy, Marsfield NSW, from 2022-08-27 to present (ROR https://ror.org/03qn8fb07). A second past position also overlapped - Stanford University, Visiting Scholar, 2016-11-15 to 2019-11-15 - and lost on both provider match and overlap length; it is very likely the source of the Stanford University value the finder noted in the existing SPASE Person record. The finder's own value, Lockheed Martin Solar and Astrophysics Laboratory, is the same unit ORCID records as the department. ROR lists no record for either the Lockheed Martin Advanced Technology Center or its Solar and Astrophysics Laboratory, so the ID recorded is the listed parent corporation, Lockheed Martin (United States) - the affiliation names an unlisted sub-unit. ROR's affiliation-match endpoint had to be overridden: it set chosen:true at score 1.0 on https://ror.org/046wj6g23 'PC TECHNOLOGY CENTER' (Kharkiv, Ukraine), rejected as a demonstrably different organisation - different country, and the names share only the generic fragment 'Technology Center'. A plain ROR query then returned Lockheed Martin entities for Australia, Canada, the United Kingdom, the United States and Orincon; only the United States entity is plausible for a Palo Alto, California facility."
-      }
-    },
-    {
-      "name": "Meng Jin",
-      "status": "included",
-      "confidence": "Medium",
-      "exclusion_reason": null,
-      "evidence": [
-        {
-          "source": "AIA Instrument record Contacts (PrincipalInvestigator) - the current PI entry, which supersedes the three FormerPI entries in the same table",
-          "url": "https://spase-metadata.org/SMWG/Instrument/SDO/AIA.html",
-          "strength": "Medium"
-        },
-        {
-          "source": "His staff page at the AIA PI institution lists 'Principal Investigator of SDO/AIA, LMSAL, 2022-present' among his academic positions",
-          "url": "https://www.lmsal.com/~jinmeng/",
-          "strength": "Medium"
-        },
-        {
-          "source": "Also carried as PrincipalInvestigator in the Contacts of the SDO/AIA data record",
-          "url": "https://spase-metadata.org/NASA/NumericalData/SDO/AIA/PT12S",
-          "strength": "Medium"
-        }
-      ],
-      "person_record": {
-        "id": "spase://SMWG/Person/Meng.Jin",
-        "url": "https://spase-metadata.org/SMWG/Person/Meng.Jin.html"
-      },
-      "orcid": "0000-0002-9672-3873",
-      "affiliation": "Lockheed Martin Advanced Technology Center",
-      "activity_dates": "AIA Principal Investigator from 2022 to the present",
+      "orcid": "0000-0002-6937-6968",
+      "affiliation": "Physics, Stanford University",
+      "affiliation_ror": "https://ror.org/00f54p054",
+      "activity_dates": "HMI PI from development through operations; named HMI PI in the 2015, 2017 and 2020 Senior Review proposals and on the SDO team page archived 2025-06-16",
+      "authorship_scope": "observatory",
       "qualifying_roles": [
         "Author",
         "InstrumentLead"
@@ -626,155 +384,29 @@
       "role_evidence": [
         {
           "role": "Author",
-          "source": "Current Principal Investigator of the SDO/AIA instrument, per the AIA SPASE Instrument record Contacts (https://spase-metadata.org/SMWG/Instrument/SDO/AIA.html) and his staff page at Lockheed Martin Solar and Astrophysics Laboratory, which dates the role from 2022 (https://www.lmsal.com/~jinmeng/)"
+          "source": "First author of the HMI investigation paper (Scherrer et al. 2012, 10.1007/s11207-011-9834-2) and second author of the HMI instrument design and calibration paper (Schou et al. 2012, 10.1007/s11207-011-9842-2); co-author of the SDO Senior Review proposals of 2015, 2017 and 2020 (http://hmi.stanford.edu/papers/SDO_SR_2020_assembled_3.pdf)"
         },
         {
           "role": "InstrumentLead",
-          "source": "Principal Investigator of the SDO/AIA instrument since 2022, named as such in the AIA SPASE Instrument record Contacts and on his staff page at the AIA PI institution (https://www.lmsal.com/~jinmeng/)"
+          "source": "Principal Investigator of SDO/HMI, listed as such in the HMI Instrument record Contacts (https://spase-metadata.org/SMWG/Instrument/SDO/HMI.html) and on the SDO instruments page (https://sdo.gsfc.nasa.gov/mission/instruments.php)"
         }
       ],
-      "affiliation_ror": "https://ror.org/026er9r08",
       "enrichment": {
         "orcid_origin": "enricher",
         "orcid_source": "Crossref (paper DOI)",
-        "orcid_evidence": "10.3847/1538-4357/ac589b",
-        "orcid_evidence_citation": "Jin et al. 2022",
+        "orcid_evidence": "10.3847/1538-4365/adcf9f",
+        "orcid_evidence_citation": "Petrie et al. 2025",
         "orcid_confidence": "Confirmed",
         "affiliation_origin": "enricher",
         "affiliation_source": "ORCID employment",
-        "affiliation_evidence": "https://orcid.org/0000-0002-9672-3873",
+        "affiliation_evidence": "https://orcid.org/0000-0002-6937-6968",
         "affiliation_type": "current",
-        "ror_origin": "enricher",
-        "ror_source": "ROR query (corroborated)",
-        "ror_evidence": "https://ror.org/026er9r08",
-        "ror_confidence": "Confirmed",
-        "lookup_status": "complete",
-        "notes": "'Meng Jin' is a common name, so the iD was taken only from a deposit that gives the full given name 'Meng' on an SDO paper where he is first author and the co-authors are the LMSAL group (Cheung, DeRosa, Nitta, Schrijver); the same iD also appears on the SDO machine-learning dataset paper, and the ORCID record's employment at Lockheed Martin Advanced Technology Center matches the AIA PI institution. The DOI lies outside the finder's evidence list, which is SPASE records and a staff page and deposits no iDs. Affiliation labelled current, not era-matched, because both ORCID employments are ongoing and no past position overlaps the span: Lockheed Martin Advanced Technology Center from 2014-08-01 and SETI Institute, Mountain View, from 2018-01-16, both to present. Lockheed Martin was selected as the data provider institution for AIA; the concurrent SETI Institute post is noted for the reviewer. The finder's value names the sub-unit, Lockheed Martin Solar and Astrophysics Laboratory, which his staff page also gives; ORCID records only the parent centre, which is what was transcribed. ROR lists no record for either the Lockheed Martin Advanced Technology Center or its Solar and Astrophysics Laboratory, so the ID recorded is the listed parent corporation, Lockheed Martin (United States) - the affiliation names an unlisted sub-unit. ROR's affiliation-match endpoint had to be overridden: it set chosen:true at score 1.0 on https://ror.org/046wj6g23 'PC TECHNOLOGY CENTER' (Kharkiv, Ukraine), rejected as a demonstrably different organisation - different country, and the names share only the generic fragment 'Technology Center'. A plain ROR query then returned Lockheed Martin entities for Australia, Canada, the United Kingdom, the United States and Orincon; only the United States entity is plausible for a Palo Alto, California facility."
-      }
-    },
-    {
-      "name": "Karel Schrijver",
-      "status": "included",
-      "confidence": "Medium",
-      "exclusion_reason": null,
-      "evidence": [
-        {
-          "source": "AIA Instrument record Contacts (FormerPI)",
-          "url": "https://spase-metadata.org/SMWG/Instrument/SDO/AIA.html",
-          "strength": "Medium"
-        },
-        {
-          "source": "Listed as an HMI Co-Investigator at LMSAL, responsible for magnetic field assimilation models, on the HMI science team page (as 'Carolus J. Schrijver')",
-          "url": "http://hmi.stanford.edu/ScienceTeam/index.html",
-          "strength": "Medium"
-        },
-        {
-          "source": "Twentieth author of the AIA instrument paper (Lemen et al. 2012, 10.1007/s11207-011-9776-8), inside the alphabetized LMSAL block, so his position there carries no contribution weight",
-          "url": "https://doi.org/10.1007/s11207-011-9776-8",
-          "strength": "Low"
-        },
-        {
-          "source": "Eleventh author of the HMI investigation paper (Scherrer et al. 2012, 10.1007/s11207-011-9834-2) - position beyond the fifth carries no contribution weight",
-          "url": "https://doi.org/10.1007/s11207-011-9834-2",
-          "strength": "Low"
-        }
-      ],
-      "person_record": {
-        "id": "spase://SMWG/Person/Karel.Schrijver",
-        "url": "https://spase-metadata.org/SMWG/Person/Karel.Schrijver.html"
-      },
-      "orcid": "0000-0002-6010-8182",
-      "affiliation": "Lockheed Martin Advanced Technology Center",
-      "activity_dates": null,
-      "qualifying_roles": [
-        "Author",
-        "FormerPI",
-        "CoInvestigator"
-      ],
-      "role_evidence": [
-        {
-          "role": "Author",
-          "source": "Recorded as a former Principal Investigator of the SDO/AIA instrument in the AIA SPASE Instrument record Contacts (https://spase-metadata.org/SMWG/Instrument/SDO/AIA.html) and as an HMI Co-Investigator on the HMI science team page (http://hmi.stanford.edu/ScienceTeam/index.html)"
-        },
-        {
-          "role": "FormerPI",
-          "source": "Formerly Principal Investigator of the SDO/AIA instrument, per the FormerPI entry in the AIA SPASE Instrument record Contacts (https://spase-metadata.org/SMWG/Instrument/SDO/AIA.html)"
-        },
-        {
-          "role": "CoInvestigator",
-          "source": "Listed as a Co-Investigator of the SDO/HMI instrument, at LMSAL with responsibility for magnetic field assimilation models, on the HMI science team page, under the name Carolus J. Schrijver (http://hmi.stanford.edu/ScienceTeam/index.html)"
-        }
-      ],
-      "affiliation_ror": "https://ror.org/026er9r08",
-      "enrichment": {
-        "orcid_origin": "enricher",
-        "orcid_source": "Crossref (paper DOI)",
-        "orcid_evidence": "10.3847/1538-4357/ac589b",
-        "orcid_evidence_citation": "Jin et al. 2022",
-        "orcid_confidence": "Confirmed",
-        "affiliation_origin": "enricher",
-        "affiliation_source": "Crossref (paper DOI)",
-        "affiliation_evidence": "10.1029/2010ja016224",
-        "affiliation_evidence_citation": "Schrijver & Title 2011",
-        "affiliation_type": "as-deposited",
-        "ror_origin": "enricher",
-        "ror_source": "ROR query (corroborated)",
-        "ror_evidence": "https://ror.org/026er9r08",
-        "ror_confidence": "Confirmed",
-        "lookup_status": "complete",
-        "notes": "ORCID from a deposit giving his formal full given name 'Carolus J.' on an SDO paper; he publishes as Carolus J. Schrijver and the finder's 'Karel' is the familiar form, which the HMI science team roster also renders as Carolus J. The DOI lies outside the finder's evidence list. Affiliation: his ORCID record contains no employment entries at all, so no era-matched employment lookup was possible; the value is the in-span 2011 deposit on an SDO paper. That deposit gives the given name as initials only ('C. J.'), so the identity behind the affiliation rests on the separately iD-bearing 2022 deposit rather than on the 2011 one. Deposited string verbatim was 'Lockheed Martin Advanced Technology Center; Palo Alto California USA' - address dropped. The HMI science team roster, dated 15 November 2011, lists him at 'LMSAL', the solar laboratory inside that centre, and the finder's value spells the same unit out; the deposit's well-formed parent-level string was recorded rather than a bare acronym. Alan M. Title in this file carries the unit-level string because a provider page names his institution in full; both resolve to the same ROR ID. ROR lists no record for either the Lockheed Martin Advanced Technology Center or its Solar and Astrophysics Laboratory, so the ID recorded is the listed parent corporation, Lockheed Martin (United States) - the affiliation names an unlisted sub-unit. ROR's affiliation-match endpoint had to be overridden: it set chosen:true at score 1.0 on https://ror.org/046wj6g23 'PC TECHNOLOGY CENTER' (Kharkiv, Ukraine), rejected as a demonstrably different organisation - different country, and the names share only the generic fragment 'Technology Center'. A plain ROR query then returned Lockheed Martin entities for Australia, Canada, the United Kingdom, the United States and Orincon; only the United States entity is plausible for a Palo Alto, California facility."
-      }
-    },
-    {
-      "name": "Wei Liu",
-      "status": "included",
-      "confidence": "Medium",
-      "exclusion_reason": null,
-      "evidence": [
-        {
-          "source": "Named as the AIA Instrument Scientist, alongside the AIA PI, in the AIA section of the SDO 2020 Senior Review Proposal",
-          "url": "http://hmi.stanford.edu/papers/SDO_SR_2020_assembled_3.pdf",
-          "strength": "Medium"
-        }
-      ],
-      "person_record": {
-        "id": null,
-        "url": null
-      },
-      "orcid": "0000-0001-8794-3420",
-      "affiliation": "W. W. Hansen Experimental Physics Laboratory, Stanford University",
-      "activity_dates": "AIA Instrument Scientist as of the 2020 Senior Review",
-      "qualifying_roles": [
-        "Author",
-        "InstrumentScientist"
-      ],
-      "role_evidence": [
-        {
-          "role": "Author",
-          "source": "Named as the AIA Instrument Scientist in the SDO 2020 Senior Review Proposal (http://hmi.stanford.edu/papers/SDO_SR_2020_assembled_3.pdf)"
-        },
-        {
-          "role": "InstrumentScientist",
-          "source": "Named as the Instrument Scientist for the SDO/AIA instrument, alongside the AIA PI, in the AIA section of the SDO 2020 Senior Review Proposal (http://hmi.stanford.edu/papers/SDO_SR_2020_assembled_3.pdf)"
-        }
-      ],
-      "affiliation_ror": "https://ror.org/00f54p054",
-      "enrichment": {
-        "orcid_origin": "enricher",
-        "orcid_source": "Crossref (paper DOI)",
-        "orcid_evidence": "10.1007/s11207-018-1368-4",
-        "orcid_evidence_citation": "Yuan et al. 2018",
-        "orcid_confidence": "Confirmed",
-        "affiliation_origin": "enricher",
-        "affiliation_source": "ORCID employment",
-        "affiliation_evidence": "https://orcid.org/0000-0001-8794-3420",
-        "affiliation_type": "era-matched",
         "ror_origin": "enricher",
         "ror_source": "ROR affiliation-match (chosen)",
         "ror_evidence": "https://ror.org/00f54p054",
         "ror_confidence": "Confirmed",
         "lookup_status": "complete",
-        "notes": "'Wei Liu' is a very common name, so two independent conditions were required before accepting the iD: a deposit giving the full given name 'Wei' on a paper about the same instrument ('Investigating Sub-Pixel 45-Second Periodic Wobble in SDO/AIA Data'), and an ORCID record that carries eleven SDO/AIA works from 2010 onward plus an employment whose department is the AIA PI institution, Lockheed Martin Solar and Astrophysics Laboratory. The finder's sole evidence is a proposal PDF, which deposits nothing, so the DOI lies outside its evidence list. FLAGGED FOR REVIEW - era-matched and role-dated evidence point at different employers. The era-matched rule selects the past position overlapping the span, Stanford University, department W. W. Hansen Experimental Physics Laboratory, 2009-02-20 to 2015-09-02, which is also when his 2010-2014 SDO/AIA papers were written; the position set aside is his current one, Bay Area Environmental Research Institute, department Lockheed Martin Solar and Astrophysics Laboratory, from 2015-09-03 to present (ROR https://ror.org/024tt5x58). But the finder's role evidence - AIA Instrument Scientist in the 2020 Senior Review - falls inside that later period, so a curator documenting the role rather than the span may prefer the Bay Area Environmental Research Institute value. An earlier NASA Goddard NASA Postdoctoral Program fellowship (2007-01-29 to 2009-01-28) ended before the span and was discarded. The finder's value, Lockheed Martin Solar and Astrophysics Laboratory, matches the set-aside position. ROR: ROR lists no record for the Hansen Experimental Physics Laboratory, so the parent Stanford University - which ROR chose at score 1.0 from the full string - is recorded for an unlisted sub-unit."
+        "notes": "ORCID: the evidence DOIs deposit no iDs (HMI bylines 'P. H. Scherrer'), so Route A' was used. Petrie et al. 2025 (10.3847/1538-4365/adcf9f, 'Calibrating HMI Magnetograms Using an End-to-end Magnetograph Model') lies OUTSIDE the finder's evidence list; it deposits 'Philip H. Scherrer' with ORCID 0000-0002-6937-6968 (checksum valid), and the deposit marks the iD as authenticated. The same iD is also on Liu & Scherrer 2022 (10.3847/2041-8213/ac52ae) and on the HMI interior review (10.1007/s11207-025-02480-6). Affiliation: the only ORCID employment is Professor, Physics, Stanford University, from 1986-09-01 to present. It is dated and overlaps the span, but it is ongoing and no past position exists, so it is labelled current. DIFFERS FROM FINDER VALUE: the finder had 'W.W. Hansen Experimental Physics Laboratory, Stanford University', taken from the HMI paper bylines (Crossref deposits no affiliations for those papers). The institution is the same, the unit is different, and nothing admissible here supports the HEPL unit. The HMI Science Team page (updated 15 Nov 2011) lists him at 'Stanford University'. ROR: ORCID disambiguates the employment as RINGGOLD 6429, not ROR. Route B chose Stanford University (score 1.0); name and country match. Neither the Physics department nor HEPL has a ROR record, so the parent is recorded."
       }
     },
     {
@@ -784,39 +416,29 @@
       "exclusion_reason": null,
       "evidence": [
         {
-          "source": "First author of the EVE instrument paper (Woods et al. 2012, 10.1007/s11207-009-9487-6), first of the thirteen deliberately placed authors before the alphabetized remainder of the author list",
+          "source": "First author of the EVE instrument paper (Woods et al. 2012, 10.1007/s11207-009-9487-6); the first 13 authors precede an alphabetized run of five",
           "url": "https://doi.org/10.1007/s11207-009-9487-6",
           "strength": "Strong"
         },
         {
-          "source": "Named in the front matter of the current SDO EVE Calibration and Measurement Algorithms Document Rev B (2025)",
-          "url": "https://doi.org/10.25810/nh0m-ze62",
-          "strength": "Strong"
-        },
-        {
-          "source": "Approved the pre-launch EVE CMAD (Rev A, 31 January 2005) as 'TNW' in its front-page revision history",
-          "url": "https://soma.larc.nasa.gov/lws/pdf_files/4.2a%20CMAD%20SDO-EVE.pdf",
-          "strength": "Strong"
-        },
-        {
-          "source": "Named as EVE Principal Investigator, PI institution University of Colorado, on the SDO mission instruments page",
-          "url": "https://sdo.gsfc.nasa.gov/mission/instruments.php",
-          "strength": "Strong"
-        },
-        {
-          "source": "Listed as 'Thomas N. Woods (EVE PI)' at the head of the EVE prime-mission science team and as 'Tom Woods - EVE PI' in the LASP personnel list on the EVE personnel page",
-          "url": "https://lasp.colorado.edu/eve/reference/personnel/",
-          "strength": "Strong"
-        },
-        {
-          "source": "Named as the EVE Principal Investigator on the mission fact sheet of the SDO 2020 Senior Review Proposal, and signed its reproduced SDO Project Data Management Plan as 'EVE Instrument Principal Investigator' on 13 December 2009",
-          "url": "http://hmi.stanford.edu/papers/SDO_SR_2020_assembled_3.pdf",
-          "strength": "Strong"
-        },
-        {
-          "source": "EVE Instrument record Contacts (PrincipalInvestigator)",
+          "source": "EVE Instrument record Contacts: PrincipalInvestigator",
           "url": "https://spase-metadata.org/SMWG/Instrument/SDO/EVE.html",
           "strength": "Medium"
+        },
+        {
+          "source": "Named 'Thomas N. Woods (EVE PI)' on the EVE personnel page and 'EVE PI' on the SDO team page (archived 2025-06-16)",
+          "url": "https://lasp.colorado.edu/eve/reference/personnel/",
+          "strength": "Medium"
+        },
+        {
+          "source": "Co-author of the SDO Senior Review proposals of 2015, 2017 and 2020, whose fact sheets name him EVE Principal Investigator",
+          "url": "http://hmi.stanford.edu/papers/SDO_SR_2020_assembled_3.pdf",
+          "strength": "Medium"
+        },
+        {
+          "source": "Approver ('TNW', initials only) of both drafts of the pre-launch EVE CMAD (Eparvier 2005, EVE-T-11003 Rev. A)",
+          "url": "https://soma.larc.nasa.gov/lws/pdf_files/4.2a%20CMAD%20SDO-EVE.pdf",
+          "strength": "Low"
         }
       ],
       "person_record": {
@@ -824,8 +446,10 @@
         "url": "https://spase-metadata.org/SMWG/Person/Thomas.N.Woods.html"
       },
       "orcid": "0000-0002-2308-6797",
-      "affiliation": "Laboratory for Atmospheric and Space Physics, University of Colorado Boulder",
-      "activity_dates": "EVE PI from the design phase (approving the 2005 pre-launch CMAD) through the 2025 EVE CMAD",
+      "affiliation": "Laboratory for Atmospheric and Space Physics University of Colorado Boulder Colorado USA",
+      "affiliation_ror": "https://ror.org/01fcjzv38",
+      "activity_dates": "EVE PI from development (EVE CMAD approvals 2003 and 2005) through operations; named EVE PI in the 2015, 2017 and 2020 Senior Review proposals",
+      "authorship_scope": "observatory",
       "qualifying_roles": [
         "Author",
         "InstrumentLead"
@@ -833,14 +457,13 @@
       "role_evidence": [
         {
           "role": "Author",
-          "source": "First author of the EVE instrument description paper (Woods et al. 2012, 10.1007/s11207-009-9487-6) and a named author of the current SDO/EVE Calibration and Measurement Algorithms Document Rev B (Jones et al. 2025, 10.25810/nh0m-ze62)"
+          "source": "First author of the EVE instrument paper (Woods et al. 2012, 10.1007/s11207-009-9487-6); co-author of the SDO Senior Review proposals of 2015, 2017 and 2020 (http://hmi.stanford.edu/papers/SDO_SR_2020_assembled_3.pdf)"
         },
         {
           "role": "InstrumentLead",
-          "source": "Principal Investigator of the SDO/EVE instrument, named as EVE PI on the SDO mission instruments page (https://sdo.gsfc.nasa.gov/mission/instruments.php), at the head of the EVE personnel page (https://lasp.colorado.edu/eve/reference/personnel/), in the EVE SPASE Instrument record Contacts, and as signatory of the SDO Project Data Management Plan as EVE Instrument Principal Investigator"
+          "source": "Principal Investigator of SDO/EVE, listed as such in the EVE Instrument record Contacts (https://spase-metadata.org/SMWG/Instrument/SDO/EVE.html) and on the EVE personnel page (https://lasp.colorado.edu/eve/reference/personnel/)"
         }
       ],
-      "affiliation_ror": "https://ror.org/01fcjzv38",
       "enrichment": {
         "orcid_origin": "enricher",
         "orcid_source": "Crossref (paper DOI)",
@@ -857,7 +480,335 @@
         "ror_evidence": "https://ror.org/01fcjzv38",
         "ror_confidence": "Confirmed",
         "lookup_status": "complete",
-        "notes": "ORCID from a deposit giving the full given name 'Thomas N.' on a paper about the same instrument ('The SDO/EVE Solar Irradiance Coronal Dimming Index Catalog'); the DOI lies outside the finder's evidence list, none of which deposits an iD - the EVE instrument paper deposits neither iDs nor affiliations for any of its 18 authors. Affiliation: his only ORCID employment is an undated bare 'University of Colorado Boulder', so the dated in-span 2013 deposit was preferred as both dated and more specific; it names the same unit and parent as the finder's value, which was therefore kept (deposited string verbatim: 'Laboratory for Atmospheric and Space Physics University of Colorado  Boulder Colorado USA'). ROR's affiliation-match endpoint set chosen:true on the parent, University of Colorado Boulder (https://ror.org/02ttsq026), at score 1.0 and left the child, Laboratory for Atmospheric and Space Physics (https://ror.org/01fcjzv38), not chosen at the same score 1.0. The child is recorded under the child-preference rule: LASP is named in the affiliation string and ROR's own record for LASP lists University of Colorado Boulder as its parent."
+        "notes": "ORCID: the EVE paper (10.1007/s11207-009-9487-6) deposits no iDs (byline 'T. N. Woods'), so Route A' was used. Mason et al. 2019 (10.3847/1538-4365/ab380e, 'The SDO/EVE Solar Irradiance Coronal Dimming Index Catalog. I. Methods and Algorithms') lies OUTSIDE the finder's evidence list; it deposits 'Thomas N. Woods' with ORCID 0000-0002-2308-6797 (checksum valid). Affiliation: the only ORCID employment is undated: 'University of Colorado Boulder', added by the university (RINGGOLD 1877). Same-instrument Crossref deposits inside the span outrank it. None of those deposits carries both his iD and an affiliation, so the full-name, same-instrument deposits were compared. Hock et al. 2013 (10.1002/swe.20042, 'Using SDO EVE data as a proxy for GOES XRS B 1-8 angstrom') gives 'Thomas N. Woods' as 'Laboratory for Atmospheric and Space Physics University of Colorado  Boulder Colorado USA'. It is recorded, with whitespace runs collapsed. Passed over: Sojka et al. 2013 (10.1002/jgra.50480) and Sojka et al. 2014 (10.1002/2013ja019528), both for 'Tom Woods' as 'LASP University of Colorado Boulder  Boulder Colorado USA'. That string names the same unit only by acronym, so it identifies the unit less specifically. Agrees with the finder's value; the undated employment is set aside. ROR (descended to child): Route B chose University of Colorado Boulder (https://ror.org/02ttsq026, score 1.0, chosen). It returned Laboratory for Atmospheric and Space Physics (https://ror.org/01fcjzv38) at score 1.0, not chosen. The string names LASP, and ROR records LASP as a child of CU Boulder, so LASP is recorded and CU Boulder is set aside."
+      }
+    },
+    {
+      "name": "Mark C. M. Cheung",
+      "status": "included",
+      "confidence": "Medium",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "AIA Instrument record Contacts: FormerPI",
+          "url": "https://spase-metadata.org/SMWG/Instrument/SDO/AIA.html",
+          "strength": "Medium"
+        },
+        {
+          "source": "Co-author of the SDO Senior Review proposals of 2017 and 2020, whose fact sheets name him AIA Principal Investigator",
+          "url": "http://hmi.stanford.edu/papers/SDO_SR_2020_assembled_3.pdf",
+          "strength": "Medium"
+        },
+        {
+          "source": "Named 'AIA PI, Lockheed Martin' on the SDO team page (archived 2025-06-16; not updated since Meng Jin became PI in 2022)",
+          "url": "http://web.archive.org/web/20250616051309/https://sdo.gsfc.nasa.gov/mission/team.php",
+          "strength": "Medium"
+        },
+        {
+          "source": "Named on the AIA website as the contact for further information on the AIA program",
+          "url": "http://aia.lmsal.com/",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Mark.C.M.Cheung",
+        "url": "https://spase-metadata.org/SMWG/Person/Mark.C.M.Cheung.html"
+      },
+      "orcid": "0000-0003-2110-9753",
+      "affiliation": "Solar & Astrophysics Lab, Lockheed Martin Advanced Technology Center",
+      "affiliation_ror": "https://ror.org/026er9r08",
+      "activity_dates": "AIA PI by 2017 (Senior Review proposal) until 2022, when Meng Jin became PI",
+      "authorship_scope": "observatory",
+      "qualifying_roles": [
+        "Author",
+        "FormerPI"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "AIA Principal Investigator and co-author of the SDO Senior Review proposals of 2017 and 2020 (http://hmi.stanford.edu/papers/SDO_SR_2020_assembled_3.pdf)"
+        },
+        {
+          "role": "FormerPI",
+          "source": "Former Principal Investigator of SDO/AIA, listed as FormerPI in the AIA Instrument record Contacts (https://spase-metadata.org/SMWG/Instrument/SDO/AIA.html); named AIA PI in the 2017 and 2020 SDO Senior Review proposals and on the SDO team page (http://web.archive.org/web/20250616051309/https://sdo.gsfc.nasa.gov/mission/team.php)"
+        }
+      ],
+      "enrichment": {
+        "orcid_origin": "finder",
+        "orcid_source": "Crossref (paper DOI)",
+        "orcid_evidence": "10.3847/1538-4357/ac589b",
+        "orcid_evidence_citation": "Jin et al. 2022",
+        "orcid_confidence": "Confirmed",
+        "affiliation_origin": "finder",
+        "affiliation_source": "ORCID employment",
+        "affiliation_evidence": "https://orcid.org/0000-0003-2110-9753",
+        "affiliation_type": "era-matched",
+        "ror_origin": "enricher",
+        "ror_source": "ROR query (corroborated)",
+        "ror_evidence": "https://ror.org/026er9r08",
+        "ror_confidence": "Confirmed",
+        "lookup_status": "complete",
+        "notes": "The finder's ORCID was validated. The checksum is valid, and Crossref deposits the iD for 'Mark C. M. Cheung' on Jin et al. 2022 (10.3847/1538-4357/ac589b, 'Coronal Mass Ejections and Dimmings: A Comparative Study Using MHD Simulations and SDO Observations'), marked authenticated. That paper lies OUTSIDE the finder's evidence, which has no DOIs. Affiliation: two past positions overlap the span. One is Physicist, Solar & Astrophysics Lab, Lockheed Martin Advanced Technology Center, Palo Alto (2006-09-11 to 2022-08-24). The other is Visiting Scholar, Stanford University (2016-11-15 to 2019-11-15). The Lockheed Martin post matches the AIA provider (LMSAL) and is also the longer overlap, so it is recorded as era-matched. His affiliation changed during the operating span: Lockheed Martin ATC (2006-2022) was followed by Deputy & Science Director, Space & Astronomy, CSIRO Marsfield (2022-08-27 to present), his current position. The CSIRO post, an undated CSIRO entry (Epping, ROR 03qn8fb07) and the Stanford visiting post are all set aside. Agrees with the finder's 'Lockheed Martin Solar and Astrophysics Laboratory' (same laboratory); the recorded wording follows ORCID. ROR: ORCID disambiguates the employment as RINGGOLD 265392, not ROR. Route B set chosen on https://ror.org/046wj6g23 (PC Technology Center, Kharkiv, Ukraine; score 1.0). That match was REJECTED: the country is different, and the name shares only 'Technology Center'. ROR has no record for LMSAL or the Lockheed Martin ATC. In Route C, the only US Lockheed Martin corporate record is Lockheed Martin (United States), https://ror.org/026er9r08; the other results are Lockheed Martin Australia, Canada and UK, plus the Orincon subsidiary in San Diego. Its country matches ORCID's Palo Alto, US, so it is recorded as the listed parent of an unlisted sub-unit."
+      }
+    },
+    {
+      "name": "Carolus J. (Karel) Schrijver",
+      "status": "included",
+      "confidence": "Medium",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "AIA Instrument record Contacts: FormerPI (as Karel Schrijver)",
+          "url": "https://spase-metadata.org/SMWG/Instrument/SDO/AIA.html",
+          "strength": "Medium"
+        },
+        {
+          "source": "Co-author of the SDO 2015 Senior Review proposal (as Carolus J. Schrijver), whose fact sheet names him AIA Principal Investigator",
+          "url": "http://hmi.stanford.edu/papers/SDO_SR_Final_2015.pdf",
+          "strength": "Medium"
+        },
+        {
+          "source": "Listed as a Co-Investigator on the HMI Science Team page",
+          "url": "http://hmi.stanford.edu/ScienceTeam/index.html",
+          "strength": "Medium"
+        },
+        {
+          "source": "Twentieth author of the AIA instrument paper (Lemen et al. 2012, 10.1007/s11207-011-9776-8) and eleventh author of the HMI investigation paper (Scherrer et al. 2012, 10.1007/s11207-011-9834-2) (instrument-team depth; context only)",
+          "url": "https://doi.org/10.1007/s11207-011-9776-8",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Karel.Schrijver",
+        "url": "https://spase-metadata.org/SMWG/Person/Karel.Schrijver.html"
+      },
+      "orcid": "0000-0002-6010-8182",
+      "affiliation": "Lockheed Martin Solar and Astrophysics Laboratory",
+      "affiliation_ror": "https://ror.org/026er9r08",
+      "activity_dates": "AIA PI as of the 2015 Senior Review proposal; succeeded by Mark Cheung by 2017",
+      "authorship_scope": "observatory",
+      "qualifying_roles": [
+        "Author",
+        "FormerPI",
+        "CoInvestigator"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "AIA Principal Investigator and co-author of the SDO 2015 Senior Review proposal (http://hmi.stanford.edu/papers/SDO_SR_Final_2015.pdf)"
+        },
+        {
+          "role": "FormerPI",
+          "source": "Former Principal Investigator of SDO/AIA, listed as FormerPI in the AIA Instrument record Contacts (https://spase-metadata.org/SMWG/Instrument/SDO/AIA.html) and named AIA PI in the SDO 2015 Senior Review proposal (http://hmi.stanford.edu/papers/SDO_SR_Final_2015.pdf)"
+        },
+        {
+          "role": "CoInvestigator",
+          "source": "Co-Investigator on the SDO/HMI instrument, listed on the HMI Science Team page (http://hmi.stanford.edu/ScienceTeam/index.html)"
+        }
+      ],
+      "enrichment": {
+        "orcid_origin": "enricher",
+        "orcid_source": "Crossref (paper DOI)",
+        "orcid_evidence": "10.3847/1538-4357/ac589b",
+        "orcid_evidence_citation": "Jin et al. 2022",
+        "orcid_confidence": "Confirmed",
+        "affiliation_origin": "finder",
+        "affiliation_source": "provider documentation",
+        "affiliation_evidence": "http://hmi.stanford.edu/ScienceTeam/index.html",
+        "affiliation_type": null,
+        "ror_origin": "enricher",
+        "ror_source": "ROR query (corroborated)",
+        "ror_evidence": "https://ror.org/026er9r08",
+        "ror_confidence": "Confirmed",
+        "lookup_status": "complete",
+        "notes": "ORCID: the AIA and HMI papers deposit no iDs ('Carolus J. Schrijver'; 'C. J. Schrijver'), so Route A' was used. Jin et al. 2022 (10.3847/1538-4357/ac589b, SDO) lies OUTSIDE the finder's evidence list; it deposits 'Carolus J. Schrijver' with ORCID 0000-0002-6010-8182 (checksum valid). The ORCID record gives the credit name 'Carolus J Schrijver' and the other name 'Karel', and lists AIA and SDO works. Affiliation: the ORCID record lists no employment, and the Route A' deposit carries no affiliation. The only same-instrument deposit with an affiliation (10.1029/2010ja016224, 2011, SDO/STEREO) names him by initials only ('C. J.') and carries no iD, so it was not used. Provider documentation: the HMI Science Team page lists 'Carolus J. Schrijver, Co-I, LMSAL'. It was updated 15 Nov 2011, inside the span, and it expands LMSAL as 'Lockheed-Martin Solar and Astrophysics Laboratory'. This verifies the finder's value, which is kept. affiliation_type is left null: the page dates the affiliation to 2011, but the type labels are reserved for ORCID employment and Crossref deposits, and nothing establishes a current affiliation. ROR: Route B returned nothing chosen for the string (top result: Health and Safety Laboratory, UK, 0.92; Lockheed Martin (United States) only 0.71). ROR has no LMSAL record. In Route C, the only US Lockheed Martin corporate record is https://ror.org/026er9r08, so it is recorded as the listed parent of the unlisted LMSAL."
+      }
+    },
+    {
+      "name": "Alan M. Title",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Second author of the AIA instrument paper (Lemen et al. 2012, 10.1007/s11207-011-9776-8), one of the two authors placed before the alphabetized remainder of the author list",
+          "url": "https://doi.org/10.1007/s11207-011-9776-8",
+          "strength": "Strong"
+        },
+        {
+          "source": "AIA Instrument record Contacts: FormerPI",
+          "url": "https://spase-metadata.org/SMWG/Instrument/SDO/AIA.html",
+          "strength": "Medium"
+        },
+        {
+          "source": "Named 'AIA Principal Investigator' in the pre-launch team on the SDO team page (archived 2025-06-16); still shown as 'PI: Alan Title' on the SDO instruments page",
+          "url": "http://web.archive.org/web/20250616051309/https://sdo.gsfc.nasa.gov/mission/team.php",
+          "strength": "Medium"
+        },
+        {
+          "source": "Listed as a Co-Investigator (HMI Instrument) on the HMI Science Team page",
+          "url": "http://hmi.stanford.edu/ScienceTeam/index.html",
+          "strength": "Medium"
+        },
+        {
+          "source": "Tenth author of the HMI investigation paper (Scherrer et al. 2012, 10.1007/s11207-011-9834-2) and seventeenth of the HMI design paper (Schou et al. 2012, 10.1007/s11207-011-9842-2) (instrument-team depth; context only)",
+          "url": "https://doi.org/10.1007/s11207-011-9834-2",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Alan.M.Title",
+        "url": "https://spase-metadata.org/SMWG/Person/Alan.M.Title.html"
+      },
+      "orcid": null,
+      "affiliation": "Lockheed Martin Solar and Astrophysics Laboratory",
+      "affiliation_ror": "https://ror.org/026er9r08",
+      "activity_dates": "AIA PI during development and at launch (SDO pre-launch team page)",
+      "authorship_scope": "instrument",
+      "qualifying_roles": [
+        "Author",
+        "FormerPI",
+        "CoInvestigator"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Second author of the AIA instrument paper, one of the two authors placed before the alphabetized remainder of the author list (Lemen et al. 2012, 10.1007/s11207-011-9776-8)"
+        },
+        {
+          "role": "FormerPI",
+          "source": "Former Principal Investigator of SDO/AIA (the founding PI), listed as FormerPI in the AIA Instrument record Contacts (https://spase-metadata.org/SMWG/Instrument/SDO/AIA.html) and as AIA Principal Investigator of the SDO pre-launch team (http://web.archive.org/web/20250616051309/https://sdo.gsfc.nasa.gov/mission/team.php)"
+        },
+        {
+          "role": "CoInvestigator",
+          "source": "Co-Investigator on the SDO/HMI instrument, listed on the HMI Science Team page (http://hmi.stanford.edu/ScienceTeam/index.html)"
+        }
+      ],
+      "enrichment": {
+        "orcid_origin": null,
+        "orcid_source": null,
+        "orcid_evidence": null,
+        "orcid_confidence": null,
+        "affiliation_origin": "finder",
+        "affiliation_source": "provider documentation",
+        "affiliation_evidence": "http://hmi.stanford.edu/ScienceTeam/index.html",
+        "affiliation_type": null,
+        "ror_origin": "enricher",
+        "ror_source": "ROR query (corroborated)",
+        "ror_evidence": "https://ror.org/026er9r08",
+        "ror_confidence": "Confirmed",
+        "lookup_status": "complete",
+        "notes": "ORCID left null; no iD was found anywhere. Route A: the AIA and HMI papers deposit no iDs ('Alan M. Title'; 'A. M. Title'). Route A': Crossref author queries against SDO and AIA found no ORCID-bearing deposit for Title. Route B: the ORCID search family-name:Title AND given-names:Alan returns 0 records, and family-name:Title alone returns 3, none named Alan. Affiliation: there is no ORCID. The only same-instrument Crossref deposit with an affiliation (10.1029/2010ja016224, 2011, SDO/STEREO: 'Lockheed Martin Advanced Technology Center; Palo Alto California USA') names him by initials only ('A. M.'), so it was not used. Provider documentation: the HMI Science Team page (updated 15 Nov 2011, inside the span) lists 'Alan M. Title, Co-I, LMSAL' and expands LMSAL as 'Lockheed-Martin Solar and Astrophysics Laboratory'. This verifies the finder's value, which is kept. The archived SDO team page names him AIA Principal Investigator but gives no institution. affiliation_type is left null for the same reason as Schrijver: a dated provider page fits none of the type labels. The finder notes that his SMWG Person record uses the old name 'Lockheed Palo Alto Research Laboratory'. ROR: same as Schrijver. Route B returned nothing chosen, and ROR has no LMSAL record; in Route C, Lockheed Martin (United States) https://ror.org/026er9r08 is the only US corporate record, so it is recorded as the listed parent."
+      }
+    },
+    {
+      "name": "James R. Lemen",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "First author of the AIA instrument paper (Lemen et al. 2012, 10.1007/s11207-011-9776-8); linked from the AIA Instrument record and listed on the SDO Definitive Publications page",
+          "url": "https://doi.org/10.1007/s11207-011-9776-8",
+          "strength": "Strong"
+        },
+        {
+          "source": "AIA website links the 'AIA Instrumentation Paper (Lemen, et al.)'",
+          "url": "http://aia.lmsal.com/",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/James.R.Lemen",
+        "url": "https://spase-metadata.org/SMWG/Person/James.R.Lemen.html"
+      },
+      "orcid": null,
+      "affiliation": null,
+      "affiliation_ror": null,
+      "activity_dates": null,
+      "authorship_scope": "instrument",
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "First author of the AIA instrument paper (Lemen et al. 2012, 10.1007/s11207-011-9776-8)"
+        }
+      ],
+      "enrichment": {
+        "orcid_origin": null,
+        "orcid_source": null,
+        "orcid_evidence": null,
+        "orcid_confidence": null,
+        "affiliation_origin": null,
+        "affiliation_source": null,
+        "affiliation_evidence": null,
+        "affiliation_type": null,
+        "ror_origin": null,
+        "ror_source": null,
+        "ror_evidence": null,
+        "ror_confidence": null,
+        "lookup_status": "complete",
+        "notes": "ORCID left null; no iD was found. Route A: the AIA paper deposits no iD ('James R. Lemen'). Route A': Crossref author queries against SDO and AIA found no ORCID-bearing deposit. Route B: the ORCID search family-name:Lemen AND given-names:James returns 0 records, and family-name:Lemen alone returns 16, none named James. AFFILIATION SET TO NULL. The finder's value, 'Lockheed Palo Alto Research Laboratory (SMWG Person record; now Lockheed Martin Solar and Astrophysics Laboratory)', rests on spase://SMWG/Person/James.R.Lemen, whose OrganizationName is 'Lockheed Palo Alto Research Laboratory'. The downstream writer overwrites that Person record, so it cannot be cited. Nothing outside the registry confirmed either name. There is no ORCID record. No same-instrument Crossref deposit carries an affiliation; his only deposit with an affiliation is a 1992 PASJ paper (10.1093/pasj/44.5.l71: 'Lockheed Palo Alto Research Laboratory, Palo Alto'), which is not on SDO and predates the span. No provider page checked names him with an institution: the HMI Science Team page, the AIA team and contacts pages, and the archived SDO team page. The finder's string also joins two names in a parenthetical, which a single-valued OrganizationName cannot hold. A reviewer could corroborate LMSAL from the AIA paper's printed byline, which Crossref does not deposit. With no affiliation, no ROR lookup was made."
+      }
+    },
+    {
+      "name": "Meng Jin",
+      "status": "included",
+      "confidence": "Medium",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "AIA Instrument record Contacts: PrincipalInvestigator",
+          "url": "https://spase-metadata.org/SMWG/Instrument/SDO/AIA.html",
+          "strength": "Medium"
+        },
+        {
+          "source": "His LMSAL homepage lists 'Principle Investigator of SDO/AIA', 2022 to present",
+          "url": "https://www.lmsal.com/~jinmeng/",
+          "strength": "Medium"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Meng.Jin",
+        "url": "https://spase-metadata.org/SMWG/Person/Meng.Jin.html"
+      },
+      "orcid": "0000-0002-9672-3873",
+      "affiliation": "Lockheed Martin Advanced Technology Center",
+      "affiliation_ror": "https://ror.org/026er9r08",
+      "activity_dates": "AIA PI since 2022 (LMSAL homepage)",
+      "authorship_scope": "instrument",
+      "qualifying_roles": [
+        "Author",
+        "InstrumentLead"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Current Principal Investigator of SDO/AIA, listed as PI in the AIA Instrument record Contacts (https://spase-metadata.org/SMWG/Instrument/SDO/AIA.html) and on his LMSAL homepage (https://www.lmsal.com/~jinmeng/)"
+        },
+        {
+          "role": "InstrumentLead",
+          "source": "Principal Investigator of SDO/AIA since 2022, per the AIA Instrument record Contacts (https://spase-metadata.org/SMWG/Instrument/SDO/AIA.html) and his LMSAL homepage (https://www.lmsal.com/~jinmeng/)"
+        }
+      ],
+      "enrichment": {
+        "orcid_origin": "finder",
+        "orcid_source": "Crossref (paper DOI)",
+        "orcid_evidence": "10.3847/1538-4357/ac589b",
+        "orcid_evidence_citation": "Jin et al. 2022",
+        "orcid_confidence": "Confirmed",
+        "affiliation_origin": "finder",
+        "affiliation_source": "ORCID employment",
+        "affiliation_evidence": "https://orcid.org/0000-0002-9672-3873",
+        "affiliation_type": "current",
+        "ror_origin": "enricher",
+        "ror_source": "ROR query (corroborated)",
+        "ror_evidence": "https://ror.org/026er9r08",
+        "ror_confidence": "Confirmed",
+        "lookup_status": "complete",
+        "notes": "The finder's ORCID was validated. The checksum is valid, and Crossref deposits the iD for 'Meng Jin' on Jin et al. 2022 (10.3847/1538-4357/ac589b, SDO), marked authenticated. That paper lies OUTSIDE the finder's evidence, which has no DOIs. The iD also appears on Galvez et al. 2019 (10.3847/1538-4365/ab1005) and Kasapis et al. 2023 (10.1029/2022sw003310), both SDO papers. Affiliation: two ORCID employments, both dated and ongoing, overlap the span. One is Lockheed Martin Advanced Technology Center, Palo Alto (2014-08-01 to present); the other is SETI Institute, Mountain View (2018-01-16 to present). With no past position, provider-match decides: Lockheed Martin ATC matches the AIA provider (LMSAL). It is labelled current because it is ongoing. SETI Institute is set aside. This agrees with the finder's 'Lockheed Martin Solar and Astrophysics Laboratory' at institution level, but ORCID names the ATC without the laboratory. The in-span Kasapis et al. 2023 deposit names 'Lockheed Martin Solar and Astrophysics Laboratory  Palo Alto CA USA' against his iD. It is not recorded, because dated ORCID employment comes first in the route order; a reviewer wanting the laboratory-level name has it there. ROR: ORCID disambiguates the employment as RINGGOLD 265392, not ROR. Route B set chosen on https://ror.org/046wj6g23 (PC Technology Center, Kharkiv, Ukraine; score 1.0). That match was REJECTED: the country is different, and the name shares only 'Technology Center'. In Route C, ROR has no record for the Lockheed Martin ATC. Lockheed Martin (United States), https://ror.org/026er9r08, is the only US corporate record, and its country matches ORCID's Palo Alto, US, so it is recorded as the listed parent of an unlisted sub-unit."
       }
     },
     {
@@ -867,24 +818,19 @@
       "exclusion_reason": null,
       "evidence": [
         {
-          "source": "Second author of the EVE instrument paper (Woods et al. 2012, 10.1007/s11207-009-9487-6), within the thirteen deliberately placed authors before the alphabetized remainder of the author list",
+          "source": "Second author of the EVE instrument paper (Woods et al. 2012, 10.1007/s11207-009-9487-6); within the 13-author prefix before an alphabetized run of five",
           "url": "https://doi.org/10.1007/s11207-009-9487-6",
           "strength": "Strong"
         },
         {
-          "source": "Named on the front page of the pre-launch EVE CMAD (Rev A, 31 January 2005) as its preparer and as EVE Project Scientist; this revision predates launch by five years, so it documents the founding team",
+          "source": "Front page of the pre-launch EVE Calibration and Measurement Algorithms Document (Eparvier 2005, EVE-T-11003 Rev. A): 'Prepared By: Francis G. Eparvier, EVE Project Scientist'. Dated 2005-01-31, five years before launch, so it names the founding team rather than the current one",
           "url": "https://soma.larc.nasa.gov/lws/pdf_files/4.2a%20CMAD%20SDO-EVE.pdf",
           "strength": "Strong"
         },
         {
-          "source": "Named in the front matter of the current SDO EVE Calibration and Measurement Algorithms Document Rev B (2025)",
-          "url": "https://doi.org/10.25810/nh0m-ze62",
-          "strength": "Strong"
-        },
-        {
-          "source": "Listed as 'Francis G. Eparvier (EVE Project Scientist)' on the EVE prime-mission science team and as 'Frank Eparvier - EVE Project Scientist' in the LASP personnel list on the EVE personnel page",
+          "source": "Named 'Francis G. Eparvier (EVE Project Scientist)' on the EVE personnel page",
           "url": "https://lasp.colorado.edu/eve/reference/personnel/",
-          "strength": "Strong"
+          "strength": "Medium"
         }
       ],
       "person_record": {
@@ -892,8 +838,10 @@
         "url": null
       },
       "orcid": "0000-0001-7143-2730",
-      "affiliation": "Laboratory for Atmospheric and Space Physics, University of Colorado Boulder",
-      "activity_dates": "EVE Project Scientist from the design phase (preparing the 2005 pre-launch CMAD) to the present",
+      "affiliation": "LASP University of Colorado Boulder Boulder Colorado USA",
+      "affiliation_ror": "https://ror.org/01fcjzv38",
+      "activity_dates": "EVE Project Scientist from at least the 2003 PDR draft of the EVE CMAD to the current EVE personnel page",
+      "authorship_scope": "instrument",
       "qualifying_roles": [
         "Author",
         "InstrumentScientist"
@@ -901,14 +849,13 @@
       "role_evidence": [
         {
           "role": "Author",
-          "source": "Second author of the EVE instrument description paper (Woods et al. 2012, 10.1007/s11207-009-9487-6), preparer of the pre-launch SDO/EVE CMAD (Eparvier 2005, EVE-T-11003 Rev. A) and a named author of the current EVE CMAD Rev B (Jones et al. 2025, 10.25810/nh0m-ze62)"
+          "source": "Second author of the EVE instrument paper (Woods et al. 2012, 10.1007/s11207-009-9487-6) and author of the pre-launch EVE Calibration and Measurement Algorithms Document (Eparvier 2005, EVE-T-11003 Rev. A)"
         },
         {
           "role": "InstrumentScientist",
-          "source": "Named as the EVE Project Scientist - the science lead for the SDO/EVE instrument - on the front page of the SDO/EVE CMAD (Eparvier 2005, EVE-T-11003 Rev. A) and on the EVE personnel page at LASP (https://lasp.colorado.edu/eve/reference/personnel/)"
+          "source": "EVE Project Scientist (the EVE instrument's project scientist, not SDO's), on the EVE personnel page (https://lasp.colorado.edu/eve/reference/personnel/) and the front page of the EVE CMAD (Eparvier 2005, EVE-T-11003 Rev. A)"
         }
       ],
-      "affiliation_ror": "https://ror.org/01fcjzv38",
       "enrichment": {
         "orcid_origin": "enricher",
         "orcid_source": "Crossref (paper DOI)",
@@ -917,15 +864,15 @@
         "orcid_confidence": "Confirmed",
         "affiliation_origin": "finder",
         "affiliation_source": "Crossref (paper DOI)",
-        "affiliation_evidence": "10.1029/2010ja015901",
-        "affiliation_evidence_citation": "Lean et al. 2011",
+        "affiliation_evidence": "10.1002/2013ja019528",
+        "affiliation_evidence_citation": "Sojka et al. 2014",
         "affiliation_type": "as-deposited",
         "ror_origin": "enricher",
         "ror_source": "ROR affiliation-match (chosen)",
         "ror_evidence": "https://ror.org/01fcjzv38",
         "ror_confidence": "Confirmed",
         "lookup_status": "complete",
-        "notes": "ORCID from a deposit giving the full given name 'Francis G.' on a paper about the same instrument ('Evidence Against Carbonization of the Thin-Film Filters of the Extreme Ultraviolet Variability Experiment Onboard the Solar Dynamics Observatory'); the DOI lies outside the finder's evidence list, which deposits no iDs. Affiliation: his only ORCID employment is an undated bare 'University of Colorado Boulder', so the dated in-span 2011 deposit was preferred as both dated and more specific; it names the same unit and parent as the finder's value, which was therefore kept (deposited string verbatim: 'Laboratory for Atmospheric and Space Physics; University of Colorado at Boulder; Boulder Colorado USA', given name initials only, identity confirmed independently). ROR's affiliation-match endpoint set chosen:true on the parent, University of Colorado Boulder (https://ror.org/02ttsq026), at score 1.0 and left the child, Laboratory for Atmospheric and Space Physics (https://ror.org/01fcjzv38), not chosen at the same score 1.0. The child is recorded under the child-preference rule: LASP is named in the affiliation string and ROR's own record for LASP lists University of Colorado Boulder as its parent."
+        "notes": "ORCID: the EVE paper deposits no iD (byline 'F. G. Eparvier'), so Route A' was used. Tarrio et al. 2021 (10.1007/s11207-021-01806-4, 'Evidence Against Carbonization of the Thin-Film Filters of the Extreme Ultraviolet Variability Experiment Onboard the Solar Dynamics Observatory') lies OUTSIDE the finder's evidence list; it deposits 'Francis G. Eparvier' with ORCID 0000-0001-7143-2730 (checksum valid). Affiliation: the only ORCID employment is undated: 'University of Colorado Boulder', added by the university (RINGGOLD 1877). Same-instrument Crossref deposits inside the span outrank it. Sojka et al. 2014 (10.1002/2013ja019528, 'Ionospheric model-observation comparisons: E layer at Arecibo. Incorporation of SDO-EVE solar irradiances') gives 'Frank Eparvier' as 'LASP University of Colorado Boulder  Boulder Colorado USA'. It is recorded, with whitespace runs collapsed. 'Frank' is accepted as compatible with his full name: the ORCID record lists 'Frank Eparvier' as another name, and several deposits carrying his iD use 'Frank'. Sojka et al. 2013 (10.1002/jgra.50480) deposits the identical string, and the 2014 deposit is the more recent. 10.1002/2015ja021726 (2016) gives initials only ('F. G.') and was not used. No same-instrument deposit names LASP in full for him. Agrees with the finder's 'Laboratory for Atmospheric and Space Physics, University of Colorado'; the undated employment is set aside. ROR (descended to child): Route B chose University of Colorado Boulder (https://ror.org/02ttsq026, score 1.0). LASP did not appear among its results, but the string names it by the acronym 'LASP' that ROR records for https://ror.org/01fcjzv38, and ROR records LASP as a child of CU Boulder. So LASP is recorded and CU Boulder is set aside. Reverse this if a named acronym should not trigger the descent."
       }
     },
     {
@@ -935,14 +882,14 @@
       "exclusion_reason": null,
       "evidence": [
         {
-          "source": "Third author of the EVE instrument paper (Woods et al. 2012, 10.1007/s11207-009-9487-6), within the thirteen deliberately placed authors before the alphabetized remainder of the author list; the paper gives her as 'R. Hock' in the LASP author group",
+          "source": "Third author of the EVE instrument paper (Woods et al. 2012, 10.1007/s11207-009-9487-6) (byline 'R. Hock'); within the 13-author prefix before an alphabetized run of five",
           "url": "https://doi.org/10.1007/s11207-009-9487-6",
           "strength": "Strong"
         },
         {
-          "source": "Lead author, as 'R.A. Hock', of the EVE MEGS radiometric calibration paper (Hock et al. 2012, 10.1007/s11207-010-9520-9), written with Chamberlin, Woods, Eparvier and Woodraska, which confirms the initials belong to a member of the LASP EVE team",
+          "source": "Identity: 'R. A. Hock' is first author of the EVE MEGS calibration paper (Hock et al. 2012, 10.1007/s11207-010-9520-9) with Chamberlin and Woods, and appears as 'Rachel A. Hock' on the 2007 SPIE EVE MEGS paper (Chamberlin et al. 2007, 10.1117/12.734116)",
           "url": "https://doi.org/10.1007/s11207-010-9520-9",
-          "strength": "Medium"
+          "strength": "Low"
         }
       ],
       "person_record": {
@@ -951,17 +898,18 @@
       },
       "orcid": null,
       "affiliation": null,
-      "activity_dates": "EVE team member around launch; not listed on the current EVE personnel page",
+      "affiliation_ror": null,
+      "activity_dates": null,
+      "authorship_scope": "instrument",
       "qualifying_roles": [
         "Author"
       ],
       "role_evidence": [
         {
           "role": "Author",
-          "source": "Third author of the EVE instrument description paper (Woods et al. 2012, 10.1007/s11207-009-9487-6)"
+          "source": "Third author of the EVE instrument paper (Woods et al. 2012, 10.1007/s11207-009-9487-6)"
         }
       ],
-      "affiliation_ror": null,
       "enrichment": {
         "orcid_origin": null,
         "orcid_source": null,
@@ -976,255 +924,7 @@
         "ror_evidence": null,
         "ror_confidence": null,
         "lookup_status": "skipped-unconfirmed-identity",
-        "notes": "Gated out of enrichment: no source in the finder's evidence gives her full name. Both evidence DOIs deposit initials only - the EVE instrument paper as 'R.' Hock and the MEGS calibration paper as 'R. A.' Hock - and the finder itself flagged the given name as taken by inference and advised downstream identity confirmation, noting she is reported to have later published under a different surname. No value was placed in any of the three fields. For the reviewer, two findings that would probably settle it. First, a possible match: Crossref DOI 10.1002/swe.20042 (Hock et al. 2013, 'Using SDO EVE data as a proxy for GOES XRS B 1-8 angstrom'), co-authored with Woodraska and Woods, deposits the first author as 'Rachel A. Hock' - a full name on a paper about the same instrument - which is strong but was not used because confirming identity is the finder's job. Second, if that is the same person, the affiliation needs revisiting: that 2013 deposit places her at 'Space Vehicles Directorate, Air Force Research Laboratory Kirtland Air Force Base  New Mexico USA', not at LASP as the finder's affiliation value states. No ORCID record was found for any Rachel Hock (a search for the family name with given names beginning R returns thirteen records, none of them a solar physicist), which is consistent with the finder's note about a later surname change."
-      }
-    },
-    {
-      "name": "Andrew R. Jones",
-      "status": "included",
-      "confidence": "Strong",
-      "exclusion_reason": null,
-      "evidence": [
-        {
-          "source": "First-listed author in the front matter of the current SDO EVE Calibration and Measurement Algorithms Document Rev B (2025)",
-          "url": "https://doi.org/10.25810/nh0m-ze62",
-          "strength": "Strong"
-        },
-        {
-          "source": "Fourth author of the EVE instrument paper (Woods et al. 2012, 10.1007/s11207-009-9487-6) - on this Observatory run an instrument paper's fourth author carries no position-based weight, so this is context only",
-          "url": "https://doi.org/10.1007/s11207-009-9487-6",
-          "strength": "Low"
-        },
-        {
-          "source": "Listed on the EVE prime-mission science team and as 'Andrew Jones - EVE Scientist' in the LASP personnel list on the EVE personnel page; 'Scientist' is not a qualifying contact role, so this is context only",
-          "url": "https://lasp.colorado.edu/eve/reference/personnel/",
-          "strength": "Low"
-        }
-      ],
-      "person_record": {
-        "id": null,
-        "url": null
-      },
-      "orcid": "0000-0001-5533-5498",
-      "affiliation": "Laboratory for Atmospheric and Space Physics, University of Colorado Boulder",
-      "activity_dates": "EVE team member from the prime mission to the present",
-      "qualifying_roles": [
-        "Author"
-      ],
-      "role_evidence": [
-        {
-          "role": "Author",
-          "source": "First-listed author of the current SDO/EVE Calibration and Measurement Algorithms Document Rev B (Jones et al. 2025, 10.25810/nh0m-ze62)"
-        }
-      ],
-      "affiliation_ror": "https://ror.org/01fcjzv38",
-      "enrichment": {
-        "orcid_origin": "enricher",
-        "orcid_source": "Crossref (paper DOI)",
-        "orcid_evidence": "10.1007/s11207-021-01806-4",
-        "orcid_evidence_citation": "Tarrio et al. 2021",
-        "orcid_confidence": "Confirmed",
-        "affiliation_origin": "finder",
-        "affiliation_source": "Crossref (paper DOI)",
-        "affiliation_evidence": "10.3847/25c2cfeb.a05625a8",
-        "affiliation_evidence_citation": "Chamberlin et al. 2023",
-        "affiliation_type": "as-deposited",
-        "ror_origin": "enricher",
-        "ror_source": "ROR affiliation-match (chosen)",
-        "ror_evidence": "https://ror.org/01fcjzv38",
-        "ror_confidence": "Confirmed",
-        "lookup_status": "complete",
-        "notes": "ORCID from a deposit giving the full given name 'Andrew R.' on a paper about the same instrument (the EVE thin-film filter paper); the DOI lies outside the finder's evidence list, which is a DataCite-registered CMAD, the EVE paper and a personnel page, none of which deposits an iD. Affiliation: his only ORCID employment is an undated bare 'University of Colorado Boulder', so a dated in-span deposit was preferred - 10.3847/25c2cfeb.a05625a8, which also carries his confirmed iD, so identity and affiliation rest on the same record. Its deposited string is the abbreviation 'U. of Colorado, LASP'; it names the same unit and parent as the finder's well-formed value, which was therefore kept. Noted for transparency: the abbreviated deposited string on its own returns nothing chosen from ROR, so the ROR below was resolved against the recorded affiliation. ROR's affiliation-match endpoint set chosen:true on the parent, University of Colorado Boulder (https://ror.org/02ttsq026), at score 1.0 and left the child, Laboratory for Atmospheric and Space Physics (https://ror.org/01fcjzv38), not chosen at the same score 1.0. The child is recorded under the child-preference rule: LASP is named in the affiliation string and ROR's own record for LASP lists University of Colorado Boulder as its parent."
-      }
-    },
-    {
-      "name": "Donald L. Woodraska",
-      "status": "included",
-      "confidence": "Strong",
-      "exclusion_reason": null,
-      "evidence": [
-        {
-          "source": "Named in the front matter of the current SDO EVE Calibration and Measurement Algorithms Document Rev B (2025)",
-          "url": "https://doi.org/10.25810/nh0m-ze62",
-          "strength": "Strong"
-        },
-        {
-          "source": "Fifth author of the EVE instrument paper (Woods et al. 2012, 10.1007/s11207-009-9487-6) - on this Observatory run an instrument paper's fifth author carries no position-based weight, so this is context only",
-          "url": "https://doi.org/10.1007/s11207-009-9487-6",
-          "strength": "Low"
-        },
-        {
-          "source": "Listed as 'Don Woodraska - EVE Lead Data Processing Software' in the LASP personnel list on the EVE personnel page; that is not a qualifying contact role, so this is context only",
-          "url": "https://lasp.colorado.edu/eve/reference/personnel/",
-          "strength": "Low"
-        }
-      ],
-      "person_record": {
-        "id": "spase://SMWG/Person/Don.Woodraska",
-        "url": "https://spase-metadata.org/SMWG/Person/Don.Woodraska.html"
-      },
-      "orcid": "0000-0001-9351-733X",
-      "affiliation": "Laboratory for Atmospheric and Space Physics, University of Colorado Boulder",
-      "activity_dates": "EVE team member from the prime mission to the present",
-      "qualifying_roles": [
-        "Author"
-      ],
-      "role_evidence": [
-        {
-          "role": "Author",
-          "source": "A named author of the current SDO/EVE Calibration and Measurement Algorithms Document Rev B (Jones et al. 2025, 10.25810/nh0m-ze62)"
-        }
-      ],
-      "affiliation_ror": "https://ror.org/01fcjzv38",
-      "enrichment": {
-        "orcid_origin": "enricher",
-        "orcid_source": "Crossref (paper DOI)",
-        "orcid_evidence": "10.1007/s11207-021-01806-4",
-        "orcid_evidence_citation": "Tarrio et al. 2021",
-        "orcid_confidence": "Confirmed",
-        "affiliation_origin": "finder",
-        "affiliation_source": "Crossref (paper DOI)",
-        "affiliation_evidence": "10.1002/swe.20042",
-        "affiliation_evidence_citation": "Hock et al. 2013",
-        "affiliation_type": "as-deposited",
-        "ror_origin": "enricher",
-        "ror_source": "ROR affiliation-match (chosen)",
-        "ror_evidence": "https://ror.org/01fcjzv38",
-        "ror_confidence": "Confirmed",
-        "lookup_status": "complete",
-        "notes": "ORCID from a deposit giving the full given name 'Donald L.' on a paper about the same instrument (the EVE thin-film filter paper); the DOI lies outside the finder's evidence list, which deposits no iDs. Affiliation: his only ORCID employment is an undated bare 'University of Colorado Boulder', so the dated in-span 2013 deposit was preferred as both dated and more specific; it gives the given name as 'Don', the form the EVE personnel page also uses, and names the same unit and parent as the finder's value, which was therefore kept (deposited string verbatim: 'Laboratory for Atmospheric and Space Physics University of Colorado  Boulder Colorado USA'). ROR's affiliation-match endpoint set chosen:true on the parent, University of Colorado Boulder (https://ror.org/02ttsq026), at score 1.0 and left the child, Laboratory for Atmospheric and Space Physics (https://ror.org/01fcjzv38), not chosen at the same score 1.0. The child is recorded under the child-preference rule: LASP is named in the affiliation string and ROR's own record for LASP lists University of Colorado Boulder as its parent."
-      }
-    },
-    {
-      "name": "Rita J. Borelli",
-      "status": "included",
-      "confidence": "Strong",
-      "exclusion_reason": null,
-      "evidence": [
-        {
-          "source": "Named in the front matter of the current SDO EVE Calibration and Measurement Algorithms Document Rev B (2025)",
-          "url": "https://doi.org/10.25810/nh0m-ze62",
-          "strength": "Strong"
-        },
-        {
-          "source": "Her own professional page describes her as lead programmer for SDO/EVE and MAVEN/EUV at LASP, University of Colorado Boulder",
-          "url": "https://www.ritajett.com/",
-          "strength": "Medium"
-        }
-      ],
-      "person_record": {
-        "id": null,
-        "url": null
-      },
-      "orcid": "0000-0002-6170-7793",
-      "affiliation": "Laboratory for Atmospheric and Space Physics, University of Colorado Boulder",
-      "activity_dates": null,
-      "qualifying_roles": [
-        "Author"
-      ],
-      "role_evidence": [
-        {
-          "role": "Author",
-          "source": "A named author of the current SDO/EVE Calibration and Measurement Algorithms Document Rev B (Jones et al. 2025, 10.25810/nh0m-ze62)"
-        }
-      ],
-      "affiliation_ror": "https://ror.org/01fcjzv38",
-      "enrichment": {
-        "orcid_origin": "enricher",
-        "orcid_source": "ORCID name-search (corroborated)",
-        "orcid_evidence": "https://orcid.org/0000-0002-6170-7793",
-        "orcid_confidence": "Confirmed",
-        "affiliation_origin": "finder",
-        "affiliation_source": "ORCID employment",
-        "affiliation_evidence": "https://orcid.org/0000-0002-6170-7793",
-        "affiliation_type": "current",
-        "ror_origin": "enricher",
-        "ror_source": "ORCID disambiguated-organization",
-        "ror_evidence": "https://orcid.org/0000-0002-6170-7793",
-        "ror_confidence": "Confirmed",
-        "lookup_status": "complete",
-        "notes": "She appears in no paper author list, so there was no Crossref route: the CMAD is registered with DataCite and a domain-restricted Crossref author query returned only unrelated people of the same surname. The iD came from an ORCID name search returning exactly one Rita Borelli, corroborated on two points against the finder's evidence that she is lead programmer for SDO/EVE and MAVEN/EUV at LASP: her dated employment is at the Laboratory for Atmospheric and Space Physics, the EVE data provider institution, as Data Systems Software Engineer, and her single listed work is 'MAVEN EUVM Data Products for Space Weather at Mars'. Affiliation agrees with the finder's value; labelled current because the employment is ongoing, and note that it begins in February 2022, twelve years after launch, so it documents her present post rather than the prime-mission era - nothing dated places her at LASP earlier. ROR was asserted by ORCID with disambiguation-source ROR on that employment, and it is LASP's own ID rather than the parent university's, so no descent was needed."
-      }
-    },
-    {
-      "name": "Philip H. Scherrer",
-      "status": "included",
-      "confidence": "Strong",
-      "exclusion_reason": null,
-      "evidence": [
-        {
-          "source": "First author of the HMI investigation paper (Scherrer et al. 2012, 10.1007/s11207-011-9834-2) and second author of the companion HMI design and ground-calibration paper (Schou et al. 2012, 10.1007/s11207-011-9842-2); neither author list is alphabetized",
-          "url": "https://doi.org/10.1007/s11207-011-9834-2",
-          "strength": "Strong"
-        },
-        {
-          "source": "Named as HMI Principal Investigator, PI institution Stanford University, on the SDO mission instruments page",
-          "url": "https://sdo.gsfc.nasa.gov/mission/instruments.php",
-          "strength": "Strong"
-        },
-        {
-          "source": "Listed as the HMI PI, leading the HMI investigation, at the head of the HMI science team page",
-          "url": "http://hmi.stanford.edu/ScienceTeam/index.html",
-          "strength": "Strong"
-        },
-        {
-          "source": "Named as the HMI Principal Investigator on the mission fact sheet of the SDO 2020 Senior Review Proposal, and shown as signatory of its reproduced SDO Project Data Management Plan as 'HMI Instrument Principal Investigator'",
-          "url": "http://hmi.stanford.edu/papers/SDO_SR_2020_assembled_3.pdf",
-          "strength": "Strong"
-        },
-        {
-          "source": "Named as HMI Principal Investigator on the SDO mission team page, in both the current and pre-launch team sections",
-          "url": "https://sdo.gsfc.nasa.gov/mission/team.php",
-          "strength": "Medium"
-        },
-        {
-          "source": "HMI Instrument record Contacts (PrincipalInvestigator)",
-          "url": "https://spase-metadata.org/SMWG/Instrument/SDO/HMI.html",
-          "strength": "Medium"
-        },
-        {
-          "source": "Thirty-sixth author of the AIA instrument paper (Lemen et al. 2012, 10.1007/s11207-011-9776-8), in the Stanford author block; position carries no weight there",
-          "url": "https://doi.org/10.1007/s11207-011-9776-8",
-          "strength": "Low"
-        }
-      ],
-      "person_record": {
-        "id": "spase://SMWG/Person/Philip.H.Scherrer",
-        "url": "https://spase-metadata.org/SMWG/Person/Philip.H.Scherrer.html"
-      },
-      "orcid": "0000-0002-6937-6968",
-      "affiliation": "Stanford University",
-      "activity_dates": "HMI PI from the proposal phase through at least the 2020 Senior Review, and still the PI of record in SPASE",
-      "qualifying_roles": [
-        "Author",
-        "InstrumentLead"
-      ],
-      "role_evidence": [
-        {
-          "role": "Author",
-          "source": "First author of the HMI investigation paper (Scherrer et al. 2012, 10.1007/s11207-011-9834-2) and second author of the companion HMI design and ground-calibration paper (Schou et al. 2012, 10.1007/s11207-011-9842-2)"
-        },
-        {
-          "role": "InstrumentLead",
-          "source": "Principal Investigator of the SDO/HMI instrument, named as HMI PI on the SDO mission instruments page (https://sdo.gsfc.nasa.gov/mission/instruments.php), at the head of the HMI science team page (http://hmi.stanford.edu/ScienceTeam/index.html), in the HMI SPASE Instrument record Contacts, and on the mission fact sheet of the SDO 2020 Senior Review Proposal"
-        }
-      ],
-      "affiliation_ror": "https://ror.org/00f54p054",
-      "enrichment": {
-        "orcid_origin": "enricher",
-        "orcid_source": "ORCID name-search (corroborated)",
-        "orcid_evidence": "https://orcid.org/0000-0002-6937-6968",
-        "orcid_confidence": "Confirmed",
-        "affiliation_origin": "finder",
-        "affiliation_source": "ORCID employment",
-        "affiliation_evidence": "https://orcid.org/0000-0002-6937-6968",
-        "affiliation_type": "current",
-        "ror_origin": "enricher",
-        "ror_source": "ROR affiliation-match (chosen)",
-        "ror_evidence": "https://ror.org/00f54p054",
-        "ror_confidence": "Confirmed",
-        "lookup_status": "complete",
-        "notes": "Neither HMI paper deposits an iD, and the only Crossref deposit carrying his iD with a full given name is a Wilcox Solar Observatory paper, which is not the same instrument or mission, so the iD rests instead on an ORCID name search returning exactly one Philip Scherrer, corroborated by 59 SDO/HMI works on the record - among them 'Stanford SDO JSOC' and 'On-Orbit Performance of the Helioseismic and Magnetic Imager Instrument onboard the Solar Dynamics Observatory' - and by a Stanford employment matching the HMI PI institution. Affiliation agrees with the finder's value; his single ORCID employment, Professor in the Physics department from 1986-09-01, is ongoing with no end date, so it is labelled current even though it covers the whole operating span, and there is no past position to prefer over it. The department ORCID records is the bare disciplinary 'Physics', which has no ROR record of its own, so it was not added to the string. ROR: ORCID's disambiguation-source is RINGGOLD 6429, not ROR, so it was not converted; ROR's affiliation endpoint chose Stanford University at score 1.0, corroborated by the SDO mission instruments page naming Stanford as the HMI PI institution."
+        "notes": "Identity not confirmed, so no lookups were attempted. The EVE paper byline is 'R. Hock', and Crossref deposits given name 'R.'. The full name 'Rachel A. Hock' was inferred by matching those initials against the author lists of other EVE MEGS papers, per the finder's evidence: Hock et al. 2012 (10.1007/s11207-010-9520-9, 'R. A. Hock') and Chamberlin et al. 2007 (10.1117/12.734116, 'Rachel A. Hock'). The finder flagged the identity for downstream verification, and its identity evidence is rated Low. The match is plausible (same EVE subsystem, shared co-authors Chamberlin and Woods) but rests on initials. The finder should establish the full name for the EVE paper author directly before this candidate is enriched."
       }
     },
     {
@@ -1234,12 +934,17 @@
       "exclusion_reason": null,
       "evidence": [
         {
-          "source": "Second author of the HMI investigation paper (Scherrer et al. 2012, 10.1007/s11207-011-9834-2) and first author of the companion HMI design and ground-calibration paper (Schou et al. 2012, 10.1007/s11207-011-9842-2); neither author list is alphabetized",
+          "source": "First author of the HMI instrument design and ground-calibration paper (Schou et al. 2012, 10.1007/s11207-011-9842-2), the HMI paper listed on the SDO Definitive Publications page; not alphabetized",
           "url": "https://doi.org/10.1007/s11207-011-9842-2",
           "strength": "Strong"
         },
         {
-          "source": "Listed on the HMI science team page as a Co-Investigator at Stanford University whose assigned role is HMI Instrument Scientist",
+          "source": "Second author of the HMI investigation paper (Scherrer et al. 2012, 10.1007/s11207-011-9834-2); not alphabetized",
+          "url": "https://doi.org/10.1007/s11207-011-9834-2",
+          "strength": "Strong"
+        },
+        {
+          "source": "Listed as Co-I on the HMI Science Team page, with 'Instrument Scientist' as his development-phase (Phase B, C, D) role",
           "url": "http://hmi.stanford.edu/ScienceTeam/index.html",
           "strength": "Medium"
         }
@@ -1249,8 +954,10 @@
         "url": null
       },
       "orcid": "0000-0002-2391-6156",
-      "affiliation": "Stanford University",
-      "activity_dates": null,
+      "affiliation": "Max-Planck-Institut für Sonnensystemforschung",
+      "affiliation_ror": "https://ror.org/02j6gm739",
+      "activity_dates": "HMI Instrument Scientist during development (Phase B–D), per the HMI Science Team page",
+      "authorship_scope": "instrument",
       "qualifying_roles": [
         "Author",
         "CoInvestigator",
@@ -1259,33 +966,34 @@
       "role_evidence": [
         {
           "role": "Author",
-          "source": "First author of the HMI design and ground-calibration paper (Schou et al. 2012, 10.1007/s11207-011-9842-2) and second author of the HMI investigation paper (Scherrer et al. 2012, 10.1007/s11207-011-9834-2)"
+          "source": "First author of the HMI instrument design and calibration paper (Schou et al. 2012, 10.1007/s11207-011-9842-2) and second author of the HMI investigation paper (Scherrer et al. 2012, 10.1007/s11207-011-9834-2)"
         },
         {
           "role": "CoInvestigator",
-          "source": "Listed as a Co-Investigator of the SDO/HMI instrument, at Stanford University, on the HMI science team page (http://hmi.stanford.edu/ScienceTeam/index.html)"
+          "source": "Co-Investigator on the SDO/HMI instrument, listed on the HMI Science Team page (http://hmi.stanford.edu/ScienceTeam/index.html)"
         },
         {
           "role": "InstrumentScientist",
-          "source": "The HMI science team page gives his assigned role on the SDO/HMI instrument as Instrument Scientist (http://hmi.stanford.edu/ScienceTeam/index.html)"
+          "source": "HMI Instrument Scientist during instrument development, listed on the HMI Science Team page (http://hmi.stanford.edu/ScienceTeam/index.html)"
         }
       ],
-      "affiliation_ror": "https://ror.org/00f54p054",
       "enrichment": {
         "orcid_origin": "enricher",
-        "orcid_source": "ORCID name-search (corroborated)",
-        "orcid_evidence": "https://orcid.org/0000-0002-2391-6156",
+        "orcid_source": "Crossref (paper DOI)",
+        "orcid_evidence": "10.1007/s11207-024-02259-1",
+        "orcid_evidence_citation": "Larson & Schou 2024",
         "orcid_confidence": "Confirmed",
-        "affiliation_origin": "finder",
-        "affiliation_source": "provider documentation",
-        "affiliation_evidence": "http://hmi.stanford.edu/ScienceTeam/index.html",
-        "affiliation_type": "era-matched",
+        "affiliation_origin": "enricher",
+        "affiliation_source": "Crossref (paper DOI)",
+        "affiliation_evidence": "10.1051/0004-6361/202556836",
+        "affiliation_evidence_citation": "Calchetti et al. 2026",
+        "affiliation_type": "as-deposited",
         "ror_origin": "enricher",
         "ror_source": "ROR affiliation-match (chosen)",
-        "ror_evidence": "https://ror.org/00f54p054",
+        "ror_evidence": "https://ror.org/02j6gm739",
         "ror_confidence": "Confirmed",
         "lookup_status": "complete",
-        "notes": "His iD does appear on HMI and SDO deposits, including 'On-Orbit Performance of the Helioseismic and Magnetic Imager Instrument onboard the Solar Dynamics Observatory', but every one of those gives the given name as 'J.' only, and the deposits that spell 'Jesper' out are Michelson Doppler Imager papers, a different instrument - so no single deposit satisfied both conditions. The iD therefore rests on an ORCID name search: three Jesper Schous exist, and only 0000-0002-2391-6156 is a solar physicist, corroborated by 70 SDO/HMI works on the record. The other two, at 3Shape A/S and the Technical University of Denmark (0000-0002-3997-2056) and at the University of Copenhagen (0000-0001-5030-4035), are not plausible. Affiliation: the HMI science team roster, a page dated 15 November 2011 and so inside the operating span, lists 'Jesper Schou, Co-I, Stanford University, Instrument Scientist' - which is both the era affiliation and the exact role the finder recorded; it agrees with the finder's value. Note that the era-matched label rests on dated provider documentation rather than a dated ORCID employment, because his ORCID carries no Stanford entry at all - only two undated Max Planck Institute for Solar System Research entries. Set aside: Max-Planck-Institut für Sonnensystemforschung, his current affiliation, dated by an in-span 2025 deposit (10.1051/0004-6361/202556482, Fournier et al. 2025) that carries his iD."
+        "notes": "ORCID: the HMI papers deposit no iDs (byline 'J. Schou'), so Route A' was used. Only one same-instrument deposit pairs his iD with the full given name: Larson & Schou 2024 (10.1007/s11207-024-02259-1, 'Correction to: Global-Mode Analysis of Full-Disk Data from the Michelson Doppler Imager and the Helioseismic and Magnetic Imager'). It is a correction notice and lies OUTSIDE the finder's evidence list. It deposits 'Jesper Schou' with ORCID 0000-0002-2391-6156 (checksum valid). Several other HMI papers carry the same iD with initials only ('J.'), and his ORCID works list many HMI papers. Affiliation: DIFFERS FROM FINDER VALUE. ORCID has two undated employments, both at the Max Planck Institute for Solar System Research, Göttingen, so the entries agree. In-span Crossref deposits outrank undated employment. Calchetti et al. 2026 (10.1051/0004-6361/202556836, SO/PHI-HRT vs SDO/HMI) and Fournier et al. 2025 (10.1051/0004-6361/202556482, HMI observables) both deposit 'Max-Planck-Institut für Sonnensystemforschung' against his iD, and the more recent deposit is recorded. The finder had 'W.W. Hansen Experimental Physics Laboratory, Stanford University', from the 2012 HMI paper bylines. The HMI Science Team page (updated 15 Nov 2011) also lists him at 'Stanford University' as HMI Instrument Scientist. His affiliation therefore changed during the span: Stanford during HMI development and early operations, MPS later. No dated ORCID employment and no Crossref deposit supports the Stanford period, so the ranking records the in-span MPS deposit. A reviewer documenting HMI's build may prefer Stanford University (ROR https://ror.org/00f54p054, as resolved for Scherrer and Bush). ROR: Route B chose MPS (score 1.0); name and country (DE) match."
       }
     },
     {
@@ -1295,28 +1003,30 @@
       "exclusion_reason": null,
       "evidence": [
         {
-          "source": "Third author of both HMI description papers - the investigation paper (Scherrer et al. 2012, 10.1007/s11207-011-9834-2) and the design and ground-calibration paper (Schou et al. 2012, 10.1007/s11207-011-9842-2); neither author list is alphabetized",
-          "url": "https://doi.org/10.1007/s11207-011-9834-2",
+          "source": "Third author of both HMI description papers (Schou et al. 2012, 10.1007/s11207-011-9842-2) and (Scherrer et al. 2012, 10.1007/s11207-011-9834-2); neither list is alphabetized",
+          "url": "https://doi.org/10.1007/s11207-011-9842-2",
           "strength": "Strong"
         },
         {
-          "source": "Listed on the HMI science team page as a Co-Investigator at Stanford University serving as HMI Program Manager",
+          "source": "Listed as Co-I on the HMI Science Team page; his development-phase role there is Program Manager (a non-qualifying role, context only)",
           "url": "http://hmi.stanford.edu/ScienceTeam/index.html",
           "strength": "Medium"
         },
         {
-          "source": "Thirty-fifth author of the AIA instrument paper (Lemen et al. 2012, 10.1007/s11207-011-9776-8), in the Stanford author block; position carries no weight there",
+          "source": "Thirty-fifth author of the AIA instrument paper (Lemen et al. 2012, 10.1007/s11207-011-9776-8) (alphabetized part of the list; context only)",
           "url": "https://doi.org/10.1007/s11207-011-9776-8",
           "strength": "Low"
         }
       ],
       "person_record": {
-        "id": null,
-        "url": null
+        "id": "spase://SMWG/Person/R.Bush",
+        "url": "https://spase-metadata.org/SMWG/Person/R.Bush.html"
       },
       "orcid": null,
       "affiliation": "Stanford University",
-      "activity_dates": null,
+      "affiliation_ror": "https://ror.org/00f54p054",
+      "activity_dates": "HMI Program Manager during development (Phase B–D), per the HMI Science Team page",
+      "authorship_scope": "instrument",
       "qualifying_roles": [
         "Author",
         "CoInvestigator"
@@ -1324,14 +1034,13 @@
       "role_evidence": [
         {
           "role": "Author",
-          "source": "Third author of both HMI description papers (Scherrer et al. 2012, 10.1007/s11207-011-9834-2; Schou et al. 2012, 10.1007/s11207-011-9842-2)"
+          "source": "Third author of both HMI description papers (Schou et al. 2012, 10.1007/s11207-011-9842-2) and (Scherrer et al. 2012, 10.1007/s11207-011-9834-2)"
         },
         {
           "role": "CoInvestigator",
-          "source": "Listed as a Co-Investigator of the SDO/HMI instrument, at Stanford University and serving as HMI Program Manager, on the HMI science team page (http://hmi.stanford.edu/ScienceTeam/index.html)"
+          "source": "Co-Investigator on the SDO/HMI instrument, listed on the HMI Science Team page (http://hmi.stanford.edu/ScienceTeam/index.html)"
         }
       ],
-      "affiliation_ror": "https://ror.org/00f54p054",
       "enrichment": {
         "orcid_origin": null,
         "orcid_source": null,
@@ -1340,154 +1049,29 @@
         "affiliation_origin": "finder",
         "affiliation_source": "provider documentation",
         "affiliation_evidence": "http://hmi.stanford.edu/ScienceTeam/index.html",
-        "affiliation_type": "era-matched",
+        "affiliation_type": null,
         "ror_origin": "enricher",
         "ror_source": "ROR affiliation-match (chosen)",
         "ror_evidence": "https://ror.org/00f54p054",
         "ror_confidence": "Confirmed",
         "lookup_status": "complete",
-        "notes": "No ORCID found and none guessed: ORCID searches for the family name Bush with given names Rock, and for the family name with a Stanford affiliation, both return zero records, and neither HMI paper nor the AIA paper deposits an iD or an affiliation for him. Affiliation: the HMI science team roster, a page dated 15 November 2011 and so inside the operating span, lists 'Rock I. Bush, Co-I, Stanford University, Program Manager' - the same role the finder recorded - and it agrees with the finder's value; the SDO mission instruments page independently names Stanford as the HMI PI institution. The era-matched label therefore rests on dated provider documentation rather than on a dated ORCID employment. Relevant to the finder's open question about reusing spase://SMWG/Person/R.Bush: this dated in-span provider evidence places the HMI Rock I. Bush at Stanford University, and nothing found in Crossref, ORCID or the provider pages links him to the University of California, Berkeley, which supports the finder's decision to treat the existing record as a different person."
+        "notes": "ORCID left null; no iD was found. Route A: the HMI and AIA papers deposit no iD ('R. I. Bush'; 'Rock I. Bush'). Route A': Crossref author queries against SDO and HMI found no ORCID-bearing deposit for any Bush on these instruments. Route B: the ORCID search family-name:Bush AND given-names:Rock returns 0 records. Affiliation: there is no ORCID and no same-instrument Crossref deposit with an affiliation. Provider documentation: the HMI Science Team page (updated 15 Nov 2011, inside the span) lists 'Rock I. Bush, Co-I, Stanford University'. That is recorded. The finder's 'W.W. Hansen Experimental Physics Laboratory, Stanford University' comes from the HMI paper bylines, which Crossref does not deposit. The page confirms the institution but not the laboratory, so only the institution is recorded; this agrees with the finder at institution level. affiliation_type is left null because a dated provider page fits none of the type labels. The finder notes that the linked Person record spase://SMWG/Person/R.Bush carries 'University of California, Berkeley'; no source found here supports Berkeley. ROR: Route B chose Stanford University (score 1.0); name and country match."
       }
     },
     {
-      "name": "David J. Akin",
+      "name": "Michael Kirk",
       "status": "excluded",
       "confidence": null,
-      "exclusion_reason": "third in the AIA paper byline but the first name of its alphabetized LMSAL block, so his position is alphabetical rather than earned; instrument-team depth - belongs to the AIA Instrument-record run",
+      "exclusion_reason": "website responsible-official credit only; no SDO science or authorship role found",
       "evidence": [
         {
-          "source": "Third author of the AIA instrument paper (Lemen et al. 2012, 10.1007/s11207-011-9776-8); the author list runs alphabetically by institution from this name onward, so the only deliberately ordered authors are the two before him",
-          "url": "https://doi.org/10.1007/s11207-011-9776-8",
+          "source": "'NASA Official' in the footer of the current SDO website",
+          "url": "https://sdo.gsfc.nasa.gov/",
           "strength": "Low"
         },
         {
-          "source": "Eleventh author of the HMI design paper (Schou et al. 2012, 10.1007/s11207-011-9842-2) - position beyond the fifth carries no weight",
-          "url": "https://doi.org/10.1007/s11207-011-9842-2",
-          "strength": "Low"
-        }
-      ],
-      "person_record": {
-        "id": null,
-        "url": null
-      },
-      "orcid": null,
-      "affiliation": "Lockheed Martin Solar and Astrophysics Laboratory",
-      "activity_dates": null,
-      "qualifying_roles": [],
-      "role_evidence": []
-    },
-    {
-      "name": "Paul F. Boerner",
-      "status": "excluded",
-      "confidence": null,
-      "exclusion_reason": "instrument-team depth - belongs to the AIA Instrument-record run",
-      "evidence": [
-        {
-          "source": "Fourth author of the AIA instrument paper (Lemen et al. 2012, 10.1007/s11207-011-9776-8), inside its alphabetized LMSAL block",
-          "url": "https://doi.org/10.1007/s11207-011-9776-8",
-          "strength": "Low"
-        },
-        {
-          "source": "AIA calibration pre-print credited to 'Boerner, et al.' on the AIA site at the PI institution",
-          "url": "http://aia.lmsal.com/",
-          "strength": "Low"
-        }
-      ],
-      "person_record": {
-        "id": null,
-        "url": null
-      },
-      "orcid": null,
-      "affiliation": "Lockheed Martin Solar and Astrophysics Laboratory",
-      "activity_dates": null,
-      "qualifying_roles": [],
-      "role_evidence": []
-    },
-    {
-      "name": "Alexander G. Kosovichev",
-      "status": "excluded",
-      "confidence": null,
-      "exclusion_reason": "instrument-team depth - belongs to the HMI Instrument-record run",
-      "evidence": [
-        {
-          "source": "Fourth author of the HMI investigation paper (Scherrer et al. 2012, 10.1007/s11207-011-9834-2)",
-          "url": "https://doi.org/10.1007/s11207-011-9834-2",
-          "strength": "Low"
-        },
-        {
-          "source": "Listed as an HMI Co-Investigator at Stanford University, responsible for the inversion code, on the HMI science team page; the full HMI Co-Investigator roster is deferred to the HMI Instrument-record run",
-          "url": "http://hmi.stanford.edu/ScienceTeam/index.html",
-          "strength": "Low"
-        }
-      ],
-      "person_record": {
-        "id": null,
-        "url": null
-      },
-      "orcid": null,
-      "affiliation": "Stanford University (at the time of the HMI investigation paper)",
-      "activity_dates": null,
-      "qualifying_roles": [],
-      "role_evidence": []
-    },
-    {
-      "name": "Richard S. Bogart",
-      "status": "excluded",
-      "confidence": null,
-      "exclusion_reason": "instrument-team depth - belongs to the HMI Instrument-record run",
-      "evidence": [
-        {
-          "source": "Fifth author of the HMI investigation paper (Scherrer et al. 2012, 10.1007/s11207-011-9834-2) and seventh author of the HMI design paper (Schou et al. 2012, 10.1007/s11207-011-9842-2)",
-          "url": "https://doi.org/10.1007/s11207-011-9834-2",
-          "strength": "Low"
-        },
-        {
-          "source": "Listed as an HMI Co-Investigator at Stanford University, responsible for the data pipeline and access, on the HMI science team page; the full HMI Co-Investigator roster is deferred to the HMI Instrument-record run",
-          "url": "http://hmi.stanford.edu/ScienceTeam/index.html",
-          "strength": "Low"
-        }
-      ],
-      "person_record": {
-        "id": "spase://SMWG/Person/Rick.Bogart",
-        "url": "https://spase-metadata.org/SMWG/Person/Rick.Bogart.html"
-      },
-      "orcid": null,
-      "affiliation": "Stanford University",
-      "activity_dates": null,
-      "qualifying_roles": [],
-      "role_evidence": []
-    },
-    {
-      "name": "Amir Caspi",
-      "status": "excluded",
-      "confidence": null,
-      "exclusion_reason": "non-qualifying contact role only - listed as 'EVE Scientist' on the EVE personnel page with no other supporting source",
-      "evidence": [
-        {
-          "source": "Listed as 'Amir Caspi - EVE Scientist' in the LASP personnel list on the EVE personnel page",
-          "url": "https://lasp.colorado.edu/eve/reference/personnel/",
-          "strength": "Low"
-        }
-      ],
-      "person_record": {
-        "id": null,
-        "url": null
-      },
-      "orcid": null,
-      "affiliation": "Laboratory for Atmospheric and Space Physics, University of Colorado Boulder",
-      "activity_dates": null,
-      "qualifying_roles": [],
-      "role_evidence": []
-    },
-    {
-      "name": "Dale Fink",
-      "status": "excluded",
-      "confidence": null,
-      "exclusion_reason": "non-qualifying contact role only - SDO Mission Director, a mission-operations management role",
-      "evidence": [
-        {
-          "source": "Named as 'SDO Mission Director - Goddard Space Flight Center' on the SDO mission team page, and signed the SDO Project Data Management Plan as SDO Mission Director on 7 December 2009",
-          "url": "http://hmi.stanford.edu/papers/SDO_SR_2020_assembled_3.pdf",
+          "source": "GSFC biography lists no SDO role (research scientist; PI of NASA HEAT; PUNCH Deputy Mission Scientist)",
+          "url": "https://science.gsfc.nasa.gov/sci/bio/michael.s.kirk",
           "strength": "Low"
         }
       ],
@@ -1498,62 +1082,19 @@
       "orcid": null,
       "affiliation": "NASA Goddard Space Flight Center",
       "activity_dates": null,
+      "authorship_scope": null,
       "qualifying_roles": [],
       "role_evidence": []
     },
     {
-      "name": "Elizabeth Citrin",
+      "name": "Apexa Patel",
       "status": "excluded",
       "confidence": null,
-      "exclusion_reason": "non-qualifying contact role only - SDO Project Manager, a project management role",
+      "exclusion_reason": "website webmaster credit only",
       "evidence": [
         {
-          "source": "Named as SDO Project Manager in the pre-launch team section of the SDO mission team page",
-          "url": "https://sdo.gsfc.nasa.gov/mission/team.php",
-          "strength": "Low"
-        }
-      ],
-      "person_record": {
-        "id": "spase://SMWG/Person/Elizabeth.A.Citrin",
-        "url": "https://spase-metadata.org/SMWG/Person/Elizabeth.A.Citrin.html"
-      },
-      "orcid": null,
-      "affiliation": "NASA Goddard Space Flight Center (Code 410)",
-      "activity_dates": null,
-      "qualifying_roles": [],
-      "role_evidence": []
-    },
-    {
-      "name": "Rob Lilly",
-      "status": "excluded",
-      "confidence": null,
-      "exclusion_reason": "non-qualifying contact role only - SDO Deputy Project Manager, a project management role",
-      "evidence": [
-        {
-          "source": "Named as SDO Deputy Project Manager in the pre-launch team section of the SDO mission team page",
-          "url": "https://sdo.gsfc.nasa.gov/mission/team.php",
-          "strength": "Low"
-        }
-      ],
-      "person_record": {
-        "id": null,
-        "url": null
-      },
-      "orcid": null,
-      "affiliation": "NASA Goddard Space Flight Center",
-      "activity_dates": null,
-      "qualifying_roles": [],
-      "role_evidence": []
-    },
-    {
-      "name": "Will Barnes",
-      "status": "excluded",
-      "confidence": null,
-      "exclusion_reason": "named only as the team's proposed hire for an AIA science-lead post in a budget request, not as the holder of any role",
-      "evidence": [
-        {
-          "source": "The AIA over-guide section of the SDO 2020 Senior Review Proposal states that the AIA team proposes to hire him for a prospective Science Lead position",
-          "url": "http://hmi.stanford.edu/papers/SDO_SR_2020_assembled_3.pdf",
+          "source": "'Webmaster' in the SDO website footer",
+          "url": "https://sdo.gsfc.nasa.gov/",
           "strength": "Low"
         }
       ],
@@ -1564,18 +1105,19 @@
       "orcid": null,
       "affiliation": null,
       "activity_dates": null,
+      "authorship_scope": null,
       "qualifying_roles": [],
       "role_evidence": []
     },
     {
-      "name": "Michael Kirk",
+      "name": "Dale Fink",
       "status": "excluded",
       "confidence": null,
-      "exclusion_reason": "non-qualifying contact role only - named as the 'NASA Official' in the SDO website footer, a web-content governance role rather than a science role",
+      "exclusion_reason": "non-qualifying role only (engineering, management or outreach title on the SDO team page)",
       "evidence": [
         {
-          "source": "Listed as 'NASA Official' in the footer of the SDO mission instruments page",
-          "url": "https://sdo.gsfc.nasa.gov/mission/instruments.php",
+          "source": "SDO team page: 'SDO Mission Director - Goddard Space Flight Center (current team)'",
+          "url": "http://web.archive.org/web/20250616051309/https://sdo.gsfc.nasa.gov/mission/team.php",
           "strength": "Low"
         }
       ],
@@ -1586,24 +1128,580 @@
       "orcid": null,
       "affiliation": "NASA Goddard Space Flight Center",
       "activity_dates": null,
+      "authorship_scope": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "Elizabeth Citrin",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "non-qualifying role only (engineering, management or outreach title on the SDO team page)",
+      "evidence": [
+        {
+          "source": "SDO team page: 'SDO Project Manager (pre-launch team)'",
+          "url": "http://web.archive.org/web/20250616051309/https://sdo.gsfc.nasa.gov/mission/team.php",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": null,
+      "activity_dates": null,
+      "authorship_scope": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "Rob Lilly",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "non-qualifying role only (engineering, management or outreach title on the SDO team page)",
+      "evidence": [
+        {
+          "source": "SDO team page: 'SDO Deputy Project Manager (pre-launch team)'",
+          "url": "http://web.archive.org/web/20250616051309/https://sdo.gsfc.nasa.gov/mission/team.php",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": null,
+      "activity_dates": null,
+      "authorship_scope": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "Mark Walters",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "non-qualifying role only (engineering, management or outreach title on the SDO team page)",
+      "evidence": [
+        {
+          "source": "SDO team page: 'SDO Flight Software Product Development Lead (pre-launch team)'",
+          "url": "http://web.archive.org/web/20250616051309/https://sdo.gsfc.nasa.gov/mission/team.php",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": null,
+      "activity_dates": null,
+      "authorship_scope": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "John Hawk",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "non-qualifying role only (engineering, management or outreach title on the SDO team page)",
+      "evidence": [
+        {
+          "source": "SDO team page: 'SDO Thermal Engineer (pre-launch team)'",
+          "url": "http://web.archive.org/web/20250616051309/https://sdo.gsfc.nasa.gov/mission/team.php",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": null,
+      "activity_dates": null,
+      "authorship_scope": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "Chris Johnson",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "non-qualifying role only (engineering, management or outreach title on the SDO team page)",
+      "evidence": [
+        {
+          "source": "SDO team page: 'SDO Deployables Mechanical Engineer (pre-launch team)'",
+          "url": "http://web.archive.org/web/20250616051309/https://sdo.gsfc.nasa.gov/mission/team.php",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": null,
+      "activity_dates": null,
+      "authorship_scope": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "Denney Keys",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "non-qualifying role only (engineering, management or outreach title on the SDO team page)",
+      "evidence": [
+        {
+          "source": "SDO team page: 'Goddard Power Systems Engineer and SDO Electrical Power Systems Lead (pre-launch team)'",
+          "url": "http://web.archive.org/web/20250616051309/https://sdo.gsfc.nasa.gov/mission/team.php",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": "NASA Goddard Space Flight Center",
+      "activity_dates": null,
+      "authorship_scope": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "Daniel H. Nguyen",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "non-qualifying role only (engineering, management or outreach title on the SDO team page)",
+      "evidence": [
+        {
+          "source": "SDO team page: 'SDO Thermal Lead (pre-launch team)'",
+          "url": "http://web.archive.org/web/20250616051309/https://sdo.gsfc.nasa.gov/mission/team.php",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": null,
+      "activity_dates": null,
+      "authorship_scope": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "Hun Tann",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "non-qualifying role only (engineering, management or outreach title on the SDO team page)",
+      "evidence": [
+        {
+          "source": "SDO team page: 'SDO Ground System Implementation Manager and Mission Operations Control Manager (pre-launch team)'",
+          "url": "http://web.archive.org/web/20250616051309/https://sdo.gsfc.nasa.gov/mission/team.php",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": null,
+      "activity_dates": null,
+      "authorship_scope": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "Emilie Drobnes",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "non-qualifying role only (engineering, management or outreach title on the SDO team page)",
+      "evidence": [
+        {
+          "source": "SDO team page: 'SDO Education and Public Outreach Manager (pre-launch team)'",
+          "url": "http://web.archive.org/web/20250616051309/https://sdo.gsfc.nasa.gov/mission/team.php",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": null,
+      "activity_dates": null,
+      "authorship_scope": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "Martha Wawro",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "non-qualifying role only (engineering, management or outreach title on the SDO team page)",
+      "evidence": [
+        {
+          "source": "SDO team page: 'SDO Education and Public Outreach Manager - Goddard Space Flight Center (pre-launch team)'",
+          "url": "http://web.archive.org/web/20250616051309/https://sdo.gsfc.nasa.gov/mission/team.php",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": "NASA Goddard Space Flight Center",
+      "activity_dates": null,
+      "authorship_scope": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "Markus J. Aschwanden",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "sole author of a 2026 review of SDO science, published 16 years after launch — a later review paper, not a mission description paper",
+      "evidence": [
+        {
+          "source": "Sole author of 'How the Solar Dynamics Observatory Advanced Our Physical Understanding of the Sun' (Aschwanden 2026, 10.1007/s11207-026-02657-7)",
+          "url": "https://doi.org/10.1007/s11207-026-02657-7",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Markus.J.Aschwanden",
+        "url": "https://spase-metadata.org/SMWG/Person/Markus.J.Aschwanden.html"
+      },
+      "orcid": "0000-0003-0260-2673",
+      "affiliation": "Lockheed Martin Solar and Astrophysics Laboratory",
+      "activity_dates": null,
+      "authorship_scope": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "David J. Akin",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "instrument-team depth — belongs to the AIA Instrument-record run; third name on the AIA author list but the first of the alphabetized part, so position carries no contribution signal",
+      "evidence": [
+        {
+          "source": "Third author of the AIA instrument paper (Lemen et al. 2012, 10.1007/s11207-011-9776-8), start of the alphabetized part of the list",
+          "url": "https://doi.org/10.1007/s11207-011-9776-8",
+          "strength": "Low"
+        },
+        {
+          "source": "Eleventh author of the HMI design paper (Schou et al. 2012, 10.1007/s11207-011-9842-2)",
+          "url": "https://doi.org/10.1007/s11207-011-9842-2",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": null,
+      "activity_dates": null,
+      "authorship_scope": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "Paul F. Boerner",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "instrument-team depth — belongs to the AIA Instrument-record run",
+      "evidence": [
+        {
+          "source": "Fourth author of the AIA instrument paper (Lemen et al. 2012, 10.1007/s11207-011-9776-8), within the alphabetized part of the list",
+          "url": "https://doi.org/10.1007/s11207-011-9776-8",
+          "strength": "Low"
+        },
+        {
+          "source": "First author of the AIA initial-calibration paper (Boerner et al. 2012, 10.1007/s11207-011-9804-8), a calibration paper linked from the AIA website",
+          "url": "https://doi.org/10.1007/s11207-011-9804-8",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": null,
+      "activity_dates": null,
+      "authorship_scope": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "Catherine Chou",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "instrument-team depth — belongs to the AIA Instrument-record run",
+      "evidence": [
+        {
+          "source": "Fifth author of the AIA instrument paper (Lemen et al. 2012, 10.1007/s11207-011-9776-8), within the alphabetized part of the list",
+          "url": "https://doi.org/10.1007/s11207-011-9776-8",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": null,
+      "activity_dates": null,
+      "authorship_scope": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "Theodore D. Tarbell",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "instrument-team depth — belongs to the AIA and HMI Instrument-record runs",
+      "evidence": [
+        {
+          "source": "Twenty-third author of the AIA instrument paper (Lemen et al. 2012, 10.1007/s11207-011-9776-8) (alphabetized part), twelfth of the HMI investigation paper (Scherrer et al. 2012, 10.1007/s11207-011-9834-2), sixteenth of the HMI design paper (Schou et al. 2012, 10.1007/s11207-011-9842-2)",
+          "url": "https://doi.org/10.1007/s11207-011-9776-8",
+          "strength": "Low"
+        },
+        {
+          "source": "Listed as Co-I (HMI Calibration) on the HMI Science Team page — an instrument-level team list",
+          "url": "http://hmi.stanford.edu/ScienceTeam/index.html",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Theodore.D.Tarbell",
+        "url": "https://spase-metadata.org/SMWG/Person/Theodore.D.Tarbell.html"
+      },
+      "orcid": null,
+      "affiliation": "Lockheed Martin Solar and Astrophysics Laboratory",
+      "activity_dates": null,
+      "authorship_scope": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "Andrew R. Jones",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "instrument-team depth — belongs to the EVE Instrument-record run",
+      "evidence": [
+        {
+          "source": "Fourth author of the EVE instrument paper (Woods et al. 2012, 10.1007/s11207-009-9487-6) (byline 'A. R. Jones')",
+          "url": "https://doi.org/10.1007/s11207-009-9487-6",
+          "strength": "Low"
+        },
+        {
+          "source": "EVE personnel page: 'Andrew Jones – EVE Scientist' (Scientist is a non-qualifying role)",
+          "url": "https://lasp.colorado.edu/eve/reference/personnel/",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Andrew.Jones",
+        "url": "https://spase-metadata.org/SMWG/Person/Andrew.Jones.html"
+      },
+      "orcid": null,
+      "affiliation": "Laboratory for Atmospheric and Space Physics, University of Colorado",
+      "activity_dates": null,
+      "authorship_scope": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "Don Woodraska",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "instrument-team depth — belongs to the EVE Instrument-record run",
+      "evidence": [
+        {
+          "source": "Fifth author of the EVE instrument paper (Woods et al. 2012, 10.1007/s11207-009-9487-6) (byline 'D. Woodraska')",
+          "url": "https://doi.org/10.1007/s11207-009-9487-6",
+          "strength": "Low"
+        },
+        {
+          "source": "EVE personnel page: 'Don Woodraska – EVE Lead Data Processing Software'",
+          "url": "https://lasp.colorado.edu/eve/reference/personnel/",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Don.Woodraska",
+        "url": "https://spase-metadata.org/SMWG/Person/Don.Woodraska.html"
+      },
+      "orcid": null,
+      "affiliation": "Laboratory for Atmospheric and Space Physics, University of Colorado",
+      "activity_dates": null,
+      "authorship_scope": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "Alexander G. Kosovichev",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "instrument-team depth — belongs to the HMI Instrument-record run",
+      "evidence": [
+        {
+          "source": "Fourth author of the HMI investigation paper (Scherrer et al. 2012, 10.1007/s11207-011-9834-2)",
+          "url": "https://doi.org/10.1007/s11207-011-9834-2",
+          "strength": "Low"
+        },
+        {
+          "source": "Listed as Co-I on the HMI Science Team page — an instrument-level team list",
+          "url": "http://hmi.stanford.edu/ScienceTeam/index.html",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": "W.W. Hansen Experimental Physics Laboratory, Stanford University",
+      "activity_dates": null,
+      "authorship_scope": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "Richard S. Bogart",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "instrument-team depth — belongs to the HMI Instrument-record run",
+      "evidence": [
+        {
+          "source": "Fifth author of the HMI investigation paper (Scherrer et al. 2012, 10.1007/s11207-011-9834-2) and seventh of the HMI design paper (Schou et al. 2012, 10.1007/s11207-011-9842-2)",
+          "url": "https://doi.org/10.1007/s11207-011-9834-2",
+          "strength": "Low"
+        },
+        {
+          "source": "Listed as Co-I on the HMI Science Team page — an instrument-level team list",
+          "url": "http://hmi.stanford.edu/ScienceTeam/index.html",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Rick.Bogart",
+        "url": "https://spase-metadata.org/SMWG/Person/Rick.Bogart.html"
+      },
+      "orcid": null,
+      "affiliation": "W.W. Hansen Experimental Physics Laboratory, Stanford University",
+      "activity_dates": null,
+      "authorship_scope": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "R. Wachter",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "instrument-team depth — belongs to the HMI Instrument-record run",
+      "evidence": [
+        {
+          "source": "Fourth author of the HMI design paper (Schou et al. 2012, 10.1007/s11207-011-9842-2)",
+          "url": "https://doi.org/10.1007/s11207-011-9842-2",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": "W.W. Hansen Experimental Physics Laboratory, Stanford University",
+      "activity_dates": null,
+      "authorship_scope": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "S. Couvidat",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "instrument-team depth — belongs to the HMI Instrument-record run",
+      "evidence": [
+        {
+          "source": "Fifth author of the HMI design paper (Schou et al. 2012, 10.1007/s11207-011-9842-2)",
+          "url": "https://doi.org/10.1007/s11207-011-9842-2",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": "W.W. Hansen Experimental Physics Laboratory, Stanford University",
+      "activity_dates": null,
+      "authorship_scope": null,
+      "qualifying_roles": [],
+      "role_evidence": []
+    },
+    {
+      "name": "J. Todd Hoeksema",
+      "status": "excluded",
+      "confidence": null,
+      "exclusion_reason": "instrument-team depth — belongs to the HMI Instrument-record run; his lead authorship is of an HMI data-product paper, which belongs to the HMI vector-field data records' runs",
+      "evidence": [
+        {
+          "source": "Sixth author of the HMI investigation paper (Scherrer et al. 2012, 10.1007/s11207-011-9834-2) and eighth of the HMI design paper (Schou et al. 2012, 10.1007/s11207-011-9842-2)",
+          "url": "https://doi.org/10.1007/s11207-011-9834-2",
+          "strength": "Low"
+        },
+        {
+          "source": "First author of the HMI vector magnetic field pipeline paper (Hoeksema et al. 2014, 10.1007/s11207-014-0516-8), listed on the SDO Definitive Publications page — a data-product description, not an instrument description",
+          "url": "https://doi.org/10.1007/s11207-014-0516-8",
+          "strength": "Low"
+        },
+        {
+          "source": "Listed as Co-I (Magnetic Fields) on the HMI Science Team page — an instrument-level team list",
+          "url": "http://hmi.stanford.edu/ScienceTeam/index.html",
+          "strength": "Low"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Todd.Hoeksema",
+        "url": "https://spase-metadata.org/SMWG/Person/Todd.Hoeksema.html"
+      },
+      "orcid": null,
+      "affiliation": "W.W. Hansen Experimental Physics Laboratory, Stanford University",
+      "activity_dates": null,
+      "authorship_scope": null,
       "qualifying_roles": [],
       "role_evidence": []
     }
   ],
   "notes": [
-    "Operating span: the Observatory record has no OperatingSpan element, so the start date was taken from its Description ('SDO was successfully launched on 11Feb2010'), corroborated by the SDO 2020 Senior Review Proposal mission fact sheet (launched 11 February 2010, prime mission from 1 May 2010). SDO is still operating, so the stop is null. The overview paper (2011 online, 2012 in print) and all three instrument papers fall inside the expected 2-5 year window around the start of operations.",
-    "Mission overview paper selection is confident: (Pesnell et al. 2012, 10.1007/s11207-011-9841-3) is titled exactly 'The Solar Dynamics Observatory (SDO)', is the lead paper of the Solar Physics SDO special issue, has ~3200 Crossref citations, and Crossref and Semantic Scholar return the same paper with the same three authors. Its author list is not alphabetized (Pesnell, Thompson, Chamberlin), so all three positions carry contribution order and all three are Strong. The same three people are the special issue's guest editors, which independently corroborates them as the mission-level leads.",
-    "AIA author-order detection: the 47-name list of (Lemen et al. 2012, 10.1007/s11207-011-9776-8) is not one sorted run but a sequence of institution blocks each sorted internally - LMSAL from Akin to Yanari, then the Smithsonian group from Bookbinder, then Stanford, then LLNL, e2v and Rutherford Appleton. A strict backward scan finds only a four-name sorted suffix (Beardsley, Clapp, Lang, Waltham) because the block boundaries break the sort, but the substantive pattern is unmistakable: alphabetization begins at author 3. Taking the conservative reading, the deliberately ordered prefix is Lemen and Title only, and they are the sole AIA paper authors given position-based evidence. Akin, Boerner and everyone after them owe their places to the alphabet, not to contribution.",
-    "EVE author-order detection: backward scan of the 18-name list of (Woods et al. 2012, 10.1007/s11207-009-9487-6) finds a sorted suffix of five (Bailey, Fuller-Rowell, Sojka, Tobiska, Viereck), making the list partially alphabetized with a 13-name prefix. The affiliation footnotes confirm the structure - the prefix is the institutional working groups (LASP, USC, NRL, Space Systems Research, GSFC, MIT Lincoln Laboratory) in order, and the alphabetized tail is the single-institution co-investigators. On this Observatory run only prefix positions 1-3 (Woods, Eparvier, Hock) are taken; prefix positions 4 onward are instrument-team depth for the EVE Instrument-record run.",
-    "HMI author-order detection: neither HMI paper is alphabetized. (Scherrer et al. 2012, 10.1007/s11207-011-9834-2) has a sorted suffix of only three (Schrijver, Tarbell, Tomczyk) and (Schou et al. 2012, 10.1007/s11207-011-9842-2) a sorted suffix of only three (Elmore, Norton, Tomczyk); a run that short happens by chance, so position carries contribution order in both. Positions 1-3 of each paper name the same three people in different order - Scherrer, Schou, Bush - so the two-paper ambiguity does not change which HMI leads this run records.",
-    "Andrew R. Jones and Donald L. Woodraska sit at EVE paper positions 4 and 5, which carry no weight on an Observatory run. Both are nevertheless included, and entirely through an independent source: they are named authors of the current SDO/EVE CMAD Rev B (Jones et al. 2025, 10.25810/nh0m-ze62). Rita J. Borelli comes in the same way and appears in no paper author list at all.",
-    "The CMAD deposit spells the fifth author 'Chamberlain, Phillip C'. This is recorded as Phillip C. Chamberlin - the same person as the mission overview paper's third author and the EVE prime-mission science team member at LASP - but a curator should confirm the spelling against the document itself, which could not be downloaded because the CU Scholar repository refuses automated requests; the author list came from the DataCite record for the DOI.",
-    "Provider pages disagree with SPASE on the current AIA PI, and SPASE is the more recent. The SDO mission instruments page still names Alan Title as AIA PI, and aia.lmsal.com still directs enquiries to Mark Cheung, while the AIA SPASE Instrument record carries Meng Jin as PI with Cheung, Schrijver and Title as FormerPI. Meng Jin's own staff page at LMSAL dates his AIA PI role from 2022, which resolves the conflict in SPASE's favour. All four are recorded, with Title and Cheung as former PIs of AIA and Jin as the sitting one.",
-    "The HMI science team page lists roughly 35 Co-Investigators and Associated Investigators with explicit per-person roles. On an Observatory run that whole roster is instrument-team depth, so it was deliberately not swept in; only people already qualifying by another route (Scherrer, Schou, Bush, Title, Schrijver) had their HMI roles attached, and the roster is flagged in pending_instrument_runs for the HMI Instrument-record run. The same applies to the EVE personnel page's prime-mission science team and LASP engineering staff, and to the AIA paper's 45 co-authors.",
-    "The Observatory record's RevisionHistory attributes the 2026-07-20 update to the initials 'JWL' with no full name. Initials alone are not a person, and a metadata updater would be excluded anyway, so no candidate was created; noted here for the audit trail.",
-    "Rock I. Bush has no Person record. A record exists at spase://SMWG/Person/R.Bush but its affiliation is the University of California, Berkeley, whereas the HMI Rock I. Bush is at Stanford University, so the two were treated as different people and person_record was left null. A curator should confirm before reusing the existing record.",
-    "Person records are missing for seven included candidates: Phillip C. Chamberlin, Wei Liu, Francis G. Eparvier, Rachel A. Hock, Andrew R. Jones, Rita J. Borelli, Jesper Schou and Rock I. Bush. Madhulika Guhathakurta has a record in the published registry (https://spase-metadata.org/SMWG/Person/Madhulika.Guhathakurta.html) that is absent from the local SMWG clone, so the clone is not a complete mirror and existence checks were confirmed against the live registry.",
-    "Barbara J. Thompson is widely described as SDO Deputy Project Scientist, but no primary source naming her in that role was located during this run, so she is recorded on her mission overview paper authorship alone and carries no contact role. SPASE has no role for a deputy project scientist in any case.",
-    "Rachel A. Hock appears in the SDO papers only as 'R. Hock' / 'R.A. Hock' and is not on the current EVE personnel page. The given name is taken from her lead authorship of the EVE MEGS radiometric calibration paper with the same LASP group; downstream identity confirmation is advisable, particularly as she is reported to have later published under a different surname."
+    "Operating span: the SDO Observatory record has no OperatingSpan element. Start is the launch date given in the record's Description (11 Feb 2010); the Senior Review proposals give the prime-mission start as 2010-05-01. Stop is null because SDO is still operating (continued by the 2023 Senior Review). Curators may wish to add an OperatingSpan to the record.",
+    "Mission overview paper selection is confident: (Pesnell et al. 2012, 10.1007/s11207-011-9841-3) names SDO in its title, appeared in the Solar Physics SDO issue within two years of launch, has 3245 Crossref citations, is listed as the 'Mission Paper' on the SDO Definitive Publications page, and was the top Semantic Scholar hit. SciX was not queried directly (no API token); the SDO site links a SciX public library of SDO publications. Only three authors, above the 1–2-author science-result threshold. Backward scan: not alphabetized (Pesnell, Thompson, Chamberlin), so all three are Strong. There are no 4th or 5th authors.",
+    "AIA author list (n=47): a literal backward scan finds only a 4-name sorted tail (Beardsley, Clapp, Lang, Waltham) because the list is alphabetized in institutional blocks: LMSAL at positions 3–26 (one inversion, Wuelser before Wolfson), SAO at 27–34, Stanford at 35–36, then the remaining partners. Treated as partially alphabetized with prefix = Lemen, Title (2 authors), following the skill's worked example for this paper and the rule to err against awarding position evidence. Akin (position 3) is not promoted. Selection is confident: the paper is linked from the AIA Instrument record, listed on the SDO Definitive Publications page, and has 4346 Crossref citations.",
+    "EVE author list (n=18): the backward scan finds a sorted tail of exactly five (Bailey, Fuller-Rowell, Sojka, Tobiska, Viereck), so the list is partially alphabetized with a 13-author prefix. Prefix positions 1–3 (Woods, Eparvier, Hock) are the same as a non-alphabetized reading would give. Selection is confident: SDO Definitive Publications page, Semantic Scholar agreement, published within the time window (online Jan 2010, print 2012).",
+    "HMI has two companion description papers in the same issue: (Schou et al. 2012, 10.1007/s11207-011-9842-2), the instrument design and calibration paper listed as the HMI paper on the SDO Definitive Publications page, and (Scherrer et al. 2012, 10.1007/s11207-011-9834-2), the investigation overview. Neither is alphabetized (sorted tail of 3 in each). Both have the same three people in positions 1–3 (Schou, Scherrer, Bush), so the choice does not change the leads and the selection is treated as confident; both are linked in information_urls. Author lists were confirmed against the NTRS copies of both papers, which also gave the Stanford and LMSAL affiliations.",
+    "Observatory-run scoping: each instrument contributes its leads only (paper positions 1–3 plus every qualifying-role person in its Instrument record Contacts). Authors at positions 4–5 of each instrument paper, Akin (AIA position 3, alphabetized part), and depth co-authors with another signal (SMWG Person record, or several SDO papers) are listed individually as excluded. The remaining instrument-paper co-authors and the members of instrument-level team lists (HMI Science Team page, 42 entries, last modified 2011-11-15; EVE personnel page) are instrument-team depth. They are not listed individually and belong to the AIA, EVE and HMI Instrument-record runs.",
+    "SDO Senior Review proposals (2015, 2017, 2020, hosted at http://hmi.stanford.edu/papers/) are treated as mission-level authored documents (Medium). Their author lines are Pesnell, Scherrer, Schrijver, Woods (2015) and Pesnell, Scherrer, Cheung, Woods (2017, 2020). This gives observatory scope to Scherrer, Woods, Cheung and Schrijver. Reviewer: if observatory scope should be limited to the overview paper and CMADs, these four revert to instrument scope; their confidence and roles do not change.",
+    "SDO and instrument web pages that name an instrument PI were used to corroborate the Instrument record Contacts. They did not lift a Contacts-only PI to Strong on this Observatory run, so Cheung, Schrijver and Meng Jin are Medium. Scherrer, Woods and Title are Strong through their paper positions.",
+    "Role mapping: 'EVE Project Scientist' (Eparvier) is recorded as InstrumentScientist, the instrument-level role, so it is not read as SDO's Project Scientist on the Observatory record; the exact title is stated in role_evidence. 'SDO Deputy Project Scientist' (Thompson, Chamberlin) has no legal SPASE role, so both carry Author only; the title is recorded in their evidence. Bush's HMI 'Program Manager' title is a non-qualifying role and is context only.",
+    "Stale provider pages: the SDO instruments page still lists Alan Title as AIA PI, and the SDO team page (archived 2025-06-16) lists Mark Cheung. The AIA Instrument record (Meng Jin PI; Cheung, Schrijver and Title as FormerPI) is up to date and agrees with Jin's LMSAL homepage (PI since 2022). The current SDO site footer names Michael Kirk as NASA Official; in June 2025 it named Barbara Thompson. The live SDO team and contact pages return HTTP 403, so the Wayback Machine copies from 2025-06-16 were used.",
+    "Person-record issues for the reviewer: (1) Rock I. Bush is linked to spase://SMWG/Person/R.Bush (same person, per an earlier curator ruling). That record's affiliation (University of California, Berkeley) conflicts with Stanford on both HMI papers. (2) The Mark.C.M.Cheung record gives Stanford University; the SDO team page gives Lockheed Martin for his AIA PI period. (3) Theodore D. Tarbell has two Person records (Ted.D.Tarbell and Theodore.D.Tarbell). (4) The Alan.M.Title and James.R.Lemen records use the old laboratory name 'Lockheed Palo Alto Research Laboratory'. (5) Karel.Schrijver is Carolus J. Schrijver on paper bylines. (6) Rick.Bogart is presumed to be Richard S. Bogart (excluded here). (7) No Person records exist for Phillip C. Chamberlin, Francis G. Eparvier, Rachel A. Hock or Jesper Schou.",
+    "Rachel A. Hock: the EVE paper byline is 'R. Hock'. The full name comes from her first-author EVE MEGS calibration paper with Chamberlin and Woods (Hock et al. 2012, 10.1007/s11207-010-9520-9) and the 2007 SPIE EVE MEGS paper (Chamberlin et al. 2007, 10.1117/12.734116). Verify identity downstream.",
+    "Barbara J. Thompson: Wikipedia says she was SDO project scientist 'through development and early flight', but the SDO team page has Pesnell accepting that post in 2005 (pre-launch). ProjectScientist is not attached; a reviewer with SDO project history could confirm.",
+    "Phillip C. Chamberlin affiliation: NASA Goddard at the time of the overview paper and his Deputy Project Scientist role (NASA Science profile). The EVE personnel page now groups him under University of Colorado / LASP. Era-match downstream.",
+    "Record Contacts list only Pesnell (ProjectScientist). The RevisionHistory note initials 'JWL' belong to a metadata editor; they were not resolved to a person and are not authorship evidence.",
+    "Semantic Scholar rate-limited most queries (no API key). The one successful search returned all five SDO-issue papers (overview, AIA, both HMI papers, EVE) with author counts matching Crossref, and a later per-paper lookup confirmed the EVE byline. Crossref has no affiliations or ORCIDs for these Solar Physics 275 papers. The ORCIDs given come from SMWG Person records (Cheung, Jin) and Crossref (Aschwanden, excluded).",
+    "Calibration and component papers were not used for candidates on this Observatory run: AIA initial calibration (Boerner et al. 2012, 10.1007/s11207-011-9804-8) and EVE MEGS (Hock et al. 2012, 10.1007/s11207-010-9520-9). The HMI vector-field pipeline paper (Hoeksema et al. 2014, 10.1007/s11207-014-0516-8) is a data-product paper; it is linked in information_urls, but its authors belong to the HMI vector-field data records' runs.",
+    "information_urls omits links already present verbatim in the target records: the SDO web page and HelioData (Observatory record), and the AIA, EVE and HMI provider home pages (Instrument records). Description papers are listed even where an Instrument record already links them; the AIA paper is already in the AIA record, so the writer should skip duplicates by URL."
   ]
 }
