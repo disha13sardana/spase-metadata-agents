@@ -80,6 +80,12 @@ Each candidate object:
 - `orcid` — ORCID string if it surfaced in a fetched source, otherwise `null` (no dedicated lookup)
 - `affiliation` — string if it surfaced, otherwise `null`
 - `activity_dates` — string if it surfaced, otherwise `null` (the person's window of involvement, recorded for the downstream role agent; never used to include/exclude here)
+- `authorship_scope` — **required on every included candidate** (`null` when excluded); states what their authorship evidence describes:
+  - `"observatory"` — the mission as a whole: a mission overview paper, an overview chapter of the mission's reference volume, a mission-wide CMAD.
+  - `"instrument"` — one instrument's description paper.
+  - `"component"` — one part of an instrument, such as a single sensor within a suite (EUVS or XRS within EXIS).
+
+  **When a person's evidence spans several scopes, use the broadest** — someone who wrote both the mission overview and an instrument paper is `observatory`. The scope describes **the evidence, not the person's seniority**: an eminent instrument PI whose evidence is one instrument's paper is `instrument`. Downstream this orders Contacts within a role rank, so mission-level authors appear ahead of instrument-level ones.
 - `qualifying_roles` — array of SPASE roles this person will carry into the mission/observatory/instrument DOI. **Every included candidate is an author**, so `"Author"` is ALWAYS present for `status: "included"` — inclusion means Strong/Medium evidence, and that evidence is exactly what makes the person an author on the DOI. On top of `Author`, add each qualifying contact role a source names for them (from the Qualifying Contact Roles list — `InstrumentLead`, `PrincipalInvestigator`, `FormerPI`, `ProjectScientist`, etc.), choosing mission-level vs instrument-level roles by the scope of the evidence (see "Mission-level vs instrument-level" below). Every value must come from the legal SPASE `Role` enumeration. So the array is `["Author"]` for a candidate with authorship evidence but no named contact role, and e.g. `["Author", "PrincipalInvestigator"]` when a source also names a role. **Excluded candidates carry `[]`** — they are not on the DOI and get no `Author`. This is a convenience list of just the role names; `role_evidence` below carries the same roles with their sources.
 - `role_evidence` — **always an array of `{ "role": <role>, "source": <where> }` objects, one per role in `qualifying_roles` — including `Author`.** Every role says where it came from, so the downstream SMWG writer emits one `<Role>` per entry in a single uniform loop, with no special-casing and no type-checking. `Author`'s source is the inclusion evidence that made the person an author (the paper byline, CMAD front page, or provider PI page — stated in role terms). Example: `[{ "role": "Author", "source": "First author of the LYRA instrument description paper (Dominique et al. 2013, 10.1007/s11207-013-0252-5)" }, { "role": "InstrumentLead", "source": "Listed as Principal Investigator of the PROBA2/LYRA instrument in its SPASE Instrument record Contacts (https://spase-metadata.org/SMWG/Instrument/PROBA2/LYRA.html)" }]`. Note `InstrumentLead` rather than `PrincipalInvestigator`, because the evidence is instrument-scoped — and that both entries read as plain statements a curator could act on, naming the instrument and linking the record. **Excluded candidates carry `[]`** (empty array, not `null`), matching their empty `qualifying_roles`. Because every role appears in both fields, `qualifying_roles` is exactly the list of `role` values in `role_evidence` — they cannot drift.
 
@@ -167,6 +173,7 @@ Each candidate object:
       "orcid": null,
       "affiliation": "Royal Observatory of Belgium",
       "activity_dates": null,
+      "authorship_scope": "instrument",
       "qualifying_roles": ["Author", "InstrumentLead"],
       "role_evidence": [
         { "role": "Author", "source": "First author of the LYRA instrument description paper (Dominique et al. 2013, 10.1007/s11207-013-0252-5)" },
@@ -186,6 +193,7 @@ Each candidate object:
       "orcid": null,
       "affiliation": null,
       "activity_dates": null,
+      "authorship_scope": "instrument",
       "qualifying_roles": ["Author"],
       "role_evidence": [
         { "role": "Author", "source": "Credited as the Flarelist compiler in the product-page footer, as 'IED' (https://proba2.sidc.be/lyra/data/Flarelist/Flarelist.html)" }
@@ -203,6 +211,7 @@ Each candidate object:
       "orcid": null,
       "affiliation": "UCLA",
       "activity_dates": null,
+      "authorship_scope": null,
       "qualifying_roles": [],
       "role_evidence": []
     },
@@ -218,6 +227,7 @@ Each candidate object:
       "orcid": null,
       "affiliation": "ESA",
       "activity_dates": null,
+      "authorship_scope": null,
       "qualifying_roles": [],
       "role_evidence": []
     },
@@ -233,6 +243,7 @@ Each candidate object:
       "orcid": null,
       "affiliation": null,
       "activity_dates": null,
+      "authorship_scope": null,
       "qualifying_roles": [],
       "role_evidence": []
     },
@@ -248,6 +259,7 @@ Each candidate object:
       "orcid": null,
       "affiliation": null,
       "activity_dates": null,
+      "authorship_scope": null,
       "qualifying_roles": [],
       "role_evidence": []
     }
@@ -374,6 +386,8 @@ A CMAD is a strong-evidence *bonus when found*, never a hard requirement of this
   Do **not** shortcut to "take the lead author" either: between authors 1 and 2 the ordering can reflect politics rather than contribution, so the first three is the robust signal where a single lead is not. If a classified prefix is shorter than three (e.g. prefix = Lemen, Title), take exactly the prefix — never pad from the alphabetized tail.
 
   **This rule is symmetric and admits no exceptions.** Every instrument-paper author at position 1–3 is included at Strong; every author at position 4 or beyond is `excluded` with the reason `"instrument-team depth — belongs to the <instrument> Instrument-record run"`, regardless of whether they also look mission-level or catch your eye for another reason. If such a person genuinely belongs at observatory level, they will earn it through an *independent* source — a mission-overview position, an Observatory-record qualifying contact role, a CMAD front page — and that source, not intuition, is what includes them. Never include a 4th+ author while excluding a 3rd, and never invent a scoping rationale to keep or drop an individual.
+
+  **Set `authorship_scope` as you harvest:** a person taken from the mission overview paper or a mission-wide CMAD is `observatory`; a person taken from one instrument's description paper or Contacts is `instrument`; a person whose evidence is a single sensor's paper within a suite is `component`. If someone turns up in more than one, the broadest wins.
 
   The two sources corroborate each other and jointly capture both generations: a founding PI typically appears as a paper-prefix author (Strong) *and* as `FormerPI` in Contacts (Medium), while the current PI appears in Contacts only. Where a paper cannot be located or its selection is uncertain, record the instrument in `pending_instrument_runs` for a dedicated per-instrument pass rather than guessing.
 

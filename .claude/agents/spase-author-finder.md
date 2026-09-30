@@ -34,6 +34,12 @@ Key rules from the skill that are easy to get wrong:
   is the inclusion evidence). Keep them in lockstep: same roles in both. Excluded
   candidates get `[]` for both. This lets the writer emit one `<Role>` per entry
   with no special-casing.
+- **Label every included candidate with `authorship_scope`.** `observatory` for
+  mission-level evidence (mission overview paper or chapter, mission-wide CMAD),
+  `instrument` for one instrument's description paper or Contacts, `component`
+  for a single sensor within a suite. Broadest wins when evidence spans scopes;
+  it describes the evidence, not the person's seniority. Excluded candidates get
+  `null`.
 - **Write `role_evidence` sources for a curator, not the pipeline.** These strings
   are published verbatim in the SPASE record and read by people who have never
   seen this skill. Say what was found and where, in plain words: "second author"

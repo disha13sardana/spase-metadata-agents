@@ -37,7 +37,6 @@ UNKNOWN_ORG = "Unknown"
 ROLE_PRECEDENCE = [
     "MissionPrincipalInvestigator",
     "PrincipalInvestigator",
-    "ProgramScientist",
     "ProjectScientist",
     "CoPI",
     "DeputyPI",
@@ -46,7 +45,23 @@ ROLE_PRECEDENCE = [
     "InstrumentScientist",
     "CoInvestigator",
     "Author",
+    # Last, and deliberately below Author: a Program Scientist is the agency
+    # official who signs and funds the mission, not a contributor to its data.
+    "ProgramScientist",
 ]
+
+# Roles that credit a person without making them an author. Someone holding
+# only these -- no role that reflects work on the mission itself -- is listed
+# but not given the Author role.
+NON_AUTHOR_ROLES = {"ProgramScientist"}
+
+# Within a role rank, people are ordered by what their authorship describes:
+# the mission as a whole before one instrument, one instrument before a single
+# component of it. Supplied by the finder as authorship_scope; a candidate
+# without it sorts after those with it, and when no candidate carries it the
+# order is exactly what it was before.
+SCOPE_RANK = {"observatory": 0, "instrument": 1, "component": 2}
+SCOPE_UNSET = len(SCOPE_RANK)
 ROLE_RANK = {r: i for i, r in enumerate(ROLE_PRECEDENCE)}
 
 # The closed Role enumeration in SPASE 2.7.1. A role outside this set is still
@@ -792,7 +807,31 @@ def main():
             creates.append(pid)
 
         roles = list(c.get("qualifying_roles") or ["Author"])
-        if "Author" not in roles:
+        work_roles = [r for r in roles
+                      if r != "Author" and r not in NON_AUTHOR_ROLES]
+        funding_only = (any(r in NON_AUTHOR_ROLES for r in roles)
+                        and not work_roles)
+        if funding_only:
+            # A Program Scientist signs and funds the mission. That alone does
+            # not make them an author, so Author is never added by default. But
+            # a Program Scientist who actually WROTE something about the mission
+            # is an author on that basis -- so an Author role the input supplies
+            # is kept when its evidence cites a publication, and withheld when it
+            # merely restates the funding role.
+            author_ev = [e.get("source", "") for e in
+                         (c.get("role_evidence") or [])
+                         if isinstance(e, dict) and e.get("role") == "Author"]
+            wrote = any(DOI_IN_TEXT.search(x) for x in author_ev)
+            if "Author" in roles and wrote:
+                log.append("AUTHOR KEPT %s: ProgramScientist with authorship "
+                           "evidence that cites a publication" % pid)
+            elif "Author" in roles:
+                roles = [r for r in roles if r != "Author"]
+                log.append("AUTHOR WITHHELD %s: ProgramScientist whose Author "
+                           "evidence cites no publication%s"
+                           % (pid, ("; set aside: " + " | ".join(author_ev))
+                              if author_ev else ""))
+        elif "Author" not in roles:
             roles = ["Author"] + roles
         for r in roles:
             if r not in ROLE_RANK:
@@ -808,21 +847,33 @@ def main():
         block = ["      <Contact>",
                  "        <PersonID>spase://SMWG/Person/%s</PersonID>" % pid]
         block += ["        <Role>%s</Role>" % r for r in roles]
-        note = build_note(c)
+        # The Note justifies the roles actually written; evidence for a role
+        # this Contact does not carry would contradict the Role list above it.
+        c_for_note = dict(c)
+        if isinstance(c.get("role_evidence"), list):
+            c_for_note["role_evidence"] = [
+                e for e in c["role_evidence"]
+                if not isinstance(e, dict) or e.get("role") in roles]
+        note = build_note(c_for_note)
         if note:
             block.append("        <Note>%s</Note>" % esc(note))
         else:
             log.append("NO EVIDENCE %s: no role_evidence, Contact written "
                        "without a Note" % pid)
         block.append("      </Contact>")
-        contacts.append((rank, len(contacts), "\n".join(block)))
+        scope = (c.get("authorship_scope") or "").strip().lower()
+        if scope and scope not in SCOPE_RANK:
+            log.append("SCOPE UNKNOWN %s: authorship_scope '%s' not recognised; "
+                       "sorted with unscoped candidates" % (pid, scope))
+        scope_rank = SCOPE_RANK.get(scope, SCOPE_UNSET)
+        contacts.append((rank, scope_rank, len(contacts), "\n".join(block)))
         written_ids.add(pid)
 
     # Order Contact blocks by each person's highest-ranking role. The second
     # key is the original position, so people sharing a rank keep the order the
     # enricher produced (evidence strength / author position).
-    contacts.sort(key=lambda t: (t[0], t[1]))
-    contacts = [b for _, _, b in contacts]
+    contacts.sort(key=lambda t: (t[0], t[1], t[2]))
+    contacts = [b for _, _, _, b in contacts]
 
     if blockers:
         print("ABORT: %d unresolved possible duplicate(s). Nothing written.\n"

@@ -406,23 +406,74 @@ did what, and silently substituting a different role would misstate the evidence
 But log any value outside the enumeration loudly, because it is a schema failure
 waiting to happen and the fix belongs upstream in the finder's vocabulary.
 
+### Program Scientists: funding is not authorship, writing is
+
+A Program Scientist is the agency official who signs and funds the mission — the
+person who signed the SDO Project Data Management Plan as "Program Scientist
+(HQ)", or is named Parker Solar Probe Program Scientist at NASA Headquarters.
+The record lists that role, but signing and funding is not authorship of the
+mission's data.
+
+What decides it is **where the Author evidence comes from**:
+
+- **Derived from the funding role** — "named Program Scientist on the team
+  page". Not an author. `Author` is withheld even when the input lists it, and the
+  person sits at the end of the list, since `ProgramScientist` ranks below
+  `Author`. Logged `AUTHOR WITHHELD`.
+- **Independent of it** — Goodman is the GOES-R Program Scientist *and* the sole
+  author of the GOES-R Series Introduction chapter, the mission-overview
+  reference. He is an author because he wrote it. `Author` is kept and he is
+  placed among the authors, by what he authored rather than by his funding role.
+  Logged `AUTHOR KEPT`.
+
+The test is mechanical: the Author evidence must **cite a publication**, by DOI.
+A team page, a signature on a plan or a programme listing does not. This relies on
+the finder citing papers in the `(Author et al. Year, DOI)` form its skill
+requires, so a Program Scientist who genuinely wrote something is recognised as
+such.
+
+The writer never *adds* `Author` to a funding-only person by default — the
+default that applies to everyone else does not apply here. Someone who also holds
+a role reflecting work on the mission (`ProjectScientist`, `InstrumentLead` and
+so on) is not funding-only, and keeps `Author` in the usual way.
+
+The Note only justifies roles actually written: evidence for a withheld role is
+dropped, so it never contradicts the Role list above it.
+
 ### Role precedence
 
 Contact blocks are ordered by each person's **highest-ranking role**, and the
 `Role` elements inside a block follow the same order:
 
 ```
-MissionPrincipalInvestigator, PrincipalInvestigator, ProgramScientist,
-ProjectScientist, CoPI, DeputyPI, FormerPI, InstrumentLead,
-InstrumentScientist, CoInvestigator, Author
+MissionPrincipalInvestigator, PrincipalInvestigator, ProjectScientist, CoPI,
+DeputyPI, FormerPI, InstrumentLead, InstrumentScientist, CoInvestigator,
+Author, ProgramScientist
 ```
 
 `Author` ranks last, so people carrying only that role follow everyone with a
 mission or instrument role. This puts the record's most senior contributors at
 the top, where a reader looking for who ran the mission will find them.
 
-People sharing a rank keep the order the enricher produced — evidence strength
-and author position — so the sort is stable rather than reshuffling the list.
+**Within a rank, order by authorship scope.** People sharing a role rank are
+ordered by what their authorship describes, taken from the finder's
+`authorship_scope` field:
+
+1. `observatory` — the mission as a whole: mission overview papers and chapters
+2. `instrument` — one instrument's description paper
+3. `component` — one part of an instrument, such as a single sensor in a suite
+
+Goodman and Sullivan both wrote observatory-level chapters of the GOES-R
+reference volume, so they come ahead of the SUVI, MAG, EXIS and SEISS paper
+authors, even though all of them hold only the `Author` role.
+
+A candidate without `authorship_scope` sorts after those with it. When no
+candidate carries the field the order is exactly what it was before — so older
+inputs are unaffected. An unrecognised value is logged as `SCOPE UNKNOWN` and
+treated as unset.
+
+Beyond that, people keep the order the finder produced — evidence strength and
+author position — so the sort is stable rather than reshuffling the list.
 A role outside the precedence list sorts last and is logged rather than dropped;
 that is a signal the list needs extending, not a reason to discard the role.
 
