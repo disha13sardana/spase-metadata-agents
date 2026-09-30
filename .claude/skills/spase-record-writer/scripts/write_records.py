@@ -139,11 +139,23 @@ def bare_ror(v):
     return _norm_identifier(v, ROR_BASE)
 
 
+# What separates several affiliations in one input string. The enricher's skill
+# shows " / ", but its runs also emit "; ", and a separator the writer does not
+# recognise lands the whole list in the single-valued OrganizationName.
+AFF_SEP = re.compile(r" / |;\s+")
+
+
+def split_affiliation(v):
+    """(first listed, remainder or None)."""
+    parts = AFF_SEP.split(v.strip(), 1)
+    return parts[0].strip(), (parts[1].strip() if len(parts) > 1 else None)
+
+
 def primary_affiliation(v):
     """OrganizationName is single-valued; keep the first listed."""
     if not v or not v.strip():
         return None
-    return v.split(" / ")[0].strip()
+    return split_affiliation(v)[0]
 
 
 def mint_id(name):
@@ -653,9 +665,11 @@ def main():
         orcid = bare_orcid(c.get("orcid"))
         ror = bare_ror(c.get("affiliation_ror"))
         org = primary_affiliation(c.get("affiliation"))
-        if c.get("affiliation") and " / " in c["affiliation"]:
+        dropped = (split_affiliation(c["affiliation"])[1]
+                   if org else None)
+        if dropped:
             log.append("MULTI-AFF  %s kept '%s', dropped '%s'"
-                       % (name, org, c["affiliation"].split(" / ", 1)[1]))
+                       % (name, org, dropped))
 
         path = os.path.join(repo, "Person", pid + ".xml")
 
@@ -923,19 +937,22 @@ def main():
             existing = {}
             if os.path.isfile(path):
                 existing = json.load(open(path, encoding="utf-8"))
+            # Add to the file, never rebuild it: it holds the user's rulings,
+            # their _rationale and earlier runs' _candidates, and a file rebuilt
+            # from this run's blockers alone would silently drop all three.
+            tmpl = {"_help": ("For each name: set links[name] to an existing "
+                              "PersonID if it is the same human, or move the name "
+                              "into creates if it is a different person. Empty "
+                              "string means undecided.")}
+            tmpl.update(existing)
+            cands = dict(existing.get("_candidates") or {})
             links = dict(existing.get("links") or {})
             creates = list(existing.get("creates") or [])
             for name, hits in blockers:
+                cands[name] = hits
                 if name not in links and name not in creates:
                     links[name] = ""
-            tmpl = {
-                "_help": ("For each name: set links[name] to an existing PersonID "
-                          "if it is the same human, or move the name into creates "
-                          "if it is a different person. Empty string means undecided."),
-                "_candidates": {n: h for n, h in blockers},
-                "links": links,
-                "creates": creates,
-            }
+            tmpl.update(_candidates=cands, links=links, creates=creates)
             os.makedirs(os.path.dirname(path) or ".", exist_ok=True)
             with open(path, "w", encoding="utf-8") as fh:
                 json.dump(tmpl, fh, indent=2)

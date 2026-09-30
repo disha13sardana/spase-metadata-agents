@@ -175,7 +175,8 @@ unlike replacing an identifier, which never happens silently.
 ### Step 5 — Resolve the affiliation
 
 `OrganizationName` has cardinality 1 — one value, required on every Person
-record. The enricher may supply several separated by ` / `.
+record. The enricher may supply several separated by ` / ` or `; ` — both are
+treated as separators.
 
 - **Multiple affiliations:** keep the first, log the dropped remainder.
 - **No affiliation, new record:** use `Unknown`. This is established registry
@@ -745,7 +746,9 @@ Set `links[name]` to an existing PersonID when it is the same human; move the
 name into `creates` when it is a different person. Re-run the identical command
 and it proceeds. The file persists, so re-running that record later — after a
 finder re-run, say — needs no decisions again. New names appearing in a later
-enrichment are appended to the template as undecided rather than assumed.
+enrichment are appended to the template as undecided rather than assumed;
+everything already in the file — rulings, `_rationale`, earlier `_candidates` —
+is kept.
 
 The agent is expected to *make* these decisions where the evidence is clear,
 using the affiliation and email shown for each match, and to ask the human only
