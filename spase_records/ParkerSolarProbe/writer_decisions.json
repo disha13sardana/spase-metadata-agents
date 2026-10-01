@@ -6,7 +6,9 @@
   },
   "creates": [
     "Marco Velli",
-    "Arik Posner"
+    "Arik Posner",
+    "David Lario",
+    "Mary Kae Lockwood"
   ],
   "writer_run": {
     "date": "2026-09-29",
@@ -127,5 +129,9 @@
       "CONFIDENCE MIX of the 17 written candidates: 12 Strong, 5 Medium (Eric.R.Christian, Nour.Raouafi, Robert.B.Decker, Adam.Szabo, Arik.Posner). Confidence did not gate writing."
     ],
     "push_command": "git -C /Users/dishasardana/Documents/nasa-hdrl/ai-agents/code/SMWG push --force-with-lease -u origin author-enrichment-parkersolarprobe"
+  },
+  "_rationale": {
+    "David Lario": "DIFFERENT PEOPLE (user ruling, 2026-10-01) - flagged only by fuzzy similarity ('Lario' ~ 'Larko'). The candidate is at NASA GSFC Heliospheric Physics Laboratory (Code 672), PSP Deputy Mission Scientist and co-author of the mission overview (Fox et al. 2016, 10.1007/s11214-015-0211-6), ORCID 0000-0002-3176-8704. David.E.Larko is 'Mr. David E. Larko', GSFC Code 916 (2008 record, no identifiers). New record created.",
+    "Mary Kae Lockwood": "DIFFERENT PEOPLE (user ruling, 2026-10-01) - surname-only collision. The candidate is the PSP spacecraft system engineer at JHU/APL and co-author of the mission overview (Fox et al. 2016). Glen.E.K.Lockwood (Department of Communications) and John.A.Lockwood (University of New Hampshire) are 2008 records with different given names. New record created."
   }
 }
