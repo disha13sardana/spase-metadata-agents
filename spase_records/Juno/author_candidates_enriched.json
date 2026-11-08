@@ -4127,7 +4127,7 @@
       }
     },
     {
-      "name": "Burkhart Militzer",
+      "name": "Burkhard Militzer",
       "status": "included",
       "confidence": "Medium",
       "exclusion_reason": null,
@@ -4178,11 +4178,11 @@
         "ror_evidence": "https://ror.org/01an7q238",
         "ror_confidence": "Confirmed",
         "lookup_status": "complete",
-        "notes": "Identity: the team page spells the given name 'Burkhart'. Crossref deposits the iD for 'Burkhard Militzer', and the ORCID record is 'Burkhard Militzer'. The two were treated as spelling variants of one name. A Person record, if created, should probably use 'Burkhard'; a curator should confirm. ORCID: none pre-filled, and the finder's evidence DOIs deposit no iD for this author. Route A' found it: Crossref deposits https://orcid.org/0000-0002-7092-5629 for 'Burkhard Militzer' on 10.3847/psj/ac7ec8 (Militzer et al. 2022), a Juno-titled paper outside the finder's evidence list. The ORCID record is in the name 'Burkhard Militzer'. Affiliation: no ORCID employment, and no Juno deposit carries an affiliation for him. The mission team page (https://www.missionjuno.swri.edu/the-team/) lists 'Burkhart Militzer (Univeristy of California, Berkeley)' (sic). 'University of California, Berkeley' is the finder's corrected spelling of that string. ROR: affiliation match chose https://ror.org/01an7q238 (University of California, Berkeley, US); name and country check out."
+        "notes": "Identity: the team page spells the given name 'Burkhart'. Crossref deposits the iD for 'Burkhard Militzer', and the ORCID record is 'Burkhard Militzer'. The two were treated as spelling variants of one name. A Person record, if created, should probably use 'Burkhard'; a curator should confirm. ORCID: none pre-filled, and the finder's evidence DOIs deposit no iD for this author. Route A' found it: Crossref deposits https://orcid.org/0000-0002-7092-5629 for 'Burkhard Militzer' on 10.3847/psj/ac7ec8 (Militzer et al. 2022), a Juno-titled paper outside the finder's evidence list. The ORCID record is in the name 'Burkhard Militzer'. Affiliation: no ORCID employment, and no Juno deposit carries an affiliation for him. The mission team page (https://www.missionjuno.swri.edu/the-team/) lists 'Burkhart Militzer (Univeristy of California, Berkeley)' (sic). 'University of California, Berkeley' is the finder's corrected spelling of that string. ROR: affiliation match chose https://ror.org/01an7q238 (University of California, Berkeley, US); name and country check out. Name: corrected from the mission team page's 'Burkhart Militzer' to 'Burkhard Militzer' on the user's ruling (2026-11-08), because Crossref and the ORCID record (https://orcid.org/0000-0002-7092-5629) both give 'Burkhard Militzer'."
       }
     },
     {
-      "name": "Kimee Moore",
+      "name": "Kimberly M. Moore",
       "status": "included",
       "confidence": "Medium",
       "exclusion_reason": null,
@@ -4234,7 +4234,7 @@
         "ror_evidence": "https://ror.org/05dxps055",
         "ror_confidence": "Confirmed",
         "lookup_status": "complete",
-        "notes": "Identity: the team page gives 'Kimee Moore (Caltech)'. Crossref deposits the iD for 'Kimberly M. Moore' / 'Kimberly' on Juno magnetometer and gravity papers, under Harvard and later Caltech, and the ORCID record is 'Kimberly Moore'. 'Kimee' was treated as a short form of Kimberly. The match rests on that plus the Caltech affiliation and the Juno domain, so a reviewer should confirm. ORCID: none pre-filled, and the finder's evidence DOIs deposit no iD for this author. Route A' found it: Crossref deposits https://orcid.org/0000-0003-3162-437X for 'Kimberly Moore' on 10.1029/2022gl098633 (Weber et al. 2022), a Juno-titled paper outside the finder's evidence list. The ORCID record is in the name 'Kimberly Moore'. Affiliation: no ORCID employment. Deposits carrying her iD name Harvard (Department of Earth and Planetary Sciences, 2017, 10.1002/2017gl073133) and Caltech (2022). The Harvard department and Caltech division strings are equally specific, so the most recent, 10.1029/2022gl098633, was taken. Same institution as the finder value. Affiliation changed during the operating span: Harvard (2017 deposit), then Caltech (2022 deposits and mission team page). The finder's string was 'California Institute of Technology'. ROR: affiliation match chose https://ror.org/05dxps055 (California Institute of Technology, US); name and country check out. The Division of Earth and Planetary Sciences has no ROR record."
+        "notes": "Identity: the team page gives 'Kimee Moore (Caltech)'. Crossref deposits the iD for 'Kimberly M. Moore' / 'Kimberly' on Juno magnetometer and gravity papers, under Harvard and later Caltech, and the ORCID record is 'Kimberly Moore'. 'Kimee' was treated as a short form of Kimberly. The match rests on that plus the Caltech affiliation and the Juno domain, so a reviewer should confirm. ORCID: none pre-filled, and the finder's evidence DOIs deposit no iD for this author. Route A' found it: Crossref deposits https://orcid.org/0000-0003-3162-437X for 'Kimberly Moore' on 10.1029/2022gl098633 (Weber et al. 2022), a Juno-titled paper outside the finder's evidence list. The ORCID record is in the name 'Kimberly Moore'. Affiliation: no ORCID employment. Deposits carrying her iD name Harvard (Department of Earth and Planetary Sciences, 2017, 10.1002/2017gl073133) and Caltech (2022). The Harvard department and Caltech division strings are equally specific, so the most recent, 10.1029/2022gl098633, was taken. Same institution as the finder value. Affiliation changed during the operating span: Harvard (2017 deposit), then Caltech (2022 deposits and mission team page). The finder's string was 'California Institute of Technology'. ROR: affiliation match chose https://ror.org/05dxps055 (California Institute of Technology, US); name and country check out. The Division of Earth and Planetary Sciences has no ROR record. Name: corrected from the mission team page's 'Kimee Moore' to 'Kimberly M. Moore' on the user's ruling (2026-11-08), because Crossref deposits this iD for 'Kimberly M. Moore' and the ORCID record (https://orcid.org/0000-0003-3162-437X) is 'Kimberly Moore'."
       }
     },
     {
