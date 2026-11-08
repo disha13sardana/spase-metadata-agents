@@ -90,7 +90,19 @@ its baseline. Two things go wrong otherwise:
 **Reset only what this skill wrote.** If any commit on the branch is not one of
 this skill's own, stop and ask. This is the same rule as the dirty working tree
 above, applied to commits: you cannot tell a curator's hand-correction from your
-own earlier output, and a reset would destroy it silently.
+own earlier output, and a reset would destroy it silently. A commit by
+`spase-missing-instrument-registrar` counts as pipeline output too: the writer
+branch for a mission's instruments is built on the registration branch
+(`--base instrument-registration-<obs>`), and after the Observatory is re-run the
+old registration commit on it is stale and reproducible, not a curator's work.
+
+**One pull request per mission.** The branches chain: the Observatory's writer
+branch; the registrar's branch built on it, when instruments were missing; then
+one writer run on the inputs `spase-instrument-author-mapper` made for every
+instrument of the Observatory (`--base` the latest of those branches,
+`--branch author-enrichment-<obs>-instruments`). That last branch carries
+everything and is the one pull request. One run takes several `--input` files;
+its commit names every record it wrote.
 
 Resetting is what makes the rest of the procedure safe to repeat, but it is not a
 substitute for checking the output. It stops the writer misreading its own work
@@ -363,7 +375,19 @@ Note preserves it, but a human should confirm the new value is right at all.
 
 Rebuilding is idempotent: this skill's own segments are recognised and replaced
 rather than appended to, so a re-run does not stack duplicates. Curated text is
-never matched by that pattern and so is never removed.
+never matched by that pattern and so is never removed. A full stop inside
+parentheses, as in `(Ma et al. 2025, https://doi.org/…)`, does not end one of
+this skill's sentences, so a citation is never split and half of it mistaken for
+curated text.
+
+**A later run in the same chain keeps the earlier run's record of the old
+value.** One branch can carry the Observatory's writer run and then a run for one
+of its Instrument records, built on top of it. The second run finds a Person
+record the first already updated: the organisation is no longer changing, but
+the first run's `Previously recorded in this record as '...'.` is the only trace
+of the curated value, so it is carried forward, not dropped. Person fields are
+compared un-escaped (`&`, not `&amp;`), so an unchanged organisation is never
+mistaken for a new one.
 
 Keep the Note to source and type. The enricher's full reasoning — candidate
 ORCIDs considered, checksum results, reviewer suggestions — belongs in the run
@@ -470,7 +494,7 @@ ordered by what their authorship describes, taken from the finder's
 
 1. `observatory` — the mission as a whole: mission overview papers and chapters
 2. `instrument` — one instrument's description paper
-3. `component` — one part of an instrument, such as a single sensor in a suite
+3. `component` — one part of a suite: a sensor, detector or sub-instrument
 
 Goodman and Sullivan both wrote observatory-level chapters of the GOES-R
 reference volume, so they come ahead of the SUVI, MAG, EXIS and SEISS paper

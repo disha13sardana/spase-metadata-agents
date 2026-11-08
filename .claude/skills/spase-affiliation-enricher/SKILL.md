@@ -48,7 +48,21 @@ operating) is normal — handle it per the overlap rules below.
 
 Process a candidate only if BOTH hold:
 
-1. **`status: "included"`.** Leave `excluded` candidates' objects entirely untouched.
+1. **`status: "included"`, or a non-empty `instrument_roles`.** On an Observatory
+   record the finder records, in `instrument_roles`, people who will be authors
+   on one of the Observatory's Instrument records though not on the Observatory
+   itself: an instrument paper's 4th–5th authors, excluded here as
+   instrument-team depth. `spase-instrument-author-mapper` reuses this file to
+   fill those Instrument records without a second lookup, so those people need
+   ORCID, affiliation and ROR resolved now. Use the operating span as usual.
+   Leave every other `excluded` candidate's object entirely untouched.
+
+   **Already enriched → leave alone.** A file the author mapper made for an
+   Instrument record from an Observatory run (it carries a top-level
+   `seeded_from`) mixes people enriched on the Observatory run with people who
+   were not. Process only candidates with no `enrichment` object; copy the rest
+   unchanged. Their lookups were done once, and repeating them is the waste this
+   file exists to avoid.
 2. **Identity is confirmed.** The finder's evidence establishes the person's full
    name from at least one source — not a name reconstructed from initials, and not
    an identity the finder itself flagged as inferred or uncertain. Judge this from
@@ -85,8 +99,10 @@ and why, and anything flagged for review.
 **Preserve the finder's file in full.** Copy every top-level field the finder
 wrote — `record`, `date`, `cmad`, `instrument_coverage`, `notes`, and any field
 you do not recognize — through to the enriched file unchanged. The finder's
-schema evolves; never drop a field just because this skill predates it. The ONLY
-modifications this skill makes are: filling `orcid`/`affiliation`/`affiliation_ror`
+schema evolves; never drop a field just because this skill predates it. The same
+holds inside each candidate: keep every per-candidate field — `instrument_roles`,
+each evidence entry's `source_scope`, and anything you do not recognize — exactly
+as the finder wrote it. The ONLY modifications this skill makes are: filling `orcid`/`affiliation`/`affiliation_ror`
 on processed candidates, and adding the per-candidate `enrichment` object:
 
 ```json

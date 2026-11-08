@@ -37,9 +37,30 @@ Key rules from the skill that are easy to get wrong:
 - **Label every included candidate with `authorship_scope`.** `observatory` for
   mission-level evidence (mission overview paper or chapter, mission-wide CMAD),
   `instrument` for one instrument's description paper or Contacts, `component`
-  for a single sensor within a suite. Broadest wins when evidence spans scopes;
-  it describes the evidence, not the person's seniority. Excluded candidates get
+  for one part of a suite (a sensor, detector or sub-instrument). Broadest wins
+  when evidence spans scopes; it describes the evidence, not the person's
+  seniority. Excluded candidates get
   `null`.
+- **Give every `evidence` entry a `source_scope`.** What the cited source itself
+  describes: `observatory`, `instrument` (one instrument or suite), `component`
+  (one component within a suite), or `null` when it is about neither. A chapter
+  takes the scope of its subject, not of the volume it sits in.
+- **On Observatory records, fill `instrument_roles` on every candidate.** One
+  `{instrument, spase_record, role, source, source_scope, confidence}` entry per
+  instrument per role, recording what that instrument's *own* record should
+  carry: Contacts roles as `Author` plus the role at Medium; paper positions 1–3
+  as `Author` at Strong; paper positions 4–5 as `Author` at Medium, on the
+  candidates you exclude as instrument-team depth. Only instrument-level roles;
+  every instrument with an entry has an `Author` entry; use the same instrument
+  short name as `information_urls` and `pending_instrument_runs`. A component
+  inside a suite is recorded on the suite: `"instrument": "<Suite>"`,
+  `"component": "<Component>"`, `source_scope: "component"`, in both
+  `instrument_roles` and `information_urls`, because SPASE keeps instrument
+  records at suite level and the component's papers and links go on the suite's. This is what
+  lets a missing instrument's record be filled from this run without a second
+  search, so a mission-level author's instrument work must not be folded into
+  `authorship_scope` and lost. Everyone else, and every non-Observatory record,
+  gets `[]`.
 - **Write `role_evidence` sources for a curator, not the pipeline.** These strings
   are published verbatim in the SPASE record and read by people who have never
   seen this skill. Say what was found and where, in plain words: "second author"
@@ -88,7 +109,7 @@ Key rules from the skill that are easy to get wrong:
   generation, free). From the instrument's description paper, always run the full
   alphabetization + classification procedure, then take **positions 1–3 only**
   (Strong). An instrument paper's 4th+ authors are instrument-team depth: exclude
-  them with that reason. The rule is symmetric — never include a 4th while
+  them with that reason (4th–5th still get a Medium `instrument_roles` entry). The rule is symmetric — never include a 4th while
   excluding a 3rd, and never invent a scoping rationale for an individual. A
   4th+ author who truly belongs at observatory level will earn it through an
   independent source (mission-overview position, Observatory contact role, CMAD).

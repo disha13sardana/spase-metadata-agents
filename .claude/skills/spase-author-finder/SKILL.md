@@ -64,7 +64,8 @@ Top-level fields:
   - `url` — the link. For publications use the resolvable DOI URL.
   - `description` — one sentence on what a reader will find there.
   - `scope` — **required**, `"observatory"` or `"instrument"`. Observatory-level: mission overview papers, mission home pages, programme team pages, mission-wide CMADs. Instrument-level: instrument description papers, per-instrument CMAD chapters. **An entry without a scope is skipped downstream, so decide it here.**
-  - `instrument` — the instrument's short name; **required when `scope` is `"instrument"`**, so the entry can be routed to the right record later.
+  - `instrument` — the instrument's short name; **required when `scope` is `"instrument"`**, so the entry can be routed to the right record later. For a component inside a suite, this is the **suite** (`"EXIS"`, not `"XRS"`): SPASE records are kept at suite level, and a component's papers and pages belong on the suite's record.
+  - `component` — the component's short name, when the link is about one component within a suite (`"instrument": "EXIS", "component": "XRS"`). Omit it otherwise.
 
   **Include a link once, under the scope it belongs to.** A CMAD with mission-wide front matter and per-instrument chapters is several entries, not one: the introduction at `observatory` scope, each chapter at `instrument` scope with its instrument named. The same goes for an edited reference volume whose chapters describe different instruments.
 - `candidates` — the array below
@@ -75,7 +76,14 @@ Each candidate object:
 - `status` — `"included"` (Strong/Medium evidence) or `"excluded"` (did not clear the bar)
 - `confidence` — `"Strong"` or `"Medium"` if included; `null` if excluded
 - `exclusion_reason` — string if `status` is `"excluded"`, otherwise `null` (e.g. `"acknowledgement-only mention"`, `"metadata submitter only"`, `"non-qualifying contact role only"`, `"dedication"`)
-- `evidence` — array of objects, each `{ "source": <description>, "url": <clickable link or null>, "strength": "Strong"|"Medium"|"Low" }`. Attach the URL to the source it came from; use `null` if no URL applies (e.g. a printed paper acknowledgement).
+- `evidence` — array of objects, each `{ "source": <description>, "url": <clickable link or null>, "strength": "Strong"|"Medium"|"Low", "source_scope": <see below> }`. Attach the URL to the source it came from; use `null` if no URL applies (e.g. a printed paper acknowledgement).
+  - `source_scope` — **required on every evidence entry**: what the cited publication or document describes, judged from the source itself, not from the person.
+    - `"observatory"` — the mission as a whole: a mission overview paper, an overview chapter of the mission's reference volume, a mission-wide CMAD, the mission's team page, an Observatory record's Contacts.
+    - `"instrument"` — one instrument or one instrument suite: its description paper, a reference-volume chapter devoted to it, a per-instrument CMAD chapter, its provider page, its Instrument record's Contacts.
+    - `"component"` — one part of a suite (a sensor, detector or sub-instrument, such as EUVS or XRS within EXIS): that component's own paper or record.
+    - `null` — a source about neither the mission nor any one of its instruments (an ORCID profile, an institutional staff page, a data record's RevisionHistory).
+
+    A chapter takes the scope of what it describes, not of the volume it sits in: the EXIS chapter of a mission reference volume is `instrument`, the volume's introduction is `observatory`.
 - `person_record` — object `{ "id": <spase://SMWG/Person/... or null>, "url": <clickable https link or null> }`. The `id` is the `spase://` form that goes into the actual record; the `url` is the clickable `https://spase-metadata.org/SMWG/Person/<First.Last>.html` form for human review on GitHub. Both `null` if no Person record exists. Do not draft one.
 - `orcid` — ORCID string if it surfaced in a fetched source, otherwise `null` (no dedicated lookup)
 - `affiliation` — string if it surfaced, otherwise `null`
@@ -83,9 +91,11 @@ Each candidate object:
 - `authorship_scope` — **required on every included candidate** (`null` when excluded); states what their authorship evidence describes:
   - `"observatory"` — the mission as a whole: a mission overview paper, an overview chapter of the mission's reference volume, a mission-wide CMAD.
   - `"instrument"` — one instrument's description paper.
-  - `"component"` — one part of an instrument, such as a single sensor within a suite (EUVS or XRS within EXIS).
+  - `"component"` — one part of a suite: a sensor, detector or sub-instrument, such as EUVS or XRS within EXIS.
 
-  **When a person's evidence spans several scopes, use the broadest** — someone who wrote both the mission overview and an instrument paper is `observatory`. The scope describes **the evidence, not the person's seniority**: an eminent instrument PI whose evidence is one instrument's paper is `instrument`. Downstream this orders Contacts within a role rank, so mission-level authors appear ahead of instrument-level ones.
+  **When a person's evidence spans several scopes, use the broadest** — someone who wrote both the mission overview and an instrument paper is `observatory`. Equivalently: `authorship_scope` is the broadest `source_scope` among the candidate's Strong and Medium evidence entries. The scope describes **the evidence, not the person's seniority**: an eminent instrument PI whose evidence is one instrument's paper is `instrument`. Downstream this orders Contacts within a role rank, so mission-level authors appear ahead of instrument-level ones.
+
+  Because the broadest scope wins, `authorship_scope` hides a mission-level author's instrument work: the first author of an instrument paper who also edited the mission volume is `observatory`. `instrument_roles` below keeps that instrument work.
 - `qualifying_roles` — array of SPASE roles this person will carry into the mission/observatory/instrument DOI. **Every included candidate is an author**, so `"Author"` is ALWAYS present for `status: "included"` — inclusion means Strong/Medium evidence, and that evidence is exactly what makes the person an author on the DOI. On top of `Author`, add each qualifying contact role a source names for them (from the Qualifying Contact Roles list — `InstrumentLead`, `PrincipalInvestigator`, `FormerPI`, `ProjectScientist`, etc.), choosing mission-level vs instrument-level roles by the scope of the evidence (see "Mission-level vs instrument-level" below). Every value must come from the legal SPASE `Role` enumeration. So the array is `["Author"]` for a candidate with authorship evidence but no named contact role, and e.g. `["Author", "PrincipalInvestigator"]` when a source also names a role. **Excluded candidates carry `[]`** — they are not on the DOI and get no `Author`. This is a convenience list of just the role names; `role_evidence` below carries the same roles with their sources.
 - `role_evidence` — **always an array of `{ "role": <role>, "source": <where> }` objects, one per role in `qualifying_roles` — including `Author`.** Every role says where it came from, so the downstream SMWG writer emits one `<Role>` per entry in a single uniform loop, with no special-casing and no type-checking. `Author`'s source is the inclusion evidence that made the person an author (the paper byline, CMAD front page, or provider PI page — stated in role terms). Example: `[{ "role": "Author", "source": "First author of the LYRA instrument description paper (Dominique et al. 2013, 10.1007/s11207-013-0252-5)" }, { "role": "InstrumentLead", "source": "Listed as Principal Investigator of the PROBA2/LYRA instrument in its SPASE Instrument record Contacts (https://spase-metadata.org/SMWG/Instrument/PROBA2/LYRA.html)" }]`. Note `InstrumentLead` rather than `PrincipalInvestigator`, because the evidence is instrument-scoped — and that both entries read as plain statements a curator could act on, naming the instrument and linking the record. **Excluded candidates carry `[]`** (empty array, not `null`), matching their empty `qualifying_roles`. Because every role appears in both fields, `qualifying_roles` is exactly the list of `role` values in `role_evidence` — they cannot drift.
 
@@ -119,6 +129,30 @@ Each candidate object:
   - Bibcodes are not citations — `(2013SoPh..286...21D)` tells a reader nothing. Convert to author-year-DOI form.
 
   This applies to publications only. **Non-paper evidence keeps its URL in parentheses** as before: `(https://www.goes-r.gov/org/team.html)`.
+- `instrument_roles` — **required on Observatory records** (`[]` on every other record type, since the record is itself the instrument or data product). The roles this person qualifies for on each of the Observatory's instruments, as they would be recorded on **that instrument's own record**. One entry per instrument per role:
+
+  ```json
+  {
+    "instrument": "<short name, the same value information_urls uses for that instrument>",
+    "spase_record": "<that instrument's ResourceID, or null if it has no SPASE record>",
+    "component": "<the component's short name, only when the evidence is about one component within a suite>",
+    "role": "<Author | InstrumentLead | FormerPI | InstrumentScientist | CoInvestigator | CoPI | DeputyPI>",
+    "source": "<the evidence for this role on this instrument, written for a curator>",
+    "source_scope": "instrument | component",
+    "confidence": "Strong | Medium"
+  }
+  ```
+
+  This is what lets an instrument's record be filled from the Observatory run without a second search: downstream, `spase-instrument-author-mapper` builds each of the Observatory's Instrument records' candidate lists from these entries (registered instruments and newly created ones alike), reusing the ORCID, affiliation and ROR already resolved here. So:
+  - **Record the instrument-record view, not the Observatory view.** On an Instrument record's own run, an instrument paper's positions 1–3 are Strong and 4–5 are Medium (see Source 3 (b)). Record both here, even though positions 4–5 are excluded from the Observatory's own list as instrument-team depth.
+  - **An `excluded` candidate carries `instrument_roles` when, and only when, it was excluded as instrument-team depth** at positions 4–5 of an instrument paper. Every other excluded candidate carries `[]`. Positions 6 and beyond carry `[]`: they do not clear the bar on the instrument's own run either.
+  - **Every instrument with an entry has an `Author` entry**, because inclusion on an instrument record means authorship, exactly as on the Observatory. A Contacts-derived `InstrumentLead` or `InstrumentScientist` therefore comes as a pair: `Author` plus the role, both citing the Contacts.
+  - **Only instrument-level roles.** `PrincipalInvestigator`, `MissionPrincipalInvestigator`, `ProjectScientist` and `ProgramScientist` describe the mission and never appear here.
+  - **Per-instrument confidence and source.** The fifth author of one instrument's paper who is the first author of another's gets a Medium entry for the first instrument and a Strong one for the second, each citing its own paper. The candidate's single `confidence` cannot say both.
+  - **`source_scope` is `instrument` or `component`**, from the source that supports this entry. **A component within a suite is recorded on the suite:** its own paper is `source_scope: "component"`, `"instrument": "<Suite>"`, `"component": "<Component>"`, and `spase_record` is the suite's record. SPASE records are kept at suite level, so a component paper's authors and links go on the suite's record.
+  - **Name instruments consistently.** Use the same short name in `instrument_roles`, `information_urls` and `pending_instrument_runs`, so all three can be matched to one record by exact value.
+
+  `source` in `instrument_roles` follows the same curator-voice and citation rules as `role_evidence`: it is published verbatim in the instrument record's Contact Note.
 
 ### Example (from the PROBA2 LYRA Flarelist record)
 
@@ -165,9 +199,9 @@ Each candidate object:
       "confidence": "Strong",
       "exclusion_reason": null,
       "evidence": [
-        { "source": "Lead author, non-alphabetized instrument paper (Dominique et al. 2013, 10.1007/s11207-013-0252-5)", "url": "https://doi.org/10.1007/s11207-013-0252-5", "strength": "Strong" },
-        { "source": "PI of PROBA2/LYRA in the LYRA Instrument record Contacts (instrument-scoped ⇒ InstrumentLead)", "url": "https://spase-metadata.org/SMWG/Instrument/PROBA2/LYRA.html", "strength": "Medium" },
-        { "source": "Record Contacts (GeneralContact — non-qualifying role; context only)", "url": "https://spase-metadata.org/ESA/NumericalData/PROBA2/LYRA/Flarelist/PT24H", "strength": "Low" }
+        { "source": "Lead author, non-alphabetized instrument paper (Dominique et al. 2013, 10.1007/s11207-013-0252-5)", "url": "https://doi.org/10.1007/s11207-013-0252-5", "strength": "Strong", "source_scope": "instrument" },
+        { "source": "PI of PROBA2/LYRA in the LYRA Instrument record Contacts (instrument-scoped ⇒ InstrumentLead)", "url": "https://spase-metadata.org/SMWG/Instrument/PROBA2/LYRA.html", "strength": "Medium", "source_scope": "instrument" },
+        { "source": "Record Contacts (GeneralContact — non-qualifying role; context only)", "url": "https://spase-metadata.org/ESA/NumericalData/PROBA2/LYRA/Flarelist/PT24H", "strength": "Low", "source_scope": null }
       ],
       "person_record": { "id": "spase://SMWG/Person/Marie.Dominique", "url": "https://spase-metadata.org/SMWG/Person/Marie.Dominique.html" },
       "orcid": null,
@@ -178,7 +212,8 @@ Each candidate object:
       "role_evidence": [
         { "role": "Author", "source": "First author of the LYRA instrument description paper (Dominique et al. 2013, 10.1007/s11207-013-0252-5)" },
         { "role": "InstrumentLead", "source": "Listed as Principal Investigator of the PROBA2/LYRA instrument in its SPASE Instrument record Contacts (https://spase-metadata.org/SMWG/Instrument/PROBA2/LYRA.html)" }
-      ]
+      ],
+      "instrument_roles": []
     },
     {
       "name": "Ingolf E. Dammasch",
@@ -186,8 +221,8 @@ Each candidate object:
       "confidence": "Medium",
       "exclusion_reason": null,
       "evidence": [
-        { "source": "Flarelist product-page footer credits compiler 'IED'", "url": "https://proba2.sidc.be/lyra/data/Flarelist/Flarelist.html", "strength": "Medium" },
-        { "source": "Matches co-author 'I. E. Dammasch' on instrument paper (initials-inferred — verify downstream)", "url": "https://doi.org/10.1007/s11207-013-0252-5", "strength": "Low" }
+        { "source": "Flarelist product-page footer credits compiler 'IED'", "url": "https://proba2.sidc.be/lyra/data/Flarelist/Flarelist.html", "strength": "Medium", "source_scope": "instrument" },
+        { "source": "Matches co-author 'I. E. Dammasch' on instrument paper (initials-inferred — verify downstream)", "url": "https://doi.org/10.1007/s11207-013-0252-5", "strength": "Low", "source_scope": "instrument" }
       ],
       "person_record": { "id": null, "url": null },
       "orcid": null,
@@ -197,7 +232,8 @@ Each candidate object:
       "qualifying_roles": ["Author"],
       "role_evidence": [
         { "role": "Author", "source": "Credited as the Flarelist compiler in the product-page footer, as 'IED' (https://proba2.sidc.be/lyra/data/Flarelist/Flarelist.html)" }
-      ]
+      ],
+      "instrument_roles": []
     },
     {
       "name": "Lee Frost Bargatze",
@@ -205,7 +241,7 @@ Each candidate object:
       "confidence": null,
       "exclusion_reason": "metadata curation role (MetadataContact / RevisionHistory reviewer), not a data author",
       "evidence": [
-        { "source": "Record Contacts (MetadataContact); RevisionHistory reviewer 'LFB'", "url": "https://spase-metadata.org/ESA/NumericalData/PROBA2/LYRA/Flarelist/PT24H", "strength": "Low" }
+        { "source": "Record Contacts (MetadataContact); RevisionHistory reviewer 'LFB'", "url": "https://spase-metadata.org/ESA/NumericalData/PROBA2/LYRA/Flarelist/PT24H", "strength": "Low", "source_scope": null }
       ],
       "person_record": { "id": "spase://SMWG/Person/Lee.Frost.Bargatze", "url": "https://spase-metadata.org/SMWG/Person/Lee.Frost.Bargatze.html" },
       "orcid": null,
@@ -213,7 +249,8 @@ Each candidate object:
       "activity_dates": null,
       "authorship_scope": null,
       "qualifying_roles": [],
-      "role_evidence": []
+      "role_evidence": [],
+      "instrument_roles": []
     },
     {
       "name": "Melanie Heil",
@@ -221,7 +258,7 @@ Each candidate object:
       "confidence": null,
       "exclusion_reason": "metadata submitter only (2022-01-28), not a data author",
       "evidence": [
-        { "source": "RevisionHistory metadata submitter", "url": "https://spase-metadata.org/ESA/NumericalData/PROBA2/LYRA/Flarelist/PT24H", "strength": "Low" }
+        { "source": "RevisionHistory metadata submitter", "url": "https://spase-metadata.org/ESA/NumericalData/PROBA2/LYRA/Flarelist/PT24H", "strength": "Low", "source_scope": null }
       ],
       "person_record": { "id": null, "url": null },
       "orcid": null,
@@ -229,7 +266,8 @@ Each candidate object:
       "activity_dates": null,
       "authorship_scope": null,
       "qualifying_roles": [],
-      "role_evidence": []
+      "role_evidence": [],
+      "instrument_roles": []
     },
     {
       "name": "Don McMullin",
@@ -237,7 +275,7 @@ Each candidate object:
       "confidence": null,
       "exclusion_reason": "acknowledgement-only mention ('special thanks') in instrument paper",
       "evidence": [
-        { "source": "Instrument paper acknowledgements", "url": "https://doi.org/10.1007/s11207-013-0252-5", "strength": "Low" }
+        { "source": "Instrument paper acknowledgements", "url": "https://doi.org/10.1007/s11207-013-0252-5", "strength": "Low", "source_scope": "instrument" }
       ],
       "person_record": { "id": "spase://SMWG/Person/Don.McMullin", "url": "https://spase-metadata.org/SMWG/Person/Don.McMullin.html" },
       "orcid": null,
@@ -245,7 +283,8 @@ Each candidate object:
       "activity_dates": null,
       "authorship_scope": null,
       "qualifying_roles": [],
-      "role_evidence": []
+      "role_evidence": [],
+      "instrument_roles": []
     },
     {
       "name": "Pierre Cugnon",
@@ -253,7 +292,7 @@ Each candidate object:
       "confidence": null,
       "exclusion_reason": "dedication/memorial only — not authorship evidence",
       "evidence": [
-        { "source": "Dedication in instrument paper", "url": "https://doi.org/10.1007/s11207-013-0252-5", "strength": "Low" }
+        { "source": "Dedication in instrument paper", "url": "https://doi.org/10.1007/s11207-013-0252-5", "strength": "Low", "source_scope": "instrument" }
       ],
       "person_record": { "id": null, "url": null },
       "orcid": null,
@@ -261,7 +300,8 @@ Each candidate object:
       "activity_dates": null,
       "authorship_scope": null,
       "qualifying_roles": [],
-      "role_evidence": []
+      "role_evidence": [],
+      "instrument_roles": []
     }
   ],
   "notes": [
@@ -366,7 +406,7 @@ A CMAD is a strong-evidence *bonus when found*, never a hard requirement of this
 **Discovery, by record type being processed:**
 - **Data record:** follow its `InstrumentID`(s) upward to the Instrument record(s), and from there `ObservatoryID` to the Observatory record. These are the directly relevant siblings.
 - **Instrument record:** follow `ObservatoryID` upward to the Observatory record (mission-level contacts such as a Mission PI or Project Scientist live there).
-- **Observatory record:** there is no downward link to follow — do a **reverse lookup**: find Instrument records whose `ObservatoryID` points back to this observatory. In practice, list the registry path `https://spase-metadata.org/SMWG/Instrument/<ObservatoryName>/` (instrument records are conventionally grouped under the observatory name), and/or search hpde.io for the observatory's ResourceID. Confirm each hit's `ObservatoryID` actually matches — path conventions are not guaranteed.
+- **Observatory record:** there is no downward link to follow — do a **reverse lookup**: find Instrument records whose `ObservatoryID` points back to this observatory, under **every** naming authority, not only the record's own. Run `python3 .claude/skills/spase-missing-instrument-registrar/scripts/registry.py lookup --observatory <ResourceID>`: it takes every instrument the Heliophysics Instruments API lists, reads each record from spase-metadata.org and matches on `ObservatoryID`, so it finds records filed under another authority or an unexpected path. If it cannot run, list `https://spase-metadata.org/<Authority>/Instrument/<ObservatoryName>/` for SMWG, NASA, NOAA and NSF (the authorities that hold Instrument records for SMWG Observatories) and confirm each hit's `ObservatoryID` — path conventions are not guaranteed.
 
 **Establish the true instrument roster from external ground truth**, then compare:
 - Check the **observatory/mission landing page** (via the record's `InformationURL`, or web search) for the science-payload / instrument-suite listing. **Record the URL you actually used in `instrument_coverage.roster_sources`** — not in prose only.
@@ -387,9 +427,20 @@ A CMAD is a strong-evidence *bonus when found*, never a hard requirement of this
 
   Do **not** shortcut to "take the lead author" either: between authors 1 and 2 the ordering can reflect politics rather than contribution, so the first three is the robust signal where a single lead is not. If a classified prefix is shorter than three (e.g. prefix = Lemen, Title), take exactly the prefix — never pad from the alphabetized tail.
 
-  **This rule is symmetric and admits no exceptions.** Every instrument-paper author at position 1–3 is included at Strong; every author at position 4 or beyond is `excluded` with the reason `"instrument-team depth — belongs to the <instrument> Instrument-record run"`, regardless of whether they also look mission-level or catch your eye for another reason. If such a person genuinely belongs at observatory level, they will earn it through an *independent* source — a mission-overview position, an Observatory-record qualifying contact role, a CMAD front page — and that source, not intuition, is what includes them. Never include a 4th+ author while excluding a 3rd, and never invent a scoping rationale to keep or drop an individual.
+  **This rule is symmetric and admits no exceptions.** Every instrument-paper author at position 1–3 is included at Strong; every author at position 4 or beyond is `excluded` with the reason `"instrument-team depth — belongs to the <instrument> Instrument-record run"` (positions 4–5 still carry a Medium `instrument_roles` entry for that instrument), regardless of whether they also look mission-level or catch your eye for another reason. If such a person genuinely belongs at observatory level, they will earn it through an *independent* source — a mission-overview position, an Observatory-record qualifying contact role, a CMAD front page — and that source, not intuition, is what includes them. Never include a 4th+ author while excluding a 3rd, and never invent a scoping rationale to keep or drop an individual.
 
-  **Set `authorship_scope` as you harvest:** a person taken from the mission overview paper or a mission-wide CMAD is `observatory`; a person taken from one instrument's description paper or Contacts is `instrument`; a person whose evidence is a single sensor's paper within a suite is `component`. If someone turns up in more than one, the broadest wins.
+  **Set `authorship_scope` as you harvest:** a person taken from the mission overview paper or a mission-wide CMAD is `observatory`; a person taken from one instrument's description paper or Contacts is `instrument`; a person whose evidence is a single component's paper within a suite is `component`. If someone turns up in more than one, the broadest wins.
+
+  **Fill `instrument_roles` and `source_scope` in the same pass.** Every judgment above is already instrument by instrument; record it that way instead of folding it into the broadest scope:
+  - each qualifying-role person in an Instrument record's Contacts (a) → `Author` plus that role for the instrument, Medium, `source_scope: "instrument"`, `spase_record` set to the record
+  - instrument-paper positions 1–3 (b) → `Author` for the instrument, Strong
+  - instrument-paper positions 4–5 (b) → `Author` for the instrument, Medium, on the candidate you exclude as instrument-team depth
+  - a component's own paper within a suite → `Author` for the **suite** (`"instrument": "<Suite>"`, `"component": "<Component>"`), `source_scope: "component"`, positions 1–3 Strong and 4–5 Medium as for any instrument paper; and its link in `information_urls` with the same `instrument` and `component`
+  - an instrument with no SPASE record → `spase_record: null`, and the same short name the `pending_instrument_runs` entry uses
+
+  Every `evidence` entry gets its `source_scope` as you write it.
+
+  **Worked example, continued (PROBA2/SWAP).** Seaton, Berghmans and Nicula each get `{"instrument": "SWAP", "role": "Author", "confidence": "Strong", "source_scope": "instrument", …}`. Halain (position 4) is excluded from PROBA2's list as SWAP team depth but carries a SWAP `Author` entry at Medium. De Groof is included through the mission overview paper, so her `authorship_scope` is `observatory`, and she also carries a SWAP `Author` entry at Medium for position 5. A SWAP record built from these entries matches what SWAP's own run would find from the same paper.
 
   The two sources corroborate each other and jointly capture both generations: a founding PI typically appears as a paper-prefix author (Strong) *and* as `FormerPI` in Contacts (Medium), while the current PI appears in Contacts only. Where a paper cannot be located or its selection is uncertain, record the instrument in `pending_instrument_runs` for a dedicated per-instrument pass rather than guessing.
 

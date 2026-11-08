@@ -44,6 +44,10 @@ WRITER = os.path.join(HERE, "write_records.py")
 # Present in the body of every commit this pipeline makes. A branch carrying a
 # commit without it has been touched by someone else and must not be reset.
 COMMIT_MARKER = "Applied enriched author candidates:"
+# Commits by the missing-instrument registrar are pipeline output too. A writer
+# branch built on a registration branch holds one, and after a re-run upstream
+# it may be stale; resetting it away loses nothing the pipeline cannot rebuild.
+PIPELINE_MARKERS = (COMMIT_MARKER, "Registered missing Instrument records:")
 
 
 def run(cmd, cwd=None, check=True, quiet=False):
@@ -148,7 +152,7 @@ def foreign_commits(repo, base, branch):
         if not rec.strip():
             continue
         sha, subject, body = (rec.strip().split("\x00") + ["", ""])[:3]
-        if COMMIT_MARKER not in body:
+        if not any(m in body for m in PIPELINE_MARKERS):
             out.append((sha[:8], subject))
     return out
 
@@ -269,9 +273,11 @@ def main():
 
     # ---- 4. write ---------------------------------------------------------
     wrote_any = False
+    slugs = []
     for i in inputs:
         data = json.load(open(i, encoding="utf-8"))
         s = record_slug(i, data)
+        slugs.append(s)
         decisions = os.path.join(os.path.dirname(i), "writer_decisions.json")
         print("\n=== %s ===" % s)
         cmd = [sys.executable, WRITER, "--repo", repo, "--input", i,
@@ -331,11 +337,17 @@ def main():
 
     # ---- 6. commit --------------------------------------------------------
     git(["add", "-A"] + [t for t in targets], repo)
-    msg = ("%s: add mission Contacts with Author and qualifying roles\n\n"
-           "Applied enriched author candidates: Contact blocks on the "
-           "observatory record, Person records created and updated with "
-           "affiliation, ORCID and ROR, and schemaLocation corrected to match "
-           "the declared SPASE Version." % slug.replace("_", " "))
+    # The subject names every record written (one writer run can carry a
+    # mission's instruments). "Applied enriched author candidates:" must stay:
+    # it marks the commit as pipeline output for later resets.
+    names = [x.replace("_", " ") for x in slugs]
+    subject = names[0] if len(names) == 1 else (
+        ", ".join(names) if len(names) <= 4 else "%s and %d more" % (names[0], len(names) - 1))
+    msg = ("%s: add Contacts with Author and qualifying roles\n\n"
+           "Applied enriched author candidates: Contact blocks on %s, Person "
+           "records created and updated with affiliation, ORCID and ROR, and "
+           "schemaLocation corrected to match the declared SPASE Version where "
+           "it did not." % (subject, ", ".join(names)))
     c = git(["commit", "-m", msg], repo, check=False, quiet=False)
     if c.returncode != 0:
         print("commit failed")

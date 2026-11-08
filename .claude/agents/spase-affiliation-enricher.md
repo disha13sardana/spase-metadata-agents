@@ -32,14 +32,21 @@ null and record why in the enrichment provenance. A wrong ORCID misattributes a
 real person's identity and a wrong ROR misattributes their institution — an
 honest null is always better than a confident wrong answer.
 
-**Respect the identity gate.** Process only candidates that are `included` AND
-whose identity the finder confirmed with a full name from evidence. Judge this
+**Respect the identity gate.** Process only candidates that are `included` (or
+carry a non-empty `instrument_roles`, see below) AND whose identity the finder
+confirmed with a full name from evidence. Judge this
 from the finder's evidence entries and notes, NOT from the candidate's
 `confidence` field — that field measures evidence strength for authorship, not
 certainty about who the person is. Candidates whose names were inferred from
 initials (or otherwise flagged as uncertain) are NOT enriched — leave their
 fields null and note any possible match for the reviewer, per the skill. Leave
-`excluded` candidates entirely untouched.
+`excluded` candidates entirely untouched, with one exception: an excluded
+candidate with a non-empty `instrument_roles` (on an Observatory record, an
+instrument paper's 4th–5th author) is enriched like an included one, because the
+instrument author mapper will put them on that instrument's record using this
+file. In a file the author mapper made (top-level `seeded_from`), enrich only
+candidates with no `enrichment` object and copy the rest unchanged; their
+lookups were already done on the Observatory run.
 
 **ROR depends on affiliation.** Resolve `affiliation_ror` only after
 `affiliation` is set, and only for the affiliation you actually resolved — no
@@ -144,7 +151,9 @@ An enriched JSON file at
 `spase_records/<record-name>/author_candidates_enriched.json` (do NOT overwrite
 the finder's file). Copy every top-level field from the finder's file through
 unchanged — `record`, `date`, `cmad`, `instrument_coverage`, `notes`, and any
-field you do not recognize; the finder's schema evolves. Your only modifications:
+field you do not recognize; the finder's schema evolves. Keep every per-candidate
+field too, including `instrument_roles` and each evidence entry's
+`source_scope`. Your only modifications:
 resolve `orcid`, `affiliation`, and `affiliation_ror` for eligible candidates,
 and add the per-candidate `enrichment` provenance object defined in the skill —
 including the `*_origin`, `*_source`, and `*_evidence` triple for each of the

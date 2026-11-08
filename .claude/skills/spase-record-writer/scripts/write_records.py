@@ -20,6 +20,7 @@ Exit codes: 0 written, 1 aborted (no files changed), 2 usage error.
 
 import argparse
 import difflib
+import html
 import json
 import os
 import re
@@ -332,8 +333,10 @@ OURS_RE = re.compile(
     r"Previously recorded in this record as [^\n]*?\."
     r"|The [a-z ,]*?(?:address|phone number|fax number|email address)[^\n]*?"
     r"previous(?:ly recorded)? organi[sz]ation\."
-    r"|(?:Affiliation|The organization name on display is)\b[^.]*?\."
-    r"(?:\s*(?:This is|This affiliation)[^.]*?\.)?"
+    # A full stop inside parentheses -- "(Ma et al. 2025, https://doi.org/...)"
+    # -- does not end the sentence.
+    r"|(?:Affiliation|The organization name on display is)\b(?:[^.(]|\([^)]*\))*?\."
+    r"(?:\s*(?:This is|This affiliation)(?:[^.(]|\([^)]*\))*?\.)?"
     r")\s*", re.S)
 
 STATUS_RE = re.compile(r"\b(retired|deceased|emeritus|formerly|no longer)\b", re.I)
@@ -447,8 +450,11 @@ def find_collisions(name, ids, by_sur):
 def read_person(path):
     txt = open(path, encoding="utf-8").read()
     fields = {}
+    # Values are un-escaped, so they compare equal to the input's plain text
+    # ("Space Science & Engineering Center" in the input, "&amp;" in the file);
+    # set_field escapes them again on the way out.
     for m in re.finditer(r"<([A-Za-z]+)>([^<]*)</\1>", txt):
-        fields.setdefault(m.group(1), []).append(m.group(2).strip())
+        fields.setdefault(m.group(1), []).append(html.unescape(m.group(2).strip()))
     return txt, fields
 
 
@@ -794,12 +800,22 @@ def main():
             #      after an org change it belongs to the previous employer
             #   3. where the organisation now shown came from
             curated = split_curated((fields.get("Note") or [""])[0])
+            # An earlier run in the same chain (the Observatory's writer, before
+            # an instrument's) may already have replaced the organisation and
+            # said so. The organisation is unchanged now, but that sentence is
+            # the only record of the curated value: carry it forward.
+            note_org = replaced_org
+            if not note_org:
+                m = re.search(r"Previously recorded in this record as '(.+?)'\.(?=\s|$)",
+                              (fields.get("Note") or [""])[0])
+                if m:
+                    note_org = m.group(1)
             paras = []
             if curated:
                 paras.append(curated.rstrip())
 
-            if replaced_org:
-                sent = ["Previously recorded in this record as '%s'." % replaced_org]
+            if note_org:
+                sent = ["Previously recorded in this record as '%s'." % note_org]
                 kept = [w for t, w in CONTACT_FIELD_WORDS
                         if fields.get(t) and not (args.drop_stale_contacts
                                                   and t != "Email")]
@@ -815,7 +831,7 @@ def main():
                                "verify the new value is right"
                                % (pid, replaced_org))
 
-            lead = "The organization name on display is" if replaced_org else None
+            lead = "The organization name on display is" if note_org else None
             pnote = build_person_note(c, lead=lead)
             if pnote and org:
                 paras.append(pnote)
