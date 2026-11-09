@@ -1,0 +1,86 @@
+{
+  "_help": "For each name: set links[name] to an existing PersonID if it is the same human, or move the name into creates if it is a different person. Empty string means undecided.",
+  "_candidates": {
+    "Steve Levin": [
+      "Gilbert.V.Levin",
+      "William.C.Levin"
+    ],
+    "Heidi N. Becker": [
+      "Randolph.A.Becker"
+    ],
+    "Shannon T. Brown": [
+      "M.L.Brown",
+      "Allan.H.Brown",
+      "Richard.L.Brown",
+      "Robert.H.Brown"
+    ],
+    "Ryan Park": [
+      "J.Park",
+      "Hong.Woo.Park",
+      "Chung.Gun.Park"
+    ],
+    "William B. Hubbard": [
+      "G.Scott.Hubbard"
+    ],
+    "Masafumi Imai": [
+      "T.Imai"
+    ],
+    "Michael Klein": [
+      "Ludwig.Klein",
+      "Hermann.Klein",
+      "Perry.I.Klein",
+      "Harold.P.Klein"
+    ],
+    "Cheng Li": [
+      "Xinlin.Li",
+      "Fuk.K.Li"
+    ],
+    "Wen Li": [
+      "Xinlin.Li",
+      "Fuk.K.Li"
+    ],
+    "Kimberly M. Moore": [
+      "Ronald.L.Moore",
+      "D.Moore",
+      "Thomas.E.Moore"
+    ],
+    "Donald L. Kirchner": [
+      "Donald.L.Kinser"
+    ],
+    "James W. Alexander": [
+      "Jeanne.L.Leventhal.Alexander",
+      "Joseph.K.Alexander.Jr",
+      "David.Alexander",
+      "Harold.L.Alexander"
+    ]
+  },
+  "links": {},
+  "creates": [
+    "Steve Levin",
+    "Heidi N. Becker",
+    "Shannon T. Brown",
+    "Ryan Park",
+    "William B. Hubbard",
+    "Masafumi Imai",
+    "Michael Klein",
+    "Cheng Li",
+    "Wen Li",
+    "Kimberly M. Moore",
+    "Donald L. Kirchner",
+    "James W. Alexander"
+  ],
+  "_rationale": {
+    "Steve Levin": "DIFFERENT PEOPLE (agent decision, confirmed by the user 2026-11-08) - surname-only collision. The candidate is the Juno Project Scientist and MWR lead at NASA JPL, ORCID 0000-0003-2242-5459 (deposited for 'Steven M. Levin' on 10.1002/2017gl073148). Gilbert.V.Levin is 'Mr. Gilbert V. Levin', Biospherics Incorporated; William.C.Levin is 'Dr. William C. Levin', University of Texas Medical Branch. Given names differ (Steve vs Gilbert/William), institutions differ, neither is a space physicist, and neither has an email, ORCID or reference. No Steven/S. Levin exists in Person/. New record created.",
+    "Heidi N. Becker": "DIFFERENT PEOPLE (agent decision, confirmed by the user 2026-11-08) - surname-only collision. The candidate is the Juno Radiation Monitoring Investigation lead at NASA JPL, ORCID 0000-0001-5777-9850. Randolph.A.Becker is 'Mr. Randolph A. Becker', Vista Laboratories, no email, ORCID or reference. Given names differ (Heidi vs Randolph) and institutions differ. New record created.",
+    "Shannon T. Brown": "DIFFERENT PEOPLE (agent decision, confirmed by the user 2026-11-08) - surname-only collision. The candidate is a Juno MWR co-author at JPL, ORCID 0000-0002-7566-8537. M.L.Brown (Lockheed Electronics Company), Allan.H.Brown (University City Science Center), Richard.L.Brown (NASA MSFC) and Robert.H.Brown (University of Arizona) all have a different first initial, a different institution, and no email, ORCID or reference. No S. Brown exists in Person/. New record created.",
+    "Ryan Park": "DIFFERENT PEOPLE (agent decision, confirmed by the user 2026-11-08) - surname-only collision. The candidate is the Juno Gravity Science co-lead at JPL, ORCID 0000-0001-9896-4585. J.Park (College of William and Mary), Hong.Woo.Park (GSFC Code 721.2) and Chung.Gun.Park (GSFC Code 910.3) have different first initials, different institutions, and no email, ORCID or reference. New record created.",
+    "William B. Hubbard": "DIFFERENT PEOPLE (agent decision, confirmed by the user 2026-11-08) - surname-only collision. The candidate is a Juno Co-I at the Lunar and Planetary Laboratory, University of Arizona, ORCID 0000-0003-3185-4538. G.Scott.Hubbard is 'Mr. G. Scott Hubbard', NASA Ames Research Center, no email, ORCID or reference. Given names differ (William B. vs G. Scott) and institutions differ. New record created.",
+    "Masafumi Imai": "DIFFERENT PEOPLE (agent decision, confirmed by the user 2026-11-08) - surname-only collision. The candidate is a Juno Co-I at the University of Iowa, ORCID 0000-0002-2814-4036. T.Imai is 'Dr. T. Imai', University of Tokyo, no email, ORCID or reference. First initials differ (M vs T) and institutions differ. New record created.",
+    "Michael Klein": "DIFFERENT PEOPLE (agent decision, confirmed by the user 2026-11-08) - surname-only collision. The candidate is a deceased Juno Co-I at JPL, no ORCID. Ludwig.Klein / Karl-Ludwig.Klein (LESIA, Observatoire de Paris), Hermann.Klein (DLR), Perry.I.Klein (Washington Cable Systems Inc) and Harold.P.Klein (NASA Ames) all have a different given name and institution. No M. Klein exists in Person/. New record created.",
+    "Cheng Li": "DIFFERENT PEOPLE (agent decision, confirmed by the user 2026-11-08) - surname-only collision. The candidate is a Juno Co-I and MWR co-author at Caltech (later University of Michigan), ORCID 0000-0002-8280-3119. Xinlin.Li (LASP, University of Colorado Boulder, lix@lasp.colorado.edu) and Fuk.K.Li (JPL) have different given names (Xinlin, Fuk vs Cheng). No C. Li exists in Person/. New record created.",
+    "Wen Li": "DIFFERENT PEOPLE (agent decision, confirmed by the user 2026-11-08) - surname-only collision. The candidate is a Juno Co-I at UCLA, ORCID 0000-0003-3495-4550. Xinlin.Li (LASP, University of Colorado Boulder, lix@lasp.colorado.edu) and Fuk.K.Li (JPL) have different given names (Xinlin, Fuk vs Wen) and institutions. No W. Li exists in Person/. New record created.",
+    "Kimberly M. Moore": "DIFFERENT PEOPLE (agent decision, confirmed by the user 2026-11-08) - surname-only collision. The candidate is a Juno Co-I at Caltech, ORCID 0000-0003-3162-437X. Ronald.L.Moore (NASA MSFC), D.Moore (University of Kansas) and Thomas.E.Moore (NASA GSFC Code 612.2, ROR 0171mag52) have different first initials and institutions. No K. Moore exists in Person/. New record created.",
+    "Donald L. Kirchner": "DIFFERENT PEOPLE (agent decision, confirmed by the user 2026-11-08) - flagged by fuzzy surname similarity ('Kirchner' ~ 'Kinser'), not by a shared surname. The candidate is the third author of the Juno Waves instrument paper (Kurth et al. 2017, 10.1007/s11214-017-0396-y), University of Iowa, no ORCID. Donald.L.Kinser is 'Dr. Donald L. Kinser', Vanderbilt University, no email, ORCID or reference. Given name and middle initial agree, but the surnames are different names, not spelling variants, and the institutions differ (Iowa vs Vanderbilt). No Kirchner exists in Person/. New record created.",
+    "James W. Alexander": "DIFFERENT PEOPLE (agent decision, confirmed by the user 2026-11-08) - surname-only collision. The candidate is a co-author of the Juno Radiation Monitoring Investigation paper (Becker et al. 2017, 10.1007/s11214-017-0345-9), JPL, no ORCID. Jeanne.L.Leventhal.Alexander (Alexander Foundation for Women's), Joseph.K.Alexander.Jr (GSFC Code 600; Voyager PRA and Geotail PWI records), David.Alexander (Rice Space Institute, dalex@rice.edu) and Harold.L.Alexander (MIT) all have a different given name; the two J-initial records differ in given name (Jeanne, Joseph) and middle initial (L, K vs W) and are not at JPL. New record created."
+  }
+}
