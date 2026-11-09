@@ -1,0 +1,15 @@
+{
+  "_help": "For each name: set links[name] to an existing PersonID if it is the same human, or move the name into creates if it is a different person. Empty string means undecided.",
+  "links": {},
+  "creates": [
+    "David C. Slater"
+  ],
+  "_candidates": {
+    "David C. Slater": [
+      "J.V.Slater"
+    ]
+  },
+  "_rationale": {
+    "David C. Slater": "DIFFERENT PEOPLE (agent proposal, confirmed by the user 2026-11-09) - surname-only collision. The candidate is the fifth author of the Juno UVS instrument description paper (Gladstone et al. 2017, 10.1007/s11214-014-0040-z), Southwest Research Institute (ROR 03tghng59), no ORCID; the mission team page lists 'Dave Slater (SwRI)' in its 'In honor of' memorial section. J.V.Slater is 'Mr. J. V. Slater', University of California, Berkeley, with no email, ORCID, dates or other fields; it is a legacy stub from the 2008 conversion of numeric person IDs (3af0a060b) and no record in the registry references it. Both initials differ (D. C. vs J. V.) and the institutions differ. No D. or David Slater exists in Person/. New record proposed."
+  }
+}
