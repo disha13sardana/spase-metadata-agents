@@ -1,0 +1,233 @@
+{
+  "observatory_record": "spase://SMWG/Observatory/Juno",
+  "source_file": "spase_records/Juno/author_candidates_enriched.json",
+  "date": "2026-11-08",
+  "entries": [
+    {
+      "instrument": "MAG",
+      "source_entries": [
+        "pending_instrument_runs: MAG",
+        "instrument_coverage.missing_from_spase: MAG"
+      ],
+      "action": "skip",
+      "skip_reason": "exists as spase://CNES/Instrument/CDPP-AMDA/Juno/FGM, CDPP-AMDA's record of Juno's fluxgate magnetometer (the FGM of the MAG investigation, PI John E. P. Connerney), whose ObservatoryID spase://CNES/Observatory/CDPP-AMDA/Juno is the same mission registered by CNES; it names the FGM component, and the other component, ASC, has no record under any authority, so whether MAG also needs a suite-level SMWG record is a curator decision",
+      "components": ["FGM", "ASC"],
+      "existence_check": {
+        "clone": "Instrument/Juno/ on author-enrichment-juno @ 1762793b9 holds only Ephemeris.xml; no Instrument file in the clone (2720 records) has ObservatoryID spase://SMWG/Observatory/Juno other than Ephemeris.",
+        "registry": "registry.py lookup --observatory spase://SMWG/Observatory/Juno (site source: Heliophysics Instruments API, 4518 instruments; 4512 records read from spase-metadata.org, 6 unreadable, all spase://NASA/Instrument/TRACERS/*) finds 1 record, spase://SMWG/Instrument/Juno/Ephemeris. A name search of all 4512 records under any Observatory for MAG, Magnetometer, Magnetic Field Investigation, FGM, Fluxgate Magnetometer, ASC, Advanced Stellar Compass, SHM and Scalar Helium Magnetometer finds spase://CNES/Instrument/CDPP-AMDA/Juno/FGM (ResourceName FGM, AlternateName Fluxgate Magnetometer, InstrumentType Magnetometer, InvestigationName 'Fluxgate Magnetometer on Juno FGM', Contact spase://SMWG/Person/John.E.P.Connerney as PrincipalInvestigator; its Description is of the 'Juno magnetic field investigation' and cites the Juno Magnetic field investigation paper). Its ObservatoryID, spase://CNES/Observatory/CDPP-AMDA/Juno, is the Juno mission (ResourceName Juno, Contact Scott Bolton as PrincipalInvestigator, StartDate 2011-08-05, region Jupiter). The other hits are other missions' FGM and MAG records. Nothing matches ASC or Advanced Stellar Compass. The GitHub source was not run: there is no token, and hpde/CFA returns HTTP 409."
+      },
+      "description_paper": "https://doi.org/10.1007/s11214-017-0334-z",
+      "reason": "no SPASE record",
+      "notes": "Leads captured here: John E. P. Connerney (first author, ahead of an alphabetized list of the other fifteen; MAG lead and NSSDC PI). Everyone after the first author is alphabetized, so the MAG run has only one position-based lead. The NSSDC MAG entry says the ASC was built at DTU under John L. Jørgensen, who is captured as a mission Co-Investigator with a MAG/ASC Author entry. CDPP-AMDA holds an FGM record (spase://CNES/Instrument/CDPP-AMDA/Juno/FGM) listing Connerney as PI."
+    },
+    {
+      "instrument": "MWR",
+      "source_entries": [
+        "pending_instrument_runs: MWR",
+        "instrument_coverage.missing_from_spase: MWR"
+      ],
+      "action": "create",
+      "skip_reason": null,
+      "resource_id": "spase://SMWG/Instrument/Juno/MWR",
+      "resource_name": "Microwave Radiometer",
+      "alternate_names": ["MWR"],
+      "name_sources": "'Microwave Radiometer (MWR)' on the NASA mission page (https://science.nasa.gov/mission/juno/) and NSSDC (2011-040A-04); 'Microwave Radiometer' on the team page (https://www.missionjuno.swri.edu/the-team/); description paper 'MWR: Microwave Radiometer for the Juno Mission to Jupiter'. The only sibling, Ephemeris ('Juno Positions'), does not use a '<Mission> <Full name> (<Acronym>)' pattern, so the full name is written as the team writes it.",
+      "observatory_id": "spase://SMWG/Observatory/Juno",
+      "existence_check": {
+        "clone": "Instrument/Juno/MWR.xml absent; Instrument/Juno/ holds only Ephemeris.xml; no Instrument record in the clone (2720) has MWR or Microwave Radiometer as a name.",
+        "registry": "registry.py lookup (site source: Heliophysics Instruments API 4518 instruments, 4512 records read from spase-metadata.org, 6 unreadable, all TRACERS) finds 1 record for spase://SMWG/Observatory/Juno, the Ephemeris, which shares no name. A name search of all 4512 records under any Observatory for MWR and Microwave Radiometer finds nothing, and no Instrument record that mentions Juno, Jupiter or Jovian is a radiometer. The GitHub source was not run (no token; hpde/CFA returns HTTP 409)."
+      },
+      "description_paper": "https://doi.org/10.1007/s11214-017-0349-5",
+      "reason": "no SPASE record",
+      "notes": "Leads captured: Michael A. Janssen, J. E. Oswald, Shannon T. Brown (positions 1-3); Samuel L. Gulkis and Steve Levin (positions 4-5). Janssen is recorded as FormerPI of MWR (launch-era SwRI page and NSSDC) and Levin as the current MWR lead (mission team page). Parts of the 50-name list are alphabetized; the strict end-of-list check finds a six-name sorted run at positions 45-50, so the first 44 are treated as contribution order.",
+      "not_duplicate_of": [],
+      "flags": [
+        "outside heliophysics: Jupiter's deep atmosphere; the NASA mission page gives its purpose as 'To measure the abundance of water and ammonia in the deep layers of Jupiter's atmosphere'"
+      ]
+    },
+    {
+      "instrument": "GRAV",
+      "source_entries": [
+        "pending_instrument_runs: GRAV",
+        "instrument_coverage.missing_from_spase: GRAV"
+      ],
+      "action": "create",
+      "skip_reason": null,
+      "resource_id": "spase://SMWG/Instrument/Juno/GRAV",
+      "resource_name": "Gravity Science",
+      "alternate_names": ["GRAV", "GS", "Gravity Science Instrument"],
+      "name_sources": "'Gravity Science (GRAV)' at NSSDC (2011-040A-09); 'Gravity Science (GS)' on the NASA mission page (https://science.nasa.gov/mission/juno/); 'Gravity Science' on the SwRI spacecraft page (https://www.missionjuno.swri.edu/spacecraft/juno-spacecraft); 'Gravity (X, Ka)' on the team page; description paper 'The Juno Gravity Science Instrument'. The Observatory run's short name and instrument_roles use GRAV.",
+      "observatory_id": "spase://SMWG/Observatory/Juno",
+      "existence_check": {
+        "clone": "Instrument/Juno/GRAV.xml absent; no Instrument record in the clone (2720) has GRAV, GS, Gravity Science or Gravity Science Instrument as a name.",
+        "registry": "registry.py lookup (site source, 4518 API instruments, 4512 records read) finds only the Ephemeris for spase://SMWG/Observatory/Juno, which shares no name. A name search of all 4512 records under any Observatory for GRAV, GS, Gravity, Gravity Science, Gravity Science Instrument, KaT and Ka-band Translator finds nothing. The GitHub source was not run (no token; hpde/CFA returns HTTP 409)."
+      },
+      "description_paper": "https://doi.org/10.1007/s11214-017-0428-7",
+      "reason": "no SPASE record; description paper author list fully alphabetized",
+      "notes": "The Asmar et al. 2017 author list is fully alphabetical, so position gives no leads. Leads come from other sources: Ryan Park and Luciano Iess (current Gravity leads, mission team page), William M. Folkner (NSSDC PI, recorded as FormerPI) and John Anderson (Gravity Science team lead in the launch-era SwRI text, deceased, recorded as FormerPI). Sami W. Asmar, first author by alphabet, is excluded for lack of a role source; a dedicated GRAV run should check for a Gravity-team source naming him.",
+      "not_duplicate_of": [],
+      "flags": [
+        "outside heliophysics: Jupiter's gravity field and interior; the NASA mission page gives its purpose as 'To map the distribution of mass inside Jupiter by measuring its effect on the spacecraft's radio signals to and from Earth'",
+        "sources abbreviate it differently: NSSDC writes 'Gravity Science (GRAV)', the NASA mission page 'Gravity Science (GS)'. The ResourceID uses GRAV, as NSSDC and the Observatory run do; GS is an alternate name",
+        "a radio-science investigation rather than a separate sensor: the SwRI spacecraft page describes it through the spacecraft's X-band telecom and the Italian Space Agency's Ka-band translator system (KaT). The finder listed neither as a component, and no candidate's instrument_roles names one, so the record has no components"
+      ]
+    },
+    {
+      "instrument": "JADE",
+      "source_entries": [
+        "pending_instrument_runs: JADE",
+        "instrument_coverage.missing_from_spase: JADE"
+      ],
+      "action": "skip",
+      "skip_reason": "exists as spase://CNES/Instrument/CDPP-AMDA/Juno/JADE (ResourceName JADE, AlternateName Jovian Auroral Distributions Experiment), whose ObservatoryID spase://CNES/Observatory/CDPP-AMDA/Juno is the same mission registered by CNES",
+      "existence_check": {
+        "clone": "Instrument/Juno/JADE.xml absent; no Instrument record in the clone has JADE or Jovian Auroral Distributions Experiment as a name.",
+        "registry": "registry.py lookup (site source) finds only the Ephemeris for spase://SMWG/Observatory/Juno. A name search of all 4512 records under any Observatory for JADE and Jovian Auroral Distributions Experiment finds spase://CNES/Instrument/CDPP-AMDA/Juno/JADE. It is the same instrument: InstrumentType EnergeticParticleInstrument, InvestigationName 'Jovian Auroral Distributions Experiment on Juno JADE', Contact spase://SMWG/Person/David.J.McComas as PrincipalInvestigator, and a Description of the JADE-E and JADE-I sensors. It is filed under the Juno mission's CNES Observatory record (spase://CNES/Observatory/CDPP-AMDA/Juno: ResourceName Juno, PI Scott Bolton, StartDate 2011-08-05). The Heliophysics Instruments API also lists it. The registrar script's duplicate guard cannot see it, because the guard compares only this Observatory's path (Juno) and ObservatoryID, and both differ here (CDPP-AMDA/Juno)."
+      },
+      "description_paper": "https://doi.org/10.1007/s11214-013-9990-9",
+      "reason": "no SPASE record",
+      "notes": "Leads captured: David J. McComas (first author; founding PI, recorded as FormerPI), Philip W. Valek (NSSDC PI, recorded as FormerPI), Frédéric Allegrini (current JADE lead on the mission team page). Positions 2-30 are alphabetical, apart from De Los Santos sitting after Desai and White appended after the two Wilsons; the list was treated as one lead author followed by an alphabetized remainder. Philippe Louarn leads the IRAP contribution to JADE (Europlanet)."
+    },
+    {
+      "instrument": "JEDI",
+      "source_entries": [
+        "pending_instrument_runs: JEDI",
+        "instrument_coverage.missing_from_spase: JEDI"
+      ],
+      "action": "skip",
+      "skip_reason": "exists as spase://CNES/Instrument/CDPP-AMDA/Juno/JEDI (ResourceName JEDI, AlternateName Jupiter Energetic Particle Detector Instrument), whose ObservatoryID spase://CNES/Observatory/CDPP-AMDA/Juno is the same mission registered by CNES",
+      "existence_check": {
+        "clone": "Instrument/Juno/JEDI.xml absent; no Instrument record in the clone has JEDI or Jupiter Energetic(-)Particle Detector Instrument as a name.",
+        "registry": "registry.py lookup (site source) finds only the Ephemeris for spase://SMWG/Observatory/Juno. A name search of all 4512 records under any Observatory for JEDI and Jupiter Energetic-particle Detector Instrument finds spase://CNES/Instrument/CDPP-AMDA/Juno/JEDI: InstrumentType EnergeticParticleInstrument, InvestigationName 'Jupiter Energetic Particle Detector Instrument on Juno JEDI', Contact spase://SMWG/Person/Barry.H.Mauk as PrincipalInvestigator, and a Description of the JUNO JEDI sensors. Its ObservatoryID is spase://CNES/Observatory/CDPP-AMDA/Juno, the same mission. The Heliophysics Instruments API also lists it. The script's duplicate guard cannot see it, because the Observatory path differs."
+      },
+      "description_paper": "https://doi.org/10.1007/s11214-013-0025-3",
+      "reason": "no SPASE record",
+      "notes": "Leads captured: Barry H. Mauk (first author; JEDI lead), Dennis K. Haggerty, Stephen E. Jaskulek (positions 2-3). Charles E. Schlemm II is the fourth and last author of the contribution-ordered group before the alphabetized remainder, and is excluded here with a Medium JEDI Author entry. CDPP-AMDA holds a JEDI record listing Mauk as PI."
+    },
+    {
+      "instrument": "Waves",
+      "source_entries": [
+        "pending_instrument_runs: Waves",
+        "instrument_coverage.missing_from_spase: Waves"
+      ],
+      "action": "skip",
+      "skip_reason": "exists as spase://CNES/Instrument/CDPP-AMDA/Juno/WAVES (ResourceName WAVES, AlternateName Juno Waves), whose ObservatoryID spase://CNES/Observatory/CDPP-AMDA/Juno is the same mission registered by CNES",
+      "existence_check": {
+        "clone": "Instrument/Juno/Waves.xml absent; no Instrument record in the clone names Juno Waves.",
+        "registry": "registry.py lookup (site source) finds only the Ephemeris for spase://SMWG/Observatory/Juno. A name search of all 4512 records under any Observatory for Waves, Juno Waves, Plasma Waves, Radio and Plasma Wave Sensor and Radio and Plasma Wave Instrument finds spase://CNES/Instrument/CDPP-AMDA/Juno/WAVES: InstrumentType WaveformReceiver, InvestigationName 'Juno Waves', Contact spase://SMWG/Person/William.S.Kurth as PrincipalInvestigator, and a Description of the Waves LFR and HFR receivers. Its ObservatoryID is spase://CNES/Observatory/CDPP-AMDA/Juno, the same mission. The other Waves hits are other missions' records. The Heliophysics Instruments API also lists it. The script's duplicate guard cannot see it, because the Observatory path differs."
+      },
+      "description_paper": "https://doi.org/10.1007/s11214-017-0396-y",
+      "reason": "no SPASE record",
+      "notes": "Leads captured: William S. Kurth (first author; Waves lead), George B. Hospodarsky, Donald L. Kirchner (positions 2-3); B. T. Mokrzycki and T. F. Averkamp (positions 4-5) are excluded here with Medium Waves Author entries. CDPP-AMDA holds a WAVES record listing Kurth as PI."
+    },
+    {
+      "instrument": "UVS",
+      "source_entries": [
+        "pending_instrument_runs: UVS",
+        "instrument_coverage.missing_from_spase: UVS"
+      ],
+      "action": "create",
+      "skip_reason": null,
+      "resource_id": "spase://SMWG/Instrument/Juno/UVS",
+      "resource_name": "Ultraviolet Spectrograph",
+      "alternate_names": ["UVS", "Ultraviolet Imaging Spectrograph"],
+      "name_sources": "Description paper 'The Ultraviolet Spectrograph on NASA's Juno Mission'; 'Ultraviolet Spectrograph (UVS)' on the NASA mission page; 'Ultraviolet Imaging Spectrograph (UVS)' at NSSDC (2011-040A-03); 'UVS' on the team page; 'The Ultraviolet Spectrograph, UVS' in the Observatory record's Description.",
+      "observatory_id": "spase://SMWG/Observatory/Juno",
+      "existence_check": {
+        "clone": "Instrument/Juno/UVS.xml absent. The only Instrument record in the clone named UVS is spase://SMWG/Instrument/SNOE/UVS (ObservatoryID spase://SMWG/Observatory/SNOE), a different mission's instrument.",
+        "registry": "registry.py lookup (site source) finds only the Ephemeris for spase://SMWG/Observatory/Juno, which shares no name. A name search of all 4512 records under any Observatory for UVS, Ultraviolet Spectrograph and Ultraviolet Imaging Spectrograph finds only spase://SMWG/Instrument/SNOE/UVS (SNOE). The GitHub source was not run (no token; hpde/CFA returns HTTP 409)."
+      },
+      "description_paper": "https://doi.org/10.1007/s11214-014-0040-z",
+      "reason": "no SPASE record",
+      "notes": "Leads captured: G. Randall Gladstone (first author; earlier UVS PI, recorded as FormerPI), Steven C. Persyn, John S. Eterno (positions 2-3), and Thomas K. Greathouse (current UVS lead, mission team page). Brandon C. Walther and David C. Slater (positions 4-5) are excluded here with Medium UVS Author entries.",
+      "not_duplicate_of": [],
+      "flags": [
+        "sources name it slightly differently: the description paper and the NASA mission page say 'Ultraviolet Spectrograph', NSSDC says 'Ultraviolet Imaging Spectrograph'. The paper's form is the ResourceName and the NSSDC form an alternate name"
+      ]
+    },
+    {
+      "instrument": "JIRAM",
+      "source_entries": [
+        "pending_instrument_runs: JIRAM",
+        "instrument_coverage.missing_from_spase: JIRAM"
+      ],
+      "action": "create",
+      "skip_reason": null,
+      "resource_id": "spase://SMWG/Instrument/Juno/JIRAM",
+      "resource_name": "Jovian Infrared Auroral Mapper",
+      "alternate_names": ["JIRAM"],
+      "name_sources": "Description paper 'JIRAM, the Jovian Infrared Auroral Mapper'; 'Jovian Infrared Auroral Mapper (JIRAM)' on the NASA mission page; 'JIRAM' on the team page; 'The Jovian Infrared Auroral Mapper, JIRAM' in the Observatory record's Description. NSSDC's JIRAM entry (2011-040A-02) does not load and is absent from its experiment list.",
+      "observatory_id": "spase://SMWG/Observatory/Juno",
+      "existence_check": {
+        "clone": "Instrument/Juno/JIRAM.xml absent; no Instrument record in the clone (2720) has JIRAM or Jovian Infrared Auroral Mapper as a name.",
+        "registry": "registry.py lookup (site source) finds only the Ephemeris for spase://SMWG/Observatory/Juno, which shares no name. A name search of all 4512 records under any Observatory for JIRAM and Jovian Infrared Auroral Mapper finds nothing. The GitHub source was not run (no token; hpde/CFA returns HTTP 409)."
+      },
+      "description_paper": "https://doi.org/10.1007/s11214-014-0094-y",
+      "reason": "no SPASE record",
+      "notes": "Leads captured: Alberto Adriani (first author; JIRAM PI per INAF and Europlanet, recorded as FormerPI), Gianrico Filacchione, Tatiana Di Iorio (positions 2-3), and Alessandro Mura (current JIRAM lead on the team page; earlier Deputy PI). Diego Turrini and Raffaella Noschese (positions 4-5) are excluded here with Medium JIRAM Author entries. Angioletta Coradini started the JIRAM project, but no fetched source names her its PI. NSSDC's JIRAM entry (2011-040A-02) does not load.",
+      "not_duplicate_of": [],
+      "flags": []
+    },
+    {
+      "instrument": "JunoCam",
+      "source_entries": [
+        "pending_instrument_runs: JunoCam",
+        "instrument_coverage.missing_from_spase: JunoCam"
+      ],
+      "action": "create",
+      "skip_reason": null,
+      "resource_id": "spase://SMWG/Instrument/Juno/JunoCam",
+      "resource_name": "JunoCam",
+      "alternate_names": [],
+      "name_sources": "'JunoCam' on the NASA mission page, at NSSDC (2011-040A-01), on the team page and in the Observatory record's Description; description paper 'Junocam: Juno's Outreach Camera'. The name is its own acronym, so no alternate name is added; 'Junocam' differs only in case.",
+      "observatory_id": "spase://SMWG/Observatory/Juno",
+      "existence_check": {
+        "clone": "Instrument/Juno/JunoCam.xml absent (no case variant either); no Instrument record in the clone (2720) has JunoCam as a name.",
+        "registry": "registry.py lookup (site source) finds only the Ephemeris for spase://SMWG/Observatory/Juno, which shares no name. A name search of all 4512 records under any Observatory for JunoCam and Juno Camera finds nothing. The GitHub source was not run (no token; hpde/CFA returns HTTP 409)."
+      },
+      "description_paper": "https://doi.org/10.1007/s11214-014-0079-x",
+      "reason": "no SPASE record",
+      "notes": "Leads captured: Candice J. Hansen (first author), Michael A. Caplinger, Andrew P. Ingersoll (positions 2-3); Michael A. Ravine (position 4) is included through the mission team page and NSSDC as JunoCam co-lead; Elsa H. Jensen (position 5) is excluded here with a Medium JunoCam Author entry.",
+      "not_duplicate_of": [],
+      "flags": [
+        "outside heliophysics: visible-light images of Jupiter's clouds; the NASA mission page calls it 'A visible-light camera/telescope to study the dynamics of Jupiter's clouds', and its description paper calls it 'Juno's Outreach Camera'"
+      ]
+    },
+    {
+      "instrument": "SRU",
+      "source_entries": [
+        "pending_instrument_runs: SRU",
+        "instrument_coverage.missing_from_spase: SRU"
+      ],
+      "action": "create",
+      "skip_reason": null,
+      "resource_id": "spase://SMWG/Instrument/Juno/SRU",
+      "resource_name": "Stellar Reference Unit",
+      "alternate_names": ["SRU", "Radiation Monitoring Investigation", "RMI", "Radiation Monitoring", "RM"],
+      "name_sources": "'Stellar Reference Unit (SRU)' on the NASA mission page; 'SRU' on the team page (lead Heidi Becker); 'Radiation Monitoring Investigation (RMI)' at NSSDC (2011-040A-10); description paper 'The Juno Radiation Monitoring (RM) Investigation'. The Observatory run's short name and instrument_roles use SRU.",
+      "observatory_id": "spase://SMWG/Observatory/Juno",
+      "existence_check": {
+        "clone": "Instrument/Juno/SRU.xml absent; no Instrument record in the clone (2720) has SRU, Stellar Reference Unit, Radiation Monitoring (Investigation), RMI or RM as a name.",
+        "registry": "registry.py lookup (site source) finds only the Ephemeris for spase://SMWG/Observatory/Juno, which shares no name. A name search of all 4512 records under any Observatory for SRU, Stellar Reference Unit, Radiation Monitoring, Radiation Monitoring Investigation, RMI and RM finds nothing. The GitHub source was not run (no token; hpde/CFA returns HTTP 409)."
+      },
+      "description_paper": "https://doi.org/10.1007/s11214-017-0345-9",
+      "reason": "no SPASE record",
+      "notes": "The paper's byline starts with the team name 'The Selex Galileo Juno SRU Team'. It was counted as position 1, so positions 2-5 are Heidi N. Becker, James W. Alexander, Alberto Adriani and Alessandro Mura. A per-instrument run should decide whether the record is named SRU (NASA mission page, team page) or Radiation Monitoring (NSSDC RMI, paper RM).",
+      "not_duplicate_of": [],
+      "flags": [
+        "sources disagree on the name, and the finder asked for it to be decided: the NASA mission page and the team page say Stellar Reference Unit (SRU), NSSDC says Radiation Monitoring Investigation (RMI), and the description paper says Radiation Monitoring (RM) Investigation. The ResourceID and ResourceName use the hardware's name, SRU, as NASA, the team page and the Observatory run's instrument_roles do; the investigation's names are alternate names",
+        "an engineering camera used for science: the NASA mission page says 'This engineering camera is used to help orient Juno in space by taking images of the stars'. It is on the payload roster as the sensor of the Radiation Monitoring investigation, which has its own lead (Heidi N. Becker), NSSDC experiment (2011-040A-10) and description paper"
+      ]
+    }
+  ],
+  "notes": [
+    "Worklist: the ten pending_instrument_runs entries with spase_record null (MAG, MWR, GRAV, JADE, JEDI, Waves, UVS, JIRAM, JunoCam, SRU), which are the same ten names as instrument_coverage.missing_from_spase. Each name appears once in each list, so no entries needed merging. MAG's components (FGM and ASC) come from instrument_coverage.notes and from John L. Jørgensen's instrument_roles entry (instrument MAG, component ASC). Neither component is a worklist entry of its own.",
+    "No pending_instrument_runs entry already has a record. The one existing record, spase://SMWG/Instrument/Juno/Ephemeris (InstrumentType Platform), has no pending run; the finder notes it is a virtual Platform instrument with no instrument-level roles.",
+    "CDPP-AMDA records: the finder's instrument_coverage.notes says the CNES records do not count because they point to spase://CNES/Observatory/CDPP-AMDA/Juno rather than spase://SMWG/Observatory/Juno. The skill's rule is the reverse: a hit under any authority is a skip, and the check covers 'the same mission registered as an Observatory under another authority with a different path'. spase://CNES/Observatory/CDPP-AMDA/Juno is that case: ResourceName Juno, PI Scott Bolton, StartDate 2011-08-05, region Jupiter. So JADE, JEDI and Waves are skipped as existing, and so is MAG, whose fluxgate magnetometer is CDPP-AMDA's FGM record. The Observatory run's instrument_coverage is therefore wrong for these four, and the finder's rule should be corrected.",
+    "Neither the registrar script nor the author mapper can see the CNES records. Both match records on this Observatory's path (Instrument/Juno/...) and on ObservatoryID, so a record filed at CNES/Instrument/CDPP-AMDA/Juno/... with ObservatoryID spase://CNES/Observatory/CDPP-AMDA/Juno passes the script's duplicate guard. These four skips are the only thing preventing duplicates. The mapper will also not list the four CNES records, even as REPORT. So the Observatory run's instrument_roles for JADE (6), JEDI (5), Waves (6) and MAG (3) reach no input or report unless a curator passes them on to CNES's curators.",
+    "SHM: the Observatory record's Description lists 'The Scalar Helium Magnetometer, SHM'. It is not on the worklist, and the finder judged it an error copied from NSSDC (no other source names it). No record is planned. The same Description lists FGM and ASC as separate instruments; the finder merged them as MAG.",
+    "Naming: the only sibling under spase://SMWG/Instrument/Juno/ is Ephemeris ('Juno Positions'), which does not follow a '<Mission> <Full name> (<Acronym>)' pattern. ResourceNames are therefore the full names as each team writes them, and the acronyms are alternate names.",
+    "InstrumentType, InvestigationName and Description are left unfilled, per the skill: the script writes Unspecified and empty elements.",
+    "Registry sources: the site source (Heliophysics Instruments API plus spase-metadata.org) ran. The GitHub source could not: gh is not installed and GITHUB_TOKEN is unset, and its refresh aborts on hpde/CFA, which returns HTTP 409 (an empty repository) to the git/trees call. registry.py retries 409 and then raises, instead of treating it as a repository with no Instrument folder."
+  ]
+}
