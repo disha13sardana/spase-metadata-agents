@@ -1,0 +1,25 @@
+{
+  "_help": "For each name: set links[name] to an existing PersonID if it is the same human, or move the name into creates if it is a different person. Empty string means undecided.",
+  "links": {},
+  "creates": [
+    "Steve Levin",
+    "Shannon T. Brown"
+  ],
+  "_candidates": {
+    "Steve Levin": [
+      "Gilbert.V.Levin",
+      "William.C.Levin"
+    ],
+    "Shannon T. Brown": [
+      "M.L.Brown",
+      "Allan.H.Brown",
+      "Richard.L.Brown",
+      "Robert.H.Brown"
+    ]
+  },
+  "_rationale": {
+    "Steve Levin": "DIFFERENT PEOPLE (agent decision, confirmed by the user 2026-11-08) - surname-only collision. The candidate is the Juno Project Scientist and MWR lead at NASA JPL, ORCID 0000-0003-2242-5459 (deposited for 'Steven M. Levin' on 10.1002/2017gl073148). Gilbert.V.Levin is 'Mr. Gilbert V. Levin', Biospherics Incorporated; William.C.Levin is 'Dr. William C. Levin', University of Texas Medical Branch. Given names differ (Steve vs Gilbert/William), institutions differ, neither is a space physicist, and neither has an email, ORCID or reference. No Steven/S. Levin exists in Person/. New record created.",
+    "Shannon T. Brown": "DIFFERENT PEOPLE (agent decision, confirmed by the user 2026-11-08) - surname-only collision. The candidate is a Juno MWR co-author at JPL, ORCID 0000-0002-7566-8537. M.L.Brown (Lockheed Electronics Company), Allan.H.Brown (University City Science Center), Richard.L.Brown (NASA MSFC) and Robert.H.Brown (University of Arizona) all have a different first initial, a different institution, and no email, ORCID or reference. No S. Brown exists in Person/. New record created."
+  },
+  "_carried_from": "../Juno/writer_decisions.json"
+}

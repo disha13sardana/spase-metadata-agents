@@ -1,0 +1,419 @@
+{
+  "record": "spase://SMWG/Instrument/Juno/JIRAM",
+  "date": "2026-11-09",
+  "operating_span": {
+    "start": "2011-08-05",
+    "stop": null
+  },
+  "cmad": {
+    "found": false,
+    "expected": true,
+    "url": null,
+    "notes": "No CMAD located. (a) No designated CMAD repository is configured for this run; a Zenodo search for a Juno CMAD returned only records of the unrelated JUNO neutrino experiment. (b) Juno's data archive page at PDS PPI (https://pds-ppi.igpp.ucla.edu/mission/Juno) and the SwRI Mission Juno site carry no CMAD. (c) Web search for 'Juno CMAD' and 'Juno Calibration and Measurement Algorithms Document' found only per-instrument PDS Software Interface Specifications (MAG, JADE, JEDI, JIRAM), which are not CMADs. A CMAD is expected under this procedure because the record has no StopDate (operational) and Juno is NASA-funded, so this is recorded as an expected-but-not-located gap. Context for the reviewer: Juno is a Planetary Science Division New Frontiers mission reviewed in the Planetary Mission Senior Review, while the CMAD is a Heliophysics senior-review deliverable, so its absence may be unremarkable; and Juno's status after its extension through September 2025 could not be confirmed from a primary source (NASA's mission page still labels it an active mission; NSSDC says end of mission was scheduled for September 2025). Current-team evidence came instead from the mission team page (https://www.missionjuno.swri.edu/the-team/). Proceeded with the remaining sources."
+  },
+  "pending_instrument_runs": [],
+  "information_urls": [
+    {
+      "name": "JIRAM, the Jovian Infrared Auroral Mapper",
+      "url": "https://doi.org/10.1007/s11214-014-0094-y",
+      "description": "JIRAM instrument description paper.",
+      "scope": "instrument",
+      "instrument": "JIRAM"
+    }
+  ],
+  "candidates": [
+    {
+      "name": "Alberto Adriani",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "First author of the JIRAM instrument description paper (Adriani et al. 2017, 10.1007/s11214-014-0094-y)",
+          "url": "https://doi.org/10.1007/s11214-014-0094-y",
+          "strength": "Strong",
+          "source_scope": "instrument"
+        },
+        {
+          "source": "Named JIRAM principal investigator by INAF Media (2012 and 2016) and on the Europlanet 'European Involvement in Juno' page",
+          "url": "https://www.media.inaf.it/2016/03/18/jiram-scalda-i-motori/",
+          "strength": "Medium",
+          "source_scope": "instrument"
+        },
+        {
+          "source": "Listed as a Co-Investigator of the Juno mission on the mission team page",
+          "url": "https://www.missionjuno.swri.edu/the-team/",
+          "strength": "Medium",
+          "source_scope": "observatory"
+        },
+        {
+          "source": "Fourth author of the Juno Radiation Monitoring Investigation paper, which describes the radiation science done with the Stellar Reference Unit (SRU) (Becker et al. 2017, 10.1007/s11214-017-0345-9), counting the team name that heads the byline",
+          "url": "https://doi.org/10.1007/s11214-017-0345-9",
+          "strength": "Medium",
+          "source_scope": "instrument"
+        },
+        {
+          "source": "Second author of the Juno magnetospheric science objectives paper (Bagenal et al. 2017, 10.1007/s11214-014-0036-8), in the alphabetized part of that list",
+          "url": "https://doi.org/10.1007/s11214-014-0036-8",
+          "strength": "Low",
+          "source_scope": "observatory"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": "https://orcid.org/0000-0003-4998-8008",
+      "affiliation": "Istituto di Astrofisica e Planetologia Spaziali, Istituto Nazionale di Astrofisica",
+      "affiliation_ror": "https://ror.org/0141xw169",
+      "activity_dates": null,
+      "authorship_scope": "instrument",
+      "qualifying_roles": [
+        "Author",
+        "FormerPI"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "First author of the JIRAM instrument description paper (Adriani et al. 2017, 10.1007/s11214-014-0094-y)"
+        },
+        {
+          "role": "FormerPI",
+          "source": "Named JIRAM principal investigator by INAF Media (https://www.media.inaf.it/2016/03/18/jiram-scalda-i-motori/) and Europlanet (https://www.europlanet.org/?p=927); the Juno mission team page now names Alessandro Mura as JIRAM lead (https://www.missionjuno.swri.edu/the-team/)"
+        }
+      ],
+      "instrument_roles": [],
+      "enrichment": {
+        "orcid_origin": "finder",
+        "orcid_source": "Crossref (paper DOI)",
+        "orcid_evidence": "10.1029/2021ja029469",
+        "orcid_evidence_citation": "Wang et al. 2021",
+        "orcid_confidence": "Confirmed",
+        "affiliation_origin": "finder",
+        "affiliation_source": "ORCID employment",
+        "affiliation_evidence": "https://orcid.org/0000-0003-4998-8008",
+        "affiliation_type": "era-matched",
+        "ror_origin": "enricher",
+        "ror_source": "ROR affiliation-match (chosen)",
+        "ror_evidence": "https://ror.org/0141xw169",
+        "ror_confidence": "Confirmed",
+        "lookup_status": "complete",
+        "notes": "ORCID: the finder's value (from OpenAlex) passes the checksum. The finder's evidence DOIs deposit no iD for this author, so it was validated by Route A': Crossref deposits it for 'Alberto Adriani' on 10.1029/2021ja029469 (Wang et al. 2021), a Juno-titled paper outside the finder's evidence list. The ORCID record is in the name 'Alberto Adriani'. Affiliation: era-matched. INAF, Istituto di Astrofisica e Planetologia Spaziali (2003-03-01 to 2020-01-31) is the only position overlapping the span; CNR (1983-2003) ended before it. Same unit as the finder value 'INAF-IAPS, Rome, Italy'. The finder's string was 'INAF-IAPS, Rome, Italy'. ROR: the affiliation match chose the parent https://ror.org/02gh4kt33 (National Institute for Astrophysics (INAF), score 1.0); the string names the Istituto di Astrofisica e Planetologia Spaziali (IAPS), whose own record https://ror.org/0141xw169 also scored 1.0 (not chosen) and which ROR records as a child of National Institute for Astrophysics (INAF), so the child was recorded and the parent set aside. ORCID's INAF entry carries a FUNDREF id, which was not used."
+      },
+      "seeded_from": {
+        "observatory_status": "included",
+        "observatory_exclusion_reason": null
+      }
+    },
+    {
+      "name": "Alessandro Mura",
+      "status": "included",
+      "confidence": "Medium",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Named JIRAM lead on the mission team page",
+          "url": "https://www.missionjuno.swri.edu/the-team/",
+          "strength": "Medium",
+          "source_scope": "instrument"
+        },
+        {
+          "source": "Listed as a Co-Investigator of the Juno mission on the mission team page",
+          "url": "https://www.missionjuno.swri.edu/the-team/",
+          "strength": "Medium",
+          "source_scope": "observatory"
+        },
+        {
+          "source": "Named JIRAM Deputy PI on the Europlanet 'European Involvement in Juno' page",
+          "url": "https://www.europlanet.org/?p=927",
+          "strength": "Low",
+          "source_scope": "instrument"
+        },
+        {
+          "source": "Fifth author of the Juno Radiation Monitoring Investigation paper, which describes the radiation science done with the Stellar Reference Unit (SRU) (Becker et al. 2017, 10.1007/s11214-017-0345-9), counting the team name that heads the byline",
+          "url": "https://doi.org/10.1007/s11214-017-0345-9",
+          "strength": "Medium",
+          "source_scope": "instrument"
+        },
+        {
+          "source": "Eighth author of the JIRAM instrument description paper (Adriani et al. 2017, 10.1007/s11214-014-0094-y)",
+          "url": "https://doi.org/10.1007/s11214-014-0094-y",
+          "strength": "Low",
+          "source_scope": "instrument"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": "https://orcid.org/0000-0002-4552-4292",
+      "affiliation": "IAPS, Istituto Di Astrofisica E Planetologia Spaziali",
+      "affiliation_ror": "https://ror.org/0141xw169",
+      "activity_dates": null,
+      "authorship_scope": "instrument",
+      "qualifying_roles": [
+        "Author",
+        "InstrumentLead"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Named JIRAM lead on the Juno mission team page (https://www.missionjuno.swri.edu/the-team/)"
+        },
+        {
+          "role": "InstrumentLead",
+          "source": "Named JIRAM lead on the Juno mission team page (https://www.missionjuno.swri.edu/the-team/), succeeding Alberto Adriani"
+        }
+      ],
+      "instrument_roles": [],
+      "enrichment": {
+        "orcid_origin": "finder",
+        "orcid_source": "Crossref (paper DOI)",
+        "orcid_evidence": "10.1029/2021ja029469",
+        "orcid_evidence_citation": "Wang et al. 2021",
+        "orcid_confidence": "Confirmed",
+        "affiliation_origin": "finder",
+        "affiliation_source": "ORCID employment",
+        "affiliation_evidence": "https://orcid.org/0000-0002-4552-4292",
+        "affiliation_type": "era-matched",
+        "ror_origin": "enricher",
+        "ror_source": "ORCID disambiguated-organization",
+        "ror_evidence": "https://orcid.org/0000-0002-4552-4292",
+        "ror_confidence": "Confirmed",
+        "lookup_status": "complete",
+        "notes": "ORCID: the finder's value (from OpenAlex) passes the checksum. The finder's evidence DOIs deposit no iD for this author, so it was validated by Route A': Crossref deposits it for 'Alessandro Mura' on 10.1029/2021ja029469 (Wang et al. 2021), a Juno-titled paper outside the finder's evidence list. The ORCID record is in the name 'Alessandro Mura'. Affiliation: era-matched. Of two past positions at IAPS that overlap the span, the longest-overlapping (2001-01-01 to 2023-02-01) was taken; there is no provider institution to break the tie for this Observatory. Set aside: Senior Researcher at 'stituto di Astrofisica e Planetologia Spaziali' (sic), 2023-02-01 to 2025-12-29, and the ongoing Research Director post (2025-12-30 to present, current). Same unit as the finder value 'INAF-IAPS, Rome, Italy'. The finder's string was 'INAF-IAPS, Rome, Italy'. ROR: asserted by the selected ORCID employment's disambiguated-organization (ROR 0141xw169, Institute for Space Astrophysics and Planetology, Rome, IT). The affiliation match on the same string independently chose it."
+      },
+      "seeded_from": {
+        "observatory_status": "included",
+        "observatory_exclusion_reason": null
+      }
+    },
+    {
+      "name": "Gianrico Filacchione",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Second author of the JIRAM instrument description paper (Adriani et al. 2017, 10.1007/s11214-014-0094-y)",
+          "url": "https://doi.org/10.1007/s11214-014-0094-y",
+          "strength": "Strong",
+          "source_scope": "instrument"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": "https://orcid.org/0000-0001-9567-0055",
+      "affiliation": "IAPS Istituto di Astrofisica e Planetologia Spaziali, Istituto nazionale di astrofisica",
+      "affiliation_ror": "https://ror.org/0141xw169",
+      "activity_dates": null,
+      "authorship_scope": "instrument",
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Second author of the JIRAM instrument description paper (Adriani et al. 2017, 10.1007/s11214-014-0094-y)"
+        }
+      ],
+      "instrument_roles": [],
+      "enrichment": {
+        "orcid_origin": "finder",
+        "orcid_source": "Crossref (paper DOI)",
+        "orcid_evidence": "10.1016/j.icarus.2019.03.022",
+        "orcid_evidence_citation": "Filacchione et al. 2019",
+        "orcid_confidence": "Confirmed",
+        "affiliation_origin": "finder",
+        "affiliation_source": "ORCID employment",
+        "affiliation_evidence": "https://orcid.org/0000-0001-9567-0055",
+        "affiliation_type": "era-matched",
+        "ror_origin": "enricher",
+        "ror_source": "ROR affiliation-match (chosen)",
+        "ror_evidence": "https://ror.org/0141xw169",
+        "ror_confidence": "Confirmed",
+        "lookup_status": "complete",
+        "notes": "ORCID: the finder's value (from OpenAlex) passes the checksum. The finder's evidence DOIs deposit no iD for this author, so it was validated by Route A': Crossref deposits it for 'Gianrico Filacchione' on 10.1016/j.icarus.2019.03.022 (Filacchione et al. 2019), a Juno-titled paper outside the finder's evidence list. The ORCID record is in the name 'Gianrico Filacchione'. Affiliation: era-matched. Istituto nazionale di astrofisica, 'IAPS Istituto di Astrofisica e Planetologia Spaziali' (2010-03-01 to present) is the only ORCID employment. Same unit as the finder value 'INAF-IAPS, Rome, Italy'. The finder's string was 'INAF-IAPS, Rome, Italy'. ROR: the affiliation match chose the parent https://ror.org/02gh4kt33 (National Institute for Astrophysics (INAF), score 1.0); the string names the Istituto di Astrofisica e Planetologia Spaziali (IAPS), whose own record https://ror.org/0141xw169 also scored 1.0 (not chosen) and which ROR records as a child of National Institute for Astrophysics (INAF), so the child was recorded and the parent set aside. ORCID's entry carries a RINGGOLD id (53283), which was not converted."
+      },
+      "seeded_from": {
+        "observatory_status": "included",
+        "observatory_exclusion_reason": null
+      }
+    },
+    {
+      "name": "Tatiana Di Iorio",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Third author of the JIRAM instrument description paper (Adriani et al. 2017, 10.1007/s11214-014-0094-y)",
+          "url": "https://doi.org/10.1007/s11214-014-0094-y",
+          "strength": "Strong",
+          "source_scope": "instrument"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": "https://orcid.org/0000-0001-8872-8917",
+      "affiliation": "SSPT-PROTER-OEM, ENEA Centro Ricerche Casaccia",
+      "affiliation_ror": "https://ror.org/02khqd465",
+      "activity_dates": null,
+      "authorship_scope": "instrument",
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Third author of the JIRAM instrument description paper (Adriani et al. 2017, 10.1007/s11214-014-0094-y)"
+        }
+      ],
+      "instrument_roles": [],
+      "enrichment": {
+        "orcid_origin": "finder",
+        "orcid_source": "ORCID name-search (corroborated)",
+        "orcid_evidence": "https://orcid.org/0000-0001-8872-8917",
+        "orcid_confidence": "Confirmed",
+        "affiliation_origin": "enricher",
+        "affiliation_source": "ORCID employment",
+        "affiliation_evidence": "https://orcid.org/0000-0001-8872-8917",
+        "affiliation_type": "current",
+        "ror_origin": "enricher",
+        "ror_source": "ROR affiliation-match (chosen)",
+        "ror_evidence": "https://ror.org/02khqd465",
+        "ror_confidence": "Confirmed",
+        "lookup_status": "complete",
+        "notes": "ORCID: the finder's value (from OpenAlex) passes the checksum. No Juno-titled Crossref deposit carries it. The ORCID record ('Tatiana Di Iorio') lists both finder evidence papers, 'JIRAM, the Jovian Infrared Auroral Mapper' and 'The Juno Radiation Monitoring (RM) Investigation', which corroborates identity. Affiliation DIFFERS from the finder value 'INAF-IAPS, Rome, Italy'; flag for review. The ORCID record's only employment is undated: ENEA Centro Ricerche Casaccia, SSPT-PROTER-OEM, Ricercatore. No Juno-titled deposit carries an affiliation for her, so the single undated employment is used and labelled current. The finder's INAF-IAPS value presumably reflects the JIRAM-era byline, which Crossref does not deposit. ROR: affiliation match chose https://ror.org/02khqd465 (ENEA Casaccia Research Centre, IT); name and country check out."
+      },
+      "seeded_from": {
+        "observatory_status": "included",
+        "observatory_exclusion_reason": null
+      }
+    },
+    {
+      "name": "Diego Turrini",
+      "status": "included",
+      "confidence": "Medium",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Fourth author of the JIRAM instrument description paper (Adriani et al. 2017, 10.1007/s11214-014-0094-y)",
+          "url": "https://doi.org/10.1007/s11214-014-0094-y",
+          "strength": "Medium",
+          "source_scope": "instrument"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": "https://orcid.org/0000-0002-1923-7740",
+      "affiliation": "Istituto di Astrofisica e Planetologia Spaziali INAF-IAPS",
+      "affiliation_ror": "https://ror.org/0141xw169",
+      "activity_dates": null,
+      "authorship_scope": "instrument",
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Fourth author of the JIRAM instrument description paper (Adriani et al. 2017, 10.1007/s11214-014-0094-y)"
+        }
+      ],
+      "instrument_roles": [],
+      "enrichment": {
+        "orcid_origin": "finder",
+        "orcid_source": "Crossref (paper DOI)",
+        "orcid_evidence": "10.1038/s41550-023-02107-5",
+        "orcid_evidence_citation": "Tosi et al. 2023",
+        "orcid_confidence": "Confirmed",
+        "affiliation_origin": "finder",
+        "affiliation_source": "ORCID employment",
+        "affiliation_evidence": "https://orcid.org/0000-0002-1923-7740",
+        "affiliation_type": "era-matched",
+        "ror_origin": "enricher",
+        "ror_source": "ROR affiliation-match (chosen)",
+        "ror_evidence": "https://ror.org/0141xw169",
+        "ror_confidence": "Confirmed",
+        "lookup_status": "complete",
+        "notes": "ORCID: the finder's value (from OpenAlex) passes the checksum. The finder's evidence DOIs deposit no iD for this author, so it was validated by Route A': Crossref deposits it for 'Diego Turrini' on 10.1038/s41550-023-02107-5 (Tosi et al. 2023), a Juno-titled paper outside the finder's evidence list. The ORCID record is in the name 'Diego Turrini'. Affiliation: era-matched. Three past positions overlap the span: INAF-IFSI postdoc (2007-06-02 to 2012-04-30), INAF-IAPS senior postdoc (2012-05-02 to 2013-04-30) and INAF-IAPS fixed-term researcher (2013-05-13 to 2016-06-30). The longest-overlapping, 2013-2016, was taken; the ongoing tenured IAPS post (2016-07-01 to present) is set aside as current. Affiliation changed during the operating span: IFSI, then IAPS (IFSI was merged into IAPS). Same unit as the finder value. The finder's string was 'INAF-IAPS, Rome, Italy'. ROR: affiliation match chose https://ror.org/0141xw169 (Institute for Space Astrophysics and Planetology, IT); name and country check out. ORCID's entry carries a RINGGOLD id (246694), which was not converted."
+      },
+      "seeded_from": {
+        "observatory_status": "excluded",
+        "observatory_exclusion_reason": "instrument-team depth — belongs to the JIRAM Instrument-record run"
+      }
+    },
+    {
+      "name": "Raffaella Noschese",
+      "status": "included",
+      "confidence": "Medium",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Fifth author of the JIRAM instrument description paper (Adriani et al. 2017, 10.1007/s11214-014-0094-y)",
+          "url": "https://doi.org/10.1007/s11214-014-0094-y",
+          "strength": "Medium",
+          "source_scope": "instrument"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": "https://orcid.org/0000-0003-0502-0337",
+      "affiliation": "Istituto Nazionale di Astrofisica – Istituto di Astrofisica e Planetologia Spaziali Rome Italy",
+      "affiliation_ror": "https://ror.org/0141xw169",
+      "activity_dates": null,
+      "authorship_scope": "instrument",
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Fifth author of the JIRAM instrument description paper (Adriani et al. 2017, 10.1007/s11214-014-0094-y)"
+        }
+      ],
+      "instrument_roles": [],
+      "enrichment": {
+        "orcid_origin": "finder",
+        "orcid_source": "Crossref (paper DOI)",
+        "orcid_evidence": "10.1029/2024je008723",
+        "orcid_evidence_citation": "Mura et al. 2025",
+        "orcid_confidence": "Confirmed",
+        "affiliation_origin": "finder",
+        "affiliation_source": "Crossref (paper DOI)",
+        "affiliation_evidence": "10.1029/2024je008723",
+        "affiliation_evidence_citation": "Mura et al. 2025",
+        "affiliation_type": "as-deposited",
+        "ror_origin": "enricher",
+        "ror_source": "ROR affiliation-match (chosen)",
+        "ror_evidence": "https://ror.org/0141xw169",
+        "ror_confidence": "Confirmed",
+        "lookup_status": "complete",
+        "notes": "ORCID: the finder's value (from OpenAlex) passes the checksum. The finder's evidence DOIs deposit no iD for this author, so it was validated by Route A': Crossref deposits it for 'Raffaella Noschese' on 10.1029/2024je008723 (Mura et al. 2025), a Juno-titled paper outside the finder's evidence list. The ORCID record is in the name 'Raffaella Noschese'. Affiliation: no ORCID employment. Of the deposits carrying her iD, 10.1029/2024je008723 names IAPS within INAF and is more specific than the 'Istituto Nazionale di Astrofisica' deposits. Same unit as the finder value. The finder's string was 'INAF-IAPS, Rome, Italy'. ROR: affiliation match chose https://ror.org/0141xw169 (Institute for Space Astrophysics and Planetology, IT; INAF, https://ror.org/02gh4kt33, also scored 1.0, unchosen, and is the recorded parent); name and country check out."
+      },
+      "seeded_from": {
+        "observatory_status": "excluded",
+        "observatory_exclusion_reason": "instrument-team depth — belongs to the JIRAM Instrument-record run"
+      }
+    }
+  ],
+  "notes": [
+    "Built from the Observatory run on spase://SMWG/Observatory/Juno (2026-11-08), not from a separate finder and enricher run on this record. People, roles, ORCID, affiliation and ROR are copied from that file.",
+    "operating_span is the Observatory's; affiliations were era-matched against it."
+  ],
+  "seeded_from": {
+    "observatory_record": "spase://SMWG/Observatory/Juno",
+    "observatory_run_date": "2026-11-08",
+    "source": "instrument_roles",
+    "status": "ready",
+    "reason": "Observatory run resolved this instrument's authors"
+  }
+}

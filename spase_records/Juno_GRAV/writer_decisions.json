@@ -1,0 +1,18 @@
+{
+  "_help": "For each name: set links[name] to an existing PersonID if it is the same human, or move the name into creates if it is a different person. Empty string means undecided.",
+  "links": {},
+  "creates": [
+    "Ryan Park"
+  ],
+  "_candidates": {
+    "Ryan Park": [
+      "J.Park",
+      "Hong.Woo.Park",
+      "Chung.Gun.Park"
+    ]
+  },
+  "_rationale": {
+    "Ryan Park": "DIFFERENT PEOPLE (agent decision, confirmed by the user 2026-11-08) - surname-only collision. The candidate is the Juno Gravity Science co-lead at JPL, ORCID 0000-0001-9896-4585. J.Park (College of William and Mary), Hong.Woo.Park (GSFC Code 721.2) and Chung.Gun.Park (GSFC Code 910.3) have different first initials, different institutions, and no email, ORCID or reference. New record created."
+  },
+  "_carried_from": "../Juno/writer_decisions.json"
+}

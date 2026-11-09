@@ -1,0 +1,24 @@
+{
+  "_help": "For each name: set links[name] to an existing PersonID if it is the same human, or move the name into creates if it is a different person. Empty string means undecided.",
+  "links": {},
+  "creates": [
+    "Heidi N. Becker",
+    "James W. Alexander"
+  ],
+  "_candidates": {
+    "Heidi N. Becker": [
+      "Randolph.A.Becker"
+    ],
+    "James W. Alexander": [
+      "Jeanne.L.Leventhal.Alexander",
+      "Joseph.K.Alexander.Jr",
+      "David.Alexander",
+      "Harold.L.Alexander"
+    ]
+  },
+  "_rationale": {
+    "Heidi N. Becker": "DIFFERENT PEOPLE (agent decision, confirmed by the user 2026-11-08) - surname-only collision. The candidate is the Juno Radiation Monitoring Investigation lead at NASA JPL, ORCID 0000-0001-5777-9850. Randolph.A.Becker is 'Mr. Randolph A. Becker', Vista Laboratories, no email, ORCID or reference. Given names differ (Heidi vs Randolph) and institutions differ. New record created.",
+    "James W. Alexander": "DIFFERENT PEOPLE (agent decision, confirmed by the user 2026-11-08) - surname-only collision. The candidate is a co-author of the Juno Radiation Monitoring Investigation paper (Becker et al. 2017, 10.1007/s11214-017-0345-9), JPL, no ORCID. Jeanne.L.Leventhal.Alexander (Alexander Foundation for Women's), Joseph.K.Alexander.Jr (GSFC Code 600; Voyager PRA and Geotail PWI records), David.Alexander (Rice Space Institute, dalex@rice.edu) and Harold.L.Alexander (MIT) all have a different given name; the two J-initial records differ in given name (Jeanne, Joseph) and middle initial (L, K vs W) and are not at JPL. New record created."
+  },
+  "_carried_from": "../Juno/writer_decisions.json"
+}

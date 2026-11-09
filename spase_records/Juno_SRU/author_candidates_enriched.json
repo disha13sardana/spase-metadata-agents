@@ -1,0 +1,337 @@
+{
+  "record": "spase://SMWG/Instrument/Juno/SRU",
+  "date": "2026-11-09",
+  "operating_span": {
+    "start": "2011-08-05",
+    "stop": null
+  },
+  "cmad": {
+    "found": false,
+    "expected": true,
+    "url": null,
+    "notes": "No CMAD located. (a) No designated CMAD repository is configured for this run; a Zenodo search for a Juno CMAD returned only records of the unrelated JUNO neutrino experiment. (b) Juno's data archive page at PDS PPI (https://pds-ppi.igpp.ucla.edu/mission/Juno) and the SwRI Mission Juno site carry no CMAD. (c) Web search for 'Juno CMAD' and 'Juno Calibration and Measurement Algorithms Document' found only per-instrument PDS Software Interface Specifications (MAG, JADE, JEDI, JIRAM), which are not CMADs. A CMAD is expected under this procedure because the record has no StopDate (operational) and Juno is NASA-funded, so this is recorded as an expected-but-not-located gap. Context for the reviewer: Juno is a Planetary Science Division New Frontiers mission reviewed in the Planetary Mission Senior Review, while the CMAD is a Heliophysics senior-review deliverable, so its absence may be unremarkable; and Juno's status after its extension through September 2025 could not be confirmed from a primary source (NASA's mission page still labels it an active mission; NSSDC says end of mission was scheduled for September 2025). Current-team evidence came instead from the mission team page (https://www.missionjuno.swri.edu/the-team/). Proceeded with the remaining sources."
+  },
+  "pending_instrument_runs": [],
+  "information_urls": [
+    {
+      "name": "The Juno Radiation Monitoring (RM) Investigation",
+      "url": "https://doi.org/10.1007/s11214-017-0345-9",
+      "description": "Paper describing the radiation-monitoring investigation done with the Stellar Reference Unit and other onboard sensors.",
+      "scope": "instrument",
+      "instrument": "SRU"
+    },
+    {
+      "name": "NSSDC Master Catalog: SRU",
+      "url": "https://nssdc.gsfc.nasa.gov/nmc/experiment/display.action?id=2011-040A-10",
+      "description": "NSSDC entry for this Juno experiment, with its description and Principal Investigator.",
+      "scope": "instrument",
+      "instrument": "SRU"
+    }
+  ],
+  "candidates": [
+    {
+      "name": "Alberto Adriani",
+      "status": "included",
+      "confidence": "Medium",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "First author of the JIRAM instrument description paper (Adriani et al. 2017, 10.1007/s11214-014-0094-y)",
+          "url": "https://doi.org/10.1007/s11214-014-0094-y",
+          "strength": "Strong",
+          "source_scope": "instrument"
+        },
+        {
+          "source": "Named JIRAM principal investigator by INAF Media (2012 and 2016) and on the Europlanet 'European Involvement in Juno' page",
+          "url": "https://www.media.inaf.it/2016/03/18/jiram-scalda-i-motori/",
+          "strength": "Medium",
+          "source_scope": "instrument"
+        },
+        {
+          "source": "Listed as a Co-Investigator of the Juno mission on the mission team page",
+          "url": "https://www.missionjuno.swri.edu/the-team/",
+          "strength": "Medium",
+          "source_scope": "observatory"
+        },
+        {
+          "source": "Fourth author of the Juno Radiation Monitoring Investigation paper, which describes the radiation science done with the Stellar Reference Unit (SRU) (Becker et al. 2017, 10.1007/s11214-017-0345-9), counting the team name that heads the byline",
+          "url": "https://doi.org/10.1007/s11214-017-0345-9",
+          "strength": "Medium",
+          "source_scope": "instrument"
+        },
+        {
+          "source": "Second author of the Juno magnetospheric science objectives paper (Bagenal et al. 2017, 10.1007/s11214-014-0036-8), in the alphabetized part of that list",
+          "url": "https://doi.org/10.1007/s11214-014-0036-8",
+          "strength": "Low",
+          "source_scope": "observatory"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": "https://orcid.org/0000-0003-4998-8008",
+      "affiliation": "Istituto di Astrofisica e Planetologia Spaziali, Istituto Nazionale di Astrofisica",
+      "affiliation_ror": "https://ror.org/0141xw169",
+      "activity_dates": null,
+      "authorship_scope": "instrument",
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Fourth author of the Juno Radiation Monitoring Investigation paper, which describes the radiation science done with the Stellar Reference Unit (SRU) (Becker et al. 2017, 10.1007/s11214-017-0345-9), counting the team name that heads the byline"
+        }
+      ],
+      "instrument_roles": [],
+      "enrichment": {
+        "orcid_origin": "finder",
+        "orcid_source": "Crossref (paper DOI)",
+        "orcid_evidence": "10.1029/2021ja029469",
+        "orcid_evidence_citation": "Wang et al. 2021",
+        "orcid_confidence": "Confirmed",
+        "affiliation_origin": "finder",
+        "affiliation_source": "ORCID employment",
+        "affiliation_evidence": "https://orcid.org/0000-0003-4998-8008",
+        "affiliation_type": "era-matched",
+        "ror_origin": "enricher",
+        "ror_source": "ROR affiliation-match (chosen)",
+        "ror_evidence": "https://ror.org/0141xw169",
+        "ror_confidence": "Confirmed",
+        "lookup_status": "complete",
+        "notes": "ORCID: the finder's value (from OpenAlex) passes the checksum. The finder's evidence DOIs deposit no iD for this author, so it was validated by Route A': Crossref deposits it for 'Alberto Adriani' on 10.1029/2021ja029469 (Wang et al. 2021), a Juno-titled paper outside the finder's evidence list. The ORCID record is in the name 'Alberto Adriani'. Affiliation: era-matched. INAF, Istituto di Astrofisica e Planetologia Spaziali (2003-03-01 to 2020-01-31) is the only position overlapping the span; CNR (1983-2003) ended before it. Same unit as the finder value 'INAF-IAPS, Rome, Italy'. The finder's string was 'INAF-IAPS, Rome, Italy'. ROR: the affiliation match chose the parent https://ror.org/02gh4kt33 (National Institute for Astrophysics (INAF), score 1.0); the string names the Istituto di Astrofisica e Planetologia Spaziali (IAPS), whose own record https://ror.org/0141xw169 also scored 1.0 (not chosen) and which ROR records as a child of National Institute for Astrophysics (INAF), so the child was recorded and the parent set aside. ORCID's INAF entry carries a FUNDREF id, which was not used."
+      },
+      "seeded_from": {
+        "observatory_status": "included",
+        "observatory_exclusion_reason": null
+      }
+    },
+    {
+      "name": "Heidi N. Becker",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "First individual author, after the team name, of the Juno Radiation Monitoring Investigation paper, which describes the radiation science done with the Stellar Reference Unit (SRU) (Becker et al. 2017, 10.1007/s11214-017-0345-9)",
+          "url": "https://doi.org/10.1007/s11214-017-0345-9",
+          "strength": "Strong",
+          "source_scope": "instrument"
+        },
+        {
+          "source": "Named SRU lead on the mission team page",
+          "url": "https://www.missionjuno.swri.edu/the-team/",
+          "strength": "Medium",
+          "source_scope": "instrument"
+        },
+        {
+          "source": "Listed as a Co-Investigator of the Juno mission on the mission team page",
+          "url": "https://www.missionjuno.swri.edu/the-team/",
+          "strength": "Medium",
+          "source_scope": "observatory"
+        },
+        {
+          "source": "Listed as Radiation Monitoring Investigation Principal Investigator in the NSSDC Master Catalog",
+          "url": "https://nssdc.gsfc.nasa.gov/nmc/experiment/display.action?id=2011-040A-10",
+          "strength": "Medium",
+          "source_scope": "instrument"
+        },
+        {
+          "source": "Nineteenth author of the JIRAM instrument description paper (Adriani et al. 2017, 10.1007/s11214-014-0094-y)",
+          "url": "https://doi.org/10.1007/s11214-014-0094-y",
+          "strength": "Low",
+          "source_scope": "instrument"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": "https://orcid.org/0000-0001-5777-9850",
+      "affiliation": "NASA Jet Propulsion Laboratory California Institute of Technology Pasadena CA USA",
+      "affiliation_ror": "https://ror.org/027k65916",
+      "activity_dates": null,
+      "authorship_scope": "instrument",
+      "qualifying_roles": [
+        "Author",
+        "InstrumentLead"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "First individual author, after the team name, of the Juno Radiation Monitoring Investigation paper, which describes the radiation science done with the Stellar Reference Unit (SRU) (Becker et al. 2017, 10.1007/s11214-017-0345-9)"
+        },
+        {
+          "role": "InstrumentLead",
+          "source": "Named SRU lead on the Juno mission team page (https://www.missionjuno.swri.edu/the-team/) and Radiation Monitoring Investigation Principal Investigator in the NSSDC Master Catalog (https://nssdc.gsfc.nasa.gov/nmc/experiment/display.action?id=2011-040A-10)"
+        }
+      ],
+      "instrument_roles": [],
+      "enrichment": {
+        "orcid_origin": "finder",
+        "orcid_source": "Crossref (paper DOI)",
+        "orcid_evidence": "10.1029/2024ja033431",
+        "orcid_evidence_citation": "Bhattacharya et al. 2025",
+        "orcid_confidence": "Confirmed",
+        "affiliation_origin": "finder",
+        "affiliation_source": "Crossref (paper DOI)",
+        "affiliation_evidence": "10.1029/2024ja033431",
+        "affiliation_evidence_citation": "Bhattacharya et al. 2025",
+        "affiliation_type": "as-deposited",
+        "ror_origin": "enricher",
+        "ror_source": "ROR affiliation-match (chosen)",
+        "ror_evidence": "https://ror.org/027k65916",
+        "ror_confidence": "Confirmed",
+        "lookup_status": "complete",
+        "notes": "ORCID: the finder's value (from OpenAlex) passes the checksum. The finder's evidence DOIs deposit no iD for this author, so it was validated by Route A': Crossref deposits it for 'Heidi N. Becker' on 10.1029/2024ja033431 (Bhattacharya et al. 2025), a Juno-titled paper outside the finder's evidence list. The ORCID record is in the name 'Heidi N Becker'. Affiliation: no ORCID employment. All in-span deposits carrying her iD name JPL/Caltech at the same specificity, so the most recent, 10.1029/2024ja033431, was taken. Same institution as the finder value. The finder's string was 'Jet Propulsion Laboratory'. ROR: the affiliation match chose the parent https://ror.org/05dxps055 (California Institute of Technology, score 1.0); the string names the Jet Propulsion Laboratory, whose own record https://ror.org/027k65916 also scored 1.0 (not chosen) and which ROR records as a child of California Institute of Technology, so the child was recorded and the parent set aside."
+      },
+      "seeded_from": {
+        "observatory_status": "included",
+        "observatory_exclusion_reason": null
+      }
+    },
+    {
+      "name": "Alessandro Mura",
+      "status": "included",
+      "confidence": "Medium",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Named JIRAM lead on the mission team page",
+          "url": "https://www.missionjuno.swri.edu/the-team/",
+          "strength": "Medium",
+          "source_scope": "instrument"
+        },
+        {
+          "source": "Listed as a Co-Investigator of the Juno mission on the mission team page",
+          "url": "https://www.missionjuno.swri.edu/the-team/",
+          "strength": "Medium",
+          "source_scope": "observatory"
+        },
+        {
+          "source": "Named JIRAM Deputy PI on the Europlanet 'European Involvement in Juno' page",
+          "url": "https://www.europlanet.org/?p=927",
+          "strength": "Low",
+          "source_scope": "instrument"
+        },
+        {
+          "source": "Fifth author of the Juno Radiation Monitoring Investigation paper, which describes the radiation science done with the Stellar Reference Unit (SRU) (Becker et al. 2017, 10.1007/s11214-017-0345-9), counting the team name that heads the byline",
+          "url": "https://doi.org/10.1007/s11214-017-0345-9",
+          "strength": "Medium",
+          "source_scope": "instrument"
+        },
+        {
+          "source": "Eighth author of the JIRAM instrument description paper (Adriani et al. 2017, 10.1007/s11214-014-0094-y)",
+          "url": "https://doi.org/10.1007/s11214-014-0094-y",
+          "strength": "Low",
+          "source_scope": "instrument"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": "https://orcid.org/0000-0002-4552-4292",
+      "affiliation": "IAPS, Istituto Di Astrofisica E Planetologia Spaziali",
+      "affiliation_ror": "https://ror.org/0141xw169",
+      "activity_dates": null,
+      "authorship_scope": "instrument",
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Fifth author of the Juno Radiation Monitoring Investigation paper, which describes the radiation science done with the Stellar Reference Unit (SRU) (Becker et al. 2017, 10.1007/s11214-017-0345-9), counting the team name that heads the byline"
+        }
+      ],
+      "instrument_roles": [],
+      "enrichment": {
+        "orcid_origin": "finder",
+        "orcid_source": "Crossref (paper DOI)",
+        "orcid_evidence": "10.1029/2021ja029469",
+        "orcid_evidence_citation": "Wang et al. 2021",
+        "orcid_confidence": "Confirmed",
+        "affiliation_origin": "finder",
+        "affiliation_source": "ORCID employment",
+        "affiliation_evidence": "https://orcid.org/0000-0002-4552-4292",
+        "affiliation_type": "era-matched",
+        "ror_origin": "enricher",
+        "ror_source": "ORCID disambiguated-organization",
+        "ror_evidence": "https://orcid.org/0000-0002-4552-4292",
+        "ror_confidence": "Confirmed",
+        "lookup_status": "complete",
+        "notes": "ORCID: the finder's value (from OpenAlex) passes the checksum. The finder's evidence DOIs deposit no iD for this author, so it was validated by Route A': Crossref deposits it for 'Alessandro Mura' on 10.1029/2021ja029469 (Wang et al. 2021), a Juno-titled paper outside the finder's evidence list. The ORCID record is in the name 'Alessandro Mura'. Affiliation: era-matched. Of two past positions at IAPS that overlap the span, the longest-overlapping (2001-01-01 to 2023-02-01) was taken; there is no provider institution to break the tie for this Observatory. Set aside: Senior Researcher at 'stituto di Astrofisica e Planetologia Spaziali' (sic), 2023-02-01 to 2025-12-29, and the ongoing Research Director post (2025-12-30 to present, current). Same unit as the finder value 'INAF-IAPS, Rome, Italy'. The finder's string was 'INAF-IAPS, Rome, Italy'. ROR: asserted by the selected ORCID employment's disambiguated-organization (ROR 0141xw169, Institute for Space Astrophysics and Planetology, Rome, IT). The affiliation match on the same string independently chose it."
+      },
+      "seeded_from": {
+        "observatory_status": "included",
+        "observatory_exclusion_reason": null
+      }
+    },
+    {
+      "name": "James W. Alexander",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Third name in the byline of the Juno Radiation Monitoring Investigation paper, which describes the radiation science done with the Stellar Reference Unit (SRU) (Becker et al. 2017, 10.1007/s11214-017-0345-9), after the team name and Heidi Becker",
+          "url": "https://doi.org/10.1007/s11214-017-0345-9",
+          "strength": "Strong",
+          "source_scope": "instrument"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": "Jet Propulsion Laboratory",
+      "affiliation_ror": "https://ror.org/027k65916",
+      "activity_dates": null,
+      "authorship_scope": "instrument",
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Second individual author, after the team name and Heidi Becker, of the Juno Radiation Monitoring Investigation paper, which describes the radiation science done with the Stellar Reference Unit (SRU) (Becker et al. 2017, 10.1007/s11214-017-0345-9)"
+        }
+      ],
+      "instrument_roles": [],
+      "enrichment": {
+        "orcid_origin": null,
+        "orcid_source": null,
+        "orcid_evidence": null,
+        "orcid_confidence": null,
+        "affiliation_origin": "finder",
+        "affiliation_source": "uncorroborated",
+        "affiliation_evidence": null,
+        "affiliation_type": null,
+        "ror_origin": "enricher",
+        "ror_source": "ROR affiliation-match (chosen)",
+        "ror_evidence": "https://ror.org/027k65916",
+        "ror_confidence": "Confirmed",
+        "lookup_status": "complete",
+        "notes": "ORCID REJECTED: the finder's value https://orcid.org/0000-0001-9368-7304 (from OpenAlex) passes the checksum, but the record ('James Alexander') lists no works and no employment, so nothing corroborates it. Set to null; it remains a possible match for the reviewer, and the finder's file keeps it. Route A' found Juno SRU abstracts for 'James Alexander' with no iD deposited. ORCID name search ('James' 30 results, all checked) found no record with Juno or Jupiter works or JPL employment. Affiliation: the finder's value 'Jet Propulsion Laboratory' is kept but uncorroborated. Per the finder's notes it comes from the instrument paper's printed byline. Crossref deposits no affiliation for this author on any Juno-titled paper found, there is no confirmed ORCID, and the mission team page does not list this person. affiliation_type is null because the value's type cannot be assigned: it is not a Crossref deposit and nothing dates it. ROR: affiliation match chose https://ror.org/027k65916 (Jet Propulsion Laboratory, US); name and country check out. It names the institution in an uncorroborated affiliation and does not corroborate that affiliation."
+      },
+      "seeded_from": {
+        "observatory_status": "included",
+        "observatory_exclusion_reason": null
+      }
+    }
+  ],
+  "notes": [
+    "Built from the Observatory run on spase://SMWG/Observatory/Juno (2026-11-08), not from a separate finder and enricher run on this record. People, roles, ORCID, affiliation and ROR are copied from that file.",
+    "operating_span is the Observatory's; affiliations were era-matched against it."
+  ],
+  "seeded_from": {
+    "observatory_record": "spase://SMWG/Observatory/Juno",
+    "observatory_run_date": "2026-11-08",
+    "source": "instrument_roles",
+    "status": "ready",
+    "reason": "Observatory run resolved this instrument's authors"
+  }
+}

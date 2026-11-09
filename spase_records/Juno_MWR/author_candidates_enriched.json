@@ -1,0 +1,385 @@
+{
+  "record": "spase://SMWG/Instrument/Juno/MWR",
+  "date": "2026-11-09",
+  "operating_span": {
+    "start": "2011-08-05",
+    "stop": null
+  },
+  "cmad": {
+    "found": false,
+    "expected": true,
+    "url": null,
+    "notes": "No CMAD located. (a) No designated CMAD repository is configured for this run; a Zenodo search for a Juno CMAD returned only records of the unrelated JUNO neutrino experiment. (b) Juno's data archive page at PDS PPI (https://pds-ppi.igpp.ucla.edu/mission/Juno) and the SwRI Mission Juno site carry no CMAD. (c) Web search for 'Juno CMAD' and 'Juno Calibration and Measurement Algorithms Document' found only per-instrument PDS Software Interface Specifications (MAG, JADE, JEDI, JIRAM), which are not CMADs. A CMAD is expected under this procedure because the record has no StopDate (operational) and Juno is NASA-funded, so this is recorded as an expected-but-not-located gap. Context for the reviewer: Juno is a Planetary Science Division New Frontiers mission reviewed in the Planetary Mission Senior Review, while the CMAD is a Heliophysics senior-review deliverable, so its absence may be unremarkable; and Juno's status after its extension through September 2025 could not be confirmed from a primary source (NASA's mission page still labels it an active mission; NSSDC says end of mission was scheduled for September 2025). Current-team evidence came instead from the mission team page (https://www.missionjuno.swri.edu/the-team/). Proceeded with the remaining sources."
+  },
+  "pending_instrument_runs": [],
+  "information_urls": [
+    {
+      "name": "MWR: Microwave Radiometer for the Juno Mission to Jupiter",
+      "url": "https://doi.org/10.1007/s11214-017-0349-5",
+      "description": "MWR instrument description paper.",
+      "scope": "instrument",
+      "instrument": "MWR"
+    },
+    {
+      "name": "NSSDC Master Catalog: MWR",
+      "url": "https://nssdc.gsfc.nasa.gov/nmc/experiment/display.action?id=2011-040A-04",
+      "description": "NSSDC entry for this Juno experiment, with its description and Principal Investigator.",
+      "scope": "instrument",
+      "instrument": "MWR"
+    }
+  ],
+  "candidates": [
+    {
+      "name": "Steve Levin",
+      "status": "included",
+      "confidence": "Medium",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Fifth author of the Juno mission overview paper (Bolton et al. 2017, 10.1007/s11214-017-0429-6)",
+          "url": "https://doi.org/10.1007/s11214-017-0429-6",
+          "strength": "Medium",
+          "source_scope": "observatory"
+        },
+        {
+          "source": "Named Juno Project Scientist and Microwave Radiometer lead on the mission team page",
+          "url": "https://www.missionjuno.swri.edu/the-team/",
+          "strength": "Medium",
+          "source_scope": "observatory"
+        },
+        {
+          "source": "Named Juno project scientist in the Jupiter orbit insertion press kit (2016)",
+          "url": "https://www.jpl.nasa.gov/news/press_kits/juno/management/",
+          "strength": "Medium",
+          "source_scope": "observatory"
+        },
+        {
+          "source": "Listed as a Co-Investigator of the Juno mission on the mission team page",
+          "url": "https://www.missionjuno.swri.edu/the-team/",
+          "strength": "Medium",
+          "source_scope": "observatory"
+        },
+        {
+          "source": "Fifth author of the Juno MWR instrument description paper (Janssen et al. 2017, 10.1007/s11214-017-0349-5)",
+          "url": "https://doi.org/10.1007/s11214-017-0349-5",
+          "strength": "Medium",
+          "source_scope": "instrument"
+        },
+        {
+          "source": "Thirteenth author of the Juno magnetospheric science objectives paper (Bagenal et al. 2017, 10.1007/s11214-014-0036-8), in the alphabetized part of that list",
+          "url": "https://doi.org/10.1007/s11214-014-0036-8",
+          "strength": "Low",
+          "source_scope": "observatory"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": "https://orcid.org/0000-0003-2242-5459",
+      "affiliation": "NASA Jet Propulsion Laboratory",
+      "affiliation_ror": "https://ror.org/027k65916",
+      "activity_dates": null,
+      "authorship_scope": "instrument",
+      "qualifying_roles": [
+        "Author",
+        "InstrumentLead"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Fifth author of the Juno MWR instrument description paper (Janssen et al. 2017, 10.1007/s11214-017-0349-5)"
+        },
+        {
+          "role": "InstrumentLead",
+          "source": "Named Microwave Radiometer lead on the Juno mission team page (https://www.missionjuno.swri.edu/the-team/), succeeding Michael Janssen, whom NSSDC lists as MWR Principal Investigator (https://nssdc.gsfc.nasa.gov/nmc/experiment/display.action?id=2011-040A-04)"
+        }
+      ],
+      "instrument_roles": [],
+      "enrichment": {
+        "orcid_origin": "finder",
+        "orcid_source": "Crossref (paper DOI)",
+        "orcid_evidence": "10.1002/2017gl073148",
+        "orcid_evidence_citation": "Imai et al. 2017",
+        "orcid_confidence": "Confirmed",
+        "affiliation_origin": "finder",
+        "affiliation_source": "ORCID employment",
+        "affiliation_evidence": "https://orcid.org/0000-0003-2242-5459",
+        "affiliation_type": "era-matched",
+        "ror_origin": "enricher",
+        "ror_source": "ROR affiliation-match (chosen)",
+        "ror_evidence": "https://ror.org/027k65916",
+        "ror_confidence": "Confirmed",
+        "lookup_status": "complete",
+        "notes": "ORCID: the finder's value (from OpenAlex) passes the checksum. The finder's evidence DOIs deposit no iD for this author, so it was validated by Route A': Crossref deposits it for 'Steven M. Levin' on 10.1002/2017gl073148 (Imai et al. 2017), a Juno-titled paper outside the finder's evidence list. The ORCID record is in the name 'Steven Levin'. Affiliation: era-matched. The only ORCID employment, NASA Jet Propulsion Laboratory (1990 to present), began before the span. Same institution as the finder value. The finder's string was 'Jet Propulsion Laboratory'. ROR: affiliation match chose https://ror.org/027k65916 (Jet Propulsion Laboratory, US); name and country check out. ORCID's entry carries a RINGGOLD id (53411), which was not converted."
+      },
+      "seeded_from": {
+        "observatory_status": "included",
+        "observatory_exclusion_reason": null
+      }
+    },
+    {
+      "name": "Shannon T. Brown",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Third author of the Juno MWR instrument description paper (Janssen et al. 2017, 10.1007/s11214-017-0349-5)",
+          "url": "https://doi.org/10.1007/s11214-017-0349-5",
+          "strength": "Strong",
+          "source_scope": "instrument"
+        },
+        {
+          "source": "Listed as a Co-Investigator of the Juno mission on the mission team page",
+          "url": "https://www.missionjuno.swri.edu/the-team/",
+          "strength": "Medium",
+          "source_scope": "observatory"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": "https://orcid.org/0000-0002-7566-8537",
+      "affiliation": "Jet Propulsion Laboratory California Institute of Technology Pasadena CA USA",
+      "affiliation_ror": "https://ror.org/027k65916",
+      "activity_dates": null,
+      "authorship_scope": "instrument",
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Third author of the Juno MWR instrument description paper (Janssen et al. 2017, 10.1007/s11214-017-0349-5)"
+        }
+      ],
+      "instrument_roles": [],
+      "enrichment": {
+        "orcid_origin": "finder",
+        "orcid_source": "Crossref (paper DOI)",
+        "orcid_evidence": "10.1029/2025je009622",
+        "orcid_evidence_citation": "Brown et al. 2026",
+        "orcid_confidence": "Confirmed",
+        "affiliation_origin": "finder",
+        "affiliation_source": "Crossref (paper DOI)",
+        "affiliation_evidence": "10.1029/2025je009622",
+        "affiliation_evidence_citation": "Brown et al. 2026",
+        "affiliation_type": "as-deposited",
+        "ror_origin": "enricher",
+        "ror_source": "ROR affiliation-match (chosen)",
+        "ror_evidence": "https://ror.org/027k65916",
+        "ror_confidence": "Confirmed",
+        "lookup_status": "complete",
+        "notes": "ORCID: the finder's value (from OpenAlex) passes the checksum. The finder's evidence DOIs deposit no iD for this author, so it was validated by Route A': Crossref deposits it for 'Shannon Brown' on 10.1029/2025je009622 (Brown et al. 2026), a Juno-titled paper outside the finder's evidence list. The ORCID record is in the name 'Shannon Brown'. Affiliation: no ORCID employment. The JPL/Caltech deposits carrying his iD are equally specific, so the most recent, 10.1029/2025je009622, was taken; 'JPL/Caltech' (10.1002/essoar.10502179.1) uses only acronyms. Same institution as the finder value. The finder's string was 'Jet Propulsion Laboratory'. ROR: the affiliation match chose the parent https://ror.org/05dxps055 (California Institute of Technology, score 1.0); the string names the Jet Propulsion Laboratory, whose own record https://ror.org/027k65916 also scored 1.0 (not chosen) and which ROR records as a child of California Institute of Technology, so the child was recorded and the parent set aside."
+      },
+      "seeded_from": {
+        "observatory_status": "included",
+        "observatory_exclusion_reason": null
+      }
+    },
+    {
+      "name": "Samuel L. Gulkis",
+      "status": "included",
+      "confidence": "Medium",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Listed as a Co-Investigator of the Juno mission on the mission team page",
+          "url": "https://www.missionjuno.swri.edu/the-team/",
+          "strength": "Medium",
+          "source_scope": "observatory"
+        },
+        {
+          "source": "Fourth author of the Juno MWR instrument description paper (Janssen et al. 2017, 10.1007/s11214-017-0349-5)",
+          "url": "https://doi.org/10.1007/s11214-017-0349-5",
+          "strength": "Medium",
+          "source_scope": "instrument"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Samuel.L.Gulkis",
+        "url": "https://spase-metadata.org/SMWG/Person/Samuel.L.Gulkis.html"
+      },
+      "orcid": "https://orcid.org/0000-0002-4480-3628",
+      "affiliation": "Space Science and Astrophysics, Jet Propulsion Laboratory, California Institute of Technology",
+      "affiliation_ror": "https://ror.org/027k65916",
+      "activity_dates": null,
+      "authorship_scope": "instrument",
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Fourth author of the Juno MWR instrument description paper (Janssen et al. 2017, 10.1007/s11214-017-0349-5)"
+        }
+      ],
+      "instrument_roles": [],
+      "enrichment": {
+        "orcid_origin": "finder",
+        "orcid_source": "Crossref (paper DOI)",
+        "orcid_evidence": "10.1002/2017gl074277",
+        "orcid_evidence_citation": "Ingersoll et al. 2017",
+        "orcid_confidence": "Confirmed",
+        "affiliation_origin": "finder",
+        "affiliation_source": "ORCID employment",
+        "affiliation_evidence": "https://orcid.org/0000-0002-4480-3628",
+        "affiliation_type": "era-matched",
+        "ror_origin": "enricher",
+        "ror_source": "ROR affiliation-match (chosen)",
+        "ror_evidence": "https://ror.org/027k65916",
+        "ror_confidence": "Confirmed",
+        "lookup_status": "complete",
+        "notes": "ORCID: the finder's value (from OpenAlex) passes the checksum. The finder's evidence DOIs deposit no iD for this author, so it was validated by Route A': Crossref deposits it for 'Samuel Gulkis' on 10.1002/2017gl074277 (Ingersoll et al. 2017), a Juno-titled paper outside the finder's evidence list. The ORCID record is in the name 'Samuel Gulkis'. Affiliation: era-matched. JPL, Caltech, Space Science and Astrophysics (1968 to 2016) is a past position overlapping the span; Cornell (1965-1968) predates it. Same institution as the finder value. The finder's string was 'Jet Propulsion Laboratory'. ROR: the affiliation match chose the parent https://ror.org/05dxps055 (California Institute of Technology, score 1.0); the string names the Jet Propulsion Laboratory, whose own record https://ror.org/027k65916 also scored 1.0 (not chosen) and which ROR records as a child of California Institute of Technology, so the child was recorded and the parent set aside. The Space Science and Astrophysics section has no ROR record."
+      },
+      "seeded_from": {
+        "observatory_status": "included",
+        "observatory_exclusion_reason": null
+      }
+    },
+    {
+      "name": "Michael A. Janssen",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "First author of the Juno MWR instrument description paper (Janssen et al. 2017, 10.1007/s11214-017-0349-5)",
+          "url": "https://doi.org/10.1007/s11214-017-0349-5",
+          "strength": "Strong",
+          "source_scope": "instrument"
+        },
+        {
+          "source": "Named MWR instrument team lead on the SwRI Juno spacecraft page (launch-era text)",
+          "url": "https://www.missionjuno.swri.edu/spacecraft/juno-spacecraft",
+          "strength": "Medium",
+          "source_scope": "instrument"
+        },
+        {
+          "source": "Listed as MWR Principal Investigator in the NSSDC Master Catalog",
+          "url": "https://nssdc.gsfc.nasa.gov/nmc/experiment/display.action?id=2011-040A-04",
+          "strength": "Medium",
+          "source_scope": "instrument"
+        },
+        {
+          "source": "Listed as a Co-Investigator of the Juno mission on the mission team page",
+          "url": "https://www.missionjuno.swri.edu/the-team/",
+          "strength": "Medium",
+          "source_scope": "observatory"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": "https://orcid.org/0000-0001-5476-731X",
+      "affiliation": "Jet Propulsion Laboratory California Institute of Technology Pasadena CA USA",
+      "affiliation_ror": "https://ror.org/027k65916",
+      "activity_dates": null,
+      "authorship_scope": "instrument",
+      "qualifying_roles": [
+        "Author",
+        "FormerPI"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "First author of the Juno MWR instrument description paper (Janssen et al. 2017, 10.1007/s11214-017-0349-5)"
+        },
+        {
+          "role": "FormerPI",
+          "source": "Named MWR team lead on the SwRI Juno spacecraft page (https://www.missionjuno.swri.edu/spacecraft/juno-spacecraft) and MWR Principal Investigator in the NSSDC Master Catalog (https://nssdc.gsfc.nasa.gov/nmc/experiment/display.action?id=2011-040A-04); the Juno mission team page now names Steve Levin (https://www.missionjuno.swri.edu/the-team/)"
+        }
+      ],
+      "instrument_roles": [],
+      "enrichment": {
+        "orcid_origin": "finder",
+        "orcid_source": "Crossref (paper DOI)",
+        "orcid_evidence": "10.1029/2020ea001229",
+        "orcid_evidence_citation": "Zhang et al. 2020",
+        "orcid_confidence": "Confirmed",
+        "affiliation_origin": "finder",
+        "affiliation_source": "Crossref (paper DOI)",
+        "affiliation_evidence": "10.1029/2020ea001229",
+        "affiliation_evidence_citation": "Zhang et al. 2020",
+        "affiliation_type": "as-deposited",
+        "ror_origin": "enricher",
+        "ror_source": "ROR affiliation-match (chosen)",
+        "ror_evidence": "https://ror.org/027k65916",
+        "ror_confidence": "Confirmed",
+        "lookup_status": "complete",
+        "notes": "ORCID: the finder's value passes the checksum. Crossref deposits it on the MWR evidence paper 10.1007/s11214-017-0349-5, but for the initials-only author 'M. A. Janssen', which cannot confirm under the skill's full-name rule. It is confirmed by a full-name deposit: Crossref deposits it for 'Michael Janssen' on 10.1029/2020ea001229 (Zhang et al. 2020), a Juno paper outside the finder's evidence list. Affiliation: no ORCID employment, and the MWR evidence paper deposits no affiliation. The JPL/Caltech deposits carrying his iD are equally specific, so the most recent, 10.1029/2020ea001229, was taken; it lies outside the finder's evidence list. Same institution as the finder value. The finder's string was 'Jet Propulsion Laboratory'. ROR: the affiliation match chose the parent https://ror.org/05dxps055 (California Institute of Technology, score 1.0); the string names the Jet Propulsion Laboratory, whose own record https://ror.org/027k65916 also scored 1.0 (not chosen) and which ROR records as a child of California Institute of Technology, so the child was recorded and the parent set aside."
+      },
+      "seeded_from": {
+        "observatory_status": "included",
+        "observatory_exclusion_reason": null
+      }
+    },
+    {
+      "name": "J. E. Oswald",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Second author of the Juno MWR instrument description paper (Janssen et al. 2017, 10.1007/s11214-017-0349-5)",
+          "url": "https://doi.org/10.1007/s11214-017-0349-5",
+          "strength": "Strong",
+          "source_scope": "instrument"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": null,
+      "affiliation_ror": null,
+      "activity_dates": null,
+      "authorship_scope": "instrument",
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Second author of the Juno MWR instrument description paper (Janssen et al. 2017, 10.1007/s11214-017-0349-5)"
+        }
+      ],
+      "instrument_roles": [],
+      "enrichment": {
+        "orcid_origin": null,
+        "orcid_source": null,
+        "orcid_evidence": null,
+        "orcid_confidence": null,
+        "affiliation_origin": null,
+        "affiliation_source": null,
+        "affiliation_evidence": null,
+        "affiliation_type": null,
+        "ror_origin": null,
+        "ror_source": null,
+        "ror_evidence": null,
+        "ror_confidence": null,
+        "lookup_status": "skipped-unconfirmed-identity",
+        "notes": "Identity unconfirmed: the only evidence, the MWR instrument paper, deposits 'J. E. Oswald', and no evidence source gives a full given name, so the identity gate fails (full name not established). Not enriched, and no lookups were made. The finder's affiliation 'Jet Propulsion Laboratory' is set to null here and kept in the finder's file. A full name, e.g. from the MWR paper's printed byline, would allow a re-run."
+      },
+      "seeded_from": {
+        "observatory_status": "included",
+        "observatory_exclusion_reason": null
+      }
+    }
+  ],
+  "notes": [
+    "Built from the Observatory run on spase://SMWG/Observatory/Juno (2026-11-08), not from a separate finder and enricher run on this record. People, roles, ORCID, affiliation and ROR are copied from that file.",
+    "operating_span is the Observatory's; affiliations were era-matched against it."
+  ],
+  "seeded_from": {
+    "observatory_record": "spase://SMWG/Observatory/Juno",
+    "observatory_run_date": "2026-11-08",
+    "source": "instrument_roles",
+    "status": "ready",
+    "reason": "Observatory run resolved this instrument's authors"
+  }
+}

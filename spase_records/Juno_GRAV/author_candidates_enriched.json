@@ -1,0 +1,335 @@
+{
+  "record": "spase://SMWG/Instrument/Juno/GRAV",
+  "date": "2026-11-09",
+  "operating_span": {
+    "start": "2011-08-05",
+    "stop": null
+  },
+  "cmad": {
+    "found": false,
+    "expected": true,
+    "url": null,
+    "notes": "No CMAD located. (a) No designated CMAD repository is configured for this run; a Zenodo search for a Juno CMAD returned only records of the unrelated JUNO neutrino experiment. (b) Juno's data archive page at PDS PPI (https://pds-ppi.igpp.ucla.edu/mission/Juno) and the SwRI Mission Juno site carry no CMAD. (c) Web search for 'Juno CMAD' and 'Juno Calibration and Measurement Algorithms Document' found only per-instrument PDS Software Interface Specifications (MAG, JADE, JEDI, JIRAM), which are not CMADs. A CMAD is expected under this procedure because the record has no StopDate (operational) and Juno is NASA-funded, so this is recorded as an expected-but-not-located gap. Context for the reviewer: Juno is a Planetary Science Division New Frontiers mission reviewed in the Planetary Mission Senior Review, while the CMAD is a Heliophysics senior-review deliverable, so its absence may be unremarkable; and Juno's status after its extension through September 2025 could not be confirmed from a primary source (NASA's mission page still labels it an active mission; NSSDC says end of mission was scheduled for September 2025). Current-team evidence came instead from the mission team page (https://www.missionjuno.swri.edu/the-team/). Proceeded with the remaining sources."
+  },
+  "pending_instrument_runs": [],
+  "information_urls": [
+    {
+      "name": "The Juno Gravity Science Instrument",
+      "url": "https://doi.org/10.1007/s11214-017-0428-7",
+      "description": "Gravity Science instrument description paper covering the X-band and Ka-band radio systems.",
+      "scope": "instrument",
+      "instrument": "GRAV"
+    },
+    {
+      "name": "NSSDC Master Catalog: GRAV",
+      "url": "https://nssdc.gsfc.nasa.gov/nmc/experiment/display.action?id=2011-040A-09",
+      "description": "NSSDC entry for this Juno experiment, with its description and Principal Investigator.",
+      "scope": "instrument",
+      "instrument": "GRAV"
+    }
+  ],
+  "candidates": [
+    {
+      "name": "John Anderson",
+      "status": "included",
+      "confidence": "Medium",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Listed as a Co-Investigator of the Juno mission on the mission team page, which marks him as deceased",
+          "url": "https://www.missionjuno.swri.edu/the-team/",
+          "strength": "Medium",
+          "source_scope": "observatory"
+        },
+        {
+          "source": "Named lead of the Gravity Science team on the SwRI Juno spacecraft page (launch-era text)",
+          "url": "https://www.missionjuno.swri.edu/spacecraft/juno-spacecraft",
+          "strength": "Medium",
+          "source_scope": "instrument"
+        },
+        {
+          "source": "Listed in the 'In honor of' memorial section of the mission team page",
+          "url": "https://www.missionjuno.swri.edu/the-team/",
+          "strength": "Low",
+          "source_scope": "observatory"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/John.D.Anderson",
+        "url": "https://spase-metadata.org/SMWG/Person/John.D.Anderson.html"
+      },
+      "orcid": null,
+      "affiliation": "Jet Propulsion Laboratory",
+      "affiliation_ror": "https://ror.org/027k65916",
+      "activity_dates": "Deceased (mission team page)",
+      "authorship_scope": "instrument",
+      "qualifying_roles": [
+        "Author",
+        "FormerPI"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Named Gravity Science team lead on the launch-era SwRI Juno spacecraft page (https://www.missionjuno.swri.edu/spacecraft/juno-spacecraft)"
+        },
+        {
+          "role": "FormerPI",
+          "source": "Named Gravity Science team lead on the launch-era SwRI Juno spacecraft page (https://www.missionjuno.swri.edu/spacecraft/juno-spacecraft); later leads were William Folkner, then Ryan Park and Luciano Iess"
+        }
+      ],
+      "instrument_roles": [],
+      "enrichment": {
+        "orcid_origin": null,
+        "orcid_source": null,
+        "orcid_evidence": null,
+        "orcid_confidence": null,
+        "affiliation_origin": "finder",
+        "affiliation_source": "provider documentation",
+        "affiliation_evidence": "https://www.missionjuno.swri.edu/the-team/",
+        "affiliation_type": "current",
+        "ror_origin": "enricher",
+        "ror_source": "ROR affiliation-match (chosen)",
+        "ror_evidence": "https://ror.org/027k65916",
+        "ror_confidence": "Confirmed",
+        "lookup_status": "complete",
+        "notes": "Identity: the gate passed on the full name 'John Anderson' (mission team page; launch-era SwRI page names him Gravity Science lead). The finder's link to Person John.D.Anderson rests on surname plus JPL. Crossref shows a 'John D. Anderson' co-authoring two Juno gravity and interior papers (10.1016/j.icarus.2011.09.016, Helled et al. 2011; 10.1073/pnas.1805927115, Kong et al. 2018), which supports the middle initial D. Neither deposit carries an iD or an affiliation, so the JPL part of the link is not independently confirmed. ORCID null: none pre-filled. Route A' found the two 'John D. Anderson' deposits above, with no iD. ORCID name search ('John' 106 and 'Jack' 16 results, all checked) found no record with Juno or Jupiter works. The only JPL match, https://orcid.org/0009-0005-3029-7524 ('John R Anderson', Technologist at JPL since 1992-04, iD registered 2024-06), does not fit a mission team member marked deceased and was not accepted. Affiliation: no ORCID or Crossref evidence. The mission team page (https://www.missionjuno.swri.edu/the-team/) lists 'John Anderson (JPL)', marked deceased; 'Jet Propulsion Laboratory' is the finder's expansion of 'JPL'. ROR: affiliation match chose https://ror.org/027k65916 (Jet Propulsion Laboratory, US); name and country check out."
+      },
+      "seeded_from": {
+        "observatory_status": "included",
+        "observatory_exclusion_reason": null
+      }
+    },
+    {
+      "name": "William M. Folkner",
+      "status": "included",
+      "confidence": "Medium",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Listed as Gravity Science Principal Investigator in the NSSDC Master Catalog",
+          "url": "https://nssdc.gsfc.nasa.gov/nmc/experiment/display.action?id=2011-040A-09",
+          "strength": "Medium",
+          "source_scope": "instrument"
+        },
+        {
+          "source": "Listed as a Co-Investigator of the Juno mission on the mission team page",
+          "url": "https://www.missionjuno.swri.edu/the-team/",
+          "strength": "Medium",
+          "source_scope": "observatory"
+        },
+        {
+          "source": "Fifth author of the Juno Gravity Science instrument description paper (Asmar et al. 2017, 10.1007/s11214-017-0428-7); that author list is fully alphabetized, so position carries no weight",
+          "url": "https://doi.org/10.1007/s11214-017-0428-7",
+          "strength": "Low",
+          "source_scope": "instrument"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": "https://orcid.org/0000-0001-5133-9934",
+      "affiliation": "Jet Propulsion Laboratory California Institute of Technology Pasadena CA USA",
+      "affiliation_ror": "https://ror.org/027k65916",
+      "activity_dates": null,
+      "authorship_scope": "instrument",
+      "qualifying_roles": [
+        "Author",
+        "FormerPI"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Listed as Gravity Science Principal Investigator in the NSSDC Master Catalog (https://nssdc.gsfc.nasa.gov/nmc/experiment/display.action?id=2011-040A-09); also an author of the Juno Gravity Science instrument description paper (Asmar et al. 2017, 10.1007/s11214-017-0428-7)"
+        },
+        {
+          "role": "FormerPI",
+          "source": "Listed as Gravity Science Principal Investigator in the NSSDC Master Catalog (https://nssdc.gsfc.nasa.gov/nmc/experiment/display.action?id=2011-040A-09); the Juno mission team page now names Ryan Park and Luciano Iess (https://www.missionjuno.swri.edu/the-team/)"
+        }
+      ],
+      "instrument_roles": [],
+      "enrichment": {
+        "orcid_origin": "finder",
+        "orcid_source": "Crossref (paper DOI)",
+        "orcid_evidence": "10.1029/2019je006354",
+        "orcid_evidence_citation": "Buccino et al. 2020",
+        "orcid_confidence": "Confirmed",
+        "affiliation_origin": "finder",
+        "affiliation_source": "Crossref (paper DOI)",
+        "affiliation_evidence": "10.1029/2019je006354",
+        "affiliation_evidence_citation": "Buccino et al. 2020",
+        "affiliation_type": "as-deposited",
+        "ror_origin": "enricher",
+        "ror_source": "ROR affiliation-match (chosen)",
+        "ror_evidence": "https://ror.org/027k65916",
+        "ror_confidence": "Confirmed",
+        "lookup_status": "complete",
+        "notes": "ORCID: the finder's value (from OpenAlex) passes the checksum. The finder's evidence DOIs deposit no iD for this author, so it was validated by Route A': Crossref deposits it for 'William M. Folkner' on 10.1029/2019je006354 (Buccino et al. 2020), a Juno-titled paper outside the finder's evidence list. The ORCID record is in the name 'William Folkner'. Affiliation: no ORCID employment. Recorded from the same deposit that confirmed the iD, the only one carrying an affiliation for him. Same institution as the finder value. The finder's string was 'Jet Propulsion Laboratory'. ROR: the affiliation match chose the parent https://ror.org/05dxps055 (California Institute of Technology, score 1.0); the string names the Jet Propulsion Laboratory, whose own record https://ror.org/027k65916 also scored 1.0 (not chosen) and which ROR records as a child of California Institute of Technology, so the child was recorded and the parent set aside."
+      },
+      "seeded_from": {
+        "observatory_status": "included",
+        "observatory_exclusion_reason": null
+      }
+    },
+    {
+      "name": "Luciano Iess",
+      "status": "included",
+      "confidence": "Medium",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Named Gravity (X- and Ka-band) lead, with Ryan Park, on the mission team page",
+          "url": "https://www.missionjuno.swri.edu/the-team/",
+          "strength": "Medium",
+          "source_scope": "instrument"
+        },
+        {
+          "source": "Listed as a Co-Investigator of the Juno mission on the mission team page",
+          "url": "https://www.missionjuno.swri.edu/the-team/",
+          "strength": "Medium",
+          "source_scope": "observatory"
+        },
+        {
+          "source": "Named principal investigator of KaT, the Italian Ka-band translator used by Juno Gravity Science, by INAF Media (2012)",
+          "url": "https://www.media.inaf.it/2012/11/08/laquila-per-giove/",
+          "strength": "Medium",
+          "source_scope": "component"
+        },
+        {
+          "source": "Described as 'Juno Gravity Team Co-Lead' on the Europlanet 'European Involvement in Juno' page",
+          "url": "https://www.europlanet.org/?p=927",
+          "strength": "Low",
+          "source_scope": "instrument"
+        },
+        {
+          "source": "Seventh author of the Juno Gravity Science instrument description paper (Asmar et al. 2017, 10.1007/s11214-017-0428-7); that author list is fully alphabetized",
+          "url": "https://doi.org/10.1007/s11214-017-0428-7",
+          "strength": "Low",
+          "source_scope": "instrument"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Luciano.Iess",
+        "url": "https://spase-metadata.org/SMWG/Person/Luciano.Iess.html"
+      },
+      "orcid": "https://orcid.org/0000-0002-6230-5825",
+      "affiliation": "Dipartmento di Ingegneria Meccanica e Aerospaziale, Sapienza University of Rome",
+      "affiliation_ror": "https://ror.org/02be6w209",
+      "activity_dates": null,
+      "authorship_scope": "instrument",
+      "qualifying_roles": [
+        "Author",
+        "InstrumentLead"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Named Gravity (X- and Ka-band) lead, with Ryan Park, on the Juno mission team page (https://www.missionjuno.swri.edu/the-team/)"
+        },
+        {
+          "role": "InstrumentLead",
+          "source": "Named Gravity lead, with Ryan Park, on the Juno mission team page (https://www.missionjuno.swri.edu/the-team/); INAF Media names him principal investigator of the Ka-band translator (KaT) (https://www.media.inaf.it/2012/11/08/laquila-per-giove/)"
+        }
+      ],
+      "instrument_roles": [],
+      "enrichment": {
+        "orcid_origin": "finder",
+        "orcid_source": "Crossref (paper DOI)",
+        "orcid_evidence": "10.1016/j.icarus.2016.09.040",
+        "orcid_evidence_citation": "Durante et al. 2017",
+        "orcid_confidence": "Confirmed",
+        "affiliation_origin": "finder",
+        "affiliation_source": "ORCID employment",
+        "affiliation_evidence": "https://orcid.org/0000-0002-6230-5825",
+        "affiliation_type": "era-matched",
+        "ror_origin": "enricher",
+        "ror_source": "ROR affiliation-match (chosen)",
+        "ror_evidence": "https://ror.org/02be6w209",
+        "ror_confidence": "Confirmed",
+        "lookup_status": "complete",
+        "notes": "ORCID: the finder's value (from OpenAlex) passes the checksum. The finder's evidence DOIs deposit no iD for this author, so it was validated by Route A': Crossref deposits it for 'Luciano Iess' on 10.1016/j.icarus.2016.09.040 (Durante et al. 2017), a Juno-titled paper outside the finder's evidence list. The ORCID record is in the name 'Luciano IESS'. Affiliation: era-matched. Sapienza University of Rome, 'Dipartmento di Ingegneria Meccanica e Aerospaziale' (1992-11-01 to present) is the only ORCID employment. It is transcribed as ORCID gives it, including the typo 'Dipartmento' (for 'Dipartimento'), not corrected. Same institution as the finder value. The finder's string was 'Sapienza Università di Roma'. ROR: affiliation match chose https://ror.org/02be6w209 (Sapienza University of Rome, IT); name and country check out. The department has no ROR record. ORCID's entry carries a GRID id (grid.7841.a), which was not converted."
+      },
+      "seeded_from": {
+        "observatory_status": "included",
+        "observatory_exclusion_reason": null
+      }
+    },
+    {
+      "name": "Ryan Park",
+      "status": "included",
+      "confidence": "Medium",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Named Gravity (X- and Ka-band) lead, with Luciano Iess, on the mission team page",
+          "url": "https://www.missionjuno.swri.edu/the-team/",
+          "strength": "Medium",
+          "source_scope": "instrument"
+        },
+        {
+          "source": "Listed as a Co-Investigator of the Juno mission on the mission team page",
+          "url": "https://www.missionjuno.swri.edu/the-team/",
+          "strength": "Medium",
+          "source_scope": "observatory"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": "https://orcid.org/0000-0001-9896-4585",
+      "affiliation": "Jet Propulsion Laboratory California Institute of Technology Pasadena CA USA",
+      "affiliation_ror": "https://ror.org/027k65916",
+      "activity_dates": null,
+      "authorship_scope": "instrument",
+      "qualifying_roles": [
+        "Author",
+        "InstrumentLead"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Named Gravity (X- and Ka-band) lead, with Luciano Iess, on the Juno mission team page (https://www.missionjuno.swri.edu/the-team/)"
+        },
+        {
+          "role": "InstrumentLead",
+          "source": "Named Gravity lead, with Luciano Iess, on the Juno mission team page (https://www.missionjuno.swri.edu/the-team/)"
+        }
+      ],
+      "instrument_roles": [],
+      "enrichment": {
+        "orcid_origin": "enricher",
+        "orcid_source": "Crossref (paper DOI)",
+        "orcid_evidence": "10.1029/2024gl113231",
+        "orcid_evidence_citation": "Caruso et al. 2025",
+        "orcid_confidence": "Confirmed",
+        "affiliation_origin": "finder",
+        "affiliation_source": "Crossref (paper DOI)",
+        "affiliation_evidence": "10.1029/2024gl113231",
+        "affiliation_evidence_citation": "Caruso et al. 2025",
+        "affiliation_type": "as-deposited",
+        "ror_origin": "enricher",
+        "ror_source": "ROR affiliation-match (chosen)",
+        "ror_evidence": "https://ror.org/027k65916",
+        "ror_confidence": "Confirmed",
+        "lookup_status": "complete",
+        "notes": "ORCID: none pre-filled, and the finder's evidence DOIs deposit no iD for this author. Route A' found it: Crossref deposits https://orcid.org/0000-0001-9896-4585 for 'Ryan S. Park' on 10.1029/2024gl113231 (Caruso et al. 2025), a Juno-titled paper outside the finder's evidence list. The ORCID record is in the name 'Ryan Park'. Affiliation: the only ORCID employment (Jet Propulsion Laboratory) is undated, so in-span deposits decide. The JPL/Caltech deposits carrying his iD tie on specificity with a 2025 deposit giving the University of Bologna, Department of Industrial Engineering (10.1029/2025ja033754), probably a mis-assigned affiliation. The most recent, 10.1029/2024gl113231, gives JPL and was taken. Same institution as the finder value. The finder's string was 'Jet Propulsion Laboratory'. ROR: the affiliation match chose the parent https://ror.org/05dxps055 (California Institute of Technology, score 1.0); the string names the Jet Propulsion Laboratory, whose own record https://ror.org/027k65916 also scored 1.0 (not chosen) and which ROR records as a child of California Institute of Technology, so the child was recorded and the parent set aside."
+      },
+      "seeded_from": {
+        "observatory_status": "included",
+        "observatory_exclusion_reason": null
+      }
+    }
+  ],
+  "notes": [
+    "Built from the Observatory run on spase://SMWG/Observatory/Juno (2026-11-08), not from a separate finder and enricher run on this record. People, roles, ORCID, affiliation and ROR are copied from that file.",
+    "operating_span is the Observatory's; affiliations were era-matched against it."
+  ],
+  "seeded_from": {
+    "observatory_record": "spase://SMWG/Observatory/Juno",
+    "observatory_run_date": "2026-11-08",
+    "source": "instrument_roles",
+    "status": "ready",
+    "reason": "Observatory run resolved this instrument's authors"
+  }
+}

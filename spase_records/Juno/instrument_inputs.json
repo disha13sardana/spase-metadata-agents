@@ -1,0 +1,333 @@
+{
+  "observatory_record": "spase://SMWG/Observatory/Juno",
+  "date": "2026-11-09",
+  "base": "instrument-registration-juno",
+  "instruments": [
+    {
+      "resource_id": "spase://SMWG/Instrument/Juno/Ephemeris",
+      "authority": "SMWG",
+      "new": false,
+      "action": "skipped",
+      "reason": "Ephemeris position record (InstrumentType Platform, 'Juno Spacecraft Ephemeris Virtual Instrument'), not something people author; its Contacts are a ProjectScientist and a MetadataContact only"
+    },
+    {
+      "resource_id": "spase://SMWG/Instrument/Juno/GRAV",
+      "authority": "SMWG",
+      "new": true,
+      "status": "ready",
+      "reason": "Observatory run resolved this instrument's authors",
+      "people": [
+        {
+          "name": "John Anderson",
+          "roles": [
+            "Author",
+            "FormerPI"
+          ],
+          "confidence": "Medium"
+        },
+        {
+          "name": "William M. Folkner",
+          "roles": [
+            "Author",
+            "FormerPI"
+          ],
+          "confidence": "Medium"
+        },
+        {
+          "name": "Luciano Iess",
+          "roles": [
+            "Author",
+            "InstrumentLead"
+          ],
+          "confidence": "Medium"
+        },
+        {
+          "name": "Ryan Park",
+          "roles": [
+            "Author",
+            "InstrumentLead"
+          ],
+          "confidence": "Medium"
+        }
+      ],
+      "links": 2,
+      "log": [],
+      "components": [],
+      "action": "write",
+      "file": "spase_records/Juno_GRAV/author_candidates_enriched.json"
+    },
+    {
+      "resource_id": "spase://SMWG/Instrument/Juno/JIRAM",
+      "authority": "SMWG",
+      "new": true,
+      "status": "ready",
+      "reason": "Observatory run resolved this instrument's authors",
+      "people": [
+        {
+          "name": "Alberto Adriani",
+          "roles": [
+            "Author",
+            "FormerPI"
+          ],
+          "confidence": "Strong"
+        },
+        {
+          "name": "Alessandro Mura",
+          "roles": [
+            "Author",
+            "InstrumentLead"
+          ],
+          "confidence": "Medium"
+        },
+        {
+          "name": "Gianrico Filacchione",
+          "roles": [
+            "Author"
+          ],
+          "confidence": "Strong"
+        },
+        {
+          "name": "Tatiana Di Iorio",
+          "roles": [
+            "Author"
+          ],
+          "confidence": "Strong"
+        },
+        {
+          "name": "Diego Turrini",
+          "roles": [
+            "Author"
+          ],
+          "confidence": "Medium"
+        },
+        {
+          "name": "Raffaella Noschese",
+          "roles": [
+            "Author"
+          ],
+          "confidence": "Medium"
+        }
+      ],
+      "links": 1,
+      "log": [
+        "TEAM DEPTH Diego Turrini: excluded from the Observatory as team depth, an author of this instrument",
+        "TEAM DEPTH Raffaella Noschese: excluded from the Observatory as team depth, an author of this instrument"
+      ],
+      "components": [],
+      "action": "write",
+      "file": "spase_records/Juno_JIRAM/author_candidates_enriched.json"
+    },
+    {
+      "resource_id": "spase://SMWG/Instrument/Juno/JunoCam",
+      "authority": "SMWG",
+      "new": true,
+      "status": "ready",
+      "reason": "Observatory run resolved this instrument's authors",
+      "people": [
+        {
+          "name": "Candice J. Hansen",
+          "roles": [
+            "Author",
+            "InstrumentLead"
+          ],
+          "confidence": "Strong"
+        },
+        {
+          "name": "Andrew P. Ingersoll",
+          "roles": [
+            "Author"
+          ],
+          "confidence": "Strong"
+        },
+        {
+          "name": "Michael A. Ravine",
+          "roles": [
+            "Author",
+            "InstrumentLead"
+          ],
+          "confidence": "Medium"
+        },
+        {
+          "name": "Michael A. Caplinger",
+          "roles": [
+            "Author"
+          ],
+          "confidence": "Strong"
+        },
+        {
+          "name": "Elsa H. Jensen",
+          "roles": [
+            "Author"
+          ],
+          "confidence": "Medium"
+        }
+      ],
+      "links": 2,
+      "log": [
+        "TEAM DEPTH Elsa H. Jensen: excluded from the Observatory as team depth, an author of this instrument"
+      ],
+      "components": [],
+      "action": "write",
+      "file": "spase_records/Juno_JunoCam/author_candidates_enriched.json"
+    },
+    {
+      "resource_id": "spase://SMWG/Instrument/Juno/MWR",
+      "authority": "SMWG",
+      "new": true,
+      "status": "ready",
+      "reason": "Observatory run resolved this instrument's authors",
+      "people": [
+        {
+          "name": "Steve Levin",
+          "roles": [
+            "Author",
+            "InstrumentLead"
+          ],
+          "confidence": "Medium"
+        },
+        {
+          "name": "Shannon T. Brown",
+          "roles": [
+            "Author"
+          ],
+          "confidence": "Strong"
+        },
+        {
+          "name": "Samuel L. Gulkis",
+          "roles": [
+            "Author"
+          ],
+          "confidence": "Medium"
+        },
+        {
+          "name": "Michael A. Janssen",
+          "roles": [
+            "Author",
+            "FormerPI"
+          ],
+          "confidence": "Strong"
+        },
+        {
+          "name": "J. E. Oswald",
+          "roles": [
+            "Author"
+          ],
+          "confidence": "Strong"
+        }
+      ],
+      "links": 2,
+      "log": [],
+      "components": [],
+      "action": "write",
+      "file": "spase_records/Juno_MWR/author_candidates_enriched.json"
+    },
+    {
+      "resource_id": "spase://SMWG/Instrument/Juno/SRU",
+      "authority": "SMWG",
+      "new": true,
+      "status": "ready",
+      "reason": "Observatory run resolved this instrument's authors",
+      "people": [
+        {
+          "name": "Alberto Adriani",
+          "roles": [
+            "Author"
+          ],
+          "confidence": "Medium"
+        },
+        {
+          "name": "Heidi N. Becker",
+          "roles": [
+            "Author",
+            "InstrumentLead"
+          ],
+          "confidence": "Strong"
+        },
+        {
+          "name": "Alessandro Mura",
+          "roles": [
+            "Author"
+          ],
+          "confidence": "Medium"
+        },
+        {
+          "name": "James W. Alexander",
+          "roles": [
+            "Author"
+          ],
+          "confidence": "Strong"
+        }
+      ],
+      "links": 2,
+      "log": [],
+      "components": [],
+      "action": "write",
+      "file": "spase_records/Juno_SRU/author_candidates_enriched.json"
+    },
+    {
+      "resource_id": "spase://SMWG/Instrument/Juno/UVS",
+      "authority": "SMWG",
+      "new": true,
+      "status": "ready",
+      "reason": "Observatory run resolved this instrument's authors",
+      "people": [
+        {
+          "name": "G. Randall Gladstone",
+          "roles": [
+            "Author",
+            "FormerPI"
+          ],
+          "confidence": "Strong"
+        },
+        {
+          "name": "Thomas K. Greathouse",
+          "roles": [
+            "Author",
+            "InstrumentLead"
+          ],
+          "confidence": "Medium"
+        },
+        {
+          "name": "Steven C. Persyn",
+          "roles": [
+            "Author"
+          ],
+          "confidence": "Strong"
+        },
+        {
+          "name": "John S. Eterno",
+          "roles": [
+            "Author"
+          ],
+          "confidence": "Strong"
+        },
+        {
+          "name": "Brandon C. Walther",
+          "roles": [
+            "Author"
+          ],
+          "confidence": "Medium"
+        },
+        {
+          "name": "David C. Slater",
+          "roles": [
+            "Author"
+          ],
+          "confidence": "Medium"
+        }
+      ],
+      "links": 2,
+      "log": [
+        "TEAM DEPTH Brandon C. Walther: excluded from the Observatory as team depth, an author of this instrument",
+        "TEAM DEPTH David C. Slater: excluded from the Observatory as team depth, an author of this instrument"
+      ],
+      "components": [],
+      "action": "write",
+      "file": "spase_records/Juno_UVS/author_candidates_enriched.json"
+    }
+  ],
+  "notes": [
+    "Records under another authority are report only: their authors are listed here for that authority's curators.",
+    "Components of a suite have no input of their own; their authors and links are on the suite's input."
+  ]
+}

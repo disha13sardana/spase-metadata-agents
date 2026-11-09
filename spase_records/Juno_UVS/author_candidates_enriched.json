@@ -1,0 +1,410 @@
+{
+  "record": "spase://SMWG/Instrument/Juno/UVS",
+  "date": "2026-11-09",
+  "operating_span": {
+    "start": "2011-08-05",
+    "stop": null
+  },
+  "cmad": {
+    "found": false,
+    "expected": true,
+    "url": null,
+    "notes": "No CMAD located. (a) No designated CMAD repository is configured for this run; a Zenodo search for a Juno CMAD returned only records of the unrelated JUNO neutrino experiment. (b) Juno's data archive page at PDS PPI (https://pds-ppi.igpp.ucla.edu/mission/Juno) and the SwRI Mission Juno site carry no CMAD. (c) Web search for 'Juno CMAD' and 'Juno Calibration and Measurement Algorithms Document' found only per-instrument PDS Software Interface Specifications (MAG, JADE, JEDI, JIRAM), which are not CMADs. A CMAD is expected under this procedure because the record has no StopDate (operational) and Juno is NASA-funded, so this is recorded as an expected-but-not-located gap. Context for the reviewer: Juno is a Planetary Science Division New Frontiers mission reviewed in the Planetary Mission Senior Review, while the CMAD is a Heliophysics senior-review deliverable, so its absence may be unremarkable; and Juno's status after its extension through September 2025 could not be confirmed from a primary source (NASA's mission page still labels it an active mission; NSSDC says end of mission was scheduled for September 2025). Current-team evidence came instead from the mission team page (https://www.missionjuno.swri.edu/the-team/). Proceeded with the remaining sources."
+  },
+  "pending_instrument_runs": [],
+  "information_urls": [
+    {
+      "name": "The Ultraviolet Spectrograph on NASA's Juno Mission",
+      "url": "https://doi.org/10.1007/s11214-014-0040-z",
+      "description": "UVS instrument description paper.",
+      "scope": "instrument",
+      "instrument": "UVS"
+    },
+    {
+      "name": "NSSDC Master Catalog: UVS",
+      "url": "https://nssdc.gsfc.nasa.gov/nmc/experiment/display.action?id=2011-040A-03",
+      "description": "NSSDC entry for this Juno experiment, with its description and Principal Investigator.",
+      "scope": "instrument",
+      "instrument": "UVS"
+    }
+  ],
+  "candidates": [
+    {
+      "name": "G. Randall Gladstone",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "First author of the Juno UVS instrument description paper (Gladstone et al. 2017, 10.1007/s11214-014-0040-z)",
+          "url": "https://doi.org/10.1007/s11214-014-0040-z",
+          "strength": "Strong",
+          "source_scope": "instrument"
+        },
+        {
+          "source": "Named UVS team lead on the SwRI Juno spacecraft page (launch-era text)",
+          "url": "https://www.missionjuno.swri.edu/spacecraft/juno-spacecraft",
+          "strength": "Medium",
+          "source_scope": "instrument"
+        },
+        {
+          "source": "Listed as UVS Principal Investigator in the NSSDC Master Catalog",
+          "url": "https://nssdc.gsfc.nasa.gov/nmc/experiment/display.action?id=2011-040A-03",
+          "strength": "Medium",
+          "source_scope": "instrument"
+        },
+        {
+          "source": "Listed as a Co-Investigator of the Juno mission on the mission team page",
+          "url": "https://www.missionjuno.swri.edu/the-team/",
+          "strength": "Medium",
+          "source_scope": "observatory"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/G.Randy.Gladstone",
+        "url": "https://spase-metadata.org/SMWG/Person/G.Randy.Gladstone.html"
+      },
+      "orcid": "https://orcid.org/0000-0003-0060-072X",
+      "affiliation": "Space Science and Engineering, Southwest Research Institute",
+      "affiliation_ror": "https://ror.org/03tghng59",
+      "activity_dates": null,
+      "authorship_scope": "instrument",
+      "qualifying_roles": [
+        "Author",
+        "FormerPI"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "First author of the Juno UVS instrument description paper (Gladstone et al. 2017, 10.1007/s11214-014-0040-z)"
+        },
+        {
+          "role": "FormerPI",
+          "source": "Named UVS team lead on the SwRI Juno spacecraft page (https://www.missionjuno.swri.edu/spacecraft/juno-spacecraft) and UVS Principal Investigator in the NSSDC Master Catalog (https://nssdc.gsfc.nasa.gov/nmc/experiment/display.action?id=2011-040A-03); the Juno mission team page now names Thomas Greathouse (https://www.missionjuno.swri.edu/the-team/)"
+        }
+      ],
+      "instrument_roles": [],
+      "enrichment": {
+        "orcid_origin": "finder",
+        "orcid_source": "Crossref (paper DOI)",
+        "orcid_evidence": "10.1029/2018gl081227",
+        "orcid_evidence_citation": "Imai et al. 2019",
+        "orcid_confidence": "Confirmed",
+        "affiliation_origin": "finder",
+        "affiliation_source": "ORCID employment",
+        "affiliation_evidence": "https://orcid.org/0000-0003-0060-072X",
+        "affiliation_type": "era-matched",
+        "ror_origin": "enricher",
+        "ror_source": "ROR affiliation-match (chosen)",
+        "ror_evidence": "https://ror.org/03tghng59",
+        "ror_confidence": "Confirmed",
+        "lookup_status": "complete",
+        "notes": "ORCID: the finder's value (from OpenAlex) passes the checksum. The finder's evidence DOIs deposit no iD for this author, so it was validated by Route A': Crossref deposits it for 'G. Randall Gladstone' on 10.1029/2018gl081227 (Imai et al. 2019), a Juno-titled paper outside the finder's evidence list. The ORCID record is in the name 'Randy Gladstone'. Affiliation: era-matched. Southwest Research Institute, Space Science and Engineering (1993-06-01 to present) is the only ORCID employment and began before the span. Same institution as the finder value. The finder's string was 'Southwest Research Institute'. ROR: affiliation match chose https://ror.org/03tghng59 (Southwest Research Institute, US); name and country check out. The Space Science and Engineering division has no ROR record; the 0.90 \"Space Science and Engineering Center\" result is the University of Wisconsin centre, a different organisation."
+      },
+      "seeded_from": {
+        "observatory_status": "included",
+        "observatory_exclusion_reason": null
+      }
+    },
+    {
+      "name": "Thomas K. Greathouse",
+      "status": "included",
+      "confidence": "Medium",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Named UVS lead on the mission team page",
+          "url": "https://www.missionjuno.swri.edu/the-team/",
+          "strength": "Medium",
+          "source_scope": "instrument"
+        },
+        {
+          "source": "Listed as a Co-Investigator of the Juno mission on the mission team page",
+          "url": "https://www.missionjuno.swri.edu/the-team/",
+          "strength": "Medium",
+          "source_scope": "observatory"
+        },
+        {
+          "source": "Twenty-first author of the Juno UVS instrument description paper (Gladstone et al. 2017, 10.1007/s11214-014-0040-z)",
+          "url": "https://doi.org/10.1007/s11214-014-0040-z",
+          "strength": "Low",
+          "source_scope": "instrument"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": "https://orcid.org/0000-0001-6613-5731",
+      "affiliation": "Division 15, Space Science, Southwest Research Institute",
+      "affiliation_ror": "https://ror.org/03tghng59",
+      "activity_dates": null,
+      "authorship_scope": "instrument",
+      "qualifying_roles": [
+        "Author",
+        "InstrumentLead"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Named UVS lead on the Juno mission team page (https://www.missionjuno.swri.edu/the-team/)"
+        },
+        {
+          "role": "InstrumentLead",
+          "source": "Named UVS lead on the Juno mission team page (https://www.missionjuno.swri.edu/the-team/), succeeding Randy Gladstone"
+        }
+      ],
+      "instrument_roles": [],
+      "enrichment": {
+        "orcid_origin": "finder",
+        "orcid_source": "Crossref (paper DOI)",
+        "orcid_evidence": "10.1029/2018gl081227",
+        "orcid_evidence_citation": "Imai et al. 2019",
+        "orcid_confidence": "Confirmed",
+        "affiliation_origin": "finder",
+        "affiliation_source": "ORCID employment",
+        "affiliation_evidence": "https://orcid.org/0000-0001-6613-5731",
+        "affiliation_type": "era-matched",
+        "ror_origin": "enricher",
+        "ror_source": "ROR affiliation-match (chosen)",
+        "ror_evidence": "https://ror.org/03tghng59",
+        "ror_confidence": "Confirmed",
+        "lookup_status": "complete",
+        "notes": "ORCID: the finder's value (from OpenAlex) passes the checksum. The finder's evidence DOIs deposit no iD for this author, so it was validated by Route A': Crossref deposits it for 'Thomas K. Greathouse' on 10.1029/2018gl081227 (Imai et al. 2019), a Juno-titled paper outside the finder's evidence list. The ORCID record is in the name 'Thomas Greathouse'. Affiliation: era-matched. Southwest Research Institute, Division 15, Space Science (2007-07 to present) is the only ORCID employment. Same institution as the finder value. The finder's string was 'Southwest Research Institute'. ROR: affiliation match chose https://ror.org/03tghng59 (Southwest Research Institute, US); name and country check out."
+      },
+      "seeded_from": {
+        "observatory_status": "included",
+        "observatory_exclusion_reason": null
+      }
+    },
+    {
+      "name": "Steven C. Persyn",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Second author of the Juno UVS instrument description paper (Gladstone et al. 2017, 10.1007/s11214-014-0040-z)",
+          "url": "https://doi.org/10.1007/s11214-014-0040-z",
+          "strength": "Strong",
+          "source_scope": "instrument"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": "Southwest Research Institute",
+      "affiliation_ror": "https://ror.org/03tghng59",
+      "activity_dates": null,
+      "authorship_scope": "instrument",
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Second author of the Juno UVS instrument description paper (Gladstone et al. 2017, 10.1007/s11214-014-0040-z)"
+        }
+      ],
+      "instrument_roles": [],
+      "enrichment": {
+        "orcid_origin": null,
+        "orcid_source": null,
+        "orcid_evidence": null,
+        "orcid_confidence": null,
+        "affiliation_origin": "finder",
+        "affiliation_source": "uncorroborated",
+        "affiliation_evidence": null,
+        "affiliation_type": null,
+        "ror_origin": "enricher",
+        "ror_source": "ROR affiliation-match (chosen)",
+        "ror_evidence": "https://ror.org/03tghng59",
+        "ror_confidence": "Confirmed",
+        "lookup_status": "complete",
+        "notes": "ORCID null: none pre-filled. Juno-titled deposits for 'Steven C. Persyn' (UVS paper; SPIE 2011, 10.1117/12.894274) carry no iD. ORCID name search (Steven/Steve/Stephen) returns no records. Affiliation: the finder's value 'Southwest Research Institute' is kept but uncorroborated. Per the finder's notes it comes from the instrument paper's printed byline. Crossref deposits no affiliation for this author on any Juno-titled paper found, there is no confirmed ORCID, and the mission team page does not list this person. affiliation_type is null because the value's type cannot be assigned: it is not a Crossref deposit and nothing dates it. ROR: affiliation match chose https://ror.org/03tghng59 (Southwest Research Institute, US); name and country check out. It names the institution in an uncorroborated affiliation and does not corroborate that affiliation."
+      },
+      "seeded_from": {
+        "observatory_status": "included",
+        "observatory_exclusion_reason": null
+      }
+    },
+    {
+      "name": "John S. Eterno",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Third author of the Juno UVS instrument description paper (Gladstone et al. 2017, 10.1007/s11214-014-0040-z)",
+          "url": "https://doi.org/10.1007/s11214-014-0040-z",
+          "strength": "Strong",
+          "source_scope": "instrument"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": "Southwest Research Institute",
+      "affiliation_ror": "https://ror.org/03tghng59",
+      "activity_dates": null,
+      "authorship_scope": "instrument",
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Third author of the Juno UVS instrument description paper (Gladstone et al. 2017, 10.1007/s11214-014-0040-z)"
+        }
+      ],
+      "instrument_roles": [],
+      "enrichment": {
+        "orcid_origin": null,
+        "orcid_source": null,
+        "orcid_evidence": null,
+        "orcid_confidence": null,
+        "affiliation_origin": "finder",
+        "affiliation_source": "uncorroborated",
+        "affiliation_evidence": null,
+        "affiliation_type": null,
+        "ror_origin": "enricher",
+        "ror_source": "ROR affiliation-match (chosen)",
+        "ror_evidence": "https://ror.org/03tghng59",
+        "ror_confidence": "Confirmed",
+        "lookup_status": "complete",
+        "notes": "ORCID null: none pre-filled. The Juno-titled deposit for 'John S. Eterno' (SPIE 2011, 10.1117/12.894274) carries no iD. ORCID name search returns one 'John Eterno' record (https://orcid.org/0000-0002-9580-3249), with no works and no institution, so nothing corroborates it; noted as a possible match only. Affiliation: the finder's value 'Southwest Research Institute' is kept but uncorroborated. Per the finder's notes it comes from the instrument paper's printed byline. Crossref deposits no affiliation for this author on any Juno-titled paper found, there is no confirmed ORCID, and the mission team page does not list this person. affiliation_type is null because the value's type cannot be assigned: it is not a Crossref deposit and nothing dates it. ROR: affiliation match chose https://ror.org/03tghng59 (Southwest Research Institute, US); name and country check out. It names the institution in an uncorroborated affiliation and does not corroborate that affiliation."
+      },
+      "seeded_from": {
+        "observatory_status": "included",
+        "observatory_exclusion_reason": null
+      }
+    },
+    {
+      "name": "Brandon C. Walther",
+      "status": "included",
+      "confidence": "Medium",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Fourth author of the Juno UVS instrument description paper (Gladstone et al. 2017, 10.1007/s11214-014-0040-z)",
+          "url": "https://doi.org/10.1007/s11214-014-0040-z",
+          "strength": "Medium",
+          "source_scope": "instrument"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": "Southwest Research Institute",
+      "affiliation_ror": "https://ror.org/03tghng59",
+      "activity_dates": null,
+      "authorship_scope": "instrument",
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Fourth author of the Juno UVS instrument description paper (Gladstone et al. 2017, 10.1007/s11214-014-0040-z)"
+        }
+      ],
+      "instrument_roles": [],
+      "enrichment": {
+        "orcid_origin": null,
+        "orcid_source": null,
+        "orcid_evidence": null,
+        "orcid_confidence": null,
+        "affiliation_origin": "finder",
+        "affiliation_source": "uncorroborated",
+        "affiliation_evidence": null,
+        "affiliation_type": null,
+        "ror_origin": "enricher",
+        "ror_source": "ROR affiliation-match (chosen)",
+        "ror_evidence": "https://ror.org/03tghng59",
+        "ror_confidence": "Confirmed",
+        "lookup_status": "complete",
+        "notes": "ORCID null: none pre-filled. Juno-titled deposits for 'Brandon C. Walther' (UVS paper and its book reprint) carry no iD. ORCID name search returns 2 records, neither corroborated: 0000-0002-0375-9309 has no works or institution, and 0000-0002-4086-8897 is in medicine. Affiliation: the finder's value 'Southwest Research Institute' is kept but uncorroborated. Per the finder's notes it comes from the instrument paper's printed byline. Crossref deposits no affiliation for this author on any Juno-titled paper found, there is no confirmed ORCID, and the mission team page does not list this person. affiliation_type is null because the value's type cannot be assigned: it is not a Crossref deposit and nothing dates it. ROR: affiliation match chose https://ror.org/03tghng59 (Southwest Research Institute, US); name and country check out. It names the institution in an uncorroborated affiliation and does not corroborate that affiliation."
+      },
+      "seeded_from": {
+        "observatory_status": "excluded",
+        "observatory_exclusion_reason": "instrument-team depth — belongs to the UVS Instrument-record run"
+      }
+    },
+    {
+      "name": "David C. Slater",
+      "status": "included",
+      "confidence": "Medium",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Fifth author of the Juno UVS instrument description paper (Gladstone et al. 2017, 10.1007/s11214-014-0040-z)",
+          "url": "https://doi.org/10.1007/s11214-014-0040-z",
+          "strength": "Medium",
+          "source_scope": "instrument"
+        },
+        {
+          "source": "Listed as 'Dave Slater (SwRI)' in the 'In honor of' memorial section of the mission team page",
+          "url": "https://www.missionjuno.swri.edu/the-team/",
+          "strength": "Low",
+          "source_scope": "observatory"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": null,
+      "affiliation": "Southwest Research Institute",
+      "affiliation_ror": "https://ror.org/03tghng59",
+      "activity_dates": null,
+      "authorship_scope": "instrument",
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Fifth author of the Juno UVS instrument description paper (Gladstone et al. 2017, 10.1007/s11214-014-0040-z)"
+        }
+      ],
+      "instrument_roles": [],
+      "enrichment": {
+        "orcid_origin": null,
+        "orcid_source": null,
+        "orcid_evidence": null,
+        "orcid_confidence": null,
+        "affiliation_origin": "finder",
+        "affiliation_source": "provider documentation",
+        "affiliation_evidence": "https://www.missionjuno.swri.edu/the-team/",
+        "affiliation_type": "current",
+        "ror_origin": "enricher",
+        "ror_source": "ROR affiliation-match (chosen)",
+        "ror_evidence": "https://ror.org/03tghng59",
+        "ror_confidence": "Confirmed",
+        "lookup_status": "complete",
+        "notes": "ORCID null: none pre-filled. Juno-titled deposits for 'David C. Slater' (UVS paper; SPIE 2011) carry no iD. ORCID name search ('David' 20 and 'Dave' 0 results, all checked) found no record with Juno or Jupiter works or SwRI employment. Affiliation: no ORCID and no Crossref affiliation. The mission team page's 'In honor of' list gives 'Dave Slater (SwRI)', whom the finder linked to this UVS author. 'Southwest Research Institute' is the finder's expansion of 'SwRI'. ROR: affiliation match chose https://ror.org/03tghng59 (Southwest Research Institute, US); name and country check out."
+      },
+      "seeded_from": {
+        "observatory_status": "excluded",
+        "observatory_exclusion_reason": "instrument-team depth — belongs to the UVS Instrument-record run"
+      }
+    }
+  ],
+  "notes": [
+    "Built from the Observatory run on spase://SMWG/Observatory/Juno (2026-11-08), not from a separate finder and enricher run on this record. People, roles, ORCID, affiliation and ROR are copied from that file.",
+    "operating_span is the Observatory's; affiliations were era-matched against it."
+  ],
+  "seeded_from": {
+    "observatory_record": "spase://SMWG/Observatory/Juno",
+    "observatory_run_date": "2026-11-08",
+    "source": "instrument_roles",
+    "status": "ready",
+    "reason": "Observatory run resolved this instrument's authors"
+  }
+}

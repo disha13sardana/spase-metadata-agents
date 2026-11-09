@@ -1,0 +1,386 @@
+{
+  "record": "spase://SMWG/Instrument/Juno/JunoCam",
+  "date": "2026-11-09",
+  "operating_span": {
+    "start": "2011-08-05",
+    "stop": null
+  },
+  "cmad": {
+    "found": false,
+    "expected": true,
+    "url": null,
+    "notes": "No CMAD located. (a) No designated CMAD repository is configured for this run; a Zenodo search for a Juno CMAD returned only records of the unrelated JUNO neutrino experiment. (b) Juno's data archive page at PDS PPI (https://pds-ppi.igpp.ucla.edu/mission/Juno) and the SwRI Mission Juno site carry no CMAD. (c) Web search for 'Juno CMAD' and 'Juno Calibration and Measurement Algorithms Document' found only per-instrument PDS Software Interface Specifications (MAG, JADE, JEDI, JIRAM), which are not CMADs. A CMAD is expected under this procedure because the record has no StopDate (operational) and Juno is NASA-funded, so this is recorded as an expected-but-not-located gap. Context for the reviewer: Juno is a Planetary Science Division New Frontiers mission reviewed in the Planetary Mission Senior Review, while the CMAD is a Heliophysics senior-review deliverable, so its absence may be unremarkable; and Juno's status after its extension through September 2025 could not be confirmed from a primary source (NASA's mission page still labels it an active mission; NSSDC says end of mission was scheduled for September 2025). Current-team evidence came instead from the mission team page (https://www.missionjuno.swri.edu/the-team/). Proceeded with the remaining sources."
+  },
+  "pending_instrument_runs": [],
+  "information_urls": [
+    {
+      "name": "Junocam: Juno's Outreach Camera",
+      "url": "https://doi.org/10.1007/s11214-014-0079-x",
+      "description": "JunoCam instrument description paper.",
+      "scope": "instrument",
+      "instrument": "JunoCam"
+    },
+    {
+      "name": "NSSDC Master Catalog: JunoCam",
+      "url": "https://nssdc.gsfc.nasa.gov/nmc/experiment/display.action?id=2011-040A-01",
+      "description": "NSSDC entry for this Juno experiment, with its description and Principal Investigator.",
+      "scope": "instrument",
+      "instrument": "JunoCam"
+    }
+  ],
+  "candidates": [
+    {
+      "name": "Candice J. Hansen",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "First author of the JunoCam instrument description paper (Hansen et al. 2017, 10.1007/s11214-014-0079-x)",
+          "url": "https://doi.org/10.1007/s11214-014-0079-x",
+          "strength": "Strong",
+          "source_scope": "instrument"
+        },
+        {
+          "source": "Named JunoCam lead, with Michael Ravine, on the mission team page",
+          "url": "https://www.missionjuno.swri.edu/the-team/",
+          "strength": "Medium",
+          "source_scope": "instrument"
+        },
+        {
+          "source": "Listed as JunoCam Principal Investigator ('Other Principal Investigator') in the NSSDC Master Catalog",
+          "url": "https://nssdc.gsfc.nasa.gov/nmc/experiment/display.action?id=2011-040A-01",
+          "strength": "Medium",
+          "source_scope": "instrument"
+        },
+        {
+          "source": "Listed as a Co-Investigator of the Juno mission on the mission team page",
+          "url": "https://www.missionjuno.swri.edu/the-team/",
+          "strength": "Medium",
+          "source_scope": "observatory"
+        },
+        {
+          "source": "Eleventh author of the Juno magnetospheric science objectives paper (Bagenal et al. 2017, 10.1007/s11214-014-0036-8), in the alphabetized part of that list",
+          "url": "https://doi.org/10.1007/s11214-014-0036-8",
+          "strength": "Low",
+          "source_scope": "observatory"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Candice.Hansen",
+        "url": "https://spase-metadata.org/SMWG/Person/Candice.Hansen.html"
+      },
+      "orcid": "https://orcid.org/0000-0001-5863-299X",
+      "affiliation": "Planetary Science Institute Tucson AZ USA",
+      "affiliation_ror": "https://ror.org/05vvg9554",
+      "activity_dates": null,
+      "authorship_scope": "instrument",
+      "qualifying_roles": [
+        "Author",
+        "InstrumentLead"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "First author of the JunoCam instrument description paper (Hansen et al. 2017, 10.1007/s11214-014-0079-x)"
+        },
+        {
+          "role": "InstrumentLead",
+          "source": "Named JunoCam lead, with Michael Ravine, on the Juno mission team page (https://www.missionjuno.swri.edu/the-team/) and listed as a JunoCam Principal Investigator in the NSSDC Master Catalog (https://nssdc.gsfc.nasa.gov/nmc/experiment/display.action?id=2011-040A-01)"
+        }
+      ],
+      "instrument_roles": [],
+      "enrichment": {
+        "orcid_origin": "finder",
+        "orcid_source": "Crossref (paper DOI)",
+        "orcid_evidence": "10.1029/2024je008744",
+        "orcid_evidence_citation": "Becker et al. 2025",
+        "orcid_confidence": "Confirmed",
+        "affiliation_origin": "finder",
+        "affiliation_source": "Crossref (paper DOI)",
+        "affiliation_evidence": "10.1029/2024je008744",
+        "affiliation_evidence_citation": "Becker et al. 2025",
+        "affiliation_type": "as-deposited",
+        "ror_origin": "enricher",
+        "ror_source": "ROR affiliation-match (chosen)",
+        "ror_evidence": "https://ror.org/05vvg9554",
+        "ror_confidence": "Confirmed",
+        "lookup_status": "complete",
+        "notes": "ORCID: the finder's value (from OpenAlex) passes the checksum. The finder's evidence DOIs deposit no iD for this author, so it was validated by Route A': Crossref deposits it for 'Candice J. Hansen' on 10.1029/2024je008744 (Becker et al. 2025), a Juno-titled paper outside the finder's evidence list. The ORCID record is in the name 'Candice Hansen'. Affiliation: no ORCID employment. The PSI deposits carrying her iD are equally specific, so the most recent, 10.1029/2024je008744, was taken. Same institution as the finder value. Her registry Person record carries JPL (finder note); every in-span deposit from 2017 on gives PSI. The finder's string was 'Planetary Science Institute'. ROR: affiliation match chose https://ror.org/05vvg9554 (Planetary Science Institute, US); name and country check out."
+      },
+      "seeded_from": {
+        "observatory_status": "included",
+        "observatory_exclusion_reason": null
+      }
+    },
+    {
+      "name": "Andrew P. Ingersoll",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Third author of the JunoCam instrument description paper (Hansen et al. 2017, 10.1007/s11214-014-0079-x)",
+          "url": "https://doi.org/10.1007/s11214-014-0079-x",
+          "strength": "Strong",
+          "source_scope": "instrument"
+        },
+        {
+          "source": "Listed as a Co-Investigator of the Juno mission on the mission team page",
+          "url": "https://www.missionjuno.swri.edu/the-team/",
+          "strength": "Medium",
+          "source_scope": "observatory"
+        },
+        {
+          "source": "Ninth author of the Juno mission overview paper (Bolton et al. 2017, 10.1007/s11214-017-0429-6)",
+          "url": "https://doi.org/10.1007/s11214-017-0429-6",
+          "strength": "Low",
+          "source_scope": "observatory"
+        },
+        {
+          "source": "Tenth author of the Juno MWR instrument description paper (Janssen et al. 2017, 10.1007/s11214-017-0349-5)",
+          "url": "https://doi.org/10.1007/s11214-017-0349-5",
+          "strength": "Low",
+          "source_scope": "instrument"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Andrew.P.Ingersoll",
+        "url": "https://spase-metadata.org/SMWG/Person/Andrew.P.Ingersoll.html"
+      },
+      "orcid": "https://orcid.org/0000-0002-2035-9198",
+      "affiliation": "Division of Geological and Planetary Sciences, California Institute of Technology",
+      "affiliation_ror": "https://ror.org/05dxps055",
+      "activity_dates": null,
+      "authorship_scope": "instrument",
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Third author of the JunoCam instrument description paper (Hansen et al. 2017, 10.1007/s11214-014-0079-x)"
+        }
+      ],
+      "instrument_roles": [],
+      "enrichment": {
+        "orcid_origin": "finder",
+        "orcid_source": "Crossref (paper DOI)",
+        "orcid_evidence": "10.1002/2016gl072443",
+        "orcid_evidence_citation": "Orton et al. 2017",
+        "orcid_confidence": "Confirmed",
+        "affiliation_origin": "finder",
+        "affiliation_source": "ORCID employment",
+        "affiliation_evidence": "https://orcid.org/0000-0002-2035-9198",
+        "affiliation_type": "era-matched",
+        "ror_origin": "enricher",
+        "ror_source": "ORCID disambiguated-organization",
+        "ror_evidence": "https://orcid.org/0000-0002-2035-9198",
+        "ror_confidence": "Confirmed",
+        "lookup_status": "complete",
+        "notes": "ORCID: the finder's value (from OpenAlex) passes the checksum. The finder's evidence DOIs deposit no iD for this author, so it was validated by Route A': Crossref deposits it for 'Andrew P. Ingersoll' on 10.1002/2016gl072443 (Orton et al. 2017), a Juno-titled paper outside the finder's evidence list. The ORCID record is in the name 'Andrew Ingersoll'. Affiliation: era-matched. California Institute of Technology, Division of Geological and Planetary Sciences (1966 to 2022) is a past position overlapping the span. Same institution as the finder value. The finder's string was 'California Institute of Technology'. ROR: asserted by the selected ORCID employment's disambiguated-organization (ROR 05dxps055, California Institute of Technology). The Division of Geological and Planetary Sciences named in the string has no ROR record, so there was no child to descend to. The affiliation match on the same string independently chose 05dxps055."
+      },
+      "seeded_from": {
+        "observatory_status": "included",
+        "observatory_exclusion_reason": null
+      }
+    },
+    {
+      "name": "Michael A. Ravine",
+      "status": "included",
+      "confidence": "Medium",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Named JunoCam lead, with Candice Hansen, on the mission team page",
+          "url": "https://www.missionjuno.swri.edu/the-team/",
+          "strength": "Medium",
+          "source_scope": "instrument"
+        },
+        {
+          "source": "Listed as JunoCam Principal Investigator in the NSSDC Master Catalog",
+          "url": "https://nssdc.gsfc.nasa.gov/nmc/experiment/display.action?id=2011-040A-01",
+          "strength": "Medium",
+          "source_scope": "instrument"
+        },
+        {
+          "source": "Listed as a Co-Investigator of the Juno mission on the mission team page",
+          "url": "https://www.missionjuno.swri.edu/the-team/",
+          "strength": "Medium",
+          "source_scope": "observatory"
+        },
+        {
+          "source": "Fourth author of the JunoCam instrument description paper (Hansen et al. 2017, 10.1007/s11214-014-0079-x)",
+          "url": "https://doi.org/10.1007/s11214-014-0079-x",
+          "strength": "Medium",
+          "source_scope": "instrument"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": "https://orcid.org/0000-0003-4810-7352",
+      "affiliation": "Camera Systems, Malin Space Science Systems",
+      "affiliation_ror": null,
+      "activity_dates": null,
+      "authorship_scope": "instrument",
+      "qualifying_roles": [
+        "Author",
+        "InstrumentLead"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Fourth author of the JunoCam instrument description paper (Hansen et al. 2017, 10.1007/s11214-014-0079-x); also named JunoCam lead on the Juno mission team page (https://www.missionjuno.swri.edu/the-team/)"
+        },
+        {
+          "role": "InstrumentLead",
+          "source": "Named JunoCam lead, with Candice Hansen, on the Juno mission team page (https://www.missionjuno.swri.edu/the-team/) and JunoCam Principal Investigator in the NSSDC Master Catalog (https://nssdc.gsfc.nasa.gov/nmc/experiment/display.action?id=2011-040A-01)"
+        }
+      ],
+      "instrument_roles": [],
+      "enrichment": {
+        "orcid_origin": "finder",
+        "orcid_source": "Crossref (paper DOI)",
+        "orcid_evidence": "10.5194/egusphere-egu25-2905",
+        "orcid_evidence_citation": "Becker et al. 2025",
+        "orcid_confidence": "Confirmed",
+        "affiliation_origin": "finder",
+        "affiliation_source": "ORCID employment",
+        "affiliation_evidence": "https://orcid.org/0000-0003-4810-7352",
+        "affiliation_type": "era-matched",
+        "ror_origin": null,
+        "ror_source": null,
+        "ror_evidence": null,
+        "ror_confidence": null,
+        "lookup_status": "complete",
+        "notes": "ORCID: the finder's value (from OpenAlex) passes the checksum. The finder's evidence DOIs deposit no iD for this author, so it was validated by Route A': Crossref deposits it for 'Michael Ravine' on 10.5194/egusphere-egu25-2905 (Becker et al. 2025), a Juno-titled paper outside the finder's evidence list. The ORCID record is in the name 'Michael Ravine'. Affiliation: era-matched. Malin Space Science Systems, Camera Systems (2001-10-01 to present) is the only ORCID employment. Same institution as the finder value. The finder's string was 'Malin Space Science Systems'. ROR null: the affiliation match on \"Camera Systems, Malin Space Science Systems\" set chosen=false on every result (top: JFE Systems JP 0.90; Vertically Integrated Systems DE 0.89; YM Systems JP 0.89, all unrelated). Not selected by score. For the reviewer: ROR lists Malin Space Science Systems (United States), https://ror.org/00v5n6851, which the matcher did not return."
+      },
+      "seeded_from": {
+        "observatory_status": "included",
+        "observatory_exclusion_reason": null
+      }
+    },
+    {
+      "name": "Michael A. Caplinger",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Second author of the JunoCam instrument description paper (Hansen et al. 2017, 10.1007/s11214-014-0079-x)",
+          "url": "https://doi.org/10.1007/s11214-014-0079-x",
+          "strength": "Strong",
+          "source_scope": "instrument"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": "https://orcid.org/0009-0005-1707-9004",
+      "affiliation": "Malin Space Science Systems San Diego California USA",
+      "affiliation_ror": null,
+      "activity_dates": null,
+      "authorship_scope": "instrument",
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Second author of the JunoCam instrument description paper (Hansen et al. 2017, 10.1007/s11214-014-0079-x)"
+        }
+      ],
+      "instrument_roles": [],
+      "enrichment": {
+        "orcid_origin": "finder",
+        "orcid_source": "ORCID name-search (corroborated)",
+        "orcid_evidence": "https://orcid.org/0009-0005-1707-9004",
+        "orcid_confidence": "Confirmed",
+        "affiliation_origin": "finder",
+        "affiliation_source": "Crossref (paper DOI)",
+        "affiliation_evidence": "10.1002/2016gl072443",
+        "affiliation_evidence_citation": "Orton et al. 2017",
+        "affiliation_type": "as-deposited",
+        "ror_origin": null,
+        "ror_source": null,
+        "ror_evidence": null,
+        "ror_confidence": null,
+        "lookup_status": "complete",
+        "notes": "ORCID: the finder's value (from OpenAlex) passes the checksum. The Juno deposits for 'Michael Caplinger' carry no iD. The ORCID record ('Michael Caplinger', Malin Space Science Systems) lists 8 Juno and Jupiter works, including 'Long-term tracking of circumpolar cyclones on Jupiter from polar observations with JunoCam', which corroborates identity. Affiliation: the only ORCID employment (Malin Space Science Systems) is undated. The in-span JunoCam deposit 10.1002/2016gl072443 for 'Michael Caplinger' (no iD deposited) outranks it and names the same institution as the finder value. The finder's string was 'Malin Space Science Systems'. ROR null: the affiliation match on the deposited string set chosen=false on every result (top: Israel Cancer Association USA 0.92; California Department of Social Services 0.86; UC San Diego 0.83, all unrelated). The string carries an address, so Route C does not apply. For the reviewer: ROR lists Malin Space Science Systems (United States), https://ror.org/00v5n6851, which the matcher did not return."
+      },
+      "seeded_from": {
+        "observatory_status": "included",
+        "observatory_exclusion_reason": null
+      }
+    },
+    {
+      "name": "Elsa H. Jensen",
+      "status": "included",
+      "confidence": "Medium",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Fifth author of the JunoCam instrument description paper (Hansen et al. 2017, 10.1007/s11214-014-0079-x)",
+          "url": "https://doi.org/10.1007/s11214-014-0079-x",
+          "strength": "Medium",
+          "source_scope": "instrument"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": "https://orcid.org/0000-0002-9825-2534",
+      "affiliation": "Malin Space Science Systems San Diego California USA",
+      "affiliation_ror": null,
+      "activity_dates": null,
+      "authorship_scope": "instrument",
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Fifth author of the JunoCam instrument description paper (Hansen et al. 2017, 10.1007/s11214-014-0079-x)"
+        }
+      ],
+      "instrument_roles": [],
+      "enrichment": {
+        "orcid_origin": "finder",
+        "orcid_source": "Crossref (paper DOI)",
+        "orcid_evidence": "10.1002/2016gl072443",
+        "orcid_evidence_citation": "Orton et al. 2017",
+        "orcid_confidence": "Confirmed",
+        "affiliation_origin": "finder",
+        "affiliation_source": "Crossref (paper DOI)",
+        "affiliation_evidence": "10.1002/2016gl072443",
+        "affiliation_evidence_citation": "Orton et al. 2017",
+        "affiliation_type": "as-deposited",
+        "ror_origin": null,
+        "ror_source": null,
+        "ror_evidence": null,
+        "ror_confidence": null,
+        "lookup_status": "complete",
+        "notes": "ORCID: the finder's value (from OpenAlex) passes the checksum. The finder's evidence DOIs deposit no iD for this author, so it was validated by Route A': Crossref deposits it for 'Elsa Jensen' on 10.1002/2016gl072443 (Orton et al. 2017), a Juno-titled paper outside the finder's evidence list. The ORCID record is in the name 'Elsa Jensen'. Affiliation: no ORCID employment. The one Juno deposit carrying her iD, 10.1002/2016gl072443, gives Malin Space Science Systems. Same institution as the finder value. The finder's string was 'Malin Space Science Systems'. ROR null: the affiliation match on the deposited string set chosen=false on every result (top: Israel Cancer Association USA 0.92; California Department of Social Services 0.86; UC San Diego 0.83, all unrelated). The string carries an address, so Route C does not apply. For the reviewer: ROR lists Malin Space Science Systems (United States), https://ror.org/00v5n6851, which the matcher did not return."
+      },
+      "seeded_from": {
+        "observatory_status": "excluded",
+        "observatory_exclusion_reason": "instrument-team depth — belongs to the JunoCam Instrument-record run"
+      }
+    }
+  ],
+  "notes": [
+    "Built from the Observatory run on spase://SMWG/Observatory/Juno (2026-11-08), not from a separate finder and enricher run on this record. People, roles, ORCID, affiliation and ROR are copied from that file.",
+    "operating_span is the Observatory's; affiliations were era-matched against it."
+  ],
+  "seeded_from": {
+    "observatory_record": "spase://SMWG/Observatory/Juno",
+    "observatory_run_date": "2026-11-08",
+    "source": "instrument_roles",
+    "status": "ready",
+    "reason": "Observatory run resolved this instrument's authors"
+  }
+}
