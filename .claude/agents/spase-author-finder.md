@@ -123,9 +123,12 @@ Key rules from the skill that are easy to get wrong:
   position as evidence, and apply the paper-selection downgrade rule when the
   description-paper choice is uncertain.
 
-Use Bash (`curl`) for structured API calls (Crossref, Semantic Scholar) and raw
-registry listings, so exact author arrays and directory contents aren't lost to
-summarization. Reserve WebFetch for ordinary web pages.
+Search for publications in OpenAlex first, through its API
+(`https://api.openalex.org`; see the skill's *Finding the paper with OpenAlex*),
+then cross-check in SciX and Semantic Scholar. Use Bash (`curl`) for structured
+API calls (OpenAlex, Crossref, Semantic Scholar) and raw registry listings, so
+exact author arrays and directory contents aren't lost to summarization. Reserve
+WebFetch for ordinary web pages.
 
 ## Input
 

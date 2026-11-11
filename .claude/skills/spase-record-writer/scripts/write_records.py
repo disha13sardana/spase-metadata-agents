@@ -609,6 +609,13 @@ def new_person_xml(pid, name, org, orcid, ror, stamp, note=None):
 # main
 # --------------------------------------------------------------------------
 
+HELP = ("Duplicate-person rulings for this record, made by the writer agent. "
+        "links[name] = an existing PersonID when it is the same person; a name in "
+        "creates is a different person and gets a new record. Empty string means "
+        "not yet ruled. _rationale says why, _confidence is high or low. To "
+        "change a ruling, edit it here and re-run the writer.")
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--repo", required=True, help="local SMWG clone root")
@@ -677,6 +684,9 @@ def main():
     contacts, creates, updates, log, blockers = [], [], [], [], []
     written_ids = set()
 
+    # Person files are written only once every name has a ruling: a run that
+    # stops at a possible duplicate must leave the clone untouched.
+    pending_writes = []
     for c in included:
         name = c["name"]
         linked = (c.get("person_record") or {}).get("id") or ""
@@ -684,7 +694,8 @@ def main():
 
         if name in overrides:
             pid = overrides[name]
-            log.append("LINK       %s -> %s (confirmed by curator)" % (name, pid))
+            log.append("LINK       %s -> %s (ruled in writer_decisions.json)"
+                       % (name, pid))
 
         if not pid:
             pid = mint_id(name)
@@ -700,6 +711,10 @@ def main():
             if hits and name not in confirmed_new:
                 blockers.append((name, hits[:4]))
                 continue
+            if hits:
+                log.append("DISTINCT   %s: ruled a different person from %s "
+                           "(writer_decisions.json); new record %s"
+                           % (name, ", ".join(hits[:4]), pid))
             conventional = mint_id(name)
             if pid != conventional:
                 log.append("ID SHAPE   %s: minting '%s' for '%s'; the "
@@ -894,16 +909,15 @@ def main():
                 txt = set_field(txt, "NamingAuthority", "SMWG")
                 txt = set_field(txt, "ResourceType", "Person")
                 if not args.dry_run:
-                    open(path, "w", encoding="utf-8").write(txt)
+                    pending_writes.append((path, txt))
                 updates.append(pid)
         else:
             if not org:
                 org = UNKNOWN_ORG
                 log.append("NO AFFIL   %s -> OrganizationName=Unknown" % name)
             if not args.dry_run:
-                open(path, "w", encoding="utf-8").write(
-                    new_person_xml(pid, name, org, orcid, ror, stamp,
-                                   build_person_note(c)))
+                pending_writes.append((path, new_person_xml(
+                    pid, name, org, orcid, ror, stamp, build_person_note(c))))
             creates.append(pid)
 
         roles = list(c.get("qualifying_roles") or ["Author"])
@@ -996,11 +1010,9 @@ def main():
             # Add to the file, never rebuild it: it holds the user's rulings,
             # their _rationale and earlier runs' _candidates, and a file rebuilt
             # from this run's blockers alone would silently drop all three.
-            tmpl = {"_help": ("For each name: set links[name] to an existing "
-                              "PersonID if it is the same human, or move the name "
-                              "into creates if it is a different person. Empty "
-                              "string means undecided.")}
+            tmpl = {"_help": HELP}
             tmpl.update(existing)
+            tmpl["_help"] = HELP
             cands = dict(existing.get("_candidates") or {})
             links = dict(existing.get("links") or {})
             creates = list(existing.get("creates") or [])
@@ -1013,11 +1025,16 @@ def main():
             with open(path, "w", encoding="utf-8") as fh:
                 json.dump(tmpl, fh, indent=2)
             print("\nDecisions template written: %s" % path)
-            print("Fill it in once; later runs of this record reuse it.")
+            print("Rule on each flagged name in it (links / creates, with "
+                  "_rationale and _confidence), then re-run; later runs of this "
+                  "record reuse the rulings.")
         else:
             print("\nEvery flagged name needs a --link or --create decision, "
                   "or pass --decisions <path> to record them persistently.")
         return 1
+
+    for path, body in pending_writes:
+        open(path, "w", encoding="utf-8").write(body)
 
     # ---- target record ----------------------------------------------------
     txt = open(target, encoding="utf-8").read()

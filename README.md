@@ -19,6 +19,7 @@ Each agent's full procedure is in `.claude/skills/<agent>/SKILL.md`.
 - Claude Code, run from the root of this repository
 - Python 3 and `curl`
 - A local clone of your fork of the target SPASE repository, e.g. [hpde/SMWG](https://github.com/hpde/SMWG), up to date and clean
+- Optional: a free [OpenAlex](https://openalex.org) API key, from [openalex.org/settings/api](https://openalex.org/settings/api). The author finder searches OpenAlex for publications; without a key, the daily allowance is about 100 searches, enough for a mission or two. To use a key, add `export OPENALEX_API_KEY=<your key>` to `~/.zshrc` and open a new Terminal.
 
 ## Running one mission
 
@@ -71,22 +72,25 @@ python3 .claude/skills/spase-record-writer/scripts/spase-localcheck.py \
 
 Add `--dry-run` (registrar, author mapper) or `--no-push` (writer) to try a run without changing anything remote.
 
-### When the writer agent asks about a person
+### When a person may already have a record
 
-Before writing, the writer agent checks each person against the existing SPASE Person records. When a candidate might be someone who already has a record ("B. K. Dichter" from a paper, and an existing `Bronislaw.K.Dichter`), it stops without changing anything and writes `writer_decisions.json` next to its input, listing the possible matches. It doesn't guess, because linking to the wrong record credits the wrong person, and a second record for the same person splits their identity.
+Before writing, the writer agent checks each person against the existing SPASE Person records. When a candidate might be someone who already has a record ("B. K. Dichter" from a paper, and an existing `Bronislaw.K.Dichter`), it doesn't stop to ask you. It weighs the evidence (ORCID, initials, affiliation, email, field and era), decides, and goes ahead. When the evidence is evenly balanced, it treats them as different people, because linking to the wrong record credits the wrong person, while a duplicate record can be merged later.
 
-When it happens, the run halts and waits for you. When you run the writer as an agent, it explains the possible matches itself and asks you.
+Each ruling is written to `writer_decisions.json` next to its input, with the reason and a confidence of `high` or `low`:
 
-Rule on each name, then run the writer agent again:
-
-- `links`: same person as an existing record, so use that record
-- `creates`: a different person, so make a new record
+- `links`: same person as an existing record, so it uses that record
+- `creates`: a different person, so it makes a new record
 
 ```json
-{ "links": { "B. K. Dichter": "Bronislaw.K.Dichter" }, "creates": ["Pamela C. Sullivan"] }
+{
+  "links": { "B. K. Dichter": "Bronislaw.K.Dichter" },
+  "creates": ["David C. Slater"],
+  "_rationale": { "David C. Slater": "DIFFERENT PEOPLE (agent decision, 2026-11-11) - ..." },
+  "_confidence": { "B. K. Dichter": "high", "David C. Slater": "high" }
+}
 ```
 
-You rule on each person once per mission: the author mapper copies these rulings to the mission's instrument inputs.
+The writer agent lists its rulings in its report, the `low` ones first, so check those before you open the pull request. To change a ruling, edit the file and run the writer agent again. Each person is ruled on once per mission: the author mapper copies the rulings to the mission's instrument inputs. Commit `writer_decisions.json` with the mission's other JSON files.
 
 ## Review and undo
 
@@ -103,4 +107,4 @@ A mission can have up to three branches; delete all of them to discard the whole
 
 ## License
 
-No license has been specified yet.
+Licensed under the [Apache License 2.0](LICENSE).

@@ -308,7 +308,7 @@ Each candidate object:
     "Long-tail instrument-paper co-authors (Hochedez, Schmutz, Shapiro, Kretzschmar, Zhukov, Gillotay, Stockman, BenMoussa) not listed individually — co-authorship alone is below the inclusion bar unless corroborated by another source.",
     "Dammasch link is initials-inferred from product-page footer; downstream should verify identity and affiliation.",
     "Dominique's Strong confidence comes from lead authorship of the (non-alphabetized) instrument paper; her Instrument-record PI role corroborates at Medium. In the Flarelist record's own Contacts she appears only as GeneralContact (non-qualifying).",
-    "Paper selection confident: (Dominique et al. 2013, 10.1007/s11207-013-0252-5) matches title keywords, author count, and operating-span timing; SciX and Semantic Scholar agree."
+    "Paper selection confident: (Dominique et al. 2013, 10.1007/s11207-013-0252-5) matches title keywords, author count, and operating-span timing; OpenAlex, SciX and Semantic Scholar agree."
   ]
 }
 ```
@@ -459,7 +459,7 @@ A CMAD is a strong-evidence *bonus when found*, never a hard requirement of this
 
 ### 5. The description paper
 - **Add every description paper you resolve to `information_urls`** — the record's own at `observatory` scope (for an Observatory record) and each instrument's at `instrument` scope with the instrument named. These links are as much a deliverable as the candidates.
-- Find the record's description paper (see heuristic below — which paper that is depends on the record type). Publication authorship is **Strong** evidence *when the paper selection is confident*: a peer-reviewed author list is deliberate, static, and more trustworthy than possibly outdated SPASE metadata. Apply the author-order rules below to extract the right people, and the self-aware downgrade rule when selection is uncertain.
+- Find the record's description paper (see heuristic below — which paper that is depends on the record type). **Search OpenAlex first** (`https://openalex.org`, through its API — see *Finding the paper with OpenAlex* below), then cross-check the choice in SciX and Semantic Scholar. Publication authorship is **Strong** evidence *when the paper selection is confident*: a peer-reviewed author list is deliberate, static, and more trustworthy than possibly outdated SPASE metadata. Apply the author-order rules below to extract the right people, and the self-aware downgrade rule when selection is uncertain.
 
 ### 6. The SMWG Person registry
 - For each candidate, check `https://spase-metadata.org/SMWG/Person/<First.Last>.html` for an existing record. If present, capture both the `spase://SMWG/Person/...` id and the clickable `.html` url. If absent, set both to `null`.
@@ -494,8 +494,26 @@ Everywhere below, "the description paper" means the paper matching the record ty
 - Expect the description paper within roughly a **2–5 year window** around the operating-span start, not ~10 years later. A paper appearing a decade after operations began is more likely a later science or review paper, not the correct description-paper reference.
 - **Fuzzy lower boundary:** a *design* or pre-flight/calibration paper may appear *before* operations begin. Treat earlier design-phase papers as valid description-paper candidates; only the far-later papers should be discounted.
 
+**Finding the paper with OpenAlex.** OpenAlex (`https://openalex.org`) is the first place to search, because one API call returns everything the heuristics above check: title, year, citation count and the byline. Call the API with `curl` (see *Tools / APIs* for the key):
+
+```bash
+curl -sS -G "https://api.openalex.org/works" \
+  --data-urlencode 'search.title=<observatory or instrument name> <title keyword>' \
+  --data-urlencode 'filter=from_publication_date:<start-5>-01-01,to_publication_date:<start+5>-12-31' \
+  --data-urlencode 'select=id,doi,title,publication_year,cited_by_count,type,authorships,referenced_works' \
+  --data-urlencode 'per_page=25'
+```
+
+- **Search under every name the resource goes by** (full name and acronym), one request each, and with and without a title keyword ("instrument", "overview", "mission"). Anchor the year range on the operating-span start, per the time-period rule.
+- **Score each result against the heuristics:** title keywords and the name in `title`; author count from `authorships` (each entry has `author_position`, `raw_author_name` — the name as printed — and `author.display_name`); `cited_by_count`; `publication_year` against the operating span.
+- **Fetch a known paper by its DOI** with `https://api.openalex.org/works/doi:<DOI>` (a single-work lookup, which costs nothing). Use this when the record, a provider page or a CMAD already cites the paper.
+- **If the paper found seems wrong, check its reference list:** `referenced_works` holds the OpenAlex IDs of everything it cites; fetch each with `https://api.openalex.org/works/<ID>?select=id,doi,title,publication_year,cited_by_count` (single-work lookups are free) and look for the description paper among them.
+- **OpenAlex keeps only the first 100 authors.** If `authorships` has exactly 100 entries, the list is cut off and its end is missing, so the alphabetization check below (which reads from the end) cannot run on it. Take the full author list from Crossref (`https://api.crossref.org/works/<DOI>`) before applying the author-order rules.
+- **Use OpenAlex to find papers, not people.** Its `author.orcid` and `institutions` come from its own author matching, which can merge or split people. Do not copy an ORCID or affiliation from OpenAlex into a candidate; those come from Crossref and the enricher.
+- **Cite the paper by its DOI**, as for any other paper. The OpenAlex work ID is not a citation.
+
 **Self-aware downgrade rule (paper-selection confidence).** Because publication authorship is Strong evidence, a wrongly selected paper mints Strong candidates who may have nothing to do with the record — so the selection must earn its weight. Treat the selection as **uncertain** if any of these hold and cannot be resolved:
-- SciX and Semantic Scholar point to different papers and the conflict cannot be settled;
+- the literature indexes you searched (OpenAlex, SciX, Semantic Scholar) point to different papers and the conflict cannot be settled;
 - multiple candidate papers score similarly on the heuristics above;
 - the best paper found fails one or more heuristic checks (timing window, author count, title keywords, instrument named);
 - the paper was only found via general web search with no literature-index confirmation.
@@ -568,8 +586,9 @@ Rationale for the ordering: **trust publications over SPASE metadata.** A peer-r
 
 ## Tools / APIs
 
-- **ADS / SciXplorer (SciX)** — heliophysics-native literature index; use to find the description paper via the keyword + author-count + time-period heuristics.
-- **Semantic Scholar API** (`https://www.semanticscholar.org/product/api`) — second literature source; use alongside SciX to find and cross-check the description paper and its author list. Cross-referencing the two reduces the chance of selecting the wrong paper — and agreement between them is a key input to the paper-selection confidence check.
+- **OpenAlex API** (`https://api.openalex.org`; about `https://openalex.org`) — **the first literature search**: an open index of scholarly works with a free API, used deliberately to find publications. Use it to find the description paper (recipe under *Finding the paper with OpenAlex*), to fetch a known paper by DOI, and to read a paper's reference list. A key is optional: if `$OPENALEX_API_KEY` is set, send it as the header `Authorization: Bearer $OPENALEX_API_KEY`; without one, OpenAlex allows a small daily budget (about 100 searches a day), which a single mission fits but a long batch of missions does not. A free key, from `https://openalex.org/settings/api`, raises the budget tenfold. Send the key to `api.openalex.org` only, and never write it into an output file. Single-work lookups (`/works/doi:<DOI>`) are free, searches are not, so search once per name and reuse the results. On HTTP 429 (over the limit or budget), wait and retry a few times, then fall back to SciX and Semantic Scholar and say so in `notes`.
+- **ADS / SciXplorer (SciX)** — heliophysics-native literature index; use to cross-check the paper OpenAlex points to, and to search when OpenAlex finds nothing that passes the heuristics.
+- **Semantic Scholar API** (`https://www.semanticscholar.org/product/api`) — a further literature source; use alongside OpenAlex and SciX to cross-check the description paper and its author list. Cross-referencing the indexes reduces the chance of selecting the wrong paper — and agreement between them is a key input to the paper-selection confidence check.
 - **Crossref API** (`https://api.crossref.org/works/<DOI>`) — given a paper DOI, returns authors, affiliations, and ORCIDs where registered. When you fetch a paper this way, opportunistically capture affiliation/ORCID for candidates (per the schema rules). For Crossref's "polite pool", put a `mailto:` contact in the `User-Agent` header: **the email of the person running the pipeline** — `$CROSSREF_MAILTO` if set, otherwise `git config user.email` in this repo; if neither is set, send none. Send it to `api.crossref.org` only, never to any other service, and never write it into an output file.
 - **SMWG Person registry** (`https://spase-metadata.org/SMWG/Person/`) — check for existing Person records; capture both the `spase://` ID and the clickable `.html` URL.
 - **SPASE registry browsing** (`https://spase-metadata.org/SMWG/Instrument/<ObservatoryName>/`, hpde.io search) — reverse lookup of an observatory's Instrument records (source 3). Verify each hit's `ObservatoryID`.

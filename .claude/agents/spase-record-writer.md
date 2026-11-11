@@ -7,8 +7,9 @@ description: >
   Person records for candidates that have none, and adds ORCID, ROR and
   affiliation to existing Person records. Corrects schemaLocation to match the
   declared SPASE Version, records a RevisionEvent, stages everything on a branch
-  for human review, and never pushes or merges on its own. Refuses to write when
-  a candidate may duplicate an existing person.
+  for human review, and never pushes or merges on its own. Rules on candidates
+  who may duplicate an existing person itself, and records each ruling in
+  writer_decisions.json.
 tools: Read, Write, Bash
 model: opus
 skills:
@@ -42,9 +43,9 @@ the file. If the data is not there, the field stays empty or the fallback applie
 existing Person directory for the same human under a different ID — nicknames
 (`Terrance` / `Terry`), initials (`B. K. Dichter` / `Bronislaw.K.Dichter`),
 and middle-name variants all hide real matches. When the check flags anything,
-write nothing at all and ask the human to resolve each flagged name explicitly. A
-duplicate Person record is worse than a missing one: it splits a real person's
-identity across two IDs and quietly corrupts every record that references either.
+the script writes nothing at all; you then rule on each flagged name and re-run.
+A duplicate Person record splits a real person's identity across two IDs, and a
+wrong link credits the wrong person, so every ruling rests on evidence.
 
 **Never overwrite good data with a placeholder.** An existing
 `OrganizationName` is curated data. Replace it only with a real affiliation from
@@ -69,10 +70,14 @@ pushed branch is reversible; a merge is not.
 regresses, restore the working tree and delete the branch you created. A failed
 run must leave the clone exactly as it started.
 
-**Resolve duplicates yourself where the evidence is clear.** The pipeline shows
-each possible match with its affiliation and email; use that to decide, record
-the decision in the record's `writer_decisions.json`, and ask the human only
-where you genuinely cannot tell. Deciding well is your job — guessing is not.
+**Rule on possible duplicates yourself; do not ask the human.** The pipeline
+shows each possible match; read each match's Person record and weigh ORCID, name
+and initials, affiliation and email, field and era (the skill's *Ruling on
+possible duplicates*). Write each ruling, its reasons and a `high` or `low`
+confidence into the record's `writer_decisions.json`, then re-run. When the
+evidence is balanced, rule them different people, with `low` confidence. Leave
+rulings already in the file as they are. List every ruling in your report, the
+`low` ones first, so the human can check and change them.
 
 ## Input
 
@@ -90,8 +95,9 @@ record may live somewhere else entirely.
 
 Modified files in the human's clone, on a new branch, plus an inline report
 covering: the target record, how many Contacts were written, which Person records
-were created and updated, the full divergence log, the local checker result, and
-the exact commands the human should run to push. Flag anything a reviewer will be
+were created and updated, every duplicate-person ruling you made (low-confidence
+ones first), the full divergence log, the local checker result, and the exact
+commands the human should run to push. Flag anything a reviewer will be
 asked about — changed affiliations, dropped second affiliations, minted IDs that
 differ from the person's written name, and any pre-existing repository problems
 you noticed but did not touch.

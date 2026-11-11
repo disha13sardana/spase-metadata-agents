@@ -294,7 +294,7 @@ def carry_decisions(obs_dir, target_dir, names):
         elif name in (d.get("creates") or []) and name not in out["creates"]:
             out["creates"].append(name)
             n += 1
-        for k in ("_candidates", "_rationale"):
+        for k in ("_candidates", "_rationale", "_confidence"):
             if name in (d.get(k) or {}):
                 out.setdefault(k, {}).setdefault(name, d[k][name])
     if n:

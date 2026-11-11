@@ -7,9 +7,10 @@ description: >
   Instrument record, creates Person records for candidates that lack one, adds
   ORCID/ROR/affiliation to existing Person records, corrects schemaLocation to
   match the declared Version, and stages the result on a branch for human review.
-  Transcribe-only: every value written comes from the input file. Halts on
-  possible duplicate people. Never pushes, merges, or writes to the default
-  branch.
+  Transcribe-only: every value written comes from the input file. Rules on
+  possible duplicate people itself, from the evidence the check shows, and
+  records every ruling with its reasons in writer_decisions.json. Never pushes,
+  merges, or writes to the default branch.
 user-invocable: false
 ---
 
@@ -19,8 +20,9 @@ The third stage of the pipeline. The finder proposes people, the enricher
 resolves their identifiers, and this skill puts the result into the XML.
 
 It is the only stage that modifies SPASE records, so its default posture is
-caution: transcribe what the input says, stop when something is ambiguous, and
-leave the human a reviewable branch rather than a pushed commit.
+caution: transcribe what the input says, rule on possible duplicate people on
+the evidence and write each ruling down, and leave the human a reviewable branch
+rather than a pushed commit.
 
 ## Input
 
@@ -138,11 +140,14 @@ Where the ID differs from the conventional form for that name, log `ID SHAPE`.
 deliberate, but it is also exactly the shape that collides with a full-name
 record later, so a curator should see it.
 
-**When anything is flagged, write nothing and stop.** Report every flagged name
-with its candidate matches and ask the human to decide each one. Resolutions are
-passed back as explicit `--link "<name>=<PersonID>"` or `--create "<name>"`
-arguments. Never guess, and never let a flagged name through because the other
-matches looked wrong.
+**When anything is flagged, the script writes nothing and stops; you rule on
+each flagged name and run it again.** Do not ask the human: rule on every flagged
+name yourself, record the ruling and its reasons in `writer_decisions.json` (see
+*Ruling on possible duplicates* below), and re-run the same command. The human
+reviews the rulings in that file and on the branch, and can change any of them.
+Never let a flagged name through without a ruling written down, and never rule
+by elimination ("the other matches looked wrong") without evidence about the
+match itself.
 
 Also report — but do not fix — duplicate pairs you notice among *existing*
 records. They are a pre-existing repository problem, not yours to resolve inside
@@ -782,9 +787,54 @@ enrichment are appended to the template as undecided rather than assumed;
 everything already in the file — rulings, `_rationale`, earlier `_candidates` —
 is kept.
 
-The agent is expected to *make* these decisions where the evidence is clear,
-using the affiliation and email shown for each match, and to ask the human only
-where it genuinely cannot tell.
+**Ruling on possible duplicates.** You make every one of these decisions
+yourself; the human does not need to be asked, and the run does not wait for
+them. For each flagged name, read every possible match's Person record in full
+(not only the line the script prints) and weigh:
+
+- **ORCID.** The same iD on the candidate and the record means the same person;
+  two different iDs mean different people. This settles it either way.
+- **Name.** Initials consistent with the full name (`B. K.` / `Bronislaw K.`),
+  known nicknames (`Terry` / `Terrance`), and middle names. A different first or
+  middle initial is evidence of a different person.
+- **Affiliation and email domain**, at the time each was recorded. A move between
+  institutions is common, so a mismatch is weaker evidence than a match.
+- **Field and era.** The records the existing Person is referenced from, and its
+  dates, against the candidate's instrument, mission and publication years.
+- **Record history.** A bare legacy stub (no email, ORCID or dates, referenced by
+  nothing) is weak evidence of anything.
+
+Then write the ruling into `writer_decisions.json`, beside the input:
+
+- `links[name]` = the existing PersonID when it is the same person, or the name
+  in `creates` when it is a different person;
+- `_rationale[name]`: begin with `SAME PERSON (agent decision, <date>) - ` or
+  `DIFFERENT PEOPLE (agent decision, <date>) - `, then the evidence that decided
+  it, in a few sentences a curator can check (as in the example below);
+- `_confidence[name]`: `high` when the evidence settles it, `low` when it is thin
+  or balanced.
+
+**When the evidence is balanced, rule `DIFFERENT PEOPLE`** and set `_confidence`
+to `low`. A wrong link credits the wrong person and lets this run change their
+existing record (affiliation, ROR); a second record for one person is visible and
+can be merged later. Name every `low` ruling in your report, so the reviewer
+checks those first.
+
+```json
+{
+  "links": {"B. K. Dichter": "Bronislaw.K.Dichter"},
+  "creates": ["David C. Slater"],
+  "_rationale": {
+    "B. K. Dichter": "SAME PERSON (agent decision, 2026-11-11) - initials match Bronislaw K.; both at AFRL; the record is referenced from the GOES-16 SEISS Instrument record.",
+    "David C. Slater": "DIFFERENT PEOPLE (agent decision, 2026-11-11) - surname-only collision with J.V.Slater: both initials differ (D. C. vs J. V.), institutions differ (SwRI vs UC Berkeley), and J.V.Slater is a legacy stub referenced by no record."
+  },
+  "_confidence": {"B. K. Dichter": "high", "David C. Slater": "high"}
+}
+```
+
+A ruling already in the file (an earlier run's, a human's correction, or one the
+author mapper carried over from the Observatory run) stands: do not re-rule it.
+To correct a ruling, the human edits the file and re-runs the writer.
 
 Batch several records by repeating `--input`; each gets its own decisions file
 and they land on one branch.
@@ -805,7 +855,9 @@ reviewer will ask about, so they belong in the report and in the PR description:
 - `MULTI-AFF` — a second affiliation was dropped
 - `NO AFFIL` — `Unknown` fallback used on a new record
 - `MINT` — an ID was normalised away from the person's written name
-- `LINK` — a curator-confirmed match to an existing record
+- `LINK` — a match to an existing record, as ruled in `writer_decisions.json`
+- `DISTINCT` — a flagged name ruled a different person from its possible matches;
+  a new record was made
 - `APPEND` — existing Contacts were kept rather than replaced
 
 ## Human-Approval Gate
@@ -815,7 +867,8 @@ pull request, does not merge, and never writes to `master` or `main`. Everything
 it does is reversible with `git push -d origin <branch>`.
 
 Before the human pushes, put in front of them: the diffstat, the divergence log,
-the local checker result against the baseline, and the count of new Person
-records. Call out explicitly anything that changes data someone previously
+the local checker result against the baseline, the count of new Person
+records, and every duplicate-person ruling you made this run (low-confidence ones
+first). Call out explicitly anything that changes data someone previously
 curated by hand — replaced affiliations most of all, since those are the edits
 most likely to be wrong and least likely to be noticed.

@@ -305,7 +305,7 @@ def main():
         if p.returncode != 0:
             print("\nABORT: writer stopped on %s. Rolling back." % s)
             rollback()
-            print("\nResolve the flagged names in:\n  %s\nthen re-run this command."
+            print("\nRule on the flagged names in:\n  %s\nthen re-run this command."
                   % decisions)
             return 1
         wrote_any = True
