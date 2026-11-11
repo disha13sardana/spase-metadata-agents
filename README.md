@@ -54,6 +54,58 @@ Ask Claude Code to run each agent in turn. Review each output before the next st
 
 When it's done, open **one pull request**, from `author-enrichment-<name>-instruments`. Each branch builds on the one before, so the last one holds everything. If you re-run a step, re-run every step after it.
 
+### Running a whole mission in one go
+
+To run all six steps without checking in between, give Claude Code this single prompt. Fill in the first four lines for each mission.
+
+```text
+SPASE Observatory ID: spase://SMWG/Observatory/<Name>
+Record name: <Name>        (the folder under spase_records/; GOES_16 for GOES/16)
+SMWG clone: ~/SMWG
+My initials: <your initials>
+
+Run the whole pipeline for this Observatory without stopping between steps.
+Record the time (date) at the start and at the end of each step.
+
+0. Check that the SMWG clone is on master, up to date with origin, with no
+   local changes. If not, stop and tell me.
+1. Use the spase-author-finder agent on the SPASE Observatory ID. Save its
+   output in spase_records/<Record name>/.
+2. Use the spase-affiliation-enricher agent on
+   spase_records/<Record name>/author_candidates.json.
+   Then commit and push the spase_records/<Record name>/ files in this repo.
+3. Use the spase-record-writer agent on
+   spase_records/<Record name>/author_candidates_enriched.json with the SMWG clone.
+   Then commit and push writer_decisions.json if one was written.
+4. Only if step 1 reported missing instruments: use the
+   spase-missing-instrument-registrar agent on the same enriched file with the
+   SMWG clone. Then commit and push its plan.
+5. Use the spase-instrument-author-mapper agent on the same enriched file with
+   the SMWG clone. For each ENRICH instrument, run the enricher on its input;
+   for each FULL RUN, run the finder and then the enricher. Then commit and push
+   all the new spase_records/<Record name>_*/ files.
+6. Use the spase-record-writer agent on every ready instrument input, with the
+   command step 5 prints. Then commit and push any new writer_decisions.json.
+
+Stop and ask me only if: the clone isn't clean, an agent says it needs a human
+decision it cannot make itself, a writer run fails for a reason other than a
+duplicate-person ruling, or validation reports new errors. Never open a pull
+request.
+
+At the end, give me:
+- what each step produced, and the branch to open the pull request from
+- what I should review first: the finder's paper choice and which literature
+  sources agreed, any low-confidence duplicate rulings, registrar flags, and
+  report-only instruments
+- runtime of each step and in total, and the tokens each agent used where
+  Claude Code reports them
+- a reminder to type /usage for the session's total tokens and cost
+```
+
+- Your review moves to the end, so start with the items the summary lists before you open the pull request.
+- Claude Code may still ask before running commands such as `git push`. Choose the option that stops it asking again for that command, and the rest of the run goes through.
+- Claude can't see the session's token count or cost. Type `/usage` when the run finishes. On a Pro or Max plan, the dollar figure there is the list-price equivalent, not what you're billed.
+
 ## Running the scripts directly
 
 ```bash
