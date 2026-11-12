@@ -1,0 +1,58 @@
+{
+  "_help": "Duplicate-person rulings for this record, made by the writer agent. links[name] = an existing PersonID when it is the same person; a name in creates is a different person and gets a new record. Empty string means not yet ruled. _rationale says why, _confidence is high or low. To change a ruling, edit it here and re-run the writer.",
+  "_candidates": {
+    "Alan G. Burns": [
+      "Joseph.A.Burns",
+      "Gary.Burns"
+    ],
+    "Sarah Jones": [
+      "Bernard.B.Jones",
+      "W.Linwood.Jones.Jr",
+      "William.H.Jones",
+      "Shaela.I.Jones"
+    ],
+    "David N. Anderson": [
+      "David.J.Anderson",
+      "D.Anderson",
+      "Donald.L.Anderson",
+      "Hugh.R.Anderson"
+    ],
+    "Laila Andersson": [
+      "Bengt-Goran.Andersson"
+    ],
+    "James E. Harvey": [
+      "John.W.Harvey",
+      "Karen.Harvey",
+      "Christopher.C.Harvey",
+      "Peter.R.Harvey"
+    ],
+    "Arthur D. Richmond": [
+      "Robert.G.Richmond"
+    ]
+  },
+  "links": {},
+  "creates": [
+    "Alan G. Burns",
+    "Sarah Jones",
+    "David N. Anderson",
+    "Laila Andersson",
+    "James E. Harvey",
+    "Arthur D. Richmond"
+  ],
+  "_rationale": {
+    "Alan G. Burns": "DIFFERENT PEOPLE (agent decision, 2026-11-11) - surname-only collision. The candidate is Alan G. Burns, NCAR High Altitude Observatory (ORCID 0000-0001-6024-0020), co-author of the GOLD mission overview paper. Joseph.A.Burns is 'Dr. Joseph A. Burns', Cornell University (planetary science), a legacy stub with no email, ORCID or references. Gary.Burns is Gary Burns, Australian Antarctic Division (gary.burns@aad.gov.au), referenced only from the WDC Davis and Casey magnetometer records. Given names differ in both cases (Alan vs Joseph, Gary) and neither record has an ORCID or a NCAR/HAO tie.",
+    "Sarah Jones": "DIFFERENT PEOPLE (agent decision, 2026-11-11) - surname-only collision. The candidate is Sarah Jones, NASA GSFC (ORCID 0000-0002-3816-4954). The four matches have different given names: Bernard B. Jones (Rutherford Appleton Laboratory), W. Linwood Jones, Jr. (NASA Headquarters), William H. Jones (GSFC Code 924) and Shaela I Jones (Catholic University of America at GSFC, shaela.i.jonesmecholsky@nasa.gov). None carries an ORCID; the GSFC tie for Shaela I Jones is outweighed by the different given name.",
+    "David N. Anderson": "DIFFERENT PEOPLE (agent decision, 2026-11-11) - the only real candidate is D.Anderson ('Mr. D. Anderson', 'Unknown - formerly at NOAA-SEL'), a bare 2008 legacy stub with no email, ORCID, dates or middle initial, referenced by no record. The candidate (no ORCID in the input) is listed on the GOLD team page as 'Dr. David Anderson, CIRES', and the enricher notes a 2020 deposit giving 'D. N. Anderson (NOAA-SEC and CIRES)'. The first initial and the Boulder NOAA space-environment lab (SEL, renamed SEC) are consistent, but the stub carries 'Mr.' against 'Dr.', no middle initial and no era, so a link rests on one initial and a lab name. Evidence balanced: ruled different with low confidence. The other matches differ by middle or first initial: David J. Anderson (Prof., University of Michigan), Donald L. Anderson (Caltech), Hugh R. Anderson (SAIC), all stubs with no references.",
+    "Laila Andersson": "DIFFERENT PEOPLE (agent decision, 2026-11-11) - surname-only collision. The candidate is Laila Andersson, LASP, University of Colorado Boulder (ORCID 0000-0002-6384-7036). Bengt-Goran.Andersson is Dr. Bengt-Goran Andersson, Johns Hopkins University, a legacy stub with no email, ORCID or references. Different given name.",
+    "James E. Harvey": "DIFFERENT PEOPLE (agent decision, 2026-11-11) - surname-only collision. The candidate is James E. Harvey, College of Optics and Photonics, University of Central Florida (no ORCID in the input). The matches all have different given names: John W. Harvey (National Solar Observatory, Kitt Peak instrument records), Karen Harvey (NSO Kitt Peak), Christopher C. Harvey (CESR Toulouse, Voyager PRA records) and Peter R. Harvey (UC Berkeley). None is in optics or at UCF.",
+    "Arthur D. Richmond": "DIFFERENT PEOPLE (agent decision, 2026-11-11) - surname-only collision. The candidate is Arthur D. Richmond, NCAR HAO (ORCID 0000-0002-6708-1023). Robert.G.Richmond is Mr. Robert G. Richmond, NASA Johnson Space Center, a legacy stub with no email, ORCID or references. Both initials differ (A. D. vs R. G.) and institutions differ."
+  },
+  "_confidence": {
+    "Alan G. Burns": "high",
+    "Sarah Jones": "high",
+    "David N. Anderson": "low",
+    "Laila Andersson": "high",
+    "James E. Harvey": "high",
+    "Arthur D. Richmond": "high"
+  }
+}
