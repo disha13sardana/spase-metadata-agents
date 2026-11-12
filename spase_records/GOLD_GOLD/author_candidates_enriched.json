@@ -1,0 +1,416 @@
+{
+  "record": "spase://SMWG/Instrument/GOLD",
+  "date": "2026-11-12",
+  "operating_span": {
+    "start": "2018-01-25",
+    "stop": null
+  },
+  "cmad": {
+    "found": false,
+    "expected": true,
+    "url": null,
+    "notes": "CMAD expected for operational NASA mission but not located. GOLD has no StopDate, is a NASA Heliophysics Explorer Mission of Opportunity, and was reviewed in the 2023 Heliophysics Senior Review (https://science.nasa.gov/wp-content/uploads/2023/09/final-2023-senior-review-report-tagged.pdf), whose GOLD section does not mention a CMAD. Searched: (a) no designated CMAD repository is configured; Zenodo searched anyway (no GOLD CMAD); (b) the GOLD Science Data Center documentation at UCF and the CDAWeb GOLD documentation directory (https://cdaweb.gsfc.nasa.gov/sp_phys/data/gold/documentation/), which hold the Public Science Data Products Guide Rev 5.2 (January 2026), release notes, a data-issues table and a November 2026 notice, but no CMAD; (c) two web-search passes ('GOLD CMAD', 'GOLD Calibration and Measurement Algorithms Document') returned only NASA's generic HPD CMAD template. The data products guide carries no front-page author list, so it was not treated as CMAD evidence. Current-team evidence came instead from the GOLD science team page."
+  },
+  "pending_instrument_runs": [],
+  "information_urls": [
+    {
+      "name": "Global-Scale Observations of the Limb and Disk Mission Implementation: 1. Instrument Design and Early Flight Performance",
+      "url": "https://doi.org/10.1029/2020JA027797",
+      "description": "GOLD instrument description paper (McClintock et al. 2020, JGR Space Physics): optical design, detectors and early in-flight performance.",
+      "scope": "instrument",
+      "instrument": "GOLD"
+    },
+    {
+      "name": "Global-Scale Observations of the Limb and Disk Mission Implementation: 2. Observations, Data Pipeline, and Level 1 Data Products",
+      "url": "https://doi.org/10.1029/2020JA027809",
+      "description": "Companion paper (McClintock et al. 2020, JGR Space Physics) describing GOLD observing modes, the processing pipeline and Level 1 data products.",
+      "scope": "instrument",
+      "instrument": "GOLD"
+    },
+    {
+      "name": "GOLD instrument page",
+      "url": "https://gold.cs.ucf.edu/science-mission/gold-instrument/",
+      "description": "Description and specifications of the two-channel GOLD far-ultraviolet imager built at LASP.",
+      "scope": "instrument",
+      "instrument": "GOLD"
+    },
+    {
+      "name": "GOLD Public Science Data Products Guide",
+      "url": "https://cdaweb.gsfc.nasa.gov/sp_phys/data/gold/documentation/GOLD_Public_Science_Data_Products_Guide_Rev5.2.pdf",
+      "description": "Revision 5.2 (January 2026) of the guide to GOLD Level 0 to Level 2 data products, processing steps and file contents, as archived at CDAWeb.",
+      "scope": "instrument",
+      "instrument": "GOLD"
+    }
+  ],
+  "candidates": [
+    {
+      "name": "Richard W. Eastes",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "First author of the GOLD mission overview paper (Eastes et al. 2017, 10.1007/s11214-017-0392-2)",
+          "url": "https://doi.org/10.1007/s11214-017-0392-2",
+          "strength": "Strong",
+          "source_scope": "observatory"
+        },
+        {
+          "source": "Named GOLD Principal Investigator on the GOLD science team page (archived copy https://web.archive.org/web/20260811204626/https://gold.cs.ucf.edu/science-mission/science-team/)",
+          "url": "https://gold.cs.ucf.edu/science-mission/science-team/",
+          "strength": "Strong",
+          "source_scope": "observatory"
+        },
+        {
+          "source": "Named GOLD principal investigator in NASA's February 2018 launch release",
+          "url": "https://www.nasa.gov/science-research/heliophysics/nasa-mission-launched-will-revolutionize-our-understanding-of-space-weather/",
+          "strength": "Strong",
+          "source_scope": "observatory"
+        },
+        {
+          "source": "Named GOLD Principal Investigator in the 2013 LASP selection press release",
+          "url": "https://lasp.colorado.edu/2013/04/12/press-release-lasp-gold/",
+          "strength": "Medium",
+          "source_scope": "observatory"
+        },
+        {
+          "source": "PrincipalInvestigator in the GOLD Observatory record Contacts",
+          "url": "https://spase-metadata.org/SMWG/Observatory/GOLD.html",
+          "strength": "Medium",
+          "source_scope": "observatory"
+        },
+        {
+          "source": "PrincipalInvestigator in the GOLD Instrument record Contacts (instrument-scoped, so InstrumentLead on the instrument)",
+          "url": "https://spase-metadata.org/SMWG/Instrument/GOLD.html",
+          "strength": "Medium",
+          "source_scope": "instrument"
+        },
+        {
+          "source": "Second author of the GOLD instrument design paper (McClintock et al. 2020, 10.1029/2020JA027797)",
+          "url": "https://doi.org/10.1029/2020JA027797",
+          "strength": "Strong",
+          "source_scope": "instrument"
+        },
+        {
+          "source": "Second author, before the alphabetized remainder of the author list, of the GOLD observations and data pipeline paper (McClintock et al. 2020, 10.1029/2020JA027809)",
+          "url": "https://doi.org/10.1029/2020JA027809",
+          "strength": "Medium",
+          "source_scope": "instrument"
+        },
+        {
+          "source": "PI_Name 'Richard Eastes' in the GOLD Level 1C/Level 2 file metadata documented in the GOLD Public Science Data Products Guide Rev 5.2 (January 2026)",
+          "url": "https://cdaweb.gsfc.nasa.gov/sp_phys/data/gold/documentation/GOLD_Public_Science_Data_Products_Guide_Rev5.2.pdf",
+          "strength": "Medium",
+          "source_scope": "instrument"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Richard.Eastes",
+        "url": "https://spase-metadata.org/SMWG/Person/Richard.Eastes.html"
+      },
+      "orcid": "0000-0003-3679-9793",
+      "affiliation": "LASP/Univ. of Colorado",
+      "affiliation_ror": "https://ror.org/01fcjzv38",
+      "activity_dates": "GOLD PI from mission selection (2013 LASP release) through at least January 2026 (PI_Name in the Rev 5.2 data products guide)",
+      "authorship_scope": "instrument",
+      "qualifying_roles": [
+        "Author",
+        "InstrumentLead"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Second author of the GOLD instrument design paper (McClintock et al. 2020, 10.1029/2020JA027797)"
+        },
+        {
+          "role": "InstrumentLead",
+          "source": "Listed as Principal Investigator of the GOLD instrument in its SPASE Instrument record Contacts (https://spase-metadata.org/SMWG/Instrument/GOLD.html)"
+        }
+      ],
+      "instrument_roles": [],
+      "enrichment": {
+        "orcid_origin": "finder",
+        "orcid_source": "Crossref (paper DOI)",
+        "orcid_evidence": "10.1029/2020ja027797",
+        "orcid_evidence_citation": "McClintock et al. 2020",
+        "orcid_confidence": "Confirmed",
+        "affiliation_origin": "finder",
+        "affiliation_source": "ORCID employment",
+        "affiliation_evidence": "https://orcid.org/0000-0003-3679-9793",
+        "affiliation_type": "era-matched",
+        "ror_origin": "enricher",
+        "ror_source": "ROR affiliation-match (chosen)",
+        "ror_evidence": "https://ror.org/01fcjzv38",
+        "ror_confidence": "Confirmed",
+        "lookup_status": "complete",
+        "notes": "ORCID: finder value, checksum valid. Crossref deposits it for 'Richard W. Eastes' on the evidence paper 10.1029/2020ja027797, and on 10.1029/2020ja027809. Affiliation: single dated ORCID employment, 'LASP/Univ. of Colorado' (no department, 2018-01-01 to present). It overlaps the span. It is labelled era-matched as the only overlapping dated position, although it is ongoing. Transcribed as ORCID holds it. REVIEW: differs in form from the finder value, which joined two institutions: 'Laboratory for Atmospheric and Space Physics, University of Colorado Boulder (current GOLD team page); Florida Space Institute, University of Central Florida at the time of the 2017 overview paper'. The recorded value is its LASP part. The UCF/FSI part was set aside. It predates the span, ORCID lists no UCF employment, and NASA's 2 February 2018 launch release already places him at LASP. ROR: the entry has no disambiguated organization. Affiliation-match chose University of Colorado System (https://ror.org/00jc20583, 1.0). The string names LASP by the acronym ROR records for it. ROR records LASP (https://ror.org/01fcjzv38) as a child of University of Colorado Boulder, which is a child of the CU System, and all three are in Boulder, US. So LASP is recorded. The intermediate campus is not named in the string ('Univ. of Colorado')."
+      },
+      "seeded_from": {
+        "observatory_status": "included",
+        "observatory_exclusion_reason": null
+      }
+    },
+    {
+      "name": "William E. McClintock",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Second author of the GOLD mission overview paper (Eastes et al. 2017, 10.1007/s11214-017-0392-2)",
+          "url": "https://doi.org/10.1007/s11214-017-0392-2",
+          "strength": "Strong",
+          "source_scope": "observatory"
+        },
+        {
+          "source": "Named GOLD Deputy Principal Investigator on the GOLD science team page (archived copy https://web.archive.org/web/20260811204626/https://gold.cs.ucf.edu/science-mission/science-team/)",
+          "url": "https://gold.cs.ucf.edu/science-mission/science-team/",
+          "strength": "Medium",
+          "source_scope": "observatory"
+        },
+        {
+          "source": "Named GOLD Deputy Principal Investigator in the 2013 LASP selection press release",
+          "url": "https://lasp.colorado.edu/2013/04/12/press-release-lasp-gold/",
+          "strength": "Medium",
+          "source_scope": "observatory"
+        },
+        {
+          "source": "First author of the GOLD instrument design paper (McClintock et al. 2020, 10.1029/2020JA027797)",
+          "url": "https://doi.org/10.1029/2020JA027797",
+          "strength": "Strong",
+          "source_scope": "instrument"
+        },
+        {
+          "source": "First author, before the alphabetized remainder of the author list, of the GOLD observations and data pipeline paper (McClintock et al. 2020, 10.1029/2020JA027809)",
+          "url": "https://doi.org/10.1029/2020JA027809",
+          "strength": "Medium",
+          "source_scope": "instrument"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/William.E.McClintock",
+        "url": "https://spase-metadata.org/SMWG/Person/William.E.McClintock.html"
+      },
+      "orcid": "0000-0002-8142-5398",
+      "affiliation": "LASP, University of Colorado Boulder",
+      "affiliation_ror": "https://ror.org/01fcjzv38",
+      "activity_dates": "GOLD Deputy PI from selection (2013) to present per the team page",
+      "authorship_scope": "instrument",
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "First author of the GOLD instrument design paper (McClintock et al. 2020, 10.1029/2020JA027797)"
+        }
+      ],
+      "instrument_roles": [],
+      "enrichment": {
+        "orcid_origin": "finder",
+        "orcid_source": "Crossref (paper DOI)",
+        "orcid_evidence": "10.1029/2020ja027797",
+        "orcid_evidence_citation": "McClintock et al. 2020",
+        "orcid_confidence": "Confirmed",
+        "affiliation_origin": "finder",
+        "affiliation_source": "ORCID employment",
+        "affiliation_evidence": "https://orcid.org/0000-0002-8142-5398",
+        "affiliation_type": "era-matched",
+        "ror_origin": "enricher",
+        "ror_source": "ROR affiliation-match (chosen)",
+        "ror_evidence": "https://ror.org/01fcjzv38",
+        "ror_confidence": "Confirmed",
+        "lookup_status": "complete",
+        "notes": "ORCID: finder value, checksum valid. Crossref deposits it for 'William E. McClintock' on the evidence papers 10.1029/2020ja027797 and 10.1029/2020ja027809. Affiliation: single dated ORCID employment (University of Colorado Boulder, department 'LASP', Senior Research Scientist, 1977-07-01 to present). It overlaps the span and is labelled era-matched as the only overlapping dated position, although it is ongoing. The string is composed from the entry's department and organization fields. Agrees with the finder value 'Laboratory for Atmospheric and Space Physics, University of Colorado Boulder'. ROR: ORCID disambiguates by RINGGOLD 1877 (not converted). Affiliation-match chose University of Colorado Boulder (https://ror.org/02ttsq026, 1.0; CU System also 1.0, not chosen). The string names LASP by the acronym ROR records for it, and ROR records LASP as a child of CU Boulder, so https://ror.org/01fcjzv38 is recorded."
+      },
+      "seeded_from": {
+        "observatory_status": "included",
+        "observatory_exclusion_reason": null
+      }
+    },
+    {
+      "name": "Alan C. Hoskins",
+      "status": "included",
+      "confidence": "Strong",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Third author of the GOLD instrument design paper (McClintock et al. 2020, 10.1029/2020JA027797)",
+          "url": "https://doi.org/10.1029/2020JA027797",
+          "strength": "Strong",
+          "source_scope": "instrument"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": "0009-0001-0499-0473",
+      "affiliation": "Laboratory for Atmospheric and Space Physics, University of Colorado",
+      "affiliation_ror": "https://ror.org/01fcjzv38",
+      "activity_dates": null,
+      "authorship_scope": "instrument",
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Third author of the GOLD instrument design paper (McClintock et al. 2020, 10.1029/2020JA027797)"
+        }
+      ],
+      "instrument_roles": [],
+      "enrichment": {
+        "orcid_origin": "enricher",
+        "orcid_source": "ORCID name-search (corroborated)",
+        "orcid_evidence": "https://orcid.org/0009-0001-0499-0473",
+        "orcid_confidence": "Confirmed",
+        "affiliation_origin": "finder",
+        "affiliation_source": "ORCID employment",
+        "affiliation_evidence": "https://orcid.org/0009-0001-0499-0473",
+        "affiliation_type": "era-matched",
+        "ror_origin": "enricher",
+        "ror_source": "ORCID disambiguated-organization",
+        "ror_evidence": "https://orcid.org/0009-0001-0499-0473",
+        "ror_confidence": "Confirmed",
+        "lookup_status": "complete",
+        "notes": "ORCID: the evidence paper 10.1029/2020ja027797 deposits 'Alan C. Hoskins' with no iD. Route A' found no GOLD deposit carrying an iD for him. Route B (Hoskins + Alan) returned two records. 0009-0001-0499-0473 ('Alan Hoskins', no works) has dated employment at the Laboratory for Atmospheric and Space Physics as Senior Instrument Engineer (2010-08 to present). LASP built GOLD, and the evidence paper deposits LASP for him, so this record is corroborated. 0000-0003-4208-2983 ('ALAN HOSKINS': one undated University of Colorado Boulder employment, no works) has nothing to corroborate it beyond a name and an employer. It may be a duplicate account; a reviewer may check. Affiliation: era-matched to that single dated employment, labelled era-matched although it is ongoing. ORCID holds the fields inverted (organization 'Laboratory for Atmospheric and Space Physics', department 'University of Colorado'), so the laboratory is written first. Agrees with the finder value and with the evidence-paper deposit. ROR: the employment's disambiguated organization is https://ror.org/01fcjzv38 (source ROR), the LASP record itself."
+      },
+      "seeded_from": {
+        "observatory_status": "included",
+        "observatory_exclusion_reason": null
+      }
+    },
+    {
+      "name": "Oswald H. W. Siegmund",
+      "status": "included",
+      "confidence": "Medium",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Listed as a Co-Investigator on the GOLD science team page (live page returns an empty body to automated requests; read from the 11 August 2026 archived copy https://web.archive.org/web/20260811204626/https://gold.cs.ucf.edu/science-mission/science-team/)",
+          "url": "https://gold.cs.ucf.edu/science-mission/science-team/",
+          "strength": "Medium",
+          "source_scope": "observatory"
+        },
+        {
+          "source": "Author 16 of the GOLD mission overview paper (Eastes et al. 2017, 10.1007/s11214-017-0392-2), inside the alphabetized Co-Investigator block of the author list; the position carries no contribution-order information",
+          "url": "https://doi.org/10.1007/s11214-017-0392-2",
+          "strength": "Low",
+          "source_scope": "observatory"
+        },
+        {
+          "source": "Fourth author of the GOLD instrument design paper (McClintock et al. 2020, 10.1029/2020JA027797); on this Observatory record that position is instrument-team depth, so it supports his GOLD instrument authorship only",
+          "url": "https://doi.org/10.1029/2020JA027797",
+          "strength": "Medium",
+          "source_scope": "instrument"
+        }
+      ],
+      "person_record": {
+        "id": null,
+        "url": null
+      },
+      "orcid": "0000-0001-9390-0056",
+      "affiliation": "Space Sciences Laboratory, University of California Berkeley",
+      "affiliation_ror": null,
+      "activity_dates": null,
+      "authorship_scope": "instrument",
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Fourth author of the GOLD instrument design paper (McClintock et al. 2020, 10.1029/2020JA027797)"
+        }
+      ],
+      "instrument_roles": [],
+      "enrichment": {
+        "orcid_origin": "finder",
+        "orcid_source": "Crossref (paper DOI)",
+        "orcid_evidence": "10.1029/2020ja027797",
+        "orcid_evidence_citation": "McClintock et al. 2020",
+        "orcid_confidence": "Confirmed",
+        "affiliation_origin": "finder",
+        "affiliation_source": "ORCID employment",
+        "affiliation_evidence": "https://orcid.org/0000-0001-9390-0056",
+        "affiliation_type": "era-matched",
+        "ror_origin": null,
+        "ror_source": null,
+        "ror_evidence": null,
+        "ror_confidence": null,
+        "lookup_status": "complete",
+        "notes": "ORCID: finder value, checksum valid. Crossref deposits it for 'Oswald H. W. Siegmund' on the evidence paper 10.1029/2020ja027797. Affiliation: single dated ORCID employment (University of California Berkeley, Space Sciences Laboratory, Senior Space Fellow, 1982-07-06 to present). It overlaps the span and is labelled era-matched although it is ongoing. Agrees with the finder value. ROR: ORCID disambiguates the employer by RINGGOLD 1438 (not converted). Affiliation-match chose nothing: Space Sciences Laboratory (https://ror.org/048400679) 1.0, University of California System (https://ror.org/00pjdza24) 1.0 and University of California, Berkeley (https://ror.org/01an7q238) 0.99, all chosen false. The child-descent rule needs a chosen parent and score may not decide, so the field is null. ROR records SSL as a child of UC Berkeley; a reviewer may set https://ror.org/048400679."
+      },
+      "seeded_from": {
+        "observatory_status": "included",
+        "observatory_exclusion_reason": null
+      }
+    },
+    {
+      "name": "Jason B. McPhate",
+      "status": "included",
+      "confidence": "Medium",
+      "exclusion_reason": null,
+      "evidence": [
+        {
+          "source": "Fifth author of the GOLD instrument design paper (McClintock et al. 2020, 10.1029/2020JA027797)",
+          "url": "https://doi.org/10.1029/2020JA027797",
+          "strength": "Medium",
+          "source_scope": "instrument"
+        }
+      ],
+      "person_record": {
+        "id": "spase://SMWG/Person/Jason.McPhate",
+        "url": "https://spase-metadata.org/SMWG/Person/Jason.McPhate.html"
+      },
+      "orcid": "0000-0001-7504-1999",
+      "affiliation": "Space Sciences Laboratory, University of California Berkeley",
+      "affiliation_ror": null,
+      "activity_dates": null,
+      "authorship_scope": "instrument",
+      "qualifying_roles": [
+        "Author"
+      ],
+      "role_evidence": [
+        {
+          "role": "Author",
+          "source": "Fifth author of the GOLD instrument design paper (McClintock et al. 2020, 10.1029/2020JA027797)"
+        }
+      ],
+      "instrument_roles": [],
+      "enrichment": {
+        "orcid_origin": "finder",
+        "orcid_source": "Crossref (paper DOI)",
+        "orcid_evidence": "10.1029/2020ja027797",
+        "orcid_evidence_citation": "McClintock et al. 2020",
+        "orcid_confidence": "Confirmed",
+        "affiliation_origin": "finder",
+        "affiliation_source": "ORCID employment",
+        "affiliation_evidence": "https://orcid.org/0000-0001-7504-1999",
+        "affiliation_type": "era-matched",
+        "ror_origin": null,
+        "ror_source": null,
+        "ror_evidence": null,
+        "ror_confidence": null,
+        "lookup_status": "complete",
+        "notes": "Processed although excluded on this Observatory record, because it carries instrument_roles (GOLD Instrument, 5th author of the instrument paper). ORCID: finder value, checksum valid. Crossref deposits it for 'Jason B. McPhate' on the evidence paper 10.1029/2020ja027797. Affiliation: single dated ORCID employment (University of California Berkeley, Space Sciences Laboratory, 1998-08 to present). It overlaps the span and is labelled era-matched although it is ongoing. Agrees with the finder value. ROR: ORCID disambiguates the employer by RINGGOLD 1438 (not converted). Affiliation-match chose nothing: Space Sciences Laboratory (https://ror.org/048400679) 1.0, University of California System (https://ror.org/00pjdza24) 1.0 and University of California, Berkeley (https://ror.org/01an7q238) 0.99, all chosen false. The child-descent rule needs a chosen parent and score may not decide, so the field is null. ROR records SSL as a child of UC Berkeley; a reviewer may set https://ror.org/048400679."
+      },
+      "seeded_from": {
+        "observatory_status": "excluded",
+        "observatory_exclusion_reason": "instrument-team depth — belongs to the GOLD Instrument-record run"
+      }
+    }
+  ],
+  "notes": [
+    "Built from the Observatory run on spase://SMWG/Observatory/GOLD (2026-11-11), not from a separate finder and enricher run on this record. People, roles, ORCID, affiliation and ROR are copied from that file.",
+    "operating_span is the Observatory's; affiliations were era-matched against it."
+  ],
+  "seeded_from": {
+    "observatory_record": "spase://SMWG/Observatory/GOLD",
+    "observatory_run_date": "2026-11-11",
+    "source": "instrument_roles",
+    "status": "ready",
+    "reason": "Observatory run resolved this instrument's authors"
+  }
+}

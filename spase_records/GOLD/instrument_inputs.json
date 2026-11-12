@@ -1,0 +1,63 @@
+{
+  "observatory_record": "spase://SMWG/Observatory/GOLD",
+  "date": "2026-11-12",
+  "base": "author-enrichment-gold",
+  "instruments": [
+    {
+      "resource_id": "spase://SMWG/Instrument/GOLD",
+      "authority": "SMWG",
+      "new": false,
+      "status": "ready",
+      "reason": "Observatory run resolved this instrument's authors",
+      "people": [
+        {
+          "name": "Richard W. Eastes",
+          "roles": [
+            "Author",
+            "InstrumentLead"
+          ],
+          "confidence": "Strong"
+        },
+        {
+          "name": "William E. McClintock",
+          "roles": [
+            "Author"
+          ],
+          "confidence": "Strong"
+        },
+        {
+          "name": "Alan C. Hoskins",
+          "roles": [
+            "Author"
+          ],
+          "confidence": "Strong"
+        },
+        {
+          "name": "Oswald H. W. Siegmund",
+          "roles": [
+            "Author"
+          ],
+          "confidence": "Medium"
+        },
+        {
+          "name": "Jason B. McPhate",
+          "roles": [
+            "Author"
+          ],
+          "confidence": "Medium"
+        }
+      ],
+      "links": 4,
+      "log": [
+        "TEAM DEPTH Jason B. McPhate: excluded from the Observatory as team depth, an author of this instrument"
+      ],
+      "components": [],
+      "action": "write",
+      "file": "spase_records/GOLD_GOLD/author_candidates_enriched.json"
+    }
+  ],
+  "notes": [
+    "Records under another authority are report only: their authors are listed here for that authority's curators.",
+    "Components of a suite have no input of their own; their authors and links are on the suite's input."
+  ]
+}
